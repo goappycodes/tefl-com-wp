@@ -1,0 +1,467 @@
+@font-face {
+    font-family: 'Brittish Shorthair';
+    src: url('/wp-content/themes/teflinstitute/assets/fonts/brittish_shorthair.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background: var(--bg-color);
+}
+
+.label {
+    display: none;
+}
+
+.banner-section {
+    min-height: 450px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.header-section .ast-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.header-section h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 500;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+}
+
+.header-section p {
+    font-family: 'Brittish Shorthair', cursive;
+    text-align: center;
+    margin-bottom: auto;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    font-weight: 200;
+}
+
+.list {
+    list-style: none;
+    margin: 4rem 0 0 0;
+    display: flex;
+    background-color: #F1F1F1;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.list li {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-weight: 600;
+    display: flex;
+    height: 10px;
+    line-height: 10px;
+    font-size: 0.775rem;
+}
+
+.list li:first-child {
+    padding-right: 30px;
+}
+
+.list li a {
+    font-weight: 400;
+    border-left: 1px solid;
+    padding: 0 30px;
+}
+
+.grid-section {
+    margin: 4rem 0 2rem 0;
+}
+
+.resources-section-row,
+.grid-section-row {
+    display: flex;
+    row-gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background-color: var(--white);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card h2 {
+    padding: 30px 30px 5px;
+    font-size: 1.25rem;
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+}
+
+.product-card h3 {
+    font-size: 1.125rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+
+.product-card .image {
+    width: 100%;
+    height: 270px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.product-card .image a {
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+
+.product-card p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.product-card-description {
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    row-gap: 15px;
+}
+
+@media screen and (max-width:768px) {
+    .product-card-description {
+        height: auto;
+    }
+}
+
+.product-card p.small {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.additional_information {
+    font-size: 0.775rem;
+    padding: 0 50px 0;
+    line-height: 1.5;
+    color: darkred;
+}
+
+.delivery-section h2 {
+    text-align: center;
+    padding: 0 0 50px 0;
+    font-size: 1.25rem;
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.table,
+td,
+th {
+    border: 0 none;
+    margin: 0;
+}
+
+th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    font-weight: 600;
+}
+
+td {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.blog-section {
+    margin: 4rem auto;
+}
+
+.blog-section .ast-container {
+    padding: 0;
+}
+
+.article-container {
+    background-position: center;
+    background-size: cover;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 100px 0;
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+.article-container:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+    left: 0;
+    top: 0;
+}
+
+.article-container-content {
+    position: relative;
+}
+
+.article-container-content h3 {
+    font-size: 1.875rem;
+    color: #fff;
+    font-weight: 500;
+    width: 55%;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.article-container-content p {
+    color: #fff;
+    padding: 35px 0;
+    width: 55%;
+    font-size: initial;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.delivery-section {
+    margin-top: 2em;
+}
+
+.article-container-content a {
+    background-color: #000;
+    color: #fff;
+    min-height: 55px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    width: 260px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+}
+
+.banner-buttons-container {
+    display: block;
+    height: 55px;
+}
+
+.banner-buttons {
+    display: flex;
+}
+
+.banner-buttons a:first-child {
+    background-color: #F1F1F1;
+    border: 1px solid #000;
+    color: #000;
+}
+
+.banner-buttons a {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    justify-content: space-between;
+    padding: 12px 20px;
+    min-height: 55px;
+    margin-bottom: -55px;
+    font-size: 14px;
+    /* letter-spacing: 0.3rem; */
+    width: 50%;
+    font-weight: 600;
+}
+
+.banner-buttons a i {
+    font-size: 1.35rem;
+}
+
+.variations {
+    margin: 0;
+    width: 50%;
+    border: 0 solid;
+}
+
+.single_variation_wrap {
+    width: 50%;
+}
+
+.variations_form {
+    display: flex;
+    align-items: center;
+}
+
+td.label {
+    display: none;
+}
+
+td.value {
+    padding: 0;
+}
+
+input[name=quantity] {
+    height: 55px;
+    border: 1px solid #000;
+    border-radius: 0;
+    margin: 0 -1px;
+}
+
+#quantity,
+#options,
+#duration {
+    width: 100%;
+    border: 1px solid;
+    font-size: 14px;
+    border-radius: 0;
+    height: 55px;
+    color: #000;
+    background: transparent;
+    /* letter-spacing: 0.3rem; */
+    text-transform: uppercase;
+    padding: 0 20px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    font-weight: 600;
+}
+
+#quantity:before,
+#options:before,
+#duration:before {
+    content: "\f105";
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    background: red;
+    display: block;
+    overflow: auto;
+    z-index: 999999;
+}
+
+a.reset_variations {
+    position: absolute;
+}
+
+.woocommerce-variation-add-to-cart {
+    display: flex;
+}
+
+input[type=number] {
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 0;
+    padding: 0 0 0 20px;
+    outline: none;
+    font-size: 0.688rem;
+    background: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    height: 55px;
+    color: #000;
+    text-align: center;
+
+}
+
+.single_add_to_cart_button {
+    height: 55px;
+    font-size: 14px;
+    border-radius: 0;
+    text-transform: uppercase;
+    /* letter-spacing: 0.3em; */
+    width: 100%;
+    font-weight: 600;
+}
+
+input {
+    color: #000;
+    font-size: 0.688rem;
+    padding: 0;
+    text-transform: uppercase;
+    /* letter-spacing: 0.688rem; */
+    height: 55px;
+    border: 0;
+}
+
+.woocommerce-variation.single_variation {
+    display: none !important;
+}
+
+a.reset_variations {
+    background: white url(https://static.thenounproject.com/png/114046-200.png) no-repeat center center / 15px;
+    width: 22px;
+    height: 22px;
+    color: transparent;
+    text-align: center;
+    margin: 16px 0 0 -38px;
+    border-radius: 50px;
+}
+
+.resources-section h3 {
+    text-align: center;
+    padding: 0 0 30px 0;
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+    .banner-section {
+        min-height: 400px;
+    }
+
+    .list {
+        overflow-x: auto;
+        margin: 2rem 0 0 0;
+    }
+
+    .product-card {
+        margin-bottom: 20px;
+    }
+
+    .grid-section {
+        margin: 2rem 0 0 0;
+    }
+
+    .delivery-section h2 {
+        padding: 0 0 20px 0;
+    }
+
+    .article-container {
+        padding: 50px;
+    }
+
+    .article-container-content h3 {
+        width: 100%;
+    }
+
+    .article-container-content p {
+        width: 100%;
+    }
+}
+
+.banner-buttons.course-extension-button a {
+    width: 100%;
+    border: none;
+    background: var(--black);
+    color: var(--white);
+}

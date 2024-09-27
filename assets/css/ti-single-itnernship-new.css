@@ -1,0 +1,1425 @@
+#content>.ast-container {
+    padding: 0;
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--black);
+}
+
+p {
+    margin-bottom: .5rem;
+}
+
+/* Hero Section */
+
+.hero-banner-section {
+    min-height: 500px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+section.hero-banner-section:before {
+    position: absolute;
+    background: rgba(0, 0, 0, .35);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+}
+
+.internship-banner-logo {
+    position: absolute;
+    width: 200px;
+    right: 5%;
+    top: 10%;
+}
+
+.float-bottom {
+    width: 100%;
+    padding: 2rem 0 3rem;
+}
+
+.hero-banner-section__title {
+    color: var(--white);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.hero-banner-section__subtitle {
+    font-size: 12px;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+.open-gallery-btn {
+    background: var(--white);
+    display: inline-flex;
+    align-items: center;
+    padding: 8px;
+    gap: 10px;
+    color: var(--black);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    transition: all .4s ease-in-out;
+}
+
+.open-gallery-btn:hover {
+    background: var(--blue-turquoise);
+    color: white;
+    transform: translateY(-4px);
+}
+
+.open-gallery-btn:hover img {
+    transform: scale(.90);
+}
+
+.open-gallery-btn img {
+    width: 1rem;
+    height: 1rem;
+    object-fit: cover;
+    transition: all .4s ease-in-out;
+}
+
+@media screen and (min-width:768px) {
+    .hero-banner-section__content {
+        display: flex;
+        align-items: center;
+    }
+
+    .content-nav-menu-section.is-admin {
+        top: 32px;
+    }
+}
+
+.hero-banner-section__cta {
+    display: flex;
+    justify-content: end;
+}
+
+/* Hero Section End */
+
+/* Content Navigation */
+
+.content-nav-menu-section {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: var(--white);
+}
+
+.content-nav-menu-section .nav-wrapper {
+    background: var(--white);
+}
+
+
+
+.content-nav-menu-section.animate {
+    animation: slide-down 0.3s ease-in-out;
+    box-shadow: -6px -6px 12px var(--shadow-light, transparent), 6px 6px 12px var(--shadow, transparent);
+}
+
+@media screen and (max-width:768px) {
+
+
+    .hero-banner-section__cta {
+        justify-content: start;
+    }
+
+    .content-nav-menu-section {
+        box-shadow: -6px -6px 12px var(--shadow-light, transparent), 6px 6px 12px var(--shadow, transparent);
+    }
+
+    .content-nav-menu-section .nav-wrapper {
+        overflow-x: scroll;
+        mask-image: -webkit-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        mask-image: -moz-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        -webkit-mask-image: -webkit-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        -webkit-mask-image: -moz-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+    }
+
+    .content-nav-menu__link:after {
+        display: none !important;
+    }
+
+    a.content-nav-menu__link.active {
+        background: var(--blue-teal);
+        color: var(--white);
+    }
+
+    .content-nav-menu-section .nav-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .content-nav-menu-section a.content-nav-menu__link {
+        padding: 16px 20px;
+    }
+
+    .content-nav-menu-section.content-nav-menu-section-mobile {
+        padding: 10px 0;
+    }
+
+    .content-nav-menu-section-mobile .glide__slide {
+        background: var(--black-muted) !important;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5%;
+    }
+
+    .content-nav-menu-section-mobile .glide__slide.glide__slide--active {
+        background: var(--blue-teal) !important;
+    }
+
+    .content-nav-menu-section-mobile .glide__slide.glide__slide--active a {
+        color: var(--white);
+    }
+}
+
+
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-nav-menu-section.animate ul.content-nav-menu {
+    border-bottom: none;
+}
+
+.content-nav-menu-section.animate a.content-nav-menu__link {
+    padding: 16px 20px;
+}
+
+ul.content-nav-menu {
+    display: flex;
+    max-width: 100%;
+    gap: 2rem;
+    border-bottom: 2px solid var(--very-light-gray);
+}
+
+
+
+.content-nav-menu__item {
+    list-style: none;
+}
+
+
+a.content-nav-menu__link {
+    display: block;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    transition: all .4s ease;
+    width: max-content;
+    border-radius: 8px;
+    margin: 10px auto;
+}
+
+a.content-nav-menu__link.active:after {
+    width: 90%;
+}
+
+.content-nav-menu__link:after {
+    content: "";
+    width: 0;
+    height: 5px;
+    background: var(--black);
+    display: inline-block;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all .4s ease;
+}
+
+
+
+/* Content Navigation End */
+
+/* Internship Content Container */
+
+.internship-content-container {
+    margin: 2rem auto;
+}
+
+.sticky-sidebar {
+    position: sticky;
+    top: calc(2rem + 44px);
+    /* background: var(--blue-teal);
+    padding: 2rem; */
+}
+
+.sticky-sidebar__top {
+    background: var(--blue-teal);
+    padding: 2rem;
+}
+
+@media screen and (max-width:768px) {
+    .sticky-sidebar__container {
+        display: block;
+    }
+
+    .sticky-sidebar {
+        margin-bottom: 1rem;
+    }
+}
+
+.sticky-sidebar__bottom {
+    margin-top: 1.5rem;
+    border: 1px solid var(--black);
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.reviews-summary .progress-text,
+.reviews-summary .progress-value {
+    width: 20%;
+}
+
+.reviews-summary .progress {
+    margin: 5px;
+    padding: 0;
+    width: 60%;
+    height: 20px;
+    overflow: hidden;
+    background: #DAAB3733;
+}
+
+.reviews-summary .review-status {
+    display: flex;
+    align-items: center;
+}
+
+.reviews-summary .progress-bar {
+    background: var(--gold);
+    display: block;
+    height: 100%;
+    transition: all 3s linear;
+    position: relative;
+    float: left;
+    width: 0;
+}
+
+h4.sticky-sidebar__bottom-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.rating-div .fa {
+    color: var(--gold);
+    font-size: 1.5rem;
+}
+
+span.course-review-count {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.rating-div {
+    margin: .5rem auto;
+}
+
+.total-count-text {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.sticky-sidebar.is-admin {
+    top: calc(2rem + 44px + 32px);
+}
+
+.woocommerce-variation-add-to-cart {
+    display: none;
+}
+
+.internship-timer-new .offer-ends {
+    color: var(--white);
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.internship-timer-new .offer-ends span {
+    display: block;
+    font-weight: 700;
+}
+
+
+.internship-timer-new .clock-day,
+.internship-timer-new .clock-hour,
+.internship-timer-new .clock-min,
+.internship-timer-new .clock-sec {
+    background: none !important;
+}
+
+.internship-timer-new .base {
+    position: inherit;
+    color: var(--white);
+    top: auto;
+    left: auto;
+    transform: none;
+    font-size: 2.5rem !important;
+    line-height: initial;
+}
+
+.internship-timer-new .digit-text {
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+}
+
+.internship-timer-new .clock>div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+}
+
+.internship-timer-new .clock>div:not(:last-child):after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 85%;
+    background: var(--white);
+    right: -5%;
+    top: 0;
+}
+
+.sidebar-title {
+    color: var(--white);
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.sidebar-menu-book-now select#package,
+.sidebar-menu-book-now select#dates,
+.sidebar-menu-book-now select#pa_dates {
+    border-radius: 0;
+    font-weight: 600;
+    color: var(--black);
+    cursor: pointer;
+    width: 100%;
+}
+
+.wcpbc-price-88517 {
+    display: none !important;
+}
+
+.woocommerce-variation-description {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.woocommerce-variation-description {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.wcpbc-price-88519,
+.wcpbc-price-88518 {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    color: white;
+}
+
+.wcpbc-price-88519 ins,
+.wcpbc-price-88518 ins {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.wcpbc-price-88518 bdi {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+select:focus-visible {
+    outline: none;
+}
+
+.sidebar-menu-book-now table,
+.sidebar-menu-book-now table td,
+.sidebar-menu-book-now table th {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu-book-now table th {
+    display: none;
+}
+
+#priceWrapper {
+    margin-top: .5rem;
+}
+
+#priceWrapper span.wcpbc-price,
+#priceWrapper .woocommerce-Price-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+    gap: 5px;
+}
+
+#priceWrapper .woocommerce-Price-amount strike bdi,
+#priceWrapper .wcpbc-price del {
+    font-size: 1rem !important;
+    color: var(--white);
+}
+
+#priceWrapper .woocommerce-Price-amount .discount-price.price-now,
+#priceWrapper .wcpbc-price ins {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.deposit-breakdown {
+    margin-top: 1rem;
+}
+
+.deposit-breakdown .wc-deposits-option {
+    display: flex;
+}
+
+.deposit-breakdown .wc-deposits-option li {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    float: none;
+    flex: 1;
+}
+
+.deposit-breakdown .wc-deposits-option li input {
+    visibility: hidden;
+    position: absolute;
+    left: -9999999;
+}
+
+.deposit-breakdown .wc-deposits-option li input:checked+label {
+    background: var(--black-muted);
+}
+
+.deposit-breakdown .wc-deposits-option label {
+    padding: 10px 20px !important;
+    border: none;
+    width: 100%;
+    text-align: center;
+    transition: all .4s ease;
+    background: var(--white-muted);
+    color: var(--white);
+    position: relative;
+}
+
+.deposit-breakdown .show-schedule {
+    background: var(--white);
+    padding: 14px 20px;
+    margin: 1rem auto 0;
+    color: var(--black);
+    font-weight: 500;
+}
+
+.deposit-breakdown span.wc-deposits-payment-plan-description {
+    text-align: center;
+    color: var(--white);
+    display: block;
+    font-size: 12px !important;
+    line-height: initial;
+}
+
+.sidebar-menu-book-now .book-now-btn {
+    width: 100%;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 16px 20px;
+    letter-spacing: 1px;
+}
+
+.atc-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.sidebar-menu-book-now .stock.in-stock {
+    margin: 1rem 0 .5rem;
+    text-align: center;
+    color: var(--white);
+}
+
+.sidebar-menu-book-now span.stock-quantity {
+    background: var(--white-muted);
+    color: var(--white);
+    padding: .5rem .75rem;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+.sidebar-menu-book-now .variations td.value {
+    position: relative;
+}
+
+.sidebar-menu-book-now .reset_variations {
+    font-size: 0;
+}
+
+.sidebar-menu-book-now a.reset_variations::before {
+    content: "\f0e2";
+    font-size: 16px;
+    font-family: 'FontAwesome';
+    color: var(--black);
+    position: absolute;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-35%);
+    /* vertical-align: middle; */
+}
+
+.internship-summary p {
+    margin-bottom: 0;
+}
+
+h2.internship-summary__title {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h3.internship-summary__subtitle {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.internship-summary__video {
+    position: relative;
+    height: 450px;
+    background-size: cover !important;
+    margin: 1rem auto;
+}
+
+.internship-summary__video .video-icon {
+    background-color: #000;
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    opacity: 0.75;
+    cursor: pointer;
+    left: 50%;
+    margin-top: -39.5px;
+    margin-left: -39.5px;
+    transition: 0.3s;
+    text-align: center;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+
+.internship-summary__video .video-icon img {
+    width: 20px;
+    height: 25px;
+    margin: 0 0 0 7px;
+}
+
+.section-margin-top {
+    margin-top: 56px;
+}
+
+.section-padding-top {
+    padding-top: 56px;
+}
+
+.content-section__heading {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.essential-informations {
+    background: var(--blue-turquoise);
+    color: var(--white);
+    padding: 2rem;
+}
+
+.essential-informations__heading {
+    color: var(--white);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+
+/* Internship Container End */
+
+
+
+
+/* Accordion Styling */
+
+.essential_information__accordion summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.essential_information__accordion summary .fa {
+    font-size: 1.5rem;
+    transition: all .4s ease;
+}
+
+.essential_information__accordion[open] .fa {
+    transform: rotate(180deg);
+}
+
+.essential_information__list {
+    list-style: none;
+}
+
+.essential_information__list li {
+    font-weight: 400;
+}
+
+.essential_information__list li::before {
+    content: "\f058";
+    font-family: 'FontAwesome';
+    margin-right: .5rem;
+}
+
+.essential_information__accordion .content {
+    padding: 10px 0;
+}
+
+.eligibility-checker-section {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    position: relative;
+    padding: 100px 0;
+}
+
+.eligibility-checker-section:before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+}
+
+.eligibility-checker-section .eligibility-checker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (min-width:768px) {
+    .eligibility-checker-section .eligibility-checker {
+        max-width: 75%;
+        margin: auto;
+    }
+}
+
+h3.eligibility-checker__title {
+    color: var(--white);
+    text-align: center;
+}
+
+.eligibility-checker__summary {
+    color: var(--white);
+    text-align: center;
+    margin: 2rem auto
+}
+
+.eligibility-checker a {
+    display: inline-block;
+}
+
+/* itinerary accordion*/
+
+.accordion__content-wrapper {
+    font-size: 1.25em;
+    line-height: 1.4em;
+    height: 0;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    padding: 0 1rem;
+}
+
+.accordion__trigger:checked+.accordion__title+.accordion__content-wrapper {
+    padding: 1rem;
+    height: auto;
+}
+
+.accordion__content {
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(5rem);
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out .2s;
+}
+
+.accordion__trigger:checked+.accordion__title+.accordion__content-wrapper .accordion__content {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all .4s ease;
+}
+
+.accordion__title {
+    border-bottom: var(--very-light-gray) 2px solid;
+    cursor: pointer;
+    display: block;
+    padding: 1rem;
+    position: relative;
+    margin-bottom: 0;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+}
+
+.accordion__title .accordion__title-day {
+    flex: 1;
+    font-weight: 500;
+}
+
+.accordion__title .accordion__title-text {
+    flex: 3;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.accordion input[type="checkbox"],
+.accordion input[type="radio"] {
+    display: none;
+}
+
+#itinerary .content-secton__body {
+    padding: 16px 0 32px 0;
+    position: relative;
+}
+
+#itinerary .content-secton__body:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: #ccc;
+    width: 2px;
+    z-index: 2;
+}
+
+.itinerary-accordion .accordion__title:before {
+    --size: 16px;
+    content: "";
+    left: calc((-1 * var(--size) / 2) + 1px);
+    bottom: calc((-1 * var(--size) / 2) - 1px);
+    width: var(--size);
+    height: var(--size);
+    background: var(--black);
+    position: absolute;
+    z-index: 3;
+    border-radius: 100%;
+}
+
+.itinerary-accordion .accordion__title::after {
+    content: "\f107";
+    font-family: 'FontAwesome';
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: absolute;
+    right: 0;
+    transition: all .4s ease-in-out;
+}
+
+.accordion__trigger:checked+.accordion__title::after {
+    transform: rotate(180deg);
+}
+
+#itinerary .content-section__body-wrapper {
+    position: relative;
+}
+
+#itinerary .content-section__body-wrapper:before,
+#itinerary .content-section__body-wrapper:after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--black);
+    left: -3px;
+    z-index: 2;
+    border-radius: 100%;
+}
+
+#itinerary .content-section__body-wrapper:before {
+    top: -16px;
+}
+
+#itinerary .content-section__body-wrapper:after {
+    bottom: -32px;
+}
+
+
+.testimonials {
+    padding: 1rem 0;
+}
+
+.testimonials>*:first-child {
+    margin-bottom: 5rem;
+}
+
+.testimonial-card__content {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+a.testimonial-card__link {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 12px;
+    z-index: 2;
+}
+
+.testimonial-card {
+    background: var(--blue-turquoise-light);
+    display: flex;
+    padding: 3rem 2rem;
+    gap: 1rem;
+    position: relative;
+}
+
+@media screen and (max-width:768px) {
+    .testimonial-card {
+        flex-direction: column;
+    }
+}
+
+.testimonial-card:before {
+    content: url('/wp-content/uploads/2023/04/open-quote.svg');
+    top: -5%;
+    position: absolute;
+    left: -2%;
+}
+
+.testimonial-card:after {
+    content: url('/wp-content/uploads/2023/04/close-quote.svg');
+    bottom: -5%;
+    position: absolute;
+    right: -2%;
+}
+
+.testimonial-card>* {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonia-card__left {
+    flex: 1;
+    align-items: center;
+    row-gap: 1.5rem
+}
+
+.testimonial-card__right {
+    flex: 2;
+    justify-content: space-between;
+}
+
+img.testimonial-card__image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.testimonial-card__title {
+    font-family: 'Brittish Shorthair';
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.location-section__map img {
+    width: 100%;
+    margin: 2rem auto;
+}
+
+.location-section__size-availability {
+    background: var(--blue-turquoise-lighter);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2rem;
+    position: relative;
+}
+
+.location-section__size-availability:before {
+    content: "";
+    height: 50%;
+    width: 2px;
+    background: var(--gray-border);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-25%);
+}
+
+.location-section__size span,
+.location-section__availability span {
+    display: block;
+    text-align: center;
+}
+
+.location-section__size span:first-child,
+.location-section__availability span:first-child {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.location-section__size span:last-child {
+    background: var(--black);
+}
+
+.location-section__availability span:last-child {
+    background: var(--blue-turquoise);
+}
+
+.location-section__size span:last-child,
+.location-section__availability span:last-child {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    display: grid;
+    place-content: center;
+    font-size: 2rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.location-section__form {
+    margin-top: 2rem;
+    background: var(--blue-teal);
+    color: var(--white);
+    padding: 2rem;
+}
+
+.location-section__form .content-section__heading {
+    color: var(--white);
+}
+
+.location-section__form-summary {
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    max-width: 80%;
+}
+
+.location-section__form-image {
+    margin-bottom: 1.5rem;
+}
+
+.location-section__form form .form-fields-row>div {
+    margin-bottom: 10px;
+}
+
+.location-section__form form .wpcf7-textarea {
+    width: 100%;
+}
+
+.location-section__form form .wpcf7-submit {
+    width: 100%;
+    padding: 1rem
+}
+
+@media screen and (max-width:768px) {
+    .location-section__form-summary {
+        max-width: 100% !important;
+    }
+
+    .step__number {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .straigh-line {
+        top: 68% !important;
+    }
+}
+
+.how-it-works-section .content-section__body {
+    position: relative;
+}
+
+.how-it-works-section__steps {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.how-it-works-section__steps .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+}
+
+.step__number {
+    font-size: 2rem;
+    width: 100px;
+    height: 100px;
+    display: grid;
+    place-content: center;
+    background: var(--blue-turquoise);
+    color: var(--white);
+    border-radius: 100%;
+}
+
+.step__text {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.straigh-line {
+    width: 100%;
+    height: 2px;
+    background: var(--black-muted);
+    z-index: 1;
+    position: absolute;
+    inset: 0;
+    top: 60%;
+}
+
+.internship-guide {
+    padding: 2rem;
+    background: var(--blue-turquoise-light);
+}
+
+img.internship-guide__image {
+    margin: 0 auto 1rem;
+}
+
+.guide-link.button {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 1rem;
+    transition: all .4s ease-in-out;
+}
+
+.guide-link.button::after {
+    display: none;
+}
+
+.guide-link:hover {
+    background-color: var(--blue-turquoise);
+}
+
+.excursions-section__excursions {
+    margin: 2rem auto;
+}
+
+.excursions-section__excursions>div:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.excursion-card {
+    display: flex;
+    gap: 2rem
+}
+
+@media screen and (max-width:768px) {
+    .excursion-card {
+        flex-direction: column;
+    }
+
+    .students-review-row {
+        display: block;
+    }
+
+    .internship-banner-logo {
+        width: 25%;
+    }
+
+    #primary {
+        padding: 0;
+    }
+}
+
+.excursion-card__left {
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 15px 15px 8px 15px;
+    box-shadow: 3px 3px #bbb;
+}
+
+.excursion-card__right {
+    flex: 2;
+}
+
+h4.excursion-card__image-title {
+    font-family: 'Brittish Shorthair';
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+h4.excursion-card__title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: .5rem;
+}
+
+section.students-review {
+    background: var(--blue-turquoise-lighter);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.students-review__content-slider .rplg-slider .rplg-box .rplg-box-content:before,
+.students-review__content-slider .rplg-slider-review .rplg-review-badge,
+.students-review__content-slider .rplg-slider .rplg-box .rplg-box-content::-webkit-scrollbar,
+.students-review__content-slider .rplg-slider .rplg-box:before {
+    display: none !important;
+}
+
+.students-review__content-slider>div {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.students-review__content-slider .rplg-slider .rplg-box .rplg-box-content {
+    margin: 10px 0 0 !important;
+    display: flex;
+    flex-direction: column;
+    height: 215px !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.students-review__content-slider .rplg-slider .rplg-row {
+    padding: 0px !important;
+}
+
+.students-review__content-slider .rplg-slider-review .rplg-row .rplg-row-right {
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.students-review__content-slider .rplg-slider .rplg-stars {
+    position: absolute;
+    top: -65px;
+}
+
+.students-review__content-slider .rplg .rplg-review-time {
+    margin-top: 30px;
+    color: #000 !important;
+    font-size: 1.1rem !important;
+    font-weight: 400 !important;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.students-review__content-slider .rplg-slider .rplg-stars use {
+    fill: #000;
+}
+
+.students-review__content-slider .rplg-slider .rplg-stars svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 2px !important;
+}
+
+.students-review__content-slider .rplg .rplg-review-name {
+    font-weight: 500 !important;
+    color: #000 !important;
+    font-size: 1rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+
+.students-review__content-slider .rplg-slider-review {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.students-review__content-slider .rplg-slider-review .rplg-box {
+    border: none !important;
+    background: none !important;
+}
+
+.students-review__content-slider .rplg .rplg-review-text {
+    color: var(--black) !important;
+}
+
+.button-container.text-center {
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.read-more-reviews {
+    background: var(--black);
+    color: var(--white);
+    padding: 10px 20px;
+    text-transform: uppercase;
+    transition: all .4s ease;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.read-more-reviews:hover {
+    background-color: var(--white) !important;
+    color: var(--accent) !important;
+}
+
+.learn-more-section {
+    background: var(--blue-turquoise);
+    padding: 3rem 0;
+    color: var(--white);
+}
+
+.learn-more-section__heading {
+    font-weight: 600;
+    color: var(--white);
+    font-size: 2.25rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.learn-more-section__btn {
+    margin-top: auto;
+    width: 100%;
+    font-size: 1rem;
+}
+
+@media screen and (min-width:768px) {
+    .learn-more-section .ast-row {
+        display: flex;
+        align-items: center;
+    }
+}
+
+i.show-schedule-icon {
+    color: var(--white);
+    background: var(--black-muted);
+}
+
+.wc-deposits-wrapper,
+.wc-deposits-payment-plan-description {
+    margin: 1rem auto !important;
+}
+
+@media screen and (max-width:768px) {
+    .hero-banner-section {
+        background-position: center !important;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .hero-banner-section {
+        min-height: 300px;
+    }
+
+    .internship-summary__video {
+        height: 240px;
+    }
+
+    .full-image-banner {
+        height: 300px !important;
+    }
+}
+
+/* Deposit form new design */
+ul.wc-deposits-payment-plans {
+    padding: 10px !important;
+}
+
+li.wc-deposits-payment-plan input {
+    display: none !important;
+}
+
+li.wc-deposits-payment-plan {
+    padding: 0 !important;
+}
+
+.wc-deposits-wrapper .wc-deposits-payment-plans li.wc-deposits-payment-plan label {
+    max-width: 100%;
+    padding: 0;
+}
+
+strong.wc-deposits-payment-plan-name {
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 500;
+}
+
+.wc-deposits-wrapper .wc-deposits-option li {
+    padding: 10px !important;
+    display: inline-flex;
+    gap: 10px;
+}
+
+.wc-deposits-wrapper .wc-deposits-option li input {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.wc-deposits-wrapper .wc-deposits-option li label {
+    line-height: 1.25;
+}
+
+.wc-deposits-payment-description {
+    display: none !important;
+}
+
+div.pay-in-installments-info,
+small.wc-deposits-payment-plan-description {
+    display: none !important;
+}

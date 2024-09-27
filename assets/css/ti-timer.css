@@ -1,0 +1,64 @@
+/* COUNTDOWN TIMER */
+
+.clock {
+    display: flex;
+    /*justify-content: center;*/
+    font-weight: 500;
+    padding: 20px 0;
+    /*width: 250px;*/
+}
+
+.clock-inner {
+    display: flex;
+    justify-content: center;
+}
+
+.clock-inner .base {
+    font-size: 2.8rem;
+    line-height: 2.5rem;
+    font-weight: 400;
+}
+
+.digit-text {
+    font-size: 0.56rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.clock-inner .digit {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* text-indent: 0.3em; */
+    width: auto;
+}
+
+.clock>div {
+    padding: 0 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.clock-day {
+    padding-left: 0px !important;
+}
+
+.offer-ends {
+    text-transform: uppercase;
+    margin-bottom: 0px !important;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+
+/* /COUNTDOWN TIMER */
+
+@media screen and (max-width:1199px) {
+    .clock>div {
+        padding: 0 4px!important;
+    }
+    .clock-inner .base {
+        font-size: 1rem!important;
+    }
+}
+

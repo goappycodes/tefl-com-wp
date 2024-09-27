@@ -1,0 +1,181 @@
+td.product-name {
+	line-height: 1.2;
+}
+
+.woocommerce-checkout-review-order-table tr>td {
+	padding-top: 10px !important;
+	padding-bottom: 5px !important;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li input {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li label {
+	padding-left: 35px;
+	font-size: 1.1em;
+	cursor: pointer;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li {
+	margin-bottom: 5px;
+	background: #f7f7f7;
+	padding: 5px 10px;
+}
+
+.woocommerce-form-coupon-toggle {
+	margin: 20px auto;
+}
+
+/* ul.wc_payment_methods.payment_methods.methods {
+	flex-direction: column-reverse;
+	display: flex;
+	margin-top: 40px !important;
+} */
+
+.woocommerce-page.woocommerce-checkout #payment #place_order,
+.woocommerce.woocommerce-checkout #payment #place_order {
+	font-size: 2em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 15px;
+	margin: 10px auto;
+}
+
+.woocommerce-terms-and-conditions-wrapper input {
+	width: 20px;
+	height: 20px;
+}
+
+.add_gift_card_form {
+	display: none;
+}
+
+div#order_review {
+	margin-bottom: 40px;
+}
+
+form #order_review_heading:not(.elementor-widget-woocommerce-checkout-page #order_review_heading),
+form #order_review:not(.elementor-widget-woocommerce-checkout-page #order_review) {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+input#date_of_birth {
+	font-size: 1.4em;
+	padding: 5px;
+	border: 1px solid #ccc;
+}
+
+li.wc_payment_method.payment_method_revolut_cc label>img {
+	width: 30px;
+}
+
+fieldset#wc-stripe-cc-form>.form-row {
+	padding-bottom: 0px !important;
+	margin: 0px !important;
+}
+
+div#stripe-payment-data fieldset:last-child {
+	padding: 0px;
+}
+
+fieldset#wc-stripe-cc-form {
+	background-color: #fcfcfd !important;
+	margin: 10px 0px 10px 0 !important;
+	padding: 10px 15px 155px !important;
+	box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+	background-image: url('https://tefl.ie/wp-content/uploads/2022/08/stripe-badge-grey.png') !important;
+	background-size: 330px !important;
+	background-position: center calc(100% - 20px) !important;
+	background-repeat: no-repeat !important;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li.payment_method_stripe .form-row>label {
+	padding-left: 0;
+	line-height: 1;
+	margin-top: 10px;
+	font-size: 0.95rem;
+}
+
+@media only screen and (min-width: 767px) {
+
+	li.payment_method_stripe_googlepay,
+	li.payment_method_stripe_applepay {
+		display: none !important;
+	}
+}
+
+@media (max-width:768px) {
+	.woocommerce-checkout #payment ul.payment_methods li input {
+		margin-top: 5px;
+	}
+
+	.woocommerce-checkout #payment ul.payment_methods li label {
+		font-size: 1em;
+	}
+}
+
+.woocommerce-invalid input#date_of_birth {
+	border-color: #d65d67;
+}
+
+
+form.cart-has-deposit div#wc-stripe-payment-request-wrapper,
+form.cart-has-deposit #wc-stripe-payment-request-button-separator {
+	display: none !important;
+}
+
+body.woocommerce-page.woocommerce-order-received header,
+body.woocommerce-page.woocommerce-order-received .header-banner,
+body.woocommerce-page.woocommerce-order-received .main-header-bar.ast-header-breadcrumb {
+	display: none;
+}
+
+span.tefl-order-logo {
+	width: 300px;
+	display: block;
+	margin: auto;
+}
+
+.woocommerce-order {
+	text-align: center;
+	margin: 40px auto;
+}
+
+@media screen and (min-width:768px) {
+	.woocommerce-order {
+		max-width: 90%;
+	}
+}
+
+.woocommerce-order .woocommerce-notice {
+	font-weight: 700;
+}
+
+ul.woocommerce-order-overview.woocommerce-thankyou-order-details.order_details {
+	display: flex;
+	justify-content: center;
+	text-align: left;
+	margin-bottom: 0 !important;
+}
+
+@media screen and (max-width:768px) {
+	span.tefl-order-logo {
+		width: 150px;
+	}
+
+	.woocommerce-order .woocommerce-notice,
+	.woocommerce-order {
+		margin: 0;
+	}
+
+	ul.woocommerce-order-overview.woocommerce-thankyou-order-details.order_details {
+		flex-direction: column;
+		gap: 10px;
+	}
+}

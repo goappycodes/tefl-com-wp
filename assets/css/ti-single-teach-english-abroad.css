@@ -1,0 +1,691 @@
+.hero::before {
+    background: #0000005e;
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.hero {
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 15px;
+}
+
+.hero h1 {
+    color: #fff;
+    font-size: 1.875rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 2.5rem;
+    letter-spacing: 0.5rem;
+    text-align: center;
+    z-index: 9;
+}
+
+.main-content-section {
+    padding: 50px 0;
+}
+
+.main-section-title {
+    color: #000;
+    font-size: 1.875rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 2.5rem;
+    letter-spacing: 0.25rem;
+}
+
+/*.read-more-section {*/
+/*    max-height: 550px;*/
+/*    overflow: hidden;*/
+/*}*/
+.read-more-section {
+    position: relative;
+
+}
+
+.section-links {
+    display: flex;
+    margin: 15px 0 25px 0;
+}
+
+.section-links a {
+    text-decoration: underline;
+    border-left: 1px solid #aaa;
+    line-height: 1;
+    padding: 0 0 0 15px;
+    margin: 0 0 0 15px;
+}
+
+.section-links a:first-child {
+    padding: 0;
+    margin: 0;
+    border-left: 0;
+}
+
+.section-content p:last-child {
+    margin: 0;
+}
+
+.read-more-content {
+    position: relative;
+
+}
+
+.section-content {
+    padding-bottom: 20px;
+}
+
+.section-content p strong {
+    margin-bottom: -15px;
+    display: block;
+}
+
+.read-less-btn {
+    display: none;
+}
+
+.read-more-btn {
+    display: none;
+}
+
+.read-more-btn,
+.read-less-btn {
+    width: 60%;
+    position: absolute;
+    bottom: -15px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.read-more-btn a,
+.read-less-btn a {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.read-more-btn {
+    padding-top: 100px;
+    background-image: linear-gradient(to bottom, transparent 20%, #fff 80%);
+}
+
+.read-more-btn i,
+.read-less-btn i {
+    color: #dfb428;
+}
+
+.country-image-div {
+    margin-bottom: 25px;
+    text-align: right;
+    margin-left: 50px;
+}
+
+.country-image-div img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.living-cost-heading-col h2 {
+    margin-bottom: 25px;
+}
+
+::marker {
+    color: #dfb428;
+}
+
+ul {
+    margin: 0 0 0 1.5rem;
+}
+
+.key-facts-section h2 {
+    margin-bottom: 25px;
+}
+
+.key-points-section {
+    margin: 50px 0;
+}
+
+.key-points-heading-col {
+    margin-bottom: 50px;
+}
+
+.key-points-heading-col h3 {
+    font-size: 1.875rem;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 2.5rem;
+    letter-spacing: 0.5rem;
+    text-align: center;
+}
+
+.key-points-col {
+    text-align: center;
+}
+
+.key-points-icon {
+    margin-bottom: 25px;
+}
+
+.key-points-icon img {
+    width: auto;
+    height: 120px;
+    object-fit: contain;
+}
+
+.key-points-title {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+}
+
+.key-points-content {
+    font-size: 1rem;
+    margin: 0;
+}
+
+
+div#key_facts {
+    position: relative;
+
+}
+
+.key-facts-section .read-more-btn,
+.key-facts-section .read-less-btn {
+    right: 0px;
+
+}
+
+.facts-section {
+    margin: 50px 0;
+}
+
+.facts-heading-col {
+    margin-bottom: 3rem;
+}
+
+.facts-heading-col h3 {
+    font-size: 1.875rem;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 2.5rem;
+    letter-spacing: 0.5rem;
+    text-align: center;
+}
+
+.facts-inner-col {
+    /* border-bottom: 1px dashed #000; */
+    border-right: 1px dashed #000;
+    padding: 0;
+}
+
+.facts-inner-col:nth-last-child(-n+3) {
+    border-bottom: none;
+}
+
+.facts-inner-col:last-child {
+    border-right: none;
+}
+
+.facts-div {
+    text-align: center;
+}
+
+.facts-icon img {
+    width: auto;
+    height: 50px;
+    margin-bottom: 1.5rem;
+    filter: brightness(0%);
+    object-fit: contain;
+}
+
+.facts-title {
+    margin-bottom: 0;
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+.facts-content {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+.faqs-row {
+    display: flex;
+}
+
+.faqs-content-col .sub-main-section-title {
+    font-size: 1.875rem;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 2.5rem;
+    letter-spacing: 0.5rem;
+    text-align: center;
+}
+
+.faqs-img-col img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.faqs-content-col {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.faqs-content-col .sub-main-section-title {
+    margin-bottom: 1.5rem;
+}
+
+.faqs-section .panel-heading-wrapper {
+    position: relative;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.faqs-section .panel-heading-wrapper::after {
+    content: "\f107";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: calc(50% - 12px);
+    right: calc(-10% + 10px);
+    font-size: 1.5rem;
+    line-height: 1;
+    font-weight: 300;
+    color: #193847;
+}
+
+.faqs-section .panel-heading-wrapper[aria-expanded="true"]::after {
+    content: "\f106";
+}
+
+.faqs-section .panel-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.faqs-section .panel-side {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.faqs-section .panel {
+    border-top: 1px dashed #193847;
+}
+
+.faqs-section .panel-collapse {
+    padding: 1rem 0 2rem;
+}
+
+.collapse {
+    display: none;
+}
+
+.faqs-section .panel:last-child {
+    padding-bottom: 0px;
+}
+
+.panel-body.panel-extra-space p {
+    font-size: 1.12rem;
+    font-weight: 400;
+}
+
+.panel-body.panel-extra-space p:last-child {
+    margin-bottom: 0px;
+}
+
+.faqs-section .section-heading {
+    margin-bottom: 40px;
+}
+
+#student_story {
+    margin: 50px 0;
+}
+
+.teacher-story-heading-col .sub-main-section-title {
+    font-size: 1.875rem;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 2.5rem;
+    letter-spacing: 0.5rem;
+    margin-bottom: 25px;
+}
+
+.teacher-story-row {
+    display: flex;
+}
+
+.teacher-story-content-col {
+    padding-bottom: 30px;
+}
+
+.teacher-story-content-div a {
+    text-decoration: underline;
+    color: #3fa9f5;
+}
+
+.teacher-story-img-div {
+    height: 100%;
+    text-align: left;
+}
+
+.teacher-story-img-div img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.name-and-designation {
+    font-weight: 800;
+    color: black;
+}
+
+.teacher-story-content {
+    font-style: italic;
+}
+
+.teacher-story-img-div:after {
+    content: url(/wp-content/uploads/2022/05/2022-05-10_09-27-36-removebg-preview.png);
+    height: 77px;
+    width: 68px;
+    position: absolute;
+    top: 2rem;
+    right: 6rem;
+    filter: brightness(0);
+}
+
+.tefl-courses-div {
+    text-align: center;
+    background: #ededed;
+    padding: 30px 20px 50px;
+}
+
+.tefl-courses-div .col-heading {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.tefl-courses-div .content {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    height: calc(19.2px * 3);
+    overflow: hidden;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.tefl-courses-div img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.tefl-courses-div .btn-div {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 100%;
+}
+
+.tefl-courses-div .btn {
+    text-transform: inherit;
+    padding: 10px 30px;
+}
+
+.tefl-courses-div .btn:hover {
+    color: #fff;
+}
+
+.job-heading-col h2 {
+    margin-bottom: 25px;
+}
+
+.job-div {
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.job-div .comp-logo {
+    height: 5rem;
+    object-fit: contain;
+    margin: 25px 0;
+}
+
+.learn-more-btn a {
+    padding: 10px 20px;
+    display: flex;
+    border-top: 2px solid;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.features-div img {
+    height: 1rem;
+    object-fit: contain;
+    width: 1rem;
+    margin-right: 10px;
+    filter: brightness(0);
+}
+
+.features-div p {
+    display: flex;
+    margin-bottom: 5px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.features-div {
+    padding: 15px;
+}
+
+.tefl-courses-internship-job-section {
+    margin: 50px 0;
+}
+
+.job-title {
+    padding: 0 15px;
+    line-height: 1.2rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 500;
+    height: 60px;
+}
+
+.apply-now-tag {
+    margin-bottom: 0px;
+    text-align: right;
+    padding: 15px;
+}
+
+.apply-now-tag span {
+    background-color: #163847;
+    color: #fff;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    display: inline-block;
+    font-weight: 100;
+}
+
+.comp-logo-div {
+    text-align: center;
+    background: white;
+    border-top: 1px solid;
+}
+
+h6.job-type {
+    color: #0170b9;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.learn-more-btn i {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+
+.btn-primary,
+.btn-primary:focus {
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+@media (min-width: 993px) {
+    .ast-separate-container #primary {
+        margin: 2rem 0;
+    }
+
+    .tefl-courses-div {
+        padding: 30px 30px 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        margin-top: -21px;
+    }
+
+    .section-links {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .section-links a {
+        display: block;
+        margin: 0;
+        border: 0;
+        padding: 5px 0 !important;
+        line-height: 1.5rem;
+    }
+
+    .section {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 3rem;
+    }
+
+    .section:last-child {
+        margin-bottom: 0;
+    }
+
+    .read-more-content {
+        max-height: 550px;
+    }
+
+    .read-more-content .read-less-btn {
+        display: none !important;
+    }
+
+    .country-image-div {
+        margin-left: 0;
+    }
+
+    .living-cost-heading-col,
+    .key-facts-heading-col,
+    .job-heading-col {
+        margin-bottom: 2rem;
+    }
+
+    .key-points-col {
+        width: 50%;
+    }
+
+    .key-points-icon img {
+        height: 100px;
+    }
+
+    .key-points-content {
+        margin-bottom: 2rem;
+    }
+
+    .facts-inner-col {
+        /* border-bottom: 1px dashed #000; */
+        width: 50%;
+        padding: 25px 15px;
+    }
+
+    .facts-inner-col:nth-last-child(-n+3) {
+        border-bottom: 1px dashed #000;
+    }
+
+    .facts-inner-col:nth-child(3n) {
+        border-right: 1px dashed #000;
+    }
+
+    .facts-inner-col:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+
+    .facts-inner-col:nth-child(2n) {
+        border-right: none;
+    }
+
+    .faqs-section {
+        margin-bottom: 2rem;
+    }
+
+    .faqs-row,
+    .teacher-story-row {
+        display: block;
+    }
+
+    .faqs-img-col img,
+    .teacher-story-img-div img {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .tefl-courses-div {
+        margin-bottom: 4rem;
+    }
+
+    .job-col {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .job-title {
+        height: auto;
+    }
+
+    .read-more-btn,
+    .read-less-btn {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .hero {
+        height: 300px;
+    }
+}

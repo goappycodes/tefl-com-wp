@@ -1,0 +1,633 @@
+html {
+    scroll-behavior: smooth;
+}
+
+#content>.ast-container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.course-banner {
+    min-height: 450px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.content-block .title {
+    color: white;
+    text-align: center;
+    font-size: 1.875rem;
+    line-height: 1.5;
+    letter-spacing: 0.3rem;
+}
+
+.content-block .title strong {
+    font-weight: 500;
+}
+
+.content-block .title:after {
+    content: "";
+    background: #ffffffba;
+    width: 150px;
+    height: 1px;
+    display: block;
+    margin: 1rem auto 0;
+}
+
+.content-block .subtitle {
+    color: white;
+    text-align: center;
+    font-size: 1.75rem;
+    margin-top: 1.5rem;
+}
+
+.badge-container {
+    display: flex;
+    justify-content: end;
+    margin-bottom: -200px;
+    padding: 25px;
+}
+
+.badge {
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+}
+
+.our-internsips-section {
+    margin-top: 50px;
+}
+
+.our-internsips-section h1 {
+    font-size: 1.875rem;
+    line-height: 1.5;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    padding: 0 20px;
+}
+
+.our-internsips-section h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.25;
+    padding: 25px 0;
+    color: black;
+}
+
+.our-internsips-section h1:after {
+    content: "";
+    background: black;
+    height: 1px;
+    width: 800px;
+    position: absolute;
+    margin: 50px 0 0 -1000px;
+}
+
+.our-internsips-section .content {
+    line-height: 1.5;
+    background: transparent;
+}
+
+.included-container {
+    background: #f4f4f4;
+    padding: 50px 0 50px 50px;
+    width: 1000%;
+    overflow-x: hidden;
+}
+
+.our-internsips-section h3 {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    margin-bottom: 25px
+}
+
+.item {
+    display: flex;
+    padding: 5px 0;
+    align-items: center;
+    line-height: 1;
+    font-size: 1.15rem;
+}
+
+.item svg {
+    margin-right: 10px;
+    height: 18px;
+}
+
+.internships-section {
+    margin-top: 50px;
+}
+
+.internships-section h2 {
+    font-size: 1.25rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+    padding-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.image {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+}
+
+.image .country {
+    color: white;
+    font-size: 1.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.image .country:after {
+    content: "";
+    background: #ffffffba;
+    width: 50px;
+    height: 1px;
+    display: block;
+    margin: 0.5rem auto 0.75rem;
+}
+
+.image .country_subtitle {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+}
+
+.content {
+    background: #f4f4f4;
+}
+
+.benefits {
+    padding: 2rem 2rem 1.5rem;
+    min-height: 705px;
+}
+
+.benefit {
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+}
+
+.benefit .fa {
+    font-size: 8px;
+    margin: 7px 0 0 -15px;
+    position: absolute;
+}
+
+
+.benefits h2 {
+    text-align: left;
+    margin-bottom: -30px;
+    font-weight: 500;
+}
+
+.learn_more {
+    border-top: 1px solid #000;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-size: 0.688rem;
+}
+
+.learn_more:hover {
+    background: #000;
+    color: #fff;
+}
+
+.guide {
+    background: #f4f4f4;
+    margin-top: 1.5rem;
+}
+
+.guide img {
+    padding: 0.5rem;
+}
+
+.price {
+    padding: 0.5rem 0 1rem 0;
+    border-bottom: 1px solid;
+    margin: 0 2rem;
+}
+
+.price ins {
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin: 0 0 0 10px;
+    position: relative;
+    top: 3px;
+}
+
+.feed-contact h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.feed-contact p {
+    text-align: center;
+}
+
+.insta-gallery-button.follow {
+    background: black !important;
+    display: block !important;
+    letter-spacing: 0.2rem;
+}
+
+.discover-top-destination {
+    background-color: #F2F2F2;
+    padding: 50px;
+}
+
+.discover-top-destination h2 {
+    font-size: 1.25rem;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.discover-top-destination-form form.wpcf7-form.init {
+    display: flex;
+}
+
+.discover-top-destination-form .wpcf7 form>div,
+.discover-top-destination-form .wpcf7 form>p {
+    display: flex;
+}
+
+.discover-top-destination-form .wpcf7 input:not([type=submit]),
+.discover-top-destination-form .wpcf7 select,
+.wpcf7 textarea {
+    border: 0;
+    border-right: 1px solid #eaeaea;
+    padding: 20px 30px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
+}
+
+.discover-top-destination-form .wpcf7-submit {
+    letter-spacing: 0.3rem;
+    font-size: 0.688rem;
+    padding-left: 30px !important;
+}
+
+.discover-graphics {
+    height: 100px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 0 12rem;
+    position: relative;
+    z-index: 9;
+}
+
+.discover-graphics .left {
+    background: url('https://teflinstitute.com/wp-content/uploads/2022/02/buildings-icon.png') no-repeat center center / cover;
+    display: block;
+    height: 100px;
+    width: 500px;
+}
+
+.discover-graphics .right {
+    background: url('https://teflinstitute.com/wp-content/uploads/2022/02/plane-icon.png') no-repeat center center / cover;
+    display: block;
+    height: 50px;
+    width: 270px;
+    margin-bottom: -10px;
+}
+
+.more-details-section {
+    margin: 100px 0;
+}
+
+.more-details-section img {
+    height: 50px;
+    margin: auto;
+    display: block;
+    width: auto;
+}
+
+.more-details-section h1 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.25;
+    padding: 50px 0 25px 0;
+    letter-spacing: 0.3rem;
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.more-details-section .content {
+    line-height: 1.5;
+    background: transparent;
+    text-align: center;
+}
+
+.tefl-video-col {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 370px;
+    display: flex;
+    align-items: flex-end;
+    margin: 0 20px;
+    padding: 0;
+}
+
+.tefl-video-section .ast-row {
+    display: flex;
+}
+
+.tefl-video-col a.video-caption-link {
+    width: 100%;
+    text-transform: uppercase;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.video-icon {
+    background: #000 url(https://premiertefl.com/wp-content/uploads/2022/02/play-icon.svg) no-repeat 20px center / 15px;
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    opacity: 0.75;
+    cursor: pointer;
+    left: 50%;
+    padding: 0 0 0 25px;
+    color: white;
+    margin-top: -25px;
+    margin-left: -50px;
+    transition: 0.3s;
+    text-align: center;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+
+.video-icon:hover {
+    opacity: 1;
+}
+
+.video-icon img {
+    width: 20px;
+    height: 25px;
+    margin: 0 0 0 7px;
+}
+
+.banner-link-text,
+.video-caption-text {
+    font-size: 0.688rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.vide-caption-box {
+    background: url(https://teflinstitute.com/wp-content/uploads/2020/11/Rectangle-275.svg);
+    padding: 15px 30px;
+    width: 100%;
+    color: white;
+}
+
+.tefl-video-section {
+    margin-top: 50px;
+}
+
+.tefl-video-section h2 {
+    font-size: 1.25rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+    padding-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.feed-contact {
+    margin-top: 50px;
+}
+
+.feed-contact .ast-row {
+    display: flex;
+    justify-content: center;
+}
+
+.learn-more-form .form-head-row p {
+    line-height: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.wpcf7 form>div,
+.wpcf7 form>p {
+    margin-bottom: 0;
+}
+
+.wpcf7-spinner {
+    display: none;
+}
+
+.form-img {
+    height: 100px;
+    width: auto;
+    margin: 50px auto;
+    display: block;
+}
+
+.form-fields-row>div {
+    margin-bottom: 10px;
+}
+
+.wpcf7 .wpcf7-form-control-wrap {
+    width: 100%;
+    display: block;
+}
+
+.wpcf7 input:not([type=submit]),
+.wpcf7 select,
+.wpcf7 textarea {
+    width: 100%;
+}
+
+.want-to-learn-more-form input,
+.want-to-learn-more-form select,
+.want-to-learn-more-form textarea {
+    font-size: 1rem;
+    color: #353535 !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    line-height: 1.5rem;
+    background-color: #f4f4f4;
+    border: none;
+    font-weight: 500 !important;
+}
+
+.want-to-learn-more-form textarea {
+    letter-spacing: 0;
+    padding: 8px 14px;
+}
+
+.tefl_comment textarea {
+    width: 100%;
+    height: 100px;
+}
+
+.submit_btn_col input {
+    background-color: #000 !important;
+}
+
+.submit_btn_col input {
+    background-color: #000 !important;
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 8px 20px !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    margin-top: 4px;
+}
+
+.safety-info {
+    display: none;
+}
+
+.blogs-section {
+    margin-bottom: 50px;
+}
+
+.blog-content {
+    width: 100%;
+    position: relative;
+}
+
+.blogs-section h2 {
+    font-size: 1.25rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+    padding: 50px 0;
+    text-transform: uppercase;
+}
+
+.blog-item {
+    min-height: 550px;
+    background-position: center !important;
+    background-size: cover !important;
+    display: flex;
+    align-items: flex-end;
+    padding: 50px;
+    position: relative;
+}
+
+.blog-item:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+    left: 0;
+    top: 0;
+}
+
+.blog-item h3,
+.blog-item a {
+    color: #fff;
+}
+
+.blog-content h3 {
+    margin-bottom: 70px;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    line-height: 1.6;
+}
+
+.blog-item .blog-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.688rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+}
+
+.blog-item .blog-link i {
+    font-size: 1.35rem;
+}
+
+@media (max-width: 768px) {
+    .included-container {
+        width: auto;
+        margin-top: 25px;
+        padding: 50px;
+    }
+
+    .badge-container {
+        display: none;
+    }
+
+    .course-banner {
+        padding: 0;
+    }
+
+    .discover-graphics {
+        display: none;
+    }
+
+    .discover-top-destinations-section {
+        margin-top: 50px;
+    }
+
+    .tefl-video-section .ast-row {
+        display: block;
+    }
+
+    .tefl-video-col {
+        margin: 0;
+    }
+
+    .blogs-section h2 {
+        padding: 50px 0 0;
+    }
+
+    .blog-item {
+        margin-top: 50px;
+    }
+
+    .tefl-video-section h2 {
+        padding-bottom: 0px;
+    }
+
+    .tefl-video-col {
+        margin-top: 50px;
+    }
+
+    .blogs-section {
+        margin: 0 -20px;
+    }
+}

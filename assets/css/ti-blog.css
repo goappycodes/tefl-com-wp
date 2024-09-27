@@ -1,0 +1,510 @@
+/**Blog Style**/
+
+.ast-pagination {
+    padding: 0 0 50px 0;
+}
+
+/*Banner*/
+
+
+body {
+    background: var(--bg-color);
+}
+
+#content>.ast-container {
+    max-width: 100%;
+    padding: 0;
+}
+
+section.banner-section {
+    min-height: 450px;
+    background: url(/wp-content/uploads/2020/11/about_banner.jpg);
+    background-position: center !important;
+    background-size: cover !important;
+    padding: 100px 0;
+}
+
+.banner-content-block .content-block {
+    background-color: var(--white);
+    padding: 3rem;
+    position: relative;
+    border-radius: .5rem;
+}
+
+.banner-content-block .content-block img {
+    position: absolute;
+    right: -50px;
+    top: calc(50% - 50px);
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.25rem;
+    padding: 20px;
+    border-radius: 8px;
+    text-transform: capitalize;
+    transition: all .4s ease-in-out;
+    font-weight: 600;
+}
+
+.btn .fa {
+    font-size: 2rem;
+}
+
+.btn-primary {
+    background: var(--black-jet);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--white);
+}
+
+.content-block .btn-primary:hover {
+    background: var(--bg-color) !important;
+}
+
+/* .banner-content-block a {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 25px 12px 50px;
+    min-height: 55px;
+    margin-bottom: -55px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+}
+
+.banner-content-block a i {
+    font-size: 1.35rem;
+} */
+
+.banner-content-block .content-block h2 {
+    font-weight: 600;
+    letter-spacing: 0.4rem;
+    margin-bottom: 0;
+}
+
+.banner-content-block .content-block h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
+    margin: 8px 0 30px;
+}
+
+.banner-content-block .content-block p {
+    line-height: 1.5;
+}
+
+
+/*Blogs Section*/
+
+section.blogs-section {
+    padding: 110px 0 60px;
+}
+
+a.clickbox:hover~.bolg-content {
+    transform: translateY(-100px);
+}
+
+.bolg-content {
+    width: 100%;
+    position: relative;
+    transition: all .4s ease-in;
+}
+
+.blog-item {
+    min-height: 550px;
+    background-position: center !important;
+    background-size: cover !important;
+    display: flex;
+    align-items: flex-end;
+    padding: 50px;
+    position: relative;
+    border-radius: .5rem;
+}
+
+.blog-item:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+    left: 0;
+    top: 0;
+    border-radius: .5rem;
+}
+
+.blog-item h3,
+.blog-item a {
+    color: #fff;
+}
+
+.bolg-content h3 {
+    margin-bottom: 70px;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    line-height: 1.6;
+}
+
+.blog-item .blog-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+}
+
+.blog-item .blog-link i {
+    font-size: 1.35rem;
+}
+
+
+/*Take The Test Section*/
+
+.take-the-test {
+    background: url(/wp-content/uploads/2020/11/take_test_bg.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 130px 0 80px;
+    background-position: center !important;
+    background-size: cover !important;
+    border-radius: .5rem;
+}
+
+.take-the-test:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+    left: 0;
+    top: 0;
+    border-radius: .5rem;
+}
+
+.take-the-test-content {
+    position: relative;
+}
+
+.take-the-test-content h3 {
+    font-size: 1.875rem;
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.take-the-test-content p {
+    color: #fff;
+    padding: 35px 0;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.take-the-test-content a {
+    border-radius: .5rem;
+    background-color: #000;
+    color: #fff;
+    min-height: 55px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    width: 260px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+}
+
+.take-the-test-content a i {
+    font-size: 1.35rem;
+}
+
+section.blogs-section h2 {
+    font-size: 1.25rem;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 50px 0;
+    letter-spacing: 0.3rem;
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--black-jet);
+}
+
+section.blogs-section.life-story-abroad {
+    padding: 0 0 50px;
+}
+
+.category-links-title h2 {
+    font-size: 1.25rem;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 0 50px 0;
+    letter-spacing: 0.3rem;
+}
+
+section.test-section.blog-post .take-the-test {
+    text-align: left;
+}
+
+section.test-section.blog-post .take-the-test p {
+    width: 100%;
+}
+
+section.test-section.blog-post .take-the-test-content {
+    /*margin-left: auto;
+    padding-right: 180px;*/
+    width: 50%;
+    text-align: center;
+}
+
+.discover-top-destination {
+    background-color: var(--white);
+    padding: 50px;
+    border-radius: .5rem;
+}
+
+.discover-top-destination h2 {
+    font-size: 1.25rem;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    margin-bottom: 40px;
+}
+
+.discover-top-destination-form form.wpcf7-form.init {
+    display: flex;
+}
+
+.discover-top-destination-form .wpcf7 form>div,
+.discover-top-destination-form .wpcf7 form>p {
+    display: flex;
+}
+
+.discover-top-destination-form .wpcf7 input:not([type=submit]),
+.discover-top-destination-form .wpcf7 select,
+.wpcf7 textarea {
+    border: 0;
+    border-right: 1px solid #eaeaea;
+    padding: 20px 30px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
+}
+
+.discover-top-destination-form .wpcf7-submit {
+    letter-spacing: 0.3rem;
+    font-size: 0.688rem;
+    padding-left: 30px !important;
+}
+
+
+/*Search Journals*/
+
+section.search-journals {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.search-journals h2 {
+    font-size: 1.25rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.3rem;
+    margin-bottom: 30px;
+}
+
+.search-journals .social a i {
+    font-size: 1.475rem;
+    color: #000;
+    margin: 0 10px;
+}
+
+.search-journals .wpcf7 form>div,
+.search-journals .wpcf7 form>p {
+    width: 100%;
+    margin: 0 auto 30px;
+    position: relative;
+    border: 1px solid #000;
+}
+
+.search-journals input.wpcf7-form-control {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 0;
+}
+
+.search-journals input.wpcf7-form-control.wpcf7-text {
+    border-right: 0;
+}
+
+.search-journals .wpcf7-submit {
+    padding: 10px !important;
+    background-color: #fff;
+    min-height: 36px;
+    position: absolute;
+    top: calc(50% - 18px);
+    right: 10px;
+}
+
+.search-journals .wpcf7-submit i {
+    color: #000;
+    font-size: 1.025rem;
+    margin-right: 0;
+}
+
+span.wpcf7-not-valid-tip {
+    position: absolute;
+    margin-top: 8px;
+}
+
+.search-journals span.ajax-loader {
+    position: absolute;
+    right: 0;
+}
+
+.wpcf7-response-output {
+    margin-top: 40px !important;
+}
+
+
+/*Socials*/
+
+.search-journals .social {
+    display: none;
+}
+
+.social a img {
+    margin: 0 15px;
+    max-width: 28px;
+}
+
+.category-links {
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.category-links p {
+    display: flex;
+    margin: 0 10px 10px 0px;
+}
+
+.category-links p a {
+    background: black;
+    color: white;
+    width: 200px;
+    padding: 10px;
+}
+
+/*Responsive*/
+
+@media(max-width: 768px) {
+    .blog-item {
+        min-height: 400px;
+        padding: 20px;
+    }
+
+    .test-section .take-the-test {
+        min-height: 350px;
+    }
+
+    .take-the-test {
+        padding: 20px 0 20px;
+    }
+
+    .discover-top-destination {
+        padding: 40px 20px;
+    }
+
+    section.test-section.blog-post .take-the-test {
+        min-height: 500px;
+    }
+
+    section.test-section.blog-post .take-the-test-content {
+        width: 60%;
+        /*padding-right: 70px;*/
+    }
+}
+
+@media (max-width: 767px) {
+    section.banner-section {
+        min-height: 400px;
+    }
+
+    .banner-content-block .content-block {
+        padding-left: 30px;
+    }
+
+    section.blogs-section {
+        padding: 110px 0 30px;
+    }
+
+    section.blogs-section.life-story-abroad {
+        padding-bottom: 30px;
+    }
+
+    .blog-item {
+        min-height: 300px;
+        margin-bottom: 20px;
+    }
+
+    .test-section .take-the-test {
+        padding: 60px 0;
+    }
+
+    section.test-section.blog-post .take-the-test-content {
+        width: 100%;
+        padding: 15px;
+        /*padding: 30px;*/
+    }
+
+    section.test-section.blog-post .take-the-test {
+        min-height: 450px;
+    }
+
+    .take-the-test-content h3 {
+        padding: 0 20px;
+    }
+
+    .take-the-test-content p {
+        padding: 0 20px;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .discover-top-destinations-section form.wpcf7-form.init {
+        display: block;
+    }
+
+    .discover-top-destinations-section .wpcf7 form>p {
+        display: block;
+    }
+
+    .discover-top-destination .wpcf7-submit {
+        display: block;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .discover-top-destination {
+        padding-bottom: 10px;
+    }
+}

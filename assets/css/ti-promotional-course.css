@@ -1,0 +1,763 @@
+/*Archive Course Style*/
+html {
+	scroll-behavior: smooth;
+}
+
+/*Banner*/
+
+.course-banner {
+	min-height: 450px;
+	/*background: url(/wp-content/uploads/2020/11/archive_course_banner.jpg);*/
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	align-items: flex-end;
+	margin: 0 auto;
+	padding: 50px 0 0 35px;
+}
+
+.banner-content-block {
+	margin-right: 40px;
+}
+
+.banner-content-block .content-block {
+	background-color: #fff;
+	padding: 50px 60px 50px 50px;
+	position: relative;
+}
+
+.banner-content-block .content-block img {
+	position: absolute;
+	right: -50px;
+	top: calc(50% - 50px);
+}
+
+.banner-content-block a {
+	background: #000;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 25px 12px 50px;
+	min-height: 55px;
+	margin-bottom: -55px;
+	font-size: 0.688rem;
+	letter-spacing: 0.3rem;
+}
+
+.banner-content-block a i {
+	font-size: 1.35rem;
+}
+
+.banner-content-block .content-block h2 {
+	font-weight: 600;
+	letter-spacing: 0.4rem;
+	margin-bottom: 0;
+}
+
+.banner-content-block .content-block h3 {
+	font-size: 1.125rem;
+	font-weight: 500;
+	letter-spacing: 0.3rem;
+	font-weight: 600;
+	margin: 8px 0 30px;
+}
+
+.banner-content-block .content-block p {
+	line-height: 1.5;
+}
+
+
+/*Courses Looking For*/
+
+section.courses-looking-for-section {
+	padding: 100px 0 0px;
+}
+
+section.courses-looking-for-section h2 {
+	font-size: 1.25rem;
+	text-align: center;
+	letter-spacing: 0.3rem;
+	padding-bottom: 55px;
+}
+
+.tabcontent {
+	display: none;
+}
+
+#accredit {
+	margin-top: 50px;
+	display: block;
+}
+
+.courses-looking-for-tabs .tablinks {
+	flex: 1;
+	background-color: transparent;
+	color: #000;
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.3rem;
+	border-top: 11px solid #EDEDED;
+	padding: 30px 40px;
+	text-align: center;
+	line-height: 1.8;
+}
+
+.courses-looking-for-tabs .tabs {
+	display: flex;
+	justify-content: space-between;
+}
+
+.courses-looking-for-tabs .tablinks.active {
+	border-color: #000;
+}
+
+.courses-looking-for-tabs .tablinks:hover{
+	background-color: #000;
+	color: #fff;
+}
+.tab-content {
+	text-align: center;
+	width: 70%;
+	margin: 70px auto 0;
+}
+
+.tab-content .ast-row {
+	margin-top: 50px;
+}
+
+.tab-content .ast-col-md-4 img {
+	margin-bottom: 20px;
+}
+
+.courses-looking-for-section .tab-content h2 {
+	margin-bottom: 25px;
+}
+
+.courses-looking-for-section .tab-content p {
+	font-size: 1.25rem;
+	line-height: 1.6;
+}
+
+
+/*Ultimate Online Teacher*/
+
+.tefl-teacher-section-block {
+	/*background: url(/wp-content/uploads/2020/11/online-tefl-teacher.jpg);*/
+	background-size: cover;
+	background-position: center;
+	min-height: 450px;
+	display: flex;
+	/*justify-content: flex-end;*/
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
+}
+
+.tefl-teacher-section-block:before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: linear-gradient(to right, #0000000a , #000000fa);
+}
+
+.tefl-teacher-section-content {
+	color: #fff;
+    position: relative;
+    padding: 50px;
+    width: 70%;
+}
+
+.tefl-teacher-section-content h2 {
+	font-size: 1.875rem;
+	color: #fff;
+	letter-spacing: 0.3rem;
+	line-height: 1.5;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.tefl-teacher-section-content .learn-more {
+	color: #fff;
+	padding: 18px 30px;
+	border: 1px solid #929292;
+	display: flex;
+	width: 35%;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 0.688rem;
+	letter-spacing: 0.3rem;
+	margin: 0 auto;
+}
+
+.tefl-teacher-section-content .learn-more i {
+	font-size: 1.35rem;
+}
+
+
+/*Courses Gray Blocks*/
+
+section.courses-section {
+	/* padding: 50px 0; */
+}
+
+section.courses-section .course-item {
+	background-color: #EDEDED;
+	padding: 40px 40px 60px;
+	text-align: center;
+	position: relative;
+	min-height: 480px;
+    margin-bottom: 50px;
+}
+
+section.courses-section .course-item .learn-more {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	border-top: 1px solid #000;
+	min-height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: 0.3rem;
+	font-size: 0.688rem;
+}
+
+section.courses-section .course-item img {
+	max-width: 110px;
+}
+
+section.courses-section .course-item .price {
+	font-size: 1.125rem;
+	margin: 30px 0;
+	letter-spacing: 0.3rem;
+	font-weight: bold;
+}
+
+section.courses-section .course-item h3 {
+	font-size: 1rem;
+	letter-spacing: 0.3rem;
+	margin-bottom: 25px;
+	line-height: 1.8;
+	text-transform: uppercase;
+}
+
+section.courses-section .course-item .duration {
+	font-size: 1.125rem;
+	line-height: 1.5;
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+
+section.courses-section .course-item h3.course-title {
+	text-transform: uppercase;
+	height: 81px;
+	display: flex;
+	align-items: center;
+	justify-content:center;
+}
+
+
+/*Full Block Course*/
+
+.full-block-course-block {
+	min-height: 450px;
+	background-position: center;
+	background-size: cover;
+	padding: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
+}
+
+.full-block-course-block:before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #00000087;
+}
+
+.full-block-course-content {
+	width: 70%;
+	position: relative;
+	color: #fff;
+}
+
+.full-block-course-content h2 {
+	font-size: 1.875rem;
+	letter-spacing: 0.3rem;
+	text-align: center;
+	color: #fff;
+	padding-bottom:35px;
+}
+
+.full-block-course-content p {
+	color: #fff;
+}
+
+.full-block-course-content p:nth-of-type(2){
+	font-weight:bold;
+}
+
+.full-block-course-content .book-now {
+	color: #fff;
+	padding: 20px 30px;
+	background-color: #000;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 40%;
+	height: 55px;
+	margin: 0 auto;
+	font-size: 0.688rem;
+	letter-spacing: 0.3rem;
+}
+
+.full-block-course-content .book-now:hover{	
+	opacity: .8;
+}
+
+.full-block-course-content .book-now i {
+	font-size: 1.35rem;
+}
+
+section.govt-regulated-courses-section {
+	padding-bottom: 55px;
+	text-align: center;
+}
+
+.govt-regulated-courses-section-block .ast-col-md-4 img {
+	margin-bottom: 20px;
+}
+
+.govt-regulated-courses-section-block h2 {
+	padding-top:55px;
+	padding-bottom:55px;
+	font-size: 1.25rem;
+	text-align: center;
+	letter-spacing: 0.3rem;
+}
+
+.govt-regulated-courses-section-block h4 {
+	width: 75%;
+	margin: 0 auto 60px;
+	font-size: 1.25rem;
+	line-height: 1.6;
+}
+
+
+/*Black Course Blocks*/
+
+section.courses-section.black-blocks {
+	padding-top: 0;
+}
+
+section.courses-section.black-blocks .course-item {
+	background-color: #000;
+	color: #fff;
+}
+
+section.courses-section.black-blocks .course-item .price {
+	color: #fff;
+}
+
+section.courses-section.black-blocks .course-item h3 {
+	color: #fff;
+}
+
+section.courses-section.black-blocks .course-item .duration {
+	color: #fff;
+	font-weight: bold;
+}
+
+section.courses-section.black-blocks .course-item .learn-more {
+	color: #fff;
+	border-color: #737373;
+}
+
+
+/*Take The Test*/
+
+.take-the-test .full-block-course-block {
+	background: url(/wp-content/uploads/2020/11/take_the_test_bg.jpg);
+	background-position: center;
+	background-size: cover;
+	padding: 50px 50px 80px;
+}
+
+
+/*Classroom Blended Courses*/
+
+section.classroom-blended-courses-section {
+	text-align: center;
+}
+
+section.classroom-blended-courses-section h2 {
+	padding: 55px 0;
+	font-size: 1.25rem;
+	letter-spacing: 0.3rem;
+}
+
+section.classroom-blended-courses-section h4 {
+	width: 75%;
+	margin: 0 auto;
+	font-size: 1.25rem;
+	line-height: 1.6;
+}
+
+section.courses-section.classroom-blended-courses .course-item {
+	position: relative;
+}
+
+section.courses-section.classroom-blended-courses .course-item:before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #0000008f;
+}
+
+section.courses-section.classroom-blended-courses .course-item .price {
+	color: #fff;
+}
+
+section.courses-section.classroom-blended-courses .course-item h3 {
+	color: #fff;
+}
+
+section.courses-section.classroom-blended-courses .course-item .duration {
+	color: #fff;
+}
+
+section.courses-section.classroom-blended-courses .course-item .learn-more {
+	color: #fff;
+	border-color: #737373;
+}
+
+section.courses-section.classroom-blended-courses .course-item .course-content {
+	position: relative;
+}
+
+
+/*Classroom Course Location*/
+
+.classroom-course-location-section h2 {
+	font-size: 1.25rem;
+	letter-spacing: 0.3rem;
+	text-align: center;
+	margin-bottom: 45px;
+}
+
+.classroom-course-location-section h3 {
+	font-size: 0.875rem;
+	letter-spacing: 0.3rem;
+	margin: 25px 0;
+	min-height: 50px;
+}
+
+.classroom-course-location-section .learn-more {
+	border-top: 1px solid #000;
+	display: block;
+	padding: 15px 0;
+	font-size: 0.688rem;
+	letter-spacing: 0.3rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.classroom-course-location-section .learn-more i {
+	font-size: 1.25rem;
+}
+
+
+/*Specialized TEFL Courses*/
+
+
+section.specialized-tefl-courses-section {
+	text-align: center;
+}
+
+.specialized-tefl-course-items-section .course-image {
+	min-height: 170px;
+	background-position: center !important;
+	background-size: cover !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+section.specialized-tefl-courses-section h2, section.faq-tefl-course-section h2 {
+	padding-top:55px;
+	padding-bottom:55px;
+	font-size: 1.25rem;
+	letter-spacing: 0.3rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+section.specialized-tefl-courses-section h4 {
+	width: 75%;
+	margin: 0 auto;
+	font-size: 1.25rem;
+	line-height: 1.6;
+}
+
+section.specialized-tefl-course-items-section {
+	padding: 50px 0 20px;
+}
+
+.specialized-tefl-course-items-section h3 {
+	margin: 25px 0;
+	font-size: 1.125rem;
+	font-weight:bold;
+	letter-spacing: 0.3rem;
+}
+
+.specialized-tefl-course-items-section h4 {
+	font-size: 1rem;
+	letter-spacing: 0.3rem;
+	margin-bottom: 25px;
+}
+
+.specialized-tefl-course-items-section p {
+	font-size: 1.125rem;
+	font-weight: bold;
+}
+
+.specialized-tefl-course-items-section .learn-more {
+	border-top: 2px solid #c7c7c7;
+	padding: 20px 0;
+	font-size: 0.688rem;
+	letter-spacing: 0.3rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.specialized-tefl-course-items-section .learn-more i {
+	font-size: 1.25rem;
+}
+
+.specialized-tefl-course-items-section .course-badge {
+    width: 110px;
+}
+
+
+/* FAQ*/
+.accordion-container label {
+	color: #000;
+	font-size: 0.688rem;
+	font-weight: 500;
+	line-height: 1.34rem;
+	letter-spacing: 0.3rem;
+	text-transform: uppercase;
+	display: block;
+	cursor: pointer;
+	padding: 15px 35px;
+	background: #fff;
+	border-bottom: 1px solid;
+	background-image: url("/wp-content/uploads/2021/01/down.svg");
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 20px;
+}
+
+section.faq-tefl-course-section {
+    margin-bottom: 5rem;
+}
+
+.accordion-container input:checked ~ label {
+/* 	background-image: url("/wp-content/uploads/2021/01/up.svg"); */
+	background-image: none;
+}
+
+.accordion-container:last-child label {
+	border-bottom: 1px solid transparent;
+}
+.accordion-container {
+  margin: 1px auto;
+}
+
+
+.accordion-container input {
+  display: none;
+}
+
+.accordion-container article {
+  overflow: hidden;
+  height: 0;
+}
+
+.accordion-container input:checked ~ article {
+  height: auto;	
+  padding: 15px 35px;
+}
+
+/*Responsive*/
+
+@media (max-width: 768px) {
+	section.banner-section .ast-container {
+		margin-left: 0;
+	}
+	.mobile-banner-image {
+		display: block !important;
+	}
+
+	.course-banner {
+		background-size: 120vw;
+		background-position: top;
+		padding: 0 0 0;
+		min-height: 304px;
+	}
+
+	.courses-looking-for-tabs .tabs>a {
+		max-width: 50%;
+		padding: 10px 20px;
+		line-height: 1.4;
+		font-size: 0.7rem;
+	}
+
+	.courses-looking-for-tabs .tabs {
+		flex-wrap: wrap;
+	}
+
+	.tefl-teacher-section-content {
+		flex: 0 0 100%;
+		padding: 40px;
+		margin: auto;
+	}
+
+	.tefl-teacher-section-content h2 {
+		margin-bottom: 20px;
+	}
+
+	.tefl-teacher-section-content .learn-more {
+		width: auto;
+	}
+
+	.content-block {}
+
+	body .banner-content-block {
+		margin: auto -21px;
+	}
+
+	section.courses-section .course-item .price {
+		margin: 10px 0;
+	}
+
+	section.courses-section .course-item h3.course-title {
+		height: auto;
+		margin-bottom: 10px;
+	}
+
+	section.courses-section .course-item {
+		padding: 20px 20px 0px;
+		margin-bottom: 20px;
+	}
+
+	section.courses-section .course-item .learn-more {position: relative;}
+
+	section.courses-section .course-item .duration {
+		margin-bottom: 20px;
+	}
+
+	.full-block-course-content {
+		width: 100%;
+	}
+
+	.full-block-course-block {
+		padding: 50px 20px;
+	}
+
+	.full-block-course-content .book-now {
+		width: auto;
+	}
+
+	.full-block-course-content h2 {
+		margin-bottom: 20px;
+		margin-top: 100px;
+		font-size: 1.4rem;
+	}
+
+	.ast-row.three-blocks-row {
+		display: flex;
+	}
+
+	.three-blocks-row img {
+		max-width: 40px;
+		height: 40px;
+	}
+
+	.three-blocks-row p {
+		line-height: 1.4;
+	}	
+
+	.specialized-tefl-course-items-section h3 {
+		margin: 20px 0 10px;
+	}
+
+	.specialized-tefl-course-items-section h4 {
+		margin-bottom: 10px;
+	}
+
+	.specialized-tefl-course-items-section p {
+		margin-bottom: 10px;
+	}
+
+	.specialized-tefl-course-items-section .learn-more {
+		margin-bottom: 40px;
+	}
+
+	.banner-content-block .content-block img {
+		left: -25px;
+		top: -110px;
+		max-width: 80px;
+	}
+
+	section.specialized-tefl-courses-section h4 {
+		width: auto;
+	}
+
+	.govt-regulated-courses-section-block h4 {
+		width: auto;
+	}
+
+	section.courses-section .course-item h3 {
+		margin-bottom: 10px;
+	}
+
+	.course-item .learn-more {
+		min-height: 40px!important;
+	}	
+}
+
+@media only screen and (max-width: 767px){
+	section.accordion-container {
+	    padding: 0;
+	}
+
+	.accordion-container label {
+	    padding: 15px;
+	}
+
+	.accordion-container input:checked ~ article {
+	    padding: 15px !important;
+	}
+
+	.accordion-container article p {
+	    margin-bottom: 0px;
+	}
+}
+
+
+

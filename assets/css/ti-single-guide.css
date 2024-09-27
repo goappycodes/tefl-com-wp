@@ -1,0 +1,61 @@
+.header-section {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.section-heading {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 500;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+}
+
+.subsection-heading {
+    font-size: 18px;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.5;
+}
+
+.wpcf7 p {
+    margin: 0;
+}
+
+.image {
+    width: 700px;
+    margin-bottom: 2rem;
+}
+
+label {
+    margin-bottom: -20px;
+    display: block;
+}
+
+.join-txt {
+    font-size: 10px;
+  	opacity: 0.8;
+    line-height: 1.5;
+}
+
+.safe-txt {
+    font-size: 10px;
+  	opacity: 0.8;
+    line-height: 1.5;
+}
+
+.ptefl-button {
+    display: block;
+    width: 100%;
+    font-size: 14px !important;
+    padding: 20px !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+/** Single Support Center Style **/
+
+/*header section*/
+p:empty{
+    display:none;
+}
+.header-section .ast-row{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   margin-top:4rem;
+}
+.header-section h1{
+    text-transform:uppercase;
+    text-align:center;
+    font-size:1.875rem;
+    font-weight: 500;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+}
+.header-section p{
+    text-align:center;
+}
+
+/*content area*/
+
+ section.content-area .ast-row{
+    /* padding-top:2rem; */
+    border-top:2px solid lightgray;
+    border-bottom:2px solid lightgray;
+}
+
+section.content-area .ast-row div{
+    padding:0;
+}
+
+.content-area a:hover{
+    color:blue;
+    text-decoration: underline;
+}
+.content-area .section-heading{
+    text-transform:uppercase;
+}
+
+
+/*Navigation Buttons*/
+
+.nav-btns{
+    display:flex;
+    align-items:Center;
+    justify-content:space-between;
+    margin:2rem auto;
+}
+
+.nav-btns span a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-transform:uppercase;
+}
+.nav-btns span a:hover{
+    color:darkgrey;
+    text-decoration: none;
+}
+.nav-btn-prev .fa{
+    padding-right:1.5rem;
+}
+
+.nav-btn-next .fa{
+    padding-left:1.5rem;
+}
+
+
+.fa{
+    font-size:1.5rem;
+}

@@ -1,0 +1,202 @@
+/** About Us Style **/
+
+
+/*Banner*/
+
+section.banner-section {
+    min-height: 450px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+section.banner-section .ast-container {
+    margin-left: 30px;
+    flex: 1;
+}
+
+.banner-content-block {
+    margin-right: 40px;
+}
+
+.banner-content-block .content-block {
+    background-color: #fff;
+    padding: 50px 60px 50px 50px;
+    position: relative;
+}
+
+.banner-content-block .content-block img {
+    position: absolute;
+    right: -50px;
+    top: calc(50% - 50px);
+}
+
+.banner-content-block > a {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 25px 12px 50px;
+    min-height: 55px;
+    margin-bottom: -55px;
+    font-size: 0.688rem;
+    text-transform:uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.banner-content-block a i {
+    font-size: 1.35rem;
+}
+
+.banner-content-block .content-block h2 {
+    font-weight: 600;
+    text-transform:uppercase;
+    letter-spacing: 0.4rem;
+    margin-bottom: 0;
+}
+
+.banner-content-block .content-block h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-transform:uppercase;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
+    margin: 8px 0 30px;
+}
+
+.banner-content-block .content-block p {
+    line-height: 1.5;
+}
+
+
+/*Tefl Institute*/
+
+section.tefl-institute-london-section {
+    padding: 130px 0 0;
+}
+
+section.tefl-institute-london-section h2 {
+    text-transform:uppercase;
+    margin-bottom: 40px;
+}
+
+/*Our Core Values*/
+
+section.our-core-values-section {
+    padding: 55px 0;
+    margin: 40px auto;
+}
+
+section.our-core-values-section h2.section-heading {
+    text-align: center;
+    text-transform:uppercase;
+    margin-bottom: 60px;
+}
+
+.our-core-values-section h3 {
+    margin: 40px 0 30px;
+    min-height: 70px;
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform:uppercase;
+    letter-spacing: 0.3rem;
+    line-height: 1.6;
+}
+
+
+/*What makes us different*/
+
+section.makes-us-different-section {
+    padding: 50px 0;
+}
+
+section.makes-us-different-section h2 {
+    margin-bottom: 40px;
+    text-align: left;
+    text-transform:uppercase;
+}
+
+section.makes-us-different-section p {
+    text-align: left;
+}
+
+.makes-us-different-section img {
+    width: 100%;
+}
+
+
+/*Contact Us*/
+
+section.contact-section {
+    padding: 20px 0 50px;
+}
+
+section.contact-section h2.section-heading {
+    text-align: center;
+    margin-bottom: 70px;
+    text-transform:uppercase;
+}
+
+.contact-section h3 {
+    font-size: 1rem;
+    letter-spacing: 0.3rem;
+    text-transform:uppercase;
+    margin: 30px 0 20px;
+}
+
+.contact-section p:nth-of-type(1){
+    text-transform:capitalize;
+    margin-bottom:0;
+}
+.contact-section {
+    text-align: center;
+}
+
+
+/*Responsive*/
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .our-core-values-section .ast-col-lg-3 {
+        min-height: 460px;
+    }
+    
+    .our-core-values-section h3 {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    section.banner-section .ast-container {
+        margin-left: 0;
+    }
+    
+    section.tefl-institute-london-section h2 {
+        margin-top: 30px;
+    }
+    
+    .our-core-values-section h3 {
+        min-height: auto;
+    }
+    
+    .our-core-values-section p {
+        margin-bottom: 60px;
+    }
+    
+    section.makes-us-different-section h2, section.makes-us-different-section p {text-align: left;}
+    
+    .contact-section .ast-col-md-3 {
+        margin-bottom: 60px;
+    }
+    
+    section.our-core-values-section {
+        padding-bottom: 0;
+    }
+    
+    section.contact-section {
+        padding-bottom: 0;
+    }
+}

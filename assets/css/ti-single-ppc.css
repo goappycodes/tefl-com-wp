@@ -1,0 +1,1276 @@
+#primary {
+	margin: 400px 0 0 0 !important;
+}
+
+.top-header-wrapper {
+    display: none;
+}
+
+.site-header {
+    display: none;
+}
+
+.main-header-bar {
+    display: none;
+}
+
+.hero-section {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position: bottom;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 400px;
+    padding: 0 0 50px 0;
+}
+
+.logo {
+    display: flex;
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    width: 200px;
+    margin: auto;
+    justify-content: center;
+}
+
+.logo img {
+    height: auto;
+    width: auto;
+}
+
+.hero h2 {
+	font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.hero h3 {
+ 	font-size: 36px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.25;
+}
+
+.site-content .ast-container {
+	flex-direction: column;
+}
+
+.main {
+  	margin: 50px 0;
+    text-align: center;
+}
+
+.main-container {
+    border-radius: 1.5rem;
+    display: flex;
+    width: 70%;
+    column-gap: 3rem;
+    margin: 2rem auto 0;
+}
+
+.form-image .image {
+    height: 670px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
+    padding: 2rem;
+    border-radius: 0 0 25px 25px;
+}
+
+.overlay {
+    position: absolute;
+    color: white;
+    width: 400px;
+}
+
+.title-subtitle {
+    background: #282B33;
+    padding: 10px 20px;
+    margin: 0;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.overlay .title {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0;
+}
+
+.overlay .subtitle {
+    font-size: 20px;
+    margin: 0;
+}
+
+.overlay .small {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.35;
+    padding: 20px;
+}
+
+.wpcf7 form {
+    position: relative
+}
+
+.wpcf7 form>div,.wpcf7 form>p {
+    margin-bottom: 0;
+}
+
+.wpcf7 .wpcf7-form-control-wrap {
+    width: 100%;
+    display: block
+}
+
+.wpcf7 input:not([type=submit]):focus,.wpcf7 select:focus,.wpcf7 textarea:focus {
+    border-color: var(--ast-border-color);
+    outline: 0
+}
+
+.wpcf7 input:not([type=submit]),.wpcf7 select,.wpcf7 textarea {
+    width: 100%;
+    padding: .5rem;
+}
+
+.wpcf7 input[type=file] {
+    color: #555;
+    height: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--ast-border-color);
+    border-radius: 2px;
+    background: #fafafa;
+    box-shadow: none;
+    box-sizing: border-box;
+    transition: all .2s linear
+}
+
+.wpcf7 input[type=checkbox],.wpcf7 input[type=radio] {
+    display: inline-block;
+    background: #e9eef2;
+    color: #555;
+    clear: none;
+    cursor: pointer;
+    line-height: 0;
+    height: 1.2em;
+    margin: -3px 4px 0 0;
+    outline: 0;
+    padding: 0;
+    border-radius: .2em;
+    text-align: center;
+    vertical-align: middle;
+    width: 1.4em;
+    min-width: 1.4em;
+    transition: all .2s linear
+}
+
+input[type=text], input[type=email], input[type=tel], textarea {
+    background-color: transparent;
+    border: 1px solid #CDD0D0;
+    padding: 6px 10px !important;
+    color: #353535;
+    font-weight: 400;
+    margin: 0;
+}
+
+.form-cointainer .wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit:hover {
+    background-color: #E7B02B;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: baseline;
+    letter-spacing: 0;
+    justify-content: center;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.contact {
+    border: 1px solid #CBCACA;
+    border-radius: 5px;
+    color: #113042;
+    padding: 1rem;
+    font-size: 14px;
+  	margin: 0 -20px;
+}
+
+.secure {
+    border: 1px solid #CBCACA;
+    border-radius: 5px;
+    margin: 1rem -20px 0 -20px;
+    color: #113042;
+    text-align: center;
+    padding: 1rem;
+}
+
+.secure .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #DAA938;
+    font-size: 20px;
+}
+
+.secure .subtitle {
+    font-size: 14px;
+    color: #113042;
+  	margin: 0;
+}
+
+.contact .title {
+    font-size: 18px;
+    margin-bottom: -0.5rem;
+}
+
+.contact .subtitle {
+    margin: 0;
+}
+
+.wpcf7-spinner {
+    display: none;
+}
+
+.secure .title img {
+    width: 2rem;
+}
+
+.secure .title p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+}
+
+.secure .subtitle p {
+    font-weight: 500;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.section-heading {
+    font-size: 30px;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-transform: capitalize;
+  	letter-spacing: 0;
+}
+
+.section-subheading {
+    color: #000;
+    font-size: 24px;
+    margin-top: -20px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.ast-col.ast-col-12 h3 {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+p {
+    margin-bottom: 0.5rem;
+}
+
+label {
+    display: block;
+    margin: 15px 0 -20px 0px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.desktop {
+	display: block;
+}
+  
+.mobile {
+  	display: none;
+}
+
+.points {
+    width: 80%;
+    margin: 50px auto 0;
+}
+
+.points .point {
+    display: inline-block;
+    margin: 0.5rem 1rem;
+    font-weight: 600;
+}
+
+.points .point:before {
+    content: "";
+    background: url(https://premiertefl.com/wp-content/uploads/2023/03/green-tick.png) no-repeat center center / 16px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    margin-right: 6px;
+} 
+
+.main-container {
+    border-radius: 1.5rem;
+    display: flex;
+    width: 70%;
+    column-gap: 3rem;
+    margin: 2rem auto 0;
+}
+
+.course {
+    width: 50%;
+    background: white;
+    border-radius: 7px;
+}
+
+.course-heading {
+    padding: 10px 30px;
+    color: white;
+    border-radius: 6px 6px 0 0;
+}
+
+.course-heading .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.course-heading .subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 5px;
+}
+
+.course-thumbnail {
+    height: 10rem;
+    background-position: center;
+    background-size: cover;
+}
+
+.course-text {
+    background: #113042;
+    color: white;
+    padding: 8px 20px 10px 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.most-popular-icon {
+    background-position: center;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    margin: -40px 0 0 320px;
+}
+
+.course-product {
+  	text-align: center;
+  	padding: 20px 20px 30px;
+  	border-radius: 8px;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+  	justify-content: center;
+}
+
+.stars img {
+  	height: 20px !important;
+  	width: auto;
+  	margin: 0 !important;
+}
+
+.stars span {
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.labels {
+	overflow: auto;
+	min-height: 120px;
+	display: inline-table;
+}
+
+.label {
+	padding: 2px 10px 3px 10px;
+	border: 1px dashed #BBBBBA;
+	border-radius: 5px;
+	font-size: 12px;
+	margin: 0 5px 0 0;
+	text-align: center;
+	font-weight: 600;
+	display: inherit;
+	margin-top: 5px;
+}
+
+.book-now {
+	background-color: #000;
+	color: #fff;
+	font-size: 20px;
+	padding: 10px 20px;
+	width: 300px;
+	font-weight: 600;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.book-now:hover {
+	color: white;
+}
+
+.book-now span {
+	margin-right: 25px;
+}
+
+.price ins, .price {
+    font-size: 34px;
+    line-height: 1.5;
+    display: block;
+    font-weight: 700;
+}
+
+.save {
+    background: #E65555;
+    color: white;
+    display: inline-flex;
+    font-size: 22px;
+    border-radius: 20px;
+    padding: 4px 20px 2px 20px;
+    position: relative;
+    top: -10px;
+}
+
+.price del {
+    font-size: 16px;
+    position: absolute;
+    margin: 60px 0 0 -160px;
+    font-weight: 500;
+}
+
+.learn-more-link {
+    margin-top: 15px;
+}
+
+.learn-more-now {
+    font-size: 20px;
+    padding: 10px 20px;
+    width: 300px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px dashed #113042;
+}
+
+
+h2 {
+    font-size: 38px;
+    margin-top: -50px;
+    font-weight: 700;
+    color: black;
+}
+
+h4 {
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 600;
+    width: 640px;
+    margin: 10px auto 0;
+  	color: black;
+}
+
+
+.countdown-timer-container {
+    display: flex;
+    width: 70%;
+    padding: 1rem;
+    margin: 2rem auto 0;
+    align-items: center;
+    flex-direction: column;
+    border-top: 1px dashed #CEC8C3;
+    border-bottom: 1px dashed #CEC8C3;
+}
+
+.expiry-string {
+    text-transform: uppercase;
+}
+
+.countdown-timer-container span {
+    font-weight: 600;
+    font-size: 0.85rem;
+  	text-align: center;
+}
+
+.digit-text {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 700;
+}
+
+.clock-inner {
+    background: #000;
+    padding: 15px 8px 15px 4px;
+    border-radius: 0.5rem;
+    width: 70px;
+}
+
+.clock {
+    padding: 10px 0 0 !important;
+    margin: 0;
+}
+
+.offer-ends {
+    font-size: 0.9rem !important;
+    letter-spacing: 1px;
+}
+
+.clock>div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  	width: calc(50%) !important;
+}
+
+.clock-inner .base {
+    font-size: 2.5rem;
+  	color: white;
+}
+
+.clock-inner .digit {
+    text-indent: initial;
+  	width: 20px !important;
+}
+
+.video-thumbnail img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0 0 22px 22px;
+}
+
+.video-btn {
+    position: absolute;
+    right: 2rem;
+    bottom: 40px;
+    display: flex;
+    outline: none;
+    border: none;
+    width: 60px;
+}
+
+.video-thumbnail {
+    position: relative;
+}
+
+.video-description-section--author-name {
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.video-description-section--institute-name {
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.info {
+    margin-top: 20px;
+    border-left: 5px solid #E3E7E9;
+    padding: 0 0 0 20px;
+}
+
+.graduate-testimonials h3 {
+    text-align: center;
+}
+
+.review-banner {
+    height: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.rplg-slider {
+    display: none;
+}
+
+.rplg {
+    margin-top: -100px;
+}
+
+.rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6 {
+    margin: 0 !important;
+    width: calc(50% - 0px)!important;
+    background: url('https://teflinstitute.com/wp-content/uploads/2020/11/Rectangle-275.svg') !important;
+    background-size: cover;
+}
+
+.rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6:first-child {
+    border-right: 1px solid #fff !important;
+}
+
+.rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6 .rplg-box {
+    margin: 0 !important;
+    border-radius: 0px !important;
+    border: none !important;
+}
+
+.rplg .rplg-grid .rplg-review-badge {
+    position: initial !important;
+}
+
+.rplg .rplg-grid .rplg-row {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rplg-row .rplg-row-right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.rplg-grid .rplg-links a {
+    color: #fff !important;
+    text-transform: uppercase;
+    margin: 0 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2rem;
+    font-size: 0.668rem !important;
+    line-height: 0.7rem !important;
+}
+
+.rplg-grid .rplg-links a:first-child {
+    padding-right: 10px;
+    margin-right: 10px !important;
+    border-right: 1px solid #fff !important;
+}
+
+.rplg .rplg-biz-based .rplg-biz-based-text {
+    text-shadow: none;
+    color: #fff;
+}
+
+.students-review .rplg .rplg-biz-rating .rplg-biz-score {
+    color: #fff !important;
+    font-size: 30px !important;
+}
+
+
+.rplg-grid .rplg-stars use {
+    fill: #fff;
+}
+
+
+.rplg-slider-review {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.rplg .rplg-box {
+    border: none !important;
+    background: none !important;
+}
+
+
+.rplg-slider-review .rplg-review-badge {
+    display: none;
+}
+
+.rplg-slider .rplg-box .rplg-box-content:before {
+    display: none !important;
+}
+
+.rplg-slider .rplg-box .rplg-box-content {
+    margin: 25px 0 0 !important;
+    display: flex;
+    flex-direction: column;
+    height: 215px !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.rplg-slider .rplg-box .rplg-box-content::-webkit-scrollbar {
+    display: none;
+}
+
+.rplg-slider .rplg-row {
+    padding: 0px !important;
+    border-bottom: 1px solid #808080 !important;
+}
+
+.rplg-slider-review .rplg-row .rplg-row-right {
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.rplg-slider .rplg-stars {
+    position: absolute;
+    top: -65px;
+}
+
+.rplg .rplg-review-time {
+    margin-top: 30px;
+    color: #000 !important;
+    font-size: 1.1rem !important;
+    font-weight: 400 !important;
+    margin-bottom: 10px;
+}
+
+.rplg-slider .rplg-stars use {
+    fill: #000;
+}
+
+.rplg-slider .rplg-stars svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 2px !important;
+}
+
+.rplg .rplg-review-name {
+    font-weight: 500 !important;
+    color: #000 !important;
+    font-size: 1rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.rplg-slider .rplg-box:before {
+    display: none !important;
+}
+
+.rplg .rplg-review-text {
+    color: #000 !important;
+}
+
+.rplg .rplg-slider {
+    margin-top: 20px !important;
+    border-bottom: 1px solid #808080 !important;
+}
+
+.rplg-slider .rplg-slider-review {
+    margin-bottom: 20px !important;
+}
+
+.reviews h3 {
+    text-align: center;
+}
+
+.reviews {
+    margin-top: 50px;
+  	padding: 0 20px;
+}
+
+.intl-tel-input.allow-dropdown input, .intl-tel-input.allow-dropdown input[type=tel], .intl-tel-input.allow-dropdown input[type=text], .intl-tel-input.separate-dial-code input, .intl-tel-input.separate-dial-code input[type=tel], .intl-tel-input.separate-dial-code input[type=text] {
+    padding-right: 6px;
+    padding-left: 52px !important;
+    margin-left: 0;
+}
+
+.rplg .rplg-social-logo svg,
+.rplg .rplg-social-logo.rplg-facebook-logo svg {
+    width: 35px !important;
+    height: 35px !important;
+}
+
+.rplg .rplg-review-badge {
+    top: 20px !important;
+    right: 20px !important;
+}
+
+.rplg-slider {
+    max-width: 92%;
+    margin: 0 auto !important;
+    margin: -30px auto 0 !important;
+}
+
+.ast-row.review-videos {
+    display: none;
+}
+
+.rplg div .rplg-slider-review {
+    border: 2px solid #DFB428 !important;
+}
+
+.tefl-course-video-section {
+    margin-top: 0 !important;
+}
+
+section.student-review-section {
+    margin-bottom: 10px;
+}
+
+.reviews .rplg .rplg-biz-rating .rplg-biz-score {
+    color: #fff !important;
+    font-size: 30px !important;
+}
+
+.rplg-slider .rplg-slider-prev span,
+.rplg-slider .rplg-slider-next span {
+    font-size: 4rem !important;
+    color: #4e4e4e !important;
+}
+
+.rplg-box-content::-webkit-scrollbar {
+    display: none;
+}
+
+.rplg-slider .rplg-box .rplg-box-content {
+    margin-left: 20px !important;
+}
+
+.rplg-slider-review {
+    background-color: #fff;
+    padding: 10px 0 0 !important;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.rplg .rplg-box {
+    border: 0 !important;
+    min-height: 100px;
+}
+
+.rplg-slider .rplg-box .rplg-box-content {
+    margin: 0px 20px !important;
+    height: auto !important;
+}
+
+.rplg-slider .rplg-box:before {
+    display: none !important;
+}
+
+.rplg-slider .rplg-review-badge {
+    display: none !important;
+}
+
+.rplg-slider .rplg-box .rplg-box-content:before {
+    display: none !important;
+}
+
+.rplg-slider .rplg-row {
+    flex-direction: column;
+    padding: 5px 20px 20px !important;
+}
+
+.rplg-slider .rplg-row .rplg-row-left {
+    margin-bottom: 40px;
+}
+
+.rplg-slider .rplg-row .rplg-row-left img {
+    position: relative;
+    margin-right: 0 !important;
+    z-index: 99999;
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.rplg-slider-review .rplg-stars {
+    position: absolute;
+    bottom: -105px;
+    left: calc(50% - 43px);
+}
+
+.rplg-box-content .rplg-review-text {
+    text-align: center !important;
+    display: block;
+}
+
+.rplg-slider-review .rplg-review-time {
+    text-align: center;
+    color: #193847 !important;
+    font-weight: bold !important;
+}
+
+.rplg-slider-review .rplg-review-name {
+    text-align: center;
+    color: #193847 !important;
+    text-transform: uppercase;
+    font-size: 0.825rem !important;
+}
+
+.rplg-row-left:before {
+    content: "";
+    height: 2px;
+    width: 240px;
+    background-color: #edeeee;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 120px);
+    z-index: 1;
+}
+
+.rplg-row-right {
+    margin-top: 8px !important;
+}
+
+.limited-time-only {
+    text-align: center;
+    margin: 100px 0 50px 0;
+}
+
+.limited-time-only h2 {
+    font-size: 38px;
+    font-weight: 700;
+    color: #000;
+}
+
+.limited-time-only h3 {
+    font-size: 34px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: #000;
+}
+
+.limited-time-only .call-to-action {
+	background-color: #000;
+	color: #fff;
+	margin-top: 1rem;
+	font-size: 20px;
+	font-weight: 600;
+	padding: 10px 20px;
+	display: inline-flex;
+	align-items: baseline;
+}
+
+.limited-time-only .call-to-action span {
+	margin-right: 25px;
+}
+
+.limited-time-only .points {
+    margin: 1.5rem auto;
+}
+
+.points .point {
+    display: inline;
+    margin: 0 1rem;
+  	font-weight: 500;
+}
+
+.points .point:before {
+    content: "";
+    background: url(https://premiertefl.com/wp-content/uploads/2023/03/green-tick.png) no-repeat center center / 16px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    margin-right: 6px;
+} 
+
+.post-row {
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    margin: 0 0 50px 0px;
+}
+
+.ptefl-button {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid;
+    letter-spacing: 1px;
+}
+
+.title {
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+.subtitle {
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+.post-content-div {
+    padding: 40px 60px;
+  	color: white;
+}
+
+.post-col:nth-child(2) .post-content-col {
+	margin-left: 50%;
+}
+
+.accreditations {
+    font-size: 38px;
+}
+
+.tefl-video-col {
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 370px;
+	display: flex;
+	align-items: flex-end;
+	padding: 0;
+}
+
+.tefl-video-section h3 {
+    text-align: center;
+}
+
+.tefl-video-section {
+	margin-bottom: 0 !important;
+  	padding: 0 20px;
+}
+
+.tefl-video-section .ast-row {
+	display: flex;
+    gap: 30px;
+    margin: 0 -50px;
+}
+
+.tefl-video-col a.video-caption-link {
+	width: 100%;
+	text-transform: uppercase;
+	height: 100%;
+	display: flex;
+	align-items: flex-end;
+}
+
+.video-icon {
+	background-color: #000;
+	position: absolute;
+	top: 50%;
+	width: 80px;
+	opacity: 0.75;
+	cursor: pointer;
+	left: 50%;
+	margin-top: -39.5px;
+	margin-left: -39.5px;
+	transition: 0.3s;
+	text-align: center;
+	height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50px;
+}
+
+.video-icon:hover {
+	opacity: 1;
+}
+
+.video-icon img {
+	width: 20px;
+	height: 25px;
+	margin: 0 0 0 7px;
+}
+
+.vide-caption-box {
+	background: url(https://teflinstitute.com/wp-content/uploads/2020/11/Rectangle-275.svg);
+	padding: 15px 30px;
+	width: 100%;
+	color: white;
+}
+
+@media only screen and (max-width: 767px) {
+  	#primary {
+  		margin: 0 !important;
+      	padding: 0 !important;
+  	}
+  	
+  	.post-col:nth-child(2) .post-content-col {
+      	margin-left: 0;
+  	}
+	
+ 	.post-row {
+  		height: auto;
+  	}
+  
+  	.post-content-div {
+        text-align: center;
+    }
+  
+    .hero-section {
+		position: relative;
+      	height: 300px;
+      	margin: 0 -20px;
+    }
+
+  	.hero h2 {
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 1.25;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero h3 {
+        text-align: center;
+    	font-size: 1.25rem;
+    }
+
+    .hero {
+      	height: 300px;
+    }
+  
+  	.tefl-video-col {
+  		height: 200px;
+  	}
+  	
+  	.video-icon {
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
+        margin-left: -20px;
+  	}
+  
+  	.vide-caption-box {
+        padding: 10px;
+    }
+  
+  	.overlay {
+        width: calc(100% - 40px);
+    }
+  
+  	.section-heading {
+        font-size: 1.5rem !important;
+        line-height: 1.25;
+      	padding: 0 2rem;
+    }
+  
+  	.section-subheading {
+        font-size: 1.25rem;
+    }
+  
+  	.form-image .image {
+        height: 40rem;
+      	padding: 0;
+    }
+  
+  	.form-cointainer {
+        padding: 0 40px;
+        margin-top: 1rem;
+	}
+  
+  	.main img {
+        height: auto;
+        max-width: 100%;
+    }
+  
+  	.main h2 {
+        font-size: 1.5rem;
+    }
+
+    .main h4 {
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+      	width: 80%;
+    }
+  	
+    .main-container {
+        width: 100%;
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+ 
+    .course {
+        width: 100%;
+    }
+  
+  	.post-image-col {
+        display: none;
+    }
+  
+  	.happy-graduates-col {
+        margin-bottom: 2rem;
+    }
+  
+  	.limited-time-only h2 {
+        font-size: 1.5rem;
+    }
+
+    .limited-time-only h3 {
+        font-size: 1.25rem;
+    }
+  
+    .graduate-image {
+        margin-bottom: 30px;
+    }
+  	
+  	.points .point {
+        display: block;
+    }
+  
+    .section {
+    	padding: 0;
+    }
+  	
+  	.save {
+      	top: 4px;
+  	}	
+  	
+  	.most-popular-icon {
+        margin: 0;
+        right: 20px;
+    }
+  
+  	.learn-more-now {
+        width: 100%;
+    }
+  
+  	.book-now {
+  		width: 100%;
+  	}
+  
+  	.labels {
+        min-height: auto;
+        margin-bottom: 1rem;
+    }
+  
+  	.review-banner {
+        height: 300px;
+    }
+  	
+  	.reviews {
+        margin-top: 25px;
+    }
+  
+  	.desktop {
+  		display: none;
+  	}
+  
+  	.mobile {
+  		display: block;
+  	}
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

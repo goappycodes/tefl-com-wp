@@ -1,0 +1,136 @@
+.students-review .rplg .rplg-social-logo svg {
+    width: 30px!important;
+    height: 30px!important;
+}
+
+.students-review .rplg .rplg-biz-rating .rplg-biz-score {
+    font-size: 1.5rem !important;
+    line-height: 1.5rem !important;
+}
+
+.rplg .rplg-biz-based {
+    line-height: 1rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 100 !important;
+}
+
+
+.rplg .rplg-stars svg {
+    width: 15px!important;
+    height: 15px!important;
+    margin-right: 2px !important;
+}
+
+.review-statuses {
+    margin: 0 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid;
+}
+
+.rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6 .rplg-box {
+    padding: 0px 20px!important;
+    border-right: 1px solid #fff !important;
+}
+
+.rplg .rplg-grid .rplg-row {
+    margin: 25px 0;
+}
+
+.rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6:last-child .rplg-box {
+    border: none !important;
+}
+
+.rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6:first-child {
+    border: none !important;
+}
+
+span.course-review-count {
+    margin-left: 8px;
+}
+
+.rplg-grid {
+    width: 40%;
+}
+
+.rplg-grid .rplg-stars use {
+    fill: #d9a937;
+}
+
+.review-status {
+    display: flex;
+    align-items: center;
+}
+.progress {
+    margin: 5px;
+    padding: 0;
+    width: 70%;
+    height: 20px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.progress-bar {
+	position:relative;
+    float:left;
+    height:100%;
+    background:#d9a937;
+    width: 0;
+    transition: width 2s linear;
+}
+
+.review-widget-views {
+    position: absolute;
+    width: 40%;
+    background: url(/wp-content/uploads/2020/11/Rectangle-275.svg) !important;
+    color: #fff;
+    text-align: center;
+    padding-top: 25px;
+    font-weight: 100!important;
+}
+
+.review-widget-views h6 {
+    color: #fff;
+    padding: 0px;
+    margin-bottom: 10px;
+    font-weight: 100!important;
+}
+
+.progress-text, .progress-value {
+    width: 15%;
+}
+
+.star-div i {
+    color: #d9a937;
+    font-size: 15px !important;
+}
+
+.total-count-text {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+.read-all-reviews-btn a {
+    padding: 7px 20px;
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #C29011;
+    text-transform: uppercase;
+    box-shadow: 10px 10px 50px #555;
+    font-size: 0.66rem;
+    letter-spacing: 0.2rem;
+}
+
+@media only screen and (max-width: 767px){
+    .review-widget-views, .rplg-grid {
+        width: 100%;
+    }
+
+    .review-widget-views {
+        position: initial;
+    }
+}
+
+
+

@@ -1,0 +1,78 @@
+/* .woocommerce-page table.cart img {
+    min-width: 100px;
+    padding: 10px;
+} */
+
+div#wc-stripe-payment-request-wrapper {
+    padding-top: 0px !important;
+}
+
+p#wc-stripe-payment-request-button-separator {
+    margin: 10px 0 !important;
+}
+
+form.checkout.woocommerce-checkout>#wc-stripe-payment-request-button-separator {
+    display: none !important;
+}
+
+
+button.button[name="update_cart"][aria-disabled="true"] {
+    color: #fff !important;
+}
+
+
+button.button[name="update_cart"][aria-disabled="true"]:hover {
+    color: #000 !important;
+}
+
+.login-url {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.woocommerce-thankyou-order-received {
+    margin: 30px 0;
+}
+
+td.product-subtotal>small {
+    display: none;
+}
+
+/* .wc-proceed-to-checkout .checkout-button {
+    background-color: #618d8f !important;
+} */
+
+.form-row.woocommerce-SavedPaymentMethods-saveNew.woocommerce-validated {
+    display: none !important;
+}
+
+div#stripe-payment-data fieldset {
+    border: none;
+}
+
+.logged-in p#billing_email_field span:after {
+    content: 'This is the Email Address related to your Moodle Account and is not changeable. If you are trying to order for someone else, We suggest you to logout and place a separate order with a fresh account.';
+    font-size: 0.75rem;
+    line-height: 1rem;
+    display: block;
+    margin-top: 10px;
+}
+
+input#billing_email[readonly="readonly"] {
+    opacity: 0.6;
+}
+
+.coupon-page-link {
+    font-size: small;
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+form.checkout_coupon.woocommerce-form-coupon>p {
+    margin-bottom: 10px;
+}
+
+form.checkout_coupon.woocommerce-form-coupon {
+    padding-bottom: 0;
+}

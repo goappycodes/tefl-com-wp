@@ -1,0 +1,106 @@
+.exit-intent-popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.popup-content {
+    position: absolute;
+    padding: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    height: 400px;
+    width: 400px;
+    text-align: center;
+}
+
+.popup-img img {
+    height: 200px;
+}
+
+#brochure_form_div {
+    display: none;
+}
+
+.popup-content .close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+    padding: 5px 8px 8px 8px;
+    background-color: #000;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 0.7rem;
+    display: flex;
+    align-items: center;
+    font-weight: 100;
+}
+
+.popup-content h4 {
+    font-weight: 700;
+    font-size: 1.7rem;
+    line-height: 2rem;
+}
+
+.popup-img {
+    margin-bottom: 20px;
+}
+
+.popup-content p {
+    font-size: 1.3rem;
+    margin: 15px 0;
+    font-weight: 400;
+    line-height: 1rem;
+}
+
+.view-form {
+    background-color: black;
+    color: #fff;
+    padding: 5px 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+}
+
+.intern-brochure-row > div {
+    margin-bottom: 10px;
+}
+
+.intern-brochure-row {
+    margin-bottom: 0px;
+}
+
+#brochure_form_div .wpcf7-list-item {
+    margin: 0px !important;
+}
+
+#brochure_form_div span.wpcf7-form-control-wrap.acceptance {
+    text-align: left;
+}
+
+#brochure_form_div .wpcf7-list-item label {
+    display: flex;
+}
+
+#brochure_form_div span.wpcf7-list-item-label {
+    line-height: 1.5rem;
+}
+
+#brochure_form_div .wpcf7-list-item input[type="checkbox"] {
+    margin-top: 3px;
+}
+
+#brochure_form_div form.wpcf7-form.init {
+    text-align: left;
+}

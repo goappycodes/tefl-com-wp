@@ -1,0 +1,26 @@
+body.search-results #primary {
+    margin: 0;
+}
+
+body.search-results section.ast-archive-description {
+    padding: 20px 0;
+}
+
+body.search-results .page-title {
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+h2.entry-title a {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+body.search-results p.read-more a {
+    color: #fff !important;
+    padding: 20px;
+    text-align: center;
+    display: block;
+    background: black;
+}

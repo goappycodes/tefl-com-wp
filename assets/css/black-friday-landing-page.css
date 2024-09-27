@@ -1,0 +1,1317 @@
+.dark-theme-section {
+    background-color: #eeede9;
+}
+
+:root {
+    --teal-dark: #217381;
+    --bubble-small-font: 24px;
+    --bubble-large-font: 38px;
+}
+
+/* common css */
+.text-center {
+    text-align: center;
+}
+
+.mb-1 {
+    margin-bottom: 1rem !important;
+}
+
+.mb-2 {
+    margin-bottom: 2rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 3rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 4rem !important;
+}
+
+.mt-1 {
+    margin-top: 1rem !important;
+}
+
+.mt-2 {
+    margin-top: 2rem !important;
+}
+
+.mt-4 {
+    margin-top: 4rem;
+}
+
+/* black friday landing page 2023 */
+#content {
+    color: var(--black-jet);
+}
+
+#content>.ast-container {
+    padding: 0;
+    max-width: 100%;
+}
+
+.free_10_hour_flex {
+    justify-content: flex-end;
+    margin-top: -70px;
+    margin-bottom: -55px;
+    margin-right: 15px;
+    z-index: 1;
+}
+
+.free_10_hour {
+    width: 100px;
+    height: 110px;
+}
+
+
+.black-friday-2023-hero-banner-section {
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    padding: 100px 0 !important;
+}
+
+.section-padding {
+    padding: 72px 0px;
+}
+
+.section-padding-top {
+    padding-top: 72px;
+}
+
+.section-padding-bottom {
+    padding-bottom: 72px;
+}
+
+.banner-section__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.banner-discount-text {
+    color: var(--white);
+    font-size: 37.67px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.banner-content__title {
+    background: var(--teal-dark);
+    color: var(--white);
+    font-size: 28px;
+    padding: 20px;
+    font-weight: 500;
+}
+
+@media screen and (min-width:769px) {
+    .banner-content__title {
+        max-width: 66%;
+    }
+
+    .course-card__bottom-content.features {
+        height: 300px;
+    }
+}
+
+.banner-content__summary {
+    color: var(--white);
+}
+
+.banner-content__summary p {
+    margin-bottom: 10px;
+}
+
+.banner-content__summary .text-accent {
+    color: var(--gold);
+}
+
+.banner-content__summary ul li {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 400;
+}
+
+.banner-content__summary ul li:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+.banner-content__summary ul li:before {
+    content: url("/wp-content/uploads/2024/01/Vector-42.svg");
+}
+
+@media screen and (max-width:768px) {
+    .offer-bubbles {
+        display: none;
+    }
+}
+
+
+
+.offer-bubble {
+    /* background: url('https://tefl.ie/wp-content/uploads/2024/01/gold-circle-3.png'); */
+    position: absolute;
+    background-size: cover !important;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: var(--white);
+    justify-content: center;
+    line-height: 1;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.offer-bubble.offer-bubble-top {
+    right: 0;
+    height: calc(var(--bubble-small-font)*4 + 20px);
+    width: calc(var(--bubble-small-font)* 4 + 20px);
+    top: -50px;
+    font-size: var(--bubble-small-font);
+    gap: 4px;
+}
+
+.offer-bubble.offer-bubble-bottom {
+    bottom: -65px;
+    right: 50px;
+    width: calc(var(--bubble-large-font)*5 + 20px);
+    height: calc(var(--bubble-large-font)*5 + 20px);
+    font-size: var(--bubble-large-font);
+    gap: 4px;
+}
+
+.offer-bubble.offer-bubble-top>*:not(:first-child) {
+    text-transform: uppercase;
+}
+
+.offer-bubble>*:first-child {
+    color: #405364;
+    font-weight: 700;
+}
+
+.offer-bubble.offer-bubble-bottom>*:last-child {
+    text-transform: uppercase;
+}
+
+.offer-bubble.offer-bubble-bottom>*:first-child {
+    font-size: var(--bubble-large-font);
+}
+
+.offer-bubble.offer-bubble-bottom>*:last-child {
+    font-size: calc(var(--bubble-large-font) + 4px);
+}
+
+/* course main content section start */
+
+/* ------------------------------------------- */
+
+
+
+.main-content {
+    color: var(--black-jet);
+}
+
+
+.content-title {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 0.2rem;
+}
+
+.ques-ans-section .accordion-panel-title,
+.ques-ans-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--black-jet);
+}
+
+.ques-ans-section .accordion-panel-title::after,
+.ques-ans-title::after {
+    content: "\2b";
+    color: var(--black-jet);
+    font-size: 2.5rem;
+    font-weight: 300;
+    font-family: "FontAwesome";
+}
+
+.ques-ans-accordion {
+    border-bottom: 2px dotted var(--black-jet);
+}
+
+.ques-ans-section .accordion-panel-title[aria-expanded="true"]::after,
+.ques-ans-accordion.active .ques-ans-title::after {
+    content: "\f068";
+    font-size: 18px;
+}
+
+.ques-ans-accordion.active content {
+    transition: all .4s ease-in-out;
+}
+
+.ques-ans-section .accordion-panel-title,
+.ques-ans-title {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.ques-ans-section .panel,
+.ques-ans-accordion {
+    border-bottom: 2px dotted var(--black-jet);
+    padding: 10px 5px 10px 15px;
+}
+
+.ques-ans-section .panel:last-child,
+.ques-ans-accordion:last-child {
+    border: none;
+}
+
+
+.ques-ans-body p {
+    font-weight: 500;
+}
+
+.ques-ans-body img {
+    width: 100%;
+}
+
+.ques-ans-body b {
+    border-bottom: 1px dashed var(--light-gray);
+    display: block;
+    padding: 8px;
+}
+
+.ques-ans-accordion {
+    cursor: pointer;
+}
+
+.ques-ans-body a {
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+.ques-ans-content {
+    display: none;
+}
+
+.ques-ans-accordion.active .ques-ans-content {
+    display: block !important;
+}
+
+.ques-ans-body {
+    font-weight: normal;
+}
+
+/* < why-us-section > */
+
+.why-us-section-container {}
+
+.why-us-content-block {
+    background-color: var(--white);
+    border-radius: 20px;
+    padding: 1rem 0rem 1rem 1rem;
+}
+
+.why-us-icon-descritpion {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.why-us-conent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.why-us-conent .why-us-title {
+    font-weight: 700;
+}
+
+/* < why-us-section /> */
+
+/* < Tefl Courses Section > */
+
+.tefl-courses-section-header {
+    text-align: center;
+    color: var(--black-jet);
+    padding-bottom: 2.2rem;
+}
+
+
+
+.course-card {
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.course-card::before {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 1rem;
+}
+
+.discount-sticker {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+.discount-sticker {
+    background: var(--teal-dark);
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    border-radius: 50%;
+    right: -45px;
+    top: -30px;
+    z-index: 9;
+}
+
+@media(max-width: 768px) {
+    .discount-sticker {
+        width: 60px;
+        height: 60px;
+        right: -5%;
+        top: -30px;
+    }
+}
+
+.discount-text,
+.discount-percent {
+    line-height: normal;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.card-head {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 1.8rem;
+}
+
+.card-head .course-hour-sticker {
+    width: 100px;
+    height: 100px;
+}
+
+.card-sub-head {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.4);
+    gap: 1rem;
+    position: relative;
+    padding: 0.5rem 1.8rem;
+    align-items: center;
+    min-height: 110px;
+    border-top: 1px solid var(--white);
+    border-bottom: 1px solid var(--white);
+}
+
+.card-sub-head-img {
+    width: 65px;
+    /* height: 65px; */
+}
+
+.card-subhead-content {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.tefl-courses-cards-wrapper> :first-child .card-sub-head-title {
+    color: #FFB3C7;
+}
+
+.card-sub-head-title {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.card-sub-head .card-sub-head-text {
+    font-size: 15px;
+    color: #ffffff;
+    line-height: 1.5;
+    padding-top: 0.2rem;
+}
+
+/* -- */
+
+.price-guide-download {
+    position: relative;
+    padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+
+}
+
+.course-price-duration-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0.5rem;
+}
+
+.course-price-duration-info {
+    margin: 0 auto;
+    background-color: var(--white);
+    border-radius: 8px;
+}
+
+.price-guide-download .course-title {
+    font-size: 17px;
+    font-weight: 600;
+    min-height: 40px;
+}
+
+.price-guide-download .course-discount-price {
+    background: var(--bg-color);
+    width: calc(100% - 15px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0.5rem;
+    padding: 8px 10px;
+    border-radius: 35px;
+}
+
+.course-price-html del {
+    opacity: 0.4;
+}
+
+.course-price-html del:before {
+    content: "Was: ";
+}
+
+.course-price-html ins:before {
+    content: "Now: ";
+}
+
+.course-price-html ins {
+    font-weight: bold;
+}
+
+.course-discount-price .past-price {
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    color: var(--gray-dark);
+}
+
+.course-discount-price .present-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.course-completion-time-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0rem;
+}
+
+.course-completion-time-info .course-completion-title {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.course-completion-time-info .course-completion-time {
+    font-size: 18px;
+}
+
+.course-guide-download-button {
+    padding: 0.8rem 2.5rem;
+    border-radius: 8px;
+    background-color: #1C1C1B;
+    font-size: 17px;
+}
+
+/* --------< courses-details-card >----------- */
+
+.course_card__bottom {
+    background: var(--white);
+    border-radius: 1rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.course-card__bottom-title {
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.course-card__bottom-title,
+.course-title {
+    color: var(--black);
+}
+
+.course-card__bottom-content.features>*:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.course-card-freebies {
+    background: var(--bg-color);
+    padding: 10px 20px;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.hybrid-diploma-courses-section .course-card-freebies {
+    padding: 10px;
+    gap: .5rem
+}
+
+.course-freebie {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hybrid-diploma-courses-section .course-freebie img {
+    width: 32px;
+}
+
+span.course-freebie__text {
+    font-size: 14px;
+    line-height: 1.25;
+}
+
+.hybrid-diploma-courses-section .course-freebie__text {
+    font-size: 12px;
+}
+
+.feature-include,
+.feature-exclude {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.feature-exclude {
+    color: var(--gray-dark);
+}
+
+.enrol-buttons {
+    display: flex;
+    padding-top: 2rem;
+    gap: 0.7rem;
+    width: 100%;
+}
+
+.enrol-now-btn,
+.learn-more-btn {
+    border: 1px solid;
+    font-weight: 600;
+    color: var(--white);
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+
+}
+
+.enrol-buttons a {
+    width: 50%;
+}
+
+.enrol-buttons a button {
+    width: 100%;
+}
+
+.learn-more-btn {
+    background-color: var(--gold);
+}
+
+.enrol-now-btn {
+    background-color: var(--black-jet);
+}
+
+/* < course-detail-card />*/
+
+
+/* < Tefl Courses Section /> */
+
+/* < Gift Info Section >*/
+
+.gifts-info-container {
+    background-color: var(--bg-color);
+    border-radius: 30px;
+    border: 2px solid var(--black-jet);
+    padding: 16px;
+}
+
+.gift-ribbon {
+    position: absolute;
+    right: 18px;
+    top: 0;
+}
+
+.gifts-info-container .animated-gif-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+}
+
+.animated-gif {
+    width: 45%;
+}
+
+/* .gift-column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0rem 1.5rem 1rem 1.5rem
+}
+
+.course-title {
+    text-align: center;
+} */
+
+.course-badge-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Adjust as needed */
+}
+
+.course-badge-body .gift {
+    flex: 0 1 calc(20% - 10px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.course-badge-body .badge-icon>img {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.4s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.course-badge-body .badge-title {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.4s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.course-badge-body .badge-icon img {
+    width: 120px;
+    height: 120px;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.course-badge-body .course-badge-text,
+.course-badge-body .badge-icon {
+    text-align: center;
+}
+
+
+@media (max-width: 768px) {
+    .course-badge-body .gift {
+        flex: 0 1 calc(33.33% - 10px);
+    }
+
+    .animated-gif-wrapper .animated-gif {
+        width: 100%;
+        margin: 0 auto 1.5rem;
+    }
+
+    .gift-ribbon img {
+        width: 76%;
+    }
+
+    .gifts-info-container .gift-ribbon {
+        position: absolute;
+        right: -11px;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .course-badge-body .gift {
+        flex: 0 1 calc(50% - 10px);
+    }
+}
+
+/* < Gift Info Section/>*/
+
+/* < Tefl Internship Section > */
+/* same class and styles as Tefl Courses */
+.country-name-wrapper {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.country-name {
+    font-weight: 400;
+    color: var(--white);
+}
+
+.internship-cta-large-button {
+    width: 100%;
+    padding-top: 40px;
+}
+
+.view-all-intership-button {
+    width: 100%;
+    background-color: var(--teal-dark);
+    padding: 10px 20px;
+    text-transform: none;
+    border-radius: 0.25rem;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+/* < Tefl Internship Section /> */
+/* < Trial Section >  */
+
+.trial-card {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    border-radius: 20px;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.trial-card::before {
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.trial-card-content {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 40px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .trial-card-content {
+        width: 100%;
+    }
+}
+
+.trial-card-title {
+    color: var(--white);
+    padding: 1.5rem 0rem;
+    font-weight: 600;
+}
+
+.trial-card-description {
+    font-size: 18px;
+    color: var(--white);
+    padding: 1.5rem;
+    font-weight: 600;
+    min-height: 160px;
+}
+
+.trial-card-button {
+    background-color: var(--gold);
+    border-radius: 10px;
+    width: max-content;
+    padding: 1rem 2rem;
+}
+
+/* < Trial Section />  */
+
+/* < Partners Accreditations Section > */
+
+.accreditations-point-text {
+    font-size: 14px;
+    color: var(--black-jet);
+    font-weight: 500;
+}
+
+.partners-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .partners-logo-wrapper {
+        flex-wrap: wrap;
+    }
+}
+
+.partners-accreditations-heading h3 {
+    text-align: center;
+    padding-bottom: 2.2rem;
+}
+
+.partners-accreditations-column {
+    margin: 0 auto !important;
+}
+
+.partners-accreditations-row {
+    display: flex;
+}
+
+.partners-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* < Partners Accreditations Section /> */
+
+/*  */
+
+.accreditations-container {
+    padding-top: 1.5rem;
+}
+
+.accreditations-container p {
+    margin: 0;
+}
+
+.accreditations-container .fa-check {
+    color: #66BE9F;
+}
+
+.accreditations-container-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.accreditations-container .accreditations-point {
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    text-align: center;
+    padding-top: 0.8rem;
+    gap: 0.5rem;
+    font-size: 18px;
+
+}
+
+/* < Specialist Course Section > */
+
+.specialist-course-card {
+    background-color: var(--white);
+    border-radius: 1rem;
+    padding-bottom: 1.8rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.specialist-discount-sticker {
+    background: var(--gold);
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    border-radius: 50%;
+    right: -45px;
+    top: -30px;
+    z-index: 999;
+}
+
+.specialist-course-section-header {
+    text-align: center;
+    padding-bottom: 2.2rem;
+}
+
+.card-top {
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem 1rem 0rem 0rem;
+    padding: 1.8rem 0rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-top .specialist-course-sticker {
+    width: 100px;
+    height: 100px;
+}
+
+.card-body {
+    height: 100%;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 20px 0px 20px;
+    border-radius: 0rem 0rem 1rem 1rem;
+    padding-top: 1.4rem;
+}
+
+
+.card-body .specialist-course-discount-price {
+    background: var(--bg-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 20px;
+    border-radius: 35px;
+    width: 100%;
+}
+
+.specialist-course-discount-price .past-price {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: var(--gray-dark);
+}
+
+.specialist-course-discount-price .present-price {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.card-body .course-type,
+.course-duration {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.card-body .course-type {
+    padding-top: 0.8rem;
+}
+
+.course-duration {
+    font-weight: 600;
+    padding: 0.8rem 0rem;
+}
+
+.card-body a {
+    width: 100%;
+}
+
+.specialist-course-cta {
+    width: 100%;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: var(--black-jet);
+    margin-top: 1.5rem;
+}
+
+.specialist-course-btn-column {
+    display: flex;
+    justify-content: center;
+}
+
+.specialist-course-cta-large-button {
+    width: 80%;
+    padding-top: 40px;
+}
+
+@media (max-width: 768px) {
+
+    .specialist-course-cta-large-button {
+        width: 100%;
+    }
+}
+
+.specialist-course-cta-large-button a {
+    display: flex;
+    justify-content: center;
+}
+
+.view-all-specialist-course-button {
+    width: 100%;
+    background-color: var(--teal-dark);
+    padding: 10px 20px;
+    text-transform: none;
+    border-radius: 0.25rem;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+
+
+
+
+
+
+/* < Specialist Course Section /> */
+
+/* < rEVIEWS sECTION >*/
+
+.verified-student-reviews-section {
+    color: var(--white);
+}
+
+.reviews-average {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.verified-student-reviews-section__header {
+    display: flex;
+    align-items: end;
+
+}
+
+.rating-div {
+    display: flex;
+    gap: .5rem;
+}
+
+.rating-div .fa {
+    font-size: 3rem;
+    color: var(--gold);
+}
+
+.verified-student-reviews-section__title,
+.verified-student-reviews-section__subtitle {
+    color: var(--black-jet);
+}
+
+.verified-student-reviews-section__slider .rplg-grid {
+    opacity: 0;
+}
+
+.verified-student-reviews-section__review-summary {
+    margin-bottom: 2.25rem;
+}
+
+.verified-student-reviews-section__review-summary .progress-text,
+.verified-student-reviews-section__review-summary .progress-value {
+    width: 15%;
+    font-weight: 500;
+    color: var(--black-jet);
+}
+
+.verified-student-reviews-section__review-summary .progress {
+    margin: 5px;
+    padding: 0;
+    width: 70%;
+    height: 20px;
+    overflow: hidden;
+    background: #DAAB3733;
+}
+
+.verified-student-reviews-section__review-summary .review-status {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.verified-student-reviews-section__review-summary .progress-bar {
+    background: var(--gold);
+    display: block;
+    height: 100%;
+    transition: all 3s linear;
+    position: relative;
+    float: left;
+    width: 0;
+}
+
+.verified-student-reviews-section .total-count-text {
+    color: var(--black-jet);
+}
+
+@media screen and (max-width:768px) {
+    .verified-student-reviews-section__header {
+        flex-direction: column;
+        row-gap: 3rem;
+        align-items: baseline;
+    }
+
+    .reviews-average {
+        align-items: baseline;
+    }
+
+    .verified-student-reviews-section__row {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+
+    .logo-group .image {
+        display: block !important;
+        width: 45% !important;
+        background-size: contain !important;
+        height: 80px;
+    }
+
+    .verified-student-reviews-section .spacer-column,
+    .rplg-slider .rplg-slider-prev,
+    .rplg-slider .rplg-slider-next {
+        display: none;
+    }
+
+    .verified-student-reviews-section__review-summary .progress {
+        width: 60%;
+    }
+
+    .verified-student-reviews-section__review-summary .progress-text,
+    .verified-student-reviews-section__review-summary .progress-value {
+        width: 20%;
+    }
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-box .rplg-box-content:before,
+.verified-student-reviews-section__row .rplg-slider-review .rplg-review-badge,
+.verified-student-reviews-section__row .rplg-slider .rplg-box .rplg-box-content::-webkit-scrollbar,
+.verified-student-reviews-section__row .rplg-slider .rplg-box:before {
+    display: none !important;
+}
+
+.verified-student-reviews-section__slider>div {
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 1rem;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-box .rplg-box-content {
+    margin: 10px 0 0 !important;
+    display: flex;
+    flex-direction: column;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-row {
+    padding: 0px !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider-review .rplg-row .rplg-row-right {
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-stars {
+    position: absolute;
+    top: -60px;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-time {
+    margin-top: 30px;
+    color: #000 !important;
+    font-size: 1.1rem !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-stars use {
+    fill: var(--black-jet);
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-stars svg {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 2px !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-name {
+    font-weight: 700 !important;
+    color: var(--black-jet) !important;
+    font-size: 1rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.verified-student-reviews-section__row .rplg-slider-review {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0 !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider-review .rplg-box {
+    border: none !important;
+    background: none !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-text {
+    color: var(--black-jet) !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 25px !important;
+}
+
+.verified-student-reviews-section__row .rplg-box {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-biz-rating .rplg-biz-score {
+    color: var(--black-jet) !important;
+}
+
+.verified-student-reviews-section__row .rplg-businesses .rplg-links {
+    display: none;
+}
+
+.verified-student-reviews-section__row .rplg-businesses .rplg-biz-based-text {
+    color: var(--black-jet);
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    text-shadow: none;
+}
+
+.verified-student-reviews-section__row .rplg-grid .rplg-stars svg use {
+    fill: var(--black-jet);
+}
+
+.verified-student-reviews-section__row .rplg-businesses .rplg-row-right {
+    margin-left: 40px;
+}
+
+
+.rplg .rplg-social-logo svg,
+.rplg .rplg-social-logo.rplg-facebook-logo svg {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-badge {
+    left: 0 !important;
+    display: inline;
+}
+
+.verified-student-reviews-section {
+    padding-bottom: 5rem;
+    border-bottom: 3px solid var(--black-jet);
+}

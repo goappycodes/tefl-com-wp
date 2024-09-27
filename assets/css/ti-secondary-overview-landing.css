@@ -1,0 +1,811 @@
+#content>.ast-container {
+    padding: 0;
+    max-width: 100%;
+}
+
+
+/* common css */
+
+:root {
+    --primary-color: #1A3847;
+    --bg-color: #eeede9;
+    --text-color: #1C1C1B;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-gray: #e4e3de;
+    --color-secondary: #217381;
+    --color-gold: #d9a937;
+}
+
+body {
+    background: var(--bg-color);
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+
+.section-padding {
+    padding: 72px 0;
+}
+
+.section-top {
+    margin-top: 50px;
+    /* overflow: auto; */
+}
+
+.content-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-transform: capitalize;
+    transition: all .4s ease-in-out;
+    font-weight: 600;
+}
+
+
+.btn-primary {
+    background: var(--black-jet);
+    color: var(--color-white);
+}
+
+.content-btn:hover {
+    color: var(--color-black);
+    background: var(--color-white);
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.btn {
+    display: flex;
+    font-size: 1.25rem;
+    padding: 20px;
+    border-radius: 8px;
+    text-transform: capitalize;
+    transition: all .4s ease-in-out;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-small {
+    padding: 10px;
+    width: 100%;
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.btn-small:hover {
+    color: var(--color-black);
+    background: var(--color-white);
+}
+
+.learn-more-div .btn-small {
+    background: var(--bg-color);
+    border: 1px solid var(--text-color);
+    color: var(--color-black);
+    margin-top: 1rem;
+}
+
+.learn-more-div .btn-small:hover {
+    background: var(--color-white);
+}
+
+.wcpbc-price ins {
+    font-weight: 300 !important;
+    font-size: 1.25rem !important;
+}
+
+
+
+/* hero banner section start */
+.hero-banner-section {
+    padding: 100px 0;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-color: var(--bg-color) !important;
+}
+
+.hero-banner-section__content {
+    background: var(--white);
+    padding: 2.5em;
+    border-radius: 0.5rem;
+    color: var(--primary-color);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.hero-banner-title {
+    /* color: var(--primary-color); */
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.hero-banner-subtitle {
+    font-weight: 400;
+    font-size: 27px;
+}
+
+.hero-banner-section__content-summary {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+/* hero banner section end */
+
+/* features start */
+
+
+.feature {
+    margin-left: 25px;
+}
+
+.features-inner {
+    display: flex;
+    align-items: center;
+}
+
+.feature .title {
+    font-weight: 700;
+    /* color: var(--primary-color); */
+}
+
+.features-inner img {
+    background: var(--color-white);
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.feature .subtitle {
+    opacity: 0.75;
+    /* color: var(--primary-color); */
+    font-weight: 400;
+}
+
+/* features end */
+/* course section start */
+
+.course-title {
+
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 20px 20px 0 0;
+    padding: 10px;
+}
+
+
+
+.specialist-courses {
+    background: var(--color-gray);
+    border-radius: 0 0 20px 20px;
+    padding: 50px 30px;
+    overflow: auto;
+    row-gap: 2rem !important;
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+.specialist-courses-inner {
+    background: var(--bg-color);
+    border-radius: 0 0 20px 20px;
+    padding: 0 25px 25px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.offer-ends {
+    top: 10px;
+    position: relative;
+    display: block;
+    margin-bottom: 10px !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    text-transform: unset !important;
+}
+
+.specialist-courses .clock-inner .base {
+    font-size: 2rem;
+}
+
+.specialist-courses .digit-text {
+    text-align: center;
+}
+
+.clock-sidebar {
+    margin-top: 25px;
+    background: var(--text-color);
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 20px 0;
+    text-align: center;
+    min-height: 140px;
+}
+
+.digit-text {
+    margin-top: 1rem;
+}
+
+.clock {
+    padding: 20px !important;
+}
+
+.clock>div {
+    width: 65% !important;
+}
+
+
+.specialists-tefl-course .clock-day,
+.clock-hour,
+.clock-min,
+.clock-sec {
+    background: unset !important;
+    border-radius: unset !important;
+    padding: 0px !important;
+}
+
+.specialists-tefl-course {
+    margin-bottom: 70px;
+}
+
+.digit {
+    color: var(--color-white) !important;
+}
+
+.features-div {
+    text-align: right;
+    margin-top: 2.5rem;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.features-div>div {
+    margin-bottom: 1rem;
+}
+
+.specialist-courses-inner .course-heading {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.specialist-courses-inner .course-price {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.specialist-courses-inner .course-icon img {
+    position: relative;
+    left: -15px;
+    top: -29px;
+    margin-bottom: 5px;
+}
+
+.specialist-courses-inner .course-icon::after {
+    content: "hour";
+    transform: rotate(-90deg);
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 400;
+    margin: -21px 0 0 -14px;
+}
+
+.specialist-courses-inner .course-duration {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 1rem;
+}
+
+.features-div-icons {
+    margin-bottom: 2rem;
+}
+
+.specialist-courses-inner .access-time-div {
+
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+
+.features-div-icons .fa {
+    padding: 10px;
+}
+
+.course-price del {
+    text-decoration: none;
+    color: #87979F;
+    font-size: 13px;
+
+}
+
+.course-price ins {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: var(--color-black);
+}
+
+
+/* course section end */
+
+/* explanation section start */
+
+.explanation {
+    margin-top: 50px;
+    display: flex;
+    column-gap: 3rem;
+}
+
+.explanation .image {
+    width: 50%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+}
+
+.explanation-inner {
+    width: 50%;
+}
+
+.explanation-inner .title {
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--text-color);
+}
+
+.explanation-inner .subtitle {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+.explanation-inner .content {
+    color: var(--color-black);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* explanation section end */
+
+
+/* video section start */
+
+.video-btn {
+    position: absolute;
+    right: 4rem;
+    width: 60px;
+    bottom: 3.5rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 50%;
+    transition: all .4s ease;
+}
+
+.video-btn img {
+    position: relative;
+}
+
+.video-description-section--author-name {
+    font-weight: 700;
+    font-size: 25px;
+    margin-top: 1rem;
+
+}
+
+.video-section-image img {
+    width: 100%;
+}
+
+.video-description-section:before {
+    content: "";
+    height: 90%;
+    width: 3px;
+    background: var(--color-gray);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.video-description-section {
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.video-description-section--institute-name {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+
+/* video section end */
+
+/* quote section start */
+.quote-wrapper {
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    height: 443px;
+    border-radius: 20px;
+    background-position: center !important;
+}
+
+.quote-inner {
+    padding: 5rem 3rem;
+}
+
+.quote-title,
+.content-footer-title,
+.content-footer-subtitle {
+    font-weight: 500;
+    font-size: 26.3px;
+}
+
+.quote-sub-content {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+/* quote section end */
+
+
+
+/* post content section start */
+.post-wrapper {
+    display: flex;
+    /* align-items: center; */
+    margin-bottom: 2rem;
+}
+
+.post-img {
+    background-size: cover !important;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.post-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.post-wrapper-1 .post-content {
+    background: var(--color-gray);
+    border-radius: 20px;
+    width: 100%;
+    padding: 36px 28px;
+}
+
+.post-wrapper-1 .content-title {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.post-wrapper-1 .content-subtitle {
+    border-bottom: 1px dashed #ffffff30;
+    margin-bottom: 1rem;
+}
+
+.post-wrapper-2 .post-content {
+    background: var(--color-secondary);
+    border-radius: 20px;
+    width: 100%;
+    padding: 36px;
+    color: var(--color-white);
+
+}
+
+.post-wrapper-2 .content-title {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.post-wrapper-2 .content-subtitle {
+    border-bottom: 1px dashed #ffffff30;
+    margin-bottom: 1rem;
+}
+
+
+.post-wrapper-3 .post-content {
+    background: var(--color-gold);
+    border-radius: 20px;
+    width: 100%;
+    padding: 32px;
+    color: var(--color-white);
+
+}
+
+.post-wrapper-3 .content-title {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.post-wrapper-3 .content-subtitle {
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed #ffffff30;
+}
+
+
+
+.fa-angle-right:before {
+    content: "\f105";
+}
+
+/* post content section end */
+
+
+/* faq section */
+
+.faqs-section__row-body {
+    background: var(--white);
+    border-radius: .5rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.faqs-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all .4s ease-in-out;
+    max-height: 272px;
+    overflow: hidden;
+}
+
+.faqs-accordion.expanded {
+    max-height: 2000px;
+}
+
+.faqs-accordion .input {
+    display: none;
+}
+
+.faqs-accordion label {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.faqs-accordion__content a {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    color: var(--accent);
+}
+
+.faqs-accordion__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    will-change: height;
+    transform: translateZ(0);
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.faqs-accordion input:checked+label+.faqs-accordion__content.active,
+.faqs-accordion__item.active {
+    max-height: 1000px;
+}
+
+.faqs-accordion__item {
+    transition: all .4s ease;
+    border-radius: .5rem;
+    position: relative;
+}
+
+.faqs-accordion__item:not(.active):after {
+    content: "";
+    width: 100%;
+    height: 14px;
+    display: block;
+    position: absolute;
+    left: 10px;
+    border-bottom: 1px dashed var(--gray-border);
+    bottom: 0px;
+}
+
+.faqs-accordion__item.active {
+    background: var(--white);
+    /* box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; */
+}
+
+.faqs-accordion__item .fa {
+    transition: transform .4s ease;
+    color: var(--gray-border);
+}
+
+.faqs-accordion__item.active .fa {
+    transform: rotate(225deg);
+}
+
+.show-more-faqs {
+    background: var(--black-jet);
+    color: var(--white);
+    text-align: center;
+    border-radius: .5rem;
+    padding: 12px;
+    cursor: pointer;
+    margin-top: 1rem;
+    text-transform: capitalize;
+    font-size: 1.75rem;
+    transition: all .4s ease-in-out;
+    max-width: 50%;
+    margin: 1rem auto auto;
+}
+
+.show-more-faqs:hover {
+    background: var(--gold);
+}
+
+/* faq section end */
+
+@media screen and (min-width:769px) {
+    .features-div-icons>div>span {
+        display: none;
+    }
+
+
+}
+
+@media (max-width:768px) {
+
+    .features-div-icons>div {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .features-div-icons>div span {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .features-div {
+        display: none;
+    }
+
+    .hero-banner-section {
+        background-position: 65% 50% !important;
+    }
+
+    .hero-banner-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-banner-subtitle {
+        font-size: 22px;
+    }
+
+    .hero-banner-section__content-summary {
+        font-size: 16px;
+    }
+
+    .features-inner {
+        margin-bottom: 1rem;
+    }
+
+    .explanation {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .explanation .image {
+        height: 250px;
+        width: 100%;
+    }
+
+    .explanation-inner {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .explanation-inner .title {
+        font-size: 2rem;
+    }
+
+    .explanation-inner .subtitle {
+        font-size: 16px;
+    }
+
+    .explanation-inner .content {
+        font-size: 13px;
+    }
+
+    #primary {
+        padding: unset;
+
+    }
+
+    .video-btn {
+        right: 2.5rem;
+        bottom: 3.7rem;
+    }
+
+    .video-description-section--institute-name {
+        margin-bottom: 2rem;
+    }
+
+    .quote-wrapper {
+        height: unset !important;
+        background-position: unset !important;
+
+    }
+
+    .quote-title,
+    .content-footer-title,
+    .content-footer-subtitle {
+        font-size: 22.3px;
+    }
+
+    .quote-sub-content {
+        font-size: 13px;
+    }
+
+
+    .post-wrapper {
+        flex-direction: column;
+    }
+
+    .post-wrapper .w-50 {
+        width: 100%;
+    }
+
+    .post-img,
+    .post-content {
+        margin-bottom: 1.5rem;
+    }
+
+    .show-more-faqs {
+        font-size: 1.2rem !important;
+    }
+
+    .clock-sidebar {
+        display: none;
+    }
+
+    .post-wrapper-3 .post-content {
+        min-height: 350px;
+
+    }
+
+    .post-content-sections {
+        margin-top: 2rem;
+    }
+
+    .specialist-courses {
+        padding: 0;
+    }
+}

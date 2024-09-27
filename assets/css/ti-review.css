@@ -1,0 +1,238 @@
+.students-review h6 {
+    text-align: center;
+    padding: 55px 0;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.review-banner {
+    height: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.rplg {
+    margin-top: -90px;
+}
+
+.rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6 {
+    margin: 0 !important;
+    width: calc(50% - 0px)!important;
+    background: url('https://teflinstitute.com/wp-content/uploads/2020/11/Rectangle-275.svg') !important;
+    background-size: cover;
+}
+
+.rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6:first-child {
+    border-right: 1px solid #fff !important;
+}
+
+.rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6 .rplg-box {
+    margin: 0 !important;
+    border-radius: 0px !important;
+    border: none !important;
+}
+
+.rplg .rplg-grid .rplg-review-badge {
+    position: initial !important;
+}
+
+.rplg .rplg-grid .rplg-row {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rplg-row .rplg-row-right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.rplg-grid .rplg-links a {
+    color: #fff !important;
+    text-transform: uppercase;
+    margin: 0 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2rem;
+    font-size: 0.668rem !important;
+    line-height: 0.7rem !important;
+}
+
+.rplg-grid .rplg-links a:first-child {
+    padding-right: 10px;
+    margin-right: 10px !important;
+    border-right: 1px solid #fff !important;
+}
+
+.rplg .rplg-biz-based .rplg-biz-based-text {
+    text-shadow: none;
+    color: #fff;
+}
+
+.students-review .rplg .rplg-biz-rating .rplg-biz-score {
+    color: #fff !important;
+    font-size: 30px !important;
+}
+
+
+.rplg-grid .rplg-stars use {
+    fill: #fff;
+}
+
+
+.rplg-slider-review {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.rplg .rplg-box {
+    border: none !important;
+    background: none !important;
+}
+
+
+.rplg-slider-review .rplg-review-badge {
+    display: none;
+}
+
+.rplg-slider .rplg-box .rplg-box-content:before {
+    display: none !important;
+}
+
+.rplg-slider .rplg-box .rplg-box-content {
+    margin: 25px 0 0 !important;
+    display: flex;
+    flex-direction: column;
+    height: 215px !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.rplg-slider .rplg-box .rplg-box-content::-webkit-scrollbar {
+    display: none;
+}
+
+.rplg-slider .rplg-row {
+    padding: 0px !important;
+    border-bottom: 1px solid #808080 !important;
+}
+
+.rplg-slider-review .rplg-row .rplg-row-right {
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.rplg-slider .rplg-stars {
+    position: absolute;
+    top: -65px;
+}
+
+.rplg .rplg-review-time {
+    margin-top: 30px;
+    color: #000 !important;
+    font-size: 1.1rem !important;
+    font-weight: 400 !important;
+    margin-bottom: 10px;
+}
+
+.rplg-slider .rplg-stars use {
+    fill: #000;
+}
+
+.rplg-slider .rplg-stars svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 2px !important;
+}
+
+.rplg .rplg-review-name {
+    font-weight: 500 !important;
+    color: #000 !important;
+    font-size: 1rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.rplg-slider .rplg-box:before {
+    display: none !important;
+}
+
+.rplg .rplg-review-text {
+    color: #000 !important;
+}
+
+.rplg .rplg-slider {
+    margin-top: 20px !important;
+    border-bottom: 1px solid #808080 !important;
+}
+
+.rplg-slider .rplg-slider-review {
+    margin-bottom: 20px !important;
+}
+
+/* .students-review {
+    margin-bottom: 50px !important;
+} */
+
+/*For removing the time of reviews start*/
+
+.rplg .rplg-review-time {
+    opacity: 1;
+    height: auto;
+    margin-top: 5px;
+    transform: translateY(12px);
+    font-size: 0.8em!important;
+}
+
+.rplg-slider .rplg-stars {
+    top: -45px;
+    margin-left: -5px;
+}
+
+/*For removing the time of reviews end*/
+
+@media only screen and (width: 1024px){
+    .rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6 .rplg-box {
+        padding: 20px 10px !important;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .rplg-row .rplg-row-right {
+        flex-direction: column;
+    }
+    .rplg {
+        margin-top: -114px;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6 {
+        width: 100% !important;
+    }
+    
+    .rplg {
+        margin-top: 0px;
+    }
+    
+    .rplg-grid-row.rplg-businesses .rplg-col.rplg-col-6:first-child {
+        border-right: none !important;
+        border-bottom: 1px solid #fff !important;
+    }
+    
+    .rplg-grid .rplg-box {
+        padding: 10px !important;
+    }
+
+    .review-banner {
+		height: 150px!important;
+	}
+}
+
+@media only screen and (max-width: 320px){
+
+    .rplg-grid .rplg-box {
+        padding: 10px 5px !important;
+    }
+
+}
+

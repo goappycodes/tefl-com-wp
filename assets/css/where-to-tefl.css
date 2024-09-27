@@ -1,0 +1,237 @@
+.site-content .ast-container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.box {
+    max-width: 1024px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.title {
+    background: #048287;
+    display: table;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    border-radius: 10px;
+    color: white;
+    font-size: 32px;
+    padding: 20px 40px;
+    font-weight: 800;
+    margin-top: 60px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 30px auto;
+}
+
+.path {
+    border-bottom: 1px dotted;
+    margin: 50px auto 30px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.planes {
+    max-width: 984px;
+}
+
+.planes::before {
+    content: '';
+    background-image: url(https://teflinstitute.com/wp-content/uploads/2024/04/Plane-left.png);
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    margin: -420px -400px -400px -440px;
+}
+
+.planes::after {
+    content: '';
+    background-image: url(https://teflinstitute.com/wp-content/uploads/2024/04/Plane-right.png);
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    height: 455px;
+    position: absolute;
+    margin: -470px 0 0 1024px;
+}
+
+.blocks {
+    margin: 40px auto;
+    display: flex;
+    gap: 30px;
+}
+
+.cards {
+    margin: 0 auto 0;
+    display: flex;
+    gap: 30px;
+}
+
+.card {
+    border-radius: 20px;
+    padding: 40px;
+    background-position: center;
+    background-size: cover;
+    width: 50%;
+}
+
+.card-overlay {
+    margin-top: 100px;
+    background: #048287c2;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
+
+.card-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.card-subitle {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.card-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card-btn a {
+    border: 1px solid;
+    color: white;
+    border-radius: 10px;
+    font-weight: 400;
+    padding: 10px 30px;
+    font-size: 18px;
+}
+
+.block {
+    border-radius: 20px;
+    padding: 40px;
+    background: #DEDCD3;
+    text-align: center;
+}
+
+.block-icon {
+    height: 40px;
+}
+
+.block-title {
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.block-subitle {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.block-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.block-btn a {
+    color: white;
+    border-radius: 10px;
+    font-weight: 400;
+    padding: 10px 30px;
+    font-size: 18px;
+    background: #113042;
+}
+
+.guides {
+    background: #DEDCD3;
+    padding: 60px 0;
+}
+
+.guides-inner {
+    max-width: 1024px;
+    margin: 20px auto 0;
+    display: flex;
+    gap: 40px;
+}
+
+
+.guides-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.guide {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.guide-image {
+    height: auto;
+    width: 300px;
+    margin: auto;
+}
+
+.guide-link {
+    display: flex;
+    justify-content: center;
+}
+
+.guide-link a {
+    color: white;
+    border-radius: 10px;
+    font-weight: 400;
+    padding: 10px 15px 10px 30px;
+    font-size: 18px;
+    background: #113042;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.guide-link a svg {
+    margin: 0;
+    top: auto;
+    opacity: 1;
+}
+
+
+@media (max-width: 767px) {
+
+    .cards {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .blocks {
+        flex-direction: column;
+    }
+
+    .guides-inner {
+        flex-direction: column;
+    }
+
+}
+

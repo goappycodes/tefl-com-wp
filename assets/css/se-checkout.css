@@ -1,0 +1,42 @@
+#buying_course_checkout_radio .woocommerce-input-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#buying_course_checkout_radio .woocommerce-input-wrapper>input {
+    width: 2%;
+    margin-right: 2%;
+}
+
+#buying_course_checkout_radio .woocommerce-input-wrapper>label {
+    width: 96%;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+div#buying_course_checkout_radio {
+    margin-top: 10px;
+}
+
+#someone_else_checkout_field {
+    display: none;
+}
+
+.se-fields-note {
+    font-size: 1rem;
+    margin-bottom: 0px !important;
+}
+
+div#someone_else_checkout_field {
+    flex-wrap: wrap;
+}
+
+div#someone_else_checkout_field .form-row {
+    width: 50%;
+    float: none;
+}
+
+input#se_date_of_birth {
+    padding: 0.75em;
+}

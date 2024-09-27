@@ -1,0 +1,185 @@
+.deposit-full-price ins strike {
+    /*color: #808080;*/
+    margin-right: 5px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.deposit-full-price ins strike bdi {
+    font-size: 1.12rem !important;
+    text-decoration: line-through;
+}
+
+.deposit-full-price del {
+    display: none;
+}
+
+.internship-price ins strike {
+    color: #808080;
+}
+
+.internship-price ins strike bdi {
+    font-size: 1.5rem !important;
+}
+
+.wc-deposits-payment-plans {
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.wc-deposits-payment-plan-description {
+    font-size: 1rem !important;
+    /* text-transform: capitalize !important; */
+    font-weight: 400 !important;
+    display: inline-block;
+    padding-top: .5rem;
+    border-top: 1px solid var(--blue-turquoise);
+}
+
+.show-breakdown .fa::after {
+    position: absolute;
+    content: "";
+    inset: 0;
+}
+
+.wc-deposits-payment-plans::before,
+.wc-deposits-payment-plans::after {
+    display: none !important;
+}
+
+.installments-breakdown .ajax-snippet>span {
+    display: block;
+    font-size: .75rem !important;
+    text-transform: capitalize;
+}
+
+
+.deposit-breakdown {
+    position: relative;
+}
+
+.wc-deposits-wrapper,
+.wc-deposits-wrapper.wc-deposits-optional .wc-deposits-payment-plans {
+    margin: 0;
+}
+
+.wc-deposits-wrapper .wc-deposits-option li.active {
+    pointer-events: initial;
+}
+
+.show-schedule {
+    text-align: center;
+    text-transform: initial;
+    background: var(--accent);
+    color: var(--white);
+    padding: .5rem;
+    line-height: normal;
+    margin-top: .5rem;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+/* .installments-breakdown {
+    opacity: 0;
+    background: var(--black);
+    color: var(--white);
+    padding: .5rem 1.25rem;
+    margin: 1rem auto;
+    position: absolute;
+    bottom: 33%;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transform: translateY(-100px);
+    transition: all .4s ease;
+} */
+
+.installments-breakdown #loader {
+    background: transparent;
+    color: var(--white);
+    text-transform: none;
+}
+
+.installments-breakdown::after {
+    content: "";
+    position: absolute;
+    right: 50%;
+    bottom: -2%;
+    background: var(--black-jet);
+    width: 1.5rem;
+    height: 1.5rem;
+    z-index: -1;
+    transform: rotate(45deg);
+    border-radius: .25rem;
+}
+
+.installments-breakdown h6 {
+    font-weight: 600;
+    color: var(--white);
+    text-transform: capitalize;
+    font-size: 1.25rem;
+}
+
+/* .installments-breakdown.animate-slide-down {
+    transform: translateY(0);
+    opacity: 1;
+    z-index: 2;
+    bottom: calc(100% - 1rem - 50px);
+} */
+
+.installments-breakdown hr {
+    margin: .5rem 0 !important;
+    background: transparent;
+    border-top: 1px dashed;
+    height: 0;
+}
+
+.show-breakdown {
+    cursor: pointer;
+}
+
+.installments-breakdown {
+    --width: 250px;
+    opacity: 0;
+    background: var(--black-jet);
+    color: var(--white);
+    padding: 1.5rem;
+    position: absolute;
+    bottom: calc(100% + 2.5rem);
+    z-index: 2;
+    z-index: -1;
+    transform: translateY(-100px);
+    transition: all .4s ease;
+    width: var(--width);
+    right: calc(var(--width)/-2);
+    border-radius: .5rem;
+}
+
+@media screen and (max-width:768px) {
+    .installments-breakdown {
+        right: 0 !important;
+    }
+
+    .installments-breakdown::after {
+        right: 0 !important;
+        border-radius: .5rem 50% 0 50%;
+    }
+}
+
+.installments-breakdown.animate-slide-down {
+    transform: translateY(0);
+    opacity: 1;
+    z-index: 2;
+}
+
+i.show-schedule-icon {
+    padding: 4px 8px;
+    border-radius: 100%;
+    font-size: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: -1.5rem;
+    right: 0;
+}

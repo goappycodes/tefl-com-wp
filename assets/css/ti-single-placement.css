@@ -1,0 +1,867 @@
+@font-face {
+	font-family: 'Brittish Shorthair';
+	src: url('/wp-content/themes/teflinstitute/assets/fonts/brittish_shorthair.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.form-mailchimp-row label {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.content-area .ast-container {
+    padding: 0;
+}
+
+.section {
+    margin-top: 3rem;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: -4rem;
+}
+
+.sidebar__type {
+    background: black;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    padding: 10px 0;
+    font-weight: 600;
+}
+
+.sidebar__heading {
+    margin: 3rem 0 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+    letter-spacing: 0.4rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.sidebar__info {
+    padding: 0 20px;
+}
+
+.info__item {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.info__top {
+    font-weight: 600;
+}
+
+.info__bottom {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.sidebar__price {
+    background: #ededed;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.regular {
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 1rem;
+    font-size: 18px;
+    text-decoration: line-through;
+}
+
+.sale {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.sidebar__buttons {
+    display: flex;
+}
+
+.sidebar__buttons a:first-child {
+    background-color: #fff;
+    border: 1px solid #000;
+    color: #000;
+}
+
+.sidebar__buttons a {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    justify-content: space-between;
+    padding: 12px 20px;
+    min-height: 55px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+    width: 50%;
+}
+
+.heading {
+    margin: 3rem 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    letter-spacing: 0.4rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.hero__container {
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: -webkit-right;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.collage {
+    min-height: 300px;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.polaroid {
+    width: 189px;
+    height: 198px;
+    background: url(https://teflinstitute.com/wp-content/uploads/2022/01/Polaroid-1.png) no-repeat center center / cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 -0.5rem;
+}
+
+#polaroid0 {
+    transform: rotate(350deg);
+}
+
+#polaroid1 {
+    transform: rotate(359deg);
+    top: -50px;
+}
+
+#polaroid2 {
+    transform: rotate(8deg);
+}
+
+#polaroid3 {
+    top: -50px;
+    z-index: 1;
+}
+
+#polaroid4 {
+    transform: rotate(350deg);
+}
+
+.polaroid__photo {
+    height: 150px;
+    width: 171px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    top: -14px;
+}
+
+.sub__heading {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    letter-spacing: 0.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 1px 1px 5px rgb(0 0 0 / 50%);
+}
+
+.main {
+    margin: 3rem 0;
+}
+
+.main__heading, .timetable-section .section-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    line-height: 1.8rem;
+    letter-spacing: unset;
+}
+
+/* .main__heading {
+    font-family: 'Brittish Shorthair', cursive;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    font-weight: 200;
+    margin: 0 0 1rem 0.5rem;
+} */
+
+.content p {
+    margin-bottom: 1rem;
+}
+
+.content p:last-child {
+    margin-bottom: 0;
+}
+
+.included input {
+    display: none;
+}
+
+.included input#tab1:checked ~ .line {
+    left: 20px;
+}
+.included input#tab1:checked ~ .content-container #c1 {
+    display:block;
+}
+.included input#tab2:checked ~ .line {
+    left: 224px;
+}
+.included input#tab2:checked ~ .content-container #c2 {
+    display:block;
+}
+.included input#tab3:checked ~ .line {
+    left: 428px;
+}
+.included input#tab3:checked ~ .content-container #c3 {
+    display:block;
+}
+.included input#tab4:checked ~ .line {
+    left: 75%;
+}
+.included input#tab4:checked ~ .content-container #c4 {
+    display:block;
+}
+.included label {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 200px;
+    text-align: center;
+    background: content-box;
+    position: relative;
+    transition: 0.25s background ease;
+    cursor: pointer;
+}
+.included label::after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      display: block;
+      background: #ccc;
+      bottom: -2px;
+      opacity: 0;
+      left: 0;
+      transition: 0.25s ease;
+}
+.included label:hover::after {
+    opacity: 1;
+}
+.included .line {
+    position: absolute;
+    height: 2px;
+    background: #000;
+    width: 200px;
+    left: 0;
+    z-index: 11;
+    transition: 0.25s ease;
+}
+.included .content-container {
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.included .content-container .content {
+    width: 100%;
+    top: 0;
+    display: none;
+    transition: 0.25s ease;
+    padding-top: 0.5rem;
+}
+
+hr {
+    margin: 3rem 0;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.included__item {
+    margin-top: 1rem;
+    padding-left: 3rem;
+}
+
+.included__item svg {
+    width: 25px;
+    position: absolute;
+    margin: 2px 0 0 -3rem;
+}
+
+.included__item span {
+    line-height: 1.25;
+}
+
+.location {
+    margin-top: 5rem;
+}
+
+/* .location .main__heading {
+    margin: 0;
+} */
+
+.location__container {
+    display: flex;
+    align-items: center;
+}
+
+.location__content {
+    /*width: 50%;*/
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/*.location__map {*/
+/*    width: 50%;*/
+/*    padding-left: 3rem;*/
+/*}*/
+
+.guide-left-outer {
+
+    background-position: center center;
+    
+    background-size: cover;
+
+}
+.guide-left {
+
+    background:rgba(0, 0, 0, 0.65);
+
+    padding: 50px;
+    
+    color: white;
+
+    text-align: center;
+
+}
+
+.guide-left h6 {
+
+    color: white;
+
+    margin-bottom: 15px;
+
+}
+
+.guide-left p {
+
+    line-height: 1.5;
+
+    margin: 0;
+
+}
+
+.guide-left img {
+
+    margin: 33px 0;
+
+}
+
+.guide-left a {
+
+    background-color: #000;
+
+    width: 55%;
+
+    color: #fff;
+
+    border: 1px solid #C29011;
+
+    padding: 15px;
+
+    text-transform: uppercase;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    box-shadow: 10px 10px 50px #555;
+
+}
+
+.guide-left a span {
+
+    letter-spacing: 0.3rem;
+
+    line-height: 1rem;
+
+    font-size: 0.8rem;
+
+}
+
+/* .timetable-section .section-heading {
+    font-family: 'Brittish Shorthair', cursive;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    font-weight: 200;
+    margin: 0 0 1rem 1.5rem !important;
+    padding: 5rem 0 3rem;
+} */
+
+.timetable-section thead tr th {
+    border: none;
+    border-bottom: 8px solid #f2f2f2;
+    border-right: 2px solid #f2f2f2;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.3rem;
+    font-size: 0.688rem;
+}
+
+.timetable-section table.tablecontent {
+    border: none;
+}
+
+.timetable-section thead tr th:last-child {
+    border-right: none;
+}
+
+.timetable-section tbody tr td {
+    border: none;
+    border-top: 10px solid #fff;
+    padding: 10px 15px;
+}
+
+.timetable-section tbody .enroll_btn {
+    background-color: #000;
+    padding: 0;
+}
+
+.timetable-section .enroll_btn a.table_btn {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.timetable-section .enroll_btn a.table_btn:after {
+    content: "\f105";
+    font-family: 'FontAwesome';
+    font-size: 1.2rem;
+}
+
+.flexible-booking-btn a {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 0;
+    letter-spacing: 0.3rem;
+    font-size: 0.688rem;
+}
+
+.timetable-section td.price del:before {
+    content: 'Was ';
+}
+
+.timetable-section td.price ins:before {
+    content: 'Now ';
+}
+
+.timetable-section table.tablecontent {
+    margin-bottom: 10px;
+}
+
+.timetable-section .enroll_btn.disable_btn {
+    background-color: #707070;
+    pointer-events: none;
+}
+
+.dates-more {
+    width: 100%;
+    display: block;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -60px;
+}
+
+/*.timetable-section.showall .dates-more {*/
+/*    display: none*/
+/*}*/
+
+/*.timetable-section:not(.showall) table.tablecontent tbody tr:nth-child(n+6) {*/
+/*    display: none;*/
+/*}*/
+
+/*.timetable-section:not(.showall) table.tablecontent tbody tr:nth-child(n+4) {*/
+/*    opacity: 0.4;*/
+/*}*/
+
+/*.timetable-section:not(.showall) table.tablecontent tbody tr:nth-child(n+5) {*/
+/*    opacity: 0.1;*/
+/*}*/
+
+/*.timetable-section:not(.showall) table.tablecontent tbody tr:nth-child(n+5) td.enroll_btn {*/
+/*    background: linear-gradient(180deg, black, transparent);*/
+/*}*/
+
+.timetable-section .table-outer-div.showall .dates-more {
+    display: none
+}
+
+.timetable-section .table-outer-div:not(.showall) tbody tr:nth-child(n+4) {
+    display: none;
+}
+
+.timetable-section .table-outer-div:not(.showall) tbody tr:nth-child(n+3) {
+    opacity: 0.1;
+}
+
+/*.timetable-section .table-outer-div:not(.showall) tbody tr:nth-child(n+3) td.enroll_btn {*/
+/*    background: linear-gradient(180deg, #fff, transparent);*/
+/*}*/
+
+.timetable-section table.tablecontent tbody tr {
+    background: #f7f7f7;
+}
+
+.dates-more span {
+    background: #fff;
+    display: inline-block;
+    padding: 20px;
+    transition: 0.5s;
+}
+
+.dates-more span:after {
+    background: url("/wp-content/uploads/2021/01/down.svg");
+    content: " ";
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 20px;
+}
+
+.dates-more {
+    cursor: pointer;
+}
+
+.dates-more:hover span {
+    transform: translateY(20px);
+}
+
+.save {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.timer {
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0 0 2rem 0;
+}
+
+.timer li {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin: 0 0.25rem;
+}
+
+li.separator {
+    padding-bottom: 5px;
+}
+
+#day, #hour, #minute, #second {
+    background: #d1b04f;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    width: 33px;
+    text-align: center;
+}
+
+#day-text, #hour-text, #minute-text, #second-text {
+    font-size: 12px;
+}
+
+/*Tab css start*/
+
+ul.nav.nav-tabs {
+    margin: 20px 0px;
+    display: flex;
+}
+
+ul.nav.nav-tabs li {
+    list-style-type: none;
+    flex: 1;
+    background-color: #f7f7f7;
+    border-right: 3px solid #fff;
+}
+
+ul.nav.nav-tabs li a {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+ul.nav.nav-tabs li:last-child {
+    border: navajowhite;
+}
+
+ul.nav.nav-tabs li a.active {
+    background-color: black;
+    color: #fff;
+}
+
+ul.nav.nav-tabs li a.active i:before {
+    content: "\f103";
+}
+
+ul.nav.nav-tabs li a i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+ul.nav.nav-tabs li a span {
+    margin-left: 5px;
+}
+
+.tab-pane.fade.in {
+    display: none;
+}
+
+.tab-pane.fade.in.active {
+    display: block;
+}
+
+.flexible-booking-btn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.flexible-booking-btn a {
+    padding: 20px;
+}
+
+.learn-more-form .form-head-row p{
+    line-height: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+img.form-img {
+    margin-bottom: 10px;
+}
+
+.want-to-learn-more-form input, 
+.want-to-learn-more-form select, 
+.want-to-learn-more-form textarea {
+    font-size: 1rem;
+    color: #353535 !important;
+    padding-top: 8px!important;
+    padding-bottom: 8px !important;
+    line-height: 1.5rem;
+    background-color: #f4f4f4;
+    border: none;
+    font-weight: 500 !important;
+}
+.want-to-learn-more-form textarea::placeholder {
+    color: #353535;
+}
+
+.want-to-learn-more-form input::placeholder {
+    color: #353535 !important;
+    font-weight: 500 !important;
+}
+
+.form-fields-row>div {
+    margin-bottom: 10px;
+}
+
+.form-mailchimp-row {
+    margin: 0 0 15px;
+}
+
+#locations .wpcf7-response-output,
+.want-to-learn-more-form {
+    margin: 0;
+}
+
+.submit_btn_col input {
+    background-color: #0F3042 !important;
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px !important;
+    color: #fff !important;
+}
+
+.location-map-img {
+    text-align: center;
+}
+
+.form-mailchimp-row span.note {
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 1.3rem !important;
+    display: block;
+}
+
+.submit_btn_col input {
+    background-color: #000 !important;
+}
+
+.form-mailchimp-row span {
+    font-size: 0.95rem;
+    line-height: 1.3rem;
+}
+
+.want-to-learn-more-form input::placeholder {
+    color: #353535;
+    font-weight: 700;
+}
+
+.want-to-learn-more-form .iti-flag {
+    border-radius: 10px;
+}
+
+.want-to-learn-more-form input:focus {
+    /* border: 1px dashed #999 !important; */
+    background-color: #f4f4f4;
+}
+
+.want-to-learn-more-form input[type="checkbox"],
+.want-to-learn-more-form input[type="checkbox"]:focus {
+    appearance: none;
+    background: none !important;
+    border: 1px solid #000 !important;
+    border-radius: 8px !important;
+    /* width: 1.1em !important;
+    min-width: 1.1em !important;
+    height: 1rem !important; */
+    min-width: 22px !important;
+    width: 22px !important;
+    height: 20px !important;
+}
+
+.want-to-learn-more-form input[type="checkbox"]:checked {
+    background-image: url('https://www.premiertefl.com/wp-content/uploads/2021/04/check.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 80% !important;
+    transition: none;
+}
+
+.safety-info {
+    display: none;
+}
+
+.tefl_comment textarea {
+    width: 100%;
+    height: 100px;
+}
+
+/*Tab css end*/
+
+@media only screen and (max-width: 768px) {
+    .sidebar {
+        margin-bottom:5rem;
+    }
+    #polaroid0, #polaroid1, #polaroid3, #polaroid4 {
+        display:none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    ul.nav.nav-tabs {
+        flex-wrap: wrap;
+    }
+    
+    ul.nav.nav-tabs li a {
+        padding: 10px;
+    }
+    
+    ul.nav.nav-tabs li {
+        width: 50%;
+    }
+    
+    ul.nav.nav-tabs li:nth-child(2) {
+        border: none;
+    }
+    
+    ul.nav.nav-tabs li:first-child, ul.nav.nav-tabs li:nth-child(2) {
+        border-bottom: 3px solid #fff;
+    }
+    
+    .timetable-section .enroll_btn a.table_btn {
+        padding: 0px;
+        justify-content: center;
+    }
+    .timetable-section table.tablecontent {
+        table-layout: fixed;
+    }
+    .timetable-section table.tablecontent * {
+        font-size: 10px;
+        text-align: center;
+        line-height: 1.2;
+        vertical-align: middle;
+        letter-spacing: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border: none;
+    }
+    .timetable-section .enroll_btn a.table_btn:after {
+        display: none;
+    }
+    
+    div#timetable h6 {
+        line-height: 4rem;
+        padding: 20px 0;
+    }
+    
+    .location__container {
+        flex-wrap: wrap;
+    }
+}
+
+
+
+
+

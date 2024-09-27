@@ -1,0 +1,358 @@
+.salary-calculator-form {
+    padding: 70px 0;
+}
+
+.button {
+    color: #fff !important;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    margin-top: 20px !important;
+    display: inline-block;
+}
+
+
+.final-submit-div p {
+    margin: 0;
+}
+
+.get-started-text {
+    margin-bottom: 0px !important;
+}
+
+.get-started-btn i {
+    font-size: 1.2rem;
+    margin-left: 5px
+}
+
+.salary-calc-row {
+    padding: 70px 0;
+    display: flex;
+    align-items: center;
+}
+
+.info-text {
+    margin-bottom: 0px !important;
+}
+
+.btn-primary {
+    /* color: #fff !important; */
+    cursor: pointer;
+    text-transform: uppercase;
+    /* letter-spacing: 0.3rem; */
+    margin-top: 10px !important;
+    display: inline-block;
+}
+
+.name-div,
+.email-div,
+.phone-div,
+.education-div,
+.passport-div,
+.age-div,
+.experience-div,
+.final-submit-div,
+.name-ok-btn,
+.email-ok-btn,
+.phone-ok-btn {
+    display: none;
+}
+
+.wpcf7-radio span.wpcf7-list-item {
+    display: flex;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    border: 2px solid !important;
+    border-radius: 3px;
+    cursor: pointer !important;
+}
+
+.wpcf7-radio span.wpcf7-list-item label {
+    margin-bottom: 0px;
+    cursor: pointer !important;
+    padding: 10px 7px;
+    width: 100%;
+}
+
+
+/*.tefl-qualification span.wpcf7-list-item {
+    width: 30%;
+}*/
+
+.wpcf7-radio span.wpcf7-list-item label::before {
+    background-color: #000;
+    color: #fff;
+    padding: 5px 8px;
+    line-height: 1em;
+    margin-right: 5px;
+}
+
+.wpcf7-radio span.wpcf7-list-item.first label::before {
+    content: 'A';
+}
+
+.wpcf7-radio span.wpcf7-list-item:nth-child(2) label::before {
+    content: 'B';
+}
+
+.wpcf7-radio span.wpcf7-list-item:nth-child(3) label::before {
+    content: 'C';
+}
+
+.wpcf7-radio span.wpcf7-list-item:nth-child(4) label::before {
+    content: 'D';
+}
+
+.wpcf7 input[type=radio] {
+    border-radius: 0px !important;
+    font-size: 0;
+}
+
+.wpcf7 input[type=radio]:checked::after {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    font-size: 25px !important;
+    margin-left: 15px;
+    color: #fff;
+}
+
+.salary-calculator-form .wpcf7-response-output {
+    font-size: 20px !important;
+    border: none !important;
+    text-align: center;
+}
+
+.salary-calculator-form form.wpcf7-form.init {
+    /*width: 70%;*/
+    margin: 0 auto;
+}
+
+.salary-calculator-form .wpcf7-text,
+.salary-calculator-form .wpcf7-intl-tel {
+    border: none !important;
+    border-bottom: 2px solid #000 !important;
+    background: none !important;
+    /* padding: 0px !important; */
+    line-height: 2em;
+    font-size: 22px;
+}
+
+.salary-calculator-form form.wpcf7-form.init div>label {
+    /*font-size: 25px;
+    font-weight: bold;*/
+    text-transform: uppercase;
+    font-weight: 500;
+    /* letter-spacing: 0.3rem; */
+    font-size: 1.3rem;
+    display: block;
+}
+
+.salary-calculator-form form.wpcf7-form i.fa.fa-arrow-right {
+    font-size: 25px;
+    margin: 0 5px;
+}
+
+.html_top {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.html_bottom {
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.html_unfortunately {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 20px 0;
+}
+
+ul {
+  margin: 20px 0;
+  list-style: none;
+}
+
+.content-col ul li {
+  font-size: 18px;
+  margin: 5px 0;
+  text-decoration: underline;
+}
+
+.html_small {
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.8;
+    margin-top: 20px;
+}
+
+.wpcf7 form .wpcf7-response-output {
+    margin: 0 -40px !important;
+    padding: 0;
+}
+
+.info-text {
+    display: flex;
+}
+
+
+/*.info-text p {
+    font-size: 20px;
+}*/
+
+.info-text h3 {
+    /*font-weight: bold;
+    font-size: 30px;*/
+    text-transform: uppercase;
+    font-size: 1.875rem;
+    /* font-weight: 500; */
+    line-height: 2.6rem;
+    /* letter-spacing: 0.35rem; */
+}
+
+.info-text,
+.name-div,
+.email-div,
+.phone-div,
+.education-div,
+.passport-div,
+.age-div,
+.experience-div,
+.final-submit-div {
+    align-items: center;
+}
+
+
+/*.number-div {
+    width: 8%;
+    font-size: 30px;
+}
+
+.content-div {
+    width: 92%;
+}*/
+
+.salary-calculator-form .wpcf7-intl-tel {
+    padding-left: 50px !important;
+}
+
+.wpcf7-radio span.wpcf7-list-item.checked label {
+    border: 1px solid #fff;
+    background-color: #222;
+    color: #fff;
+}
+
+.wpcf7-radio span.wpcf7-list-item.checked label::before {
+    background-color: #fff;
+    color: #000;
+}
+
+p.small-note {
+    line-height: 1em;
+}
+
+.salary-calculator-form .wpcf7-response-output .content-col p {
+    margin-bottom: 20px;
+}
+
+.salary-calculator-form .wpcf7-response-output {
+    display: flex;
+    align-items: center;
+}
+
+.salary-calculator-form .wpcf7-response-output .content-col p:last-child {
+    margin-bottom: 0px;
+}
+
+.img-col {
+    height: 330px;
+}
+
+.salary-calculator-form input.wpcf7-phonetext {
+    padding-left: 45px !important;
+}
+
+.fname-lname-div {
+    display: flex;
+}
+
+.fname-lname-div .wpcf7-form-control-wrap input {
+    width: 90% !important;
+}
+
+.salary-calculator-form form.wpcf7-form .ast-row {
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+article#post-95551 {
+    padding: 60px 0;
+}
+
+.img-col img {
+    height: 330px;
+    object-fit: cover;
+}
+
+label {
+    display: block;
+}
+
+.final-submit-div .wpcf7-submit {
+    border-radius: 1.5625rem;
+    padding: 1rem 2rem;
+    font-size: .875rem;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    background: black;
+    color: #fff;
+    border: 1px solid black;
+}
+
+.final-submit-div .wpcf7-submit:hover {
+    background: transparent;
+    color: var(--color-primary);
+}
+
+@media only screen and (max-width: 768px) {
+    .salary-calculator-form form.wpcf7-form.init {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .salary-calculator-form form.wpcf7-form i.fa.fa-arrow-right {
+        font-size: 20px;
+    }
+
+    .salary-calc-row {
+        flex-direction: column;
+        padding: 30px 0;
+    }
+
+    .cf7form-col {
+        padding-top: 30px;
+    }
+
+    /*.number-div {
+	    width: 12%;
+	    font-size: 20px;
+	}
+
+	.content-div {
+	    width: 88%;
+	}*/
+    /*.info-text, 
+	.name-div, 
+	.email-div, 
+	.phone-div, 
+	.tefl-qualification-div, 
+	.tefl-loe-div, 
+	.tefl-passport-div, 
+	.tefl-experience-div, 
+	.final-submit-div {
+	    align-items: flex-start;
+	}*/
+}

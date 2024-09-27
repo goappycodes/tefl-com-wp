@@ -1,0 +1,53 @@
+/* Course Extensions Page */
+
+.extension-products {
+    padding: 3rem 0;
+}
+
+.section-heading {
+    letter-spacing: 2px;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.section-subheadig {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.product-card__wrapper {
+    margin-bottom: 2rem;
+}
+
+.product-card__image {
+    margin-bottom: 1rem;
+}
+
+.product-card__image img {
+    border-radius: 1rem;
+}
+
+.product-card__details {
+    text-align: center;
+}
+
+.product-card__price {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.product-card__wrapper .btn-black {
+    border-radius: .5rem;
+    transition: all .4s ease-in-out;
+    letter-spacing: initial;
+    background: var(--black-jet);
+    position: relative;
+    z-index: 2;
+}
+
+.product-card__wrapper .btn-black:hover {
+    color: var(--black-jet) !important;
+    background: var(--white) !important;
+}

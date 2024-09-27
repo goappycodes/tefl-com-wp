@@ -1,0 +1,52 @@
+{
+    "key": "group_661931f38738d",
+    "title": "FB Custom Tracking Event",
+    "fields": [
+        {
+            "key": "field_661931f5eeb12",
+            "label": "Custom Tracking Event",
+            "name": "custom_tracking_event",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Code will be fired as fbq('trackCustom', '<CUSTOMEVENT>');\r\ninsert value of CUSTOMEVENT in above box i.e. Viewed 120 Hour Course",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "shop_coupon"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "aw_workflow"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1712930330
+}

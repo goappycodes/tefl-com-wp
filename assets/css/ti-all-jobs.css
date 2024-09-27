@@ -1,0 +1,62 @@
+.banner-section .ast-container {
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 50%;
+    border-radius: 30px;
+    background-color: #fffc;
+    padding: 0px 20px;
+    line-height: 3rem;
+}
+
+section.banner-section .ast-row {
+    width: 100%;
+    text-align: center;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border: none;
+}
+
+.search-bar input::placeholder {
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+}
+
+
+.job-preloader {
+    display: none;
+    position: absolute;
+    top: 5%;
+    z-index: 9;
+    left: 50%;
+}
+
+.job-section .ast-container {
+    position: relative;
+}
+
+@media only screen and (max-width: 768px){
+    div#loadMore {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 767px){
+
+    .search-bar input {
+        width: 100%;
+    }
+}

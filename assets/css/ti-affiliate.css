@@ -1,0 +1,326 @@
+.affwp-errors {
+    margin-top: 25px;
+}
+
+.affwp-error {
+    background: #ffd0d0;
+    margin: 10px 0 0 0;
+    color: red;
+    padding: 5px 15px;
+}
+
+fieldset {
+  margin: 50px;
+  padding: 25px;
+}
+fieldset label {
+  width: 30%;
+}
+fieldset p {
+  display: flex;
+  align-items: center;
+}
+fieldset input[type="email"], input[type="number"], input[type="password"], input[type="reset"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], select, textarea {
+  color: black;
+  width: 70%;
+}
+.affwp-tos {
+  width: 100%;
+}
+p input[type="submit"] {
+}
+fieldset p:last-child {
+  margin-bottom: 0;
+}
+
+.section {
+    margin-top: 35px;
+}
+
+.heading {
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 25px;
+    font-weight: 500;
+    letter-spacing: 0.35rem;
+}
+
+.choose-section .ast-container {
+    padding: 0 !important;
+}
+
+h3 {
+    color: #000;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 35px;
+}
+
+.item {
+    border: 1px solid #9c9c9c;
+    border-radius: 8px;
+    text-align: center;
+    padding: 25px 0 20px 0;
+    margin-bottom: 30px;
+    min-height: 235px;
+    display: flex;
+    align-items: center;
+}
+
+.item p {
+    margin-bottom: 12px;
+    color: #777;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.item h2 {
+    color: #000;
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 1;
+}
+
+.item h3 {
+    color: #000;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.item span {
+    color: #777;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.w-100 {
+    width: 100%!important;
+}
+
+
+.faq-section {
+    margin-top: 35px;
+}
+
+.faq-section .ast-container {
+    padding: 0 !important;
+}
+
+.faq {
+    background: #F9FAFB;
+    padding: 50px;
+}
+
+.faq hr {
+    background: #000;
+    width: 160px;
+    height: 3px;
+    margin: 1.5rem 0 1.5rem 0;
+}
+
+.faq h3 {
+    text-align: left;
+    color: #777;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+}
+
+.card {
+    border: 0 none;
+    background: transparent;
+}
+
+.card-header {
+    background: transparent;
+    border: 0 none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.question {
+    color: #fff;
+	font-size: 0.688rem;
+    font-weight: 500;
+    line-height: 1.34rem;
+    letter-spacing: 0.3rem;
+	text-transform: uppercase;
+  	display: block;
+  	cursor: pointer;
+  	padding: 15px 35px;
+  	background: #000000;  
+}
+
+.answer {
+    color: #777;
+    font-size: 14px;
+    padding: 1em;
+    background: #fff;
+}
+
+
+.banner-text {
+	color: #fff;
+	font-size: 1.875rem;
+	text-transform:uppercase;
+	font-weight: 500;
+	line-height: 2.6rem;
+	letter-spacing: 0.6rem;
+}
+.accordion-container label {
+	color: #fff;
+	font-size: 0.688rem;
+    font-weight: 500;
+    line-height: 1.34rem;
+    letter-spacing: 0.3rem;
+	text-transform: uppercase;
+  	display: block;
+  	cursor: pointer;
+  	padding: 15px 35px;
+  	background: #000000;      
+}
+
+.accordion-container {
+  margin: 1px auto;
+}
+
+.accordion-container input {
+  display: none;
+}
+
+.accordion-container article {
+  overflow: hidden;
+  height: 0;
+}
+
+.accordion-container input:checked ~ article {
+    background: #fff;
+    height: auto;	
+    padding: 15px 35px;
+    line-height: 1.5;
+}
+
+.more-space {
+    margin-bottom: 2em;
+}
+
+.content-container {
+    padding: 0 30px 30px 30px;
+}
+
+.content-container h1 {
+	margin-bottom: 15px;
+}
+
+.alert {
+    color: #fff;
+    line-height: 1.34rem;
+    text-align: center;
+  	display: block;
+  	cursor: pointer;
+  	padding: 15px 35px;
+  	background: #000000; 
+}
+
+.alert a {
+    color: bisque;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+
+.started-section .ast-container {
+    margin-top: 75px;
+    padding: 0 !important;
+}
+
+.form-container {
+    width: 75%;
+    margin: auto;
+}
+
+.affwp-form legend {
+    padding: 0 !important;
+}
+
+.callback {
+    background: #000;
+    color: #fff;
+    font-weight: 300;
+    padding: 0 7em 3em;
+}
+
+.callback img {
+    margin: -10em 0 0 0;
+}
+
+.heading-sm {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.button-rounded {
+    background: #fff;
+    color: #000 !important;
+    border-radius: 40px;
+    padding: 0.5em 2em;
+    margin-top: 1em;
+    font-weight: 500;
+    font-size: 12px;
+    position: relative;
+    display: inline-block;
+}
+
+.svg {
+    position: relative;
+    z-index: -1;
+    bottom: -100px;
+    margin-top: -110px;
+}
+
+
+@media only screen and (max-width: 720px) {
+    .heading {
+        font-size: 18px;
+    }
+    .faq {
+        padding: 0;
+        background: #fff;
+        margin-bottom: 1em;
+    }
+    .faq h3 {
+        font-size: 18px;
+    }
+    .svg {
+        display: none;
+    }
+    .callback {
+        padding: inherit;
+        background: #fff;
+        color: inherit;
+        text-align: center;
+    }
+    .button-rounded {
+        background: #000;
+        color: #fff !important;
+    }
+    .callback img {
+        margin: 0;
+        padding-top: 1em;
+    }
+    .form-container {
+        width: 100%;
+    }
+    .started-section .ast-container {
+        margin-top: 0;
+    }
+}

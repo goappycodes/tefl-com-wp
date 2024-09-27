@@ -1,0 +1,82 @@
+/* Gift Vouchers */
+p {
+    margin-bottom: 0 !important;
+}
+
+.free-voucher-text .woocommerce-Price-currencySymbol {
+    display: none;
+}
+
+.hero-banner-content {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+@media screen and (max-width:768px) {
+    .hero-banner-content {
+        font-size: 1.5rem;
+        height: 250px;
+    }
+}
+
+/* Voucher Grid Section */
+
+.vouchers-grid {
+    padding: 50px 0 0 0;
+}
+
+.gift-voucher-card {
+    text-align: center;
+    background: var(--very-light-gray);
+    margin-bottom: 3rem;
+}
+
+
+.gift-voucher-card.has-free-voucher {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    position: relative;
+}
+
+.free-voucher-text {
+    position: absolute;
+    display: block;
+    background: var(--black);
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: .65rem 1rem;
+    border: 3px solid var(--gold);
+    top: -5%;
+    right: -5%;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 5px 25px #00000025;
+}
+
+.gift-voucher-card__image {
+    padding: 1rem 0 0 0;
+}
+
+.gift-voucher-card.has-free-voucher .gift-voucher-card__image {
+    padding: 2rem 1rem;
+}
+
+.gift-voucher-card__body {
+    background: var(--light-gray-bg);
+    line-height: 1;
+    padding: .5rem 0;
+}
+
+.gift-voucher-card__price {
+    font-weight: 600;
+}

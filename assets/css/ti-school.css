@@ -1,0 +1,324 @@
+/*Banner*/
+
+section.banner-section {
+    min-height: 450px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-top: 50px;
+    margin-bottom: 4rem;
+}
+
+section.banner-section .ast-container {
+    margin-left: 30px;
+    flex: 1;
+}
+
+.banner-content-block {
+    margin-right: 40px;
+}
+
+.banner-content-block .content-block {
+    background-color: #fff;
+    padding: 50px 60px 50px 50px;
+    position: relative;
+}
+
+.banner-content-block .content-block img {
+    position: absolute;
+    right: -75px;
+    width: 150px;
+    top: calc(50% - 50px);
+}
+
+.banner-content-block a {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    justify-content: space-between;
+    padding: 12px 20px;
+    min-height: 55px;
+    margin-bottom: -55px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+    width: 100%;
+}
+
+.banner-buttons {
+    display: flex;
+}
+
+.banner-content-block a i {
+    font-size: 1.35rem;
+}
+
+.banner-content-block .content-block h2 {
+    font-weight: 600;
+    letter-spacing: 0.4rem;
+    margin-bottom: 0;
+}
+
+.banner-content-block .content-block h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
+    margin: 8px 0 30px;
+}
+
+.banner-content-block .content-block p {
+    line-height: 1.5;
+}
+
+
+section.main-section {
+    padding: 50px 0;
+}
+
+.main-content {
+    padding: 0 50px;
+}
+
+.section-heading {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.section-content {
+    margin-top: 50px;
+}
+
+.section-content p:last-child {
+    margin: 0;
+}
+
+.why-section .ast-row .background {
+    background-size: cover;
+}
+
+.background {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.why-content {
+    background: #ededed;
+    padding: 3rem 3rem 2rem;
+}
+
+.why-content p:last-child {
+    margin: 0;
+}
+
+.blog-cta-section {
+    padding: 50px 0;
+    background-size: cover !important;
+    position: relative;
+    margin-top: 50px;
+}
+
+.blog-cta-section:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75));
+}
+
+.blog-cta-section__row {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.blog-cta-section__content,
+.blog-cta-section__title {
+    color: var(--white);
+    text-align: center;
+}
+
+.blog-cta-section__btn {
+    background: var(--black);
+    color: var(--white) !important;
+    padding: 10px 20px;
+    border-radius: .5rem;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.blog-cta-section__btn:hover {
+    background: var(--white);
+    color: var(--black) !important;
+}
+
+section.course-section {
+    margin: 100px 0;
+}
+
+section.guide-section {
+    margin: 100px 0;
+}
+
+.wpcf7-list-item-label {
+    font-size: 0.825rem;
+}
+
+.featured-course-container {
+    background: #F5F5F5;
+    padding: 50px;
+    font-weight: 500;
+}
+
+.featured-course-container a {
+    width: 300px;
+    margin: 35px auto -72px;
+    background: #000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+section.contact-section {
+    margin: 100px 0;
+}
+
+.contact-container {
+    background: #F5F5F5;
+    padding: 50px;
+}
+
+.contact-container .ast-row .icon {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.contact-container .link-blue {
+    width: 300px;
+    margin: 40px 0 -1.5rem 0px;
+    background: #000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+.wpcf7-form p {
+    margin: 0 0 .5rem 0;
+}
+
+.faq-section {
+    padding-bottom: 50px;
+}
+
+.faq-section h3 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    padding-bottom: 32px;
+    letter-spacing: 0.35rem;
+}
+
+.faq-box h4 {
+    border-bottom: 1px solid;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.3rem;
+    margin-bottom: 1rem;
+    min-height: 75px;
+    padding-bottom: 1rem;
+}
+
+.faq-box p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.faq-box {
+    margin-bottom: 4rem;
+}
+
+
+.faq-section .accordion-container label {
+    color: var(--black);
+    padding: 1rem 0;
+    background: none;
+    border-top: 1px solid var(--gray-border);
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 2px;
+}
+
+.faq-section .accordion-container:last-of-type label {
+    border-bottom: 2px solid var(--gray-border);
+}
+
+.accordion-container article {
+    transition: all .4s ease;
+}
+
+.accordion-container input:checked~article {
+    padding: 1rem 0 !important;
+}
+
+@media screen and (max-width:768px) {
+    .faq-section .accordion-container input:checked~article {
+        padding: 1rem 0 !important;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+
+    section.banner-section {
+        padding-top: 150px !important;
+        background-size: contain !important;
+        background-position: top !important;
+        background-repeat: no-repeat !important;
+        margin-top: -25px !important;
+    }
+
+    #primary,
+    #secondary {
+        padding: 0 !important;
+    }
+
+    .hide-mobile {
+        display: none;
+    }
+
+    .featured-course-container,
+    .contact-container {
+        padding: 0;
+        background: white;
+    }
+
+    .main-content {
+        padding: 0 !important;
+    }
+
+    .featured-course-container a {
+        margin: 20px auto 0;
+    }
+
+    .contact-container .link-blue {
+        margin: 40px auto 0;
+    }
+
+}

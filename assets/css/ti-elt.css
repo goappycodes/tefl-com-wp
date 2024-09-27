@@ -1,0 +1,685 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.terms-text {
+    font-size: small;
+    line-height: 1.25;
+    font-weight: 400;
+}
+
+.wpcf7-list-item-label {
+    margin-left: 30px;
+    display: block;
+    margin-top: -20px;
+    line-height: 1.5;
+}
+
+.wpcf7-list-item-label a {
+    text-decoration: underline;
+}
+
+
+section#eltQuiz {
+    z-index: 999999999;
+    position: relative;
+    background: var(--white);
+}
+
+.zsiq_custommain img,
+.zsiq_custommain.siq_bR {
+    z-index: 999999 !important;
+}
+
+#wpadminbar {
+    z-index: 9999999999 !important;
+}
+
+.required {
+    color: red;
+    border: none !important;
+    text-decoration: none;
+}
+
+.woocommerce-account-fields:before {
+    content: 'To access your learning platform you need to create an account during the checkout process. If you are a returning customer please login at the top of the page.';
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: block;
+    line-height: 1.3rem;
+}
+
+.woocommerce-privacy-policy-text {
+    display: none;
+}
+
+p#account_password_field {
+    flex-direction: column;
+    margin-bottom: 0px;
+}
+
+p#account_password_field>* {
+    width: 100%;
+}
+
+p#account_password_field label {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+div#customer_details .col-1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.woocommerce-account-fields {
+    /* order: 1; */
+    background-color: #ededed;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+/* .woocommerce-billing-fields {
+    order: 2;
+} */
+
+.form-row {
+    display: flex;
+    align-items: center;
+}
+
+select#billing_country {
+    width: 100%;
+}
+
+input.input-text {
+    width: 100%;
+}
+
+.banner-content-block {
+    margin-top: 50px;
+    /* margin-bottom: 50px; */
+}
+
+section.tefl-institute-london-section {
+    padding-bottom: 50px;
+}
+
+.checkout-container {
+    background-color: #fff;
+    padding: 0 40px 10px;
+    margin-bottom: 20px;
+}
+
+.banner-content-block .content-block {
+    padding-bottom: 5px;
+}
+
+.banner-content-block .content-block p:last-child {
+    margin-bottom: 0;
+}
+
+.banner-content-block a.english-test-btn {
+    margin: 0 auto;
+    color: #fff;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    background: #000;
+    min-height: unset;
+    width: 100%;
+    /* background: #000;
+    color: #fff; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 12px 25px 12px 50px; */
+    min-height: 55px;
+    margin-bottom: -55px;
+    font-size: 0.688rem;
+    /* text-transform:uppercase;
+    letter-spacing: 0.3rem; */
+}
+
+/* a.english-test-btn {
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    min-height: 55px;
+    font-size: 0.888rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    background: #000;
+} */
+
+a.english-test-btn:hover {
+    text-decoration: none !important;
+    /* opacity: 0.8;
+    background: #666; */
+}
+
+.english-test-message {
+    display: block !important;
+    opacity: 1;
+    color: #fff;
+    border: 1px solid #000000;
+    border-radius: 0;
+    margin: 20px 0 20px !important;
+    font-size: 0.888rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    text-align: center;
+    padding: 5px;
+    background: #000000;
+}
+
+form.checkout.woocommerce-checkout {
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+}
+
+.woocommerce-form-login-toggle {
+    position: relative;
+    max-width: 600px;
+    margin: 50px auto 0;
+}
+
+div#customer_details {
+    min-width: 100%;
+    padding: 0px !important;
+}
+
+div#customer_details>div {
+    min-width: 100% !important;
+}
+
+body div#customer_details>.col-1 {
+    padding: 0px;
+}
+
+div#order_review {
+    min-width: 100%;
+    padding: 20px 20% !important;
+}
+
+form.checkout.woocommerce-checkout label {
+    margin: 0px;
+    width: 40%;
+    line-height: 1.2;
+    font-size: 0.9em;
+}
+
+span.woocommerce-input-wrapper {
+    width: 60%;
+}
+
+.woocommerce form .form-row-first,
+.woocommerce form .form-row-last,
+.woocommerce-page form .form-row-first,
+.woocommerce-page form .form-row-last {
+    max-width: 100%;
+    width: 100%;
+    padding-right: 3px !important;
+}
+
+.woocommerce-billing-fields>h3 {
+    display: none;
+}
+
+table.shop_table.woocommerce-checkout-review-order-table,
+.coupon-container {
+    display: none !important;
+}
+
+.woocommerce form .form-row select {
+    height: 43px;
+    border-radius: 5px;
+    /* border: 1px solid #ddd; */
+}
+
+.woocommerce #payment #place_order {
+    font-size: 15px;
+    line-height: 1.25;
+}
+
+div#order_review {
+    padding: 0px !important;
+}
+
+
+p.english-test-message {
+    display: table-cell;
+}
+
+.woocommerce-checkout #customer_details+#wc_checkout_add_ons,
+.woocommerce-checkout #order_review,
+woocommerce-checkout #order_review_heading {
+    float: none !important;
+}
+
+div#customer_details>.col-2,
+.cross-sells,
+input#billing_address_2,
+div#customer_details>.col-2,
+.cross-sells,
+input#billing_address_2,
+.woocommerce-form-coupon-toggle,
+.woocommerce-notices-wrapper,
+ul.wc_payment_methods.payment_methods.methods,
+h3#order_review_heading,
+.woocommerce-form-coupon-toggle,
+.woocommerce-notices-wrapper,
+ul.wc_payment_methods.payment_methods.methods,
+h3#order_review_heading,
+.tefl-hide,
+p#billing_dob_field,
+p.automatewoo-optin.form-row,
+.woocommerce-form-login-toggle,
+.checkout-disable button#place_order {
+    display: none !important;
+}
+
+
+p.automatewoo-optin.form-row label,
+.woocommerce-terms-and-conditions-wrapper label {
+    min-width: 100%;
+}
+
+/* .woocommerce-account-fields {
+    background: #f7f7f7;
+    padding: 5px 20px 10px;
+    display: block;
+    margin: 20px 0 0;
+} */
+
+select#billing_country {
+    border-radius: 0px;
+    /* border-color: #ccc; */
+}
+
+div#order_review {
+    display: flex !important;
+}
+
+button#place_order:before {
+    content: "Redirecting you to the English Test Platform...";
+    font-size: 16px;
+}
+
+button#place_order {
+    opacity: 0.6;
+    pointer-events: none;
+    font-size: 0 !important;
+    min-width: 100%;
+}
+
+
+.checkout-disable .elt-button {
+    display: block !important;
+    margin-bottom: 40px;
+}
+
+.elt-button {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    text-transform: uppercase;
+    background: #000000;
+    color: #fff;
+    height: 55px;
+    padding: 10px 0px;
+    margin-bottom: 0px;
+    font-weight: 500;
+    border-radius: 0px;
+    font-size: 15px;
+    line-height: 1.25;
+}
+
+.elt-button:hover {
+    opacity: 0.9;
+}
+
+.woocommerce form .form-row input.tefl-field-error {
+    border-color: red;
+}
+
+.checkout-tefl-error {
+    border: 1px solid red;
+    padding: 10px 15px;
+    color: red;
+    margin: 30px 0 15px;
+    font-weight: 600;
+}
+
+.tefl-error-msg:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.tefl-loader {
+    border: 4px solid #000000;
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin: 20px auto 0;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.woocommerce .blockUI.blockOverlay:before,
+.woocommerce .loader:before {
+    height: 3em;
+    width: 3em;
+    position: absolute;
+    /* This was on 90%, should be 50% */
+    top: 50%;
+    left: 50%;
+    margin-left: -0.5em;
+    margin-top: -0.5em;
+    display: block;
+    content: "";
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
+    background: url("https://tefl.ie/wp-content/uploads/2020/10/35.gif") center center;
+    background-size: cover;
+    line-height: 1;
+    text-align: center;
+    font-size: 2em;
+}
+
+.add_gift_card_form {
+    display: none;
+}
+
+.woocommerce-additional-fields {
+    display: none;
+}
+
+section.elt-container {
+    padding: 70px 0;
+}
+
+.woocommerce-privacy-policy-text {
+    line-height: 1.2;
+    font-size: 0.9em;
+}
+
+.elt-content_btn a {
+    display: flex;
+}
+
+.elt-content_btn a {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.elt-content_btn span {
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-size: 0.688rem;
+    line-height: 1.2rem;
+}
+
+img.elt-section-img {
+    height: 471px;
+    object-fit: cover;
+}
+
+@media (max-width:768px) {
+    div#order_review {
+        min-width: 100%;
+        padding: 0px !important;
+    }
+
+    form.checkout.woocommerce-checkout label,
+    span.woocommerce-input-wrapper {
+        width: 100%;
+    }
+}
+
+
+/* Multi Step Form */
+
+#eltQuiz.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all .4s ease;
+}
+
+.form-fields-container .wpcf7-text {
+    border: 1px solid var(--ast-border-color) !important;
+}
+
+.tefl-checkbox .wpcf7-list-item {
+    margin: 0
+}
+
+@media screen and (max-width:768px) {
+    .form-fields-container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+.form-fields-container .intl-tel-input {
+    width: 100%;
+}
+
+.start-quiz.btn-black {
+    margin-top: 0;
+}
+
+.form-fields-container .wpcf7-form-control-wrap,
+.form-fields-container .call_back_form_safe {
+    margin-bottom: 1rem;
+}
+
+.form-fields-container p {
+    margin-bottom: 0;
+}
+
+.step {
+    transition: all .4s ease-in-out;
+}
+
+.step-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width:767px) {
+    .step-image {
+        height: 250px;
+        width: 100%;
+        margin-bottom: .5rem;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .step {
+        display: flex;
+    }
+}
+
+.step.show {
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+}
+
+.step.is-hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    height: 0;
+    overflow: hidden;
+}
+
+.start-quiz-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.start-quiz-btn {
+    background: var(--accent);
+    color: var(--white);
+    padding: .5rem 1.5rem;
+    margin-right: .5rem;
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+.multistep-elt .text-center {
+    text-align: center;
+}
+
+.required-message {
+    margin-bottom: 0;
+    color: var(--red);
+}
+
+.quiz-title,
+.result-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.multistep-elt .quiz-details p {
+    margin-bottom: 1rem;
+    line-height: 1;
+    font-size: 1.5rem;
+}
+
+.multistep-elt .step-question__question,
+.multistep-elt .step-question-header {
+    margin-bottom: 1.5rem;
+}
+
+.multistep-elt .option {
+    display: block;
+    margin: 0 0 .5em 0;
+}
+
+.multistep-elt input[type="radio"] {
+    display: none;
+}
+
+.option input[type="radio"]:checked+label {
+    background-color: var(--gold);
+    color: var(--white);
+}
+
+.multistep-elt label {
+    transition: all .4s ease-in-out;
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--white);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all .4s ease;
+    line-height: 1.5;
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+}
+
+.multistep-elt label:hover {
+    filter: brightness(1.15)
+}
+
+span.selected-option {
+    transform: translateY(-10px);
+    transition: all .4s ease;
+}
+
+span.selected-option.filled {
+    transform: translateY(0px);
+    /* display: inline-block; */
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.step-navigation {
+    margin-top: 2rem;
+}
+
+
+.step-navigation__btn:hover {
+    background: var(--white) !important;
+    color: var(--black) !important;
+}
+
+.step-navigation:not(:first-child) .step-navigation__btn {
+    background: var(--black);
+    color: white;
+    padding: 8px 16px;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 0 2px var(--black);
+}
+
+.step-navigation__btn:not(:last-of-type) {
+    margin-right: 1rem;
+}
+
+span.label-number {
+    color: var(--white);
+    font-weight: 600;
+    border: 1px solid white;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+.callback_submit {
+    text-align: center;
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+}
+
+.callback_submit.is-hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    height: 0;
+    overflow: hidden;
+}
+
+.courses-suggestions {
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+.courses-suggestions a {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.courses-suggestions a:hover {
+    background: var(--accent);
+    color: var(--white);
+    text-decoration: none;
+}
+
+.courses-suggestions .separator {
+    margin: 1rem auto;
+}

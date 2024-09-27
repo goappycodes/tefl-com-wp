@@ -1,0 +1,105 @@
+/*FAQ css*/
+
+section.faq-hero-section .ast-container{
+	background-size: cover !important;
+	background-repeat: no-repeat !important;
+}
+
+section.faq-hero-section .banner-text-row {
+	padding: 10% 2%;
+	background-color: #00000073;
+}
+
+.banner-text {
+	color: #fff;
+	font-size: 1.875rem;
+	text-transform:uppercase;
+	font-weight: 500;
+	line-height: 2.6rem;
+	letter-spacing: 0.6rem;
+	max-width: 100%;
+	padding-left: 50px;
+}
+.accordion-container label {
+	color: #fff;
+	font-size: 0.688rem;
+    font-weight: 500;
+    line-height: 1.34rem;
+    letter-spacing: 0.3rem;
+	text-transform: uppercase;
+  	display: block;
+  	cursor: pointer;
+  	padding: 15px 35px;
+  	background: #000000;
+}
+
+.accordion-container {
+  margin: 1px auto;
+}
+
+.accordion-container input {
+  display: none;
+}
+
+.accordion-container article {
+  overflow: hidden;
+  height: 0;
+}
+
+.accordion-container article p {
+	margin: 0;
+}
+
+.accordion-container input:checked ~ article {
+  height: auto;	
+  padding: 15px 35px;
+}
+
+.more-space {
+    margin-bottom: 2em;
+}
+
+section.faq-hero-section {
+    margin: 50px 0;
+}
+
+@media(max-width: 767px) {
+	section {
+		/*padding: 0 15px;*/
+		margin-bottom: 25px;
+	}
+
+	.banner-bottom-row .banner-link-col {
+		max-width: 33.33%;
+		padding: 0;
+	}
+
+	.banner-text {
+		font-size: 1.5rem;
+		letter-spacing: 0.1rem;
+	}
+
+	section.homepage-hero-section .ast-container {
+		background-position: 35%;
+	}
+
+	section.accordion-container {
+	    padding: 0;
+	}
+
+	.accordion-container label {
+	    padding: 15px;
+	}
+
+	.accordion-container input:checked ~ article {
+	    padding: 15px !important;
+	}
+
+	.accordion-container article p {
+	    margin-bottom: 0px;
+	}
+
+	section.faq-section {
+	    padding-top: 0px !important;
+	}
+}

@@ -1,0 +1,111 @@
+.thumbnail {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.hero-section {
+    background-position: center;
+    background-size: cover;
+    max-width: 1180px;
+    /* margin: 0 auto; */
+    margin-bottom:50px;
+}
+
+.hero-inner {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.25);
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 25px;
+}
+
+.hero-inner h1 {
+    font-size: 1.875rem;
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.hero-inner h2 {
+    color: #fff;
+    padding: 25px 0 0;
+    font-size: initial;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.jobs-section {
+    margin: 25px -20px 0px;
+}
+
+.jobs-section h3 {
+    letter-spacing: 0.3rem;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.875rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+
+
+.job-inner {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.thumbnail {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+.info {
+    padding: 25px;
+}
+
+.country {
+    font-weight: 500;
+    color: #000;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.description {
+    opacity: 0.7;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    min-height: 115px;
+}
+
+.link {
+    background-color: #000;
+    color: #fff !important;
+    margin-top: 20px;
+    min-height: 55px;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 3px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.link:hover {
+    color: white;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .hero-inner {
+        height: 250px;
+    }
+}

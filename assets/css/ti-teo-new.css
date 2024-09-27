@@ -1,0 +1,1345 @@
+.btn {
+    width: 50%;
+    text-align: center;
+    min-height: 3rem;
+    border: 1px solid #000;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: .6875rem;
+    letter-spacing: 3px;
+}
+
+/* Banner Section */
+
+.banner-section {
+    position: relative;
+    min-height: 450px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.content {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content h1 {
+    color: white;
+    font-weight: 900;
+    text-align: center;
+}
+
+.content p {
+    margin-top: 10;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+}
+
+.button-green {
+    background-color: var(--accent);
+    text-align: center;
+    padding: 0.6rem 3rem;
+    border: 1px solid #fff;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    margin: 0 auto;
+}
+
+.button-green:hover {
+    color: #fff;
+}
+
+@media screen and (max-width:768px) {}
+
+/* Home or Abroad */
+
+.abroad-section {
+    /* max-width: 1180px; */
+    margin: 30px auto;
+    text-align: left;
+    color: black;
+    padding: 15px 10px;
+}
+
+.abroad-section h2 {
+    font-size: 22px;
+    /* font-weight: 900; */
+    padding-bottom: 15px;
+    /* color: black; */
+}
+
+.abroad-section h3 {
+    text-transform: uppercase;
+    font-size: 28px;
+    /* font-weight: 900; */
+    /* color: black; */
+}
+
+.abroad-section p {
+    /* font-size: 1.25rem; */
+    line-height: 1.5;
+}
+
+.abroad-section a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* Left Right Column */
+
+.video-link {
+    padding: 0 20px 0 0px;
+}
+
+.explained-video {
+    width: 100%;
+    height: 250px;
+    background-position: center center;
+    background-size: cover;
+    /* margin: 2rem auto; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-icon {
+    background: url(https://teflinstitute.com/wp-content/uploads/2020/11/Group-560.svg) no-repeat center center / cover;
+    width: 75px;
+    height: 75px;
+    display: block;
+    transition: 0.2s ease-in-out;
+    opacity: 0.8;
+}
+
+.video-icon:hover {
+    width: 80px;
+    height: 80px;
+    opacity: 0.9;
+}
+
+.content-column {
+    display: block;
+
+}
+
+.content-column p {
+    /* font-size: 1.25rem; */
+    line-height: 1.5;
+}
+
+@media screen and (max-width:500px) {
+    .video-link {
+        padding: 0px 0px;
+    }
+
+    .explained-video {
+        width: 100%;
+        height: 225px;
+        background-position: center center;
+        background-size: cover;
+        margin: 2rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Requiremnt Section */
+
+.requirement-section {
+    max-width: 1180px;
+    margin: 0 auto 20px auto;
+    background: #efefef;
+    padding: 40px 50px;
+}
+
+@media screen and (max-width:500px) {
+    .requirement-section {
+        max-width: 1180px;
+        margin: 0 auto 20px auto;
+        background: #efefef;
+        padding: 20px 20px;
+    }
+}
+
+/* Teach English Online */
+
+.site-content>.ast-container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.teach-online-section {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.teach-online-heading {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.teach-online-heading h2,
+.start-teaching-online-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: black;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.mid-content {
+    max-width: 700px;
+    margin: 50px auto;
+    background-color: var(--accent);
+    padding: 30px 45px;
+}
+
+.mid-content h2 {
+    font-size: 32px;
+    color: #fff;
+    text-transform: capitalize;
+    letter-spacing: normal;
+    padding: 0px 0px;
+    font-weight: 700;
+}
+
+.mid-content p {
+    font-size: 14px;
+    color: #fff;
+    line-height: 17px;
+    padding: 0px 0px;
+}
+
+@media screen and (max-width:500px) {
+    .teach-online-heading h1 {
+        font-size: 21px;
+        letter-spacing: 0.4rem;
+        padding-left: 10px;
+        margin-bottom: 30px;
+        padding-right: 10px;
+        text-align: center;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mid-content h1 {
+        font-size: 25px;
+    }
+}
+
+/* Start Teaching Online Section */
+
+.start-teaching-online-section {
+    display: block;
+    max-width: 1180px;
+    margin: 50px auto 30px auto;
+
+}
+
+.steps-column {
+    margin-bottom: 2rem;
+}
+
+.step-icons {
+    display: flex;
+    align-items: self-start;
+    justify-content: space-between;
+}
+
+.step-icons h3 {
+    background-color: var(--accent);
+    padding: 15px 50px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.step-content h3 {
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.2em;
+    word-spacing: 0.2em;
+}
+
+.step-content p {
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media screen and (max-width:990px) {
+    .steps-column {
+        height: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+}
+
+/* Calculate My Salary */
+
+.calculate-my-salary {
+    max-width: 1180px;
+    margin: 0 auto 50px auto;
+    height: 400px;
+    padding: 70px 70px;
+}
+
+.calculate-salary-details {
+    color: white;
+    margin-top: 70px;
+}
+
+.calculate-salary-details h2 {
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #fff;
+}
+
+.calculate-salary-details p {
+    color: #fff;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.calculate-button {
+    background: #000;
+    color: #fff;
+    padding: 15px 25px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.calculate-button:hover {
+    color: #fff;
+}
+
+.fa-calculator {
+    color: #fff;
+    font-size: 21px;
+    padding-top: 10px;
+}
+
+@media screen and (max-width:500px) {
+    .calculate-my-salary {
+        padding: 70px 20px;
+    }
+}
+
+/* Jobs Section */
+
+section.teach-english-online {
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+section.job-section {
+    margin-bottom: 70px;
+}
+
+.job-section>.ast-container {
+    padding: 0;
+}
+
+.job-section h3 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+    margin-bottom: 4rem;
+}
+
+.job-clickbox {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+.job-card {
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.job-type {
+    text-align: center;
+    font-size: 0.688rem;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+    padding: 13px 0 10px;
+    line-height: 1.5;
+    letter-spacing: 0.3rem;
+    margin: 0;
+}
+
+.job-image img {
+    width: 100%;
+    height: 150px;
+    padding: 2rem;
+    object-fit: contain;
+}
+
+.job-card__body {
+    background: var(--gray-bg);
+    padding: 2rem;
+    min-height: 350px;
+}
+
+.job-card__title h4 {
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.job-meta {
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: .75rem;
+}
+
+.job-meta_icon {
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+    margin: 0 1rem 0 0;
+}
+
+.job-meta_value {
+    font-size: .8rem;
+}
+
+.black-button {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 25px 12px 25px;
+    min-height: 55px;
+    font-size: 0.688rem;
+    width: 280px;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.learn-more {
+    width: 100%;
+}
+
+.button-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 2em 0 0 0;
+}
+
+.black-button:hover {
+    color: #fff;
+}
+
+
+/* Nail Demo Video */
+
+
+.demo-video-heading h2,
+.online-teaching-webinar h2 {
+    font-size: 26px;
+    text-transform: uppercase;
+    font-weight: 900;
+    padding-left: 50px;
+    color: #000;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+.demo-video {
+    background: #efefef;
+    max-width: 1180px;
+    margin: 50px auto;
+    padding: 50px 70px;
+}
+
+.demo-form {
+    background: #e3e3e3;
+    padding: 45px 60px;
+    margin-bottom: 50px;
+}
+
+.wpcf7 input:not([type=submit]),
+.wpcf7 select,
+.wpcf7 textarea {
+    /* width: 100%; */
+    padding: 0.75em;
+    /* border-radius: 8px 8px; */
+}
+
+.wpcf7 form>div,
+.wpcf7 form>p {
+    margin-bottom: 1.2em;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.certificate_review-video-col a.lity-video {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    left: 0;
+    align-items: flex-end
+}
+
+.vide-caption-box {
+    background: url(https://teflinstitute.com/wp-content/uploads/2020/11/Rectangle-275.svg);
+    padding: 15px 30px;
+    width: 100%;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+    font-size: .688rem
+}
+
+.video-icon {
+    background-color: #000;
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    opacity: .75;
+    cursor: pointer;
+    left: 50%;
+    margin-top: -39.5px;
+    margin-left: -39.5px;
+    transition: 0.3s;
+    text-align: center;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px
+}
+
+.video-icon:hover {
+    opacity: 1
+}
+
+.video-icon img {
+    width: 20px;
+    height: 25px;
+    margin: 0 0 0 7px
+}
+
+.video-masterclass a {
+    margin: 0px auto;
+    width: 250px;
+    background-color: var(--accent);
+    color: #fff;
+    padding: 15px 20px;
+    position: absolute;
+    bottom: -95px;
+    left: 145px;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+}
+
+span.arrow {
+    margin-left: 50px;
+    font-size: 12px;
+}
+
+@media screen and (max-width:500px) {
+    .demo-video {
+        background: #efefef;
+        margin: 50px auto;
+        padding: 50px 30px;
+    }
+
+    .demo-form {
+        margin-right: 0;
+    }
+
+    .demo-video-heading h1 {
+        font-size: 23px;
+        text-align: center;
+        padding: 0;
+    }
+}
+
+/* Online Teaching Webinar */
+
+.online-teaching-webinar {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.online-teaching-webinar h2 {
+    margin-bottom: 40px;
+}
+
+/* .webinar-video-link {
+    padding: 0 25px 0 25px;
+} */
+
+.webinar-video-link h3 {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 700;
+    color: #000;
+}
+
+.webinar-explained-video {
+    width: 100%;
+    height: 300px;
+    background-position: center center;
+    background-size: cover;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.webinar-video-icon {
+    background: url(https://teflinstitute.com/wp-content/uploads/2022/10/video-online.svg) no-repeat center center / cover;
+    width: 90px;
+    height: 90px;
+    display: block;
+    transition: 0.2s ease-in-out;
+    position: absolute;
+    right: 66px;
+    bottom: 5px;
+}
+
+.webinar-video-icon:hover {
+    width: 90px;
+    height: 90px;
+    opacity: 0.9;
+}
+
+@media screen and (max-width:980px) {
+    .online-teaching-webinar h1 {
+        margin-bottom: 40px;
+        margin: auto;
+        max-width: 900px;
+        padding: 30px;
+    }
+
+    .webinar-explained-video {
+        width: 100%;
+        height: 250px;
+        background-position: center center;
+        background-size: cover;
+        margin: 1rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:790px) {
+    .online-teaching-webinar h1 {
+        margin-bottom: 40px;
+        margin: auto;
+        max-width: 900px;
+        padding: 30px;
+    }
+
+    .webinar-explained-video {
+        width: 100%;
+        height: 200px;
+        background-position: center center;
+        background-size: cover;
+        margin: 1rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .webinar-video-link h2 {
+        font-size: 11px;
+    }
+
+    .webinar-video-icon {
+        background: url(https://teflinstitute.com/wp-content/uploads/2022/10/video-online.svg) no-repeat center center / cover;
+        width: 70px;
+        height: 70px;
+        display: block;
+        transition: 0.2s ease-in-out;
+        position: absolute;
+        right: 66px;
+        bottom: 5px;
+    }
+}
+
+/* Start Up Guide */
+
+.start-up-guide {
+    max-width: 1180px;
+    margin: 40px auto;
+    background: #efefef;
+    padding: 50px 50px;
+}
+
+.guide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.guide-content h2 {
+    font-size: 18px;
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    margin-bottom: 30px;
+
+}
+
+.btn-download {
+    background: var(--accent);
+    padding: 13px 70px;
+    color: #fff;
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.btn-download:hover {
+    color: #fff;
+}
+
+/* Tips on Teaching English Online */
+
+.tips-teaching-english-online {
+    max-width: 1180px;
+    margin: 0 auto;
+    background: #efefef;
+    padding: 50px 0px;
+}
+
+.tips-teaching-english-online h3 {
+    padding: 20px 50px;
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: #000;
+}
+
+
+.tips-teaching-english-online p {
+    padding: 0 50px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.tteo-content {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.tips-content h4 {
+    color: #000;
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+}
+
+
+.tips-content p {
+    font-size: 14px;
+    line-height: 17px;
+    padding: 0 0;
+}
+
+@media screen and (max-width:990px) {
+    .tips-content h4 {
+        padding-top: 30px;
+    }
+}
+
+/* Sale courses section */
+.section.tefl-section.sale-courses-section {
+    background-color: #ededed;
+    padding-bottom: 40px;
+    max-width: 1180px;
+    margin: 40px auto;
+}
+
+.sale-courses-section .section-header {
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    background-color: #1d1d1b;
+    color: var(--global-theme-accent-color);
+    text-align: center;
+    padding: 8px 0;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+.sale-courses-content-row {
+    display: flex;
+}
+
+.course-img img {
+    height: 230px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.course-logo {
+    text-align: center;
+    margin-top: -60px;
+}
+
+.course-logo img {
+    height: 80px;
+    object-fit: contain;
+}
+
+.course-title {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 15px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #193847;
+    font-weight: 600;
+}
+
+.course-price {
+    margin: 10px 0;
+}
+
+.course-price .wcpbc-price,
+.resource-price .wcpbc-price,
+.otr-course-price .wcpbc-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.otr-course-price .wcpbc-price del {
+    color: #BABEC2;
+    margin-right: .5rem;
+}
+
+.otr-course-price .wcpbc-price ins {
+    font-weight: 800;
+}
+
+.course-price .wcpbc-price del,
+.resource-price .wcpbc-price del,
+.guide-price .wcpbc-price del {
+    color: #BABEC2;
+    font-size: 1.3rem;
+}
+
+.course-price .wcpbc-price ins,
+.resource-price .wcpbc-price ins,
+.guide-price .wcpbc-price {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.enroll-now-btn {
+    text-align: center;
+}
+
+.enroll-now-btn a {
+    width: 80%;
+    color: var(--global-theme-accent-color);
+    background-color: #1d1d1b;
+    border-color: #1d1d1b;
+}
+
+.course-inc-exc-col,
+.freebie-col {
+    padding-top: 30px;
+}
+
+.course-inc-exc-col {
+    display: flex;
+}
+
+.inc-exc-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.freebie-col-inner {
+    padding-right: 20px;
+}
+
+.inc-exc-title,
+.freebie-title {
+    color: #1d1d1b;
+    font-weight: 700;
+    border-bottom: 2px solid #dedede;
+    font-size: 1.2rem;
+    padding-bottom: 8px;
+}
+
+.inc-exc-div {
+    position: relative;
+    padding: 0 .5rem;
+}
+
+.inc-exc-div:before,
+.inc-exc-div:after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 2px;
+    background: #dedede;
+    top: 0;
+}
+
+.inc-exc-div:before {
+    left: -4%;
+}
+
+.inc-exc-div:after {
+    right: -4%;
+}
+
+.inc-exc-inner:after {
+    left: 20px;
+}
+
+
+.inc-exc-div .item.inc-item {
+    color: #153847;
+    font-weight: 600;
+    line-height: 1.5rem;
+}
+
+.item.exc-item {
+    color: #bbb;
+}
+
+.item.inc-item img,
+.item.exc-item img {
+    height: auto;
+    width: auto;
+}
+
+.item.inc-item,
+.item.exc-item {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.item img {
+    margin: 0 15px 0 0;
+}
+
+.freebie-course {
+    display: flex;
+    background-color: #e2e3e3;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    align-items: center;
+}
+
+.free-course-icon {
+    width: 15%;
+}
+
+.free-course-icon,
+.free-course-title {
+    margin-right: 15px;
+}
+
+.free-course-icon img {
+    height: 35px;
+    width: 35px;
+    object-fit: contain;
+}
+
+.free-course-title {
+    color: #153847;
+    line-height: 1.3rem;
+    width: 70%;
+    margin-bottom: 0px;
+}
+
+.free-course-price {
+    background-color: var(--accent);
+    display: flex;
+    flex-direction: column;
+    width: 50px !important;
+    height: 50px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 9px;
+}
+
+.free-course-price:before {
+    content: 'Worth';
+    font-size: 0.6rem;
+    color: #fff;
+}
+
+.free-course-price .wcpbc-price {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+}
+
+.other-freebie-div {
+    display: flex;
+}
+
+.other-freebie-div-inner {
+    flex: 1;
+    text-align: center;
+}
+
+.other-freebie-icon {
+    margin-bottom: 10px;
+}
+
+.other-freebie-icon img {
+    height: 50px;
+    object-fit: contain;
+}
+
+.other-freebie-title {
+    color: #1d1d1b;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.learn-more-btn a {
+    width: 90%;
+    background-color: #1d1d1b;
+    border-color: #1d1d1b;
+    color: var(--global-theme-accent-color);
+}
+
+.learn-more-btn {
+    text-align: center;
+}
+
+ul.timer {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+ul.timer li:nth-last-child(n+2) {
+    border-right: 1px solid #000;
+    text-align: center;
+}
+
+ul.timer li {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0 1.5rem;
+}
+
+ul.timer li span:nth-of-type(1) {
+    font-size: 2.5rem;
+    font-weight: 400;
+    padding: 0;
+    line-height: 1.2;
+    text-align: center;
+}
+
+ul.timer li span:nth-of-type(2) {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: .625rem;
+}
+
+.countdown-timer {
+    display: flex;
+}
+
+@media screen and (max-width:768px) {
+    .sale-courses-content-row {
+        flex-wrap: wrap;
+    }
+
+    .freebie-col-inner {
+        padding-left: 20px;
+    }
+}
+
+.course-price del {
+    text-decoration: auto;
+    margin-right: .75rem;
+}
+
+.course-price del:before,
+.otr-course-price del:before {
+    content: "was: ";
+    text-transform: uppercase;
+}
+
+.course-price ins:before,
+.otr-course-price ins::before {
+    content: "Now: ";
+    text-transform: uppercase;
+}
+
+/* Recommended Blogs Section */
+
+.recommended-blogs-section {
+    max-width: 1180px;
+    margin: 60px auto;
+}
+
+
+.recommended-blogs-section h3,
+.finding-online-teaching-job h3 {
+    font-size: 24px;
+    color: #000;
+    text-transform: uppercase;
+    /* padding: 20px 0; */
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    /* max-width: 1100px; */
+    margin-bottom: 1rem;
+}
+
+
+.blog-content h2 {
+    font-size: 11px;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.blog-content h3 {
+    font-size: 19px !important;
+    letter-spacing: 0 !important;
+    margin: 15px auto 20px auto;
+    height: 75px;
+}
+
+.blog-content p {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.blog-content img {
+    border-radius: 16px 16px;
+}
+
+.read-more {
+    margin-bottom: 0;
+    display: none;
+}
+
+.blog-content .blog-link {
+    display: flex;
+    border: 1px solid #000;
+    padding: 15px 47px;
+    /* font-size: 10px; */
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Finding Online Teaching Job */
+
+.finding-online-teaching-job {
+    max-width: 1180px;
+    margin: 60px auto;
+}
+
+
+
+/* Online Teaching Resources */
+
+.online-teaching-resources {
+    /* max-width: 1180px; */
+    margin: 40px auto;
+}
+
+.online-teaching-resources h3 {
+    font-size: 19px;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: #000;
+    /* max-width: 1090px; */
+    margin: 50px auto 0 auto;
+}
+
+.ont-content h3 {
+    font-size: 16px;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.ont-content h4 {
+    font-size: 15px;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: normal;
+    padding-bottom: 1rem;
+}
+
+.ont-content img {
+    margin: auto;
+    display: block;
+}
+
+.ont-blog-link {
+    text-align: center;
+    margin: auto;
+    display: block;
+    background: var(--accent);
+    background-color: var(--accent);
+    width: 120px;
+    color: white;
+    margin-top: 15px;
+    padding: 5px 15px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.teaching-container {
+    max-width: 1100px;
+    background: #efefef;
+    margin: 0 auto;
+    padding: 30px 30px;
+}
+
+/* New Job section */
+
+:root {
+    --card-text-color: #50697C;
+}
+
+.job-section-heading {
+    text-transform: capitalize !important;
+    letter-spacing: initial !important;
+}
+
+.job-card__body-cta a {
+    justify-content: center;
+}
+
+.job-section-new .job-card {
+    border: 1px solid var(--gray-dark);
+}
+
+.job-section-new .job-card__body {
+    background: transparent;
+    padding: 1.5rem;
+    border-top: 1px solid var(--gray-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.job-card__body-content {
+    color: var(--card-text-color);
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.job-card__body-content span {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.job-section-new .job-type {
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    padding: 1rem 0 !important;
+    background-color: var(--accent) !important;
+}
+
+.guide-donwnload-form {
+    margin-top: 1rem;
+    transition: all .4s ease-in-out;
+    height: auto;
+}
+
+.guide-donwnload-form.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.intl-tel-input {
+    width: 100%;
+}
+
+@media screen and (max-width:768px) {
+    .guide-donwnload-form form>div {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .banner-section {
+        min-height: 300px;
+    }
+}

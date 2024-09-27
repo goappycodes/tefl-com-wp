@@ -1,0 +1,90 @@
+
+ul#affwp-affiliate-dashboard-tabs {
+	margin: auto auto 20px;
+	list-style: none;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+li.affwp-affiliate-dashboard-tab a {
+	padding: 5px 10px;
+	display: block;
+	background: #f7f7f7;
+}
+
+
+.affwp-wrap label {
+	width: 30%;
+}
+
+.affwp-wrap input {
+	width: 60%;
+	margin-bottom: 20px;
+}
+
+.affwp-wrap {
+	display: flex;
+}
+
+.affwp-creative {
+	background: #f7f7f7;
+	padding: 20px;
+	margin: 20px auto 40px;
+	border: 2px solid;
+}
+
+.affwp-creative pre {
+	white-space: break-spaces;
+	background: #ddd;
+	padding: 0;
+	line-height: 1;
+	margin-top: 20px;
+}
+
+.affwp-creative img {
+	min-width: 200px;
+}
+
+.affwp-creative pre:after {
+	content: "Click to copy";
+	position: absolute;
+	background: #000;
+	color: #fff;
+	padding: 2px 10px;
+	line-height: 1;
+	margin-left: 20px;
+	cursor: pointer;
+	right: 140px;
+	margin-top: -25px;
+	font-size: 12px;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.affwp-creative pre code {
+	padding: 10px;
+	display: block;
+}
+
+.affwp-creative pre code:hover {
+	background: #000;
+	color: #fff;
+	cursor: crosshair
+}
+@media (max-width: 768px){
+	ul#affwp-affiliate-dashboard-tabs {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	
+	li.affwp-affiliate-dashboard-tab a {
+		margin: 5px 10px;
+	}	
+
+	.affwp-creative pre:after {
+		margin: auto;
+		right: 50px;
+	}
+}

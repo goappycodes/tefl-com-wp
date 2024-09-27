@@ -1,0 +1,242 @@
+.site-content > .ast-container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.site-content #primary {
+    padding: 0;
+    margin: 0;
+}
+
+.banner-section {
+    padding: 60px 0 80px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    position: relative;
+}
+
+.banner-section:before {
+    content: '';
+    background-color: #1938478a;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+}
+
+.banner-content-col {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 0;
+}
+
+.banner-content-inner {
+    padding: 3rem 3rem 3rem 0;
+}
+
+.banner-content-col .ast-row {
+    display: flex;
+}
+
+.banner-content-txt-wrap p {
+    font-size: 0.8rem;
+}
+
+.banner-content-img img {
+    height: 538px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.banner-content-img-col {
+
+}
+
+.elt-heading {
+    text-align: center;
+    color: #fff;
+    font-size: 2.8rem !important;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    line-height: 3rem;
+}
+
+.elt-feat-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.elt-feat-section {
+    padding: 100px 0;
+}
+
+.elt-feat-inner p {
+    margin-bottom: 0px;
+    font-size: 0.8rem;
+}
+
+h3.elt-sec-heading {
+    margin-bottom: 50px;
+    font-weight: 500;
+    font-size: 2.133rem;
+    text-align: center;
+    color: #1C1C1B;
+}
+
+.elt-feat-inner h5,
+.elt-feat-inner p {
+
+}
+
+.elt-feat-inner p {
+    font-weight: 500;
+    color: #1C1C1B;
+    font-size: 1rem;
+}
+
+.elt-feat-inner h5 {
+    margin: 1rem auto 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1C1C1B;
+}
+
+.img-btn-div {
+    display: flex;
+}
+
+img.english-test-img {
+    width: 150px;
+    margin-left: 50px;
+}
+
+.english-test-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.25rem;
+    padding: 20px;
+    border-radius: 8px;
+    text-transform: capitalize;
+    transition: all .4s ease-in-out;
+    font-weight: 600;
+    background: #1C1C1B;
+    color: white;
+}
+
+.english-test-btn:hover {
+	color: white;
+}
+
+.banner-section::after,
+.section.elt-feat-section:before {
+    content: '';
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    filter: blur(1.1rem);
+}
+
+.banner-section::after {
+    background: linear-gradient(to bottom, #ffffff 75%, #edeff0);
+    bottom: 0;
+}
+
+.section.elt-feat-section:before {
+    top: 0;
+    background: linear-gradient(to top, #ffffff 75%, #edeff0);
+}
+
+.section.elt-feat-section {
+    position: relative;
+}
+
+.banner-content-txt-wrap.heading {
+    font-size: 2.133rem;
+    line-height: 1.25;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.banner-content-txt-wrap.content {
+    margin-bottom: 1rem;
+}
+
+.img-div img {
+    width: 50px;
+    height: 50px;
+    filter: grayscale(1);
+}
+
+.warning {
+    font-size: inherit;
+    background: #EEEDE9;
+    margin-bottom: 1rem;
+    padding: 1rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.warning:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.1) url(https://tefl.ie/wp-content/uploads/2023/05/unnamed-file.png) no-repeat center center / 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    filter: grayscale(1);
+    flex: none;
+}
+
+.secure {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.secure b {
+    display: block;
+}
+
+.wpcf7-list-item {
+    margin: 5px 0 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+ 
+  	.ast-separate-container #content .ast-container {
+      padding: 0;
+  }	
+  
+  .banner-content-col {
+    background: white;
+    border-radius: 0;
+}
+  
+  	.banner-content-img-col {
+    border: 0;
+}
+  
+  	.banner-content-txt-wrap.heading {
+    line-height: 1.25;
+    margin-top: 20px;
+}
+  
+  .banner-content-col .ast-row {
+  	flex-direction: column;
+  }
+  
+  	.elt-feat-section {
+    padding: 50px;
+}
+  
+ .banner-content-inner {
+    padding: 1rem 4rem 4rem;
+}
+
+.banner-content-img img {
+    height: 200px;
+}
+}

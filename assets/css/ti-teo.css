@@ -1,0 +1,735 @@
+/* @font-face {
+	font-family: 'Brittish Shorthair';
+	src: url('/wp-content/themes/teflinstitute/assets/fonts/brittish_shorthair.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+} */
+
+body {
+    background-color: #fff !important;
+}
+
+.jobs-section .ast-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* .job-col {
+    display: flex;
+} */
+
+.banner-section {
+    min-height: 450px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.header-section .ast-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem 0;
+}
+
+.header-section h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+}
+
+.header-section p {
+    font-family: 'Brittish Shorthair', cursive;
+    text-align: center;
+    margin-bottom: auto;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    font-weight: 200;
+}
+
+.main-section {
+    margin-bottom: 2em;
+}
+
+.main-box {
+    height: 100%;
+    display: block;
+    margin: 20px 30px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.main-box h3 {
+    /* font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.8rem; */
+    text-transform: uppercase;
+    border-bottom: 1px solid;
+    letter-spacing: 0.35rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* .main-box p {
+    font-size: 18px;
+    line-height: 1.5;
+} */
+
+.get-started {
+    background: #ededed;
+    margin: 2rem 0;
+    text-align: center;
+    padding: 5rem;
+}
+
+.get-started h3 {
+    text-align: center;
+    font-size: 1.45rem;
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.get-started p {
+    font-size: 20px;
+    line-height: 1.5;
+    width: 75%;
+    margin: 2rem auto 0;
+}
+
+.timeline {
+    display: flex;
+    margin: 3rem 0;
+}
+
+.number {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    margin: auto;
+    font-size: 50px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-radius: 100%;
+    font-weight: 100;
+}
+
+.timeline-item {
+    width: 25%;
+}
+
+.timeline-item p {
+    font-size: 16px;
+    margin: 1rem auto;
+    line-height: 1.25;
+    width: 90%;
+}
+
+.timeline-arrow {
+    background: url(https://teflinstitute.com/wp-content/uploads/2021/04/Next-Arrow.svg) no-repeat center center / cover;
+    width: 41px;
+    height: 30px;
+    margin: 35px 0 0 235px;
+    position: absolute;
+}
+
+.get-started a {
+    background-color: #000;
+    color: #fff;
+    min-height: 55px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    width: 260px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+}
+
+.why-teach-section {
+    border-bottom: 1px solid;
+    margin-bottom: 4rem;
+}
+
+.why-teach-section h2,
+.explained-section h2 {
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1rem;
+    /* font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem; */
+}
+
+.why-teach-box {
+    text-align: center;
+    margin: 4rem 0;
+    padding: 0;
+}
+
+.why-teach-box p {
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.5;
+    font-size: 14px;
+    margin: 2rem 0 0;
+    letter-spacing: 0.35rem;
+}
+
+/* .explained-section h2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+} */
+
+.explained-section p {
+    font-family: 'Brittish Shorthair', cursive;
+    text-align: center;
+    margin-bottom: auto;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    font-weight: 200;
+}
+
+.explained-video {
+    height: 550px;
+    width: 80%;
+    background-position: center center;
+    background-size: cover;
+    margin: 4rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-icon {
+    background: url(https://teflinstitute.com/wp-content/uploads/2020/11/Group-560.svg) no-repeat center center / cover;
+    width: 75px;
+    height: 75px;
+    display: block;
+    transition: 0.2s ease-in-out;
+    opacity: 0.8;
+}
+
+.video-icon:hover {
+    width: 80px;
+    height: 80px;
+    opacity: 0.9;
+}
+
+.teo-courses-section h3 {
+    text-transform: uppercase;
+    text-align: center;
+    /* font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem; */
+}
+
+.teo-courses-section p {
+    /* font-size: 20px;
+    line-height: 1.5; */
+    width: 75%;
+    margin: 2rem auto 4rem;
+    text-align: center;
+}
+
+.teo-course-box {
+    background-size: cover;
+    background-position: center center;
+}
+
+.teo-course-inner {
+    padding: 3rem 0 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
+    color: white;
+    margin-bottom: 25px;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    line-height: 1.25;
+    padding: 0 1rem;
+    margin: 12rem 0 1rem;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 16px;
+}
+
+.link {
+    text-align: center;
+    border-top: 1px solid #B5B5B5;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    color: white;
+    font-size: 0.688rem;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+}
+
+.link:hover {
+    color: white;
+}
+
+.badge {
+    width: 100px;
+    margin: auto;
+    text-align: center;
+    display: block;
+}
+
+.test-section,
+.job-section {
+    margin: 3rem 0 4rem;
+}
+
+.test-section .ast-container {
+    padding: 0;
+}
+
+.test-container {
+    background-position: center;
+    background-size: cover;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 100px 0;
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+.test-container:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+}
+
+.test-container-content {
+    position: relative;
+    text-align: center;
+}
+
+.test-container-content h3 {
+    font-size: 1.875rem;
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.test-container-content p {
+    color: #fff;
+    line-height: 1.5;
+    padding: 1rem 0 3rem;
+    font-size: 18px;
+    margin: 0;
+}
+
+.test-container-content a {
+    color: #fff;
+    min-height: 55px;
+    border: 1px solid;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    width: 260px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+}
+
+.jobs-section h3 {
+    text-transform: uppercase;
+    text-align: center;
+    /* font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+    margin-bottom: 4rem; */
+}
+
+.jobs-section .ast-container {
+    padding: 0;
+}
+
+.job.inner-div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+}
+
+.job-type {
+    font-size: 0.688rem;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+    padding: 13px 0 10px;
+    line-height: 1.5;
+    letter-spacing: 0.3rem;
+    margin: 0;
+}
+
+.job__img {
+    background: white;
+    padding: 2rem 0;
+}
+
+.job__img img {
+    height: 50px;
+}
+
+.job-title {
+    text-align: left;
+    padding: 1.5rem 2rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.job__info {
+    padding: 0 0 2rem;
+    min-height: 452px;
+}
+
+span.job-icons img {
+    width: 20px;
+    height: 20px;
+}
+
+span.job-icons {
+    width: 12%;
+}
+
+span.job-txt {
+    width: 88%;
+}
+
+.comp-name,
+.job-location,
+.job-rate {
+    text-align: left;
+    margin: 0 0 10px 0;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.900rem;
+    line-height: 1.25;
+}
+
+/* .job-location {
+    text-align: left;
+    margin: 0;
+    padding: 1rem 2rem;
+    font-size: 0.900rem;
+    display: flex;
+    align-items: center;
+    line-height: 1.25;
+} */
+
+.job-icons {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.job__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 1rem 0;
+    border-top: 1px solid;
+    letter-spacing: 0.3rem;
+}
+
+.job__cta a {
+    font-size: 0.688rem;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0 1rem;
+    justify-content: space-between;
+}
+
+.faq-section {
+    border-top: 1px solid;
+}
+
+.faq-section h3 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    margin: 3rem 0;
+    letter-spacing: 0.35rem;
+}
+
+.faq-box h4 {
+    border-bottom: 1px solid;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.3rem;
+    margin-bottom: 1rem;
+    min-height: 75px;
+    padding-bottom: 1rem;
+}
+
+.faq-box p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.faq-box {
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 767px) {
+    .banner-section {
+        min-height: 400px;
+    }
+
+    .list {
+        overflow-x: auto;
+        margin: 2rem 0 0 0;
+    }
+
+    .product-card {
+        margin-bottom: 20px;
+    }
+
+    .grid-section {
+        margin: 2rem 0 0 0;
+    }
+
+    .delivery-section h2 {
+        padding: 0 0 20px 0;
+    }
+
+    .article-container {
+        padding: 50px;
+    }
+
+    .article-container-content h3 {
+        width: 100%;
+    }
+
+    .article-container-content p {
+        width: 100%;
+    }
+
+    .explained-video {
+        height: 250px;
+    }
+
+    .get-started {
+        padding: 2rem 1rem;
+    }
+
+    .get-started p {
+        font-size: 18px;
+    }
+
+    .why-teach-section h2 {
+        font-size: 20px;
+    }
+
+    .teo-courses-section h3 {
+        font-size: 20px;
+    }
+
+    .teo-courses-section p {
+        font-size: 18px;
+    }
+
+    .teo-course-box {
+        margin-bottom: 2rem;
+    }
+
+    .test-section {
+        margin: 0rem 0 4rem;
+    }
+
+    .test-container {
+        min-height: auto;
+        padding: 4rem 0;
+    }
+
+    .timeline {
+        display: block;
+    }
+
+    .timeline-item {
+        width: 100%;
+    }
+
+    .timeline-arrow {
+        display: none;
+    }
+
+    .job__info {
+        min-height: auto;
+    }
+
+    .job-card__body {
+        min-height: auto !important;
+    }
+
+    .black-button {
+        width: 100% !important;
+    }
+}
+
+/* Jobs Section */
+.job-section .ast-container {
+    padding: 0;
+}
+
+.job-section h3 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+    margin-bottom: 4rem;
+}
+
+.job-clickbox {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+.job-card {
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.job-type {
+    text-align: center;
+    font-size: 0.688rem;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+    padding: 13px 0 10px;
+    line-height: 1.5;
+    letter-spacing: 0.3rem;
+    margin: 0;
+}
+
+.job-image img {
+    width: 100%;
+    height: 150px;
+    padding: 2rem;
+    object-fit: contain;
+}
+
+.job-card__body {
+    background: var(--gray-bg);
+    padding: 2rem;
+    min-height: 350px;
+}
+
+.job-card__title h4 {
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.job-meta {
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: .75rem;
+}
+
+.job-meta_icon {
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+    margin: 0 1rem 0 0;
+}
+
+.job-meta_value {
+    font-size: .8rem;
+}
+
+.black-button {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 25px 12px 25px;
+    min-height: 55px;
+    font-size: 0.688rem;
+    width: 280px;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.learn-more {
+    width: 100%;
+}
+
+.button-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 2em 0 0 0;
+}
+
+.black-button:hover {
+    color: #fff;
+}

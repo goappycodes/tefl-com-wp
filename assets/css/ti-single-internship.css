@@ -1,0 +1,2701 @@
+.hero-section {
+    margin: 35px 0 !important;
+}
+
+.eligibility-checker {
+    padding: 3rem 5rem 3rem 20rem;
+    margin-top: 2rem;
+    background-position: center;
+    background-size: cover;
+    color: white;
+}
+
+.eligibility-checker .title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: unset;
+    line-height: 1;
+}
+
+.eligibility-checker .content {
+    margin-top: 1rem;
+    line-height: 1.5;
+}
+
+.eligibility-checker .button {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #000;
+    background: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 15px 30px;
+}
+
+.course-included {
+    background: #f4f4f4;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+}
+
+.section-image {
+    margin-right: 2rem;
+    flex-basis: 115%;
+}
+
+.image-overlay {
+    background: white;
+    padding: 5px 15px;
+    position: absolute;
+    margin-top: -50px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.section-content h1 {
+    font-size: 21px;
+    line-height: 1.25;
+}
+
+.section-content h1:after {
+    content: "";
+    background: #cdced0;
+    width: 105px;
+    height: 1px;
+    position: relative;
+    display: block;
+    top: 15px;
+}
+
+.section-content p {
+    font-size: 0.85rem;
+}
+
+.section-content p:last-child {
+    margin-bottom: 0;
+}
+
+.section-content:before {
+    content: "Course Included";
+    float: right;
+    background: #000;
+    color: white;
+    padding: 7px 20px;
+    margin: -64px 0 0 0;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+.desc-div p {
+    margin-bottom: 0px !important;
+}
+
+.intern-link .read-more-btns {
+    margin-top: 20px !important;
+    display: inline-block;
+    text-align: center;
+}
+
+.location-map-img img {
+    height: 585px;
+    object-fit: contain;
+    width: 100%;
+}
+
+
+.tefl_comment textarea {
+    width: 100%;
+    height: 100px;
+}
+
+.video {
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    position: relative !important;
+    height: 300px;
+    margin-top: 2rem;
+}
+
+.video a.lity-video {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    left: 0;
+    align-items: flex-end;
+}
+
+.vide-caption-box {
+    background: url(https://teflinstitute.com/wp-content/uploads/2020/11/Rectangle-275.svg);
+    padding: 15px 30px;
+    width: 100%;
+    color: white;
+}
+
+.video-icon {
+    background-color: #000;
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    opacity: 0.75;
+    cursor: pointer;
+    left: 50%;
+    margin-top: -39.5px;
+    margin-left: -39.5px;
+    transition: 0.3s;
+    text-align: center;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+
+.video-icon img {
+    width: 20px;
+    height: 25px;
+    margin: 0 0 0 7px;
+}
+
+.atc-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.digit-text {
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    margin-top: 5px !important;
+}
+
+.internship-template-default .site-content>.ast-container {
+    max-width: 100%;
+    padding: 0px;
+}
+
+.group-box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.group-left {
+    border-right: 1px solid black;
+    width: 50%;
+    text-align: center;
+}
+
+.group-right {
+    width: 50%;
+    text-align: center;
+}
+
+.group-number {
+    background: black;
+    color: white;
+    display: flex;
+    margin: auto;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    width: 75px;
+    height: 75px;
+    justify-content: center;
+    align-items: center;
+}
+
+.group-right .group-number {
+    background: white;
+    color: black;
+    border: 1px solid;
+}
+
+.group-below {
+    margin-top: 10px;
+}
+
+
+.group-number:hover {
+    background-color: #224a6e;
+    cursor: pointer;
+    color: #fff;
+}
+
+.sticky {
+    position: sticky;
+    top: 0rem;
+}
+
+.slick-arrow {
+    position: absolute;
+    z-index: 99;
+    font-size: 0;
+    padding: 0px;
+    background-color: transparent !important;
+}
+
+button.slick-arrow {
+    top: 50%;
+}
+
+button.slick-prev.slick-arrow:before {
+    content: "\f104";
+    font-family: 'FontAwesome';
+    font-size: 3rem;
+    color: #000;
+}
+
+button.slick-next.slick-arrow:before {
+    content: "\f105";
+    font-family: 'FontAwesome';
+    font-size: 3rem;
+    color: #000;
+}
+
+button.slick-next {
+    right: 0;
+}
+
+.learn-more-form .form-head-row p {
+    line-height: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+img.form-img {
+    margin-bottom: 10px;
+}
+
+.digit-text {
+    display: block;
+    font-size: 0.7rem;
+    margin-left: 5px;
+}
+
+div#overview {
+    margin-top: 0px;
+}
+
+p.time-left {
+    text-align: center;
+    margin: 1rem;
+    line-height: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.sidebar-container .clock {
+    padding: 8px 0 0;
+    margin: auto;
+}
+
+.internship-timer {
+    background-color: #1d1d1b;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-top: 15px solid #224a6e;
+}
+
+.tefl_countdown_timer_new .clock-day {
+    background: transparent !important;
+}
+
+.tefl_countdown_timer_new .clock-hour {
+    background: transparent !important;
+}
+
+.tefl_countdown_timer_new .clock-min {
+    background: transparent !important;
+}
+
+.tefl_countdown_timer_new .clock-sec {
+    background: transparent !important;
+}
+
+.clock-inner {
+    margin: 12px 0 -8px 0;
+}
+
+.clock>div:last-child {
+    border: none;
+}
+
+.clock {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.sidebar-container .offer-ends {
+    /* display: none; */
+    text-align: center;
+}
+
+.section {
+    margin: 70px 0;
+}
+
+.hero-container {
+    position: relative;
+}
+
+.hero-content-col .content-div {
+    background-color: #000;
+    padding: 60px 50px;
+    color: #fff;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-content-col .section-heading {
+    text-align: left;
+    color: #fff;
+    font-size: 1.83rem;
+    line-height: 2.18rem;
+    margin-bottom: 0px;
+    font-weight: 700;
+}
+
+.hero-img-col>div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    background-position-y: bottom;
+}
+
+.banner-title {
+    margin-bottom: 50px;
+}
+
+.desc-div {
+    font-size: 1.18rem;
+    line-height: 2.18rem;
+}
+
+.icon-img-div {
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.icon-row {
+    position: absolute;
+    left: calc(50% - 194.88px/2);
+    padding: 0 20px;
+    bottom: calc(50% - 154.88px/2);
+}
+
+.banner-title h3 {
+    font-size: 2rem !important;
+    letter-spacing: 0;
+}
+
+.header-img img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    object-position: bottom;
+}
+
+.header-img {
+    margin-bottom: 30px;
+}
+
+.sidebar-container p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.sidebar-container .section-heading {
+    margin-bottom: 10px;
+}
+
+.section-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: unset;
+    line-height: 1;
+}
+
+.btn-primary {
+    background: black;
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 10px;
+}
+
+.btn-primary:hover {
+    color: white;
+}
+
+ul#internship_tabs>li.active {
+    border-bottom-color: #000 !important;
+}
+
+ul#internship_tabs>li.active>a {
+    color: #000;
+}
+
+
+ul#essential_info_tabs>li.active {
+    background-color: #000 !important;
+}
+
+ul#essential_info_tabs>li.active>a {
+    color: #fff;
+}
+
+div#internship_tabs_content .tab-pane,
+div#essential_info_tabs_content .tab-pane {
+    display: none;
+}
+
+div#internship_tabs_content .tab-pane.active,
+div#essential_info_tabs_content .tab-pane.active {
+    display: block;
+}
+
+div#fully_inclusive_prog .header-img img,
+div#itinerary .header-img img {
+    object-position: center;
+}
+
+.collapse {
+    display: none;
+}
+
+ul#essential_info_tabs {
+    margin-bottom: 0px;
+}
+
+div#essential_info_tabs_content {
+    background-color: #f4f4f4;
+    padding: 30px;
+}
+
+div#guide {
+    display: flex;
+    align-items: center;
+}
+
+div#guide h3,
+div#guide p {
+    margin-bottom: 0px !important;
+}
+
+
+div#guide h3.section-subheading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.8rem;
+    margin-right: 20px;
+}
+
+.guide-content {
+    margin-left: 20px;
+    line-height: 1.2rem;
+}
+
+.download-guide-img {
+    margin: -20px 0 !important;
+}
+
+.section.guide-btn-section {
+    text-align: center;
+}
+
+.section.guide-btn-section {
+    text-align: center;
+}
+
+.guide-link.button {
+    display: inline-flex;
+    padding: 15px 20px;
+    width: 200px;
+    justify-content: space-between;
+}
+
+.footer-newsletter-section {
+    display: none;
+}
+
+.panel-side,
+h4.panel-title {
+    font-weight: 700;
+}
+
+/* Old */
+
+.wcpbc-price>.amount>strike {
+    display: none;
+}
+
+.sidebar-container .preview-thumbnail {
+    display: none;
+}
+
+.timer-book-now-div {
+    display: none !important;
+}
+
+.upcoming-dates-section {
+    /* padding: 0 0 50px 0; */
+    margin-top: 0px !important;
+}
+
+.internship-price del bdi {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0 0.5rem 0 0;
+    margin: 0;
+}
+
+.internship-price ins bdi {
+    font-size: 2.7rem;
+}
+
+.small-breakdown {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.small-breakdown del {
+    display: none;
+}
+
+/* .single_variation_wrap {
+    display: none !important;
+} */
+
+
+/* .price-choose-date-div .reset_variations {
+    position: absolute;
+    margin: 12px 0 0 10px;
+} */
+
+li.sidebar-menu-book-now select#pa_dates {
+    width: 100% !important;
+}
+
+.save-text {
+    font-weight: 400;
+    font-size: 1.12rem;
+}
+
+.clock-inner .digit {
+    text-indent: 0;
+}
+
+.price-choose-date-div .internship-price del {
+    display: none;
+}
+
+.price-choose-date-div .internship-price {
+    width: 30% !important;
+    padding: 0;
+}
+
+.price-breakdown-table {
+    display: none;
+}
+
+#cultural .guide-form-inner form .ast-col {
+    padding: 0px 5px;
+}
+
+#cultural .guide-form-inner form .ast-row {
+    margin-bottom: 0px;
+}
+
+#cultural .guide-form-inner form .ast-row:nth-of-type(3) .ast-col span {
+    margin-top: 0px !important;
+}
+
+#cultural .guide-form-inner form .ast-row:nth-of-type(4) {
+    flex-direction: column;
+    display: flex;
+}
+
+#cultural .guide-form-inner form .ast-row:nth-of-type(4) .ast-col {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#cultural .wpcf7-response-output {
+    margin: 0px !important;
+}
+
+#cultural .wpcf7-submit.btn.ptefl-button {
+    margin-bottom: 0px !important;
+}
+
+div#cultural>*,
+div#cultural p {
+    font-size: 1.25rem;
+    margin-bottom: 0px !important;
+}
+
+div#cultural ul li {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+div#cultural .safe-txt {
+    font-size: 1rem;
+}
+
+div#cultural .mc4wp-checkbox {
+    font-size: 1rem;
+}
+
+td.value {
+    display: flex;
+}
+
+#dates {
+    width: 100% !important;
+}
+
+.guide-section .section-heading {
+    margin-bottom: 2rem;
+}
+
+/* .guide-link {
+    margin: 2rem auto 0 !important;
+} */
+
+.guide-link span {
+    color: white;
+}
+
+.guide-link i {
+    color: white;
+}
+
+.guide-section h2 {
+    font-size: 2.7rem;
+    line-height: 3rem;
+    font-weight: 400;
+}
+
+a.ptefl-button.book-now-btn:hover {
+    color: white;
+}
+
+.safety-info {
+    display: none;
+}
+
+.sidebar-note .woocommerce-Price-currencySymbol {
+    font-weight: 400;
+}
+
+.hero-container {
+    position: relative;
+}
+
+.hero-content-col .content-div {
+    padding: 60px 50px;
+    color: #fff;
+}
+
+.hero-content-col .section-heading {
+    text-align: left;
+    color: #fff;
+    font-size: 1.83rem;
+    line-height: 2.18rem;
+    margin-bottom: 0px;
+    font-weight: 700;
+}
+
+.internship-price {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0 0;
+}
+
+.internship-price ins,
+.internship-price bdi {
+    font-size: 1.77rem;
+    line-height: 2.5rem;
+}
+
+.internship-price del {
+    font-size: 1.06rem;
+}
+
+.banner-title-price {
+    margin-bottom: 50px;
+}
+
+.desc-div {
+    font-size: 1.18rem;
+    line-height: 2.18rem;
+}
+
+.flag-img-div {
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    background-position: center center;
+    background-size: cover;
+}
+
+.flag-row {
+    position: absolute;
+    left: calc(50% - 194.88px/2);
+    padding: 0 20px;
+    bottom: calc(50% - 154.88px/2);
+}
+
+.timer-book-now-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #E7E2DE;
+    border-radius: 40px;
+    padding: 20px;
+}
+
+.book-now-btn {
+    margin-bottom: 0px !important;
+    color: #fff;
+}
+
+select#choose_date_select,
+#date {
+    background-color: transparent;
+    border: 1px dashed #999999;
+    border-radius: 15px;
+    padding-right: 46px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png');
+    background-position: calc(100% - 15px);
+    background-repeat: no-repeat;
+    background-size: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+.book-now-btn span {
+    font-size: 1.2rem;
+}
+
+.upcoming-dates-inner-div {
+    display: flex;
+    /*align-items: center;
+
+    justify-content: space-between;*/
+    background-color: #ededed;
+    padding: 20px;
+}
+
+.upcoming-dates-inner-div div {
+    flex: 1;
+    /* border-right: 1px dashed #F7F2EE; */
+    border-right: 1px solid;
+    padding: 10px 20px;
+    /* color: #fff; */
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    align-items: center;
+    font-weight: bold;
+}
+
+.upcoming-dates-inner-div div:last-child {
+    border: none;
+}
+
+.dates-span {
+    font-weight: 400;
+    font-size: 15px;
+    /* opacity: 0.75; */
+    margin-top: .75rem;
+}
+
+.overview-section-content p {
+    font-weight: 400;
+}
+
+.overview-section-content h4,
+.overview-section-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.5rem;
+}
+
+.overview-section .section-heading {
+    text-align: center;
+    /* margin-bottom: 40px; */
+}
+
+.destination-row {
+    display: flex;
+    justify-content: center;
+}
+
+.overview-section-content p:last-child {
+    margin-bottom: 0px;
+}
+
+div#fully_inclusive_prog {
+    border-bottom: 1px dashed #999999;
+    padding-bottom: 20px;
+}
+
+.fully-inclusive-prog-section .section-heading {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+ul.inclusive-list {
+    margin-left: 0px;
+    column-count: 2;
+}
+
+ul.inclusive-list li {
+    list-style-type: none;
+    padding: 20px 0;
+    font-size: 1.12rem;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+}
+
+ul.inclusive-list li img {
+    margin-right: 19px;
+}
+
+ul.inclusive-list li:nth-child(3n) {
+    padding-bottom: 0px;
+}
+
+.itinerary-section .panel-heading,
+.itinerary-section .panel-side {
+    font-size: 1.42rem;
+}
+
+.itinerary-section .panel-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.itinerary-section .panel-title::after {
+    content: "\f107";
+    color: #333;
+    font-size: 2rem;
+    font-weight: 300;
+    font-family: "FontAwesome";
+}
+
+.itinerary-section .panel-title[aria-expanded="true"]::after {
+    content: "\f106";
+}
+
+.itinerary-section div#accordion .panel .panel-heading {
+    width: 80%;
+    background-color: transparent;
+}
+
+.itinerary-section div#accordion .panel .panel-side {
+    width: 20%;
+}
+
+.itinerary-section .panel {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    border-bottom: 1px dashed #999999;
+}
+
+.itinerary-section .panel:last-child {
+    border: none;
+    padding-bottom: 0px;
+}
+
+.itinerary-section .panel:first-child {
+    padding-top: 0px;
+}
+
+.panel-body.panel-extra-space {
+    width: 80%;
+    margin-left: 20%;
+}
+
+.panel-body.panel-extra-space p {
+    font-size: 1.12rem;
+    font-weight: 400;
+}
+
+.panel-body.panel-extra-space p:last-child {
+    margin-bottom: 0px;
+}
+
+.itinerary-section .section-heading {
+    margin-bottom: 40px;
+}
+
+ul#internship_tabs,
+ul#essential_info_tabs {
+    margin-left: 0px;
+    display: flex;
+}
+
+/* div#internship_tabs_content {
+    background-color: #F2EAE3;
+    padding: 50px;
+} */
+
+ul#internship_tabs>li,
+ul#essential_info_tabs li {
+    flex: 1;
+    list-style-type: none;
+}
+
+ul#essential_info_tabs>li {
+    padding: 15px 30px;
+    border: 1px solid #f7f2ee;
+    border-top: none;
+    background-color: #ededed;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+ul#essential_info_tabs>li>a {
+    line-height: 1.2rem !important;
+    font-weight: 600;
+}
+
+ul#internship_tabs>li {
+    border-bottom: 1px solid #f7f2ee !important;
+    text-align: center;
+}
+
+.internship_inside_content,
+.internship_requirements_content,
+.internship_organise_content {
+    /* column-count: 2; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img.list-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 20px;
+    object-fit: contain;
+}
+
+.internship_included i.fa.fa-circle,
+.internship_requirement i.fa.fa-circle,
+.internship_organise i.fa.fa-circle {
+    font-size: 10px;
+    margin-right: 10px;
+}
+
+.internship_included,
+.internship_requirement,
+.internship_organise {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    line-height: 1.2rem;
+    flex: 50%;
+}
+
+.internship_included:last-child {
+    margin-bottom: 0;
+}
+
+.internship_included span {
+    padding-right: 30px;
+    line-height: 1.35;
+}
+
+.included {
+    background-color: #028288 !important;
+}
+
+ul#internship_tabs>li>a {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    display: flex !important;
+    align-items: center;
+    padding: 10px 5px;
+    justify-content: center;
+    color: #9f9ea0;
+    cursor: pointer;
+}
+
+.requirements {
+    background-color: #65BE9F;
+}
+
+.organise {
+    background-color: #E45555;
+}
+
+/* .checklist-section .section-heading {
+    margin-bottom: 50px;
+} */
+
+.section.book-date-section {
+    margin-top: 3rem;
+    background-color: #0F3042;
+    border-radius: 40px;
+    padding: 50px;
+    color: #fff;
+    text-align: center;
+}
+
+
+/* .section.book-date-section select#dates {
+    background: #fff;
+} */
+
+.price-choose-date-div {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border: 1px dashed #F7F2EE;
+    border-left: none;
+    border-right: none;
+    margin-top: 25px;
+    align-items: center;
+}
+
+.section.book-date-section select#choose_date_select {
+    filter: invert(99%) sepia(96%) saturate(22%) hue-rotate(213deg) brightness(104%) contrast(100%);
+}
+
+.book-date-section .section-heading {
+    color: #fff;
+}
+
+.book-date-section .book-now-btn {
+    background-color: #E45555;
+    color: #fff !important;
+    cursor: pointer;
+}
+
+.internship_investment_content {
+    font-weight: 400;
+    font-size: 1.12rem;
+}
+
+
+/*.intern-image {
+
+    text-align: center;
+
+    height: 200px;
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    background-size: cover;
+
+    margin-bottom: 25px;
+
+}*/
+
+.intern-image img {
+    text-align: center;
+    height: 200px;
+    margin-bottom: 25px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.intern-reviews {
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.intern-link {
+    background-color: #F4f4f4;
+    display: block;
+    padding: 1.8rem;
+    /* box-shadow: 3px 3px #e7ddd4; */
+}
+
+.intern-name {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.previous-interns-row,
+.previous-interns-col {
+    display: flex;
+}
+
+.intern-content {
+    font-weight: 400;
+    line-height: 1.8rem;
+    min-height: 243px;
+}
+
+.intern-content p {
+    margin-bottom: 0px;
+}
+
+/* .intern-name,
+.intern-content {
+    font-size: 1.13rem;
+    line-height: 1.2rem;
+} */
+
+.previous-interns-section .section-heading {
+    margin-bottom: 40px;
+}
+
+.form-mailchimp-row label {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.location-section p {
+    text-align: center;
+    font-size: 1.12rem;
+    font-weight: 400;
+}
+
+.want-to-learn-more-form input,
+.want-to-learn-more-form select,
+.want-to-learn-more-form textarea {
+    font-size: 1rem;
+    color: #353535 !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    line-height: 1.5rem;
+    background-color: #f4f4f4;
+    border: none;
+    font-weight: 500 !important;
+}
+
+.want-to-learn-more-form textarea::placeholder {
+    color: #353535;
+}
+
+.want-to-learn-more-form input::placeholder {
+    color: #353535 !important;
+    font-weight: 500 !important;
+}
+
+.form-fields-row>div {
+    margin-bottom: 10px;
+}
+
+.form-mailchimp-row {
+    margin: 0 0 15px;
+}
+
+#locations .wpcf7-response-output,
+.want-to-learn-more-form {
+    margin: 0;
+}
+
+.submit_btn_col input {
+    background-color: #0F3042 !important;
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px !important;
+    color: #fff !important;
+}
+
+.location-map-img {
+    text-align: center;
+}
+
+.form-mailchimp-row span.note {
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 1.3rem !important;
+    display: block;
+}
+
+.submit_btn_col input {
+    background-color: #000 !important;
+}
+
+.form-mailchimp-row span {
+    font-size: 0.95rem;
+    line-height: 1.3rem;
+}
+
+.want-to-learn-more-form input::placeholder {
+    color: #353535;
+    font-weight: 700;
+}
+
+.want-to-learn-more-form .iti-flag {
+    border-radius: 10px;
+}
+
+.want-to-learn-more-form input:focus {
+    /* border: 1px dashed #999 !important; */
+    background-color: #f4f4f4;
+}
+
+.want-to-learn-more-form input[type="checkbox"],
+.want-to-learn-more-form input[type="checkbox"]:focus {
+    appearance: none;
+    background: none !important;
+    border: 1px solid #000 !important;
+    border-radius: 8px !important;
+    /* width: 1.1em !important;
+    min-width: 1.1em !important;
+    height: 1rem !important; */
+    min-width: 22px !important;
+    width: 22px !important;
+    height: 20px !important;
+}
+
+.want-to-learn-more-form input[type="checkbox"]:checked {
+    background-image: url('https://www.premiertefl.com/wp-content/uploads/2021/04/check.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 80% !important;
+    transition: none;
+}
+
+.flow-section {
+    text-align: center;
+    padding-top: 0;
+}
+
+.flow-section .section-heading {
+    margin-bottom: 40px;
+}
+
+.flow-text {
+    font-size: 1.12rem;
+    font-weight: 400;
+}
+
+.download-guide-img>div {
+    flex: 1;
+}
+
+/* .download-guide-img {
+    display: flex;
+    align-items: center;
+} */
+
+.download-guide-img>div:first-child {
+    flex: 1;
+}
+
+.download-guide-img>div:last-child {
+    flex: 2;
+}
+
+.guide-section {
+    text-align: center;
+    background-color: #F4f4f4;
+    /* border-radius: 40px; */
+    padding: 0 30px;
+}
+
+.cultural-thumbnail img {
+    object-fit: cover;
+    height: 150px;
+}
+
+.cultural-thumbnail .image-title {
+    margin-bottom: 0px;
+    text-align: center;
+    line-height: 2.2rem;
+    font-family: 'Brittish Shorthair', cursive;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.cultural-thumbnail {
+    /* border: 20px solid #F2EAE3; */
+    margin-bottom: 40px;
+    background-color: #f4f4f4;
+    padding: 15px 15px 8px 15px;
+    box-shadow: 3px 3px #bbb;
+}
+
+.cultural-excursions-top-content {
+    text-align: center;
+    font-size: 1.12rem;
+    font-weight: 400;
+}
+
+.cultural-excursions-top-content,
+div#itinerary .section-heading,
+div#checklist .section-heading,
+.section.previous-interns-section .section-heading,
+div#locations .section-heading,
+div#tour h3.section-heading {
+    text-align: center;
+}
+
+.cultural-excursions-row {
+    text-align: center;
+}
+
+.cultural-excursions-col {
+    text-align: left;
+}
+
+.destination-thumbnail {
+    /* background-size: cover;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-position: center; */
+    margin-bottom: 20px;
+}
+
+.destination-thumbnail img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.destination-link {
+    display: block;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 4px 4px #bbb;
+}
+
+.destinations-section {
+    /* background-image: url(https://www.premiertefl.com/wp-content/uploads/2021/04/internship-single-wave.svg);
+    height: 756px; */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background-color: #ededed;
+    padding: 50px 0;
+}
+
+.destinations-container {
+    flex: 1;
+}
+
+.pt-footer-accreditation-section {
+    margin-top: 50px;
+}
+
+.pt-footer-accreditation-section .wave-border-div {
+    display: none;
+}
+
+.destination-col {
+    padding: 0 2rem;
+}
+
+.destination-name {
+    font-size: 1.42rem;
+    font-weight: 700;
+}
+
+.destinations-col .section-sub-heading {
+    font-size: 1.12rem;
+    font-weight: 400;
+}
+
+/* .cultural-excursions-col:nth-child(odd) .cultural-thumbnail {
+    transform: skew( 5deg, -5deg);
+}
+
+.cultural-excursions-col:nth-child(even) .cultural-thumbnail {
+    transform: skew( -5deg, 5deg);
+} */
+
+.cultural-title {
+    font-size: 1.13rem;
+    font-weight: 700;
+}
+
+.cultural-content {
+    font-size: 1.06rem;
+    font-weight: 400;
+}
+
+.sidebar-container {
+    background-color: #ededed;
+    padding: 30px;
+    margin-bottom: 50px;
+    height: 90vh;
+    overflow: scroll;
+}
+
+.sidebar-title {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.sidebar-container .preview-thumbnail {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.sidebar-container .internship-price del {
+    color: #808080;
+}
+
+p.sidebar-note {
+    font-weight: 400;
+    font-size: 1.13rem;
+    margin-top: 20px;
+}
+
+.sidebar-note .amount {
+    font-weight: 400;
+}
+
+.sidebmar-menu {
+    margin: 1rem 0 0;
+}
+
+.sidebar-menu-item a {
+    font-size: 1rem;
+    display: block;
+    padding: 0.5rem 0;
+}
+
+.sidebar-menu-item {
+    list-style-type: none;
+    border-top: 1px dashed #999;
+}
+
+.sidebar-menu-item a>img {
+    margin-right: 25px;
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+}
+
+.sidebar-menu-button a {
+    background-color: #E45555;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar-menu-button {
+    list-style-type: none;
+    border-top: 1px dashed #999;
+    padding-top: 20px;
+}
+
+.sidebar-container::-webkit-scrollbar {
+    display: none;
+}
+
+.internship-sidebar-col.is-stuck .sidebar-container {
+    overflow-y: scroll;
+    height: 97vh;
+    position: relative;
+}
+
+.choose-date-div {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 3rem;
+}
+
+.choose-date-div a {
+    /*color: #65BE9F;*/
+}
+
+select#choose_date_select {
+    max-width: 250px;
+}
+
+.timer-book-now-div .single_add_to_cart_button.button.alt {
+    background-color: #0f3042 !important;
+}
+
+.internship-price>span {
+    display: flex;
+    align-items: center;
+}
+
+.internship-price ins {
+    font-weight: 600;
+}
+
+select#pa_dates,
+#dates {
+    background-color: #fff;
+    /* background-color: transparent;
+    border: 1px dashed #999999; */
+    /* margin-right: 20px; */
+    /* border-radius: 10px; */
+    font-weight: 500;
+    padding-right: 35px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png);
+    background-position: calc(100% - 15px);
+    background-repeat: no-repeat;
+    background-size: 10px;
+    cursor: pointer;
+    outline: none;
+    width: 210px !important;
+    margin: auto;
+    padding: 15px;
+}
+
+table.variations,
+table.variations td {
+    border: none;
+    width: auto;
+    margin-bottom: 0;
+}
+
+table.variations td.label {
+    display: none;
+}
+
+form.variations_form.cart {
+    display: flex;
+    align-items: center;
+    /* width: 100%; */
+}
+
+a.reset_variations {
+    font-size: 0px;
+    display: none;
+}
+
+a.reset_variations::before {
+    content: "\f0e2";
+    font-size: 20px;
+    font-family: 'FontAwesome';
+    margin-left: 10px;
+}
+
+select#pa_dates,
+.single_add_to_cart_button.button.alt {
+    margin: 0px !important;
+}
+
+li.sidebar-menu-book-now .variations_form_cart {
+    flex-direction: column;
+}
+
+li.sidebar-menu-book-now form.variations_form.cart {
+    flex-direction: column;
+    width: 100%;
+}
+
+li.sidebar-menu-book-now {
+    /* margin-top: 1rem; */
+    list-style-type: none;
+}
+
+li.sidebar-menu-book-now td.value {
+    padding: 5px 0 0 0;
+}
+
+li.sidebar-menu-book-now table.variations {
+    width: 100%;
+}
+
+li.sidebar-menu-book-now .single_variation_wrap,
+li.sidebar-menu-book-now select#pa_dates,
+li.sidebar-menu-book-now .single_add_to_cart_button,
+#date {
+    width: 100%;
+}
+
+.single_add_to_cart_button:after {
+    content: "\f105";
+    font-family: 'FONTAWESOME';
+    margin-left: 20px;
+}
+
+.single_add_to_cart_button {
+    border-radius: 10px;
+    font-size: 1.35rem;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: baseline;
+    border: 1px dashed #F7F2EE;
+}
+
+
+/* .price-choose-date-div select#pa_dates {
+    color: #fff;
+    background-color: #0f3042;
+} */
+
+.sidebar-menu-book-now .book-now-btn {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    padding: 15px 20px;
+    font-weight: 100;
+}
+
+.modal::-webkit-scrollbar {
+    display: none;
+}
+
+.modal {
+    display: none;
+    top: 10%;
+    left: 40%;
+    transform: translateX(-40%);
+    width: 75%;
+    height: 75vh;
+    overflow-y: scroll;
+    position: fixed;
+    z-index: 40001;
+    background: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0px 16px 32px rgb(0 0 0 / 30%);
+    animation-name: fadeIn_Modal;
+    animation-duration: 0.8s;
+}
+
+.modal-content {
+    height: 100% !important;
+    padding: 25px;
+}
+
+.modal ul {
+    margin: 10px 20px;
+}
+
+.modal .close {
+    border-radius: 10px;
+    top: 2%;
+    position: absolute;
+    right: 2%;
+    padding: 0 5px;
+    font-size: 50px;
+    background-color: #343434;
+    line-height: 1rem;
+    display: flex;
+    align-items: center;
+    z-index: 40002;
+}
+
+.modal .close span {
+    line-height: 1rem;
+    height: 30px;
+}
+
+.modal span.wpcf7-form-control-wrap {
+    margin: 1rem auto;
+}
+
+.previous-interns-row {
+    flex-wrap: wrap;
+}
+
+.previous-interns-col:nth-child(1),
+.previous-interns-col:nth-child(2) {
+    margin-top: 0;
+}
+
+.previous-interns-col {
+    margin-top: 40px;
+}
+
+span.stock-quantity {
+    background: var(--accent);
+    color: var(--white);
+    padding: .5rem .75rem;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+.woocommerce-variation-availability {
+    display: flex;
+    justify-content: center;
+    margin-top: .75rem;
+    align-items: center;
+}
+
+#investment .woocommerce-variation-add-to-cart button {
+    width: 200px;
+}
+
+/* .wc-deposits-wrapper .wc-deposits-option li input {
+    margin-right: 10px !important;
+    margin-top: 1px;
+    transform: scale(2);
+    position: a;
+} */
+
+
+/* .timer-book-now-div .single_variation_wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+} */
+
+.timer-book-now-div .wc-deposits-wrapper {
+    margin-bottom: 0px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.timer-book-now-div ul.wc-deposits-payment-plans {
+    margin-bottom: 0px !important;
+}
+
+.wc-deposits-wrapper .wc-deposits-option li input:checked,
+.wc-deposits-wrapper .wc-deposits-option li input:checked+label {
+    pointer-events: none;
+}
+
+.timer-book-now-div .single_variation_wrap,
+.choose-date-div .single_variation_wrap {
+    position: absolute;
+    bottom: -20px;
+    left: 10px;
+}
+
+.timer-book-now-div form.variations_form.cart,
+.choose-date-div form.variations_form.cart {
+    position: relative;
+}
+
+#investment #dates {
+    color: #fff;
+    background-color: #0f3042;
+}
+
+
+/*.timer-book-now-div #dates {*/
+
+
+/*    width: 200px !important;*/
+
+
+/*}*/
+
+
+/* .show-deposit-price ins>span {
+    display: flex;
+    flex-direction: column;
+}
+
+bdi.discount-price.price-now {
+    order: 1;
+}
+
+.show-deposit-price ins>span bdi:not(.discount-price) {
+    order: 2;
+}
+
+.show-deposit-price ins>span bdi:not(.discount-price):before {
+    content: '*Full Price ';
+    font-weight: 400;
+}
+
+.show-deposit-price ins>span bdi:not(.discount-price):after {
+    content: ', Pay 33.4% amount today to get started';
+    font-weight: 400;
+}
+
+.show-deposit-price ins>span bdi:not(.discount-price) {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 2rem;
+}
+
+.show-deposit-price bdi.discount-price.price-now {
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+}
+
+.show-deposit-price bdi.discount-price.price-now:before {
+    display: none;
+}
+
+.show-deposit-price bdi.discount-price.price-now:after {
+    content: '*';
+} */
+
+.woocommerce-variation-add-to-cart {
+    display: none;
+}
+
+ul.wc-deposits-payment-plans {
+    /*display: none !important;*/
+}
+
+
+.wc-deposits-payment-plan input {
+    display: none !important;
+}
+
+.wc-deposits-payment-plan label strong {
+    font-weight: 400;
+}
+
+small.wc-deposits-payment-plan-description {
+    display: none;
+}
+
+.wc-deposits-wrapper .wc-deposits-option li label,
+.wc-deposits-wrapper .wc-deposits-payment-plans li.wc-deposits-payment-plan label {
+    font-size: 1rem !important;
+    line-height: 1rem;
+    text-transform: capitalize;
+    letter-spacing: normal;
+    padding: 0;
+    max-width: 100%;
+    text-align: center;
+}
+
+ul.wc-deposits-option {
+    width: 100%;
+}
+
+.book-now-btn span {
+    width: 100%;
+}
+
+.timer-book-now-div .wc-deposits-wrapper {
+    width: 30%;
+}
+
+.timer-book-now-div a.book-now-btn {
+    display: flex;
+    align-items: center;
+    margin: 5px 0 !important;
+}
+
+form.variations_form.cart {
+    /* width: 55%; */
+    width: 40%;
+}
+
+/* ul.wc-deposits-option li:last-child {
+    display: none;
+} */
+
+.wc-deposits-wrapper .wc-deposits-option li {
+    /*width: 100%;*/
+    /*border-radius: 0;*/
+    /*box-shadow: none;*/
+    /*padding: 10px 15px;*/
+    /*line-height: 1rem;*/
+    /*border: none;*/
+    /*background-color: #dedede;*/
+}
+
+.wc-deposits-wrapper .wc-deposits-option li label {
+    line-height: 1rem;
+    font-size: 0.9em;
+}
+
+.wc-deposits-wrapper {
+    margin: 0px;
+}
+
+.ques-ans-body a {
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+.ques-ans-heading {
+    cursor: pointer;
+}
+
+.ques-ans-accordion.active .ques-ans-content {
+    display: block !important;
+}
+
+.ques-ans-section .accordion-panel-title,
+.ques-ans-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ques-ans-section .accordion-panel-title::after,
+.ques-ans-title::after {
+    content: "\f107";
+    color: #333;
+    /*top: 10px;*/
+    /*right: 0px;*/
+    /*font-size: 20px;*/
+    font-size: 2rem;
+    font-weight: 300;
+    /*position: absolute;*/
+    font-family: "FontAwesome";
+}
+
+.ques-ans-section .accordion-panel-title[aria-expanded="true"]::after,
+.ques-ans-accordion.active .ques-ans-title::after {
+    content: "\f106";
+}
+
+.ques-ans-section .accordion-panel-title,
+.ques-ans-title {
+    font-size: 1.42rem;
+    cursor: pointer;
+}
+
+.ques-ans-section .panel,
+.ques-ans-accordion {
+    border-bottom: 1px dashed #999999;
+    padding: 10px 5px 10px 15px;
+}
+
+.ques-ans-section .panel:last-child,
+.ques-ans-accordion:last-child {
+    border: none;
+}
+
+.ques-ans-body p {
+    font-weight: 400;
+}
+
+.ques-ans-section.section {
+    padding-top: 0px;
+}
+
+.price-choose-date-div table.variations td.value {
+    padding: 0px;
+}
+
+.internship-main-col .wc-deposits-wrapper {
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.price-choose-date-div .internship-price {
+    width: 20%;
+}
+
+/* .wc-deposits-wrapper .wc-deposits-option li input {
+    transform: scale(1.5);
+    margin-left: 5px;
+} */
+
+.wc-deposits-wrapper .wc-deposits-option {
+    margin: 10px 0 !important;
+    padding-bottom: 0px;
+}
+
+.wc-deposits-wrapper .wc-deposits-option li:first-child {
+    margin-bottom: 2px;
+}
+
+.price-breaking-div .show-deposit-price ins bdi:not(.discount-price),
+.price-breaking-div .show-later-price ins bdi:not(.discount-price) {
+    display: none;
+}
+
+.price-breaking-div del {
+    display: none;
+}
+
+
+/* .internship-price.show-deposit-price ins bdi.discount-price.price-now {
+    display: none;
+} */
+
+.internship-price.show-deposit-price ins bdi:not(.discount-price) {
+    display: none;
+}
+
+
+/* .price-breaking-div .show-deposit-price ins>span bdi:not(.discount-price),
+.internship-price.show-deposit-price bdi.discount-price.price-now,
+.price-breaking-div del {
+    display: none;
+} */
+
+.price-breaking-div {
+    background-color: #000;
+    padding: 20px;
+    text-align: left;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.price-breaking-div div {
+    font-size: 1.15rem;
+    font-weight: 400 !important;
+}
+
+.price-breaking-div ins {
+    font-weight: 700;
+}
+
+.view-breakups.show:after {
+    content: "\f0d8";
+    font-family: 'FontAwesome';
+    font-size: 2rem;
+    /* color: #65be9f; */
+    position: absolute;
+    top: 5px;
+    left: 50%;
+}
+
+.view-breakups.show {
+    position: relative;
+}
+
+.price-breaking-div-outer {
+    position: absolute;
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+    height: 0;
+    left: 0;
+    margin: 0px 0 0 9px;
+    z-index: 1;
+}
+
+.price-breaking-div-outer.show {
+    /* height: 190px; */
+    height: auto;
+}
+
+.view-breakups {
+    cursor: pointer;
+    text-align: center;
+    margin-left: 5px;
+}
+
+
+/* .view-breakups.show i:before {
+    content: "\f056";
+} */
+
+.breakdown-head {
+    margin-bottom: 5px;
+    font-size: 1.25rem;
+    line-height: 1.6rem;
+}
+
+
+/* .view-breakups {
+    display: none;
+} */
+
+.timer-book-now-div .book-now-btn.variable-book-now-btn span {
+    margin-right: 10px;
+}
+
+.timer-book-now-div .book-now-btn.variable-book-now-btn {
+    padding: 10px;
+}
+
+.timer-book-now-div .clock>div {
+    width: 55px;
+}
+
+.timer-book-now-div .wc-deposits-wrapper {
+    margin-right: 0px;
+}
+
+.timer-book-now-div form.variations_form.cart {
+    margin-right: 25px;
+}
+
+.payment-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: 400;
+    /* margin-bottom: 20px; */
+}
+
+.payment-inst.show-deposit-price del {
+    display: none;
+}
+
+
+/* .course-price-div {
+    padding-bottom: 0px;
+} */
+
+.payment-inst ins bdi {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.payment-inst {
+    padding: 0 5px;
+}
+
+.view-breakups {
+    margin-bottom: 0px;
+}
+
+.payment-text i.fa.fa-cc-stripe:before {
+    font-size: 2rem;
+    color: #6B71E3;
+}
+
+
+/* .course-highlights-inner .add-to-cart-div {
+    margin-top: 20px;
+} */
+
+.payment-text i.fa.fa-cc-stripe {
+    padding: 0 5px;
+}
+
+
+.sidebar-container .clock>div {
+    background-color: #fff !important;
+    color: #000;
+    padding: 3px !important;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid #494948;
+}
+
+.sidebar-container .clock {
+    width: 100%;
+}
+
+.sidebar-container .digit-text {
+    margin: 0px !important;
+    text-align: center;
+    padding: 0px;
+    line-height: 1rem;
+}
+
+.sidebar-container .clock-inner {
+    margin: 0px !important;
+    line-height: 2rem !important;
+}
+
+.sidebar-container .clock-inner .digit {
+    height: auto;
+    display: block;
+    margin: 0px;
+    line-height: 2rem !important;
+}
+
+.sidebar-container .clock .clock-inner .base {
+    line-height: 2rem !important;
+    font-size: 1.95rem !important;
+    font-weight: 700 !important;
+}
+
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+    .cultural-thumbnail img {
+        height: 100px;
+    }
+
+    .destination-thumbnail img {
+        height: 150px;
+    }
+
+    .destination-link {
+        padding: 15px;
+        width: 100%;
+    }
+
+    .destination-col {
+        padding: 0 1rem;
+        display: flex;
+    }
+
+    .destination-row {
+        display: flex;
+    }
+
+    .internship-timer {
+        padding: 20px 10px;
+    }
+
+    .sidebar-container .clock .clock-inner .base {
+        font-size: 1.2rem !important;
+    }
+}
+
+
+@media only screen and (width: 768px) {
+    .wc-deposits-wrapper .wc-deposits-option li input {
+        margin-right: 0.5rem;
+    }
+
+    .clock {
+        width: 100%;
+    }
+
+    .sidebar-container {
+        padding: 20px;
+    }
+
+    .view-breakups {
+        display: inline-block;
+    }
+
+    .payment-text {
+        display: inline-block;
+    }
+
+    .cultural-thumbnail .image-title {
+        font-size: 1.4rem;
+    }
+
+    .cultural-title {
+        line-height: 1.2rem;
+    }
+
+    .section.hero-section {
+        margin-top: 20px;
+    }
+
+    .guide-section {
+        padding: 0 10px;
+    }
+
+    #guide .guide-content {
+        font-size: 0.8rem;
+        line-height: 0.9rem;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .eligibility-checker {
+        padding: 1rem;
+    }
+
+    .group-box {
+        margin: 25px 0;
+    }
+
+    .course-included {
+        display: block;
+    }
+
+    .section-content:before {
+        float: left;
+        margin: 15px 0;
+    }
+
+    .section-content p {
+        font-size: 1rem;
+    }
+
+    .cultural-excursions-col {
+        margin-bottom: 40px;
+    }
+
+    select#pa_dates,
+    #dates {
+        width: 100%;
+    }
+
+    #investment .woocommerce-variation-add-to-cart button {
+        width: 95%;
+        margin: auto !important;
+    }
+
+    #investment,
+    #guide {
+        margin-top: 2rem;
+    }
+
+    #investment select {
+        background-color: #fff;
+    }
+
+    #investment .variations {
+        width: -webkit-fill-available;
+    }
+
+    #investment .single_variation_wrap {
+        width: 100%;
+    }
+
+    .hero-section {
+        padding-bottom: 20px !important;
+    }
+
+    .hero-content-col .content-div {
+        padding: 20px;
+    }
+
+    .banner-title-price {
+        margin-bottom: 10px;
+    }
+
+    .hero-img-col>div {
+        /* background-size: contain; */
+        height: 200px !important;
+        margin-top: 30px;
+    }
+
+    .hero-row {
+        flex-direction: column-reverse;
+    }
+
+    .flag-img-div img {
+        width: 70%;
+    }
+
+    .hero-content-col {
+        margin-top: 0;
+        z-index: 9;
+    }
+
+    .flag-row {
+        z-index: 9;
+        right: 0 !important;
+        /*top: 275px;*/
+        left: calc(50% - 150px/2);
+        bottom: 165px;
+    }
+
+    .flag-img-div {
+        width: 100px;
+        height: 100px;
+    }
+
+    .timer-book-now-div {
+        flex-direction: column;
+    }
+
+    .timer-book-now-div>div {
+        flex: 1;
+    }
+
+    .overview-section-content {
+        padding-bottom: 2rem;
+    }
+
+    .overview-section-content p {
+        line-height: inherit;
+    }
+
+    .internship_included,
+    .internship_requirement,
+    .internship_organise {
+        margin-bottom: 10px;
+    }
+
+    .choose-date-div {
+        width: 100%;
+        display: block;
+    }
+
+    .choose-date-div .variations {
+        width: 100%;
+    }
+
+    .choose-date-div form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .choose-date-div .single_variation_wrap {
+        width: 95%;
+    }
+
+    .choose-date-div .single_add_to_cart_button {
+        width: 100%;
+    }
+
+    /* .panel.panel-default {
+        flex-direction: column;
+        align-items: flex-start !important;
+    } */
+    .itinerary-section .panel {
+        padding: 15px 0;
+    }
+
+    .panel-body {
+        width: 100% !important;
+        margin: auto !important;
+    }
+
+    .itinerary-section .panel-side {
+        width: 40% !important;
+    }
+
+    .itinerary-section .panel-heading {
+        width: 60% !important;
+    }
+
+    .upcoming-dates-inner-div div {
+        padding: 0 10px;
+    }
+
+    .internship-content-row {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .internship-main-col {
+        margin-top: 30px;
+    }
+
+    ul#internship_tabs li {
+        width: 33.33%;
+        text-align: center;
+    }
+
+    #internship_tabs>li>a {
+        font-size: 1rem !important;
+        padding: 10px !important;
+    }
+
+    div#internship_tabs_content {
+        padding: 20px;
+    }
+
+    .intern-image img {
+        margin-bottom: 0;
+    }
+
+    .internship_inside_content,
+    .internship_requirements_content,
+    .internship_organise_content {
+        column-count: auto;
+    }
+
+    .book-date-section {
+        padding: 20px !important;
+    }
+
+    .price-choose-date-div {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .price-choose-date-div .internship-price {
+        margin-bottom: 10px;
+    }
+
+    select#choose_date_select {
+        width: 140px;
+        margin-right: 5px;
+    }
+
+    .previous-interns-row {
+        flex-direction: column;
+    }
+
+    .previous-interns-col:first-child {
+        margin-bottom: 40px;
+    }
+
+    .overview-section-content h4 {
+        font-size: 1rem !important;
+        line-height: 1.5;
+    }
+
+    #locations .location-map-img img {
+        height: 250px;
+        margin-bottom: 30px;
+    }
+
+    .form-mailchimp-row {
+        margin: 15px 0;
+    }
+
+    .destination-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .destination-col {
+        padding: 0 5px;
+        flex: 1;
+        display: flex;
+    }
+
+    .destination-link {
+        padding: 10px;
+        flex: 1;
+    }
+
+    .destination-thumbnail img {
+        height: 100px;
+    }
+
+    .destination-name {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+    }
+
+    .destinations-section {
+        height: 440px;
+        background-size: contain;
+        background-position: top center;
+    }
+
+    .intern-link {
+        display: flex;
+        padding: 1rem;
+    }
+
+    .intern-link>div {
+        flex: 1;
+    }
+
+    .intern-image {
+        margin-bottom: 0px;
+    }
+
+    .intern-content {
+        height: 105px;
+        overflow-y: scroll;
+    }
+
+    .intern-name {
+        margin-bottom: 10px;
+    }
+
+    .intern-data {
+        margin-left: 15px;
+    }
+
+    .cultural-excursions-col .card {
+        display: flex;
+        align-items: center;
+    }
+
+    .cultural-excursions-col .card>div {
+        flex: 1;
+    }
+
+    .cultural-thumbnail {
+        border-width: 10px;
+        margin-bottom: 0px;
+        transform: none !important;
+    }
+
+    .cultural-content-div {
+        margin-left: 15px;
+    }
+
+    .cultural-title {
+        margin-bottom: 10px;
+    }
+
+    .guide-section {
+        padding: 20px;
+    }
+
+    .download-guide-btn {
+        margin-bottom: 0px !important;
+    }
+
+    .bro_submit input[type="submit"] {
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+
+    .modal {
+        width: 95%;
+    }
+
+    .submit_btn_col input {
+        text-align: center;
+    }
+
+    .get-guide-btn,
+    .virtual-tour-btn {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .ques-ans-accordion {
+        padding: 10px 0;
+    }
+
+    div#guide {
+        flex-wrap: wrap;
+    }
+
+    .download-guide-img {
+        margin: 20px 0 !important;
+    }
+
+    div#guide h3,
+    div#guide p {
+        margin: 0px auto !important;
+    }
+
+    .hero-section {
+        margin: 0 0 30px;
+    }
+
+    .icon-row {
+        left: calc(50% - 140px/2);
+        top: 25%;
+        bottom: 0;
+    }
+
+    .icon-img-div {
+        width: 100px;
+        height: 100px;
+    }
+
+    .upcoming-dates-inner-div div {
+        justify-content: space-between;
+    }
+
+    ul#essential_info_tabs>li {
+        padding: 20px;
+    }
+}
+
+.internship-timer .base {
+    position: inherit;
+    top: initial;
+    left: initial;
+    transform: none;
+    font-weight: 500;
+    /* margin: 0 -5px 0 0; */
+}

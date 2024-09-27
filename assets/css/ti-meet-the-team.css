@@ -1,0 +1,220 @@
+/* Meet The Team Style */
+
+/*header section*/
+
+.header-section .ast-row{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   margin-top:4rem;
+}
+.header-section h1{
+    text-transform:uppercase;
+    text-align:center;
+    font-size:1.875rem;
+    font-weight: 500;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+}
+.header-section p{
+    text-align:center;
+}
+
+.team-member-image {
+    background-size: cover;
+}
+
+/*meet the team section*/
+
+
+.meet-the-team-tabs .tablinks {
+	flex: 1;
+	background-color: transparent;
+	color: #000;
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.3rem;
+	border-top: 11px solid #EDEDED;
+	padding: 30px 40px;
+	text-align: center;
+	line-height: 1.8;
+}
+
+.meet-the-team-tabs .tablinks:hover{
+    background-color: #000;
+    color:#fff;
+}
+.meet-the-team-tabs .tabs {
+	display: flex;
+	justify-content: space-between;
+}
+
+.meet-the-team-tabs .tablinks.active {
+	border-color: #000;
+}
+
+/*management and operations team section*/
+
+.teams-section{
+    margin:2.5rem auto;
+   
+}
+.teams-section .management-operations .ast-row,
+.teams-section .academic-council .ast-row{
+     border-bottom:1px solid lightgray;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: flex-start;
+}
+.management-operations .team-member,
+.academic-council .team-member{
+    border-bottom:1px solid lightgray;
+    margin-bottom:2rem;
+    padding-bottom:2rem;
+    height: 650px;
+    overflow: hidden;
+}
+
+.team-member-name {
+    font-weight: 600;
+}
+
+.management-operations .last{
+    border-bottom:none !important;
+}
+.management-operations .team-member .team-member-image,
+.academic-council .team-member .team-member-image{
+    margin-bottom: 2rem;
+    height: 300px;
+    width: 353px !important;
+    object-fit: fill;
+}
+
+.management-operations .team-member .team-member-title,
+.management-operations .team-member .team-member-name,
+.academic-council .team-member .team-member-title,
+.academic-council .team-member .team-member-name{
+    font-size:1rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.management-operations .team-member .team-member-about,
+.academic-council .team-member .team-member-about{
+    font-size:.9rem;
+}
+.team-member .team-member-title{
+    padding-bottom:35px;
+}
+
+.no-border{
+    border-bottom:none !important;
+}
+
+[data-tab-content]{
+    display:none;
+}
+
+.active[data-tab-content]{
+    display:block;
+}
+
+/*contact info*/
+
+.contact-section{
+    text-align:center;
+}
+
+.contact-section .section-heading{
+    margin-bottom:3rem;
+    text-align:center;
+    text-transform:uppercase;
+   
+}
+
+.contact-section .contact-icons img{
+    margin-bottom:3rem;
+    }
+    
+.contact-section .contact-icons h3{
+    text-transform:uppercase;
+    margin-bottom:2rem;
+    font-size:1rem;
+    }
+    
+.contact-section .contact-icons p:nth-of-type(odd){
+    margin:0;
+    text-transform:capitalize;
+    }
+    
+
+@media screen and (max-width:450px){
+    .header-section .ast-row {
+    margin-top: 1rem;
+}
+.header-section h1{
+    font-size:.875rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0.35rem;
+}
+}
+
+@media screen and (max-width:550px){
+ .meet-the-team-tabs .tablinks {
+    font-size: .7rem;
+    padding: 30px 0px;
+}   
+
+
+}
+
+@media screen and (max-width:900px){
+    .management-operations .team-member,
+    .academic-council .team-member{
+        border-bottom:1px solid lightgray;
+        padding:0;
+        overflow:hidden;
+        height:550px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+}
+
+@media screen and (max-width:768px){
+    .management-operations .team-member,
+.academic-council .team-member{
+    border-bottom:1px solid lightgray;
+    padding:0;
+    overflow:hidden;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.academic-council .team-member,
+.no-border{
+    border-bottom:1px solid lightgray !important;
+}
+
+.academic-council .last{
+    border:none !important;
+}
+
+
+
+.teams-section{
+    margin:0;
+}
+
+.contact-section .contact-icons{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.contact-section .section-heading{
+    margin:3rem auto;
+}
+}

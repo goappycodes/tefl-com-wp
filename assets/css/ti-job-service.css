@@ -1,0 +1,1026 @@
+section#job_section .ast-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section.banner-section {
+    min-height: 450px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+section.banner-section .ast-container {
+    margin-left: 30px;
+    flex: 1;
+}
+
+.banner-content-block {
+    margin-right: 40px;
+}
+
+.banner-content-block .content-block {
+    background-color: #fff;
+    padding: 50px 60px 50px 50px;
+    position: relative;
+}
+
+.banner-content-block .content-block img {
+    position: absolute;
+    right: -50px;
+    top: calc(50% - 50px);
+}
+
+.banner-content-block a {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 25px 12px 50px;
+    min-height: 55px;
+    margin-bottom: -55px;
+    font-size: 0.688rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.banner-content-block a i {
+    font-size: 1.35rem;
+}
+
+.banner-content-block .content-block h2 {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    margin-bottom: 0;
+    color: inherit;
+}
+
+.banner-content-block .content-block h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
+    margin: 8px 0 30px;
+}
+
+.banner-content-block .content-block p {
+    line-height: 1.5;
+}
+
+.promo {
+    height: 300px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    padding: 10px 0;
+}
+
+.strip p {
+    margin: 0;
+    padding-right: 2em;
+    color: white;
+    font-weight: 500;
+}
+
+.strip .button {
+    background: #fff;
+    color: #000;
+    padding: 0.5em 1em;
+    font-size: 14px;
+    border-radius: 0;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.hr {
+    background: #000;
+    height: 0.5em;
+    margin-top: 0.5em;
+}
+
+.header-section {
+    text-align: center;
+    padding: 0rem 0 4rem 0;
+}
+
+.header-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+}
+
+.jobs-section {
+    margin: 8rem 0 4rem 0;
+    background: #ededed;
+    padding: 3rem 6rem;
+    text-align: center;
+}
+
+.jobs-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    /* line-height: 1; */
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    margin-bottom: 3rem;
+}
+
+.job {
+    background: white;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.job .background {
+    min-height: 175px;
+    background-position: center;
+    background-size: cover;
+    border-top: 0.5rem solid #5B8E8F;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.job .background .salary {
+    background: #5B8E8F;
+    color: white;
+    font-size: 13px;
+    padding: 7px 10px 5px;
+    line-height: 1;
+    font-weight: 500;
+}
+
+.job .title {
+    text-align: left;
+    padding: 1.5rem 2rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.job .info {
+    text-align: left;
+    margin: 0;
+    padding: .5rem 2rem;
+    font-size: 0.900rem;
+    display: flex;
+    align-items: center;
+    line-height: 1.25;
+}
+
+.job .info .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.job a {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 25px;
+    font-size: 0.688rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    /* margin-top: 25px; */
+}
+
+.job a i {
+    font-size: 1.35rem;
+}
+
+.team-section {}
+
+.team-section .ast-container {
+    padding: 0;
+}
+
+.team-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header-section p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 2rem 0rem 2rem 2rem;
+    text-align: left;
+}
+
+.header-section img {
+    margin: 2rem auto 0;
+    height: 300px;
+    object-fit: contain;
+}
+
+.team-member {
+    overflow: hidden;
+    border-bottom: 1px solid;
+}
+
+.team-member-image {
+    background-size: cover;
+}
+
+.last {
+    border-bottom: none !important;
+}
+
+.team-member-image {
+    margin-bottom: 1.5rem;
+    height: 300px;
+    width: 353px !important;
+    object-fit: fill;
+}
+
+.team-member-name {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+}
+
+.team-member-title {
+    margin-bottom: 1.5rem;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+}
+
+.team-member-about {
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 170px;
+}
+
+.team-member-link {
+    border-top: 1px solid;
+    display: block;
+    padding: 0.5em 0;
+}
+
+.salary-calculator-section {
+    margin: 75px 0;
+}
+
+.salary-small-box {
+    background: #EDEDED;
+    min-height: 450px;
+}
+
+.salary-small-box-title {
+    border-bottom: 1px solid;
+    text-align: center;
+    padding: 25px;
+    letter-spacing: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.salary-small-box p {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.salary-calculator {
+    background-size: cover;
+    height: 450px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.salary-calculator-inner {
+    background-color: #0000009e;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 65px;
+    align-items: center;
+}
+
+.section-heading {
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 1.8rem;
+    color: #fff;
+    letter-spacing: 0.4rem;
+}
+
+.salary-text {
+    line-height: 1.5;
+}
+
+.salary-calculator a {
+    background-color: #000;
+    width: 60%;
+    color: #fff;
+    padding: 0.75em 1.5em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 10px 10px 50px #555;
+}
+
+.button-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 2em 0 0 0;
+}
+
+.black-button {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 25px 12px 25px;
+    min-height: 55px;
+    font-size: 0.688rem;
+    width: 280px;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.black-button:hover {
+    color: #fff;
+}
+
+.experience-section {
+    border-top: 1px solid;
+    margin: 3rem 0;
+    padding: 3rem 0 0;
+}
+
+.experience-section .ast-container {
+    padding: 0;
+}
+
+.experience-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    text-align: center;
+}
+
+.experience-section h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    text-align: center;
+}
+
+.experience-box {
+    background: #ededed;
+    padding: 3rem;
+    display: flex;
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+.experience-left-inner {
+    width: 50%;
+    padding-right: 2rem;
+}
+
+.experience-left-inner h2 {
+    text-align: right;
+}
+
+.experience-right-inner {
+    width: 50%;
+}
+
+.experience-right-inner h2 {
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.experience-left-inner p {
+    padding-top: 2rem;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.experience-right-inner p {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 2rem 0 0 0;
+    border-left: 1px solid;
+    padding-left: 2rem;
+}
+
+.salary-section {
+    border-bottom: 1px solid;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+}
+
+.salary-section .ast-container {
+    padding: 0;
+}
+
+.salary-container {
+    background-position: center;
+    background-size: cover;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 100px 0;
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+.salary-container:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+    left: 0;
+    top: 0;
+}
+
+.salary-container-content {
+    text-align: center;
+    position: relative;
+}
+
+.salary-container-content h3 {
+    font-size: 1.875rem;
+    color: #fff;
+    font-weight: 500;
+    width: 50%;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    margin: auto;
+}
+
+.salary-container-content p {
+    color: #fff;
+    padding: 35px 0;
+    font-size: 18px;
+    line-height: 1.5;
+    width: 65%;
+    margin: auto;
+}
+
+.salary-container-content a {
+    background-color: #000;
+    color: #fff;
+    min-height: 55px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    width: 260px;
+    font-size: 0.688rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+}
+
+.blog-section {
+    margin-bottom: 3rem;
+}
+
+.blog-section .ast-container {
+    padding: 0;
+}
+
+
+.blog-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.bolg-content {
+    width: 100%;
+    position: relative;
+}
+
+.blog-item {
+    min-height: 550px;
+    background-position: center !important;
+    background-size: cover !important;
+    display: flex;
+    align-items: flex-end;
+    padding: 50px;
+    position: relative;
+}
+
+.blog-item:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+    left: 0;
+    top: 0;
+}
+
+.blog-item h3,
+.blog-item a {
+    color: #fff;
+}
+
+.bolg-content h3 {
+    margin-bottom: 70px;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    line-height: 1.6;
+}
+
+.blog-item .blog-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+}
+
+.blog-item .blog-link i {
+    font-size: 1.35rem;
+}
+
+.job-section h3 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: 0.35rem;
+    margin-bottom: 4rem;
+}
+
+.job-section .ast-container {
+    padding: 0;
+}
+
+.job.inner-div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+    margin-bottom: 2rem;
+}
+
+.job-type {
+    font-size: 0.688rem;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+    padding: 13px 0 10px;
+    line-height: 1.5;
+    letter-spacing: 0.3rem;
+    margin: 0;
+}
+
+.job__img {
+    background: white;
+    padding: 2rem 0;
+}
+
+.job__img img {
+    height: 50px;
+}
+
+.job-title {
+    text-align: left;
+    padding: 1.5rem 2rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+    margin: 0;
+}
+
+.job__info {
+    padding: 0 0 2rem;
+    min-height: 450px;
+}
+
+.comp-name {
+    text-align: left;
+    margin: 0;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.900rem;
+    line-height: 1.25;
+}
+
+.job-location {
+    text-align: left;
+    margin: 0;
+    padding: 1rem 2rem;
+    font-size: 0.900rem;
+    display: flex;
+    align-items: center;
+    line-height: 1.25;
+}
+
+.job-icons {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+.job__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 1rem 0;
+    border-top: 1px solid;
+    letter-spacing: 0.3rem;
+    margin-top: 25px;
+    background-color: #000;
+}
+
+.job__cta a {
+    font-size: 0.688rem;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0 1rem;
+    justify-content: space-between;
+}
+
+
+/*modal css*/
+
+.hunter-button {
+    cursor: pointer;
+}
+
+.hunter_brochure_row {
+    align-items: center;
+}
+
+.brochure-content {
+    line-height: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.form-row:nth-last-of-type {
+    margin-bottom: 0px !important;
+}
+
+.brochure-title {
+    font-size: 2rem;
+}
+
+.brochure_form_inner .wpcf7 input[type=text],
+.brochure_form_inner .wpcf7 input[type=tel],
+.brochure_form_inner .wpcf7 input[type=email] {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.hunter_brochure {
+    display: none;
+    position: fixed !important;
+    /* Stay in place */
+    z-index: 99;
+    /* Sit on top */
+    /* Location of the box */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    align-items: center;
+    justify-content: center;
+}
+
+.hunter_brochure_container {
+    background-color: #fff !important;
+    width: 60%;
+    /* height: 450px; */
+    border: 2px solid #193847;
+    padding: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: 15px;
+}
+
+.brochure-content p {
+    margin-bottom: 10px;
+}
+
+.wpcf7-list-item {
+    margin: 0 !important;
+}
+
+.hunter_brochure span.cross {
+    cursor: pointer;
+    float: right;
+    z-index: 999999 !important;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px;
+    line-height: 1rem;
+}
+
+.brochure_form input[type=text],
+.brochure_form input[type=email],
+.brochure_form input[type=tel] {
+    padding: 5px 10px !important;
+    color: #888888;
+    border: 1px solid #818a91;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.brochure_form input:focus {
+    outline: none;
+    border-color: #818a91 !important;
+}
+
+.wpcf7-submit {
+    text-transform: uppercase;
+}
+
+
+.hunter_brochure_container::-webkit-scrollbar {
+    display: none;
+}
+
+
+.hunter_brochure_container {
+    position: relative;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+/*======modal css end========*/
+
+.faq-section {
+    border-top: 1px solid;
+}
+
+.faq-section h3 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    margin: 3rem 0;
+    letter-spacing: 0.35rem;
+}
+
+.faq-box h4 {
+    border-bottom: 1px solid;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.3rem;
+    margin-bottom: 1rem;
+    min-height: 75px;
+    padding-bottom: 1rem;
+}
+
+.faq-box p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.faq-box {
+    margin-bottom: 4rem;
+}
+
+@media only screen and (min-width:768px) {
+
+    .form-col-left {
+        padding-right: 5px;
+    }
+
+    .form-col-right {
+        padding-left: 5px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .salary-small-box {
+        min-height: auto;
+    }
+
+    .salary-calculator {
+        margin-bottom: 1.75em;
+    }
+}
+
+@media(max-width: 767px) {
+    .live-webinar-details>div {
+        width: 100%;
+        margin-bottom: 15px;
+        margin-bottom: 20px;
+    }
+
+    .live-webinar-details {
+        padding: 25px;
+    }
+
+    .live-webinar-details h4 {
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+    }
+
+    section.upcoming-webinars-section {
+        padding: 0 20px;
+    }
+
+    .blog-section .blog-col:last-child {
+        margin-bottom: 0px;
+    }
+
+    .blog-section .blog-col {
+        margin-bottom: 30px;
+    }
+
+    .salary-calculator-inner {
+        padding: 0 20px;
+    }
+
+    .salary-calculator a {
+        width: 100%;
+    }
+
+    .strip {
+        flex-direction: column;
+    }
+
+    .strip p {
+        padding-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    .team-section .team-col {
+        margin-bottom: 30px;
+    }
+
+    .team-section .team-col:last-child {
+        margin-bottom: 0px;
+    }
+
+    .jobs-section {
+        margin: 4rem 0 -4rem;
+        background: transparent;
+        padding: 0;
+    }
+
+    .job-card__body {
+        min-height: auto !important;
+    }
+
+    .black-button {
+        width: 100%;
+    }
+}
+
+/*New Job feed*/
+
+.job-card {
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.job-clickbox {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+.job-meta_icon {
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+    margin: 0 1rem 0 0;
+}
+
+.job-type {
+    text-align: center;
+}
+
+.job-image img {
+    width: 100%;
+    height: 150px;
+    padding: 2rem;
+    object-fit: contain;
+}
+
+.job-card__body {
+    background: var(--gray-bg);
+    padding: 2rem;
+    min-height: 350px;
+}
+
+.job-card__title h4 {
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.learn-more {
+    width: 100%;
+}
+
+.job-meta_value {
+    font-size: .8rem;
+}
+
+.job-meta {
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: .75rem;
+}

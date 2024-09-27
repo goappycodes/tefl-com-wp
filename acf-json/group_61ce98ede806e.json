@@ -1,0 +1,123 @@
+{
+    "key": "group_61ce98ede806e",
+    "title": "Global Timer",
+    "fields": [
+        {
+            "key": "field_61ce98f72e5aa",
+            "label": "Timer Expiry",
+            "name": "timer_expiry",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "Y\/m\/d H:i:s",
+            "return_format": "Y\/m\/d H:i:s",
+            "first_day": 1
+        },
+        {
+            "key": "field_61d807c825445",
+            "label": "Excluded Courses",
+            "name": "excluded_courses",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "course"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 1,
+            "allow_null": 1,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_636cb74aa883e",
+            "label": "Black Friday Sale Timer Expiry",
+            "name": "black_friday_sale_timer_expiry",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "Y\/m\/d H:i:s",
+            "return_format": "Y\/m\/d H:i:s",
+            "first_day": 1
+        },
+        {
+            "key": "field_65537d9516784",
+            "label": "Black Friday Sale Discount Timer",
+            "name": "black_friday_sale_discount_timer",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "Y\/m\/d H:i:s",
+            "return_format": "Y\/m\/d H:i:s",
+            "first_day": 1
+        },
+        {
+            "key": "field_66503af799757",
+            "label": "Coupons Page Coupons Expiry Date",
+            "name": "coupons_page_coupons_expiry_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "Y\/m\/d",
+            "return_format": "Y\/m\/d",
+            "first_day": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1716534093
+}
