@@ -1,6 +1,6 @@
 <?php
 
-// add_action('template_redirect', 'lms_sso_redirect');
+add_action('template_redirect', 'lms_sso_redirect');
 
 function lms_sso_redirect(){
 

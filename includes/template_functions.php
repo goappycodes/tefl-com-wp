@@ -149,7 +149,7 @@ function get_current_url()
     return $pageURL;
 }
 
-// add_action('template_redirect', 'redirect_blog_path_if_missing');
+add_action('template_redirect', 'redirect_blog_path_if_missing');
 function redirect_blog_path_if_missing()
 {
     global $wp_rewrite;
