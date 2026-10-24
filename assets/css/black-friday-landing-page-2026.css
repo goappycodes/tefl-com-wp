@@ -1,0 +1,734 @@
+/* ==========================================================================
+   Black Friday Landing Page 2026 — teflinstitute.com
+   Section 1: HERO
+   All rules namespaced under .bf26 to avoid clashing with theme/Astra styles.
+   ========================================================================== */
+
+.bf26 {
+  --bf-black: #0A0A0A;
+  --bf-black-2: #111111;
+  --bf-black-3: #161616;
+  --bf-red: #D7263D;
+  --bf-red-dark: #9E1428;
+  --bf-red-light: #E8384F;
+  --bf-deep-red: #C41E3A;
+  --bf-gold: #E3B341;
+  --bf-cream: #F6F0EB;
+  --bf-grey: #B8B8B8;
+  --bf-grey-2: #D4D4D4;
+  --bf-line: #2A2A2A;
+
+  font-family: Urbanist, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--bf-cream);
+  background: var(--bf-black);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.bf26 *,
+.bf26 *::before,
+.bf26 *::after {
+  box-sizing: border-box;
+}
+
+/* Full-bleed: break out of the Astra content container */
+.bf26-fullbleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* ===================== HERO LAYOUT ===================== */
+.bf26-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--bf-black);
+}
+
+.bf26-hero__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 48px 32px 72px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+  gap: 32px;
+  align-items: center;
+}
+
+.bf26-hero__copy {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================== DEPARTURES BOARD ===================== */
+.bf26-board {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 100%;
+  background: var(--bf-black);
+  border: 1px solid var(--bf-line);
+  border-radius: 14px;
+  padding: 8px 10px 10px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .4);
+}
+
+.bf26-board__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .16em;
+  color: #E6E6E6;
+}
+
+.bf26-board__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bf26-board__gate {
+  white-space: nowrap;
+}
+
+.bf26-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bf-red);
+  box-shadow: 0 0 8px var(--bf-red);
+  animation: bf26Blink 1.2s ease-in-out infinite;
+}
+
+.bf26-board__flaps {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.bf26-flapword {
+  display: flex;
+  gap: 2px;
+  flex: none;
+}
+
+.bf26-flap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 30px;
+  background: linear-gradient(180deg, #2A2A2A 0%, #2A2A2A 49%, #1C1C1C 51%, #1C1C1C 100%);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 2px 0 #000;
+  font-weight: 700;
+  font-size: 16px;
+  color: #FFC94D;
+  text-shadow: 0 0 6px rgba(227, 179, 65, .35);
+  perspective: 200px;
+  animation: bf26Flap .5s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.bf26-flap > i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(0, 0, 0, .55);
+}
+
+/* ===================== HEADLINE ===================== */
+.bf26-hero__title {
+  margin: 16px 0 0;
+  color: var(--bf-cream);
+  line-height: .95;
+}
+
+.bf26-hero__title-thin,
+.bf26-hero__title-bold {
+  display: block;
+  font-size: clamp(56px, 8vw, 112px);
+  letter-spacing: -.03em;
+  animation: bf26Up .7s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.bf26-hero__title-thin {
+  font-weight: 300;
+}
+
+.bf26-hero__title-bold {
+  font-weight: 700;
+  animation-delay: .12s;
+}
+
+.bf26-hero__off {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-top: 16px;
+  animation: bf26Up .7s .24s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.bf26-hero__off-pre,
+.bf26-hero__off-post {
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--bf-cream);
+  padding-bottom: 18px;
+}
+
+.bf26-hero__off-big {
+  font-weight: 700;
+  font-size: clamp(88px, 11vw, 152px);
+  line-height: .85;
+  color: var(--bf-deep-red);
+  letter-spacing: -.04em;
+  text-shadow: 0 6px 30px rgba(196, 30, 58, .35);
+}
+
+.bf26-hero__rule {
+  width: 72px;
+  height: 3px;
+  background: var(--bf-red);
+  margin-top: 32px;
+}
+
+.bf26-hero__lead {
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 24px 0 0;
+  text-wrap: pretty;
+  color: var(--bf-cream);
+}
+
+.bf26-hero__lead strong {
+  color: #fff;
+}
+
+/* ===================== GIFT PILL ===================== */
+.bf26-giftpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+  margin-bottom: 4px;
+  padding: 10px 20px 10px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--bf-gold);
+  background: rgba(227, 179, 65, .1);
+  text-decoration: none;
+  animation: bf26Up .6s .5s both;
+  transition: background .15s;
+}
+
+.bf26-giftpill:hover {
+  background: rgba(227, 179, 65, .2);
+}
+
+.bf26-giftpill__ic {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bf-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.bf26-giftpill__txt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.bf26-giftpill__txt strong {
+  font-size: 16px;
+  color: var(--bf-gold);
+}
+
+.bf26-giftpill__txt span {
+  font-size: 13px;
+  color: var(--bf-grey-2);
+}
+
+.bf26-giftpill__arrow {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bf-gold);
+  color: var(--bf-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  margin-left: 6px;
+}
+
+/* ===================== BUTTONS ===================== */
+.bf26-hero__cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.bf26-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 30px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .15s, filter .15s;
+  border: 0;
+  cursor: pointer;
+}
+
+.bf26-btn--primary {
+  background: linear-gradient(90deg, var(--bf-red-dark) 0%, var(--bf-red-light) 100%);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(215, 38, 61, .3);
+}
+
+.bf26-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid var(--bf-red-light);
+}
+
+.bf26-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+/* ===================== ART COLUMN ===================== */
+.bf26-hero__art {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 680 / 640;
+  justify-self: center;
+  animation: bf26Up .8s .2s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.bf26-hero__pin {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.bf26-flight {
+  animation: bf26Dash 1.6s linear infinite;
+}
+
+.bf26-cloud {
+  animation-name: bf26Cloud;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.bf26-hero__photo {
+  position: absolute;
+  left: -30%;
+  bottom: -6%;
+  width: 150%;
+  z-index: 2;
+  display: block;
+}
+
+/* Floating labels */
+.bf26-float {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 18px 10px 10px;
+  box-shadow: 0 8px 24px rgba(17, 17, 17, .12);
+  font-weight: 600;
+  font-size: 15px;
+  color: #111111;
+  white-space: nowrap;
+  animation: bf26Pin 3.2s ease-in-out infinite;
+}
+
+.bf26-float__ic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FBF1D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.bf26-float--p1 {
+  left: 22%;
+  top: 1%;
+}
+
+.bf26-float--p2 {
+  right: -2%;
+  top: 50%;
+  animation-delay: .8s;
+}
+
+.bf26-float--p3 {
+  left: -4%;
+  top: 52%;
+  animation-delay: 1.6s;
+}
+
+/* 82% badge */
+.bf26-badge82 {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  z-index: 3;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background: var(--bf-gold);
+  color: var(--bf-black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: bf26Bubble 2.4s ease-in-out infinite;
+}
+
+.bf26-badge82__pre,
+.bf26-badge82__post {
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .14em;
+  line-height: 1.4;
+}
+
+.bf26-badge82__pre {
+  white-space: nowrap;
+}
+
+.bf26-badge82__num {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.05;
+}
+
+/* Bundle price chip */
+.bf26-bundlechip {
+  position: absolute;
+  left: 0;
+  bottom: 4%;
+  z-index: 3;
+  background: var(--bf-black);
+  color: #fff;
+  border: 2px solid var(--bf-gold);
+  border-radius: 18px;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: bf26Up .6s 1s both;
+}
+
+.bf26-bundlechip__label {
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .16em;
+  color: var(--bf-gold);
+}
+
+.bf26-bundlechip__price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.bf26-bundlechip__price strong {
+  font-weight: 700;
+  font-size: 34px;
+}
+
+.bf26-bundlechip__was {
+  font-size: 15px;
+  color: var(--bf-grey);
+  text-decoration: line-through;
+}
+
+.bf26-ic {
+  display: block;
+}
+
+/* ===================== ACCREDITED & REGULATED ===================== */
+.bf26-accred {
+  background: var(--bf-black);
+  border-top: 1px solid var(--bf-line);
+}
+
+.bf26-accred__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  flex-wrap: wrap;
+}
+
+.bf26-accred__label {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: var(--bf-grey);
+  white-space: nowrap;
+}
+
+.bf26-accred__list {
+  display: flex;
+  align-items: center;
+  gap: 24px 48px;
+  flex-wrap: wrap;
+}
+
+.bf26-accred__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  opacity: .85;
+}
+
+.bf26-accred__name {
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -.01em;
+  color: var(--bf-cream);
+}
+
+.bf26-accred__sub {
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: .14em;
+  color: var(--bf-grey);
+  text-transform: uppercase;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 920px) {
+  .bf26-hero__inner {
+    padding: 32px 20px 56px;
+  }
+
+  .bf26-hero__art {
+    order: 2;
+    margin: 8px auto 0;
+  }
+
+  .bf26-hero__title-thin,
+  .bf26-hero__title-bold {
+    display: inline;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Departures board: let the word groups wrap, shrink the tiles */
+  .bf26-board {
+    width: 100%;
+  }
+
+  .bf26-board__top {
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+
+  .bf26-board__flaps {
+    flex-wrap: wrap;
+    white-space: normal;
+    gap: 6px 10px;
+  }
+
+  .bf26-flap {
+    width: 17px;
+    height: 25px;
+    font-size: 13px;
+  }
+
+  /* Headline & offer */
+  .bf26-hero__off {
+    gap: 10px;
+  }
+
+  .bf26-hero__off-big {
+    font-size: clamp(64px, 20vw, 104px);
+  }
+
+  .bf26-hero__off-pre,
+  .bf26-hero__off-post {
+    font-size: 18px;
+    padding-bottom: 12px;
+  }
+
+  .bf26-giftpill {
+    width: 100%;
+  }
+
+  .bf26-btn {
+    flex: 1 1 100%;
+    font-size: 16px;
+    padding: 15px 24px;
+  }
+
+  /* Hero art: tighter photo, smaller and safely-placed floating labels */
+  .bf26-hero__art {
+    max-width: 420px;
+  }
+
+  .bf26-hero__photo {
+    left: -20%;
+    width: 134%;
+  }
+
+  .bf26-float {
+    font-size: 13px;
+    padding: 7px 13px 7px 7px;
+    gap: 8px;
+  }
+
+  .bf26-float__ic {
+    width: 30px;
+    height: 30px;
+  }
+
+  .bf26-float__ic .bf26-ic {
+    width: 16px;
+    height: 16px;
+  }
+
+  .bf26-float--p1 {
+    left: 2%;
+    top: 0;
+  }
+
+  .bf26-float--p2 {
+    right: 0;
+    top: 46%;
+  }
+
+  .bf26-float--p3 {
+    left: 0;
+    top: 58%;
+  }
+
+  .bf26-badge82 {
+    width: 94px;
+    height: 94px;
+    right: 2%;
+    top: 6%;
+  }
+
+  .bf26-badge82__num {
+    font-size: 30px;
+  }
+
+  .bf26-badge82__pre,
+  .bf26-badge82__post {
+    font-size: 9px;
+  }
+
+  .bf26-bundlechip {
+    padding: 10px 14px;
+    border-radius: 14px;
+  }
+
+  .bf26-bundlechip__price strong {
+    font-size: 26px;
+  }
+
+  /* Accreditation strip */
+  .bf26-accred__inner {
+    padding: 24px 20px;
+    justify-content: center;
+    text-align: center;
+    gap: 16px 32px;
+  }
+
+  .bf26-accred__list {
+    justify-content: center;
+    gap: 18px 28px;
+  }
+
+  .bf26-accred__name {
+    font-size: 20px;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bf26 *,
+  .bf26 *::before,
+  .bf26 *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ===================== KEYFRAMES ===================== */
+@keyframes bf26Up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes bf26Blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .25; }
+}
+
+@keyframes bf26Flap {
+  0%   { transform: rotateX(90deg); opacity: 0; }
+  60%  { transform: rotateX(-12deg); opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+
+@keyframes bf26Dash {
+  to { stroke-dashoffset: -30; }
+}
+
+@keyframes bf26Cloud {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(18px); }
+}
+
+@keyframes bf26Pin {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes bf26Bubble {
+  0%, 100% { transform: rotate(-10deg) scale(1); }
+  50%      { transform: rotate(-4deg) scale(1.06); }
+}

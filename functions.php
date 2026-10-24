@@ -385,6 +385,11 @@ function child_enqueue_styles()
         wp_enqueue_script('black-friday-landing-page-js', get_stylesheet_directory_uri() . '/assets/js/black-friday-sale-2023.js', array('jquery'), time(), true);
     }
 
+    if (is_page_template('black-friday-landing-page-2026.php')) {
+        wp_enqueue_style('black-friday-landing-page-css', get_stylesheet_directory_uri() . '/assets/css/black-friday-landing-page-2026.css', array(), time(), null);
+        wp_enqueue_script('black-friday-landing-page-js', get_stylesheet_directory_uri() . '/assets/js/black-friday-landing-page-2026.js', array('jquery'), time(), true);
+    }
+
     if (is_page_template('hope-page.php')) {
         wp_enqueue_style('hope-page', get_stylesheet_directory_uri() . '/assets/css/hope-page.css', array(), time(), null);
     }
@@ -816,6 +821,7 @@ require_once 'includes/ti-subcountry-functions.php';
 // require_once 'includes/ti-subcountry-posts.php';
 require_once 'includes/seo_functions.php';
 require_once 'includes/custom_login_endpoint.php';
+require_once 'includes/black-friday-2026.php';
 require_once 'includes/ti-blog-redesign.php';
 require_once 'includes/ti-mobile-menu.php';
 require_once 'includes/google-sheets-insert.php';
