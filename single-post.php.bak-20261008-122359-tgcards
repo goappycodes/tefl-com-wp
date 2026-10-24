@@ -1,0 +1,280 @@
+<?php
+/**
+ * The template for displaying all single posts.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package Astra
+ * @since 1.0.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+get_header(); ?>
+
+<?php if ( astra_page_layout() == 'left-sidebar' ) : ?>
+
+	<?php get_sidebar(); ?>
+
+<?php endif ?>
+
+	<div id="primary" <?php astra_primary_class(); ?>>
+	    
+		<!--Banner Section-->
+		
+		<?php
+        
+        $banner = get_field('banner');
+        
+        $background_image        = $banner['background_image'];
+        $banner_title            = $banner['banner_title'];
+        $banner_subtitle         = $banner['banner_subtitle'] ?? '';
+        $banner_text             = $banner['banner_text'];
+        $banner_cta_button_link  = $banner['banner_cta_button_link'];
+        $banner_cta_button_text  = $banner['banner_cta_button_text'];
+        $banner_logo             = $banner['banner_logo'];
+        					
+		if( is_subcountry_folder() ) {
+            $cc = strtolower(get_current_country());
+            $content = get_field('blog_content_'.$cc);
+        }
+
+		if(empty($background_image )){
+			$background_image = get_the_post_thumbnail_url();
+		}
+        
+        ?>
+
+        <section class="banner-section" style="background: url('<?php echo $background_image; ?>');">
+            
+        </section>
+        
+        <!--/Banner Section-->
+        
+        
+        <!--Blog Content Section-->
+
+        <section class="blog-content-section">
+            <div class="ast-container">
+        		<div class="ast-row">
+        		    <div class="ast-col-lg-12">
+        		        <div class="share-blog">
+        		            <span>Share this blog via</span>
+        		            
+        		            <?php $home_url = home_url(); ?>
+        		            <?php $post_url = $_SERVER['REQUEST_URI']; ?>
+        		            <?php $share_url = $home_url.$post_url; ?>
+        		            
+        		            <?php
+        		            global $post;
+        		            $post_title = get_the_title($post);
+        		            ?>
+        		            
+        		            <div class="social-share">
+        		                <a href="https://www.facebook.com/sharer.php?u=<?php echo $share_url; ?>"><i class="fa fa-facebook"></i></a>
+            		            <a href="https://twitter.com/share?url=<?php echo $share_url; ?>&text=<?php echo $post_title; ?>"><i class="fa fa-twitter"></i></a>
+            		            <a href="https://plus.google.com/share?url=<?php echo $share_url; ?>"><i class="fa fa-google-plus"></i></a>
+            		            <a href="https://www.linkedin.com/shareArticle?url=<?php echo $share_url; ?>&title=<?php echo $post_title; ?>"><i class="fa fa-linkedin"></i></a>
+        		            </div>
+        		        </div>        
+        		    </div>
+        		</div>
+        		
+        		<div class="ast-row middle-content-row">
+					<?php $left_side_title = get_field('left_side_title');
+					$content_title = get_field('content_title');
+					if($left_side_title) : ?>
+						<div class="ast-col-md-2">
+							<h3 class="small-heading">
+								<?php echo $left_side_title; ?>
+							</h3>
+						</div>
+						
+						<div class="ast-col-lg-7">
+							
+							<h1 class="large-heading font-700 content-heading"><?php echo $content_title?$content_title:get_the_title(); ?></h1>
+    				        
+    				        <div class="content table-container-enhanced">
+								<?php the_post_meta_stamp(); ?>
+								<?php 
+							    if(!empty($content)) {
+        			                echo $content;
+        			            } else {
+    	    		                the_content();
+    		    	            } ?>
+							</div>
+							
+						</div>
+					<?php else: ?>
+						<div class="ast-col-lg-9">
+							
+							<h1 class="large-heading font-700 content-heading"><?php echo $content_title?$content_title:get_the_title(); ?></h1>
+							
+							<div class="content table-container-enhanced">
+								<?php the_post_meta_stamp(); ?>
+								<?php 
+							    if(!empty($content)) {
+        			                echo $content;
+        			            } else {
+    	    		                the_content();
+    		    	            } ?>
+							</div>
+							
+						</div>
+					<?php endif; ?>
+        		    <div class="ast-col-lg-3 sticky-sidebar <?php echo current_user_can('administrator')?'is-admin':'' ?>">
+        		            <div class="category-links">
+								<?php wp_list_categories( array(
+									'orderby'    => 'name',
+									'show_count' => false
+								) ); ?> 
+							</div>
+        		    </div>
+        		</div>
+        	</div>
+        </section>
+        
+        <!--/Blog Content Section-->
+        
+        
+        <!--Social Share Section-->
+
+        <section class="social-share-section">
+            <div class="ast-container">
+        		<div class="ast-row">
+        		    <div class="ast-col-lg-12">
+        		        <div class="social-share-block">
+        		            <span>Share this blog via:<?php //echo $social_share_text = get_field('social_share_text'); ?></span>
+        		            <div class="social-share-icons">
+        		                <a href="https://www.facebook.com/sharer.php?u=<?php echo $share_url; ?>"><i class="fa fa-facebook"></i></a>
+            		            <a href="https://twitter.com/share?url=<?php echo $share_url; ?>&text=<?php echo $post_title; ?>"><i class="fa fa-twitter"></i></a>
+            		            <a href="https://plus.google.com/share?url=<?php echo $share_url; ?>"><i class="fa fa-google-plus"></i></a>
+            		            <a href="https://www.linkedin.com/shareArticle?url=<?php echo $share_url; ?>&title=<?php echo $post_title; ?>"><i class="fa fa-linkedin"></i></a>
+        		            </div>
+        		        </div>        
+        		    </div>
+        		</div>
+        	</div>
+        </section>
+        
+        <!--/Social Share Section-->
+        
+        <!--Blogs Section-->
+        
+        <?php $life_stories_abroad_section_title = get_field('life_stories_abroad_section_title');
+        $life_stories_abroad_posts = get_field('life_stories_abroad_posts' ); 
+
+		if($life_stories_abroad_posts) : ?>
+		
+			<section class="blogs-section life-story-abroad">
+				<div class="ast-container">
+					<div class="ast-row">
+						<?php if($life_stories_abroad_section_title): ?>
+							<h2><?php echo $life_stories_abroad_section_title; ?></h2>
+						<?php endif; ?>
+						
+						<?php if($life_stories_abroad_posts): ?>
+							<?php foreach($life_stories_abroad_posts as $life_stories_abroad_post) :
+							
+								$post_id            = $life_stories_abroad_post['lsa_post'];
+								$post_title         = get_the_title($post_id);
+								$post_thumbnail_url = get_the_post_thumbnail_url($post_id);
+								$post_link          = get_the_permalink($post_id); ?>
+								<div class="ast-col-md-4">
+									<div class="blog-item" style="background: url('<?php echo $post_thumbnail_url; ?>')">
+										<div class="bolg-content">
+											<h3><?php echo $post_title; ?></h3>
+											<a class="blog-link" href="<?php echo $post_link; ?>">READ MORE <i class="fa fa-angle-right"></i></a>
+										</div>
+									</div>
+								</div>
+							<?php endforeach; ?>
+						<?php endif; ?>
+					</div>
+				</div>
+			</section>
+		
+		<?php endif; ?>
+        
+        <!--/Blogs Section-->
+
+		<!--FAQ section start-->
+
+		<?php $frequently_asked_questions = get_cfvalue_by_country('frequently_asked_questions'); ?>
+
+		<?php if($frequently_asked_questions): ?>
+
+			<section class="faq-hero-section" style="background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)), url('/wp-content/uploads/2020/11/take_the_test_bg.jpg')">
+				<div class="ast-container" >
+					<div class="ast-row banner-text-row">
+						<div class="ast-col-lg-12 ast-col-md-12 ast-col-sm-12 ast-col-xs-12">
+							<h2 class="banner-text">TEFL Institute <br> Frequently Asked Questions</h2>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="faq-content-section">
+				<div class="ast-container">
+					<div class="ast-row more-space">
+						<div class="ast-col-md-12">
+							<?php $i = 0; ?>
+							<?php foreach($frequently_asked_questions as $item): ?>
+									
+								<?php $question = $item['question']; ?>
+								<?php $answer = $item['answer']; ?>
+
+								<section class="accordion-container">
+									<input id="accordion-<?php echo $i ?>" name="accordion-1" type="radio" <?php if($i === 0) { ?>checked<?php } ?>>
+									<label for="accordion-<?php echo $i ?>"><?php echo $question ?></label>
+									<article>
+										<?php echo $answer ?>
+									</article>
+								</section>
+							<?php $i++; endforeach; ?> 
+							<script type="application/ld+json">
+								{
+								"@context": "https://schema.org",
+								"@type": "FAQPage",
+								"mainEntity": [
+									<?php 
+									$faqcount = count($frequently_asked_questions);
+									$counter = 0;
+									foreach ($frequently_asked_questions as $item) {
+										$counter++;
+										?>
+										{
+											"@type": "Question",
+											"name": <?php echo json_encode($item['question'], JSON_UNESCAPED_UNICODE); ?>,
+											"acceptedAnswer": {
+											"@type": "Answer",
+											"text": <?php echo json_encode($item['answer'], JSON_UNESCAPED_UNICODE); ?>
+											}
+										}	
+										<?php
+										if ($faqcount !== $counter) echo "," ;
+									}
+									?>
+								]
+								}
+							</script>	
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<?php endif; ?>
+
+		<!--FAQ section end-->
+
+	</div><!-- #primary -->
+
+<?php if ( astra_page_layout() == 'right-sidebar' ) : ?>
+
+	<?php get_sidebar(); ?>
+
+<?php endif ?>
+
+<?php get_footer(); ?>

@@ -11,12 +11,12 @@
 .clock-inner {
     display: flex;
     justify-content: center;
+    width:42px;
+    height:auto;
 }
 
 .clock-inner .base {
-    font-size: 2.8rem;
     line-height: 2.5rem;
-    font-weight: 400;
 }
 
 .digit-text {
@@ -34,13 +34,9 @@
 }
 
 .clock>div {
-    padding: 0 5px;
+    /* padding: 0 5px; */
     text-align: center;
-    width: 100%;
-}
-
-.clock-day {
-    padding-left: 0px !important;
+    /* width: 100%; */
 }
 
 .offer-ends {

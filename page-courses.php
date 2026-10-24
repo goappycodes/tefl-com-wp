@@ -315,7 +315,7 @@ get_header(); ?>
                             $available_children = $course_product->get_children();
                             $children_count = count($available_children) - 1;
                             $product_var_id = $available_children[$children_count];
-                            $variable_product = new WC_Product_Variation( $product_var_id );
+                            $variable_product = wc_get_product( $product_var_id );
                             $course_price_html = $variable_product->get_price_html();
                             
                         }?>
@@ -391,7 +391,7 @@ get_header(); ?>
                             $available_children = $course_product->get_children();
                             $children_count = count($available_children) - 1;
                             $product_var_id = $available_children[$children_count];
-                            $variable_product = new WC_Product_Variation( $product_var_id );
+                            $variable_product = wc_get_product( $product_var_id );
                             $course_price_html = $variable_product->get_price_html();
                             
                         }
@@ -519,7 +519,7 @@ get_header(); ?>
 					$course_completion_time = $level_5_course['course_completion_time'];
 					
 					$course_zoom_classes = $level_5_course['zoom_classes'];
-					$zoom_classes_product = $level_5_course['zoom_classes_product'];
+					$zoom_classes_product = $level_5_course['zoom_classes_product'] ?? '';
 					
 					$course_id = $level_5_course['course'];
 					$course_link = get_post_permalink($course_id);
@@ -538,7 +538,7 @@ get_header(); ?>
 						$available_children = $course_product->get_children();
 						$children_count = count($available_children) - 1;
 						$product_var_id = $available_children[$children_count];
-						$variable_product = new WC_Product_Variation( $product_var_id );
+						$variable_product = wc_get_product( $product_var_id );
 						$course_price_html = $variable_product->get_price_html();
 						
 					}
@@ -753,7 +753,7 @@ get_header(); ?>
                             $available_children = $course_product->get_children();
                             $children_count = count($available_children) - 1;
                             $product_var_id = $available_children[$children_count];
-                            $variable_product = new WC_Product_Variation( $product_var_id );
+                            $variable_product = wc_get_product( $product_var_id );
                             $course_price_html = $variable_product->get_price_html();
                         }
 						//Get Deposit Info 
@@ -924,7 +924,7 @@ get_header(); ?>
                             $available_children = $course_product->get_children();
                             $children_count = count($available_children) - 1;
                             $product_var_id = $available_children[$children_count];
-                            $variable_product = new WC_Product_Variation( $product_var_id );
+                            $variable_product = wc_get_product( $product_var_id );
                             $course_price_html = $variable_product->get_price_html();
                         }
 						?>

@@ -194,7 +194,8 @@ $day_light = DAY_LIGHT_SAVINGS; ?>
                             "priceCurrency": "<?php echo get_woocommerce_currency(); ?>",
                             "availability": "http://schema.org/InStock",                        
                             "url": "<?php echo '/?addtimetocart&prid='.$course_product_id.'&date='.$class_course_date['start_date']; ?>",
-                            "validFrom": "2020-01-01T12:00"
+                            "validFrom": "2020-01-01T12:00",
+                            "category": "Course"
                         },
                         "organizer": {
                             "@type": "Organization",

@@ -54,7 +54,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 					$el_available_children = $el_product->get_children();
 					$el_children_count = count($el_available_children) - 1;
 					$el_product_var_id = $el_available_children[$el_children_count];
-					$el_variable_product = new WC_Product_Variation( $el_product_var_id );
+					$el_variable_product = wc_get_product( $el_product_var_id );
 					$el_var_price = $el_variable_product->get_price_html();
 					$el_regular_price = $el_variable_product->get_regular_price();
 					$el_sale_price = $el_variable_product->get_sale_price();
@@ -322,7 +322,7 @@ if(current_user_can('administrator') && ($curr_user_id == 1) && ($debug == 'yes'
 												<div class="cart-item-addons">
 													<?php foreach($product_upsell_addons as $pua ) :
 														$product_id = $pua['product'];
-														$product = new WC_Product($product_id); 
+														$product = wc_get_product($product_id); 
 														$product_link = get_post_permalink($product_id);
 														$product_img = get_the_post_thumbnail_url($product_id, 'full');
 														$pt_show_product_page = get_field('pt_show_product_page', $product_id);

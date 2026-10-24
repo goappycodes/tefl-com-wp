@@ -7,11 +7,11 @@
         <?php
             if(is_front_page()):
         ?>
-        <h2 class="klarna-modal-header home">3 interest payments of <span class="installment-price"></span> (0 APR).</h2>
+        <h2 class="klarna-modal-header home">3 interest-free payments of <span class="installment-price"></span> (0 APR).</h2>
         <?php
         else:
         ?>
-        <h2 class="klarna-modal-header">3 interest payments of <?php echo geo_price($full_price/3)?> (0 APR).</h2>
+        <h2 class="klarna-modal-header">3 interest-free payments of <?php echo geo_price($full_price/3)?> (0 APR).</h2>
         <?php
             endif;
         ?>

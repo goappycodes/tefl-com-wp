@@ -50,6 +50,7 @@ $cart_class = $has_deposit_item ? 'cart-has-deposit' : '';
 			<div class="col-2">
 				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 			</div>
+
 		</div>
 
 		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
@@ -71,3 +72,4 @@ $cart_class = $has_deposit_item ? 'cart-has-deposit' : '';
 </form>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
+ 

@@ -239,3 +239,48 @@ function handle_ti_combined_ajax_geo_actions() {
 }
 
 
+// Ajax to fetch Google reviews rating and count
+// add_action('wp_ajax_get_google_reviews', 'get_google_place_reviews');
+// add_action('wp_ajax_nopriv_get_google_reviews', 'get_google_place_reviews');
+function get_google_place_reviews() {
+    
+    $api_key = '1bfhAD_0o3K52UyeGYnXKNQgQW6Tny8d1KIMuDsiPQw';
+    $place_id = 'ChIJaeBYjIqxe0gR8IEtXkiDSWo';
+    
+    // Validate credentials
+    if (empty($api_key)) {
+        wp_send_json_error('API key not configured');
+        return;
+    }
+    
+    if (empty($place_id)) {
+        wp_send_json_error('Place ID not configured');
+        return;
+    }
+    
+    $url = "https://maps.googleapis.com/maps/api/place/details/json?place_id={$place_id}&fields=name,rating,user_ratings_total&key={$api_key}";
+    
+    $response = wp_remote_get($url, array(
+        'timeout' => 15,
+        'sslverify' => true
+    ));
+    
+    if (is_wp_error($response)) {
+        wp_send_json_error('Failed to fetch data from Google Places API');
+        return;
+    }
+    
+    $body = wp_remote_retrieve_body($response);
+    $data = json_decode($body, true);
+    
+    if (!isset($data['status']) || $data['status'] !== 'OK') {
+        $error_message = isset($data['error_message']) ? $data['error_message'] : 'Unknown API error';
+        wp_send_json_error('Google Places API Error: ' . $error_message);
+        return;
+    }
+    
+    wp_send_json_success($data['result']);
+}
+
+
+

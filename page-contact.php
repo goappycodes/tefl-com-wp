@@ -90,10 +90,10 @@ get_header(); ?>
 		                <h4>Headquarters</h4>
 		                <p>
 						The TEFL Institute<br>
-						4 Shandon Street<br>
-						Dungarvan<br>
-						Co. Waterford<br>
-						X35 A365
+						13 Adelaide Rd, <br>
+						Saint Kevin's, <br>
+						Dublin, <br>
+						D02 P950
 						</p>
 		            </div>
 		            <div class="details">
@@ -117,7 +117,7 @@ get_header(); ?>
 						<span><a href="tel:00442033185366">🇬🇧 +44 203 318 5366</a></span><br>
 						<span><a href="tel:0016172022524">🇺🇸 +1 6172022524</a></span><br>
 						<!-- <span><a href="tel:00442033185366">🇦🇺 +44 203 318 5366</a></span><br> -->
-						<span><a href="tel:0027311002396">🇿🇦 +27 311002396</a></span></p>
+						<span><a href="tel:00270875502261">🇿🇦 +27 087 5502261</a></span></p>
 		            </div>
 
 					<div class="details footer-social-col">

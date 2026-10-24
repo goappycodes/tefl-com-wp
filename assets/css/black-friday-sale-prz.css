@@ -1,0 +1,1683 @@
+#content>.ast-container {
+    max-width: 100%;
+    padding: 0 !important;
+}
+
+#primary {
+    /* background: linear-gradient(90deg, #000153 0%, #013280 100%); */
+    background: #013252;
+    margin: 0 !important;
+}
+
+.header-banner {
+    display: none;
+}
+
+.power-pack .short-description {
+    margin-bottom: 20px;
+}
+
+.hero {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 550px;
+}
+
+.glitter-overlay {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background-image: url('/wp-content/uploads/2025/11/gold-confetti-1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    pointer-events: none;
+    z-index: 2;
+    display: none;
+}
+
+/* 
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    z-index: 2;
+    background: linear-gradient(0deg, #1a1a1ad4 0%, rgb(26 26 26 / 0%) 30%);
+} */
+
+.hero-outer {
+    height: 100%;
+    background: linear-gradient(90deg, #013252 0%, #013252 37.98%, rgba(0, 1, 83, 0) 61.06%);
+    padding: 1rem 0;
+}
+
+.content-container {
+    max-width: 1240px;
+    margin: auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.promo-image {
+    height: 250px !important;
+    width: auto;
+    position: relative;
+    display: block;
+}
+
+.content-section {
+    margin-top: 3rem;
+    /* padding: 0 2rem; */
+    width: 100%;
+}
+
+.top-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 1rem 2rem;
+    width: max-content;
+    margin: auto;
+}
+
+.top-heading .icon {
+    height: 100px;
+    width: max-content;
+}
+
+/* .top-heading .section-title {
+    height: 50px;
+    width: 740px;
+} */
+
+.top-heading .section-title {
+    font-weight: 900;
+    color: white;
+    font-size: 53.74px;
+    line-height: 137%;
+    letter-spacing: 15px;
+    font-family: sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.top-save {
+    display: flex;
+    margin-top: 3rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.top-save div {
+    color: #EB2F43;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.top-save img {
+    height: 50px;
+    width: auto;
+}
+
+.courses-title {
+    text-align: center;
+    color: #DCAA37;
+    font-size: 33px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 60px;
+}
+
+.course-wrap {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.course-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: #000;
+    transform: translate(8px, 8px);
+}
+
+.course {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.course>*:last-child {
+    margin-top: auto;
+}
+
+.course-wrap:nth-of-type(2)::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 10%;
+    transform: translateX(-10%);
+    width: 75px;
+    height: 75px;
+    background-image: url('/wp-content/uploads/2025/11/confetti.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 30;
+}
+
+.content-section.courses {
+    display: flex;
+    gap: 2rem;
+}
+
+.course .thumbnail {
+    height: 14rem;
+    border-radius: 6px 6px 0 0;
+    background-position: center;
+    background-size: cover;
+    margin: -20px -20px 0;
+}
+
+.course .thumbnail-outer {
+    /* background: rgba(0, 0, 0, 0.4); */
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.course .icon {
+    height: 120px;
+    width: 120px;
+    background-position: center;
+    background-size: cover;
+}
+
+.title {
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.price {
+    background: #EDEFF0;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+}
+
+.product-pricing span.wcpbc-price {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.product-pricing .wcpbc-price del span.woocommerce-Price-amount {
+    font-size: 17px;
+    color: #A9A9A9;
+    font-weight: 600;
+}
+
+.completion-time {
+    text-align: center;
+    padding: 15px;
+    color: #1C1C1B;
+}
+
+.completion-time span {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.enrol {
+    width: 100%;
+    display: inline-block;
+    background: #EB2F43;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.enrol:hover {
+    color: white;
+    opacity: 0.8;
+}
+
+.more-x-space {
+    margin: 0 20px;
+    width: -webkit-fill-available;
+}
+
+.klarna {
+    border: 1px solid #E8EBED;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 15px 20px;
+}
+
+.klarna img {
+    height: 15px;
+    width: auto;
+}
+
+.klarna div {
+    font-size: 14px;
+    line-height: 1.25;
+}
+
+.includes_title {
+    text-align: center;
+    font-weight: 600;
+    color: #1C1C1B;
+}
+
+.include {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2px 20px;
+    font-size: 15px;
+    color: #1C1C1B;
+}
+
+.include img {
+    width: 16px;
+    height: 16px;
+}
+
+.includes {
+    height: 20rem;
+    margin-top: 1rem;
+}
+
+.buttons {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.buttons .default-button {
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    padding: 10px;
+    border: 1px solid #EB2F43;
+    box-shadow: 0px 4px 8px 0px #00000033;
+}
+
+.buttons .enrol {
+    width: 100%;
+    box-shadow: 0px 4px 8px 0px #0000004D;
+}
+
+.full-price {
+    font-size: 16px;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.sale-price {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.product-pricing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.product-pricing ins {
+    font-weight: 700;
+    font-size: larger;
+}
+
+.off-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: -85px;
+}
+
+.off {
+    background: #000;
+    color: white;
+    border-radius: 6px 0 0 6px;
+    padding: 6px 4px;
+    font-size: 16px;
+    width: 180px;
+    text-align: center;
+    line-height: 1.25;
+    margin: 14px 0 0 0;
+    position: relative;
+    z-index: 50;
+    text-transform: uppercase;
+}
+
+.off b {
+    color: #DDB239;
+}
+
+.gifts {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+    padding: 15px 50px;
+    /* display: flex;
+    align-items: center;
+    gap: 1rem; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    /* gap: 5rem; */
+}
+
+.gifts .left {
+    display: flex;
+    flex-direction: column;
+}
+
+.gifts .text {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.gifts .title {
+    /* text-transform: uppercase; */
+    line-height: 1.25;
+    font-size: 32px;
+    color: #000000;
+    text-align: left;
+    padding: 15px 0;
+}
+
+.gifts .left .enrol {
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+.gifts .right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    padding: 3rem 0 1rem;
+}
+
+.gifts .right .guide {
+    font-weight: 600;
+    text-align: center;
+    font-size: 18px;
+    width: 180px;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+}
+
+.gifts .right .guide img {
+    height: auto;
+    width: 100%;
+    max-width: 150px;
+    display: block;
+    margin: auto;
+    border-radius: 4px;
+}
+
+/* .gifts .right .guide:not(:first-child) {
+    margin-left: -70px;
+} */
+
+.gifts .right .guide:nth-child(1),
+.gifts .right .guide:nth-child(2) {
+    z-index: 2;
+    width: 150px;
+    min-width: 120px;
+}
+
+
+.gifts .right .guide:nth-child(4) {
+    z-index: 3;
+    margin-bottom: 61px;
+    margin-left: -70px;
+}
+
+/* .gifts .right .guide:nth-child(3),
+.gifts .right .guide:nth-child(6) {
+    z-index: 3;
+    margin-bottom: 130px;
+} */
+
+.gifts .right .guide:nth-child(3) {
+    z-index: 3;
+}
+
+.bundle {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+    display: flex;
+    position: relative;
+}
+
+.bundle::after {
+    content: "";
+    position: absolute;
+    top: -55px;
+    right: -5%;
+    width: 125px;
+    height: 125px;
+    background-image: url(/wp-content/uploads/2025/11/badge.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 30;
+}
+
+.bundle .left {
+    width: 35%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 18px 0 0 18px;
+}
+
+.bundle .right {
+    width: 65%;
+    padding: 40px;
+}
+
+.bundle .right .title {
+    text-align: left;
+    padding: 0;
+    font-size: 38px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.bundle .right .text {
+    font-size: 16px;
+    line-height: 137%;
+    color: #000000;
+}
+
+.bundle .right .product-outer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+
+.price-outer {
+    background: #EB2F43;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.price-left {
+    padding: 5px 20px;
+}
+
+.price-right {
+    font-size: 20px;
+    background: #D31024;
+    padding: 9px 20px;
+    border-radius: 0 10px 10px 0;
+}
+
+.whats_included {
+    font-weight: 700;
+    font-size: 18px;
+    color: #000000;
+}
+
+.whats_included_outer {
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 8px;
+}
+
+.whats_included_outer .text {
+    width: 100%;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.feather-check {
+    background: #DDB239;
+    color: white;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+}
+
+.subheading {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 18px 0;
+    color: #000000;
+}
+
+.links {
+    display: flex;
+    gap: 1rem;
+}
+
+.links .default-button {
+    width: 50%;
+    background: #D7D9DA;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 6px;
+    color: #000000;
+}
+
+.links .enrol {
+    width: 50%;
+    letter-spacing: 6px;
+}
+
+.tools {
+    display: flex;
+    gap: 1rem;
+}
+
+.tool {
+    background: white;
+    width: 33%;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+}
+
+.tool img {
+    width: auto;
+    height: 50px;
+}
+
+.tool .name {
+    margin: 20px 0 10px;
+    font-weight: 600;
+}
+
+.tool .text {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    min-height: 75px;
+}
+
+.ahref {
+    background: #EB2F43;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.bundle-title {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin: 4rem 0 3rem;
+}
+
+.review-section {
+    max-width: 1240px;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+
+.bundle-title span {
+    font-family: 'Dosis', sans-serif;
+}
+
+.bundle .badge {
+    background: #EB2F43;
+    color: white;
+    border: 1px solid white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px;
+    font-size: 22px;
+    width: 120px;
+    text-align: center;
+    line-height: 1.25;
+    margin: 20px 0 0 20px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.bundle .badge strong {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.power-pack {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.power-pack .left {
+    width: 40%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 18px 0 0 18px;
+    height: 400px;
+}
+
+.power-pack .right {
+    width: 60%;
+    padding: 0 50px;
+}
+
+.power-pack .title {
+    text-align: left;
+    padding: 0;
+    font-size: 38px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.power-pack .text {
+    font-size: 18px;
+    color: #000000;
+}
+
+.power-pack .links .default-button,
+.power-pack .links .enrol {
+    letter-spacing: 0;
+}
+
+.tools-title {
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 3rem;
+}
+
+.accreditations .title {
+    color: white;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.accreditations img {
+    height: 100px;
+    width: auto;
+    margin: auto;
+    display: block;
+}
+
+.points {
+    color: white;
+    overflow: auto;
+    margin: 2rem auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 1rem;
+}
+
+.points .point {
+    display: inline-block;
+    margin-right: 0;
+    text-align: center;
+    flex: 0 1 auto;
+}
+
+.accreditations-svg {
+    color: #DDB239;
+    top: 5px;
+    position: relative;
+    margin-right: 5px;
+}
+
+.faq {
+    display: flex;
+    gap: 3rem;
+}
+
+.left-faq {
+    color: white;
+    width: 40%;
+}
+
+.left-faq .title {
+    text-align: left;
+    padding: 0;
+    font-size: 22px;
+}
+
+.left-faq .subtitle {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.left-faq .faq-text {
+    font-size: 16px;
+}
+
+.right-faq {
+    color: white;
+    width: 60%;
+    margin-top: -15px;
+}
+
+.each-question {
+    border-bottom: 1px dashed #888;
+    /* Dashed border for separation */
+    padding: 15px;
+}
+
+.each-question:last-child {
+    border-bottom: none;
+    /* Remove border for the last question */
+}
+
+.heading {
+    font-size: 18px;
+    cursor: pointer;
+    /* Indicate clickable area */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.heading:hover {
+    color: #ddd;
+    /* Slightly lighter on hover */
+}
+
+.toggle-icon {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.faq .text {
+    font-size: 16px;
+    margin-top: 10px;
+    display: none;
+    line-height: 1.5;
+}
+
+.panel {
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    padding: 20px;
+    margin-bottom: 3rem;
+}
+
+.each-panel {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.each-panel .left-panel img {
+    width: 40px;
+    height: max-content;
+}
+
+.panel .right-panel {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.panel .right-panel span {
+    font-weight: 600;
+}
+
+/* reviews section */
+
+.verified-student-reviews-section__slider .rplg-grid {
+    opacity: 0;
+}
+
+.verified-student-reviews-section__review-summary {
+    margin-bottom: 1.5rem;
+}
+
+.verified-student-reviews-section__header {
+    display: flex;
+    align-items: end;
+}
+
+.verified-student-reviews-section__review-summary .review-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.verified-student-reviews-section__review-summary .progress-text,
+.verified-student-reviews-section__review-summary .progress-value {
+    width: 15%;
+}
+
+.verified-student-reviews-section__review-summary .progress {
+    margin: 5px;
+    padding: 0;
+    width: 70%;
+    height: 20px;
+    overflow: hidden;
+    background: var(--color-light-yellow);
+}
+
+.verified-student-reviews-section__review-summary .progress-bar {
+    background: #d9a937;
+    display: block;
+    height: 100%;
+    transition: all 3s linear;
+    position: relative;
+    float: left;
+    width: 0;
+}
+
+.reviews-average {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.rating-div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.rating-div .fa {
+    font-size: 2.5rem;
+    color: #d9a937;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-box .rplg-box-content:before,
+.verified-student-reviews-section__row .rplg-slider-review .rplg-review-badge,
+.verified-student-reviews-section__row .rplg-slider .rplg-box .rplg-box-content::-webkit-scrollbar,
+.verified-student-reviews-section__row .rplg-slider .rplg-box:before,
+.verified-student-reviews-section__row .rplg-row-left,
+.verified-student-reviews-section__row .rplg-biz-name {
+    display: none !important;
+}
+
+.verified-student-reviews-section__slider>div {
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 1rem;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-box .rplg-box-content {
+    margin: 10px 0 0 !important;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-row {
+    padding: 0px !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider-review .rplg-row .rplg-row-right {
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-stars {
+    position: absolute;
+    top: -60px;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-time {
+    margin-top: 35px;
+    color: white !important;
+    text-shadow: none !important;
+    font-size: 13px !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-stars use {
+    fill: #DBAA37;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-stars svg {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 2px !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-name {
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider-review {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0 !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider-review .rplg-box {
+    border: none !important;
+    background: none !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-text {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    line-height: 100% !important;
+}
+
+.verified-student-reviews-section__row .rplg-box {
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-biz-rating .rplg-biz-score {
+    color: var(--text-color) !important;
+}
+
+.verified-student-reviews-section__row .rplg-businesses .rplg-links {
+    display: none;
+}
+
+.verified-student-reviews-section__row .rplg-businesses .rplg-biz-based-text {
+    color: var(--color-primary-new);
+}
+
+.verified-student-reviews-section__row .rplg-grid .rplg-stars svg use {
+    fill: var(--color-gold);
+}
+
+.verified-student-reviews-section__row .rplg-businesses .rplg-row-right {
+    margin-left: 40px;
+}
+
+.rplg .rplg-social-logo svg,
+.rplg .rplg-social-logo.rplg-facebook-logo svg {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-badge {
+    left: 0 !important;
+    display: inline;
+}
+
+.verified-student-reviews-section__row .rplg-box {
+    border: none !important;
+}
+
+section.testimonial-section {
+    background-image: url(/wp-content/uploads/2026/01/map-com.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-top: 50px;
+}
+
+.double-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.double-underline:after,
+.double-underline:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    background-color: #ffffff;
+    display: block;
+
+}
+
+.double-underline:after {
+    bottom: -10px;
+    height: 2px;
+}
+
+.double-underline:before {
+    bottom: -5px;
+    height: 1px;
+}
+
+.testimonial-section .ast-col-md-6.video-testimonials {
+    padding-left: 50px !important;
+}
+
+.video-testimonial-card__image {
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    object-position: 80% 50%;
+    border-radius: 1.5rem;
+}
+
+.video-testimonial-card,
+.video-testimonial-card_image-container {
+    position: relative;
+}
+
+.play-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    height: 60px;
+    position: absolute;
+    left: 50%;
+    bottom: -60px;
+    width: 60px;
+    transform: translate(-50%, -60px);
+    border-radius: 50%;
+}
+
+.video-testimonial-card__title {
+    font-size: 18px !important;
+    color: #ffffff !important;
+}
+
+.video-testimonial__subtitle {
+    border-bottom: 1px solid var(--color-red);
+    padding-bottom: 5px;
+    font-size: 13px !important;
+    color: #ffffff !important;
+}
+
+.verified-student-reviews-section {
+    color: white;
+    margin: 3rem 0 4rem;
+    padding: 0 20px;
+}
+
+.reviews-cols {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.verified-student-reviews-section__slider .rplg-slider .rplg-slider-prev,
+.verified-student-reviews-section__slider .rplg-slider .rplg-slider-next {
+    background: none !important;
+}
+
+.verified-student-reviews-section__slider .rplg-slider .rplg-slider-prev span,
+.verified-student-reviews-section__slider .rplg-slider .rplg-slider-next span {
+    color: #DBAA37 !important;
+}
+
+.verified-student-reviews-section__title.font-600.mb-1.large-heading {
+    font-size: 22px;
+    margin-bottom: 1rem;
+}
+
+.clock {
+    padding: 1rem;
+}
+
+.clock-inner {
+    background: white;
+    border-radius: 5px;
+}
+
+.digit-text {
+    color: white;
+    text-transform: capitalize;
+    font-size: 10px;
+
+}
+
+.clock-inner .base {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.offer-ends {
+    display: none;
+}
+
+.discount {
+    width: 330px;
+    text-align: center;
+    margin-top: 30px;
+    position: relative;
+    left: 40px;
+}
+
+.discount div {
+    color: white;
+    font-size: 17px;
+}
+
+.offer {
+    background: #000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    border-top: 1px solid red;
+    border-bottom: 2px solid red;
+    margin-top: 20px;
+}
+
+.offer p {
+    margin: 0;
+}
+
+.faq a {
+    color: white;
+    text-decoration: underline;
+}
+
+.klarna-payment-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    text-align: center;
+    border: 1px solid var(--color-light-gray);
+    padding: 10px;
+    margin: 1rem auto;
+}
+
+body.page-template-homepage .klarna-payment-info-container {
+    background: #E3E7EA;
+    padding: 1rem 30px;
+    margin-bottom: 1rem;
+    margin-left: -30px;
+    margin-right: -30px;
+    border: none !important
+}
+
+.klarna-payment-info {
+    font-size: 12px;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.klarna-learn-more {
+    color: var(--color-accent);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* The Modal (background) */
+.klarna-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999999999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    padding: 2rem 3rem;
+    width: 50%;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    z-index: 9999999;
+    margin: 5% auto;
+}
+
+@media screen and (max-width:768px) {
+    body.page-template-homepage .klarna-payment-info-container {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .modal-content h2 {
+        font-size: 1rem !important;
+    }
+
+    .klarna-payment-details {
+        margin: 1rem auto;
+    }
+
+    .klarna-payment-detail:not(:last-child) {
+        margin-bottom: 1rem !important;
+    }
+
+    .klarna-payment-details:before {
+        height: 66% !important;
+    }
+
+    .klarna-payment-detail {
+        display: block !important;
+    }
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: #000;
+}
+
+.close {
+    color: #000;
+    float: right;
+    font-size: 28px;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--color-accent);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+img.klarna-logo-header {
+    width: 72px;
+    margin: auto;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.klarna-payment-details {
+    margin: 2rem auto;
+    position: relative;
+    padding: 0 32px;
+}
+
+.klarna-payment-details:before {
+    content: "";
+    width: 2px;
+    height: 80%;
+    background: var(--color-light-gray);
+    position: absolute;
+    left: 4px;
+    top: 6px;
+}
+
+.klarna-payment-detail {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.klarna-payment-detail:before {
+    content: "";
+    background: #000;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: -32px;
+    top: 6px;
+}
+
+.klarna-payment-detail:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.klarna-payment-detail img {
+    width: 50px;
+}
+
+.klarna-payment-footnote {
+    color: darkgrey;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+a.close-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    float: none;
+    margin-top: 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+
+    .promo-image {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .discount {
+        width: 100%;
+        left: 4px;
+    }
+
+    .hero-outer {
+        background: linear-gradient(to right, rgb(0 0 0 / 92%) 50%, rgb(0 0 0 / 38%) 100%);
+    }
+
+    .hero::after {
+        display: none;
+    }
+
+    .top-heading {
+        flex-direction: column;
+        text-align: center;
+        width: fit-content;
+    }
+
+    .top-heading .section-title {
+        font-size: 25px;
+        letter-spacing: 5px;
+    }
+
+    .content-section.courses {
+        flex-direction: column;
+        padding: 0;
+        gap: 4rem;
+    }
+
+    .course .thumbnail-outer {
+        height: 105%;
+    }
+
+    .course {
+        width: 100%;
+    }
+
+    .course-wrap:nth-of-type(2)::after {
+        width: 55px;
+        height: 55px;
+        top: -20px;
+    }
+
+    .content-section {
+        padding: 0;
+    }
+
+    .gifts {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: 0;
+        gap: 1rem;
+    }
+
+    .gifts .left {
+        width: 100%;
+    }
+
+    .gifts .right {
+        width: 100%;
+        padding: 0 0;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .gifts .right .guide {
+        width: 130px !important;
+        min-width: 120px !important;
+    }
+
+    .gifts .right .guide img {
+        max-width: 130px;
+    }
+
+    /* Reduce overlap on mobile */
+    /* .gifts .right .guide:not(:first-child) {
+        margin-left: -50px;
+    }
+
+    
+    .gifts .right .guide:nth-child(2) {
+        margin-bottom: 40px;
+    } */
+
+    /* .gifts .right .guide:nth-child(3) {
+        margin-bottom: 80px;
+    } */
+
+    .gifts .right .guide:nth-child(4) {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .gifts .right .guide:nth-child(5),
+    .gifts .right .guide:nth-child(6) {
+        display: none;
+    }
+
+    .gifts .left .enrol {
+        width: 100%;
+    }
+
+    .verified-student-reviews-section {
+        padding: 0;
+    }
+
+    .video-testimonial-card__image {
+        width: 300px;
+    }
+
+    .video-testimonials__slider .ast-col-md-6 {
+        margin-bottom: 30px;
+    }
+
+    .reviews-cols {
+        margin-top: 0;
+    }
+
+    .bundle {
+        flex-direction: column;
+    }
+
+    .testimonial-section .ast-col-md-6.video-testimonials {
+        padding-left: 22px !important;
+    }
+
+    .bundle .left {
+        width: 100%;
+        height: 320px;
+        border-radius: 18px 18px 0 0;
+    }
+
+    .bundle .badge {
+        width: 70px;
+        font-size: 10px;
+    }
+
+    .bundle .badge strong {
+        font-size: 8px;
+    }
+
+    .bundle::after {
+        width: 90px;
+        height: 90px;
+        top: -35px;
+    }
+
+    .bundle .right {
+        width: 100%;
+        text-align: center;
+    }
+
+    .bundle .right .title {
+        text-align: center;
+        font-size: 26px;
+    }
+
+    .bundle .right .product-outer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .bundle .right .price-right {
+        padding: 7px;
+        font-size: 16px;
+    }
+
+    .bundle .links {
+        flex-direction: column;
+    }
+
+    .bundle .links .default-button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .bundle .links .enrol {
+        width: 100%;
+    }
+
+    .power-pack {
+        flex-direction: column;
+    }
+
+    .power-pack .left {
+        width: 100%;
+        border-radius: 18px 18px 0 0;
+    }
+
+    .power-pack .right {
+        width: 100%;
+        padding: 0 10px 20px;
+    }
+
+    .power-pack .right .links {
+        flex-direction: column;
+    }
+
+    .power-pack .links .default-button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .power-pack .links .enrol {
+        width: 100%;
+    }
+
+    .whats_included_outer {
+        grid-template-columns: auto;
+    }
+
+    .text {
+        text-align: left;
+    }
+
+    .tools {
+        flex-direction: column;
+    }
+
+    .tool {
+        width: 100%;
+    }
+
+    .accreditations img {
+        width: 100% !important;
+        height: auto;
+    }
+
+    .faq {
+        flex-direction: column;
+    }
+
+    .left-faq {
+        width: 100%;
+    }
+
+    .right-faq {
+        width: 100%;
+    }
+
+    .panel {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .each-panel {
+        width: 100%;
+    }
+
+    .top-save {
+        display: none;
+    }
+
+}

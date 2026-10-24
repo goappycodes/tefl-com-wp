@@ -372,3 +372,7 @@ span.time-note {
 	font-weight: 700;
 	font-size: smaller;
 }
+
+.intl-tel-input {
+	width: 100%;
+}

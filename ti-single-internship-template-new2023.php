@@ -344,11 +344,9 @@ if(!empty($hero_banner_section)):
                                 
                                 <a href="<?php echo $register_for_alerts_link ?>" class="btn btn-primary">Register for Alerts</a>
                         
-                            <?php } else { 
-                                $timer_expiry = get_field('timer_expiry', 'option');
-                                $now_ts = strtotime("now");
-                                $timer_exp_ts = strtotime($timer_expiry);
-                                if($timer_exp_ts > $now_ts):
+                            <?php } else 
+                            { 
+                                if(!is_global_timer_expired()):
                             ?>
                             <div class="internship-timer-new">
                                 <?php 
@@ -356,6 +354,75 @@ if(!empty($hero_banner_section)):
                                 ?>
                             </div>
                             <?php endif?>
+                            <?php $ri_mode = ( function_exists("get_field") && get_field("register_interest_mode", get_queried_object_id()) ); if ( $ri_mode ) : ?>
+                            <div class="sidebar-title">Interested in this programme?</div>
+                            <div class="sidebar-menu-book-now">
+                                <a href="#ri-form-modal" data-lity class="button book-now-btn ri-register-btn"><span>Register Your Interest</span><i class="fa fa-angle-right"></i></a>
+                            </div>
+                            <div id="ri-form-modal" class="lity-hide ri-form-popup" aria-hidden="true">
+                                <h3 class="ri-form-popup__title">Register Your Interest</h3>
+                                <p class="ri-intro">Tell us a little about yourself and we'll be in touch about this programme.</p>
+                                <?php echo do_shortcode('[contact-form-7 id="110973" title="Internship - Register Your Interest"]'); ?>
+                            </div>
+                            <style>
+                            .lity-container .ri-form-popup{background:#fff;max-width:560px;width:92vw;max-height:80vh;overflow-y:auto;-webkit-overflow-scrolling:touch;margin:4vh auto;padding:26px 30px 30px;border-radius:12px;text-align:left;box-shadow:0 24px 70px rgba(0,0,0,.28);}
+                            .ri-form-popup__title{margin:0 0 4px;font-size:23px;line-height:1.2;color:#1c2b39;font-weight:700;}
+                            .ri-form-popup .ri-intro{margin:0 0 18px;color:#6b7785;font-size:14px;line-height:1.4;}
+                            .ri-form-popup .register-interest-form p{margin:0;}
+                            .ri-form-popup .register-interest-form p.ri-field{margin:0 0 15px;}
+                            .ri-form-popup .register-interest-form label{font-weight:600;display:block;font-size:14px;color:#2b3a4a;margin-bottom:5px;}
+                            .ri-form-popup .register-interest-form input:not([type=submit]):not([type=checkbox]):not([type=radio]),.ri-form-popup .register-interest-form select{width:100%;padding:10px 12px;border:1px solid #d4dae0;border-radius:7px;font-size:15px;background:#fff;box-sizing:border-box;}
+                            .ri-form-popup .register-interest-form .intl-tel-input,.ri-form-popup .register-interest-form .iti{width:100%;}
+                            .ri-form-popup .register-interest-form input:focus,.ri-form-popup .register-interest-form select:focus{border-color:#14a098;outline:none;box-shadow:0 0 0 3px rgba(20,160,152,.15);}
+                            .ri-form-popup .wpcf7-list-item{display:inline-flex;align-items:center;gap:6px;margin:0 14px 7px 0;font-weight:400;}
+                            .ri-form-popup .wpcf7-list-item-label{font-weight:400;}
+                            .ri-form-popup .ri-consent{font-size:13px;color:#51606e;line-height:1.45;}
+                            .ri-form-popup .ri-consent .wpcf7-list-item{display:inline;margin:0 6px 0 0;}
+                            .ri-form-popup .ri-req{color:#e2363a;}
+                            .ri-form-popup .ri-hint{color:#8893a0;font-size:12px;display:block;margin-top:4px;}
+                            .ri-form-popup input[type=file]{font-size:14px;padding:6px 0;}
+                            .ri-form-popup .wpcf7-submit{display:block;width:100%;margin-top:8px;padding:13px 18px;background:#14a098;color:#fff;border:0;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;transition:background .15s;}
+                            .ri-form-popup .wpcf7-submit:hover{background:#0f827b;}
+                            .ri-form-popup .wpcf7-not-valid-tip{color:#e2363a;font-size:12px;margin-top:3px;}
+                            .ri-form-popup .wpcf7-response-output{border-radius:7px;font-size:14px;margin:14px 0 0;padding:12px 14px;}
+                            .lity-container .ri-form-popup::-webkit-scrollbar{width:8px;}
+                            .lity-container .ri-form-popup::-webkit-scrollbar-thumb{background:#cdd4da;border-radius:4px;}
+                            .ri-form-popup .ri-thankyou{text-align:center;padding:14px 6px 8px;}
+                            .ri-form-popup .ri-thankyou__tick{width:64px;height:64px;line-height:64px;margin:0 auto 16px;border-radius:50%;background:#14a098;color:#fff;font-size:34px;font-weight:700;}
+                            .ri-form-popup .ri-thankyou h3{margin:0 0 10px;font-size:23px;color:#1c2b39;font-weight:700;}
+                            .ri-form-popup .ri-thankyou p{margin:0 auto;max-width:420px;color:#51606e;font-size:15px;line-height:1.55;}
+                            </style>
+                            <script>
+                            (function(){
+                              var FORM_ID = 110973;
+                              function closeLity(){
+                                var popup = document.querySelector('.lity-container .ri-form-popup');
+                                var root  = popup ? popup.closest('.lity') : null;
+                                var btn   = root ? root.querySelector('.lity-close') : document.querySelector('.lity-close');
+                                if (btn) { btn.click(); }
+                              }
+                              document.addEventListener('wpcf7mailsent', function(e){
+                                if (parseInt(e.detail.contactFormId,10) !== FORM_ID) return;
+                                var popup = document.querySelector('.lity-container .ri-form-popup') || document.getElementById('ri-form-modal');
+                                if (popup) {
+                                  var m = (e.detail.apiResponse && e.detail.apiResponse.message) ? e.detail.apiResponse.message : 'Thank you! Your interest has been registered — we’ll be in touch shortly.';
+                                  popup.innerHTML = '<div class="ri-thankyou"><div class="ri-thankyou__tick">✓</div><h3>Thank you!</h3><p>' + m + '</p></div>';
+                                  popup.scrollTop = 0;
+                                }
+                                setTimeout(closeLity, 6000);
+                              }, false);
+                              ['wpcf7invalid','wpcf7spam','wpcf7mailfailed'].forEach(function(ev){
+                                document.addEventListener(ev, function(e){
+                                  if (parseInt(e.detail.contactFormId,10) !== FORM_ID) return;
+                                  setTimeout(function(){
+                                    var out = document.querySelector('.lity-container .ri-form-popup .wpcf7-response-output');
+                                    if (out) { out.scrollIntoView({behavior:'smooth', block:'center'}); }
+                                  }, 60);
+                                }, false);
+                              });
+                            })();
+                            </script>
+                            <?php else : ?>
                             <div class="sidebar-title">Upcoming Start Dates</div>
                                 <?php if ($internship_price_html) : ?>
                                     <div class="sidebar-menu-book-now">
@@ -403,9 +470,13 @@ if(!empty($hero_banner_section)):
                                         <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
+                            <?php endif; // register_interest_mode ?>
                                         
                             <?php } 
                             ?>
+                            <?php if ( empty($ri_mode) ) : ?>
+                            <a href="<?php echo $eligibility_checker['button']['button_link']; ?>" class=" screening-btn "><?php echo $eligibility_checker['button']['button_value']; ?></a>
+                            <?php endif; ?>
                         </div>
                         <div class="sticky-sidebar__bottom">
                             <h4 class="sticky-sidebar__bottom-heading">

@@ -388,6 +388,7 @@ get_header();
 		<div class="row">
 			<div class="ast-col-lg-12 ">
 				<h2><?php echo $teach_english_header; ?></h2>
+				<p class="find-online-teaching-jobs"><a href="/teach-english-abroad/teach-english-online/">Find online English teaching jobs</a></p>
 			</div>
 		</div>
 	</div>		

@@ -47,6 +47,27 @@ $banner_logo             = $banner['banner_logo'];
 
 <!--/Banner Section-->
 
+<section class="search-filter-section" style="padding: 60px 0; background: var(--bg-color);">
+    <div class="ast-container">
+        <div class="ast-row" style="margin-bottom: 40px;">
+            <div class="ast-col-md-12">
+                <div class="live-search-wrapper" style="max-width: 600px; margin: 0 auto;">
+                    <input type="text" id="blog-live-search" placeholder="Search blogs..." style="width: 100%; padding: 15px 30px; border-radius: 50px; border: 2px solid #000; font-size: 1rem; outline: none;">
+                </div>
+            </div>
+        </div>
+        
+        <div id="search-results-container" class="ast-row">
+            <?php blog_live_search_handler(); ?>
+        </div>
+
+        <div class="ast-row">
+            <div class="ast-col-md-12" style="text-align: center; margin-top: 30px;">
+                <button id="load-more-btn" class="btn btn-primary">LOAD MORE</button>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!--Blogs Section-->
 
@@ -64,7 +85,10 @@ $uncat_args = array(
 $uncat = get_posts( $uncat_args ); 
 ?>
 
-<?php if($uncat): ?>
+<?php //if($uncat): 
+if(false):	
+?>
+
 <section class="blogs-section">
     <div class="ast-container">
 		<div class="ast-row">

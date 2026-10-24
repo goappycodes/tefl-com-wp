@@ -73,16 +73,27 @@ get_header();
 
     <?php
     $offer_section = get_field('offer_section');
-    if (!empty($offer_section)) :
+    $course_gifts_section = get_field('course_gifts_section','option');
+    $show_gifts_section = $course_gifts_section['show_gifts_section'];
+    if (!empty($offer_section) && $show_gifts_section) :
         $offer_section_title = $offer_section['offer_section_title'];
         $offer_expiry_timer_header = $offer_section['offer_expiry_timer_header'];
         $cta_btn_text = $offer_section['cta_button_text'];
         $cta_btn_link = $offer_section['cta_button_link'];
         $offer_details = $offer_section['offer_details'];
+        $course_gifts_section = get_field('course_gifts_section','option');
+        $show_gifts_section     = $course_gifts_section['show_gifts_section'];
+        $gifts                = $course_gifts_section['gifts'];
+        $selected_courses     = $course_gifts_section['selected_courses'];
+        $selected_courses     = !empty($selected_courses) ? $selected_courses : [];
+        $courses_gift_expires = get_field('timer_expiry', 'option');
+        $current_time         = current_time('timestamp');
+        $expiration_time      = strtotime($courses_gift_expires);
+        $page_id = get_queried_object_id();
     ?>
         <!-- Offer Section -->
         <?php if($offer_section_title) { ?>
-            <section class="offer-section">
+            <section class="offer-section d-none" data-id="<?php echo $page_id;?>">
                 <div class="ast-container">
                     <div class="offer-section-row">
                         <div class=" ast-row">
@@ -107,7 +118,16 @@ get_header();
                                 </div>
                                 <div class="ast-col-md-6">
                                     <div class="offer-section-row__content">
-                                        <?php echo $offer_details ?>
+                                    <?php 
+                                    // if(in_array($page_id,$selected_courses)):
+                                        foreach ($gifts as $g) : ?>
+                                        <div class="gift">
+                                            <span><?php echo $g['gift_title']?></span>
+                                        </div>
+                                    <?php 
+                                        endforeach; 
+                                    // endif;
+                                    ?>
                                     </div>
                                 </div>
                             </div>
@@ -140,16 +160,16 @@ get_header();
                         <img src="/wp-content/uploads/2024/03/UK-flag.png" alt="">
                         <h5>Highfield(Ofqual Regulated)</h5>
                         </div>
-                        <p class="sec-title">Center Number:21338</p>
+                        <p class="sec-title">Center Number:21335</p>
                     </div>
 
                     <div class="col-md-4">
-                        <img class="acred-img" src="/wp-content/uploads/2023/07/odlqc-logo.png" alt="">
+                        <img class="acred-img" src="/wp-content/uploads/2026/09/OTCAC-logo.png" alt="">
                     <div class="acred-text">
                         <img src="/wp-content/uploads/2024/03/UK-flag.png" alt="">
-                        <h5>ODLQC</h5>
+                        <h5>OTCAC</h5>
                         </div>
-                        <p class="sec-title">(Open & Distance Learning Quality Council)</p>
+                        <p class="sec-title">OTCAC Online Teaching Course Accreditation</p>
                     </div>
 
                 </div>
@@ -1054,11 +1074,12 @@ get_header();
     <?php
     endif;
     ?>
-
+    <?php
+        $frequently_asked_questions = get_cfvalue_by_country('frequently_asked_questions');
+        if(!is_array_empty($frequently_asked_questions)):
+    ?>
     <section class="faqs-section full-width has-bg section-padding-bottom">
-        <?php
-        $frequently_asked_questions = get_field('frequently_asked_questions', 77005);
-        ?>
+        
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -1121,9 +1142,8 @@ get_header();
         </div>
     </section>
     <?php
-    include('template-parts/offer-banner.php');
+        endif;
     ?>
-
 </div>
 
 <?php get_footer(); ?>

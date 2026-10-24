@@ -352,7 +352,166 @@ function tefl_get_course_id_from_moodle_course_id($moodle_course_id)
     return $moodle_course_id_arr->post_id;
 }
 
-/* COURSE EXTENSION RESPONSE ON THANK YOU PAGE */
+/* COURSE EXTENSION — CORE WORKER (no output; safe to run in any context) */
+
+/**
+ * Resolve a canonical Moodle username from candidate strings
+ * (entered username first, then the order billing email).
+ * Returns the Moodle username, or false if none resolve.
+ */
+function tefl_resolve_moodle_username($candidates)
+{
+    foreach ((array) $candidates as $candidate) {
+        $candidate = trim((string) $candidate);
+        if ($candidate === '') {
+            continue;
+        }
+        $resp = wp_remote_get(
+            'https://courses.teflinstitute.com/verifyemailorusername.php?query=' . rawurlencode($candidate),
+            array('timeout' => 20)
+        );
+        if (is_wp_error($resp)) {
+            continue;
+        }
+        $body = json_decode(wp_remote_retrieve_body($resp));
+        if ($body && isset($body->output) && !empty($body->output->username) && !empty($body->output->id)) {
+            return $body->output->username;
+        }
+    }
+    return false;
+}
+
+/**
+ * Notify support that an extension could not be applied automatically.
+ * Deduped per order so retries do not spam.
+ */
+function tefl_notify_extension_failure($order, $user_email, $reason = '')
+{
+    $order_id = $order->get_id();
+    if (get_post_meta($order_id, 'course_extension_failure_notified', true) === 'yes') {
+        return;
+    }
+    $to      = 'hello@teflinstitute.com';
+    $subject = 'Course extension failed!';
+    $message = 'Course extension for order #' . $order_id . ' (email ' . htmlspecialchars($user_email) . ') could not be applied automatically.<br/><br/>';
+    if ($reason !== '') {
+        $message .= 'Reason: ' . htmlspecialchars($reason) . '<br/><br/>';
+    }
+    $message .= 'Please review the order and extend the student manually if required.';
+    $headers = array('Reply-To: ' . $user_email);
+    add_filter('wp_mail_content_type', 'tefl_set_content_type');
+    wp_mail($to, $subject, $message, $headers);
+    remove_filter('wp_mail_content_type', 'tefl_set_content_type');
+    update_post_meta($order_id, 'course_extension_failure_notified', 'yes');
+}
+
+/**
+ * Apply any extension products on an order to the customer's Moodle enrolments.
+ * Idempotent via the is_course_extended order meta. Never outputs or wp_die()s,
+ * so it is safe from woocommerce_order_status_completed or the thank-you page.
+ */
+function tefl_run_course_extension_for_order($order_id, $force = false)
+{
+    $order = wc_get_order($order_id);
+    if (!$order) {
+        return array('status' => null, 'message' => 'order not found');
+    }
+
+    if (!$force && get_post_meta($order_id, 'is_course_extended', true) === 'yes') {
+        return array('status' => true, 'message' => 'already extended');
+    }
+
+    $extension_products = get_extension_product_ids();
+    $order_email        = $order->get_billing_email();
+    $overall            = null;
+
+    foreach ($order->get_items() as $item) {
+        $product_id = $item->get_product_id();
+        if (!in_array($product_id, $extension_products)) {
+            continue;
+        }
+
+        $product_name = $item->get_name();
+
+        // Resolve a valid Moodle username: entered value first, then billing email.
+        $entered    = trim((string) $item->get_meta('Username', true));
+        $candidates = array();
+        if ($entered !== '') {
+            $candidates[] = $entered;
+        }
+        if ($order_email) {
+            $candidates[] = $order_email;
+        }
+
+        $username = tefl_resolve_moodle_username($candidates);
+        if (!$username) {
+            tefl_notify_extension_failure($order, $order_email, 'Could not resolve a Moodle account (tried: ' . implode(', ', $candidates) . ') for "' . $product_name . '"');
+            $overall = false;
+            continue;
+        }
+
+        $extension_days = (int) str_replace(' days', '', (string) $item->get_meta('Course extended by', true));
+        if ($extension_days <= 0) {
+            tefl_notify_extension_failure($order, $order_email, 'Missing/invalid extension length for "' . $product_name . '"');
+            $overall = false;
+            continue;
+        }
+
+        $api_url = 'https://courses.teflinstitute.com/api_course_bulk_extension.php?uname=' . rawurlencode($username) . '&extend=' . $extension_days;
+        $resp    = wp_remote_get($api_url, array('timeout' => 45, 'sslverify' => false));
+        if (is_wp_error($resp)) {
+            tefl_notify_extension_failure($order, $order_email, 'Extension API error: ' . $resp->get_error_message());
+            $overall = false;
+            continue;
+        }
+
+        $responses = json_decode(wp_remote_retrieve_body($resp), true);
+        if (!is_array($responses)) {
+            tefl_notify_extension_failure($order, $order_email, 'Unexpected extension API response for username ' . $username);
+            $overall = false;
+            continue;
+        }
+
+        $any_success = false;
+        foreach ($responses as $response) {
+            if (!is_array($response) || empty($response['success'])) {
+                continue;
+            }
+            $any_success = true;
+
+            $res_val          = isset($response['value']) && is_array($response['value']) ? $response['value'] : array();
+            $enrolment_end_ts = isset($res_val['end_date']) ? $res_val['end_date'] : '';
+            $user_email       = isset($res_val['user_email']) ? $res_val['user_email'] : '';
+
+            $customer_user    = $user_email ? get_user_by('email', $user_email) : false;
+            $customer_user_id = $customer_user ? $customer_user->ID : $order->get_user_id();
+
+            $enrolment_end_date = is_numeric($enrolment_end_ts) ? date('Y-m-d H:i:s', $enrolment_end_ts) : '';
+            $course             = isset($response['course_id']) ? $response['course_id'] : false;
+
+            if ($customer_user_id && $course && $enrolment_end_date) {
+                tefl_update_wp_moodle_enrolment_expire_date($customer_user_id, $course, $enrolment_end_date);
+            }
+        }
+
+        if ($any_success) {
+            update_post_meta($order_id, 'is_course_extended', 'yes');
+            update_post_meta($order_id, 'course_extension_username', $username);
+            $overall = ($overall === false) ? false : true;
+        } else {
+            tefl_notify_extension_failure($order, $order_email, 'No enrolments were extended for username ' . $username);
+            $overall = false;
+        }
+    }
+
+    return array('status' => $overall, 'message' => '');
+}
+
+/* Primary trigger: fire server-side when the order completes (works even if the
+   buyer never lands on the thank-you page). accepted_args = 1 keeps $force false. */
+add_action('woocommerce_order_status_completed', 'tefl_run_course_extension_for_order', 20, 1);
+
+/* COURSE EXTENSION RESPONSE ON THANK YOU PAGE (display + fallback trigger) */
 add_action('ti_before_order_details', 'tefl_woocommerce_thankyou_course_extension');
 function tefl_woocommerce_thankyou_course_extension($order)
 {
@@ -360,144 +519,35 @@ function tefl_woocommerce_thankyou_course_extension($order)
         return;
     }
 
-    $order_id = $order->get_id();
+    $order_id     = $order->get_id();
+    $ext_products = get_extension_product_ids();
 
-    $debug_mode = isset($_GET['debug']) ? true : false;
-
-    $items = $order->get_items();
-    $course_extension_products = get_extension_product_ids();
-    $course_extension_array = get_moodle_course_ids();
-    $order_email = $order->get_billing_email();
-
-    $is_course_extended = get_post_meta($order_id, 'is_course_extended', true);
-
-    if (empty($is_course_extended) || ($is_course_extended == '') || $debug_mode) {
-
-        foreach ($items as $item_id => $item) {
-            $product_id = $item['product_id'];
-            $product = new WC_Product($product_id);
-            $product_name = $item->get_name();
-
-            
-
-            if ((in_array($product_id, $course_extension_products) && !isset($_COOKIE["course-" . $order_id . "-extended"])) || $debug_mode) {
-
-                $username = $item->get_meta('Username', true);
-                if($username===''){
-                    $verify_url_response = wp_remote_get("https://courses.teflinstitute.com/verifyemailorusername.php?query={$order_email}");
-    
-                    if (is_wp_error($verify_url_response)) {
-                        wp_die(json_encode(array("status" => false, "content" => "Unable to verify Email/Username")));
-                    }
-                
-                    $verify_body = json_decode($verify_url_response['body']);
-                    if (!$verify_body->output->username || !$verify_body->output->id) {
-                        wp_die(json_encode(array("status" => false, "content" => "Email/Username does not exist")));
-                    }
-            
-                    $username = $verify_body->output->username;
-                }
-                $username = trim($username);
-
-                $extension_days = $item->get_meta('Course extended by', true);
-                $extension_days = str_replace(" days", "", $extension_days);
-                if ($debug_mode) {
-                    print_r($username);
-                    die();
-                }
-
-
-                $url = "https://courses.teflinstitute.com/api_course_bulk_extension.php?uname=" . $username . "&extend=" . $extension_days;
-
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-                $responses = json_decode(curl_exec($ch), true);
-                curl_close($ch);
-
-                if ($debug_mode) {
-                    print_r($responses);
-                    die();
-                }
-
-                $print_count = 0;
-
-                foreach ($responses as $response) {
-
-                    $res_succ = $response['success'];
-                    $res_msg = $response['message'];
-                    $res_val = $response['value'];
-
-                    $user_email = $res_val['user_email'];
-
-                    if ($res_succ == true) {
-                        $enrolment_end_ts = $res_val['end_date'];
-
-                        $customer_user = get_user_by('email', $user_email);
-                        $customer_user_id = $customer_user->ID;
-                        $enrolment_end_date = date("Y-m-d H:i:s", $enrolment_end_ts);
-                        $course     = isset($response['course_id']) ? $response['course_id'] : false;
-                        if ($customer_user_id && $course && $enrolment_end_date) {
-                            tefl_update_wp_moodle_enrolment_expire_date($customer_user_id, $course, $enrolment_end_date);
-                        }
-
-                        // if($key == 0) {
-                        //     echo '<div class="course-extension-msg">';
-                        //     echo '<p>Congratulations! Your '.$product_name.' for '.$course_name.' with Course ID '.$course_ids.' is successful. '.$response['message'].'.</p>';
-                        //     echo '</div>';
-                        // }
-
-                        $print_count++;
-
-                        if (!$debug && $print_count == 1) {
-                            echo '<div class="course-extension-msg">';
-                            echo '<p>Congratulations! Your ' . $product_name . ' is successful for all of your enrolled courses</p>';
-                            echo '</div>';
-                            update_post_meta($order_id, 'is_course_extended', 'yes');
-                        }
-
-                        update_post_meta($order_id, 'is_course_extended', 'yes');
-                        update_post_meta($order_id, 'res_success_msg', $res_msg);
-                    } else {
-                        echo 'HERE';
-                        echo '<div class="course-extension-msg extension-error">';
-                        echo '<p>Sorry! Your ' . $product_name . ' is unsuccessful. Our support team has been notified and they will get in touch with you.</p>';
-                        echo '</div>';
-
-                        /****************** EMAIL ******************/
-                        // $current_user = wp_get_current_user();
-                        // $user_email   = $current_user->user_email;
-
-                        $to           = 'hello@teflinstitute.com';
-                        $subject      = 'Course extension failed!';
-
-                        $message      = 'Course extension for an user with email address ' . $user_email . ' has failed!<br/><br/>';
-                        $message     .= 'Please check Order ID #' . $order->get_id();
-                        $headers[]    = 'Reply-To: ' . $user_email;
-                        add_filter('wp_mail_content_type', 'tefl_set_content_type');
-                        wp_mail($to, $subject, $message, $headers);
-                        // For Testing purpose start
-                        $multiple_recipients = array(
-                            'bikram@appycodes.com'
-                        );
-                        wp_mail($multiple_recipients, $subject, $message, $headers);
-                        // For Testing purpose end
-                        remove_filter('wp_mail_content_type', 'tefl_set_content_type');
-                        /****************** EMAIL ******************/
-                    }
-                }
-
-                $cookie_name = "course-" . $order_id . "-extended";
-                setcookie($cookie_name, "1", time() + (10 * 365 * 24 * 60 * 60), "/");
-            }
+    $has_extension = false;
+    foreach ($order->get_items() as $item) {
+        if (in_array($item->get_product_id(), $ext_products)) {
+            $has_extension = true;
+            break;
         }
     }
+
+    if ($has_extension) {
+        // Fallback trigger — safe/idempotent if the order-status hook already ran.
+        tefl_run_course_extension_for_order($order_id);
+        $succeeded = (get_post_meta($order_id, 'is_course_extended', true) === 'yes');
+
+        echo '<div class="course-extension-msg' . ($succeeded ? '' : ' extension-error') . '">';
+        if ($succeeded) {
+            echo '<p>Congratulations! Your course extension has been applied to all of your enrolled courses.</p>';
+        } else {
+            echo '<p>Thanks for your purchase. Your course extension is being processed. If it is not reflected shortly, our support team has been notified and will get in touch with you.</p>';
+        }
+        echo '</div>';
+    }
+
     $current_user = wp_get_current_user();
-    $username = $current_user->user_login;
+    $username     = $current_user->user_login;
     echo '<div class="course-extension-msg"><h3>Your Course Access</h3>';
-    echo '<div>Click <a target="_blank" href="https://courses.teflinstitute.com/login/index.php">here</a> to login to your student portal.<br/>Your username is <b style="text-decoration:underline">' . $username . '</b> and password is the one you have entered during checkout</div>';
+    echo '<div>Click <a target="_blank" href="https://courses.teflinstitute.com/login/index.php">here</a> to login to your student portal.<br/>Your username is <b style="text-decoration:underline">' . esc_html($username) . '</b> and password is the one you have entered during checkout</div>';
     echo '</div>'; ?>
 
     <style>

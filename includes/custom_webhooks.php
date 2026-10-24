@@ -52,6 +52,16 @@ function zoho_deliver_webhook($order_id, $webhook_url, $debug = false){
 
     $customer_id = 5;
     // This is Prz user ID
+
+    $coupon_codes = $order->get_coupon_codes();
+    $has_coupons  = !empty( $coupon_codes );
+    $coupon_ids   = [];
+    if ( $has_coupons ) {
+        foreach ( $coupon_codes as $code ) {
+            $c_id = wc_get_coupon_id_by_code( $code );
+            if ( $c_id ) { $coupon_ids[] = $c_id; }
+        }
+    }
     
     wp_set_current_user( $customer_id );
     wp_set_auth_cookie( $customer_id, true );
@@ -73,6 +83,9 @@ function zoho_deliver_webhook($order_id, $webhook_url, $debug = false){
         'cart_tax'         => $order->get_cart_tax(),
         'total'            => $order->get_total(),
         'total_tax'        => $order->get_total_tax(),
+        'has_coupons'      => $has_coupons ? '1' : '0',
+        'coupon_codes'     => implode( ', ', $coupon_codes ),
+        'coupon_ids'       => implode( ', ', $coupon_ids ),
         'customer_id'      => $order->get_customer_id(),
         'order_key'        => $order->get_order_key(),
         'billing'          => $order->get_address('billing'),
@@ -86,7 +99,6 @@ function zoho_deliver_webhook($order_id, $webhook_url, $debug = false){
         'customer_note'    => $order->get_customer_note(),
         'date_completed'   => $order->get_date_completed() ? $order->get_date_completed()->date('Y-m-d H:i:s') : null,
         'date_paid'        => $order->get_date_paid() ? $order->get_date_paid()->date('Y-m-d H:i:s') : null,
-        'line_items'       => $order->get_items(),
         'product_ids'      => '',
         'product_names'    => '',
         'product_quantities' => '',
@@ -105,7 +117,10 @@ function zoho_deliver_webhook($order_id, $webhook_url, $debug = false){
         $product_quantities[] = $item->get_quantity();
         $product_subtotals[]  = $item->get_subtotal();
         $variation_ids[]      = $item->get_variation_id();
-        $is_flexible = (stripos($item->get_name(), "Flexible") !== false) ? true : false;
+        if ( stripos($item->get_name(), "Flexible") !== false ) {
+            $is_flexible = true;
+            break;
+        }
     }
 
     $order_data['product_ids']       = implode(",", $product_ids);
@@ -114,6 +129,8 @@ function zoho_deliver_webhook($order_id, $webhook_url, $debug = false){
     $order_data['product_subtotals']  = implode(",", $product_subtotals);
     $order_data['variation_ids']     = implode(",", $variation_ids);
     $order_data['is_flexible']       = $is_flexible ? "1" : "0";
+    $selected_courses = $order->get_meta('_selected_courses');
+    $order_data['selected_courses'] = $selected_courses ? $selected_courses : '';
 
     ticom_custom_log("Processed Order Data: " . print_r($order_data, true), 'autowebhook');
 
@@ -131,6 +148,32 @@ function zoho_deliver_webhook($order_id, $webhook_url, $debug = false){
     }
 
 
+    $radio_choice = get_post_meta($order_id, 'se_radio_choice', true);
+    
+    if ($radio_choice === 'someone_else') {
+        // Retrieve "someone else" information
+        $se_first_name = get_post_meta($order_id, 'se_first_name', true);
+        $se_last_name = get_post_meta($order_id, 'se_last_name', true);
+        $se_email = get_post_meta($order_id, 'se_email', true);
+        $se_phone = get_post_meta($order_id, 'se_phone', true);
+        $se_date_of_birth = get_post_meta($order_id, 'se_date_of_birth', true);
+
+        // Add "someone else" information to order data
+        $order_data['someone_else'] = [
+            'first_name' => $se_first_name,
+            'last_name' => $se_last_name,
+            'email' => $se_email,
+            'phone' => $se_phone,
+            'date_of_birth' => $se_date_of_birth,
+        ];
+
+        // Add a flag indicating "someone else" information exists
+        $order_data['is_someone_else_order'] = "1";
+    } else {
+        // Set the flag to indicate no "someone else" information
+        $order_data['is_someone_else_order'] = "0";
+    }
+
     // unset($order_data['_links']);
 
     $response = [];
@@ -144,9 +187,9 @@ function zoho_deliver_webhook($order_id, $webhook_url, $debug = false){
         ));
 
         if (is_wp_error($response)) {
-            tie_custom_log("Error sending request: " . $response->get_error_message(), 'autowebhook');
+            ticom_custom_log("Error sending request: " . $response->get_error_message(), 'autowebhook');
         } else {
-            tie_custom_log("Request sent successfully: " . print_r($response, true), 'autowebhook');
+            ticom_custom_log("Request sent successfully: " . print_r($response, true), 'autowebhook');
         }
     }
 

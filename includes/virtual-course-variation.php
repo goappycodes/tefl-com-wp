@@ -29,7 +29,11 @@ $day_light = DAY_LIGHT_SAVINGS; ?>
                     ?>
 
                     <div class="flexible-booking-btn">
-                        <a class="btn btn-primary btn-rounded" rel="nofollow" href="/?addtimetocart&prid=<?php echo $course_product_id; ?>&date=Flexible - Book now and select your preferred dates and times later">Flexible booking - book now and choose the date later</a>
+                        <a class="btn btn-primary btn-rounded" rel="nofollow" href="/?addtimetocart&prid=<?php echo $course_product_id; ?>&date=Flexible - Book now and select your preferred dates and times later">
+                            <span>Flexible booking</span>
+                            <img src="/wp-content/uploads/2025/04/flexible-icon.png" alt="">
+                        </a>
+                        <span> Book now and choose the date later</span>
                     </div>
                 <?php endif; ?>
 
@@ -132,6 +136,8 @@ $day_light = DAY_LIGHT_SAVINGS; ?>
     $html .= '</thead>';
     $html .= '<tbody>';
     $date_count = 0;
+
+    
     foreach ($class_course_dates as $class_course_date) :
         $single_course_booking_count = 0;
         $class_course_start_date = $class_course_date['start_date'];
@@ -147,6 +153,7 @@ $day_light = DAY_LIGHT_SAVINGS; ?>
         $class_course_end_date = date('l jS M Y', strtotime($class_course_end_date));
 
         $course_start_end_date = $class_course_start_date . ' - ' . $class_course_end_date;
+
 
         if (($class_course_start_date_timestamp > $date_today_timestamp) || ($class_course_start_date_timestamp = $date_today_timestamp)) :
             $course_start_time = $class_course_date['start_time'];
@@ -227,7 +234,8 @@ $day_light = DAY_LIGHT_SAVINGS; ?>
                             "priceCurrency": "<?php echo get_woocommerce_currency(); ?>",
                             "availability": "http://schema.org/InStock",
                             "url": "<?php echo '/?addtimetocart&prid=' . $course_product_id . '&date=' . $class_course_date['start_date']; ?>",
-                            "validFrom": "2020-01-01T12:00"
+                            "validFrom": "2020-01-01T12:00",
+                            "category": "Course"
                         },
                         "organizer": {
                             "@type": "Organization",

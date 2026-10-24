@@ -508,3 +508,9 @@ span.wpcf7-not-valid-tip {
         padding-bottom: 10px;
     }
 }
+button#load-more-btn{
+    margin:auto;
+}
+button#load-more-btn:hover {
+    background: red;
+}

@@ -100,7 +100,7 @@ $callback = get_field('callback');
                         
                             $course_id = $course['course'];
                             $course_product_id = get_field('course_product', $course_id);
-                            $course_product = new WC_Product($course_product_id);
+                            $course_product = wc_get_product($course_product_id);
                             $course_price_html = $course_product->get_price_html();
                             $course_regular_price = $course_product->get_regular_price();
                             $course_sale_price = $course_product->get_sale_price();

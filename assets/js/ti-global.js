@@ -108,49 +108,63 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
 jQuery(document).ready(function ($) {
 
-	// setTimeout(function(){ update_geo_banner_image() }, 4000);    
-	// $(document.body).on('wc_price_based_country_after_ajax_geolocation', function () {
-	// 	update_geo_banner_image();
-	// });
+	var lastScrollPosition = 0;
+	var scrollThreshold = 200;
+	var banner = jQuery('.header-offer-banner');
 
 	
-	// $(window).scroll(function(){
-	// 	let banner = $('.sales-offer-banner-mobile.header-offer-banner');
-	// 	let threshold = 150;
-    //     let scroll = $(window).scrollTop();
 
-    //     if (scroll > threshold) {
-    //         banner.css('position', 'relative');
-    //     } else {
-    //         banner.css('position', 'sticky');
-    //     }
-    // });
+	jQuery(window).on('scroll', function() {
+		var currentScroll = jQuery(window).scrollTop();
 
-	let showMore = $('.resources-select-wrapper__header .fa,.resource-description-header .fa');
-    let infoBlock = $('.resource-info-container');
+		if (currentScroll > scrollThreshold) {
+			banner.addClass('visible');
+		} else if (currentScroll < scrollThreshold) {
+			banner.removeClass('visible');
+		}
+
+		lastScrollPosition = currentScroll;
+	});
+
+
+	// Teaching resoureces dropdown
+
+	let showMore = $('.resource-description-header .fa, .resources-select-wrapper__header .fa');
     let hideTimeout;
 
-    showMore.on('mouseenter', (e) => {
+    showMore.on('mouseenter', function (e) {
         e.preventDefault();
         clearTimeout(hideTimeout);
+
+        let infoBlock = $(this).siblings('.resource-info-container');
+
+        $('.resource-info-container').not(infoBlock).removeClass('animate-slide-down');
+
         infoBlock.addClass('animate-slide-down');
     });
 
-    showMore.on('mouseleave', (e) => {
+    showMore.on('mouseleave', function (e) {
         e.preventDefault();
+        
+        let infoBlock = $(this).siblings('.resource-info-container');
         hideTimeout = setTimeout(() => {
             infoBlock.removeClass('animate-slide-down');
-        }, 1000); 
+        }, 2000);
     });
 
-    infoBlock.on('mouseenter', (e) => {
+    let infoBlock = $('.resource-info-container');
+
+    infoBlock.on('mouseenter', function (e) {
         e.preventDefault();
         clearTimeout(hideTimeout);
     });
 
-    infoBlock.on('mouseleave', (e) => {
+    infoBlock.on('mouseleave', function (e) {
         e.preventDefault();
-        infoBlock.removeClass('animate-slide-down');
+        let block = $(this);
+        hideTimeout = setTimeout(() => {
+            block.removeClass('animate-slide-down');
+        }, 500);
     });
 
 	function update_geo_banner_image() {
@@ -162,40 +176,11 @@ jQuery(document).ready(function ($) {
 		console.log("Changing second slide to Geo targeted banner " + image_extension + " -  REMOVE THIS ONCE BLACK FRIDAY IS OVER");
 		var geo_image_url = "https://i0.wp.com/teflinstitute.com/wp-content/uploads/2023/11/" + image_extension + "_TI.jpg";
 
-		jQuery("section.banner-slide.banner-slide-1").attr("data-bg", geo_image_url);
-		jQuery("section.banner-slide.banner-slide-1").css("background-image", "url('" + geo_image_url + "')");
+		jQuery("section.banner-slide.banner-slide-2").attr("data-bg", geo_image_url);
+		jQuery("section.banner-slide.banner-slide-2").css("background-image", "url('" + geo_image_url + "')");
 	}
 
-	// [phonetext your-phone autocomplete:nope class:event-form-input placeholder "Your Phone"]
-	let phoneInputField = $('#intlPhone,.intl-phone');
-
-	if (phoneInputField.length) {
-		let countryCode = CookieService.getCookie("countryCode");
-		console.log("countryCode from cookie", countryCode);
-		if (countryCode) {
-			phoneInputField.intlTelInput({
-				initialCountry: countryCode,
-				hiddenInput: 'full_phone',
-				autoHideDialCode: false,
-				utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.min.js",
-			});
-		} else {
-			phoneInputField.intlTelInput({
-				initialCountry: "auto",
-				hiddenInput: 'full_phone',
-				autoHideDialCode: false,
-				geoIpLookup: function (callback) {
-					$.get("https://ipinfo.io", function () { }, "jsonp").always(function (resp) {
-						countryCode = (resp && resp.country) ? resp.country : "auto";
-						CookieService.setCookie("countryCode", countryCode, 365);
-						callback(countryCode);
-					});
-				},
-				utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.min.js",
-			});
-		}
-
-	}
+	// intl-tel init removed 2026-09-18: single widget now via mu-plugin ti-intl-phone-unify (backup ti-global.js.bak-intlphone-20260918)
 
 	let glideElement = $('.hero-slider-container');
 	if (glideElement.length) {
@@ -221,12 +206,12 @@ jQuery(document).ready(function ($) {
 
 	// Dyanamic Color theming
 
-	let colors = $("body").data("colors");
-	accentColor = colors.accent_color;
-	coursePageAccentColor = colors.course_internship_page_accent_color;
+	// let colors = $("body").data("colors");
+	// accentColor = colors.accent_color;
+	// coursePageAccentColor = colors.course_internship_page_accent_color;
 
-	document.documentElement.style.setProperty('--accent', accentColor);
-	document.documentElement.style.setProperty('--blue-turquoise', coursePageAccentColor);
+	// document.documentElement.style.setProperty('--accent', accentColor);
+	// document.documentElement.style.setProperty('--blue-turquoise', coursePageAccentColor);
 
 
 	//AJAX snippets
@@ -258,28 +243,45 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	// $('.ti-menu-item.has-children').hover(
-	// 	function (e) {
-	// 		e.preventDefault();
-	// 		$(this).addClass('openmenu');
-	// 		// $('#content').addClass('blurred');
-	// 	},
-	// 	function (e) {
-	// 		e.preventDefault();
-	// 		$(this).removeClass('openmenu');
-	// 		// $('#content').removeClass('blurred');
-	// 	}
-	// );
 
-	$('.ti-menu-item.has-children').on('mouseenter', function (e) {
-		e.preventDefault();
-		$(this).addClass('openmenu');
-		// $('#content').addClass('blurred');
-	}).on('mouseleave', function (e) {
-		e.preventDefault();
-		$(this).removeClass('openmenu');
-		// $('#content').removeClass('blurred');
-	});
+	//JavaScript for mega menu
+	(function($) {
+		let menuTimeout;
+		let menuDebounce;
+		let debounceDelay = 100; 
+		
+		$('.ti-menu-item.has-children').on('mouseenter', function(e) {
+			e.preventDefault();
+			
+			clearTimeout(menuTimeout);
+			clearTimeout(menuDebounce);
+			
+			const $menuItem = $(this);
+			
+			menuDebounce = setTimeout(function() {
+				$('.ti-menu-item.has-children').removeClass('openmenu');
+				$menuItem.addClass('openmenu');
+			}, debounceDelay);
+			
+		}).on('mouseleave', function(e) {
+			e.preventDefault();
+			
+			clearTimeout(menuDebounce);
+			
+			const $menuItem = $(this);
+			
+			menuTimeout = setTimeout(function() {
+				$menuItem.removeClass('openmenu');
+			}, 300); 
+		});
+		
+		$(document).on('click', function(e) {
+			if (!$(e.target).closest('.ti-mega-menu-new').length) {
+				$('.ti-menu-item.has-children').removeClass('openmenu');
+			}
+		});
+		
+	})(jQuery);
 
 
 	/* Course Extension Scripts*/
@@ -518,6 +520,7 @@ jQuery(document).ready(function ($) {
 		$('.top-bar-search').show();
 		$('.location-contact').insertAfter('#primary-menu');
 		$('.header-cta-icons').insertBefore('.top-bar-links');
+		$('.bf-menu-link').insertBefore(['.header-cta-icons']);
 		// $('.location-contact').show();
 	}
 	else {
@@ -851,5 +854,87 @@ jQuery(document).ready(function ($) {
 	let resourceContainer = $('.resource-container');
     let productId = resourceContainer.data('product-id');
 
+	// GEO Targetted Banner content
 
+	var eurozone = ['AT','BE','CY','DE','EE','ES','FI','FR','GR','HR','IE','IT',
+                    'LT','LU','LV','MT','NL','PT','SI','SK'];
+
+    function symbolForCountry(countryCode) {
+        if (countryCode === 'GB') return '£';
+        if (eurozone.indexOf(countryCode) !== -1) return '€';
+        return '$';
+    }
+
+    function swapCurrencies(symbol) {
+        $('.geo-currency').each(function () {
+            var amount = $(this).data('amount');
+            $(this).text(symbol + amount);
+        });
+    }
+
+    var cachedCountry = $('body').attr('data-geo_country_code');
+
+    if (cachedCountry) {
+        swapCurrencies(symbolForCountry(cachedCountry));
+    } else {
+        $.get('https://ipinfo.io/json', function (resp) {
+            var country = (resp && resp.country) ? resp.country : '';
+            swapCurrencies(symbolForCountry(country));
+        }, 'jsonp');
+    }
 });
+
+
+// ===== Unified intl-tel phone widget (added 2026-09-18, replaces removed block above) =====
+(function(){
+  var COOKIE='countryCode', UTILS='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.min.js';
+  // Widget targets: intl-phone / #intlPhone / bare tel, but NOT phonetext (country-phone plugin owns those).
+  var SEL_INIT='input.intl-phone, input#intlPhone, input[type="tel"]:not(.wpcf7-phonetext)';
+  // Harvest targets on submit: every phone field, incl. phonetext.
+  var SEL_ALL='input.intl-phone, input#intlPhone, input.wpcf7-phonetext, input[type="tel"]';
+
+  function getCookie(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?m.pop():'';}
+  function setCookie(n,v,d){var e=new Date();e.setTime(e.getTime()+d*864e5);document.cookie=n+'='+v+';expires='+e.toUTCString()+';path=/';}
+  // ti-global stored this cookie JSON-quoted+uppercase (e.g. %22IN%22); normalise to a clean lowercase iso2.
+  function readCountry(){var raw=getCookie(COOKIE);if(!raw)return '';try{raw=decodeURIComponent(raw);}catch(e){}raw=raw.replace(/^["']+|["']+$/g,'').trim().toLowerCase();return /^[a-z]{2}$/.test(raw)?raw:'';}
+
+  function initInput(input){
+    if(input.getAttribute('data-ti-phone')==='1' || input.closest('.iti')) return;
+    var cc=readCountry(), opts={separateDialCode:true, autoPlaceholder:'aggressive', utilsScript:UTILS};
+    if(cc){ opts.initialCountry=cc; }
+    else{
+      opts.initialCountry='auto';
+      opts.geoIpLookup=function(cb){
+        function done(r){ var c=((r&&r.country)?r.country:'us').toLowerCase(); setCookie(COOKIE,c,365); cb(c); }
+        if(window.jQuery){ jQuery.get('https://ipinfo.io',function(){},'jsonp').always(done); }
+        else{ fetch('https://ipinfo.io/json').then(function(r){return r.json();}).then(done).catch(function(){ cb('us'); }); }
+      };
+    }
+    try{ input.__iti=window.intlTelInput(input, opts); input.setAttribute('data-ti-phone','1'); }catch(e){}
+  }
+  function e164From(inp, form){
+    try{ var iti=inp.__iti || (window.intlTelInputGlobals && window.intlTelInputGlobals.getInstance(inp)); if(iti){ var n=(iti.getNumber()||'').replace(/\s+/g,''); if(/^\+\d{7,15}$/.test(n)) return n; } }catch(e){}
+    var ks=['full_phone','full_number']; for(var i=0;i<ks.length;i++){ var h=form.querySelector('input[name="'+ks[i]+'"]'); if(h){ var v=(h.value||'').replace(/\s+/g,''); if(/^\+\d{7,15}$/.test(v)) return v; } }
+    if(window.jQuery && jQuery.fn.intlTelInput){ try{ if(jQuery(inp).data('intl-tel-input-id')!=null){ var n2=(jQuery(inp).intlTelInput('getNumber')||'').replace(/\s+/g,''); if(/^\+\d{7,15}$/.test(n2)) return n2; } }catch(e){} }
+    return '';
+  }
+  function initForm(form){
+    form.querySelectorAll(SEL_INIT).forEach(initInput);
+    if(form.getAttribute('data-ti-phone-submit')==='1') return;
+    form.addEventListener('submit', function(){
+      form.querySelectorAll(SEL_ALL).forEach(function(inp){
+        var e=e164From(inp, form);
+        if(e && String(inp.value).indexOf('+')===-1) inp.value=e;
+      });
+    }, true);
+    form.setAttribute('data-ti-phone-submit','1');
+  }
+  function scan(){ document.querySelectorAll('form.wpcf7-form').forEach(initForm); }
+  function boot(){
+    setTimeout(scan,300);
+    window.addEventListener('load',scan);
+    document.addEventListener('wpcf7init',function(e){ var f=e&&e.target&&e.target.matches&&e.target.matches('form.wpcf7-form')?e.target:null; if(f){initForm(f);}else{scan();} });
+    document.addEventListener('focusin',function(e){ var t=e.target; if(t&&t.matches&&t.matches(SEL_INIT)&&t.getAttribute('data-ti-phone')!=='1'&&t.closest('form.wpcf7-form')){ initInput(t); initForm(t.closest('form.wpcf7-form')); } });
+  }
+  if(document.readyState!=='loading') boot(); else document.addEventListener('DOMContentLoaded',boot);
+})();

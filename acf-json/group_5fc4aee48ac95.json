@@ -3,6 +3,48 @@
     "title": "Courses",
     "fields": [
         {
+            "key": "field_687513db28440",
+            "label": "Trustpilot Tag",
+            "name": "trustpilot_tag",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_671104ef1329e",
+            "label": "Number of sale courses offered",
+            "name": "number_of_sale_courses_offered",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_641d752c22f73",
             "label": "Is New Design?",
             "name": "is_new_design",
@@ -48,10 +90,10 @@
         },
         {
             "key": "field_641d98a910614",
-            "label": "Free Offer Text",
-            "name": "free_offer_text",
+            "label": "Course Extra Info",
+            "name": "course_extra_info",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -61,11 +103,10 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "",
-            "acfe_textarea_code": 0
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_6162d35ef96a9",
@@ -463,7 +504,15 @@
             "type": "group",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_641d752c22f73",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -4358,5 +4407,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696685535
+    "modified": 1752503707
 }

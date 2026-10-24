@@ -2,7 +2,7 @@
 ?>
 <div class="klarna-label-outer">
     <div class="klarna-payment-info-container">
-        <img src="/wp-content/uploads/2023/07/klarna.svg" alt="" class="klarna-logo">
+        <img src="/wp-content/uploads/2023/07/Klarna-logotype-black.svg_.svg" alt="" class="klarna-logo">
         <div class="klarna-payment-info">
             Split the purchase into 3 payments of <?php echo geo_price($full_price/3)?> (0 APR).
             <?php

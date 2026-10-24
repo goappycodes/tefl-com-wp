@@ -202,7 +202,7 @@ get_header();
                                     <img class="block_icon" src="<?php echo $main_elt['icon'] ?>">
                                     <div class="block_title"><?php echo $main_elt['title'] ?></div>
                                     <div class="block_subtitle"><?php echo $main_elt['subtitle'] ?></div>
-                                    <a target="_blank" href="<?php echo $main_elt['button']['value'] ?>" class="block_link"><?php echo $main_elt['button']['value'] ?></a>
+                                    <a target="_blank" href="<?php echo $main_elt['button']['link'] ?>" class="block_link"><?php echo $main_elt['button']['value'] ?></a>
                                 </div>
                             </div>
 
@@ -211,7 +211,7 @@ get_header();
                                     <img class="block_icon" src="<?php echo $calculator_content['icon'] ?>">
                                     <div class="block_title"><?php echo $calculator_content['title'] ?></div>
                                     <div class="block_subtitle"><?php echo $calculator_content['subtitle'] ?></div>
-                                    <a target="_blank" href="<?php echo $calculator_content['button']['value'] ?>" class="block_link"><?php echo $calculator_content['button']['value'] ?></a>
+                                    <a target="_blank" href="<?php echo $calculator_content['button']['link'] ?>" class="block_link"><?php echo $calculator_content['button']['value'] ?></a>
                                 </div>
                             </div>
 

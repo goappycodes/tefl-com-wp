@@ -90,7 +90,6 @@ $courses = "<p>The TEFL Institute team has made every effort to put together all
 <p>You’ll receive an email shortly introducing your personal tutor who is here to help you during your course. Youll also receive instructions for your 10 Hour Classroom Methodologies Course if you enrolled. </p>
 <strong>Your TEFL certificate</strong>
 <p>All our accredited courses include a PDF version of the TEFL certificate. This is perfect for easily applying for jobs online or abroad. If you do need a hard copy, we have options available at an extra cost.</p>
-<p>For our Level 5 TEFL courses, your digital and harcopy Ofqual certificates are included for free!</p>
 <p>From all of us at the TEFL Institute, we wish you the best of luck with your course. Youll also receive a call from us soon to check you’re settling into your course okay.</p>
 ";
 
@@ -98,21 +97,21 @@ $internships = "<p>This unique paid internship offers you the once-in-a-lifetime
 <p>Regarding your paid internship, your details will be given to our fantastic in-country coordinator and you’ll hear from them shortly. They’ll help you complete the application documents and will prepare everything for your arrival.</p>
 <p>You then have 3 months to fully complete your TEFL training before embarking on your paid internship.</p>";
 
-$korea_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/31rOog'>your internship application form</a> and submit it within 3 working days.</p>";
+$korea_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/3X8llY'>your internship application form</a> and submit it within 3 working days.</p>";
 
-$cambodia_text = "<p><span style='color:#b90e0a;'><strong>What's next?</strong></span> Complete <a href='https://tally.so/r/31rOog'>your internship application form</a> and submit it within 3 working days.</p>";
+$cambodia_text = "<p><span style='color:#b90e0a;'><strong>What's next?</strong></span> Complete <a href='https://tally.so/r/3X8llY'>your internship application form</a> and submit it within 3 working days.</p>";
 
-$vietnam_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/31rOog'>your internship application form</a> and submit it within 3 working days.</p>";
+$vietnam_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/3X8llY'>your internship application form</a> and submit it within 3 working days.</p>";
 
-$japan_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/31rOog'>your internship application form</a> and submit it within 3 working days.</p>";
+$japan_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/3X8llY'>your internship application form</a> and submit it within 3 working days.</p>";
 
-$thailand_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/31rOog'>your internship application form</a> and submit it within 3 working days.</p>";
+$thailand_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/3X8llY'>your internship application form</a> and submit it within 3 working days.</p>";
 
-$thailand_volunteer_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/31rOog'>your internship application form</a> and submit it within 3 working days.</p>";
+$thailand_volunteer_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/3X8llY'>your internship application form</a> and submit it within 3 working days.</p>";
 
-$myanmar_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/31rOog'>your internship application form</a> and submit it within 3 working days.</p>";
+$myanmar_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/3X8llY'>your internship application form</a> and submit it within 3 working days.</p>";
 
-$spain_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/31rOog'>your internship application form</a> and submit it within 3 working days.</p>";
+$spain_text = "<p><strong>What's next?</strong> Complete <a href='https://tally.so/r/3X8llY'>your internship application form</a> and submit it within 3 working days.</p>";
 
 $elt_text = "<p>Here is confirmation that you have taken our English test, we hope you enjoyed it!</p>
 <p>Please note you have now created an account on our system. <br>
@@ -235,6 +234,38 @@ if ($has_courses_in_cart || $has_specialist_courses_in_cart || $has_addons_in_ca
     if ($has_spain_internship) {
         echo $spain_text;
     }
+
+	$included_pids = [1097, 1102, 1099, 2706, 943, 71500, 70829, 70828, 62238];  
+	$included_found = false;
+
+	foreach ($order->get_items() as $item) {
+		if (in_array($item->get_product_id(), $included_pids)) {
+			$included_found = true;
+			break;
+		}
+	}
+
+	if ($included_found) {
+		?>
+			<img src="https://teflinstitute.com/wp-content/uploads/2024/10/tefl_plus_badge_com.png" alt="" style="
+				width: 80px;
+				margin-bottom: 10px;
+			">
+			<p>
+				<span>You've included TEFL Plus in your order!</span>
+				<a target="_blank" href="https://teflinstitute.com/the-tefl-plus/" style="
+				text-decoration: none;
+				background: #1c1c1b;
+				color: #fff;
+				padding: 10px;
+				border-radius: 10px;
+				margin-left: 1rem;
+				">View TEFL Plus Details</a>
+			</p>
+		<?php
+	}
+
+
 
 ?>
 

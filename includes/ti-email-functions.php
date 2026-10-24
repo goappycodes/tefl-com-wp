@@ -27,10 +27,8 @@ function ti_conditional_email_recipient( $recipient, $order ) {
 		//$product = $order->get_product_from_item( $item );
 		$product_id = $item->get_product_id();
 		
-		// add our extra recipient if there's a shipped product - commas needed!
-		// we can bail if we've found one, no need to add the recipient more than once
-		if ( $product_id !== 1788 ) {
-			$recipient .= ', annelies.veenhouwer@teflinstitute.com';
+		if ( $product_id !== 92814 || $product_id !== 92815  || $product_id !== 101542 || $product_id !== 101539) {
+			$recipient .= ', hello@teflinstitute.com';
 		}
       
         if ( $product_id == 9688 || $product_id == 58069  || $product_id == 58063 || $product_id == 66153 ) {
@@ -40,9 +38,14 @@ function ti_conditional_email_recipient( $recipient, $order ) {
         if ( $product_id == 943 ) {
 			$recipient .= ', marketingteam@tefl.ie';
 		}
+
+        // New: Chloe + recruitment
+        if ( in_array( $product_id, array( 110823, 6514, 70951 ), true ) ) {
+			$recipient .= ', chloe@teflinstitute.com, recruitment@teflinstitute.com';
+		}
 		
 		if ( $product_id == 84816 || $product_id == 70835 || $product_id == 70833 || $product_id == 70827 || $product_id == 70826 || $product_id == 63558 || $product_id == 4514 || $product_id == 7110 || $product_id == 9615 || $product_id == 5608 || $product_id == 9305 || $product_id == 9306 || $product_id == 7898 || $product_id == 10050) {
-			$recipient .= ', jacob.thomas@teflinstitute.com, academic@teflinstitute.com';
+			$recipient .= ', academic@teflinstitute.com';
 			return $recipient;
 		}
 	}
@@ -66,15 +69,21 @@ function webinar_zoom_details( $output, $name, $html ) {
     $webinar_zoom_passcode  = get_field('event_zoom_passcode', $webinar_id);
 
 	$user_timezone          = get_user_timezone();
-    $base_timezone          = DAY_LIGHT_SAVINGS ? 'BST' : 'GMT';
+	// Same UK clock rule as DAY_LIGHT_SAVINGS in wp-config (Europe/London),
+	// applied to the webinar's own date.
+	$webinar_datetime = DateTime::createFromFormat('d.m.Y h:i A', $webinar_date . ' ' . $webinar_time, new DateTimeZone('Europe/London'));
+    $base_timezone          = $webinar_datetime ? $webinar_datetime->format('T') : (DAY_LIGHT_SAVINGS ? 'BST' : 'GMT');
+    $webinar_time_local     = false;
+    $webinar_date_local     = '';
 
-	$webinar_datetime = DateTime::createFromFormat('d.m.Y h:i A', $webinar_date . ' ' . $webinar_time, new DateTimeZone($base_timezone));
-    $webinar_time_local = $webinar_datetime ? $webinar_datetime->format('g:i a') : false;
-
-	if ($webinar_datetime) {
-        $webinar_datetime->setTimezone(new DateTimeZone($user_timezone));
-        $webinar_date_local = $webinar_datetime->format('l, j F Y');
-        $webinar_time_local = $webinar_datetime->format('g:i a');
+	if ($webinar_datetime && $user_timezone) {
+        try {
+            $webinar_datetime->setTimezone(new DateTimeZone($user_timezone));
+            $webinar_date_local = $webinar_datetime->format('l, j F Y');
+            $webinar_time_local = $webinar_datetime->format('g:i a');
+        } catch (Exception $e) {
+            $webinar_time_local = false;
+        }
     }
 
     if ( 'webinar_zoom_details' == $name ) {

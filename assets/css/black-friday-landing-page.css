@@ -123,6 +123,15 @@
     margin-bottom: 10px;
 }
 
+.gifts-section-summary p {
+    margin-bottom: 0;
+}
+
+.gifts-section-summary h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
 .banner-content__summary .text-accent {
     color: var(--gold);
 }

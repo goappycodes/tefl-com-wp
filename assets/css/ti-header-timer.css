@@ -1,16 +1,15 @@
 .tefl_countdown_timer {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     margin-left: 20px;
 }
 
 .clock {
     display: flex;
     justify-content: center;
-    margin: 0 0 0 -5px;
 }
 
-.clock-day,
+/* .clock-day,
 .clock-hour,
 .clock-min,
 .clock-sec {
@@ -18,17 +17,17 @@
     background: rgba(0, 0, 0, 0.1);
     padding: 6px 8px;
     margin: 0 0 0 5px;
-}
+} */
 
-.clock>div {
+/* .clock>div {
     display: flex;
     flex-wrap: wrap;
     width: 35px;
-}
+} */
 
-.clock>div:not(:last-child) {
+/* .clock>div:not(:last-child) {
     margin-right: 10px;
-}
+} */
 
 .digit-text {
     width: 100%;

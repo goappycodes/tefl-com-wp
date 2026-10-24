@@ -1,0 +1,587 @@
+/* Hero section  */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 3px solid #030303;
+}
+
+.hero-section .section-inner {
+    background: transparent;
+}
+
+.hero-logo {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+
+#content>.ast-container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.has-overlay::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, .9) 0%,
+            rgba(0, 0, 0, 0.3) 60%,
+            rgba(0, 0, 0, 0) 100%);
+    inset: 0;
+}
+
+.hero-heading {
+    font-size: 35px;
+    font-weight: var(--font-bold);
+    position: absolute;
+    bottom: 115px;
+    left: 196px;
+    z-index: 1;
+}
+
+@media(max-width:545px) {
+    .hero-heading {
+        bottom: 49px;
+        left: 21px;
+    }
+}
+
+/* Hero section  */
+
+
+/* About section  */
+.about-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-section>.ast-container {
+    padding-right: 0px;
+    margin-right: 0px;
+    max-width: 100%;
+}
+
+@media(max-width: 545px) {
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.image-wrapper::before {
+    content: "";
+    position: absolute;
+    left: -17px;
+    top: 0;
+    width: 60px;
+    /* or however wide your edge is */
+    height: 100%;
+    background: url('../../images/Subtract.svg') no-repeat left center;
+    background-size: cover;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.about-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 999;
+}
+
+@media(max-width: 545px) {
+    .about-content {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0px;
+    }
+}
+
+.about-image-container {
+    width: calc(100%- 60% - 30px);
+
+}
+
+.about-heading {
+    font-size: var(--font-lg);
+    font-weight: var(--font-bold);
+}
+
+.about-description>p {
+    font-size: var(--font-md);
+}
+
+/* About section  */
+
+/* Review Section */
+.client-review {
+    display: flex;
+    border-radius: 8px;
+    gap: 30px;
+}
+
+@media(max-width: 545px) {
+    .client-review {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.review-image-container {
+    width: 32%;
+}
+
+.section-inner {
+    background-color: var(--white);
+    border-radius: 8px;
+}
+
+.review-content {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.review-content {
+    width: calc(100% - 32%);
+}
+
+.review-image-container>img {
+    width: 330px;
+    height: 226px;
+    object-fit: cover;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.reviewer-name {
+    font-size: var(--font-lg);
+    font-weight: var(--font-bold);
+}
+
+.reviewer-designation {
+    font-size: var(--font-base);
+    font-weight: var(--font-regular);
+
+}
+
+.client-rating {
+    display: flex;
+    grid-gap: 5px;
+    padding-bottom: 27px;
+}
+
+.review-days {
+    margin-left: 10px;
+}
+
+/*Review Section*/
+
+/* Details Section */
+
+.cta-image-card-row,
+.expanable-cta-card-row {
+    margin-top: 4rem;
+}
+
+.exp-cta-card__body-content a {
+    color: var(--accent);
+}
+
+.ast-col-md {
+    display: flex;
+    ;
+}
+
+.exp-cta-card {
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--light-gray-bg);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.exp-cta-card__image-header img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.exp-cta-card__image-header.exp-cta-card__image-header-1 img {
+    object-fit: contain;
+    padding: 20px;
+}
+
+.exp-cta-card__body {
+    background: var(--white);
+    padding: 2rem 3rem;
+    flex: 1;
+}
+
+h2.exp-cta-card__body-title {
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+
+.exp-cta-card__image-header {
+    width: auto;
+    height: 178px;
+    object-fit: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.exp-cta-card__image-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--black-jet);
+    z-index: 1;
+    opacity: 50%;
+}
+
+.exp-cta-card__body-content>ul {
+    padding-left: 47px;
+    padding-right: 47px;
+    line-height: 2.5em;
+}
+
+.why_learner_choose_us_title,
+.why_the_course_include {
+    font-size: var(--font-xxl);
+    font-weight: var(--font-bold);
+    position: absolute;
+    top: 79px;
+    bottom: 69px;
+    left: 42px;
+    z-index: 1;
+}
+
+/* Details Section */
+/*after Course */
+.overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--black-jet);
+    z-index: 1;
+    opacity: 50%;
+}
+
+.torn-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.torn-bottom img {
+    width: 50%;
+    /* Adjust if necessary */
+    height: auto;
+    display: block;
+}
+
+
+/*after course */
+.after-course-section {
+    padding: 50px 0;
+    position: relative;
+}
+
+.overlay-section {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 60px 20px 100px;
+    color: #fff;
+}
+
+.overlay-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.content-title {
+    font-size: var(--font-xxl);
+    font-weight: var(--font-bold);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.title-underline {
+    display: block;
+    margin-bottom: 30px;
+    max-width: 300px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.course-outcome-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px 40px;
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.course-outcome-list li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #fff;
+}
+
+.torn-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.torn-left,
+.torn-right {
+    width: 50%;
+    height: auto;
+}
+
+
+
+.course-card {
+    margin-top: 54px;
+    margin-bottom: 0px;
+}
+
+.btn {
+    justify-content: center !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--white) !important;
+    color: var(--black-jet) !important;
+    border: 1px solid var(--black-jet) !important;
+}
+
+/* Accreditation  */
+.accreditation-partner-container {
+    position: absolute;
+    /* margin-top: -51px; */
+    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -50px;
+}
+
+.accreditations-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background-color: var(--white);
+    padding: 30px 60px;
+    border-radius: 15px;
+    gap: 20px;
+    margin-top: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.accreditation-title {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--black-jet);
+}
+
+
+.accreditation-title img {
+    width: 18px;
+    height: 13px;
+    object-fit: contain;
+}
+
+
+.accreditation-logo {
+    height: 50px;
+    object-fit: contain;
+
+    max-width: 100%;
+}
+
+.accreditation-description {
+    margin-top: 30px;
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--black-jet);
+}
+
+.accreditation-description ul {
+    padding-left: 20px;
+    list-style-type: disc;
+    columns: 2;
+    gap: 40px;
+}
+
+.accreditation-description li {
+    margin-bottom: 10px;
+}
+
+/* Accreditation  */
+
+
+.accreditation-section {
+    /* padding: 20px 0; */
+    position: relative;
+}
+
+.accreditation-box {
+    background-color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.accreditation-box .label {
+    font-weight: bold;
+    font-size: 16px;
+    padding-right: 20px;
+    white-space: nowrap;
+    color: #333;
+    border-right: 1px solid #ccc;
+}
+
+.accreditation-box .logos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    width: auto;
+}
+
+.accreditation-box .logos img {
+    max-height: 40px;
+    max-width: 100px;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .accreditation-box {
+        flex-direction: column;
+        align-items: flex-start;
+        width: auto;
+        margin-top: 2rem;
+    }
+
+    .accreditation-box .label {
+        margin: auto;
+        font-size: 14px;
+    }
+
+    .accreditation-box .logos {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .accreditation-partner-container {
+        all: unset;
+    }
+
+    .accreditation-box .logos {
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .accreditation-box .logos img {
+        max-width: 80px;
+        max-height: 35px;
+    }
+
+    .accreditation-box {
+        padding: 15px;
+    }
+}
+
+body.page-id-102137 section#course-details {
+    margin-top: 3rem;
+}
+
+body.page-id-102137 .client-info .client-review {
+    display: block;
+}
+
+body.page-id-102137 .client-info.review-content.course-card {
+    margin-top: 0;
+    gap: 20px;
+    justify-content: unset;
+}
+
+@media screen and (max-width:768px) {
+   body.page-id-102137 .review-content {
+        width: auto;
+        height: auto !important;
+        padding: 0rem 2rem 1.5rem !important;
+    } 
+    body.page-id-102137 .client-photo img {
+        height: auto;
+    }
+        
+}
+
+body.page-id-102137 .client-info.review-content.course-card {
+    height: auto !important;
+    width: auto !important;
+}
+
+body.page-id-102137 .client-photo img {
+    height: 100%;
+}

@@ -1,0 +1,111 @@
+.tefl-slider .slick-track {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.tefl-slider .slick-slide {
+    height: inherit;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.tefl-slider-controls {
+    min-height: 25px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tefl-nav img {
+    width: auto;
+    height: 25px;
+    cursor: pointer;
+}
+
+.tefl-dots .slick-dots {
+    position: initial;
+    line-height: 1;
+    margin: 0;
+}
+
+.tefl-dots .slick-dots li {
+    width: 25px;
+    height: 25px;
+}
+
+.tefl-dots .slick-dots li button {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.tefl-dots .slick-dots li button:before {
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    line-height: 25px;
+    opacity: 1;
+}
+
+.tefl-dots .slick-dots li.slick-active button:before {
+    color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .tefl-slider-controls {
+        gap: 10px;
+    }
+
+    .tefl-nav img {
+        height: 20px;
+    }
+
+    .tefl-dots .slick-dots li {
+        width: 20px;
+        height: 20px;
+    }
+
+    .tefl-dots .slick-dots li button:before {
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
+@media (max-width: 544px) {
+    .tefl-slider {
+        width: calc(100% - 30px);
+        margin: auto !important;
+    }
+
+    .tefl-slider-controls {
+        width: 100%;
+        min-height: 0;
+        position: absolute;
+        top: calc(50% - 10px);
+    }
+
+    .tefl-nav {
+        width: 20px;
+        height: auto;
+    }
+
+    .tefl-nav img {
+        height: 18px;
+    }
+
+    .tefl-prev {
+        position: absolute;
+        left: -5px;
+    }
+
+    .tefl-next {
+        position: absolute;
+        right: -5px;
+    }
+
+    .tefl-dots {
+        display: none;
+    }
+}

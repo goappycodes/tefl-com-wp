@@ -434,7 +434,7 @@ $section_title   = $govt_regulated_courses['section_title'];
                                         $available_children = $course_product->get_children();
                                         $children_count     = count($available_children) - 1;
                                         $product_var_id     = $available_children[$children_count];
-                                        $variable_product   = new WC_Product_Variation($product_var_id);
+                                        $variable_product   = wc_get_product($product_var_id);
                                         $course_price_html  = $variable_product->get_price_html();
                                     }
 
@@ -529,7 +529,7 @@ $section_title   = $govt_regulated_courses['section_title'];
                                         $available_children = $course_product->get_children();
                                         $children_count     = count($available_children) - 1;
                                         $product_var_id     = $available_children[$children_count];
-                                        $variable_product   = new WC_Product_Variation($product_var_id);
+                                        $variable_product   = wc_get_product($product_var_id);
                                         $course_price_html  = $variable_product->get_price_html();
                                     }
 
@@ -633,7 +633,7 @@ $internships = get_field('internships', '59815');
         <div class="ast-row">
             <div class="ast-col-lg-12">
                 <h2>Paid TEFL Internships</h2>
-                <div class="ast-row">
+                <div class="ast-row ast-flex">
                     <?php foreach ($internships as $e) { ?>
                         <?php $image = $e['image']; ?>
                         <?php $country = $e['country']; ?>
@@ -641,17 +641,29 @@ $internships = get_field('internships', '59815');
                         <?php $link = $e['link']; ?>
                         <?php $guide = $e['guide']; ?>
                         <?php
+                        $course_price_html = '';
                         $course_product_id = $e['product'];
-                        $course_product = wc_get_product($course_product_id);
-                        if ($course_product->is_type('simple')) {
-                            $course_price_html = $course_product->get_price_html();
-                        } elseif ($course_product->is_type('variable')) {
-                            $available_children = $course_product->get_children();
-                            $children_count = count($available_children) - 1;
-                            $product_var_id = $available_children[$children_count];
-                            $variable_product = new WC_Product_Variation($product_var_id);
-                            $course_price_html = $variable_product->get_price_html();
-                        } ?>
+                        $course_product = $course_product_id ? wc_get_product($course_product_id) : false;
+
+                        if ($course_product instanceof WC_Product) {
+                            if ($course_product->is_type('simple')) {
+                                $course_price_html = $course_product->get_price_html();
+                            } elseif ($course_product->is_type('variable')) {
+                                $available_children = $course_product->get_children();
+                                if (!empty($available_children)) {
+                                    $product_var_id = end($available_children);
+                                    $variable_product = wc_get_product($product_var_id);
+                                    if ($variable_product instanceof WC_Product) {
+                                        $course_price_html = $variable_product->get_price_html();
+                                    }
+                                }
+                                if ($course_price_html === '') {
+                                    $course_price_html = $course_product->get_price_html();
+                                }
+                            }
+                        }
+
+                        if ($course_price_html === '') { continue; } ?>
                         <div class="ast-col-lg-4">
                             <div class="internship">
                                 <a href="<?php echo $link?>" class="internship-clickbox"></a>

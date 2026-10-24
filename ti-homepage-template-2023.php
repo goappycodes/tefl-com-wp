@@ -14,187 +14,400 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 get_header();
+
+/* ---- EducationalOrganization JSON-LD  ---- */
+$ti_page_url  = get_permalink();
+$ti_page_name = wp_get_document_title(); 
+
+$ti_org_schema = array(
+    '@context'         => 'https://schema.org',
+    '@type'            => 'EducationalOrganization',
+    '@id' => $ti_page_url . '#educational-organization',
+    'name'             => 'The TEFL Institute',
+    'url'              => $ti_page_url,
+    'alternateName'    => $ti_page_name,   
+    'foundingDate'     => '2017',
+    'foundingLocation' => array(
+        '@type'   => 'Place',
+        'address' => array(
+            '@type'          => 'PostalAddress',
+            'addressCountry' => 'IE',
+        ),
+    ),
+    'hasCredential' => array(
+        '@type'               => 'EducationalOccupationalCredential',
+        'name'                => 'Level 5 Diploma in Teaching English as a Foreign Language',
+        'credentialCategory'  => 'Diploma',
+        'educationalLevel'    => 'Level 5',
+        'identifier'          => array(
+            '@type'      => 'PropertyValue',
+            'propertyID' => 'Ofqual',
+            'value'      => '610/1571/4',
+        ),
+        'recognizedBy' => array(
+            '@type'      => 'EducationalOrganization',
+            'name'       => 'Highfield Qualifications',
+            'identifier' => array(
+                '@type'      => 'PropertyValue',
+                'propertyID' => 'Ofqual centre number',
+                'value'      => '21335',
+            ),
+        ),
+    ),
+);
+
+echo "\n" . '<script type="application/ld+json">'
+   . wp_json_encode($ti_org_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
+   . '</script>' . "\n";
+/* ---- end EducationalOrganization JSON-LD ---- */
+
+
+/**
+ * Geo-homepage shared sections
+ */
+if (!function_exists('ti_hp_shared_field')) {
+    function ti_hp_shared_field($selector) {
+        $val = get_field($selector);
+        if (is_array_empty($val)) {
+            $main_id = (int) get_option('page_on_front');
+            if ($main_id && $main_id !== get_queried_object_id()) {
+                $val = get_field($selector, $main_id);
+            }
+        }
+        return $val;
+    }
+}
+
+$reviews_widget = get_field('reviews_widget','option');
+$homepage_styling = get_field('homepage_styling','option');
+$page_buttons_styling = get_field('page_buttons_styling');
+$course_card_buttons_styling = $page_buttons_styling['course_card_buttons_styling'];
+$course_guide_cta_button = $course_card_buttons_styling['course_guide_cta_button'];
+$course_cta_button = $course_card_buttons_styling['course_cta_button'];
+
+if(isset($homepage_styling) && !is_array_empty($homepage_styling)){
+    $course_card_discount_label = $homepage_styling['course_card_discount_label'];
+    $webinar_section_cta_styling = $homepage_styling['webinar_section_cta_styling'];
+    $view_all_reviews_button_styling = $homepage_styling['view_all_reviews_button_styling'];
+    $job_center_cta_button_styling = $homepage_styling['job_center_cta_button_styling'];
+}
+
 ?>
 <div id="primary" <?php astra_primary_class(); ?>>
 
-    <!-- Hero Banner Section -->
-    <div class="full-width-slider">
+    <!-- New Hero Banner Section-->
+    <div class="full-width-slider-new" >
         <?php
-        $reviews_widget = get_field('reviews_widget','option');
-        $hero_banner = get_field('hero_banner');
-        $banner = $hero_banner['banner'];
-        foreach ($banner as $key => $hb) :
-            $banner_bg = $hb['background_image'] . "?w=1400";
-            $banner_bg_mobile = $hb['background_image_mobile'] . "?w=600";
-            $has_overlay = $hb['banner_overlay'];
-            $show_banner_logo = $hb['show_banner_logo'];
-            if ($show_banner_logo) {
-                $banner_logo = $hb['banner_logo'];
-                $banner_logo_link = $hb['banner_logo_link'];
-            }
-            $content_box = $hb['content_box'];
-            $show_offer_bubble = $hb['show_offer_bubble'];
-            if($show_offer_bubble){
-                $offer_bubble = $hb['offer_bubble'];
-                $bubble_content = $offer_bubble['bubble_content'];
-                $bubble_color = $offer_bubble['bubble_color'];
-            }
-        ?>
+            $hero_banner = get_field('hero_banner_new');
+            $banner = (is_array($hero_banner) && !empty($hero_banner['banner'])) ? $hero_banner['banner'] : array();
 
-            <section class="<?php echo $has_overlay ? 'has-overlay' : '' ?> banner-slide banner-slide-<?php echo $key ?>" style="max-height: 80vh; background:url('<?php echo $banner_bg ?>')">
-                <style>
-                    <?php
-                    if(!empty($hb['background_image_mobile'])):
-                    ?>
-                    @media (max-width: 768px) {
-                        .full-width-slider .banner-slide-<?php echo $key; ?> {
-                            background: url('<?php echo $banner_bg_mobile; ?>') !important;
-                            background-size: cover !important;
-                            background-position: center;
-                        }
+            // Geo-page hero fallback: when a page hasn't filled the new
+            // hero_banner_new field, rebuild it from the page's existing (old-template) banner
+            // image + heading, rendered in the new design.
+            // Hero CTA buttons are intentionally omitted (the shared CTA strip below already
+            // provides them); instead we show the homepage hero's accreditation logos.
+            // The main homepage is unaffected: its hero_banner_new is populated, so $banner is
+            // non-empty and this block is skipped.
+            if (empty($banner)) {
+                $old_hero = get_field('banner');
+                if (is_array($old_hero) && (!empty($old_hero['banner_image']) || !empty($old_hero['banner_heading']))) {
+                    $fb_accred = array();
+                    $home_hero = get_field('hero_banner_new', (int) get_option('page_on_front'));
+                    if (is_array($home_hero) && !empty($home_hero['banner'][0]['content_box']['accreditations'])) {
+                        $fb_accred = $home_hero['banner'][0]['content_box']['accreditations'];
                     }
-                    <?php
-                    endif;
-                    ?>
-                </style>
+                    $banner = array(array(
+                        'hide_banner'             => false,
+                        'background_image'        => isset($old_hero['banner_image']) ? $old_hero['banner_image'] : '',
+                        'background_image_mobile' => isset($old_hero['mobile_banner_image']) ? $old_hero['mobile_banner_image'] : '',
+                        'banner_overlay'          => true,
+                        'show_banner_logo'        => false,
+                        'banner_logo'             => '',
+                        'banner_logo_link'        => '',
+                        'show_clockdown'          => false,
+                        'show_offer_bubble'       => false,
+                        'content_box'             => array(
+                            'is_offer'           => false,
+                            'title'              => isset($old_hero['banner_heading']) ? $old_hero['banner_heading'] : '',
+                            'subtitle'           => isset($old_hero['banner_subheading']) ? $old_hero['banner_subheading'] : '',
+                            'summary'            => '',
+                            'cta_buttons'        => array(),
+                            'show_clockdown'     => false,
+                            'show_accreditation' => !empty($fb_accred),
+                            'accreditations'     => is_array($fb_accred) ? $fb_accred : array(),
+                        ),
+                    ));
+                }
+            }
+            $mobile_bg_styles = array();
+            foreach($banner as $key=>$hb):
+                if(!empty($hb['background_image_mobile'])) {
+                    $mobile_bg_styles[$key] = $hb['background_image_mobile'];
+                }
+                $hide_banner = $hb['hide_banner'];
+                $banner_bg = $hb['background_image'];
+                
+                $has_overlay = $hb['banner_overlay'];
+                $show_banner_logo = $hb['show_banner_logo'];
+                if($show_banner_logo){
+                    $banner_logo = $hb['banner_logo'];
+                    $banner_logo_link = $hb['banner_logo_link'];
+                    $show_logo_clockdown = $hb['show_clockdown'];
+                }
+                $content_box = $hb['content_box'];
+                // Image-only promo slide (promo text baked into the image, only overlay buttons):
+                // make the whole slide a link to its first CTA URL and hide the buttons.
+                $slide_cb_text = trim( wp_strip_all_tags( ( $content_box['title'] ?? '' ) . ' ' . ( $content_box['subtitle'] ?? '' ) . ' ' . ( $content_box['summary'] ?? '' ) ) );
+                $slide_image_link = '';
+                if ( $slide_cb_text === '' && ! is_array_empty( $content_box['cta_buttons'] ?? array() ) ) {
+                    foreach ( $content_box['cta_buttons'] as $cb_btn ) {
+                        if ( ! empty( $cb_btn['cta_link'] ) ) { $slide_image_link = $cb_btn['cta_link']; break; }
+                    }
+                }
+                $show_offer_bubble = $hb['show_offer_bubble'];
+                if($show_offer_bubble){
+                    $offer_bubble = $hb['offer_bubble'];
+                    $bubble_content = $offer_bubble['bubble_content'];
+                    $bubble_color = $offer_bubble['bubble_color'];
+                }
+            if(!$hide_banner):
+        ?>
+            
+            <section class="<?php echo $has_overlay?'has-overlay':''?> banner-slide banner-slide-<?php echo $key?><?php echo $slide_image_link?' is-image-link':''?>" style="background:url('<?php echo $banner_bg?>')">
+                <?php if ( ! empty( $slide_image_link ) ): ?><a class="banner-slide__image-link" href="<?php echo esc_url( $slide_image_link ); ?>" aria-label="View offer"></a><?php endif; ?>
+                <?php // Halloween campaign: make the whole slide link to the offers page (ACF row index 1). Remove after 31 Oct 2026.
+                if ( (int) $key === 1 ): ?><a class="banner-slide__image-link" href="<?php echo esc_url( 'https://teflinstitute.com/tefl-course-offers/' ); ?>" aria-label="View TEFL course offers"></a><?php endif; ?>
                 <div class="ast-container">
-                    <div class="ast-row banner-slider-row">
+                    <div class="ast-row ast-flex banner-slide-row">
                         <div class="ast-col-md-6">
                             <?php
-                            $is_offer = $content_box['is_offer'];
-                            $title = $content_box['title'];
-                            if($is_offer){
-                                $title_box_bg_color = $content_box['title_box_bg_color'];
-                                $title_text_color = $content_box['title_text_color'];
-                            }
-                            $summary = $content_box['summary'];
-                            $cta_buttons = $content_box['cta_buttons'];
-                            $show_clockdown = $content_box['show_clockdown'];
-                            $content_has_badge_logo = $content_box['content_has_badge_logo'];
-                            if ($content_has_badge_logo) {
-                                $badge_logo = $content_box['badge_logo'];
-                            }
+                                $is_offer = $content_box['is_offer'];
+                                $title = $content_box['title'];
+                                $subtitle = $content_box['subtitle'];
+                                if($is_offer){
+                                    $title_box_bg_color = $content_box['title_box_bg_color'];
+                                    $title_text_color = $content_box['title_text_color'];
+                                }
+                                $summary = $content_box['summary'];
+                                $cta_buttons = $content_box['cta_buttons'];
+                                $show_clockdown = $content_box['show_clockdown'];
+                                $show_accreditation = $content_box['show_accreditation'];
+                                if($show_accreditation){
+                                    $accreditations = $content_box['accreditations'];
+                                }
                             ?>
                             <div class="banner-slide__content <?php echo $is_offer?'offer-content':''?>">
+                                <?php if(!empty($title)):?>
+                                    <?php if ($is_offer): ?>
+                                        <p style="background:<?php echo $title_box_bg_color?>; color:<?php echo $title_text_color ?>" class=" banner-slide__content-title common-section-heading">
+                                            <?php echo $title ?>
+                                        </p>
+                                    <?php else: ?>
+                                        <p class=" banner-slide__content-title common-section-heading">
+                                            <?php echo $title ?>
+                                        </p>
+                                    <?php endif; ?>
+                                        
+                                <?php endif?>
                                 <?php
-                                if ($content_has_badge_logo && !empty($badge_logo)) {
+                                    if(!empty($subtitle)):
                                 ?>
-                                    <img src="<?php echo $badge_logo ?>" alt="content-badge-logo" class="content-badge-logo">
+                                    <p class=" font-300 banner-slide__content-subtitle">
+                                        <?php echo $subtitle?>
+                                    </p>
                                 <?php
-                                }
+                                    endif;
                                 ?>
-                                <?php if ($is_offer): ?>
-                                    <h1 style="background:<?php echo $title_box_bg_color?>; color:<?php echo $title_text_color ?>" class="large-heading banner-slide__content-title common-section-heading">
-                                        <?php echo $title ?>
-                                    </h1>
-                                <?php else: ?>
-                                    <h1 class="large-heading banner-slide__content-title common-section-heading">
-                                        <?php echo $title ?>
-                                    </h1>
-                                <?php endif; ?>
-
-                                <div class="banner-slide__content-wrapper">
-                                    <div class="banner-slide__content-summary">
-                                        <?php echo $summary?>
+                                <div class="banner-slide__content-summary">
+                                    <?php echo $summary?>
+                                </div>
+                                <?php if($show_accreditation && !is_array_empty($accreditations)):?>
+                                    <div class="accreditations-container">
+                                        <?php
+                                            foreach($accreditations as $key => $accreditation):
+                                                $accred_title = $accreditation['title'];
+                                                $accred_logo = $accreditation['logo'];
+                                                $accred_desc = $accreditation['description'];
+                                                $country_icon = $accreditation['country_icon'];
+                                        ?>
+                                            <div class="accreditation">
+                                                <span class="accreditation-title">
+                                                    <img src="<?php echo $country_icon?>" alt="" class="no-lazy">
+                                                    <?php echo $accred_title?>
+                                                </span>
+                                                <img src="<?php echo $accred_logo?>" alt="" class="no-lazy accreditation-logo">
+                                                <span class="accreditation-description">
+                                                    <?php echo $accred_desc?>
+                                                </span>
+                                            </div>
+                                        <?php 
+                                            endforeach;
+                                        ?>
                                     </div>
-                                    
-                                </div>
-                                <div class="banner-slide__content-links">
-                                    <?php
-                                    foreach ($cta_buttons as $cta_btn) :
-                                    ?>
-                                        <a href="<?php echo $cta_btn['cta_link'] ?>" class="btn btn-centered btn-primary">
-                                            <?php echo $cta_btn['cta_text'] ?>
-                                        </a>
-                                    <?php
-                                    endforeach
-                                    ?>
-                                </div>
+                                <?php endif?>
+                                <!-- <a href="https://europass.europa.eu/en/europass-digital-tools/european-qualifications-framework" class="eqf-logo-container" target="_blank">
+                                    <img src="/wp-content/uploads/2024/12/image_2024_12_06T13_41_38_015Z-e1733560354534.png" alt="" class="eqf-logo">
+                                    <div>
+                                        <span>European qualifications framework (EQF)</span>
+                                        <span>The EQF seeks to support cross-border mobility of learners and workers, promote lifelong learning and professional development across Europe</span>
+                                    </div>
+                                </a> -->
                             </div>
                         </div>
-                        <div class="ast-col-md-6 pos-abs">
-                            <div class="banner-slide__content-logo-container <?php echo (!$show_offer_bubble && !$show_banner_logo)?'no-banner-logo':'' ?>">
-                                
-                            <?php if ($show_banner_logo) : ?>
-                                <?php if (empty($banner_logo_link)) : ?>
-                                    <img src="<?php echo $banner_logo ?>" class="banner-slide__content-logo" alt="">
-                                <?php else : ?>
-                                    <a href="<?php echo $banner_logo_link ?>">
-                                        <img src="<?php echo $banner_logo ?>" class="banner-slide__content-logo" alt="">
+                        <div class="ast-col-md-6">
+                            <div class="banner-slide__content-logo-container">
+                                <?php
+                                    if(!is_array_empty($cta_buttons) && empty($slide_image_link)):
+                                ?>
+                                <div class="banner-slide__content-links">
+                                    <?php
+                                        foreach($cta_buttons as $cta_btn):
+                                    ?>
+                                    <a href="<?php echo $cta_btn['cta_link']?>" class="btn btn-white">
+                                        <span><?php echo $cta_btn['cta_text']?></span>
+                                        <i class="fa fa-angle-right"></i>
                                     </a>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                            <?php
-                                if($show_offer_bubble):
-                            ?>
-                                <div class="offer-bubble" style="background:<?php echo $bubble_color?>;box-shadow: <?php echo $bubble_color?> 0px 22px 70px 4px;">
-                                    <?php echo $bubble_content?>
+                                    <?php
+                                        endforeach
+                                    ?>
                                 </div>
-                            <?php
-                                endif;
-                            ?>
-                            <?php if ($show_clockdown):
-                                $date_today       = date('l, F d y h:i:s');
-                                $date_today_unix  = strtotime($date_today);
-                                $expiry_date      = get_field('timer_expiry', 'option');
-                                $expiry_date_unix = strtotime($expiry_date);
-                                $promo_offer_end_date = date("l jS F", $expiry_date_unix);
-                                $offer_text = $content_box['offer_text'];
-                                 if($date_today_unix < $expiry_date_unix):
-                            ?>
-                                <div class="banner-slide-content__timer__outer" style="border-color:<?php echo $bubble_color?>">
-                                    <div class="banner-slide-content__timer" style="border-color:<?php echo $bubble_color?>">
-                                        <span class="discount-label">
-                                            <?php echo $offer_text ?>
-                                        </span>
-                                        <p class="banner-slide-content__timer-end">
-                                            Offer ends <?php echo $promo_offer_end_date?>
-                                        </p>
-                                        <?php echo clockdown_function($expiry_date) ?>
+                                <?php 
+                                    endif;
+                                ?>
+                                <?php if ($show_banner_logo && !empty($banner_logo)): ?>
+                                    <div class="logo-clock-container">
+                                        <?php if (empty($banner_logo_link)): ?>
+                                            <img src="<?php echo $banner_logo ?>" class="no-lazy banner-slide__content-logo" alt="">
+                                        <?php else: ?>
+                                            <a href="<?php echo $banner_logo_link ?>">
+                                                <img src="<?php echo $banner_logo ?>" class="no-lazy banner-slide__content-logo" alt="">
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php 
+                                            if($show_logo_clockdown){
+                                                echo do_shortcode('[flip_countdown_timer]');
+                                            }
+                                        ?>
                                     </div>
-                                </div>                              
-                            <?php 
-                              endif;
-                                endif ?>
+                                <?php endif; ?>
 
-                            </div>           
+                                <?php
+                                    if($show_offer_bubble):
+                                ?>
+                                    <div class="offer-bubble" style="background:<?php echo $bubble_color?>;box-shadow: <?php echo $bubble_color?> 0px 22px 70px 4px;">
+                                        <?php echo $bubble_content?>
+                                    </div>
+                                <?php
+                                    endif;
+                                ?>
+                                <?php if($show_clockdown):
+                                    // $expiry_date = $content_box['offer_end_date'];
+                                    $expiry_date = get_field('timer_expiry', 'option');
+                                    $expiry_date_unix = strtotime($expiry_date);
+                                    $date_today       = date('l, F d y h:i:s');
+                                    $date_today_unix  = strtotime($date_today);
+                                    $promo_offer_end_date = date("l jS F", $expiry_date_unix); 
+                                     if($date_today_unix < $expiry_date_unix):   
+                                ?>
+                                    <div class="d-none banner-slide-content__timer__outer">
+                                        <div class="banner-slide-content__timer">
+                                            <span>Offer ends <?php echo $promo_offer_end_date?></span>
+                                            <?php echo do_shortcode('[tefl_timer_shortcode]');?>
+                                            <h6 class="d-none text-center banner-slide-content__timer-end-text font-600">
+                                                left to save
+                                            </h6>
+                                        </div>
+                                    </div>
+                                <?php endif;
+                                endif;
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+            
         <?php
-        endforeach;
+            endif;
+            endforeach;
         ?>
     </div>
-    <!-- Hero Banner Section End -->
+    <?php
+        if(!empty($mobile_bg_styles)):
+    ?>
+        <style>
+            @media screen and (max-width:768px) {
+                <?php foreach($mobile_bg_styles as $slide_key => $mobile_bg): ?>
+                section.banner-slide.banner-slide-<?php echo $slide_key?> {
+                    background: url('<?php echo $mobile_bg?>') no-repeat center center !important;
+                    background-size: cover !important;
+                }
+                <?php endforeach; ?>
+            }
+        </style>
+    <?php 
+        endif;
+    ?>
+    <!-- New Hero Banner Section End -->
 
 
 
     <?php //include('template-parts/offer-banner.php'); ?>
 
+    <section class="pt-2 banner-logo-container-mobile">
+        <div class="ast-container">
+            <div class="ast-row">
+                <div class="ast-col-md-12">
+                    <?php if ($show_banner_logo) : ?>
+                        <?php if (empty($banner_logo_link)) : ?>
+                            <img src="<?php echo $banner_logo ?>" class="no-lazy" alt="">
+                        <?php else : ?>
+                            <a href="<?php echo $banner_logo_link ?>">
+                                <img src="<?php echo $banner_logo ?>" class="no-lazy" alt="">
+                            </a>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <?php
-    $cta_section = get_field('cta_section');
+    $cta_section = ti_hp_shared_field('cta_section'); // shared wrapper: contains the course-cards section, so geo pages fall back to the homepage's CTA/course block
     if (!empty($cta_section)) :
         $cta_buttons = $cta_section['cta_buttons'];
+
+        $cta_button_styling = $page_buttons_styling['cta_button_styling'];
+        $button_bg_color = !empty($cta_button_styling['button_bg_color']) ? $cta_button_styling['button_bg_color'] : '#344734';
+        $button_text_color = !empty($cta_button_styling['button_text_color']) ? $cta_button_styling['button_text_color'] : '#fcfcfc';
+        $button_border_color = !empty($cta_button_styling['button_border_color']) ? $cta_button_styling['button_border_color'] : '#070203';
+        $button_bg_color_hover = !empty($cta_button_styling['button_bg_color_hover']) ? $cta_button_styling['button_bg_color_hover'] : '#fff';
+        $button_text_color_hover = !empty($cta_button_styling['button_text_color_hover']) ? $cta_button_styling['button_text_color_hover'] : '#1c1c1b';
+        $button_border_color_hover = !empty($cta_button_styling['button_border_color_hover']) ? $cta_button_styling['button_border_color_hover'] : '#070203';
+        
         $cta_blocks_with_full_image_background = $cta_section['cta_blocks_with_full_image_background'];
         $expandable_cta_blocks = $cta_section['expandable_cta_blocks'];
+        $cta_section_text = $cta_section['cta_section_text'];
     ?>
         <!-- CTA Section -->
 
-        <section class="cta-section pt-2">
+        <section class="cta-section pt-3">
 
             <div class="ast-container">
                 <div class="ast-row">
                     <div class="cta-section__buttons-row">
                         <?php
                         if (is_array($cta_buttons) && !empty(array_filter($cta_buttons))) :
+                            $btn_count = count($cta_buttons);
                             foreach ($cta_buttons as $cta_button) :
                                 $button_text = $cta_button['button_text'];
                                 $button_link = $cta_button['button_link'];
                         ?>
-                                <div class="ast-col-md-4">
-                                    <a href="<?php echo $button_link ?>" class="cta-buttons btn btn-primary">
+                                <div class="ast-col-md-<?php echo (12/$btn_count)?>">
+                                    <a 
+                                        style="--bg-color:<?php echo $button_bg_color?>; --text-color:<?php echo $button_text_color?>; --border-color:<?php echo $button_border_color?>; --bg-color_hover:<?php echo $button_bg_color_hover?>; --text-color_hover:<?php echo $button_text_color_hover?>; --border-color_hover:<?php echo $button_border_color_hover?>;" 
+                                        href="<?php echo $button_link ?>" 
+                                        class="cta-buttons btn btn-primary">
                                         <span>
                                             <?php echo $button_text ?>
                                         </span>
@@ -212,51 +425,587 @@ get_header();
 
                 <section class="search-courses-section pt-3">
                     <div class="ast-container">
+                        <?php
+                            $search_section_description = get_field('search_section_description');
+                            $first_paragraph = $search_section_description['first_paragraph'];
+                            $last_paragraph = $search_section_description['last_paragraph'];
+                            $section_title = $search_section_description['section_title'];
+                        ?>
                         <div class="ast-row">
-                            <h2 class="search-courses-section__heading text-center common-section-heading">
-                                Find The Perfect TEFL Course
-                            </h2>
+                            <?php
+                                if(!empty($section_title)):
+                            ?>
+                            <h1 class="double-underline search-courses-section__heading text-center common-section-heading">
+                                <?php echo $section_title?>
+                            </h1>
+                            <?php
+                                endif;
+                            ?>
+                            <?php
+                            $word_limit = 50;
+
+                            if (!empty($first_paragraph)):
+                                // $text = wp_strip_all_tags($first_paragraph);
+                                $text = $first_paragraph;
+                                $words = preg_split('/\s+/', trim($text));
+                                $word_count = count($words);
+                                
+                                if ($word_count > $word_limit):
+                                    $truncated_words = array_slice($words, 0, $word_limit);
+                                    $truncated_text = implode(' ', $truncated_words) . '...';
+                                    $unique_id = 'desc-' . uniqid();
+                            ?>
+                                    <div class="search-course-section__description search-course-section__description-first has-read-more" id="<?php echo $unique_id; ?>">
+                                        <div class="description-content truncated">
+                                            <div class="description-short"><?php echo wpautop($truncated_text); ?></div>
+                                            <div class="description-full" style="display: none;"><?php echo $first_paragraph; ?></div>
+                                        </div>
+                                    </div>
+                                    <button class="read-more-btn" data-target="<?php echo $unique_id; ?>">
+                                        Read More 
+                                    </button>
+                                <?php else: ?>
+                                    <div class="search-course-section__description search-course-section__description-first">
+                                        <?php echo $first_paragraph; ?>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
                             <div class="search-courses-section__body">
                                 <?php echo do_shortcode('[tefl_course_search]'); ?>
                             </div>
+
+                            <?php
+                            if (!empty($last_paragraph)):
+                                // $text = wp_strip_all_tags($last_paragraph);
+                                $text = $last_paragraph;
+                                $words = preg_split('/\s+/', trim($text));
+                                $word_count = count($words);
+                                
+                                if ($word_count > $word_limit):
+                                    $truncated_words = array_slice($words, 0, $word_limit);
+                                    $truncated_text = implode(' ', $truncated_words) . '...';
+                                    $unique_id = 'desc-' . uniqid();
+                            ?>
+                                    <div class="search-course-section__description search-course-section__description-last has-read-more" id="<?php echo $unique_id; ?>">
+                                        <div class="description-content truncated">
+                                            <div class="description-short"><?php echo wpautop($truncated_text); ?></div>
+                                            <div class="description-full" style="display: none;"><?php echo $last_paragraph; ?></div>
+                                        </div>
+                                    </div>
+                                    <button class="read-more-btn" data-target="<?php echo $unique_id; ?>">
+                                        Read More
+                                    </button>
+                                <?php else: ?>
+                                    <div class="search-course-section__description search-course-section__description-last">
+                                        <?php echo $last_paragraph; ?>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            
                         </div>
                     </div>
                 </section>
 
                 <!-- Search Courses Section End -->
 
-                <div class="ast-row">
-                    <div class="cta-image-card-row ast-flex">
+                <?php
+                    $course_cta_section = ti_hp_shared_field('course_cta_section');
+                    if ($course_cta_section) :
+                        $section_title  = $course_cta_section['section_title'];
+                        $section_stitle = $course_cta_section['section_subtitle'];
+                        $banner_section = $course_cta_section['banner_section'];
+                        $banner_section_title = $banner_section['title'];
+                        $banner_section_content = $banner_section['content'];
+                        $courses = $course_cta_section['courses'];
+                ?>
+
+                <div class="section pt-3 course-cards">
+                    <div class="ast-row">
+
+                        <script
+                            type="text/javascript"
+                            src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+                            async>
+                        </script>
+
                         <?php
-                        if (is_array($cta_blocks_with_full_image_background) && !empty(array_filter($cta_blocks_with_full_image_background))) :
-                            foreach ($cta_blocks_with_full_image_background as $cta_image_card) :
-                                $card_bg = $cta_image_card['cta_bg_image'];
-                                $card_title = $cta_image_card['cta_title'];
-                                $card_summary = $cta_image_card['cta_summary'];
-                                $card_cta_btn_text = $cta_image_card['cta_button_text'];
-                                $card_cta_btn_link = $cta_image_card['cta_button_link'];
+                        foreach ($courses as $course) :
+                            $hide_in_mobile = $course['hide_in_mobile'];
+                            $post_ID     = $course['course_product'];
+
+                            $product_ID = get_post_meta($post_ID, 'course_product', true);
+
+                            // if($post_ID!=743){
+                            //     $course_cta_link = 'https://teflinstitute.com/?addtimetocart&prid='.$product_ID;
+                            // }
+                            // else{
+                                
+                            // }
+
+                            $course_cta_link = get_permalink($post_ID);
+                            $product = wc_get_product($product_ID);
+                            if($product){
+                                $simple_regular_price = $product->get_regular_price();
+                                $simple_sale_price = $product->get_sale_price();
+                                if (is_numeric($simple_regular_price) && is_numeric($simple_sale_price) && $simple_regular_price != 0) {
+                                    $save_percentage = round((($simple_regular_price - $simple_sale_price) / $simple_regular_price) * 100);
+                                }
+                            }
+
+                            if (!empty($course_card_discount_label)) {
+                                $discount_text_color = !empty($course_card_discount_label['text_color']) ? $course_card_discount_label['text_color'] : '#ffffff';
+                                $discount_background_color = !empty($course_card_discount_label['background_color']) ? $course_card_discount_label['background_color'] : '#a9191d';
+                            }
+                            
+                            $course_title = $course['course_title'];
+                            $deposit_info = $course['deposit_info'];
+                            $deposit_info_icon = $deposit_info['deposit_icon'];
+                            $deposit_info_title = $deposit_info['deposit_title'];
+                            $deposit_info_description = $deposit_info['deposit_description'];
+                            $course_summary = $course['course_summary'];
+                            $course_features = $course['course_features'];
+                            $course_cta_button_text = $course['cta_button_text']; // Deposit
+                            $deposit_enabled        = get_post_meta($product_ID, '_wc_deposit_enabled', true);
+                            $deposit_payment_plan   = $deposit_class = $deposit_description = $deposit_icon = '';
+
+                            if ($deposit_enabled == 'forced' || $deposit_enabled == 'optional') {
+                                $deposit_payment_plan = get_post_meta($product_ID, '_wc_deposit_payment_plans', true);
+                                $deposit_payment_plan = $deposit_payment_plan[0];
+                            }
+
+                            if ($deposit_payment_plan) {
+                                global $wpdb;
+                                $query = "SELECT amount FROM `wp_wc_deposits_payment_plans_schedule` WHERE `schedule_index` = 0 AND `plan_id` = " . $deposit_payment_plan;
+                                $deposit_percent = $wpdb->get_var($query);
+                                $deposit_percent = round((float)$deposit_percent / 100, 5);
+
+                                $query = "SELECT amount FROM `wp_wc_deposits_payment_plans_schedule` WHERE `schedule_index` = 1 AND `plan_id` = " . $deposit_payment_plan;
+                                $recurring_percent = $wpdb->get_var($query);
+                                $recurring_percent = round((float)$recurring_percent / 100, 5);
+
+                                $query = "SELECT count(schedule_id) FROM `wp_wc_deposits_payment_plans_schedule` WHERE `plan_id` = " . $deposit_payment_plan;
+                                $total_deposits = $wpdb->get_var($query);
+                                if ($deposit_payment_plan === 1 || $deposit_payment_plan === 3) {
+                                    $deposit_icon = "/wp-content/uploads/2023/07/payin2.svg";
+                                    $deposit_description = 'Split the cost of your purchase into ' . $total_deposits . ' interest-free payments';
+                                } elseif ($deposit_payment_plan === 4) {
+                                    $deposit_icon = "/wp-content/uploads/2023/07/payin2.svg";
+                                    $deposit_description = 'Split the cost of your purchase into ' . $total_deposits . ' interest-free payments';
+                                } elseif ($deposit_payment_plan === 6) {
+                                    $deposit_icon = '/wp-content/uploads/2023/07/payin6.svg';
+                                    $deposit_description = 'Split the cost of your purchase into ' . $total_deposits . ' interest-free payments.';
+                                } elseif ($deposit_payment_plan === 7) {
+                                    $deposit_icon = '/wp-content/uploads/2023/07/payin6.svg';
+                                    $deposit_description = 'Split the cost of your purchase into ' . $total_deposits . ' interest-free payments.';
+                                }
+                            }
+                            // Deposit
+
+                            $course_label = $course['course_label'];
+                            $course_guide_link = $course['course_guide_link'];
+                            $course_icon = $course['course_icon'];
                         ?>
-                                <div class="ast-col-md-6">
-                                    <div class="cta-image-card" style="background:url('<?php echo $card_bg ?>')">
-                                        <div class="cta-image-card__content">
-                                            <h2 class="cta-image-card__content-title font-600 small-heading">
-                                                <?php echo $card_title ?>
-                                            </h2>
-                                            <div class="cta-image-card__content-summary font-300 my-1">
-                                                <?php echo $card_summary ?>
+                            <div class="<?php echo $hide_in_mobile?'hide-in-mobile':'' ?> ast-col-md-4 <?php echo $deposit_payment_plan ?>">
+                                <div style="--label-bg-color:<?php echo $course_label['label_bg_color']?>; " class="course-card <?php echo !empty($course_label['label_text'])?'card-has-label':''?> course-id-<?php echo $product_ID ?>">
+                                    <?php
+                                        if(!is_array_empty($course_label)):
+                                            $label_text = $course_label['label_text'];
+                                            $label_text_color = (!empty($course_label['label_text_color'])) ? $course_label['label_text_color'] : '#fff';
+                                            $label_border_color = (!empty($course_label['label_border_color'])) ? $course_label['label_border_color'] : '#ffa01c';
+                                            $label_bg_color = (!empty($course_label['label_bg_color'])) ? $course_label['label_bg_color'] : '#ffa01c';
+                                            if(!empty($label_text)):
+                                    ?>
+                                    <span 
+                                        class="course-card-label" 
+                                        style="--text-color:<?php echo $label_text_color?>; --bg-color:<?php echo $label_bg_color?>; --border-color:<?php echo $label_border_color?>"
+                                    >
+                                        <?php echo $label_text?>
+                                    </span>
+                                    <?php
+                                            endif;
+                                        endif;
+                                    ?>
+                                    <a href="<?php echo $course_cta_link ?>" class="clickbox"></a>
+                                    <div class="course-card-body">
+                                        <h2 class="course-card__title font-600 small-heading">
+                                            <img class="course-card__icon" src="<?php echo $course_icon?>" alt="">    
+                                            <span><?php echo $course_title ?></span>
+                                        </h2>
+                                        <div class="course-card__price">
+                                            <?php echo $product->get_price_html(); ?>
+                                            <span class="course-card__price-discount" style="color:<?php echo $discount_text_color?>; background:<?php echo $discount_background_color?>;border-color:<?php echo $discount_text_color?>">
+                                                <?php echo $save_percentage.'% off'?>
+                                            </span>
+                                        </div>
+                                        <div class="deposit-info ast-flex ast-align-items-center">
+                                            <div class="depoist-info__icon">
+                                                <img src="<?php echo $deposit_info_icon ?>" alt="">
                                             </div>
-                                            <a href="<?php echo $card_cta_btn_link ?>" class="cta-image-card__button font-400 btn btn-small-centered btn-bordered-white">
-                                                <?php echo $card_cta_btn_text ?>
-                                            </a>
+                                            <div class="ast-flex flex-direction-column deposit-info__details">
+                                                <p class="deposit-info_title"><?php echo $deposit_info_title ?></p>
+                                                <div class="deposit-info_description">
+                                                    <?php echo $deposit_info_description ?>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                        <div class="course-card__summary">
+                                            <?php
+                                            $plain_text_summary = strip_tags($course_summary);
+                                            $words = str_word_count($plain_text_summary, 1);
+                                            if (count($words) > 50) {
+                                                $limited_summary = implode(' ', array_slice($words, 0, 50));
+                                                echo $limited_summary . '...';
+                                            } else {
+                                                echo $plain_text_summary;
+                                            }
+                                            ?>
+                                        </div>
+                                        <?php
+                                        if (!empty('course_features')) :
+                                        ?>
+                                            <ul class="course-card__features">
+                                                <?php
+                                                foreach ($course_features as $course_feature) :
+                                                ?>
+                                                    <li><?php echo $course_feature['feature_text'] ?></li>
+                                                <?php
+                                                endforeach;
+                                                ?>
+                                            </ul>
+                                        <?php
+                                        endif;
+                                        ?>
+                                    </div>
+                                    <div class="course-card-foter">
+                                        <?php
+                                            $bg_color = !empty($course_cta_button['bg_color']) ? $course_cta_button['bg_color'] : '#344734';
+                                            $text_color = !empty($course_cta_button['text_color']) ? $course_cta_button['text_color'] : '#fcfcfc';
+                                            $border_color = !empty($course_cta_button['border_color']) ? $course_cta_button['border_color'] : '#070203';
+                                            $bg_color_hover = !empty($course_cta_button['bg_color_hover']) ? $course_cta_button['bg_color_hover'] : '#fff';
+                                            $text_color_hover = !empty($course_cta_button['text_color_hover']) ? $course_cta_button['text_color_hover'] : '#1c1c1b';
+                                            $border_color_hover = !empty($course_cta_button['border_color_hover']) ? $course_cta_button['border_color_hover'] : '#070203';
+                                        ?>
+                                        <a href="<?php echo $course_cta_link ?>" class="btn btn-primary course-card__btn"
+                                            style="--bg-color:<?php echo $bg_color?>; --text-color:<?php echo $text_color?>; --border-color:<?php echo $border_color?>; --bg-color_hover:<?php echo $bg_color_hover?>; --text-color_hover:<?php echo $text_color_hover?>; --border-color_hover:<?php echo $border_color_hover?>;"
+                                        >
+                                            <?php echo $course_cta_button_text ?>
+                                        </a>
+                                        <?php
+                                            $bg_color = !empty($course_guide_cta_button['bg_color']) ? $course_guide_cta_button['bg_color'] : '#344734';
+                                            $text_color = !empty($course_guide_cta_button['text_color']) ? $course_guide_cta_button['text_color'] : '#fcfcfc';
+                                            $border_color = !empty($course_guide_cta_button['border_color']) ? $course_guide_cta_button['border_color'] : '#070203';
+                                            $bg_color_hover = !empty($course_guide_cta_button['bg_color_hover']) ? $course_guide_cta_button['bg_color_hover'] : '#fff';
+                                            $text_color_hover = !empty($course_guide_cta_button['text_color_hover']) ? $course_guide_cta_button['text_color_hover'] : '#1c1c1b';
+                                            $border_color_hover = !empty($course_guide_cta_button['border_color_hover']) ? $course_guide_cta_button['border_color_hover'] : '#070203';
+                                        ?>
+                                        <a target="_blank" href="<?php echo $course_guide_link?>" style="--bg-color:<?php echo $bg_color?>; --text-color:<?php echo $text_color?>; --border-color:<?php echo $border_color?>; --bg-color_hover:<?php echo $bg_color_hover?>; --text-color_hover:<?php echo $text_color_hover?>; --border-color_hover:<?php echo $border_color_hover?>;" class="btn btn-centered btn-bordered-white guide-download-link course-card__btn">
+                                            Download Guide
+                                        </a>
+                                    </div>
+
+                                    <?php
+                        $trustpilot_tag = '';
+
+                        if (strpos($course_title, '120') !== false) {
+                            $trustpilot_tag = '120';
+
+                        } elseif (strpos($course_title, '180') !== false) {
+                            $trustpilot_tag = '180';
+
+                        } elseif (strpos($course_title, '300') !== false) {
+                            $trustpilot_tag = 'L5';
+                        }
+                        ?>
+
+                        <?php if ($trustpilot_tag) : ?>
+                        <div style="margin-top:1.5rem; position:relative; z-index:20;display: flex;justify-content: center;">
+
+                            <!-- TrustBox widget - Drop-Down -->
+                            <div class="trustpilot-widget"
+                                    style="position:relative; z-index:21;"
+                                data-locale="en-US"
+                                data-template-id="5418052cfbfb950d88702476"
+                                data-businessunit-id="61c0c19118c53fc28bcc355d"
+                                data-style-height="35px"
+                                data-style-width="100%"
+                                data-token="ff8bfbc9-6191-40f5-9ffb-021d1cc6f484"
+                                data-tags="<?php echo esc_attr($trustpilot_tag); ?>"
+                                data-stars="4,5"
+                                data-review-languages="en">
+
+                                <a href="https://www.trustpilot.com/review/teflinstitute.com"
+                                target="_blank"
+                                rel="noopener">
+                                    Trustpilot
+                                </a>
+
+                            </div>
+                            <!-- End TrustBox widget -->
+
+                        </div>
+                        <?php endif; ?>
+                        
+                                </div>
+                            </div>
+                        <?php
+                        endforeach
+                        ?>
+
+                    </div>
+                </div>
+
+                <?php
+                    endif
+                ?>
+
+                <?php
+                $featured_internship = ti_hp_shared_field('featured_internship');
+                // if (!is_array_empty($featured_internship)) {
+                if(false){
+                    $internship = $featured_internship['internship'];
+                    $internship_product_ID = get_post_meta($internship, 'internship_product', true);
+                    $internship_product_obj = wc_get_product($internship_product_ID);
+                    
+                    if ($internship_product_obj && $internship_product_obj->is_in_stock()) {
+                        $internship_price = $internship_product_obj->get_price_html();
+                        
+                        $price_text = strip_tags($internship_price);
+                        $has_actual_price = !empty(trim($price_text));
+                        
+                        $section_title = $featured_internship['section_title'];
+                        $section_image = $featured_internship['section_image'];
+                        
+                        if ($has_actual_price && !empty($section_title) && !empty($section_image)) {
+                            $section_label   = $featured_internship['section_label'];
+                            $section_subtitle= $featured_internship['section_subtitle'];
+                            $section_image   = $featured_internship['section_image'];
+                            $image_caption   = $featured_internship['image_caption'];
+                            $caption_link    = $featured_internship['caption_link'];
+                            $cta_buttons     = $featured_internship['cta_buttons'];
+
+                            $internship_link = get_post_permalink($internship);
+                            ?>
+                            <section data-id="<?php echo $internship_product_ID ?>" class="featured-internship-section">
+                                <div class="container">
+                                    <span class="internship-label">
+                                        <?php echo $section_label ?>
+                                    </span>
+                                    <span class="recruiting">
+                                        <img src="/wp-content/uploads/2025/07/recruiting-icon.png" alt="">
+                                        recruiting
+                                    </span>
+                                    <div class="featured-internship-section__row ast-flex">
+                                        <div class="ast-col-md-5 fi-image-container">
+                                            <img src="<?php echo $section_image ?>" alt="">
+                                            <span class="fi-image-caption">
+                                                <a href="<?php echo $caption_link ?>" target="_blank">
+                                                    <?php echo $image_caption ?>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <div class="ast-col-md-7 fi-content-container">
+                                            <div class="fi-content">
+                                                <p class="fi-content__title">
+                                                    <?php echo $section_title ?>
+                                                </p>
+                                                <p class="fi-content__stitle">
+                                                    <?php echo $section_subtitle ?>
+                                                </p>
+                                                <p class="fi-content__price">
+                                                    Limited-time price of <?php echo $internship_price; ?>
+                                                </p>
+                                                <div class="cta-buttons-wrapper">
+                                                    <?php
+                                                        foreach($cta_buttons as $key => $btn):
+                                                            $btn_text = $btn['cta_text'];
+                                                            $btn_link = $btn['cta_link'];
+                                                    ?>
+                                                    <a href="<?php echo $btn_link ?>" target="_blank" class="fi-cta-button fi-cta-<?php echo $key==0?'primary':'secondary' ?>">
+                                                        <?php echo $btn_text; ?>
+                                                    </a>
+                                                    <?php
+                                                        endforeach;
+                                                    ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                        <?php
-                            endforeach;
-                        endif
-                        ?>
+                            </section>
+                            <?php
+                        }
+                    }
+                }
+                ?>
+
+                <?php
+                    $black_friday_cta_section = get_field('black_friday_cta_section');
+                    if(false):
+                        $section_title = $black_friday_cta_section['section_title'];
+                        $section_summary = $black_friday_cta_section['section_summary'];
+                        $section_image = $black_friday_cta_section['section_image'];
+                        $cta_buttons = $black_friday_cta_section['cta_buttons'];
+                ?>
+
+                <section class="content-section pt-5">
+                    <div class="power-pack">
+                        <div class="left" style="background-image:url('<?php echo $section_image; ?>')">
+
+                        </div>
+                        <div class="right">
+                            <div class="title"><?php echo $section_title; ?></div>
+                            <div class="short-description">
+                                <?php
+                                    echo $section_summary;
+                                ?>
+                            </div>
+                            <div class="links">
+
+                                <?php
+                                    foreach($cta_buttons as $key => $btn):
+                                        $btn_text = $btn['cta_text'];
+                                        $btn_link = $btn['cta_link'];
+                                ?>
+                                <a class="<?php echo $key==0?'default-button':'enrol'; ?>" href="<?php echo $btn_link?>">
+                                    <?php echo $btn_text; ?>
+                                </a>
+                                <?php
+                                    endforeach;
+                                ?>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
+                
+                <?php
+                    endif;
+                ?>
+                
+                <?php
+                $verified_reviews_section = ti_hp_shared_field('verified_reviews_section');
+                if ($verified_reviews_section) :
+                    $section_stitle = $verified_reviews_section['section_subtitle'];
+                    $section_title = $verified_reviews_section['section_title'];
+                    // $reviews_widget = $verified_reviews_section['reviews_widget'];
+                    $google_reviews     = get_field('google_reviews', 'option');
+                    $trustpilot_reviews = get_field('trustpilot_reviews', 'option');
+                    $google_link = 'https://www.google.com/search?sca_esv=8d785069c21da656&sca_upv=1&hl=en-IE&gl=ie&q=The+TEFL+Institute+Ireland+%7C+TEFL+Courses+%26+Certification,+13+Adelaide+Rd,+Saint+Kevin%27s,+Dublin,+D02+P950&uds=ADvngMhDJElofzFqOx8yLCqxrZBfORdohN-zZWd2DtE2wkfY_Hz8LxAbxWyTqbQXp_hpoUOW2uxhpWyrB1IL2IpdWcWiPs5S-vGBywcJzrO9PJe_HdF91Ppndo2Knjst1hsy0DuQ_1Yy71pyrotGeYeqK9tgwKhS1Dz3nAO5HG6XIft-vP8sUXZPMIt75-GkZH8kdUstEDG07k_uQg6GZSA3HkqfKbTCnzBS1_wxYJkYsxPWWzYHd35xJVCoLbwXmLTFBoT-lFXh&si=ACC90nwjPmqJHrCEt6ewASzksVFQDX8zco_7MgBaIawvaF4-7mSRR1kRGE4hCmZtLOUumbi46V_tOIxRTOEjel4eIAxPbsZAzQfZDyayafoOPMus5kIWjD0%3D&sa=X&ved=2ahUKEwixoZaa4Z6HAxUHYEEAHXfKDf8Q3PALegQIGxAE&biw=1536&bih=745&dpr=2';
+                    $tp_link     = 'https://uk.trustpilot.com/review/teflinstitute.com';
+                    $total_reviews_count    = isset($reviews_widget['total_reviews']) ? $reviews_widget['total_reviews'] : 1570;
+                    $five_star_percentage   = isset($reviews_widget['star_percentage_5']) ? (float)$reviews_widget['star_percentage_5'] : 0;
+                    $four_star_percentage   = isset($reviews_widget['star_percentage_4']) ? (float)$reviews_widget['star_percentage_4'] : 0;
+                    $three_star_percentage  = isset($reviews_widget['star_percentage_3']) ? (float)$reviews_widget['star_percentage_3'] : 0;
+                    $two_star_percentage    = isset($reviews_widget['star_percentage_2']) ? (float)$reviews_widget['star_percentage_2'] : 0;
+                    $one_star_percentage    = isset($reviews_widget['star_percentage_1']) ? (float)$reviews_widget['star_percentage_1'] : 0;
+
+                    $reviews_average = (($five_star_percentage * 5) + ($four_star_percentage * 4) + ($three_star_percentage * 3) + ($two_star_percentage * 2) + ($one_star_percentage * 1)) / 100;
+                ?>
+                    <!-- Verified Student Reviews -->
+                    <section class="verified-student-reviews-section pt-5">
+                        <div class="ast-container">
+                            <div class="ast-row ">
+                                <div class="verified-student-reviews-section__header">
+                                    <div class="ast-col-md-8">
+                                        <h4 class="large-heading double-underline common-section-heading verified-student-reviews-section__title">
+                                            <?php echo $section_title ?>
+                                        </h4>
+                                        <span class="verified-student-reviews-section__subtitle">
+                                            <?php echo $section_stitle ?>
+                                        </span>
+                                    </div>
+                                    <div class="ast-col-md-4">
+                                        <div class="reviews-average">
+                                            <?php
+                                                if (!empty($view_all_reviews_button_styling)) {
+                                                    $button_text_color = !empty($view_all_reviews_button_styling['button_text_color']) ? $view_all_reviews_button_styling['button_text_color'] : '#ffffff';
+                                                    $button_bg_color = !empty($view_all_reviews_button_styling['button_bg_color']) ? $view_all_reviews_button_styling['button_bg_color'] : '#1c1c1b';
+                                                }
+                                            ?>
+                                            <a href="https://www.google.com/search?sca_esv=8d785069c21da656&sca_upv=1&hl=en-IE&gl=ie&q=The+TEFL+Institute+Ireland+%7C+TEFL+Courses+%26+Certification,+13+Adelaide+Rd,+Saint+Kevin%27s,+Dublin,+D02+P950&uds=ADvngMhDJElofzFqOx8yLCqxrZBfORdohN-zZWd2DtE2wkfY_Hz8LxAbxWyTqbQXp_hpoUOW2uxhpWyrB1IL2IpdWcWiPs5S-vGBywcJzrO9PJe_HdF91Ppndo2Knjst1hsy0DuQ_1Yy71pyrotGeYeqK9tgwKhS1Dz3nAO5HG6XIft-vP8sUXZPMIt75-GkZH8kdUstEDG07k_uQg6GZSA3HkqfKbTCnzBS1_wxYJkYsxPWWzYHd35xJVCoLbwXmLTFBoT-lFXh&si=ACC90nwjPmqJHrCEt6ewASzksVFQDX8zco_7MgBaIawvaF4-7mSRR1kRGE4hCmZtLOUumbi46V_tOIxRTOEjel4eIAxPbsZAzQfZDyayafoOPMus5kIWjD0%3D&sa=X&ved=2ahUKEwixoZaa4Z6HAxUHYEEAHXfKDf8Q3PALegQIGxAE&biw=1536&bih=745&dpr=2" 
+                                            class="btn-centered btn reviews-btn"
+                                            style="--btn-text-color:<?php echo $button_text_color?>;--btn-bg-color:<?php echo $button_bg_color?>"
+                                            >
+                                                Read all reviews
+                                            </a>
+                                            <div class="rating-div">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-empty"></i>
+
+                                            </div>
+                                            <div class="total-count-text font-600"><span class="course-review-count">(<?php echo $reviews_average; ?>)</span> Out of <?php echo $total_reviews_count ?> global reviews</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spacer-column"></div>
+                            <div class="ast-row verified-student-reviews-section__row">
+                                <div class="verified-student-reviews-section__row">
+                                    <div class="equal-height ast-col-md-5">
+                                        <div class="verified-student-reviews-section__review-summary">
+                                            <?php for ($i = 5; $i >= 1; $i--) :
+                                                $star_percentage = $reviews_widget['star_percentage_' . $i];
+                                                if (empty($star_percentage)) :
+                                                    $star_percentage = 0;
+                                                endif; ?>
+                                                <div class="review-status">
+                                                    <div class="progress-text"><?php echo $i; ?> Star</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" percent="<?php echo $star_percentage; ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress-value"><?php echo $star_percentage; ?>%</div>
+                                                </div>
+                                            <?php endfor; ?>
+                                        </div>
+                                        <div class="reviews-cols">
+                                            <a href="<?php echo esc_url($google_link); ?>" class="google-widget" target="_blank" rel="noopener noreferrer">
+                                                <div class="google-reviews-badge">
+                                                    <div class="badge-header">
+                                                        <span class="google-logo"></span>
+                                                        <span class="brand-text">Google</span>
+                                                    </div>
+                                                    <div class="stars">★★★★★</div>
+                                                    <div class="badge-review">
+                                                        <b><?php echo esc_html($google_reviews['reviews_rating'] ?: '4.9'); ?></b> based on <b><?php echo esc_html($google_reviews['reviews_count'] ?: '1.8k'); ?></b> reviews
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <?php if (!is_array_empty($trustpilot_reviews)) : ?>
+                                            <a href="<?php echo esc_url($tp_link); ?>" class="trustpilot-badge-link" target="_blank" rel="noopener noreferrer">
+                                                <div class="trustpilot-reviews-badge">
+                                                    <div class="badge-header">
+                                                        <?php if (!empty($trustpilot_reviews['reviews_icon'])) : ?>
+                                                            <img class="trustpilot-logo-img" src="<?php echo esc_url($trustpilot_reviews['reviews_icon']); ?>" alt="Trustpilot">
+                                                        <?php endif; ?>
+                                                        <span class="brand-text">Trustpilot</span>
+                                                    </div>
+                                                    <div class="stars">★★★★★</div>
+                                                    <div class="badge-review">
+                                                        <b><?php echo esc_html($trustpilot_reviews['reviews_rating']); ?></b> based on <b><?php echo esc_html($trustpilot_reviews['reviews_count']); ?></b> reviews
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="equal-height ast-col-md-7 verified-student-reviews-section__slider">
+                                        <?php echo do_shortcode('[brb_collection id="77247"]'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Verified Student Reviews End -->
+                <?php
+                endif
+                ?>
+
                 <div class="ast-row">
                     <div class="expanable-cta-card-row ast-flex">
                         <?php
@@ -280,7 +1029,7 @@ get_header();
                                                 <div class="exp-cta-card__body-content-expandable">
                                                     <?php echo $card_summary ?>
                                                 </div>
-                                                <div class="exp-cta-card__body-expand font-500">
+                                                <div class="exp-cta-card__body-expand font-400">
                                                     <span><?php echo $card_cta_btn_text ?></span>
                                                     <i class="fa fa-angle-down"></i>
                                                 </div>
@@ -294,6 +1043,58 @@ get_header();
                         ?>
                     </div>
                 </div>
+                <?php
+                    if(!empty($cta_section_text)):
+                ?>
+
+                    <div class="ast-row pt-3">
+                        <div class="ast-col-md-12">
+                            <div class="cta-section-text">
+                                <?php echo $cta_section_text?>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php
+                    endif;
+                ?>
+
+                <div class="ast-row">
+                    <div class="cta-image-card-row">
+                        <?php
+                        if (is_array($cta_blocks_with_full_image_background) && !empty(array_filter($cta_blocks_with_full_image_background))) :
+                            foreach ($cta_blocks_with_full_image_background as $cta_image_card) :
+                                $card_bg = $cta_image_card['cta_bg_image'];
+                                $card_title = $cta_image_card['cta_title'];
+                                $card_summary = $cta_image_card['cta_summary'];
+                                $card_cta_btn_text = $cta_image_card['cta_button_text'];
+                                $card_cta_btn_link = $cta_image_card['cta_button_link'];
+                        ?>
+                                <div class="ast-col-md-6">
+                                    <div class="cta-image-card" style="background:url('<?php echo $card_bg ?>')">
+                                        <div class="cta-image-card__content d-none">
+                                            <h2 class="cta-image-card__content-title font-600 small-heading">
+                                                <?php echo $card_title ?>
+                                            </h2>
+                                            <div class="cta-image-card__content-summary font-300 my-1">
+                                                <?php echo $card_summary ?>
+                                            </div>
+                                            <a href="<?php echo $card_cta_btn_link ?>" class="cta-image-card__button font-400 btn btn-small-centered btn-bordered-white">
+                                                <?php echo $card_cta_btn_text ?>
+                                            </a>
+                                        </div>
+                                        <a href="<?php echo $card_cta_btn_link ?>" class="cta-image-card__button-full-span cta-image-card__button btn-primary font-400 btn ">
+                                            <?php echo $card_cta_btn_text ?>
+                                        </a>
+                                    </div>
+                                </div>
+                        <?php
+                            endforeach;
+                        endif
+                        ?>
+                    </div>
+                </div>
+                
             </div>
         </section>
 
@@ -303,8 +1104,10 @@ get_header();
     ?>
 
     <?php
-    $course_cta_section = get_field('course_cta_section');
-    if ($course_cta_section) :
+    $course_cta_section = ti_hp_shared_field('course_cta_section');
+    
+
+    if (false) :
         $section_title  = $course_cta_section['section_title'];
         $section_stitle = $course_cta_section['section_subtitle'];
         $banner_section = $course_cta_section['banner_section'];
@@ -316,174 +1119,34 @@ get_header();
         <section class="course-cta-section pt-5">
             <div class="ast-container">
                 <div class="ast-row">
-                    <div class="ast-col-md-6">
-                        <h2 class="large-heading common-section-heading course-cta-section__title">
-                            <?php echo $section_title ?>
-                        </h2>
-                        <span class="course-cta-section__subtitle font-500">
-                            <?php echo $section_stitle ?>
-                        </span>
-                    </div>
-                    <div class="ast-col-md-6">
-                        <div class="flex-box app-download-cta-box">
-                            <div class="app-download-cta">
-                                <h2 class="large-heading common-section-heading">
-                                    study on the go
-                                </h2>
-                                <span class="course-cta-section__subtitle font-500">
-                                    Download the app
-                                </span>
-                                <div class="app-download-cta__icons flex-box">
-                                    <a href="https://play.google.com/store/apps/details?id=com.teflinstitute.teflinstitute">
-                                        <img src="/wp-content/uploads/2021/08/google-play-logo-1.svg">
-                                    </a>
-                                    <a href="https://apps.apple.com/app/id1568312366">
-                                        <img src="/wp-content/uploads/2021/08/apple-logo-1.svg">
+                    
+                    
+                    <?php if(!is_array_empty($banner_section)):?>
+                        <div class="ast-col-md-12">
+                            <div class="course-cta-section-banner-wrapper">
+                                <div class="image-wrapper">
+                                    <a href="https://jobs.teflinstitute.com/all-jobs/" target="_blank">
+                                        <img class="iec-logo" src="/wp-content/uploads/2025/02/institute-of-higher-education-icon.png" alt="">
                                     </a>
                                 </div>
-                            </div>
-                            <div class="app-download-image">
-                                <img src="/wp-content/uploads/2021/07/laptop_mobile-1.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <?php if(!is_array_empty($banner_section)):?>
-
-                        <div class="ast-col-md-12 mt-2">
-                            <div class="courses-cta-section-banner">
-                                <h2 class="large-heading common-section-heading text-center">
-                                    <?php echo $banner_section_title?>
-                                </h2>
-                                <div class="courses-cta-section-banner-content text-center">
-                                    <?php echo $banner_section_content?>
+                                <div class="courses-cta-section-banner">
+                                    <h3 class="large-heading common-section-heading text-center">
+                                        <?php echo $banner_section_title?>
+                                    </h3>
+                                    <div class="courses-cta-section-banner-content text-center">
+                                        <?php echo $banner_section_content?>
+                                    </div>
+                                </div>
+                                <div class="image-wrapper">
+                                    <a target="_blank" href="https://jobs.teflinstitute.com/all-jobs/" >
+                                        <img class="tif-logo" src="/wp-content/uploads/2025/01/founded-icon-.png" alt="">
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
                     <?php endif;?>
-                    <div class="ast-col-md-12 spacer-column"></div>
-                    <?php
-                    foreach ($courses as $course) :
-                        $hide_in_mobile = $course['hide_in_mobile'];
-                        $post_ID     = $course['course_product'];
-                        $course_cta_link = get_permalink($post_ID);
-                        $product_ID = get_post_meta($post_ID, 'course_product', true);
-                        $product = wc_get_product($product_ID);
-                        if($product){
-                            $simple_regular_price = $product->get_regular_price();
-                            $simple_sale_price = $product->get_sale_price();
-                            if (is_numeric($simple_regular_price) && is_numeric($simple_sale_price) && $simple_regular_price != 0) {
-                                $save_percentage = round((($simple_regular_price - $simple_sale_price) / $simple_regular_price) * 100);
-                            }
-                        }
-                        $discount_text_color = $course['discount_text_color'];
-                        $discount_background_color = $course['discount_background_color'];
-                        $course_title = $course['course_title'];
-                        $deposit_info = $course['deposit_info'];
-                        $deposit_info_icon = $deposit_info['deposit_icon'];
-                        $deposit_info_title = $deposit_info['deposit_title'];
-                        $deposit_info_description = $deposit_info['deposit_description'];
-                        $course_summary = $course['course_summary'];
-                        $course_features = $course['course_features'];
-                        $course_cta_button_text = $course['cta_button_text']; // Deposit
-                        $deposit_enabled        = get_post_meta($product_ID, '_wc_deposit_enabled', true);
-                        $deposit_payment_plan   = $deposit_class = $deposit_description = $deposit_icon = '';
-
-                        if ($deposit_enabled == 'forced' || $deposit_enabled == 'optional') {
-                            $deposit_payment_plan = get_post_meta($product_ID, '_wc_deposit_payment_plans', true);
-                            $deposit_payment_plan = $deposit_payment_plan[0];
-                        }
-
-                        if ($deposit_payment_plan) {
-                            global $wpdb;
-                            $query = "SELECT amount FROM `wp_wc_deposits_payment_plans_schedule` WHERE `schedule_index` = 0 AND `plan_id` = " . $deposit_payment_plan;
-                            $deposit_percent = $wpdb->get_var($query);
-                            $deposit_percent = round((float)$deposit_percent / 100, 5);
-
-                            $query = "SELECT amount FROM `wp_wc_deposits_payment_plans_schedule` WHERE `schedule_index` = 1 AND `plan_id` = " . $deposit_payment_plan;
-                            $recurring_percent = $wpdb->get_var($query);
-                            $recurring_percent = round((float)$recurring_percent / 100, 5);
-
-                            $query = "SELECT count(schedule_id) FROM `wp_wc_deposits_payment_plans_schedule` WHERE `plan_id` = " . $deposit_payment_plan;
-                            $total_deposits = $wpdb->get_var($query);
-                            if ($deposit_payment_plan === 1 || $deposit_payment_plan === 3) {
-                                $deposit_icon = "/wp-content/uploads/2023/07/payin2.svg";
-                                $deposit_description = 'Split the cost of your purchase into ' . $total_deposits . ' interest-free payments';
-                            } elseif ($deposit_payment_plan === 4) {
-                                $deposit_icon = "/wp-content/uploads/2023/07/payin2.svg";
-                                $deposit_description = 'Split the cost of your purchase into ' . $total_deposits . ' interest-free payments';
-                            } elseif ($deposit_payment_plan === 6) {
-                                $deposit_icon = '/wp-content/uploads/2023/07/payin6.svg';
-                                $deposit_description = 'Split the cost of your purchase into ' . $total_deposits . ' interest-free payments.';
-                            } elseif ($deposit_payment_plan === 7) {
-                                $deposit_icon = '/wp-content/uploads/2023/07/payin6.svg';
-                                $deposit_description = 'Split the cost of your purchase into ' . $total_deposits . ' interest-free payments.';
-                            }
-                        }
-                        // Deposit
-                    ?>
-                        <div class="<?php echo $hide_in_mobile?'hide-in-mobile':'' ?> ast-col-md-4 <?php echo $deposit_payment_plan ?>">
-                            <div class="course-card course-id-<?php echo $product_ID ?>">
-                                <a href="<?php echo $course_cta_link ?>" class="clickbox"></a>
-                                <div class="course-card-body">
-                                    <h2 class="course-card__title font-600 small-heading">
-                                        <?php echo $course_title ?>
-                                    </h2>
-                                    <div class="course-card__price">
-                                        <?php echo $product->get_price_html(); ?>
-                                        <span class="course-card__price-discount" style="color:<?php echo $discount_text_color?>; background:<?php echo $discount_background_color?>;border-color:<?php echo $discount_text_color?>">
-                                            <?php echo $save_percentage.'% off'?>
-                                        </span>
-                                    </div>
-                                    <div class="deposit-info ast-flex ast-align-items-center">
-                                        <div class="depoist-info__icon">
-                                            <img src="<?php echo $deposit_info_icon ?>" alt="">
-                                        </div>
-                                        <div class="ast-flex flex-direction-column deposit-info__details">
-                                            <h5 class="deposit-info_title"><?php echo $deposit_info_title ?></h5>
-                                            <div class="deposit-info_description">
-                                                <?php echo $deposit_info_description ?>
-                                            </div>
-                                        </div>  
-                                    </div>
-                                    <div class="course-card__summary">
-                                        <?php
-                                        $plain_text_summary = strip_tags($course_summary);
-                                        $words = str_word_count($plain_text_summary, 1);
-                                        if (count($words) > 50) {
-                                            $limited_summary = implode(' ', array_slice($words, 0, 50));
-                                            echo $limited_summary . '...';
-                                        } else {
-                                            echo $plain_text_summary;
-                                        }
-                                        ?>
-                                    </div>
-                                    <?php
-                                    if (!empty('course_features')) :
-                                    ?>
-                                        <ul class="course-card__features">
-                                            <?php
-                                            foreach ($course_features as $course_feature) :
-                                            ?>
-                                                <li><?php echo $course_feature['feature_text'] ?></li>
-                                            <?php
-                                            endforeach;
-                                            ?>
-                                        </ul>
-                                    <?php
-                                    endif;
-                                    ?>
-                                </div>
-                                <div class="course-card-foter">
-                                    <a href="<?php echo $course_cta_link ?>" class="btn btn-primary course-card__btn">
-                                        <?php echo $course_cta_button_text ?>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    <?php
-                    endforeach
-                    ?>
+                    
                 </div>
             </div>
         </section>
@@ -494,19 +1157,25 @@ get_header();
 
     <?php
     $webinar_cta_section = get_field('webinar_cta_section');
-    if ($webinar_cta_section) :
+    $latest_webinars = get_latest_webinars(2);
+    if ($webinar_cta_section && $latest_webinars) :
         $section_title  = $webinar_cta_section['section_title'];
         $section_stitle = $webinar_cta_section['section_subtitle'];
         $guide_download_cta = $webinar_cta_section['guide_download_cta'];
+        $salary_calculator_cta = $webinar_cta_section['salary_calculator_cta'];
+        $cta_button_text_color = !empty($webinar_section_cta_styling['cta_button_text_color']) ? $webinar_section_cta_styling['cta_button_text_color'] : '#ffffff';
+        $cta_button_bg_color = !empty($webinar_section_cta_styling['cta_button_bg_color']) ? $webinar_section_cta_styling['cta_button_bg_color'] : '#217482';
+
+
     ?>
         <!-- webinar CTA section -->
         <section class="webinar-cta-section pt-5">
             <div class="ast-container">
                 <div class="ast-row">
                     <div class="ast-col-md-12">
-                        <h2 class="large-heading common-section-heading webinar-cta-section__title">
+                        <p class="large-heading double-underline common-section-heading webinar-cta-section__title">
                             <?php echo $section_title ?>
-                        </h2>
+                        </p>
                         <span class="webinar-cta-section__subtitle common-subheading">
                             <?php echo $section_stitle ?>
                         </span>
@@ -515,7 +1184,7 @@ get_header();
                 <div class="ast-row ast-flex cta-card-container">
                     <div class="ast-col-md-12 spacer-column"></div>
                     <?php
-                    $latest_webinar = get_latest_webinars(1);
+                    foreach($latest_webinars as $key => $latest_webinar):
                     if ($latest_webinar) :
                         $webinar_id         = $latest_webinar->ID;
                         $webinar_title      = $latest_webinar->post_title;
@@ -533,27 +1202,32 @@ get_header();
                                     </h2>
                                     <div class="webinar-cta-card__content-summary my-2">
                                         <div class="webinar-location">
-                                            <h4 class="font-500">Location</h4>
+                                            <p class="font-500">Location</p>
                                             <span class="font-300"><?php echo $webinar_location ?></span>
                                         </div>
                                         <div class="webinar-date">
-                                            <h4 class="font-500">Date</h4>
+                                            <p class="font-500">Date</p>
                                             <span class="font-300"><?php echo $webinar_date ?></span>
                                         </div>
                                         <div class="webinar-time">
-                                            <h4 class="font-500">Time</h4>
+                                            <p class="font-500">Time</p>
                                             <span class="font-300"><?php echo $webinar_time ?></span>
                                         </div>
                                     </div>
-                                    <a href="/upcoming-tefl-webinars/" class="webinar-cta-card-btn btn btn-small-centered btn-secondary" target="_blank">register now</a>
+                                    <a style="--webinar-cta-btn-color: <?php echo $cta_button_text_color ?>; --webinar-cta-btn-bg: <?php echo $cta_button_bg_color ?>;" href="/upcoming-tefl-webinars/" class="webinar-cta-card-btn btn btn-small-centered btn-secondary" target="_blank">
+                                        register now
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     <?php
                     endif;
+                    endforeach;
                     ?>
+
                     <?php
-                    if ($guide_download_cta) :
+                    // Temporarily Disabled
+                    if ($guide_download_cta && false) :
                         $background_image = $guide_download_cta['background_image'];
                         $guide_image = $guide_download_cta['guide_image'];
                         $cta_title = $guide_download_cta['cta_title'];
@@ -573,7 +1247,7 @@ get_header();
                                     <div class="guide-download-cta-card__content-summary font-300 my-2">
                                         <?php echo $cta_summary ?>
                                     </div>
-                                    <a href="<?php echo $cta_btn_link ?>" class="guide-download-cta-card-btn btn btn-small-centered btn-secondary">
+                                    <a style="--webinar-cta-btn-color: <?php echo $cta_button_text_color ?>; --webinar-cta-btn-bg: <?php echo $cta_button_bg_color ?>;" href="<?php echo $cta_btn_link ?>" class="guide-download-cta-card-btn btn btn-small-centered btn-secondary">
                                         <?php echo $cta_btn_text ?>
                                     </a>
                                 </div>
@@ -582,6 +1256,40 @@ get_header();
                     <?php
                     endif;
                     ?>
+
+                    <?php
+                    // Temporarily Disabled
+                    if (!$latest_webinar && $salary_calculator_cta && false) :
+                        $background_image = $salary_calculator_cta['background_image'];
+                        $cta_title = $salary_calculator_cta['cta_title'];
+                        $cta_summary = $salary_calculator_cta['cta_summary'];
+                        $cta_btn_text = $salary_calculator_cta['cta_button_text'];
+                        $cta_btn_link = $salary_calculator_cta['cta_button_link'];
+                    ?>
+                        <div class="ast-col-md-6">
+                            <div class="salary-calculator-cta-card" style="background:url('<?php echo $background_image ?>')">
+                                <div class="salary-calculator-cta-card__content">
+                                    <h2 class="small-heading font-600 salary-calculator-cta-card__content-title">
+                                        <?php echo $cta_title ?>
+                                    </h2>
+                                    <div class="salary-calculator-cta-card__content-summary font-300 my-2">
+                                        <?php echo $cta_summary ?>
+                                    </div>
+                                    <a style="--webinar-cta-btn-color: <?php echo $cta_button_text_color ?>; --webinar-cta-btn-bg: <?php echo $cta_button_bg_color ?>;" href="<?php echo $cta_btn_link ?>" class="salary-calculator-cta-card-btn btn btn-small-centered btn-secondary">
+                                        <?php echo $cta_btn_text ?>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    endif;
+                    ?>
+                    <div class="ast-col-md-6 tefl-ai-block-wrapper">
+                        <a href="https://tefl.ai/" target="blank">
+                            <div class="tefl-ai-block" style="background:url('/wp-content/uploads/2025/10/tefl-ai.png')">
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -590,23 +1298,75 @@ get_header();
     endif;
     ?>
 
-<!-- new video slider -->
+    <!-- new video slider -->
+
+    <section class="tefl-ai-section pt-5">
+        <?php
+            $tefl_ai_cta_section = ti_hp_shared_field('tefl_ai_cta_section');
+            $section_title = $tefl_ai_cta_section['section_title'];
+        ?>
+        <div class="ast-container">
+            <div class="ast-row">
+                <div class="ast-col-md-6">
+                    <p class="large-heading double-underline common-section-heading course-cta-section__title">
+                        <?php echo $section_title ?>
+                    </p>
+                    <a href="https://tefl.ai/" target="_blank" class="teflai-cta">
+                        <img  src="/wp-content/uploads/2025/03/tefl-ai.gif" alt="">
+                    </a>
+                </div>
+                <div class="ast-col-md-6">
+                    <?php
+                        $app_download_section = ti_hp_shared_field('app_download_section');
+                        $section_title = $app_download_section['section_title'];
+                        $section_summary = $app_download_section['section_summary'];
+                        $section_image = $app_download_section['section_image'];
+                    ?>
+                    <div class="flex-box app-download-cta-box">
+                        <div class="app-download-cta">
+                            <p class="large-heading common-section-heading">
+                                <?php echo $section_title?>
+                            </p>
+                            <span class="course-cta-section__subtitle font-400">
+                                <?php echo $section_summary?>
+                            </span>
+                            <div class="app-download-cta__icons flex-box">
+                                <a href="https://play.google.com/store/apps/details?id=com.teflinstitute.teflinstitute">
+                                    <img src="/wp-content/uploads/2025/07/google-app-store.webp">
+                                </a>
+                                <a href="https://apps.apple.com/app/id1568312366">
+                                    <img src="/wp-content/uploads/2025/07/apple-app-store.webp">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="app-download-image">
+                            <img src="<?php echo $section_image?>" alt="">
+                            <span>
+                                <img src="/wp-content/uploads/2025/07/download-icon.png" alt="">
+                                1k+ downloads.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <?php
-    $video_testimonials_section = get_field('video_testimonials_section');
+    $video_testimonials_section = ti_hp_shared_field('video_testimonials_section');
     if ($video_testimonials_section) :
         $section_stitle = $video_testimonials_section['section_subtitle'];
         $section_title = $video_testimonials_section['section_title'];
         $testimonials = $video_testimonials_section['testimonials'];
     ?>
        
-       <section class="video-testimoinials-section pt-3">
+       <section class="video-testimoinials-section pt-5">
             <div class="ast-container">
                 <div class="ast-row">          
                     <div class="ast-col-md-12">
-                        <h2 class="large-heading common-section-heading video-testimonials-section__title">
+                        <h3 class="large-heading double-underline common-section-heading video-testimonials-section__title">
                             <?php echo $section_title ?>
-                        </h2>
+                        </h3>
                         <span class="video-testimonials-section__subtitle common-subheading ">
                             <?php echo $section_stitle ?>
                         </span>
@@ -631,12 +1391,12 @@ get_header();
                                                 <img class="play-btn no-lazy" src="/wp-content/uploads/2020/11/play-btn.svg">
                                             </div>
                                             
-                                            <h3 class="video-testimonial-card__title">
+                                            <p class="video-testimonial-card__title">
                                                 <?php echo $name?>
-                                            </h3>
-                                            <h4 class="video-testimonial__subtitle">
+                                            </p>
+                                            <p class="video-testimonial__subtitle">
                                                 <?php echo  $designation?>
-                                            </h4>
+                                            </p>
                                         </a>
                                     </div>
                                 </li>
@@ -659,92 +1419,98 @@ get_header();
 
     <?php endif; ?>
 
+    <!-- Jobs Section -->
 
-
-
-
-<!-- review section -->
     <?php
-    $verified_reviews_section = get_field('verified_reviews_section');
-    if ($verified_reviews_section) :
-        $section_stitle = $verified_reviews_section['section_subtitle'];
-        $section_title = $verified_reviews_section['section_title'];
-        // $reviews_widget = $verified_reviews_section['reviews_widget'];
-        $total_reviews_count    = isset($reviews_widget['total_reviews']) ? $reviews_widget['total_reviews'] : 1570;
-        $five_star_percentage   = isset($reviews_widget['star_percentage_5']) ? (float)$reviews_widget['star_percentage_5'] : 0;
-        $four_star_percentage   = isset($reviews_widget['star_percentage_4']) ? (float)$reviews_widget['star_percentage_4'] : 0;
-        $three_star_percentage  = isset($reviews_widget['star_percentage_3']) ? (float)$reviews_widget['star_percentage_3'] : 0;
-        $two_star_percentage    = isset($reviews_widget['star_percentage_2']) ? (float)$reviews_widget['star_percentage_2'] : 0;
-        $one_star_percentage    = isset($reviews_widget['star_percentage_1']) ? (float)$reviews_widget['star_percentage_1'] : 0;
-
-        $reviews_average = (($five_star_percentage * 5) + ($four_star_percentage * 4) + ($three_star_percentage * 3) + ($two_star_percentage * 2) + ($one_star_percentage * 1)) / 100;
+        $jobs_section = ti_hp_shared_field('jobs_section');
+        if(!is_array_empty($jobs_section)):
+            $section_title = $jobs_section['section_title'];
+            $section_stitle = $jobs_section['section_summary'];
+            $jobs = $jobs_section['jobs'];
+            if (!empty($job_center_cta_button_styling)) {
+                $button_text_color = !empty($job_center_cta_button_styling['button_text_color']) ? $job_center_cta_button_styling['button_text_color'] : '#ffffff';
+                $button_bg_color = !empty($job_center_cta_button_styling['button_bg_color']) ? $job_center_cta_button_styling['button_bg_color'] : '#1c1c1b';
+            }
     ?>
-        <!-- Verified Student Reviews -->
-        <section class="verified-student-reviews-section pt-5">
+        <section class="jobs-section">
             <div class="ast-container">
-                <div class="ast-row ">
-                    <div class="verified-student-reviews-section__header">
-                        <div class="ast-col-md-6">
-                            <h2 class="large-heading common-section-heading verified-student-reviews-section__title">
-                                <?php echo $section_title ?>
-                            </h2>
-                            <span class="verified-student-reviews-section__subtitle">
-                                <?php echo $section_stitle ?>
-                            </span>
+                <div class="ast-row ast-flex ast-align-items-flex-end">
+                    <div class="ast-col-md-8">
+                        <div class="header-wrapper">
+                            <h3 class="large-heading double-underline common-section-heading jobs-section__title">
+                                <?php echo $section_title?>
+                                <a href="https://jobs.teflinstitute.com/?ref=com" 
+                                   target = "_blank"
+                                   class = "jobs-link d-none"
+                                   style="--btn-text-color:<?php echo $button_text_color?>;--btn-bg-color:<?php echo $button_bg_color?>"
+                                >
+                                    <svg width="20" height="20" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.5" cy="8.5" r="8" stroke="white"></circle>
+                                        <path d="M5 8.5H11.5" stroke="white" stroke-width="1.5" stroke-linecap="round"></path>
+                                        <path d="M9.5 11L12 8.5L9.5 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                            </h3>
+                            
                         </div>
-                        <div class="ast-col-md-6">
-                            <div class="reviews-average">
-                                <div class="rating-div">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-empty"></i>
-
-                                </div>
-                                <div class="total-count-text font-600"><span class="course-review-count">(<?php echo $reviews_average; ?>)</span> Out of <?php echo $total_reviews_count ?> global reviews</div>
-                            </div>
+                        <span class="jobs-section__subtitle common-subheading">
+                            <?php echo $section_stitle?>
+                        </span>
+                       
+                    </div>
+                    <div class="ast-col-md-4">
+                        <div class="pdf-download-area ">
+                            <h3>Comparative employment guide for TEFL teachers</h3>
+                            <a target="_blank" href = "/wp-content/uploads/2024/07/TEFL-Insitute-Job-Comparison-Guide.pdf" class="btn btn-primary btn-centered">Download your copy</a>
+                            <a target="_blank" href = "https://tefl.ai/" class="btn btn-primary btn-centered tefl-ai-btn">TEFL job market explorer</a>
                         </div>
                     </div>
                 </div>
-                <div class="spacer-column"></div>
-                <div class="ast-row verified-student-reviews-section__row">
-                    <div class="verified-student-reviews-section__row">
-                        <div class="equal-height ast-col-md-5">
-                            <div class="verified-student-reviews-section__review-summary">
-                                <?php for ($i = 5; $i >= 1; $i--) :
-                                    $star_percentage = $reviews_widget['star_percentage_' . $i];
-                                    if (empty($star_percentage)) :
-                                        $star_percentage = 0;
-                                    endif; ?>
-                                    <div class="review-status">
-                                        <div class="progress-text"><?php echo $i; ?> Star</div>
-                                        <div class="progress">
-                                            <div class="progress-bar" percent="<?php echo $star_percentage; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="progress-value"><?php echo $star_percentage; ?>%</div>
-                                    </div>
-                                <?php endfor; ?>
-                            </div>
-                            <div class="rplg rplg-insert" data-id="77247">
-
+                <div class="ast-row">
+                <div class="ast-col-md-12 spacer-column"></div>
+                </div>
+                <div class="jobs-slider ast-flex">
+                    <?php
+                        foreach($jobs as $key => $job):
+                            $hero_image = $job['featured_image'];
+                            $job_location = $job['job_location'];
+                            $job_title = $job['job_title'];
+                            $posted_on = $job['posted'];
+                            $salary_text = $job['salary_text'];
+                            $job_link = $job['job_link'];
+                    ?>
+                        <div class="slide-item">
+                            <div class="job-card">
+                                <div class="job-card__header">
+                                    <img src="<?php echo $hero_image?>" class="no-lazy" alt="">
+                                    <span><?php echo $job_location?></span>
+                                </div>
+                                <div class="job-card__body">
+                                    <h6 class="job-title"><?php echo truncate_string($job_title,6) ?></h6>
+                                    <span class="job-posted d-none">Posted: <?php echo $posted_on?> hours ago</span>
+                                    <span class="job-salary"><?php echo $salary_text?></span>
+                                </div>
+                                <div class="job-card__link">
+                                    <a href="<?php echo $job_link?>" target = "_blank">
+                                        <span>View Job</span>
+                                        <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="equal-height ast-col-md-7 verified-student-reviews-section__slider">
-                            <?php echo do_shortcode('[brb_collection id="77247"]'); ?>
-                        </div>
-                    </div>
+                    <?php
+                        endforeach
+                    ?>
                 </div>
             </div>
         </section>
-        <!-- Verified Student Reviews End -->
-    <?php
-    endif
+    <?php 
+        endif;
     ?>
-    <!-- Partner Logos-->
 
-    <section class="partner-logos-section pt-3">
+    <!-- Jobs Sectio End -->
+
+    <section class="partner-logos-section pt-5">
         <div class="ast-container">
             <div class="ast-row">
                 <div class="ast-col-md-12 logo-container">
@@ -775,9 +1541,17 @@ get_header();
     <!-- Partner Logos End -->
 
     <!-- FAQS Section -->
-    <section class="faqs-section faqs-section-redesigned py-5">
+    <section class="faqs-section faqs-section-redesigned pt-5">
         <?php
         $frequently_asked_questions = get_cfvalue_by_country('frequently_asked_questions');
+        if (empty($frequently_asked_questions) || !is_array($frequently_asked_questions)) {
+            // Geo-page fallback: show the main homepage's FAQs when this page has none of its own
+            $faq_main_id = (int) get_option('page_on_front');
+            if ($faq_main_id && $faq_main_id !== get_queried_object_id()) {
+                $frequently_asked_questions = get_field('frequently_asked_questions', $faq_main_id);
+            }
+        }
+        if (!is_array($frequently_asked_questions)) { $frequently_asked_questions = array(); } // PHP 8.4: count(false) is fatal
         ?>
         <script type="application/ld+json">
             {
@@ -807,16 +1581,16 @@ get_header();
         <div class="ast-container">
             <div class="ast-row">
                 <div class="ast-col-md-6 contact-form-container">
-                    <h2 class="large-heading common-section-heading">Question? <u>get in touch</u></h2>
+                    <p class="large-heading common-section-heading double-underline">Question? get in touch</p>
                     <div class="contact-form equal-height">
                         <img src="/wp-content/uploads/2023/04/get-in-touch.png" alt="">
                         <?php echo do_shortcode('[contact-form-7 id="77295" title="Home Contact Form"]') ?>
                     </div>
                 </div>
                 <div class="ast-col-md-6 faqs">
-                    <h2 class="large-heading faqs-heading common-section-heading">
+                    <h3 class="large-heading faqs-heading common-section-heading">
                         faqs
-                    </h2>
+                    </h3>
                     <div class="faqs-wrapper equal-height">
                         <div class="faqs-accordion">
                             <?php
@@ -830,7 +1604,7 @@ get_header();
                                         <span><?php echo $faq_question ?></span>
                                         <i class="fa fa-plus"></i>
                                     </label>
-                                    <div class="font-500 faqs-accordion__content <?php echo $key === 0 ? 'active' : '' ?>">
+                                    <div class="font-400 faqs-accordion__content <?php echo $key === 0 ? 'active' : '' ?>">
                                         <?php echo $faq_answer ?>
                                     </div>
                                 </div>
@@ -847,11 +1621,26 @@ get_header();
             </div>
         </div>
     </section>
+
+    <section class="insta-feed pt-3">
+        <div class="ast-container">
+            <div class="ast-row">
+                <div class="ast-col-md-12">
+                    <h2 class="double-underline search-courses-section__heading text-center common-section-heading">Stay connected with us on social media</h2>
+                </div>
+                <div class="ast-col-md-12">
+                    <?php echo do_shortcode('[insta-gallery id="1"]');?>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- FAQS Section End -->
-    <?php include('template-parts/offer-banner.php'); ?>
+     
 
-
+    
 
 </div>
+
 
 <?php get_footer(); ?>

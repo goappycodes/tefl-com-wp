@@ -45,6 +45,7 @@ if ( ! wp_doing_ajax() ) {
 			?>
 		</ul>
 	<?php endif; ?>
+
 	<div class="form-row place-order">
 		<noscript>
 			<?php

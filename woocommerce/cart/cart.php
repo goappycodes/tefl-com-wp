@@ -56,7 +56,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 					$el_available_children = $el_product->get_children();
 					$el_children_count = count($el_available_children) - 1;
 					$el_product_var_id = $el_available_children[$el_children_count];
-					$el_variable_product = new WC_Product_Variation( $el_product_var_id );
+					$el_variable_product = wc_get_product( $el_product_var_id );
 					$el_var_price = $el_variable_product->get_price_html();
 					$el_regular_price = $el_variable_product->get_regular_price();
 					$el_sale_price = $el_variable_product->get_sale_price();
@@ -172,7 +172,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 										</div>
 
 										<?php if($product_upsell_addons) : ?>
-									
+										
 											<div class="cart-item-addons">
 												<?php foreach($product_upsell_addons as $pua ) :
 													$product_id = $pua['product'];
@@ -180,18 +180,29 @@ do_action( 'woocommerce_before_cart' ); ?>
 													$product_link = get_post_permalink($product_id);
 													$product_img = get_the_post_thumbnail_url($product_id, 'full');
 													$pt_show_product_page = get_field('pt_show_product_page', $product_id);
-													$price_html = $product->get_price_html();
-													$image = $pua['image'] ?? ""; 
-													$heading = $pua['heading'] ?? ""; 
-													$description = $pua['description'] ?? ""; 
+													$discount = $pua['discount']; 
+													$new_price = $pua['new_price']; 
+													$price_html = '';
+
+													if($discount && $new_price) {
+														$regular_price = $product->get_regular_price();
+														$price_html = wc_format_sale_price($regular_price, $new_price);
+													} else {
+														$price_html = $product->get_price_html();
+													}
+												
+
+													$image = $pua['image']; 
+													$heading = $pua['heading']; 
+													$description = $pua['description']; 
 													if (WC()->cart) :
 														$product_cart_id = WC()->cart->generate_cart_id( $product_id );
 														$in_cart = WC()->cart->find_product_in_cart( $product_cart_id );
 														if ( !$in_cart ) : ?>
-															<div class="cart-item-addon-outer">
+															<div class="cart-item-addon-outer" data-discount="<?php echo $new_price ?>">
 																<div class="cart-item-addon">
 																	<?php if($product_img) { ?>
-																		<div class="addon-img"><i class="fa fa-plus-circle"></i><img src="<?php echo $product_img; ?>"></div>
+																		<div class="addon-img"><img src="<?php echo $product_img; ?>"></div>
 																	<?php } ?>
 																	<div class="addon-content">
 																		<h4 class=""><?php echo $heading.' for '.$price_html; ?></h4>
@@ -201,8 +212,28 @@ do_action( 'woocommerce_before_cart' ); ?>
 																	<a href="<?php echo $product_link; ?>" class="learn-more-btn">Learn More</a>
 																	<?php } ?>
 																</div>
-																<div class="add-addon-div"><a href="<?php echo $product->add_to_cart_url() ?>" value="<?php echo esc_attr( $product->get_id() ); ?>" class="add-addon-btn button ajax_add_to_cart add_to_cart_button" data-product_id="<?php echo esc_attr( $product->get_id() ); ?>" data-product_sku="<?php echo esc_attr($product->get_sku()); ?>" aria-label="Add '<?php echo $heading; ?>' to your cart">Add</a></div>
-																<!-- <div class="add-addon-div"><a href="/?add-to-cart=<?php //echo $product_id; ?>" class="add-addon-btn button product_type_simple add_to_cart_button ajax_add_to_cart">Add</a></div> -->
+																<div class="add-addon-div">
+																	<?php 
+																	$add_to_cart_args = [
+																		'add-to-cart' => $product->get_id()
+																	];
+																	
+																	if ($discount && $new_price) {
+																		$add_to_cart_args['addon_price'] = $new_price;
+																	}
+																	
+																	$add_to_cart_url = add_query_arg($add_to_cart_args);
+																	?>
+																	
+																	<a href="<?php echo esc_url($add_to_cart_url); ?>" 
+																	class="add-addon-btn button ajax_add_to_cart" 
+																	data-product_id="<?php echo esc_attr($product->get_id()); ?>"
+																	data-product_sku="<?php echo esc_attr($product->get_sku()); ?>"
+																	aria-label="Add '<?php echo $heading; ?>' to your cart">Add</a>
+																</div>
+
+
+																
 															</div>
 														<?php endif; ?>
 													<?php endif; ?>
@@ -223,13 +254,19 @@ do_action( 'woocommerce_before_cart' ); ?>
 	
 					<?php do_action( 'woocommerce_cart_contents' ); ?>
 	
-			
-	
 					<?php do_action( 'woocommerce_after_cart_contents' ); ?>
+
+					
 				</tbody>
 			</table>
-	
+
 			<?php do_action( 'woocommerce_after_cart_table' ); ?>
+
+			<div class="d-none" style="margin: auto;padding-bottom: 2rem;">
+				<h1 class="section-heading" style="font-size: 22px;text-align: center;text-transform: uppercase;">What Our Students Say About Us</h1>
+				<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+				<div class="trustpilot-widget" data-locale="en-GB" data-template-id="53aa8912dec7e10d38f59f36" data-businessunit-id="61c0c19118c53fc28bcc355d" data-style-height="140px" data-style-width="100%" data-tags="Content" data-stars="4,5" data-review-languages="en">   <a href="https://uk.trustpilot.com/review/teflinstitute.com" target="_blank" rel="noopener">Trustpilot</a> </div>
+			</div>
 		</form>
 		
 		<?php do_action( 'woocommerce_before_cart_collaterals' ); ?>

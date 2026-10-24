@@ -53,28 +53,66 @@
 // 	}
 // }
 
+add_action('init', 'start_session_early');
+function start_session_early() {
+    if (!session_id() && !headers_sent()) {
+        session_start();
+    }
+}
+
 add_action('template_redirect', 'add_course_date_to_cart', 1);
 function add_course_date_to_cart() {
 
+    if (!session_id() && !headers_sent()) {
+        session_start();
+    }
+    
     if (isset($_GET['addtimetocart'])) {
-        $product_ids = isset($_GET['prid']) ? explode(',', $_GET['prid']) : [];
-        $date = isset($_GET['date']) ? sanitize_text_field($_GET['date']) : "";
-        $location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : "";
-        $address = isset($_GET['address']) ? sanitize_text_field($_GET['address']) : "";
-        $deposit = isset($_GET['deposit']) ? true : false;
-        $var_id = isset($_GET['variation_id']) ? intval($_GET['variation_id']) : '';
+        $whitelisted_params = array(
+            'prid' => isset($_GET['prid']) ? $_GET['prid'] : '',
+            'date' => isset($_GET['date']) ? sanitize_text_field($_GET['date']) : '',
+            'location' => isset($_GET['location']) ? sanitize_text_field($_GET['location']) : '',
+            'address' => isset($_GET['address']) ? sanitize_text_field($_GET['address']) : '',
+            'deposit' => isset($_GET['deposit']) ? true : false,
+            'variation_id' => isset($_GET['variation_id']) ? intval($_GET['variation_id']) : '',
+            'selected_courses' => isset($_GET['selected_courses']) ? sanitize_text_field($_GET['selected_courses']) : ''
+        );
+       
+        $product_ids = !empty($whitelisted_params['prid']) ? explode(',', $whitelisted_params['prid']) : [];
+        $date = $whitelisted_params['date'];
+        $location = $whitelisted_params['location'];
+        $address = $whitelisted_params['address'];
+        $deposit = $whitelisted_params['deposit'];
+        $var_id = $whitelisted_params['variation_id'];
+        $selected_courses = $whitelisted_params['selected_courses'];
+    
         
-
+        $adding_main_product = false;
         foreach ($product_ids as $product_id) {
-            $product_id = intval(trim($product_id)); 
-            // if (!$product_id) continue; 
-
+            $product_id = intval(trim($product_id));
+            if ($product_id == 71000 || $product_id == 1099 || $product_id == 2706) {
+                $adding_main_product = true;
+                break;
+            }
+        }
+        
+        if ($adding_main_product && !empty($selected_courses)) {
+            $_SESSION['selected_courses'] = $selected_courses;
+    
+            if (function_exists('session_write_close')) {
+                session_write_close();
+                if (!headers_sent()) {
+                    session_start();
+                }
+            }
+        }
+        
+        foreach ($product_ids as $product_id) {
+            $product_id = intval(trim($product_id));
             $deposit_payment_plan = get_post_meta($product_id, '_wc_deposit_payment_plans', true);
             $payment_plan = is_array($deposit_payment_plan) && !empty($deposit_payment_plan) ? $deposit_payment_plan[0] : '';
-
-    
+            
             $cart_item_meta = array();
-
             if (!empty($date)) {
                 $cart_item_meta['start_date'] = array('Start Date' => $date);
             }
@@ -90,21 +128,19 @@ function add_course_date_to_cart() {
                     $cart_item_meta['payment_plan'] = $payment_plan;
                 }
             }
-
+            
             if ($var_id) {
                 WC()->cart->add_to_cart($product_id, 1, $var_id, array(), $cart_item_meta);
             } else {
                 WC()->cart->add_to_cart($product_id, 1, 0, array(), $cart_item_meta);
             }
-
         }
-
-        wp_safe_redirect(wc_get_cart_url());
+        
+        $cart_url = wc_get_cart_url();
+        wp_safe_redirect($cart_url);
         exit();
     }
 }
-
-
 
 
 // Display custom cart item meta data (in cart and checkout)

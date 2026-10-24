@@ -1,14 +1,14 @@
 {
     "key": "group_63872f9972689",
-    "title": "Colors",
+    "title": "Global Styling Options",
     "fields": [
         {
-            "key": "field_63872fbe67bd2",
-            "label": "Theme Colors",
-            "name": "theme_colors",
+            "key": "field_6794999fb88e8",
+            "label": "Course Search Bar Search Icon",
+            "name": "course_search_bar_search_icon",
             "aria-label": "",
             "type": "group",
-            "instructions": "",
+            "instructions": "Set search icon color and its BG color for global courses search bar",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -19,9 +19,9 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_6387302467bd3",
-                    "label": "Accent Color",
-                    "name": "accent_color",
+                    "key": "field_67949a2cb88e9",
+                    "label": "Icon Color",
+                    "name": "icon_color",
                     "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
@@ -33,13 +33,13 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "enable_opacity": 0,
+                    "enable_opacity": 1,
                     "return_format": "string"
                 },
                 {
-                    "key": "field_643d29e4f1c40",
-                    "label": "Course\/Internship Page Accent Color",
-                    "name": "course_internship_page_accent_color",
+                    "key": "field_67949a4db88ea",
+                    "label": "Icon BG color",
+                    "name": "icon_bg_color",
                     "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
@@ -51,8 +51,458 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "enable_opacity": 0,
+                    "enable_opacity": 1,
                     "return_format": "string"
+                }
+            ]
+        },
+        {
+            "key": "field_6794a297fc49b",
+            "label": "Homepage Styling",
+            "name": "homepage_styling",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "Set styling for some of the homepage elements",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_6794a2c0fc49c",
+                    "label": "Course Card Discount Label",
+                    "name": "course_card_discount_label",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6794a2effc49d",
+                            "label": "Text Color",
+                            "name": "text_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        },
+                        {
+                            "key": "field_6794a302fc49e",
+                            "label": "Background Color",
+                            "name": "background_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_6794aa90f2a77",
+                    "label": "Webinar Section CTA Styling",
+                    "name": "webinar_section_cta_styling",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6794aad0f2a78",
+                            "label": "CTA Button Text Color",
+                            "name": "cta_button_text_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        },
+                        {
+                            "key": "field_6794aaeef2a79",
+                            "label": "CTA Button BG color",
+                            "name": "cta_button_bg_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_6797231caf620",
+                    "label": "View All Reviews Button Styling",
+                    "name": "view_all_reviews_button_styling",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6797234baf621",
+                            "label": "Button BG Color",
+                            "name": "button_bg_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        },
+                        {
+                            "key": "field_67972362af622",
+                            "label": "Button Text Color",
+                            "name": "button_text_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_67973c019c065",
+                    "label": "Job Center CTA button Styling",
+                    "name": "job_center_cta_button_styling",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67973cd49c066",
+                            "label": "Button BG Color",
+                            "name": "button_bg_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        },
+                        {
+                            "key": "field_67973cf09c067",
+                            "label": "Button Text Color",
+                            "name": "button_text_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_679b70aab9e06",
+            "label": "Single Course Page Styling",
+            "name": "single_course_page_styling",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "Set styling for some of the single course page elements",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_679b70f0b9e08",
+                    "label": "Course Title Underline Color",
+                    "name": "course_title_underline_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 1,
+                    "return_format": "string"
+                },
+                {
+                    "key": "field_679b7f7131db9",
+                    "label": "Interactive Course Label Border Color",
+                    "name": "interactive_course_label_border_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 1,
+                    "return_format": "string"
+                },
+                {
+                    "key": "field_679cae6a899ae",
+                    "label": "Savings Label Color",
+                    "name": "savings_label_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 1,
+                    "return_format": "string"
+                },
+                {
+                    "key": "field_679cb14266412",
+                    "label": "Pay In Deposit Switcher Button Styling",
+                    "name": "pay_in_deposit_switcher_button_styling",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_679cb17c66413",
+                            "label": "Active BG Color",
+                            "name": "active_bg_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        },
+                        {
+                            "key": "field_679cb1ab66415",
+                            "label": "Active Text Color",
+                            "name": "active_text_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        },
+                        {
+                            "key": "field_679cb23166417",
+                            "label": "Inactive BG Color",
+                            "name": "inactive_bg_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        },
+                        {
+                            "key": "field_679cb24266418",
+                            "label": "Inactive Text Color",
+                            "name": "inactive_text_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_679cc7b0d0bbe",
+                    "label": "View All Reviews Button Styling",
+                    "name": "view_all_reviews_button_styling",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_679cc7b0d0bbf",
+                            "label": "Button BG Color",
+                            "name": "button_bg_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        },
+                        {
+                            "key": "field_679cc7b0d0bc0",
+                            "label": "Button Text Color",
+                            "name": "button_text_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string"
+                        }
+                    ]
                 }
             ]
         }
@@ -75,5 +525,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696685407
+    "modified": 1738328036
 }

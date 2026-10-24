@@ -1,0 +1,868 @@
+<?php
+/**
+* Template Name: Sale Page Template 2026
+*
+* @package WordPress
+* @subpackage Astra
+* @since 1.0.0
+*/
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+get_header(); ?>
+
+<!-- Hero Section -->
+
+<?php
+if( have_rows('hero_banner') ):
+    while( have_rows('hero_banner') ) : the_row();
+
+        $background_image_desktop = get_sub_field('background_image_desktop');
+        $background_image_mobile  = get_sub_field('background_image_mobile');
+
+        $banner_title        = get_sub_field('banner_title');
+        $banner_subtitle     = get_sub_field('banner_subtitle');
+        $banner_cta_buttons  = get_sub_field('banner_cta_buttons');
+        $hero_accreditation  = get_field('hero_accreditation','option');
+        $accreditation_logos = $hero_accreditation['accreditation_logos'];
+        $accreditation_text  = $hero_accreditation['accreditation_text'];
+
+        $timer_expiry = get_field('timer_expiry', 'option');
+
+        $course_ids = [ 3487, 13494, 8880, 8882 ];
+
+        $students_count = (!empty($course_ids) && function_exists('count_orders_with_products'))
+            ? count_orders_with_products($course_ids, 7)
+            : 0;
+
+        // total_enrollments = seat cap at this price; "left" = cap minus those enrolled.
+        $enrol_cap  = (int) get_sub_field('total_enrollments');
+        $enrol_left = max(0, $enrol_cap - $students_count);
+
+        $sale_end_label = '';
+        if ($timer_expiry && ($sale_ts = strtotime($timer_expiry))) {
+            $sale_end_label = date('d.m.y', $sale_ts);
+        }
+
+        $sale_ts      = false;
+        $timer_active = false;
+
+        if ( $timer_expiry ) {
+            try {
+                $sale_ts      = ( new DateTime( $timer_expiry, wp_timezone() ) )->getTimestamp();
+                $timer_active = ( $sale_ts > time() ); // both real UTC timestamps
+            } catch ( Exception $e ) {
+                $timer_active = false;
+            }
+        }
+
+        $sale_end_label = $timer_active ? date( 'd.m.y', $sale_ts ) : '';
+
+        $gifts_cta          = get_sub_field('gifts_section_cta');
+        $show_banner_footer = get_sub_field('show_banner_footer'); 
+        $banner_footer = get_sub_field('banner_footer');
+    ?>
+
+    <section class="hero-wrappper">
+        <div class="hero-banner" style="--desktop-bg: url('<?php echo $background_image_desktop; ?>');--mobile-bg: url('<?php echo $background_image_mobile; ?>');
+            background-image: var(--desktop-bg),
+                radial-gradient(circle at 88% 35%, rgba(235, 223, 201, 0.6) 0%, rgba(235, 223, 201, 0) 60%),
+                linear-gradient(105deg, #f9f8f7 0%, #f3ede1 55%, #ebdfc9 100%);">
+            <div class="hero-banner-container">
+                <div class="ast-container">
+                    <div class="hero-banner-content">
+                        <div class="hero-banner-text">
+                            <?php if( $banner_title ): ?>
+                                <h1 class="hero-banner-title"><?php echo $banner_title; ?></h1>
+                            <?php endif; ?>
+
+                            <?php if( $banner_subtitle ): ?>
+                                <p class="hero-banner-summary"><?php echo $banner_subtitle; ?></p>
+                            <?php endif; ?>
+
+                            <?php if( $banner_cta_buttons ): ?>
+                                <div class="hero-banner-buttons">
+                                    <?php foreach( $banner_cta_buttons as $button ): 
+                                        $button_type          = $button['button_type'];
+                                        $button_text          = $button['button_text'];
+                                        $button_link          = $button['button_link'];
+                                        $button_icon          = $button['button_icon'];
+                                    ?>
+                                        <a href="<?php echo esc_url($button_link); ?>" class="hero-banner-button btn-<?php echo esc_attr($button_type); ?>">
+                                            <?php echo $button_text; ?>
+                                            <?php if( $button_icon ): ?>
+                                                <img src="<?php echo esc_url($button_icon); ?>" alt="" class="button-icon">
+                                            <?php endif; ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <?php // accreditation logo image is hardcoded below; always render ?>
+                        <?php if( true ): ?>
+                            <div class="hero-banner-accreditation">
+                                <div class="accreditation-text d-none">
+                                    <span>Accredited, approved and regulated by</span>
+                                </div>
+                                <div class="accreditation-logos">
+                                    <img src="/wp-content/uploads/2026/09/accreditation_logos_green.webp" alt="">
+                                </div>
+                                <?php
+                                    if(!empty($accreditation_text)):
+                                ?>
+                                <div class="accreditation-text-bottom d-none">
+                                    <?php echo $accreditation_text; ?>
+                                </div>
+                                <?php
+                                    endif;
+                                ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($timer_active): ?>
+                        <div class="hero-offer-bar">
+                            <div class="hero-offer-text">
+                                <p class="offer-deadline"><?php $dl = get_sub_field('offer_deadline_prefix'); echo esc_html(trim((($dl !== '' && $dl !== null) ? $dl : 'Limited Time Offer. Sale ends') . ' ' . $sale_end_label)); ?></p>
+
+                                <?php if ($students_count > 0): ?>
+                                    <p class="offer-enrolled"><?php $et = get_sub_field('offer_enrolled_text'); echo esc_html($students_count . ' ' . (($et !== '' && $et !== null) ? $et : 'students enrolled in the last 7 days.')); ?></p>
+                                <?php endif; ?>
+
+                                <?php if ($enrol_left > 0): ?>
+                                    <p class="offer-remaining"><?php $rt = get_sub_field('offer_remaining_text'); echo esc_html($enrol_left . ' ' . (($rt !== '' && $rt !== null) ? $rt : 'enrollments left at this price!')); ?></p>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="hero-offer-timer">
+                                <?php echo do_shortcode('[tefl_timer_shortcode]'); ?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if( !empty($gifts_cta) && ( !empty($gifts_cta['title']) || !empty($gifts_cta['icon']) ) ):
+                            $g_icon     = $gifts_cta['icon'];
+                            $g_title    = $gifts_cta['title'];
+                            $g_text     = !empty($gifts_cta['cta_text']) ? $gifts_cta['cta_text'] : 'View Now';
+                            $g_link     = $gifts_cta['cta_link'];
+                        ?>
+                        <div class="hero-gift-cta">
+                            <div class="hero-gift-cta__content">
+                                <?php if( $g_icon ): ?>
+                                    <div class="hero-gift-cta__icon">
+                                        <img src="<?php echo esc_url($g_icon); ?>" alt="">
+                                    </div>
+                                    <span class="hero-gift-cta__divider"></span>
+                                <?php endif; ?>
+
+                                <div class="hero-gift-cta__text">
+                                    <?php if( $g_title ): ?>
+                                        <p class="hero-gift-cta__label"><?php echo $g_title; ?></p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <?php if( $g_link ): ?>
+                                <a href="<?php echo esc_url($g_link); ?>" class="hero-gift-cta__link">
+                                    <?php echo esc_html($g_text); ?>
+                                    <span class="hero-gift-cta__arrow">›</span>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+            if(!empty($banner_footer) && $show_banner_footer):
+                $icon = $banner_footer['icon'];
+                $title = $banner_footer['title'];
+                $subtitle = $banner_footer['subtitle'];
+                $link = $banner_footer['link'];
+        ?>
+            <div class="banner-footer">
+                <div class="ast-container">
+                    <div class="banner-footer-content">
+                        <div class="banner-footer-content__icon">
+                            <img src="<?php echo $icon;?>" alt="">
+                        </div>
+                        <div class="banner-footer-content__title">
+                            <h2><?php echo $title; ?></h2>
+                        </div>
+                        <div class="banner-footer-content__subtitle">
+                            <?php echo $subtitle; ?>
+                        </div>
+                        <div class="banner-footer-content__link">
+                            <a href="<?php echo $link; ?>">
+                                <img src="/wp-content/uploads/2024/06/next-arrow.svg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+            endif
+        ?>
+    </section>
+    <?php
+        endwhile;
+
+endif;
+?>
+
+<!-- /Hero Section -->
+<!-- Course overview section -->
+<?php
+$courses_cta_section = get_field('courses_cta_section');
+ if ($courses_cta_section):
+    $section_title = $courses_cta_section['section_title'];
+    $courses       = $courses_cta_section['courses'];
+?>
+    <section id="coursesOverview" class="courses-cta-section custom-slider">
+        <div class="ast-container">
+            <h2 class="section-title">
+                <?php echo $section_title; ?>
+            </h2>
+
+            <div class="courses-cta-section__container slider-container">
+                <?php
+                $course_themes = array('coral', 'cream', 'teal');
+                $theme_index   = 0;
+
+                foreach ($courses as $key => $course):
+                    $course_pid = $course['course_product'];
+                    $course_product_obj = wc_get_product($course_pid);
+                    if (!$course_product_obj) {
+                        continue;
+                    }
+
+                    // pick theme by loop position, wrapping around the array
+                    $course_theme = $course_themes[$theme_index % count($course_themes)];
+                    $theme_index++;
+
+                    $course_card_bg     = $course['course_card_bg'];
+                    $employer_badge     = $course['employer_badge'];
+                    $course_title       = $course['course_title'];
+                    $course_subtitle    = $course['course_summary'];               
+                    $course_best_for    = $course['best_for'];
+                    $course_features    = $course['course_features'];
+
+                    $course_price_html  = $course_product_obj->get_price_html();
+                    $full_price         = $course_product_obj->get_price();
+                    $installment_price  = geo_price($full_price / 3);
+
+                    $simple_regular_price = $course_product_obj->get_regular_price();
+                    $simple_sale_price    = $course_product_obj->get_sale_price();
+                    $save_percentage = 0;
+                    if (is_numeric($simple_regular_price) && is_numeric($simple_sale_price) && $simple_regular_price != 0) {
+                        $save_percentage = round((($simple_regular_price - $simple_sale_price) / $simple_regular_price) * 100);
+                    }
+                ?>
+                    <div class="course-card course-card--<?php echo esc_attr($course_theme); ?> slider-mobile slider-item">
+
+                        <div class="course-card__main" style="background:url('<?php echo esc_url($course_card_bg); ?>')">
+
+                            <?php if ($save_percentage > 0): ?>
+                                <span class="course-discount-badge">
+                                    <svg class="course-discount-badge__bg" viewBox="0 0 100 100" aria-hidden="true">
+                                        <g fill="currentColor">
+                                            <circle cx="50" cy="50" r="32"/>
+                                            <circle cx="80.00" cy="50.00" r="18"/>
+                                            <circle cx="71.21" cy="71.21" r="18"/>
+                                            <circle cx="50.00" cy="80.00" r="18"/>
+                                            <circle cx="28.79" cy="71.21" r="18"/>
+                                            <circle cx="20.00" cy="50.00" r="18"/>
+                                            <circle cx="28.79" cy="28.79" r="18"/>
+                                            <circle cx="50.00" cy="20.00" r="18"/>
+                                            <circle cx="71.21" cy="28.79" r="18"/>
+                                        </g>
+                                    </svg>
+                                    <span class="course-discount-badge__text">
+                                        <?php echo esc_html($save_percentage); ?>%<small>Off</small>
+                                    </span>
+                                </span>
+                            <?php endif; ?>
+
+                            <?php if (!empty($employer_badge)): ?>
+                                <span class="course-employer-badge">
+                                    <img src="<?php echo esc_url($employer_badge); ?>" alt="Employer's Choice">
+                                </span>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="course-card__body">
+
+                            <h3 class="course-title"><?php echo esc_html($course_title); ?></h3>
+
+                            <div class="course-summary"><?php echo wp_kses_post($course_subtitle); ?></div>
+
+                            <?php if (!empty($course_best_for)): ?>
+                                <p class="course-best-for"><span class="course-best-for__label">Best For</span><?php echo esc_html($course_best_for); ?></p>
+                            <?php endif; ?>
+
+                            <div class="course-price-row">
+                                <div class="course-price"><?php echo $course_price_html; ?></div>
+                            </div>
+
+                            <?php
+                            $current_cc = get_user_geo_country_code();
+                            $klarna_enabled_cc = array('AT', 'BE', 'CZ', 'DK', 'FI', 'FR', 'DE', 'GR', 'IE', 'IT', 'NL', 'NO', 'PL', 'PT', 'SE', 'CH', 'GB');
+                            if (true): // Klarna shown for all locations 
+                            // if(true):
+                            ?>
+                                <p class="course-klarna" data-cc="<?php echo esc_attr($current_cc); ?>">
+                                    <?php echo 'or from ' . $installment_price . '/month with'; ?>
+                                    <img src="/wp-content/uploads/2023/07/Klarna-logotype-black.svg_.svg" alt="Klarna">
+                                </p>
+                            <?php endif; ?>
+
+                            <?php
+                                $course_url = get_permalink($course_pid);
+                                // "300 Hour" courses: both buttons go to the course page (no add-to-cart).
+                                $is_300hr = (stripos($course_title, '300') !== false)
+                                    || (stripos($course_product_obj->get_name(), '300') !== false);
+                                $enrol_url = $is_300hr ? $course_url : $course_product_obj->add_to_cart_url();
+                            ?>
+                            <div class="course-buttons">
+                                <a href="<?php echo esc_url($enrol_url); ?>" class="course-btn btn-primary<?php echo $is_300hr ? '' : ' add_to_cart_button ajax_add_to_cart'; ?>"<?php echo $is_300hr ? '' : ' data-product_id="' . esc_attr($course_pid) . '" data-quantity="1" rel="nofollow"'; ?>>
+                                    Enrol Now
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                </a>
+                                <a href="<?php echo esc_url($course_url); ?>" class="course-btn btn-tertiary">
+                                    Learn More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                                </a>
+                                <?php
+                                    $dg        = $course['download_guide'];
+                                    $dg_text   = is_array($dg) ? ($dg['text'] ?? '') : '';
+                                    $dg_link   = is_array($dg) ? ($dg['link'] ?? '') : '';
+                                    $dg_url    = is_array($dg_link) ? ($dg_link['url'] ?? '') : $dg_link;
+                                    $dg_target = is_array($dg_link) ? ($dg_link['target'] ?? '') : '';
+                                    $dg_icon   = is_array($dg) ? ($dg['image'] ?? '') : '';
+                                    if ($dg_url):
+                                ?>
+                                    <a href="<?php echo esc_url($dg_url); ?>" class="course-btn btn-secondary"<?php echo $dg_target ? ' target="' . esc_attr($dg_target) . '"' : ''; ?>>
+                                        <?php echo esc_html($dg_text); ?>
+                                        <?php if ($dg_icon): ?>
+                                            <img src="<?php echo esc_url($dg_icon); ?>" alt="" class="button-icon">
+                                        <?php else: ?>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                                        <?php endif; ?>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+
+                            <?php if (!empty($course_features)):
+                                $feat_lines = array_values(array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', $course_features)), function ($f) { return $f !== ''; }));
+                                $feat_total = count($feat_lines);
+                            ?>
+                                <div class="course-features">
+                                    <ul>
+                                        <?php foreach ($feat_lines as $fi => $feat): ?>
+                                            <li<?php echo $fi >= 3 ? ' class="course-feature--extra"' : ''; ?>><?php echo esc_html($feat); ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    <?php if ($feat_total > 3): ?>
+                                        <button type="button" class="course-readmore-link course-features-toggle" aria-expanded="false">Read More</button>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="course-slider-nav slider-nav" style="display: none;">
+                <button type="button" class="slider-nav-btn slider-prev" aria-label="Previous courses">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="slider-nav-btn slider-next" aria-label="Next courses">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+
+            <div class="cta-container">
+                <a href="/tefl-courses-ireland/" class="view-all-courses-btn teflie-btn btn-primary">
+                    Compare All Courses
+                </a>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+
+<!-- Course overview section -->
+
+<!-- Bundel Section -->
+
+<?php
+$course_bundle = get_field('course_bundle_section');              
+
+if ($course_bundle):
+    $bundle_title = $course_bundle['section_title'];
+    $bundle_worth = $course_bundle['bundle_worth'];
+    $bundle = $course_bundle['bundle'];
+?>
+    <section id="courseBundle" class="course-bundle-section">
+        <div class="ast-container">
+            <div class="bundle-inner">
+
+                <div class="bundle-gift">
+                    <img src="/wp-content/uploads/2026/10/gift-icon.png" alt="">
+                </div>
+
+                <div class="bundle-main">
+                    <div class="bundle-top">
+                        <?php if ($bundle_title): ?>
+                            <div class="bundle-pill"><?php echo esc_html($bundle_title); ?></div>
+                        <?php endif; ?>
+
+                        <?php if ($bundle_worth): ?>
+                            <div class="bundle-seal-wrap">
+                                <img class="bundle-arrow" src="/wp-content/uploads/2026/09/orange-arrow-icon.webp" alt="">
+                                <span class="bundle-seal">
+                                    <svg class="bundle-seal__bg" viewBox="0 0 100 100" aria-hidden="true">
+                                        <g fill="currentColor">
+                                            <circle cx="50" cy="50" r="32"/>
+                                            <circle cx="80.00" cy="50.00" r="18"/>
+                                            <circle cx="71.21" cy="71.21" r="18"/>
+                                            <circle cx="50.00" cy="80.00" r="18"/>
+                                            <circle cx="28.79" cy="71.21" r="18"/>
+                                            <circle cx="20.00" cy="50.00" r="18"/>
+                                            <circle cx="28.79" cy="28.79" r="18"/>
+                                            <circle cx="50.00" cy="20.00" r="18"/>
+                                            <circle cx="71.21" cy="28.79" r="18"/>
+                                        </g>
+                                    </svg>
+                                    <span class="bundle-seal__text">
+                                        <small>Worth</small><?php echo esc_html($bundle_worth); ?>
+                                    </span>
+                                </span>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php
+                        $bundle = array_chunk($bundle, 5);
+                    ?>
+                    <div class="bundle-list">
+                        <?php foreach ($bundle as $row): ?>
+                            <div class="bundle-row">
+                                <?php $bi = 0; foreach ($row as $item): ?>
+                                    <?php if (!empty($item['course_title'])): ?>
+                                        <?php if ($bi > 0): ?><span class="bundle-plus">+</span><?php endif; ?>
+                                        <span class="bundle-item"><?php echo $item['course_title']; ?></span>
+                                        <?php $bi++; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+<!-- Bundel Section -->
+<!-- Why us section -->
+
+<?php
+$why_us = get_field('why_us_section');
+if ($why_us):
+    $why_image   = $why_us['section_image'];
+    $why_title   = $why_us['section_title'];
+    $why_summary = $why_us['section_summary'];
+    $why_features = $why_us['features'];
+?>
+    <section id="whyUs" class="why-us-section">
+        <div class="ast-container">
+            <div class="why-us-inner">
+
+                <div class="why-us-media">
+                    <span class="why-us-shape why-us-shape--top" aria-hidden="true">
+                        <img src="/wp-content/uploads/2026/09/beige_line_animation.webp" alt="">
+                    </span>
+                    <span class="why-us-shape why-us-shape--bottom" aria-hidden="true">
+                        <img src="/wp-content/uploads/2026/09/green_line_animation.webp" alt="">
+                    </span>
+                    <?php if ($why_image): ?>
+                        <div class="why-us-image">
+                            <img class="no-lazy" src="<?php echo esc_url($why_image); ?>" alt="<?php echo esc_attr($why_title); ?>">
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <div class="why-us-content">
+                    <?php if ($why_title): ?>
+                        <h2 class="why-us-title"><?php echo esc_html($why_title); ?></h2>
+                    <?php endif; ?>
+
+                    <?php if ($why_summary): ?>
+                        <div class="why-us-summary"><?php echo wp_kses_post($why_summary); ?></div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($why_features)): ?>
+                        <ul class="why-us-features">
+                            <?php foreach ($why_features as $feature): ?>
+                                <li class="why-us-feature">
+                                    <?php if (!empty($feature['icon'])): ?>
+                                        <span class="why-us-feature__icon">
+                                            <img src="<?php echo esc_url($feature['icon']); ?>" alt="">
+                                        </span>
+                                    <?php endif; ?>
+                                    <span class="why-us-feature__title"><?php echo esc_html($feature['title']); ?></span>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+<!-- /Why us section -->
+<!-- Cta card section -->
+
+<?php
+$cta_cards = get_field('cta_cards_section');
+if (!empty($cta_cards)):
+    $cta_themes = array('teal', 'cream', 'mint');
+?>
+    <section id="ctaCards" class="cta-cards-section">
+        <div class="ast-container">
+            <div class="cta-cards-grid">
+                <?php foreach ($cta_cards as $cta_i => $row):
+                    $card = isset($row['card']) ? $row['card'] : null;
+                    if (!is_array($card)) { continue; }
+
+                    $c_image = isset($card['image'])       ? $card['image']       : '';
+                    $c_desc  = isset($card['description'])  ? $card['description']  : '';
+                    $c_label = isset($card['label']) ? $card['label'] : '';
+                    $c_text  = isset($card['cta_text'])     ? $card['cta_text']     : '';
+                    $c_link  = isset($card['cta_link'])     ? $card['cta_link']     : '';
+
+                    $c_url    = is_array($c_link) ? (isset($c_link['url'])    ? $c_link['url']    : '') : $c_link;
+                    $c_target = is_array($c_link) ? (isset($c_link['target']) ? $c_link['target'] : '') : '';
+
+                    $theme = $cta_themes[$cta_i % count($cta_themes)];
+                ?>
+                    <div class="cta-card cta-card--<?php echo esc_attr($theme); ?>">
+
+                        <?php if ($c_label): ?>
+                            <span class="cta-card__label"><?php echo esc_html($c_label); ?></span>
+                        <?php endif; ?>
+
+                        <?php if ($c_image): ?>
+                            <div class="cta-card__image">
+                                <img src="<?php echo esc_url($c_image); ?>" alt="<?php echo esc_attr($c_label); ?>">
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="cta-card__body">
+                            <?php if ($c_desc): ?>
+                                <p class="cta-card__desc"><?php echo nl2br(esc_html($c_desc)); ?></p>
+                            <?php endif; ?>
+
+                            <?php if ($c_url && $c_text): ?>
+                                <a class="cta-card__btn" href="<?php echo esc_url($c_url); ?>"<?php echo $c_target ? ' target="' . esc_attr($c_target) . '"' : ''; ?>>
+                                    <?php echo esc_html($c_text); ?>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M5 12h14M13 6l6 6-6 6"/>
+                                    </svg>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+<!-- Cta card section -->
+
+<!-- Review Section -->
+<?php
+$verified_reviews   = get_field('reviews', 'options');
+$reviews_section    = get_field('reviews_section', 'options');
+$reviews            = get_field('review_section');
+$google_reviews     = $reviews['google_reviews'] ?? null;
+$trustpilot_reviews = $reviews['trustpilot_reviews'] ?? null;
+
+$section_title   = $reviews['section_title'] ?? '';
+$section_summary = $reviews['section_summary'] ?? '';
+
+$google_link = 'https://www.google.com/search?sca_esv=8d785069c21da656&sca_upv=1&hl=en-IE&gl=ie&q=The+TEFL+Institute+Ireland+%7C+TEFL+Courses+%26+Certification,+13+Adelaide+Rd,+Saint+Kevin%27s,+Dublin,+D02+P950&uds=ADvngMhDJElofzFqOx8yLCqxrZBfORdohN-zZWd2DtE2wkfY_Hz8LxAbxWyTqbQXp_hpoUOW2uxhpWyrB1IL2IpdWcWiPs5S-vGBywcJzrO9PJe_HdF91Ppndo2Knjst1hsy0DuQ_1Yy71pyrotGeYeqK9tgwKhS1Dz3nAO5HG6XIft-vP8sUXZPMIt75-GkZH8kdUstEDG07k_uQg6GZSA3HkqfKbTCnzBS1_wxYJkYsxPWWzYHd35xJVCoLbwXmLTFBoT-lFXh&si=ACC90nwjPmqJHrCEt6ewASzksVFQDX8zco_7MgBaIawvaF4-7mSRR1kRGE4hCmZtLOUumbi46V_tOIxRTOEjel4eIAxPbsZAzQfZDyayafoOPMus5kIWjD0%3D&sa=X&ved=2ahUKEwixoZaa4Z6HAxUHYEEAHXfKDf8Q3PALegQIGxAE&biw=1536&bih=745&dpr=2'; // your existing long Google URL
+$tp_link     = 'https://uk.trustpilot.com/review/tefl.ie';
+?>
+<section id="verified_reviews_section" class="ptb-60">
+    <div class="ast-container">
+        <div class="reviews-layout">
+
+            <div class="reviews-intro">
+                <h2 class="section-title"><?php echo $section_title; ?></h2>
+                <div class="section-summary"><?php echo $section_summary; ?></div>
+
+                <?php if ( $google_reviews ) : ?>
+                <div class="rating-row">
+                    <div class="rating-row__main">
+                        <span class="rating-row__star">★</span>
+                        <span class="rating-row__score"><?php echo esc_html($google_reviews['reviews_rating']); ?></span>
+                        <img class="rating-row__logo" src="/wp-content/uploads/2026/09/google-logo.svg" alt="Google">
+                        <span class="rating-row__brand">Rating</span>
+                    </div>
+                    <div class="rating-row__sub">
+                        Based on <b><?php echo esc_html($google_reviews['reviews_count']); ?></b> Reviews.
+                        <a href="<?php echo esc_url($google_link); ?>" target="_blank" rel="noopener noreferrer">See All Reviews</a>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <?php if ( $trustpilot_reviews ) : ?>
+                <div class="rating-row rating-row--trustpilot">
+                    <div class="rating-row__main">
+                        <span class="rating-row__star rating-row__star--tp">★</span>
+                        <span class="rating-row__score"><?php echo esc_html($trustpilot_reviews['reviews_rating']); ?></span>
+                        <?php if ( ! empty($trustpilot_reviews['reviews_icon']) ) : ?>
+                            <img class="rating-row__logo" src="<?php echo esc_url($trustpilot_reviews['reviews_icon']); ?>" alt="Trustpilot">
+                        <?php endif; ?>
+                        <span class="rating-row__brand">Rating</span>
+                    </div>
+                    <div class="rating-row__sub">
+                        Based on <b><?php echo esc_html($trustpilot_reviews['reviews_count']); ?></b> Reviews. <a href="<?php echo esc_url($tp_link); ?>" target="_blank" rel="noopener noreferrer">See All Reviews</a>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+            </div>
+
+            <div class="reviews-collage business-reviews-slider">
+                <?php echo do_shortcode('[brb_collection id="108607"]'); ?>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- /Review Section -->
+
+<!-- Feature section -->
+<?php
+
+$feature_and_benefits_section = get_field('feature_and_benefits_section') ?? null;
+
+if($feature_and_benefits_section):
+    $features = $feature_and_benefits_section['features'];
+?>
+    <section class="feature-benefits-section">
+        <div class="ast-container">
+            <div class="feature-benefits-section__row">
+                <?php
+                    foreach($features as $feature):
+                        $feature_icon = $feature['feature_icon'];
+                        $feature_title = $feature['feature_title'];
+                ?>
+                <div class="feature-benefit-card">
+                    <div class="feature-benefit-card__icon">
+                        <img src="<?php echo $feature_icon; ?>" alt="">
+                    </div>
+                    <div class="feature-benefit-card__title">
+                        <?php echo $feature_title; ?>
+                    </div>
+                </div>
+                <?php
+                    endforeach;
+                ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+<!-- /Feature section -->
+
+<!-- Instagram Reel section -->
+<?php 
+    $instagram_reel_section = get_field('instagram_reel_section');
+    $title                  = $instagram_reel_section['social_title'];
+    $social_bold_text       = $instagram_reel_section['social_bold_text'];
+    $instagram_reel_content       = $instagram_reel_section['instagram_reel_content'];
+    $social_cta             = $instagram_reel_section['social_cta'];
+    if($social_cta){
+        $social_cta_link         = $social_cta['cta_link'];
+        $social_cta_text       = $social_cta['cta_text'];
+    }
+?>
+<section id="social_media_reels">
+    <div>
+        <div class="ast-container">
+            <div class="width-md text-center">
+                <h3 class="section-title">
+                    <?php echo $title; ?>
+                </h3>
+                <p class="instagram-subtitle"><?= $social_bold_text ?></p>
+            </div>
+        </div>
+        <?php if ($instagram_reel_section): ?>
+            <div class="ast-container social-reels-container">
+                <div class="splide instagram-reels-slider" id="general-slider">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <?php foreach ($instagram_reel_content as $reel): ?>
+                                <li class="splide__slide">
+                                    <a class="reel-card" href="<?php echo esc_url($reel['reel_video']); ?>" data-lity>
+                                        <img src="<?php echo esc_url($reel['thumnail_image']); ?>" alt="Instagram Reel">
+                                        <a target="_blank" href="<?php echo esc_url($reel['reel_video_link']); ?>" class="reel-play-link">follow on insta</a>
+                                        <a href="<?php echo esc_url($reel['reel_video']); ?>" data-lity>
+                                            <span class="reel-play-overlay"></span>
+                                        </a>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="splide__arrows reels-slider__arrows">
+                        <button class="splide__arrow splide__arrow--prev reels-slider__arrow reels-slider__arrow--prev">
+                            <img src="/wp-content/uploads/2026/09/slider-arrow-right.svg" alt="Previous">
+                        </button>
+                        <button class="splide__arrow splide__arrow--next internships-slider__arrow reels-slider__arrow--next">
+                            <img src="/wp-content/uploads/2026/09/slider-arrow-right.svg" alt="Next">
+                        </button>
+                    </div>
+                </div>
+
+                <img class="reels-ribbon" src="/wp-content/uploads/2026/10/wave-text.gif" alt="" aria-hidden="true">
+            </div>
+            <div style="text-align: center;">
+                <a href="<?php echo esc_url($social_cta_link); ?>" target="_blank" class="view-instagram-btn teflie-btn btn-secondary">
+                    <img src="/wp-content/uploads/2026/09/Instagram-1.svg" alt="">
+                    <?php echo esc_html($social_cta_text); ?>
+                    <img src="/wp-content/uploads/2026/09/Vector-23.svg" alt="">
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
+<!-- Instagram Reel section -->
+
+<!-- Student Stories section -->
+<?php
+$student_stories_section = get_field('student_stories_section');
+if ($student_stories_section):
+    $ss_title   = $student_stories_section['section_title'];
+    $ss_summary = $student_stories_section['section_summary'];
+    $ss_bg      = $student_stories_section['section_bg_image'];
+    $ss_stories = $student_stories_section['stories'];
+?>
+    <section class="student-stories-section">
+        <div class="ast-container">
+            <div class="student-stories-section__row"<?php echo $ss_bg ? ' style="background:url(\'' . esc_url($ss_bg) . '\')"' : ''; ?>>
+                <div class="student-stories-section__row--header">
+                    <?php if ($ss_title): ?><h2 class="section-title"><?php echo esc_html($ss_title); ?></h2><?php endif; ?>
+                    <?php if ($ss_summary): ?><p class="section-summary"><?php echo esc_html($ss_summary); ?></p><?php endif; ?>
+                </div>
+                <?php if (!empty($ss_stories)): ?>
+                <div class="student-stories-section__row--content">
+                    <?php foreach ($ss_stories as $key => $story): ?>
+                        <div class="story-card <?php echo $key === 2 ? 'active' : ''; ?>">
+                            <div class="story-card-image">
+                                <?php if (!empty($story['student_image'])): ?><img src="<?php echo esc_url($story['student_image']); ?>" alt=""><?php endif; ?>
+                                <?php if (!empty($story['country_flag_image'])): ?><img class="flag-img" src="<?php echo esc_url($story['country_flag_image']); ?>" alt=""><?php endif; ?>
+                            </div>
+                            <div class="story-card-content">
+                                <?php if (!empty($story['label_text'])): ?><span class="story-card__label"><?php echo esc_html($story['label_text']); ?></span><?php endif; ?>
+                                <div class="story-card__title"><?php echo esc_html($story['story_title']); ?></div>
+                                <div class="story-card__summary"><?php echo wp_kses_post($story['story_summary']); ?></div>
+                                <?php if (!empty($story['story_link'])): ?>
+                                <a href="<?php echo esc_url($story['story_link']); ?>" class="teflie-btn btn-glass">
+                                    <span>Read Full Story</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
+            </div>
+            <div class="student-stories-nav">
+                <button type="button" class="nav-arrow nav-prev" aria-label="Previous story">
+                    <img class="splide__arrow-icon" src="/wp-content/uploads/2026/09/slider-arrow-right.svg" alt="">
+                </button>
+                <a class="view-all-stories" href="/tefl-case-studies/">
+                    <span>View All Stories</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <button type="button" class="nav-arrow nav-next" aria-label="Next story">
+                    <img class="splide__arrow-icon" src="/wp-content/uploads/2026/09/slider-arrow-right.svg" alt="">
+                </button>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+<!-- /Student Stories section -->
+
+<!-- Journey CTA section -->
+<?php
+$cta_banner  = get_field('cta_banner');
+$cta_buttons = get_field('cta_buttons');
+
+if ($cta_banner || !empty($cta_buttons)):
+    $jcta_title    = $cta_banner['banner_title'] ?? '';
+    $jcta_btn_text = $cta_banner['cta_text'] ?? '';
+    $jcta_btn_link = $cta_banner['cta_link'] ?? '';
+?>
+    <section id="journeyCta" class="journey-cta-section">
+        <div class="ast-container">
+
+            <?php if ($cta_banner && ($jcta_title || $jcta_btn_text)): ?>
+                <div class="journey-cta-banner">
+                    <?php if ($jcta_title): ?>
+                        <h2 class="journey-cta-banner__title"><?php echo esc_html($jcta_title); ?></h2>
+                    <?php endif; ?>
+
+                    <?php if ($jcta_btn_text && $jcta_btn_link): ?>
+                        <a class="journey-cta-banner__btn" href="<?php echo esc_url($jcta_btn_link); ?>">
+                            <?php echo esc_html($jcta_btn_text); ?>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($cta_buttons)): ?>
+                <div class="journey-cta-links">
+                    <?php foreach ($cta_buttons as $btn):
+                        $b_title  = $btn['title'] ?? '';
+                        $b_icon   = $btn['icon'] ?? '';
+                        $b_link   = $btn['link'] ?? array();
+                        $b_url    = is_array($b_link) ? ($b_link['url'] ?? '') : $b_link;
+                        $b_target = is_array($b_link) ? ($b_link['target'] ?? '') : '';
+                        if (!$b_url && !$b_title) { continue; }
+                    ?>
+                        <a class="journey-cta-link" href="<?php echo esc_url($b_url); ?>"<?php echo $b_target ? ' target="' . esc_attr($b_target) . '"' : ''; ?>>
+                            <?php if ($b_icon): ?>
+                                <span class="journey-cta-link__icon">
+                                    <img src="<?php echo esc_url($b_icon); ?>" alt="">
+                                </span>
+                            <?php endif; ?>
+                            <span class="journey-cta-link__title"><?php echo esc_html($b_title); ?></span>
+                            <span class="journey-cta-link__arrow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                                </svg>
+                            </span>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+        </div>
+    </section>
+<?php endif; ?>
+<!-- /Journey CTA section -->
+
+<?php get_footer(); ?>

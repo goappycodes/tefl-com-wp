@@ -21,9 +21,20 @@
 
 
 
-add_action('astra_masthead_toggle_buttons_before', 'ti_mobile_header_insert_cart_btn_fn');
 
-function ti_mobile_header_insert_cart_btn_fn(){
-    //echo do_shortcode('[custom-techno-mini-cart]');
-    echo '<div class="mobile-cart-btn-div"><a href="/cart"><img src="https://teflinstitute.com/wp-content/uploads/2021/12/cart-1.png"></a></div>';
+add_action('astra_masthead_toggle_buttons_before', 'ti_mobile_header_insert_cart_whatsapp_btn_fn');
+
+function ti_mobile_header_insert_cart_whatsapp_btn_fn(){
+    ob_start();
+    ?>
+    <div class="mobile-cart-whatsapp-btn-div">
+        <a href="https://wa.me/353831181694" class="mobile-whatsapp-btn d-none" target="_blank">
+            <img src="/wp-content/uploads/2025/03/whatsapp-svgrepo-com.svg" alt="WhatsApp Chat">
+        </a>
+        <a href="/cart" class="mobile-cart-btn">
+            <img src="https://teflinstitute.com/wp-content/uploads/2021/12/cart-1.png" alt="Cart">
+        </a>
+    </div>
+    <?php
+    echo ob_get_clean();
 }

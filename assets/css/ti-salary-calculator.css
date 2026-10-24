@@ -1,284 +1,243 @@
-.get-started-text {
-    margin-bottom: 0px !important;
+.salary-calculator-form {
+    max-width: 720px;
+    margin: 30px auto !important;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(40, 80, 160, .09), 0 1.5px 6px rgba(40, 80, 160, .04);
+    padding: 40px 30px 24px;
+    color: #23283a;
 }
 
-.salary-calc-row {
-    padding: 70px 0;
+/* Info text intro block */
+.salary-calculator-form .info-text {
+    border-bottom: 1.5px solid #ececec;
+}
+
+.salary-calculator-form h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 7px;
+    color: #030d36;
+    letter-spacing: -.01em;
+}
+
+.salary-calculator-form label {
+    font-weight: 600;
+    display: block;
+    margin: 22px 0 6px;
+    font-size: 1.08em;
+    letter-spacing: 0;
+}
+
+/* Name row styling */
+.salary-calculator-form .fname-lname-div {
     display: flex;
-    align-items: center;
+    gap: 14px;
 }
 
-.info-text {
-    margin-bottom: 0px !important;
+.salary-calculator-form .fname-lname-div input {
+    flex: 1 1 0px;
 }
 
-.button {
-    color: #fff !important;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.3rem;
-    margin-top: 20px !important;
-    display: inline-block;
-}
-
-.name-div,
-.email-div,
-.phone-div,
-.tefl-qualification-div,
-.tefl-loe-div,
-.tefl-passport-div,
-.tefl-experience-div,
-.final-submit-div,
-.name-ok-btn,
-.email-ok-btn,
-.phone-ok-btn {
-    display: none;
-}
-
-.wpcf7-radio span.wpcf7-list-item {
-    display: flex;
-    margin-left: 0px;
-    margin-bottom: 10px;
-    border: 2px solid !important;
-    border-radius: 3px;
-    cursor: pointer !important;
-}
-
-.wpcf7-radio span.wpcf7-list-item label {
-    margin-bottom: 0px;
-    cursor: pointer !important;
-    padding: 7px;
+/* Inputs */
+.salary-calculator-form input[type="text"],
+.salary-calculator-form input[type="email"],
+.salary-calculator-form input[type="tel"] {
+    font-size: 1em;
+    border: 1.5px solid #d7e1fa;
+    border-radius: 7px;
+    background: #f7faff;
+    color: #23283a;
+    padding: 12px 14px;
     width: 100%;
+    transition: border-color 0.18s;
 }
 
-/*.tefl-qualification span.wpcf7-list-item {
-    width: 30%;
-}*/
-
-
-.wpcf7-radio span.wpcf7-list-item label::before {
-    background-color: #000;
-    color: #fff;
-    padding: 5px 8px;
-    line-height: 1em;
-    margin-right: 5px;
+.salary-calculator-form input[type="text"]:focus,
+.salary-calculator-form input[type="email"]:focus,
+.salary-calculator-form input[type="tel"]:focus {
+    border-color: #030d36;
+    outline: none;
 }
 
-.wpcf7-radio span.wpcf7-list-item.first label::before {
-    content: 'A';
-}
-
-.wpcf7-radio span.wpcf7-list-item:nth-child(2) label::before {
-    content: 'B';
-}
-
-.wpcf7-radio span.wpcf7-list-item.last label::before {
-    content: 'C';
-}
-
-.wpcf7 input[type=radio] {
-    border-radius: 0px !important;
-    font-size: 0;
-}
-
-.wpcf7 input[type=radio]:checked::after {
-    content: "\f00c";
-    font-family: 'FontAwesome';
-    font-size: 25px !important;
-    margin-left: 15px;
-    color: #fff;
-}
-
-.wpcf7-response-output {
-    font-size: 20px !important;
-    border: none !important;
-    text-align: center;
-}
-
-
-form.wpcf7-form.init {
-    /*width: 70%;*/
-    margin: 0 auto;
-}
-
-.wpcf7-text,
-.wpcf7-intl-tel {
-    border: none !important;
-    border-bottom: 1px solid var(--black) !important;
-    background: none !important;
-    line-height: 2em;
-    font-size: 22px;
-}
-
-form.wpcf7-form.init div>label {
-    /*font-size: 25px;
-    font-weight: bold;*/
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: 0.3rem;
-    font-size: 1.3rem;
-}
-
-form.wpcf7-form i.fa.fa-arrow-right {
-    font-size: 25px;
-    margin: 0 5px;
-}
-
-.info-text {
-    display: flex;
-    align-items: stretch;
-}
-
-/*.info-text p {
-    font-size: 20px;
-}*/
-
-.info-text h3 {
-    /*font-weight: bold;
-    font-size: 30px;*/
-    text-transform: uppercase;
-    font-size: 1.875rem;
-    font-weight: 500;
-    line-height: 2.6rem;
-    letter-spacing: 0.35rem;
-}
-
-.name-div,
-.email-div,
-.phone-div,
-.tefl-qualification-div,
-.tefl-loe-div,
-.tefl-passport-div,
-.tefl-experience-div,
-.final-submit-div {
-    align-items: center;
-}
-
-/*.number-div {
-    width: 8%;
-    font-size: 30px;
-}
-
-.content-div {
-    width: 92%;
-}*/
-
-.wpcf7-intl-tel {
-    padding-left: 50px !important;
-}
-
-.wpcf7-radio span.wpcf7-list-item.checked label {
-    border: 1px solid #fff;
-    background-color: #222;
-    color: #fff;
-}
-
-.wpcf7-radio span.wpcf7-list-item.checked label::before {
-    background-color: #fff;
-    color: #000;
-}
-
-p.small-note {
-    line-height: 1em;
-}
-
-.wpcf7-response-output .content-col p {
-    margin-bottom: 20px;
-}
-
-.wpcf7-response-output {
+/* Simple native-style radio buttons styling */
+.salary-calculator-form .wpcf7-radio .wpcf7-list-item {
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
+    font-size: 1em;
+    cursor: pointer;
+    margin-left: 0;
 }
 
-.wpcf7-response-output .content-col p:last-child {
-    margin-bottom: 0px;
+.salary-calculator-form .wpcf7-radio input[type="radio"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
-.img-col {
-    background-size: cover;
+.salary-calculator-form .wpcf7-radio label {
+    cursor: pointer;
+    font-weight: 500;
+    user-select: none;
 }
 
-input.wpcf7-phonetext {
-    padding-left: 45px !important;
+/* Keep focus outline for accessibility */
+.salary-calculator-form .wpcf7-radio input[type="radio"]:focus {
+    outline: 2px solid #030d36;
+    outline-offset: 2px;
 }
 
-.fname-lname-div {
-    display: flex;
-}
-
-.fname-lname-div .wpcf7-form-control-wrap input {
-    width: 90% !important;
-}
-
-p.terms-text {
-    font-size: small;
-    line-height: 1.25;
-    font-weight: 400;
-    border-top: 1px solid;
-    padding-top: 10px;
-}
-
-p.terms-text>a {
-    color: var(--color-accent);
-    text-decoration: underline;
-}
-
-.agree-terms>span {
+/* Terms and submit */
+.salary-calculator-form .agree-terms {
     margin: 0;
 }
 
-a.get-started-btn.button {
-    margin: 0 !important;
+input.wpcf7-form-control.wpcf7-submit {
+    width: 100%;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 1rem;
 }
 
-@media only screen and (max-width: 768px) {
-    form.wpcf7-form.init {
-        width: 100%;
+.salary-calculator-form .agree-terms label {
+    margin: 0 0 0 7px;
+    font-weight: 500;
+}
+
+.salary-calculator-form .btn-primary,
+.salary-calculator-form input[type="submit"].btn-primary {
+    background: linear-gradient(95deg, #030d36 66%, #5b8dee 100%);
+    color: #fff;
+    font-size: 1.17em;
+    padding: 14px 0 11px;
+    border-radius: 8px;
+    border: none;
+    display: block;
+    width: 100%;
+    margin: 34px auto 0;
+    font-weight: 700;
+    transition: filter 0.26s;
+    cursor: pointer;
+    box-shadow: 0 2px 16px rgba(80, 160, 255, 0.12);
+    letter-spacing: .02em;
+    text-align: center;
+}
+
+.salary-calculator-form .btn-primary:disabled,
+.salary-calculator-form input[type="submit"]:disabled {
+    filter: grayscale(0.7);
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.salary-calculator-form .btn-primary:hover:enabled {
+    filter: brightness(1.09) saturate(1.09);
+    box-shadow: 0 3px 15px rgba(80, 120, 255, 0.18);
+}
+
+/* Error messages */
+.salary-calculator-form .error-message {
+    background: #ffe0e7;
+    color: #d14a66;
+    border-left: 4px solid #d14a66;
+    border-radius: 5px;
+    padding: 13px 18px;
+    margin-top: 11px;
+    font-size: 1.04em;
+}
+
+/* Loading spinner */
+.salary-calculator-form .loading-div {
+    text-align: center;
+    margin-top: 29px;
+    display: none;
+}
+
+.salary-calculator-form .loading-div i {
+    font-size: 2em;
+    color: #030d36;
+}
+
+.salary-calculator-form .loading-div p {
+    color: #657298;
+    margin-top: 10px;
+    font-size: 1.09em;
+}
+
+.salary-result-content .result-title {
+    color: #007cba;
+    margin-bottom: 24px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.salary-result-content .salary-display {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #0a3d62;
+}
+
+.salary-result-content section {
+    margin-bottom: 30px;
+}
+
+.salary-result-content section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #004085;
+    font-weight: 600;
+}
+
+.salary-result-content section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #3c4a5b;
+}
+
+/* Career tip */
+.salary-result-content .career-tip h3 {
+    color: #0d6efd;
+}
+
+.fallback-result-content .salary-highlight {
+    background: linear-gradient(135deg, #007cba, #005a87);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.disclaimer-section {
+    margin-top: 40px;
+}
+
+.disclaimer-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+    .salary-calculator-form {
+        max-width: 97vw;
+        padding: 20px 6vw 18px 6vw;
+    }
+
+    .salary-calculator-form .fname-lname-div {
+        flex-direction: column;
     }
 }
 
-@media only screen and (max-width: 767px) {
-
-    div[id^="wpcf7-f3901"] form.wpcf7-form>div {
-        flex-direction: column;
-    }
-
-    div[id^="wpcf7-f3901"] form.wpcf7-form>div>.img-col {
-        display: none;
-    }
-
-    form.wpcf7-form i.fa.fa-arrow-right {
-        font-size: 20px;
-    }
-
-    .salary-calc-row {
-        flex-direction: column;
-        padding: 30px 0;
-    }
-
-    .cf7form-col {
-        padding-top: 30px;
-    }
-
-    /*.number-div {
-	    width: 12%;
-	    font-size: 20px;
-	}
-
-	.content-div {
-	    width: 88%;
-	}*/
-
-    /*.info-text, 
-	.name-div, 
-	.email-div, 
-	.phone-div, 
-	.tefl-qualification-div, 
-	.tefl-loe-div, 
-	.tefl-passport-div, 
-	.tefl-experience-div, 
-	.final-submit-div {
-	    align-items: flex-start;
-	}*/
+/* Hide country unless needed */
+.salary-calculator-form .country-container {
+    transition: max-height 0.35s ease, opacity 0.35s ease;
+    overflow: hidden;
 }

@@ -17,6 +17,7 @@ get_header();
 ?>
 <div id="primary" <?php astra_primary_class(); ?>>
     <?php
+        global $post;
         $hero_banner = get_field('hero_banner');
         if(!is_array_empty($hero_banner)):
             $banner_image = $hero_banner['banner_image'];
@@ -60,8 +61,17 @@ get_header();
                                 </div>
                             </div>
                             <a href="<?php echo site_url();?>/cart/?addtimetocart&prid=<?php echo $product_id; ?>" class="btn btn-primary-blue btn-centered">
-                                add to cart
+                                Claim My Deal
                             </a>
+                            <?php
+                                if($post->ID === 91296):
+                            ?>
+                            <a href="/guide/180-hour-tefl-course-guide/" class="mt-1 btn btn-centered btn-outline" target="_blank">
+                                Download 180 hour guide
+                            </a>
+                            <?php
+                                endif;
+                            ?>
                         </div>
                     </div>
                     <div class="ast-col-md-6">

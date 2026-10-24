@@ -18,10 +18,10 @@ get_header();
 $is_virtual_couse = get_field('is_virtual_couse');
 $hero = get_field('hero');
 
-$course_product_id = get_field('course_product');
-$course_product = new WC_Product($course_product_id);
-$course_regular_price = $course_product->get_regular_price();
-$course_sale_price = $course_product->get_sale_price();
+$course_product_id      = get_field('course_product');
+$course_product         = wc_get_product($course_product_id);
+$course_regular_price   = $course_product ? $course_product->get_regular_price() : 0;
+$course_sale_price      = $course_product ? $course_product->get_sale_price() : 0;
     
 ?>
 

@@ -162,9 +162,9 @@ function tefl_timer_shortcode_new_fn($attr)
     wp_enqueue_style('ti-timer-css');
     wp_enqueue_script('ti-timer-js');
 
-    $args = shortcode_atts(array(
-        'timer' => 'global'
-    ), $attr);
+    // $args = shortcode_atts(array(
+    //     'timer' => 'global'
+    // ), $attr);
 
     if ($args['timer'] == 'sale') {
         $timer_section = get_field('timer_section', 56529);

@@ -1,0 +1,946 @@
+:root {
+    --dark-red: #ff1f1f;
+}
+
+body {
+    scroll-behavior: smooth;
+    background-color: var(--bg-color);
+}
+
+.common-heading {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+
+#content>.ast-container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.section-padding {
+    padding: 72px 0;
+}
+
+.section-padding-bottom {
+    padding-bottom: 72px;
+}
+
+.section-padding-top {
+    padding-top: 72px;
+}
+
+.section-title {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--black);
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+/* Hero Section */
+
+.hero-banner-section {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+section.hero-banner-section.has-overlay:before {
+    position: absolute;
+    background: rgba(0, 0, 0, .35);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+}
+
+.hero-banner__content {
+    padding: 2rem;
+    background: var(--white);
+    border-radius: .5rem;
+}
+
+.page-title__main {
+    font-weight: 600;
+    text-transform: capitalize;
+    border-bottom: 2px solid #1c1c1b;
+    margin-bottom: 1.5rem;
+}
+
+.banner-cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.banner-btn {
+    padding: 16px 24px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: all .4s ease-in-out;
+    border-radius: 6px;
+    font-size: 12px !important;
+    flex: 1;
+    text-align: center;
+}
+
+a.banner-btn.enrol-btn {
+    background: var(--black-jet);
+    color: var(--white);
+}
+
+a.banner-btn.learn-more-btn {
+    background: var(--gray-light);
+}
+
+
+a.banner-btn:hover {
+    background: var(--dark-red);
+    color: var(--white);
+}
+
+/* Why Choose Section */
+
+.why-choose-section__row {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
+.why-choose-section .cta-btn {
+    background: var(--black-jet);
+    color: var(--white);
+    padding: 10px 20px;
+    display: block;
+    width: fit-content;
+    margin-top: 2rem;
+    border-radius: .5rem;
+    transition: all .4s ease-in-out;
+}
+
+.why-choose-section .cta-btn:hover {
+    background: var(--dark-red);
+}
+
+.why-choose-section__row .section-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.section-summary {
+    margin: 2rem auto;
+}
+
+.accordion.active .accordion-content {
+    transition: all .4s ease-in-out;
+
+}
+
+.accordiontitle {
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--black-jet);
+}
+
+.accordion .accordion-title {
+    font-weight: 600;
+    margin: 0;
+}
+
+.accordion.active .accordion-title {
+    margin-bottom: 6px;
+}
+
+.accordion {
+    border-top: 1px dashed #D3DEDE;
+    padding: 16px 0;
+    border-bottom: 1px dashed #D3DEDE;
+}
+
+.accordion:last-child {
+    border: none;
+    padding-bottom: 0;
+}
+
+.accordion:first-child {
+    border: none;
+    padding-top: 0;
+}
+
+.accordion.active .accordion-heading {
+    transition: all .4s ease-in-out;
+}
+
+.accordion.active .accordion-heading i {
+    transform: rotate(45deg);
+}
+
+.accordion-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion-body p:last-of-type {
+    margin-bottom: 0;
+}
+
+.accordion-body img {
+    width: 100%;
+
+}
+
+.accordion-body>b {
+    border-bottom: 1px dashed lightgray;
+    display: block;
+    padding: 8px;
+}
+
+.accordion {
+    cursor: pointer;
+}
+
+.accordion-body a {
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+.accordion-content {
+    display: none;
+}
+
+.accordion.active .accordion-content {
+    display: block !important;
+}
+
+.accordion img {
+    width: 250px;
+    margin: 1rem auto;
+}
+
+.accordion-body ol,
+.accordion-body ul {
+    margin: 0 0 0 20px;
+}
+
+.accordion-body ol li,
+.accordion-body ul li {
+    list-style-type: initial;
+}
+
+.accordione-body {
+    font-weight: normal;
+}
+
+
+/* About Section */
+
+.about-section__summary,
+.teacher-section__summary {
+    margin-top: 1rem;
+}
+
+.about-section-right {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.about-section-right img {
+    width: 250px;
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+.about-section-right .cta-btn {
+    background: var(--black-jet);
+    color: var(--white);
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-weight: 400;
+    padding: 10px 16px;
+    border-radius: .5rem;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.about-section-right .cta-btn:hover {
+    background: var(--dark-red);
+}
+
+.employer-verification-section__summary a {
+    color: #101585;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+/* Photo gallery */
+
+.photo-gallery .splide__slide img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+}
+
+/* Full Width Banner */
+
+.full-width-banner-section {
+    position: relative;
+    padding: 150px 0;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.full-width-banner-section:before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+}
+
+.full-width-banner-section__text {
+    text-align: center;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 32px;
+}
+
+/* Course Overview */
+
+.course-overview__cta {
+    background: var(--white);
+    overflow: hidden;
+    border-radius: .5rem;
+}
+
+img.course-overview__cta-image {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.course-overview__cta-content {
+    padding: 1.5rem;
+}
+
+.course-overview__content .section-title,
+.team-section__content .section-title,
+.accreditation-section .section-title {
+    margin-bottom: 1.5rem;
+}
+
+.cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cta-feature:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+img.cta-rating-image {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.course-overview__cta-content .cta-btn {
+    background: var(--black-jet);
+    color: var(--white);
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border-radius: .5rem;
+    font-weight: 300;
+    transition: all .4s ease-in-out;
+}
+
+.course-overview__cta-content .cta-btn:hover {
+    background: var(--dark-red);
+}
+
+/* Team Section */
+
+.team-section__content {
+    height: 100%;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 1.5rem;
+}
+
+.team-section__image {
+    overflow: hidden;
+    border-radius: 1.5rem;
+    height: 100%;
+}
+
+.team-section__image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.accreditation-logos {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.accreditation-logos img {
+    width: 300px;
+}
+
+.accreditation-logos img:nth-of-type(2) {
+    width: 100px;
+}
+
+/* Instructors Info Section */
+
+.instructors-info-section__subheading.text-center {
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.instructor-card__image {
+    height: 350px;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+}
+
+h4.instructor-card__name {
+    font-weight: 600;
+}
+
+.instructors-info-section .glide__arrow,
+.video-testimoinials__glide .glide__arrow {
+    color: var(--black);
+    box-shadow: none;
+    background: none;
+    border: none;
+    top: calc(50% - 1.5rem);
+}
+
+.instructors-info-section .glide__arrow .fa,
+.video-testimoinials__glide .glide__arrow .fa {
+    font-size: 3rem;
+}
+
+/* Instructors Info Section End */
+
+/* Course Detsils Section */
+
+.tabs-container {
+    padding: 2rem;
+}
+
+.tabs ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tab-head li {
+    display: block;
+}
+
+.tab-head li:not(:last-child) {
+    border-bottom: 1px solid #262626;
+}
+
+.tab-head li a,
+.tab-head li a:visited {
+    display: flex;
+    border-bottom: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1.5rem 0;
+    transition: all 0.2s ease-in-out;
+    word-wrap: break-word;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tab-head li a:hover,
+.tab-head li a:focus,
+.tab-head li a:active {
+    border-bottom: none;
+    outline: 0;
+}
+
+.tab-head li a.active {
+    /* background-color: var(--white); */
+    color: var(--accent);
+}
+
+.tab-head li a:hover:not(.active) {
+    color: var(--accent);
+}
+
+.tabs section {
+    padding: 1.5rem 0;
+    display: none;
+    word-wrap: break-word;
+}
+
+.tabs section>* {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.tabs section.active {
+    display: block;
+}
+
+.tabs section.active-content>* {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tab-body__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+
+.tab-body p {
+    margin-bottom: 1rem;
+}
+
+.tab-faq__question {
+    padding: 0;
+    margin-bottom: .5rem !important;
+    font-weight: 600;
+    font-size: 26px;
+}
+
+@media (min-width: 576px) {
+
+    .tabs>ul {
+        width: 150px;
+    }
+
+    .tabs>ul li a {
+        flex-wrap: wrap;
+    }
+
+    .tabs>ul li a>span {
+        width: 100%;
+    }
+
+    .tabs>ul li a>span.tab-label {
+        width: 100%;
+        display: block;
+        margin-top: 0.2rem;
+    }
+}
+
+.course-details-tab-content {
+    position: relative;
+}
+
+
+
+
+.accordion-header {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.tab-body__content--accordion li i:before,
+.tab-body__content--accordion li i:after {
+    transition: all 0.25s ease-in-out;
+}
+
+.tab-body__content--accordion li {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.tab-body__content--accordion li:not(:last-child) {
+    margin-bottom: .5rem;
+}
+
+.tab-body__content--accordion li i {
+    position: absolute;
+    transform: translate(-6px, 0);
+    margin-top: 1rem;
+    right: 1rem;
+}
+
+.tab-body__content--accordion li i:before,
+.tab-body__content--accordion li i:after {
+    content: "";
+    position: absolute;
+    background-color: var(--white);
+    width: 3px;
+    height: 16px;
+}
+
+.tab-body__content--accordion li i:before {
+    transform: translate(2px, 0) rotate(45deg);
+}
+
+.tab-body__content--accordion li i:after {
+    transform: translate(2px, 0) rotate(-45deg);
+}
+
+.tab-body__content--accordion li input[type=checkbox] {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+}
+
+.faq-drawer__content-wrapper {
+    letter-spacing: 1px;
+    position: relative;
+    max-height: max-content;
+    opacity: 1;
+    /* transform: translate(0, 0); */
+    margin-top: 8px;
+    z-index: 2;
+    transition: all .4s ease;
+    will-change: opacity, max-height;
+}
+
+.tab-body__content--accordion li input[type=checkbox]:not(:checked)~.faq-drawer__content-wrapper {
+    margin-top: 8px;
+    max-height: 0;
+    /* height: 0; */
+    opacity: 0;
+    /* transform: translate(0, 50%); */
+    overflow: hidden;
+    transition: all .4s ease;
+}
+
+.tab-body__content--accordion li input[type=checkbox]:not(:checked)~i:before {
+    margin-top: 9px;
+    height: 9px;
+    transform: translate(2px, 0) rotate(45deg);
+}
+
+.tab-body__content--accordion li input[type=checkbox]:not(:checked)~i:after {
+    margin-top: 9px;
+    height: 9px;
+    transform: translate(-2px, 0) rotate(-45deg);
+}
+
+ul.tab-body__content--accordion li h2,
+ul.tab-body__content--accordion li .faq-drawer__title {
+    /* background: navajowhite; */
+    font-size: 1.5rem;
+    /* padding: 1rem 0; */
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+}
+
+span.faq-drawer__title--main,
+span.faq-drawer__title--sub {
+    display: block;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+span.faq-drawer__title--main {
+    flex: 3;
+    background: var(--black);
+    color: var(--white);
+}
+
+span.faq-drawer__title--sub {
+    flex: 1;
+    background: var(--white);
+    color: var(--black);
+    text-align: center;
+}
+
+.feature__content a,
+.tab-body a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Accreditation Section */
+.accreditation-section__subheading {
+    padding: 0;
+    font-weight: 500;
+    margin-bottom: 1.3rem;
+}
+
+.accreditation-section__body .ofqual-section {
+    display: flex;
+    gap: 2rem;
+    margin: 3rem auto;
+}
+
+
+.ofqual-section a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.ofqual-section img {
+    height: 200px;
+    width: 30%;
+    object-fit: contain;
+}
+
+.accreditation-section__logos {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.accreditation-section__logos .item {
+    padding: 0;
+    flex: 20%;
+}
+
+.accreditation-section__logos .item .image-box {
+    display: block;
+}
+
+.accreditation-section__logos .item img {
+    width: 100%;
+    margin: auto;
+    height: 90px;
+    object-fit: contain;
+}
+
+.accreditation-section__logos .image-text h5 {
+    font-weight: 600;
+    /* text-align: left; */
+    font-size: 1.25rem;
+}
+
+.accreditation-section__logos .image-text h6 {
+    font-weight: 500;
+    /* text-align: left; */
+    text-transform: capitalize;
+}
+
+.image-box {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.item div {
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+@media screen and (min-width:769px) {
+    .course-details-tab-content {
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        padding-right: 1rem;
+        transition: all .4s ease;
+    }
+
+    .course-details-tab-content::-webkit-scrollbar {
+        width: 8px;
+        transition: all .4s ease;
+    }
+
+    .course-details-tab-content::-webkit-scrollbar-thumb {
+        background-color: var(--gray-dark);
+        border-radius: 5px;
+    }
+
+    .course-details-tab-content::-webkit-scrollbar-thumb:hover {
+        background-color: var(--blue-turquoise);
+        cursor: pointer;
+    }
+
+    .read-more-btn-container {
+        display: none;
+    }
+
+    .instructors-info-section .glide__arrow--right,
+    .video-testimoinials__glide .glide__arrow--right {
+        right: -4rem;
+    }
+
+    .instructors-info-section .glide__arrow--left,
+    .video-testimoinials__glide .glide__arrow--left {
+        left: -4rem;
+    }
+
+    .instructors-info-section__summary {
+        margin-bottom: 4rem;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .accreditation-section__body .ofqual-section {
+        flex-direction: column;
+    }
+
+    .ofqual-section img {
+        width: 100%;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .large-heading {
+        font-size: 1.75rem !important;
+    }
+
+    .banner-cta-buttons {
+        flex-direction: column;
+    }
+
+    .course-overview__cta {
+        margin-bottom: 2rem;
+    }
+
+    .team-section__content {
+        padding: 2rem;
+    }
+
+    .team-section__image,
+    .about-section-right {
+        margin-top: 2rem;
+    }
+
+    .accreditation-logos {
+        flex-direction: column;
+    }
+
+    .why-choose-section .cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .why-choose-section__row {
+        padding: 2rem;
+    }
+
+    .tab-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-bottom: 1px solid var(--gray-dark);
+        padding-bottom: .5rem;
+        mask-image: -webkit-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        mask-image: -moz-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        -webkit-mask-image: -webkit-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        -webkit-mask-image: -moz-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+    }
+
+    .tab-head {
+        display: inline-block;
+    }
+
+    .tab-head li {
+        display: inline-block;
+        border: none !important
+    }
+
+    .tab-link {
+        padding: 10px !important;
+        background-color: var(--very-light-gray);
+        min-width: 100px;
+        font-size: 1.5rem !important;
+        justify-content: center !important;
+    }
+
+    .tab-link.active {
+        background-color: var(--accent) !important;
+        color: var(--white) !important;
+    }
+
+    .fa-arrow-right {
+        display: none;
+    }
+
+    .course-details-tab-content {
+        height: 400px;
+        overflow: hidden;
+        padding-bottom: 2rem;
+    }
+
+    .read-more-btn-container {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        backdrop-filter: blur(16px) saturate(2);
+        left: 0;
+        right: 0;
+        /* height: 40px; */
+        color: var(--white);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1rem;
+        gap: 1rem;
+        background: rgba(0, 0, 0, .2);
+        cursor: pointer;
+        /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 10%, #fff 60%, #fff 100%);
+        padding: 2rem 0; */
+    }
+
+    .read-more-btn-container>div {
+        display: grid;
+        text-align: center;
+        margin: .5rem auto;
+    }
+
+    .read-more-btn-container i {
+        font-size: 1.5rem;
+        font-weight: 700;
+        transition: transform .4s ease;
+    }
+
+    .read-more-btn-container i.rotate180 {
+        transform: rotate(180deg);
+    }
+}

@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Header / primary navigation
+   ========================================================================== */
+
+/* "The Hire Wire" menu link is forced to dark navy on some page templates
+   (homepage, single post/course). That navy is almost invisible against the
+   dark mobile menu background, while the sibling links (Partner Network, Blog,
+   Callback, Student Login) are white. Keep Hire Wire bright and on-brand inside
+   the mobile menu so it stands out. Desktop header is left untouched.
+   ID prefix (#primary-site-navigation) raises specificity above the
+   body.page-template-* overrides. */
+@media (max-width: 921px) {
+    #primary-site-navigation .top-bar-links a.primary-menu-link[href*="the-hire-wire"] {
+        color: #7FE0B5 !important;
+    }
+}
+/* 2026-10-22: no giant logo flash on desktop.
+   WP Fastest Cache keeps one copy per page for all devices. When a phone visitor creates it,
+   Astra outputs body.ast-header-break-point (mobile header), so desktop visitors briefly see the
+   mobile logo block at full size plus a hamburger until Astra's JS switches to ast-desktop.
+   At desktop widths (Astra breakpoint 921px) always hide those two mobile-header pieces. */
+@media (min-width: 922px) {
+	body.ast-header-break-point .site-header .site-branding,
+	body.ast-header-break-point .site-header .ast-mobile-menu-buttons {
+		display: none !important;
+	}
+}

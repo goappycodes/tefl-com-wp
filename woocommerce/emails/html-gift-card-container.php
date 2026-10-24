@@ -66,6 +66,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div id="giftcard__card-code"><?php echo esc_html( $giftcard->get_code() ); ?></div>
 			</div>
 
+			<?php if (wc_price($giftcard->get_balance()) === wc_price(100)) : ?>
+				<div id="giftcard__card-code-container" style="margin-top:20px;">
+					<div>Here is your free gift of €30.00.<br> Use this in the coupon code section</div>
+					<div id="giftcard__card-code">ntezeqjx</div>
+				</div>
+			<?php endif; ?>
+
+			<?php if (wc_price($giftcard->get_balance()) === wc_price(200)) : ?>
+				<div id="giftcard__card-code-container" style="margin-top:20px;">
+					<div>Here is your free gift of €60.00<br> Use this in the coupon code section</div>
+					<div id="giftcard__card-code">jr9quqfn</div>
+				</div>
+			<?php endif; ?>
+
+			<?php if (wc_price($giftcard->get_balance()) === wc_price(300)) : ?>
+				<div id="giftcard__card-code-container" style="margin-top:20px;">
+					<div>Here is your free gift of €90.00<br> Use this in the coupon code section</div>
+					<div id="giftcard__card-code">58238a8f</div>
+				</div>
+			<?php endif; ?>
+
 		<?php else: ?>
 			<a href="<?php echo esc_attr( add_query_arg( array( 'do_email_session' => urlencode( $giftcard->get_hash() ) ), apply_filters( 'woocommerce_gc_email_received_action_button_url', site_url(), $giftcard ) ) ); ?>" id="giftcard__action-button" class="shop-action"><?php echo apply_filters( 'woocommerce_gc_email_received_action_button_text', esc_html_x( 'Shop Now', 'Email gift card received', 'woocommerce-gift-cards' ), $giftcard ); ?></a>
 			

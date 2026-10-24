@@ -1,5 +1,27 @@
 
 $(document).ready(function () {
+  // $(".verified-student-reviews-section__slider .rplg-grid").appendTo(".verified-student-reviews-section__row .rplg-insert");
+  let productId = 1103;
+
+  $.ajax({
+      url: ti_obj.ti_ajax,
+      type: 'POST',
+      data: {
+          action: 'get_product_price',
+          product_id: productId
+      },
+      success: function(response) {
+          if (response.success) {
+              var salePrice = response.data.sale_price;
+              $('.teo-logo-container').fadeIn().find('.geo-price').html(salePrice);
+          } else {
+              console.log('Error: ' + response.data);
+          }
+      },
+      error: function(xhr, status, error) {
+          console.log('AJAX error:', error);
+      }
+  });
 
   window.onload = function () {
     $(".verified-student-reviews-section__slider .rplg-grid").appendTo(".verified-student-reviews-section__row .rplg-insert");
@@ -20,8 +42,40 @@ $(document).ready(function () {
     keyPress: true,
     onSliderLoad: () => {
       $('.full-width-slider').css('opacity', '1');
+      $('.free-gifts-logo-container').css('opacity', '1');
+      $('.installment-logo-container').css('opacity', '1')
     }
   });
+
+  // New Hero Slider
+  let slideCount = $('.full-width-slider-new').children().length;
+  $('.full-width-slider-new').lightSlider({
+    onSliderLoad: function (el) {
+      $('.full-width-slider-new').css('opacity', '1');
+    },
+    item: 1,
+    loop: true,
+    slideMargin: 0,
+    controls:false,
+    easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+    auto: true,
+    pause: 30000,
+    pager: slideCount > 1,
+    mode: 'fade',
+    adaptiveHeight: true,
+    keyPress: true,
+    prevHtml: '<i class="fa fa-chevron-left"></i>',
+    nextHtml: '<i class="fa fa-chevron-right"></i>',
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          controls: false
+        }
+      }
+    ]
+  });
+
 
   function setInitialHeight(expandable, height) {
     let isExpanded = expandable.hasClass('expanded');
@@ -181,4 +235,66 @@ $(document).ready(function () {
     });
   }
 
+  // Jobs Slider
+
+  let jobSlider = $('.jobs-slider');
+    jobSlider.lightSlider({
+      item: 3, 
+      loop: true, 
+      slideMargin: 40,
+      easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+      auto: true,
+      pause: 10000, 
+      pager: false,
+      mode:'slide',
+      adaptiveHeight:true,
+      keyPress:true,
+      prevHtml:'<i class="fa fa-chevron-left"></i>',
+      nextHtml:'<i class="fa fa-chevron-right"></i>',
+      onSliderLoad:()=>{
+        jobSlider.css('opacity','1');
+      },
+      responsive : [
+          {
+              breakpoint:768,
+              settings: {
+                  item:1
+                }
+          }
+      ]
+  });
+
+  //Read more section
+
+  jQuery('.read-more-btn').on('click', function() {
+      const btn = jQuery(this);
+      const targetId = btn.attr('data-target');
+      const desc = jQuery('#' + targetId);
+      const content = desc.find('.description-content');
+      const shortContent = content.find('.description-short');
+      const fullContent = content.find('.description-full');
+      
+      if (content.hasClass('truncated')) {
+          shortContent.fadeOut(300, function() {
+              fullContent.fadeIn(300);
+              content.removeClass('truncated');
+              desc.removeClass('has-fade');
+              btn.html('Read Less <span class="arrow">▲</span>');
+          });
+      } else {
+          fullContent.fadeOut(300, function() {
+              shortContent.fadeIn(300);
+              content.addClass('truncated');
+              desc.addClass('has-fade');
+              btn.html('Read More <span class="arrow">▼</span>');
+              
+              jQuery('html, body').animate({
+                  scrollTop: desc.offset().top - 100
+              }, 400);
+          });
+      }
+  });
+    
+    
+  
 });

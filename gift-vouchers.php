@@ -52,7 +52,7 @@ get_header();
                         $has_free_voucher           = $gift_voucher['has_free_voucher'];
                         if($has_free_voucher){
                             $voucher_price      = $gift_voucher_product_obj->get_price();
-                            $free_voucher_price = $voucher_price*.25; 
+                            $free_voucher_price = $voucher_price*.3; 
                         }
                 ?>
                     <div class="ast-col-md-4">

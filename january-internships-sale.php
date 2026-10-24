@@ -141,15 +141,15 @@ get_header(); ?>
                         $internship_product = wc_get_product($internship_product_id);
                         
                         if ($internship_product):
-                            $internship_price = $internship_product->get_price_html();
-                            $simple_regular_price = $internship_product->get_regular_price();
-                            $simple_sale_price = $internship_product->get_sale_price();
-                            $stock_quantity = get_total_combined_stock_quantity($internship_product);
+                            $internship_price       = $internship_product->get_price_html();
+                            $simple_regular_price   = $internship_product->get_regular_price();
+                            $simple_sale_price      = $internship_product->get_sale_price();
+                            $stock_quantity         = get_total_combined_stock_quantity($internship_product);
                             if($internship_product->is_type('variable')):
                                 $simple_regular_price = $internship_product->get_variation_regular_price();
                                 $simple_sale_price = $internship_product->get_variation_sale_price();
                             endif;
-                            $percentage = round((($simple_regular_price - $simple_sale_price) / $simple_regular_price) * 100);
+                            $percentage = $simple_regular_price ? round((($simple_regular_price - $simple_sale_price) / $simple_regular_price) * 100) : 0;
                         endif;
                     endif;
                     if($guide):

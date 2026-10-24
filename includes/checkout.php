@@ -77,11 +77,8 @@ add_filter( 'woocommerce_checkout_fields' , 'misha_not_required_fields', 9999 );
 
 function misha_not_required_fields( $f ) {
 	
-	unset( $f['billing']['billing_address_1']['required'] ); // that's it
+	unset( $f['billing']['billing_address_1']['required'] ); 
 	unset( $f['billing']['billing_address_2']['required'] );
-
-	// the same way you can make any field required, example:
-	// $f['billing']['billing_company']['required'] = true;
 	
 	return $f;
 }
@@ -478,47 +475,71 @@ function bbloomer_order_pay_without_login( $allcaps, $caps, $args ) {
    return $allcaps;
 }
 
-
-
 add_filter( 'woocommerce_available_payment_gateways', 'filter_available_payment_gateways' );
 function filter_available_payment_gateways( $available_gateways ) {
 
     if ( ! function_exists( 'WC' ) || is_admin() || ! WC()->cart ) {
         return $available_gateways;
     }
-    $payment_ids    = array('stripe'); // Here define the allowed payment methods ids to keep
-    $admin_only     = array('revolut', 'revolut_cc');
-    $found          = false; // Initializing
 
-    if ( is_checkout() && ! is_wc_endpoint_url() ) {
-        // Loop through cart items
-        foreach ( WC()->cart->get_cart() as $item ) {
-            if (  $item['is_deposit'] == 1 ) {
-                $found = true;
-                break;
+    $payment_ids   = array('stripe');
+    $admin_only    = array('revolut', 'revolut_cc');
+    $found         = false;
+
+    $klarna_restricted_product_ids = array(91594);
+
+    if ( is_checkout() ) {
+
+        // ORDER-PAY PAGE (manual payment links)
+        if ( is_wc_endpoint_url('order-pay') ) {
+            $order_id = get_query_var('order-pay');
+            if ( $order_id ) {
+                $order = wc_get_order( $order_id );
+                if ( $order ) {
+                    if ( $order->get_meta('_created_via') === 'wc_deposits' ) {
+                        $found = true;
+                    }
+
+                    foreach ( $order->get_items() as $item ) {
+                        if ( in_array( $item->get_product_id(), $klarna_restricted_product_ids ) ) {
+                            unset( $available_gateways['stripe_klarna'] );
+                        }
+                    }
+                }
+            }
+        }
+
+        if ( ! is_wc_endpoint_url() ) {
+            foreach ( WC()->cart->get_cart() as $item ) {
+                if ( $item['is_deposit'] == 1 ) {
+                    $found = true;
+                    break;
+                }
+
+                if ( isset($item['product_id']) && in_array($item['product_id'], $klarna_restricted_product_ids) ) {
+                    if ( isset($available_gateways['stripe_klarna']) ) {
+                        unset($available_gateways['stripe_klarna']);
+                    }
+                }
             }
         }
     }
 
-    // Disable PayPal if the billing country or the user's country is South Africa
-    $billing_country = ""; 
+    $billing_country = "";
     if ( WC()->customer ) {
         $billing_country = WC()->customer->get_billing_country();
     }
     $user_country = get_user_geo_country_code();
 
-    if ( $billing_country === 'ZA' || $user_country === 'ZA' ) {
-        unset( $available_gateways['ppcp'] );
-    }
-
+    //  FILTER GATEWAYS BASED ON DEPOSIT
     foreach ( $available_gateways as $payment_id => $available_gateway ) {
-        if ( $found && !in_array($payment_id, $payment_ids) ) {
-            unset($available_gateways[$payment_id]);
+        if ( $found && ! in_array( $payment_id, $payment_ids ) ) {
+            unset( $available_gateways[$payment_id] ); // Remove everything except stripe
         }
-        if ( !$found && in_array($payment_id, $payment_ids) ) {
-            unset($available_gateways[$payment_id]); //This enables stripe only for split payments
+        if ( ! $found && in_array( $payment_id, $payment_ids ) ) {
+            unset( $available_gateways[$payment_id] ); // Remove stripe for non-deposit
         }
-        if ( !current_user_can('administrator') && in_array($payment_id, $admin_only) ){
+        if ( ! current_user_can('administrator') && in_array( $payment_id, $admin_only ) ) {
             // unset($available_gateways[$payment_id]);
         }
     }
@@ -526,7 +547,7 @@ function filter_available_payment_gateways( $available_gateways ) {
     return $available_gateways;
 }
 
-add_filter( 'woocommerce_available_payment_gateways', 'hide_klarna_when_not_supported' );
+// add_filter( 'woocommerce_available_payment_gateways', 'hide_klarna_when_not_supported' );
 function hide_klarna_when_not_supported( $available_gateways ) {
 
     // get user country
@@ -577,4 +598,140 @@ add_filter( 'wc_stripe_generate_create_intent_request', 'tefl_always_capture', 9
 function tefl_always_capture($request){
     $request['capture_method'] = 'automatic';
     return $request;
+}
+
+// New checkout design
+
+add_filter( 'woocommerce_form_field_args', 'remove_conflicting_form_classes', 10, 3 );
+
+function remove_conflicting_form_classes( $args, $key, $value ) {
+    $args['class'][] = 'form-row-wide';
+    
+    $conflicting_classes = array( 'form-row-first', 'form-row-last' );
+    
+    if ( is_array( $args['class'] ) ) {
+        $args['class'] = array_diff( $args['class'], $conflicting_classes );
+    }
+    
+    return $args;
+}
+
+add_filter( 'woocommerce_checkout_fields', 'modify_checkout_fields' );
+function modify_checkout_fields( $fields ) {
+    $products_with_address = array( 76824, 70835, 63558, 7110 );
+    
+    $hide_address_fields = true;
+    
+    if ( WC()->cart && !WC()->cart->is_empty() ) {
+        foreach ( WC()->cart->get_cart() as $cart_item ) {
+            $product_id = $cart_item['product_id'];
+            
+            if ( in_array( $product_id, $products_with_address ) ) {
+                $hide_address_fields = false;
+                break;
+            }
+        }
+    }
+    
+    if ( $hide_address_fields ) {
+        $fields_to_remove = array(
+            'billing_address_1',
+            'billing_address_2',
+            'billing_city',
+            'billing_state',
+            'billing_postcode',
+        );
+        
+        foreach( $fields_to_remove as $field ) {
+            unset( $fields['billing'][$field] );
+        }
+    }
+    
+    foreach ( $fields as $section_key => $section ) {
+        foreach ( $section as $field_key => $field ) {
+            if ( isset( $fields[$section_key][$field_key]['label'] ) ) {
+                $label = $field['label'];
+                $is_required = isset( $field['required'] ) && $field['required'];
+                $placeholder = $is_required ? $label . ' *' : $label;
+                
+                $fields[$section_key][$field_key]['placeholder'] = $placeholder;
+                $fields[$section_key][$field_key]['label'] = false;
+            }
+        }
+    }
+    
+    if ( isset( $fields['billing']['billing_first_name'] ) ) {
+        $fields['billing']['billing_first_name']['priority'] = 10;
+    }
+    if ( isset( $fields['billing']['billing_last_name'] ) ) {
+        $fields['billing']['billing_last_name']['priority'] = 20;
+    }
+    if ( isset( $fields['billing']['billing_email'] ) ) {
+        $fields['billing']['billing_email']['priority'] = 30;
+    }
+    if ( isset( $fields['billing']['billing_phone'] ) ) {
+        $fields['billing']['billing_phone']['priority'] = 40;
+    }
+    if ( isset( $fields['billing']['billing_country'] ) ) {
+        $fields['billing']['billing_country']['priority'] = 45;
+    }
+    
+    return $fields;
+}
+
+add_action('woocommerce_checkout_after_order_review', 'checkout_payment_logos');
+
+function checkout_payment_logos(){
+    ?>
+    <div class="payment-logo-container">
+        <div class="payment-logos">
+            <img src="/wp-content/uploads/2025/07/visa-logo.svg" alt="" class="payment-logo">
+            <img src="/wp-content/uploads/2025/07/mastecard-logo.svg" alt="" class="payment-logo">
+            <img src="/wp-content/uploads/2025/07/apple-pay-logo.svg" alt="" class="payment-logo">
+            <img src="/wp-content/uploads/2025/07/google-pay-logo.svg" alt="" class="payment-logo">
+            <img src="/wp-content/uploads/2025/07/revolut-logo.svg" alt="" class="payment-logo">
+        </div>
+        <span class="payment-logo-text">Guaranteed safe & secured checkout</span>
+    </div>
+    <?php
+}
+
+add_action('woocommerce_checkout_before_terms_and_conditions','ti_checkout_order_total');
+
+function ti_checkout_order_total(){
+    if ( is_wc_endpoint_url('order-pay') ) {
+        return;
+    }
+?>
+    <div class="order-total">
+        <span><?php esc_html_e( 'Order Total', 'woocommerce' ); ?></span>
+        <span><?php wc_cart_totals_order_total_html(); ?></span>
+    </div>
+<?php
+}
+
+add_action( 'template_redirect', 'redirect_cart_to_checkout' );
+function redirect_cart_to_checkout() {
+    if( is_cart() && !WC()->cart->is_empty() ) {
+        wp_redirect( wc_get_checkout_url() );
+        exit;
+    }
+}
+
+//Option to remove items in checkout
+add_filter( 'woocommerce_cart_item_name', 'pt_woocommerce_checkout_remove_item', 10, 3 );
+function pt_woocommerce_checkout_remove_item( $product_name, $cart_item, $cart_item_key ) {
+    if ( is_checkout() ) {
+        $_product = $cart_item['data'];
+        $product_id = $cart_item['product_id'];
+        $remove_link = sprintf(
+            '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">×</a>',
+            esc_url( WC()->cart->get_remove_url( $cart_item_key ) ),
+            __( 'Remove this item', 'woocommerce' ),
+            esc_attr( $product_id ),
+            esc_attr( $_product->get_sku() )
+        );
+        return '<span class="remove-btn">' . $remove_link . '</span> <span>' . $product_name . '</span>';
+    }
+    return $product_name;
 }

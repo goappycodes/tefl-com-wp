@@ -1,0 +1,311 @@
+{
+    "key": "group_tfs2_images",
+    "title": "TEFL for Schools landing: images",
+    "fields": [
+        {
+            "key": "field_tfs2_proof_label",
+            "label": "Carousel name for screen readers",
+            "name": "proof_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Schools running TEFL for Schools",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_tfs2_proof_slides",
+            "label": "Social proof slides",
+            "name": "proof_slides",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Shown under the hero text as a carousel. Two or more slides turn on the arrows and auto-advance.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "button_label": "Add slide",
+            "min": 0,
+            "max": 8,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_tfs2_proof_slides_image",
+                    "label": "Photo",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Landscape, 2:1 works best (e.g. 1240 × 620). Slides without a photo are skipped.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "parent_repeater": "field_tfs2_proof_slides",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_tfs2_proof_slides_caption",
+                    "label": "Caption or short quote",
+                    "name": "caption",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "new_lines": "",
+                    "parent_repeater": "field_tfs2_proof_slides",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_tfs2_proof_slides_name",
+                    "label": "Name and school",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "parent_repeater": "field_tfs2_proof_slides",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
+            "key": "field_tfs2_outcomes_image",
+            "label": "Outcomes image",
+            "name": "outcomes_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Beside the “What students finish with” heading. Landscape 3:2. Optional: leave empty and the section closes up.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_tfs2_cost_image",
+            "label": "Cost section image",
+            "name": "cost_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Beside the “What it costs” heading. Landscape 3:2. Optional: leave empty and the section closes up.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_tfs2_why_image",
+            "label": "Why schools image",
+            "name": "why_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Beside the “Why schools put it on the enrichment list” heading. Landscape 3:2. Optional: leave empty and the section closes up.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_tfs2_planner_image",
+            "label": "Planner image",
+            "name": "planner_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Beside the planner heading. Landscape 3:2. Optional: leave empty and the section closes up.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_tfs2_routes_image",
+            "label": "Routes image",
+            "name": "routes_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Beside the “Where could this take you” heading. Landscape 3:2. Optional: leave empty and the section closes up.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_tfs2_taster_image",
+            "label": "Taster image",
+            "name": "taster_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Under the taster intro, left column. 4:3. Optional: leave empty and the section closes up.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_tfs2_faq_image",
+            "label": "FAQ image",
+            "name": "faq_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Under the FAQ heading, left column. 4:3. Optional: leave empty and the section closes up.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "ti-tefl-for-schools-v3.php"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Hero social proof carousel and the optional section images.",
+    "show_in_rest": false,
+    "modified": 1792674369
+}

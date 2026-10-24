@@ -1,0 +1,781 @@
+/* ==========================================================================
+   TEFL for Schools — landing template (design v3)
+   Every rule is scoped under #tfs2 so the Astra theme's element styles
+   (buttons, links, headings, inputs) cannot reach in, and nothing here
+   leaks out to the rest of the site.
+   ========================================================================== */
+
+/* ---------- Self hosted fonts ---------- */
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:200 900;font-display:swap;src:url('../fonts/tefl-for-schools/source-serif-4-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:200 900;font-display:swap;src:url('../fonts/tefl-for-schools/source-serif-4-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url('../fonts/tefl-for-schools/source-serif-4-italic-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:200 900;font-display:swap;src:url('../fonts/tefl-for-schools/montserrat-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:200 900;font-display:swap;src:url('../fonts/tefl-for-schools/montserrat-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+/* ---------- Release the theme container on this template ---------- */
+body.tfs2-page .site-content>.ast-container,
+body.tfs2-page #content>.ast-container{max-width:none;padding-left:0;padding-right:0;display:block}
+body.tfs2-page .site-content{padding:0}
+body.tfs2-page{background:#fff}
+
+/* ---------- Tokens ---------- */
+#tfs2{
+  --brand-green:#2E7A5A;--brand-navy:#1A2229;--brand-teal:#005850;
+  --green-50:#EFF5F1;--green-100:#DCE9E2;--green-200:#B5D0C1;--green-300:#7FAF94;--green-400:#4B9070;--green-600:#226348;--green-700:#194C37;
+  --ivory-100:#F6F0EB;--ivory-200:#F0EBE3;--ivory-300:#E6DFD5;
+  --grey-100:#EDEAE4;--grey-200:#DCD7CF;--grey-300:#C0BAB1;--grey-400:#9A948B;--grey-500:#7E766D;--grey-600:#5E5951;
+  --navy-900:#141B21;--navy-700:#243039;--navy-600:#33434F;
+  --off-white:#F8F8F8;
+  --danger:#8C2F2A;--danger-surface:#F6E9E7;
+  --border-hairline:#E4DED4;--border-inverse:rgba(255,255,255,.16);
+  --text-inverse-muted:#9AA7AF;
+  --shadow-overlay:0 28px 70px rgba(20,27,33,.22);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --brand:'Montserrat',Helvetica,Arial,sans-serif;
+  --body:Arial,Helvetica,'Liberation Sans',sans-serif;
+  --wrap:1200px;--gutter:40px;--sec-y:96px;
+  --subnav-h:60px;
+}
+
+/* ---------- Base and theme reset (scoped) ---------- */
+#tfs2{font-family:var(--body);font-size:16px;line-height:1.6;color:var(--brand-navy);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:clip}
+#tfs2 *,#tfs2 *::before,#tfs2 *::after{box-sizing:border-box}
+#tfs2 h1,#tfs2 h2,#tfs2 h3,#tfs2 h4,#tfs2 p,#tfs2 ul,#tfs2 ol,#tfs2 dl,#tfs2 dd,#tfs2 figure,#tfs2 blockquote,#tfs2 fieldset{margin:0;padding:0}
+#tfs2 h1,#tfs2 h2,#tfs2 h3,#tfs2 h4{font-family:var(--serif);font-weight:600;color:var(--brand-navy);text-transform:none;letter-spacing:normal;text-wrap:balance;clear:none}
+#tfs2 p{text-wrap:pretty}
+#tfs2 ul,#tfs2 ol{list-style:none}
+#tfs2 fieldset{border:0;min-width:0}
+#tfs2 legend{padding:0;float:none;width:auto}
+#tfs2 img{max-width:100%;height:auto;display:block}
+#tfs2 a{color:var(--brand-green);text-decoration:none;box-shadow:none;border:0}
+#tfs2 a:hover{color:var(--green-700)}
+#tfs2 button{font:inherit;color:inherit;background:transparent;border:0;border-radius:0;padding:0;margin:0;box-shadow:none;text-transform:none;letter-spacing:normal;line-height:inherit;cursor:pointer;min-height:0;width:auto}
+#tfs2 input,#tfs2 select,#tfs2 textarea{font:inherit;color:var(--brand-navy);margin:0;box-shadow:none}
+#tfs2 :focus-visible{outline:2px solid var(--brand-green);outline-offset:2px}
+#tfs2 [hidden]{display:none!important}
+#tfs2 .tfs2-ic{flex:none;display:block}
+#tfs2 .tfs2-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#tfs2 .tfs2-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ---------- Layout primitives ---------- */
+#tfs2 .tfs2-wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+#tfs2 .tfs2-sec{padding:var(--sec-y) 0}
+#tfs2 .tfs2-sec--white{background:#fff}
+#tfs2 .tfs2-sec--ivory{background:var(--ivory-100)}
+#tfs2 .tfs2-head{display:flex;flex-direction:column;gap:16px;max-width:44em;margin-bottom:40px}
+#tfs2 .tfs2-head--tight{margin-bottom:0;padding-bottom:16px}
+#tfs2 .tfs2-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+#tfs2 .tfs2-row--center{align-items:center;gap:14px}
+#tfs2 .tfs2-self-start{align-self:flex-start}
+#tfs2 .tfs2-push{margin-left:auto}
+
+/* ---------- Image spaces ---------- */
+/* Section heading + image side by side, only when an image (or the editors' placeholder) is present */
+/* The heading block sets the row height and the image stretches to match it exactly,
+   top to bottom, so there is never an empty gap above the heading whatever the photo's shape. */
+#tfs2 .tfs2-split.has-media{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:56px;align-items:stretch;margin-bottom:40px}
+#tfs2 .tfs2-split.has-media>.tfs2-slot--head{aspect-ratio:auto;height:auto;min-height:220px;max-height:none}
+#tfs2 .tfs2-split.has-media>.tfs2-slot--head>.tfs2-slot__img{position:absolute;inset:0}
+#tfs2 .tfs2-split.has-media>.tfs2-head{margin-bottom:0}
+#tfs2 .tfs2-slot{position:relative;border-radius:20px;overflow:hidden;background:var(--ivory-300)}
+/* Wide and short so it matches the height of the heading block instead of towering over it */
+#tfs2 .tfs2-slot--head{aspect-ratio:16/9;max-height:280px}
+#tfs2 .tfs2-slot--side{aspect-ratio:4/3;margin-top:8px}
+#tfs2 .tfs2-slot--proof{aspect-ratio:2/1}
+#tfs2 .tfs2-slot__img{width:100%;height:100%;object-fit:cover}
+#tfs2 .tfs2-slot--empty{display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;background:repeating-linear-gradient(135deg,var(--green-50) 0 12px,#fff 12px 24px);border:2px dashed var(--green-200);color:var(--green-700)}
+#tfs2 .tfs2-slot--empty>span{display:flex;flex-direction:column;align-items:center;gap:6px;font:700 11px/1.4 var(--brand);letter-spacing:.16em;text-transform:uppercase}
+#tfs2 .tfs2-slot--empty strong{font:600 18px/1.25 var(--serif);letter-spacing:0;text-transform:none;color:var(--brand-navy)}
+#tfs2 .tfs2-slot--empty small{max-width:24em;font:400 13px/1.45 var(--body);letter-spacing:0;text-transform:none;color:var(--navy-600)}
+
+/* ---------- Type ---------- */
+#tfs2 .tfs2-eyebrow,#tfs2 .tfs2-label{font:700 12px/1.2 var(--brand);letter-spacing:.24em;text-transform:uppercase;color:var(--brand-green)}
+#tfs2 .tfs2-label{font-size:11px;letter-spacing:.22em}
+#tfs2 .tfs2-eyebrow--onink,#tfs2 .tfs2-label--onink{color:var(--green-300)}
+#tfs2 .tfs2-label--grey{color:var(--grey-500)}
+#tfs2 .tfs2-h2{font:600 40px/1.1 var(--serif);letter-spacing:-.01em}
+#tfs2 .tfs2-h2--lg{font-size:44px}
+#tfs2 .tfs2-h2--narrow{max-width:14em}
+#tfs2 .tfs2-h3{font:700 16px/1.3 var(--body);color:var(--brand-navy)}
+#tfs2 .tfs2-h3--serif{font:600 22px/1.25 var(--serif)}
+#tfs2 .tfs2-h3--sm{font-size:20px}
+#tfs2 .tfs2-h3--lg{font-size:26px;line-height:1.2}
+#tfs2 .tfs2-serif{font-family:var(--serif);font-weight:600}
+#tfs2 .tfs2-intro{font-size:18px;line-height:1.6;color:var(--navy-600)}
+#tfs2 .tfs2-intro--onink,#tfs2 .tfs2-onink-muted{color:var(--text-inverse-muted)}
+#tfs2 .tfs2-muted{color:var(--navy-600)}
+#tfs2 .tfs2-small{font-size:13.5px;line-height:1.5}
+#tfs2 .tfs2-rule{display:block;width:64px;height:3px;border-radius:2px;background:var(--brand-green)}
+#tfs2 .tfs2-textlink{color:var(--brand-green);font-weight:700;border-bottom:1px solid currentColor}
+
+/* ---------- Buttons ---------- */
+#tfs2 .tfs2-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:13px 25px;border-radius:999px;border:1px solid transparent;font:700 15px/1.2 var(--body);text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color .12s linear,border-color .12s linear,color .12s linear}
+#tfs2 .tfs2-btn--sm{min-height:42px;padding:10px 20px;font-size:14.5px}
+#tfs2 .tfs2-btn--xs{min-height:38px;padding:9px 16px;font-size:13.5px}
+#tfs2 .tfs2-btn--block{width:100%}
+#tfs2 .tfs2-btn--green{background:var(--brand-green);color:#fff}
+#tfs2 .tfs2-btn--green:hover{background:var(--green-600);color:#fff}
+#tfs2 .tfs2-btn--navy{background:var(--brand-navy);color:#fff}
+#tfs2 .tfs2-btn--navy:hover{background:var(--navy-700);color:#fff}
+#tfs2 .tfs2-btn--ghost{background:transparent;color:var(--brand-navy);border-color:var(--grey-300)}
+#tfs2 .tfs2-btn--ghost:hover{background:var(--green-50);border-color:var(--brand-green);color:var(--brand-navy)}
+#tfs2 .tfs2-btn--outline{background:transparent;color:var(--brand-navy);border-color:var(--brand-navy)}
+#tfs2 .tfs2-btn--outline:hover{background:var(--green-50);border-color:var(--brand-green);color:var(--brand-navy)}
+#tfs2 .tfs2-btn--outline-green{background:#fff;color:var(--brand-green);border-color:var(--brand-green)}
+#tfs2 .tfs2-btn--outline-green:hover{background:var(--green-50);color:var(--brand-green)}
+#tfs2 .tfs2-btn--white{background:#fff;color:var(--brand-navy)}
+#tfs2 .tfs2-btn--white:hover{background:var(--ivory-100);color:var(--brand-navy)}
+#tfs2 .tfs2-btn--onink{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+#tfs2 .tfs2-btn--onink:hover{border-color:#fff;color:#fff}
+#tfs2 .tfs2-btn:disabled{opacity:.6;cursor:default}
+
+/* ---------- Sub navigation ---------- */
+#tfs2 .tfs2-subnav{position:sticky;top:0;z-index:40;background:rgba(246,240,235,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-hairline)}
+body.admin-bar #tfs2 .tfs2-subnav{top:32px}
+#tfs2 .tfs2-subnav__in{position:relative;max-width:1240px;margin:0 auto;padding:10px var(--gutter);display:flex;align-items:center;gap:8px;min-height:var(--subnav-h)}
+#tfs2 .tfs2-subnav__tab{padding:9px 14px;border-radius:999px;font-size:14.5px;color:var(--brand-navy);white-space:nowrap}
+#tfs2 .tfs2-subnav__tab:hover{background:rgba(255,255,255,.6);color:var(--brand-navy)}
+#tfs2 .tfs2-subnav__tab.is-current{background:#fff;font-weight:700;padding:9px 16px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+#tfs2 .tfs2-subnav__ctas{margin-left:auto;display:flex;align-items:center;gap:10px}
+#tfs2 .tfs2-jump{position:relative}
+#tfs2 .tfs2-jump__btn{display:flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--grey-200);border-radius:999px;font:700 14.5px var(--body);color:var(--brand-navy);white-space:nowrap}
+#tfs2 .tfs2-jump__btn:hover,#tfs2 .tfs2-jump__btn[aria-expanded="true"]{border-color:var(--brand-green)}
+#tfs2 .tfs2-jump__btn[aria-expanded="true"] .tfs2-ic{transform:rotate(180deg)}
+#tfs2 .tfs2-jump__menu{position:absolute;top:calc(100% + 8px);left:0;width:300px;background:#fff;border:1px solid var(--border-hairline);border-radius:14px;box-shadow:var(--shadow-overlay);padding:8px;display:flex;flex-direction:column;z-index:5}
+#tfs2 .tfs2-jump__item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:8px;font-size:15px;color:var(--brand-navy)}
+#tfs2 .tfs2-jump__item:hover,#tfs2 .tfs2-jump__item:focus-visible{background:var(--green-50);color:var(--brand-navy)}
+#tfs2 .tfs2-jump__n{font:700 11px var(--brand);color:var(--grey-400);width:18px}
+#tfs2 .tfs2-jump__item--mobile{display:none;border-top:1px solid var(--grey-100);font-weight:700}
+#tfs2 .tfs2-jump__item--mobile+.tfs2-jump__item--mobile{border-top:0}
+
+/* ---------- Hero ---------- */
+#tfs2 .tfs2-hero{background:var(--ivory-100)}
+/* Left column: text, then the social proof carousel. Right column: the form (spans both).
+   The empty 1fr rows above and below keep the left stack vertically centred against the form. */
+#tfs2 .tfs2-hero__grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:1fr auto auto 1fr;grid-template-areas:". side" "copy side" "proof side" ". side";column-gap:64px;row-gap:0;padding-top:72px;padding-bottom:72px}
+#tfs2 .tfs2-hero__copy{grid-area:copy;display:flex;flex-direction:column;gap:24px}
+#tfs2 .tfs2-hero__form,#tfs2 .tfs2-hero__media{grid-area:side;align-self:center}
+#tfs2 .tfs2-hero__grid>.tfs2-proof{grid-area:proof;margin-top:36px}
+#tfs2 .tfs2-hero__title{font:600 64px/1.04 var(--serif);letter-spacing:-.015em}
+#tfs2 .tfs2-hero__lede{font-size:19px;line-height:1.6;color:var(--navy-600);max-width:34em}
+#tfs2 .tfs2-hero__talk{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:15px;color:var(--navy-600)}
+#tfs2 .tfs2-hero__meta{font-size:14px;color:var(--grey-500)}
+#tfs2 .tfs2-hero__media{position:relative;height:460px;border-radius:24px;overflow:hidden;background:var(--ivory-300)}
+#tfs2 .tfs2-hero__img{width:100%;height:100%;object-fit:cover}
+#tfs2 .tfs2-hero__form{background:#fff;border:1px solid var(--border-hairline);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px}
+#tfs2 .tfs2-hero__form>.tfs2-cf7{margin:4px 0}
+#tfs2 .tfs2-hero__form>p.tfs2-small{margin-top:-4px}
+#tfs2 .tfs2-hero__form-title{font:600 24px/1.2 var(--serif)}
+#tfs2 .tfs2-hero__form-intro{font-size:14.5px;line-height:1.5;color:var(--navy-600)}
+#tfs2 .tfs2-hero__buy{font-size:14px;line-height:1.5;color:var(--navy-600)}
+#tfs2 .tfs2-hero__buy a{font-weight:700;text-decoration:underline}
+
+/* ---------- Social proof carousel ---------- */
+#tfs2 .tfs2-proof{display:flex;flex-direction:column;gap:14px;min-width:0}
+#tfs2 .tfs2-proof__track{position:relative;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;border-radius:18px;background:var(--ivory-300)}
+#tfs2 .tfs2-proof__track::-webkit-scrollbar{display:none}
+#tfs2 .tfs2-proof__slide{position:relative;flex:0 0 100%;aspect-ratio:2/1;margin:0;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always}
+#tfs2 .tfs2-proof__img{width:100%;height:100%;object-fit:cover}
+#tfs2 .tfs2-proof__cap{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:6px;padding:56px 24px 20px;background:linear-gradient(to top,rgba(20,27,33,.82) 0%,rgba(20,27,33,.45) 55%,rgba(20,27,33,0) 100%);color:#fff}
+#tfs2 .tfs2-proof__q{font:italic 400 20px/1.35 var(--serif);max-width:30em}
+#tfs2 .tfs2-proof__who{font:700 11px/1.3 var(--brand);letter-spacing:.16em;text-transform:uppercase;color:var(--green-200)}
+#tfs2 .is-static .tfs2-car__ctrl{display:none}
+#tfs2 .tfs2-car__ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#tfs2 .tfs2-car__dots{display:flex;align-items:center;gap:2px}
+#tfs2 .tfs2-car__dot{width:20px;height:24px;display:flex;align-items:center;justify-content:center;transition:width .3s var(--ease-out)}
+#tfs2 .tfs2-car__dot::before{content:"";display:block;width:8px;height:8px;border-radius:999px;background:var(--grey-300);transition:width .3s var(--ease-out),background-color .3s}
+#tfs2 .tfs2-car__dot.is-on{width:34px}
+#tfs2 .tfs2-car__dot.is-on::before{width:26px;background:var(--brand-green)}
+#tfs2 .tfs2-car__dot:hover::before{background:var(--green-300)}
+#tfs2 .tfs2-car__dot.is-on:hover::before{background:var(--brand-green)}
+#tfs2 .tfs2-car__arrows{display:flex;gap:8px}
+#tfs2 .tfs2-car__arrow{width:38px;height:38px;border-radius:50%;border:1px solid var(--grey-200);background:#fff;color:var(--brand-navy);display:flex;align-items:center;justify-content:center;transition:border-color .12s linear}
+#tfs2 .tfs2-car__arrow:hover{border-color:var(--brand-green)}
+#tfs2 .tfs2-car__pause .tfs2-ic--play{display:none}
+#tfs2 .tfs2-car__pause.is-paused .tfs2-ic--play{display:block}
+#tfs2 .tfs2-car__pause.is-paused .tfs2-ic--pause{display:none}
+
+/* Contact Form 7 inside the hero card, styled to the design */
+#tfs2 .tfs2-cf7 .wpcf7-form{display:flex;flex-direction:column;gap:16px}
+#tfs2 .tfs2-cf7 .wpcf7-form p{margin:0}
+#tfs2 .tfs2-cf7 br{display:none}
+#tfs2 .tfs2-cf7 label{display:flex;flex-direction:column;gap:6px;font:700 11px/1.3 var(--brand);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-600)}
+#tfs2 .tfs2-cf7 .wpcf7-form-control-wrap{display:block}
+#tfs2 .tfs2-cf7 input[type=date]{-webkit-appearance:none;appearance:none;line-height:46px}
+#tfs2 .tfs2-cf7 input[type=date]:invalid,#tfs2 .tfs2-cf7 input[type=date]:not(:focus):placeholder-shown{color:var(--grey-500)}
+#tfs2 .tfs2-cf7 .cf7-row{margin:0;padding:0}
+#tfs2 .tfs2-cf7 .iti{display:block;width:100%}
+#tfs2 .tfs2-cf7 .iti input[type=tel]{width:100%}
+#tfs2 .tfs2-cf7 .cf7-label{display:block;margin:0 0 6px;font:700 11px/1.3 var(--brand);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-600)}
+#tfs2 .tfs2-cf7 input[type=text],#tfs2 .tfs2-cf7 input[type=email],#tfs2 .tfs2-cf7 input[type=tel],#tfs2 .tfs2-cf7 input[type=number],#tfs2 .tfs2-cf7 input[type=date],#tfs2 .tfs2-cf7 select,#tfs2 .tfs2-cf7 textarea{width:100%;height:48px;border:1px solid var(--grey-200);border-radius:8px;padding:0 14px;font:15px var(--body);letter-spacing:0;text-transform:none;color:var(--brand-navy);background:var(--off-white)}
+#tfs2 .tfs2-cf7 textarea{height:auto;min-height:96px;padding:12px 14px}
+#tfs2 .tfs2-cf7 input:focus,#tfs2 .tfs2-cf7 select:focus,#tfs2 .tfs2-cf7 textarea:focus{outline:2px solid var(--brand-green);outline-offset:1px;border-color:var(--brand-green);background:#fff}
+#tfs2 .tfs2-cf7 input[type=submit],#tfs2 .tfs2-cf7 .wpcf7-submit{width:100%;height:50px;margin-top:4px;padding:0 20px;border:0;border-radius:999px;background:var(--brand-green);color:#fff;font:700 15px var(--body);letter-spacing:0;text-transform:none;cursor:pointer}
+#tfs2 .tfs2-cf7 input[type=submit]:hover,#tfs2 .tfs2-cf7 .wpcf7-submit:hover{background:var(--green-600);color:#fff}
+#tfs2 .tfs2-cf7 .wpcf7-form{position:relative}
+#tfs2 .tfs2-cf7 .wpcf7-spinner{display:none;position:absolute;left:50%;bottom:13px;margin:0 0 0 -12px}
+#tfs2 .tfs2-cf7 .wpcf7-form.submitting .wpcf7-spinner{display:block}
+#tfs2 .tfs2-cf7 .wpcf7-form>p:empty,#tfs2 .tfs2-cf7 .wpcf7-form p:has(>input[type=hidden]:only-child),#tfs2 .tfs2-cf7 .wpcf7-form>input[type=hidden],#tfs2 .tfs2-cf7 .wpcf7-form>.hidden-fields-container,#tfs2 .tfs2-cf7 .wpcf7-form>fieldset[style*="display: none"]{display:none}
+#tfs2 .tfs2-cf7 .cf7-row p{margin:0}
+#tfs2 .tfs2-cf7 .wpcf7-form.init .wpcf7-response-output,#tfs2 .tfs2-cf7 .wpcf7-response-output:empty{display:none}
+#tfs2 .tfs2-cf7 .wpcf7-not-valid-tip{font:400 13px var(--body);letter-spacing:0;text-transform:none;color:var(--danger);margin-top:4px}
+#tfs2 .tfs2-cf7 .wpcf7-response-output{margin:4px 0 0;padding:10px 14px;border-radius:8px;font-size:14px}
+
+/* Two-up rows in the quote form: name + email, participants + start date */
+#tfs2 .tfs2-cf7 .cf7-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#tfs2 .tfs2-cf7 .cf7-grid2>br,#tfs2 .tfs2-cf7 .cf7-grid2>p:empty,#tfs2 .tfs2-cf7 .wpcf7-form>br{display:none}
+#tfs2 .tfs2-cf7 .cf7-row{display:flex;flex-direction:column;min-width:0}
+/* Contact Form 7 adds an empty paragraph between blocks; as a flex item it adds an extra gap. Hide any paragraph with no field in it. */
+#tfs2 .tfs2-cf7 .wpcf7-form>p:not(:has(input:not([type=hidden]),select,textarea,label,.wpcf7-form-control-wrap)),#tfs2 .tfs2-cf7 .cf7-grid2>p:not(:has(input:not([type=hidden]),select,textarea,label,.wpcf7-form-control-wrap)){display:none}
+
+/* Terms / consent checkbox in the quote form */
+#tfs2 .tfs2-cf7 .cf7-row--consent{margin-top:2px}
+#tfs2 .tfs2-cf7 .cf7-row--consent p:empty,#tfs2 .tfs2-cf7 .cf7-row--consent br{display:none}
+#tfs2 .tfs2-cf7 .wpcf7-acceptance .wpcf7-list-item{display:block;margin:0}
+#tfs2 .tfs2-cf7 .wpcf7-acceptance label{display:flex;flex-direction:row;align-items:flex-start;gap:12px;font:400 13.5px/1.55 var(--body);letter-spacing:0;text-transform:none;color:var(--navy-600);cursor:pointer}
+#tfs2 .tfs2-cf7 .wpcf7-acceptance input[type=checkbox]{-webkit-appearance:none;appearance:none;flex:none;width:20px;height:20px;margin:1px 0 0;padding:0;border:1px solid var(--grey-300);border-radius:5px;background:var(--off-white) no-repeat center/14px 14px;cursor:pointer;transition:background-color .12s linear,border-color .12s linear}
+#tfs2 .tfs2-cf7 .wpcf7-acceptance input[type=checkbox]:hover{border-color:var(--brand-green)}
+#tfs2 .tfs2-cf7 .wpcf7-acceptance input[type=checkbox]:checked{background-color:var(--brand-green);border-color:var(--brand-green);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")}
+#tfs2 .tfs2-cf7 .wpcf7-acceptance input[type=checkbox]:focus-visible{outline:2px solid var(--brand-green);outline-offset:2px}
+#tfs2 .tfs2-cf7 .wpcf7-acceptance .wpcf7-list-item-label a{color:var(--brand-green);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+#tfs2 .tfs2-cf7 .wpcf7-acceptance .wpcf7-list-item-label a:hover{color:var(--green-700)}
+
+/* ---------- Stats and trust (compact, under the outcomes) ---------- */
+#tfs2 .tfs2-stats{margin-top:48px;padding:26px 32px 22px;background:var(--ivory-100);border-radius:20px}
+#tfs2 .tfs2-stats__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+#tfs2 .tfs2-stat{display:flex;align-items:center;gap:14px;min-width:0}
+#tfs2 .tfs2-stat__ic{width:40px;height:40px;flex:none;border-radius:50%;background:#fff;color:var(--brand-green);display:flex;align-items:center;justify-content:center}
+#tfs2 .tfs2-stat__txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+#tfs2 .tfs2-stat__n{font:600 30px/1 var(--serif);font-variant-numeric:lining-nums}
+#tfs2 .tfs2-stat__l{font-size:13px;line-height:1.4;color:var(--navy-600)}
+#tfs2 .tfs2-trust{margin-top:20px;padding-top:16px;border-top:1px solid var(--ivory-300);display:flex;flex-wrap:wrap;justify-content:center;gap:10px 36px}
+#tfs2 .tfs2-trust li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--navy-600)}
+#tfs2 .tfs2-trust .tfs2-ic{color:var(--brand-green)}
+
+/* ---------- Chloe's note ---------- */
+#tfs2 .tfs2-note-sec{padding:88px 0 40px}
+#tfs2 .tfs2-note{background:var(--ivory-100);border-radius:24px;padding:48px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:56px}
+#tfs2 .tfs2-note__side{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+#tfs2 .tfs2-note__pic{width:230px;height:230px;border-radius:50%;object-fit:cover}
+#tfs2 .tfs2-note__who{display:flex;flex-direction:column;gap:3px}
+#tfs2 .tfs2-note__who strong{font-size:16px}
+#tfs2 .tfs2-note__who span{font-size:14px;color:var(--navy-600)}
+#tfs2 .tfs2-note__main{display:flex;flex-direction:column;gap:18px;max-width:40em}
+#tfs2 .tfs2-note__body{position:relative;overflow:hidden;max-height:1600px;transition:max-height 360ms var(--ease-out);display:flex;flex-direction:column;gap:18px}
+#tfs2 .tfs2-note__body[data-collapsed="true"]{max-height:250px}
+#tfs2 .tfs2-note__body[data-collapsed="true"]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:72px;background:linear-gradient(to bottom,rgba(246,240,235,0),var(--ivory-100));pointer-events:none}
+#tfs2 .tfs2-note__body p{font-size:17px;line-height:1.7;color:var(--navy-600)}
+#tfs2 .tfs2-note__toggle{align-self:flex-start;display:flex;align-items:center;gap:8px;color:var(--brand-green);font:700 15px var(--body)}
+#tfs2 .tfs2-note__toggle:hover{color:var(--green-700)}
+#tfs2 .tfs2-note__toggle .tfs2-ic{transition:transform 200ms}
+#tfs2 .tfs2-note__toggle[aria-expanded="true"] .tfs2-ic{transform:rotate(180deg)}
+
+/* ---------- Teacher or student ---------- */
+#tfs2 .tfs2-who{background:#fff;padding:48px 0 24px}
+#tfs2 .tfs2-who .tfs2-h2{margin:18px 0 28px}
+#tfs2 .tfs2-doors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#tfs2 .tfs2-door{border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:10px;text-decoration:none}
+#tfs2 .tfs2-door--staff{background:var(--brand-navy);color:#fff}
+#tfs2 .tfs2-door--staff .tfs2-label{color:var(--green-300)}
+#tfs2 .tfs2-door--student{background:var(--green-50);border:1px solid var(--green-100);color:var(--brand-navy)}
+#tfs2 .tfs2-door__title{font:600 22px/1.2 var(--serif)}
+#tfs2 .tfs2-door__text{font-size:14.5px;line-height:1.55}
+#tfs2 .tfs2-door--staff .tfs2-door__text{color:var(--text-inverse-muted)}
+#tfs2 .tfs2-door--student .tfs2-door__text{color:var(--navy-600)}
+#tfs2 .tfs2-door__go{margin-top:auto;padding-top:8px;display:flex;align-items:center;gap:6px;font-weight:700;font-size:14.5px}
+#tfs2 .tfs2-door--staff .tfs2-door__go{color:var(--green-300)}
+#tfs2 .tfs2-door--student .tfs2-door__go{color:var(--brand-green)}
+#tfs2 .tfs2-door:hover .tfs2-door__go .tfs2-ic{transform:translateX(3px)}
+#tfs2 .tfs2-door__go .tfs2-ic{transition:transform .2s var(--ease-out)}
+#tfs2 .tfs2-door--staff:hover{color:#fff}
+#tfs2 .tfs2-door--student:hover{color:var(--brand-navy);border-color:var(--green-200)}
+
+/* ---------- Outcomes ---------- */
+#tfs2 .tfs2-outcomes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px}
+#tfs2 .tfs2-outcome{display:flex;gap:16px;padding:24px 0;border-top:1px solid var(--border-hairline)}
+#tfs2 .tfs2-outcome__ic{width:44px;height:44px;flex:none;border-radius:50%;background:var(--brand-green);color:#fff;display:flex;align-items:center;justify-content:center}
+#tfs2 .tfs2-outcome>span:last-child{display:flex;flex-direction:column;gap:6px}
+#tfs2 .tfs2-outcome strong{font-size:16px;line-height:1.3}
+#tfs2 .tfs2-outcome strong+span{font-size:14.5px;line-height:1.55;color:var(--navy-600)}
+
+/* ---------- Cards ---------- */
+#tfs2 .tfs2-cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+#tfs2 .tfs2-card{background:#fff;border:1px solid var(--border-hairline);border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:12px}
+#tfs2 .tfs2-card .tfs2-h3{font:600 21px/1.25 var(--serif)}
+#tfs2 .tfs2-card p{font-size:15px;line-height:1.6;color:var(--navy-600)}
+
+/* ---------- Week grid ---------- */
+#tfs2 .tfs2-week{margin:20px 0 40px;background:#fff;border:1px solid var(--border-hairline);border-radius:20px;padding:28px 30px;display:flex;flex-direction:column;gap:18px}
+#tfs2 .tfs2-week__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px}
+#tfs2 .tfs2-week__head>div{display:flex;flex-direction:column;gap:4px}
+#tfs2 .tfs2-week__cap{font-size:14.5px;color:var(--navy-600)}
+#tfs2 .tfs2-week__note{font-size:13px;color:var(--grey-500)}
+#tfs2 .tfs2-week__scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+#tfs2 .tfs2-week__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;min-width:560px}
+#tfs2 .tfs2-week__day{display:flex;flex-direction:column;gap:5px}
+#tfs2 .tfs2-week__dname{font:700 12px var(--body);padding-bottom:4px}
+#tfs2 .tfs2-week__b{height:30px;border-radius:6px;background:var(--ivory-200);color:var(--grey-500);font:600 11px var(--body);display:flex;align-items:center;padding:0 8px;transition:background-color .2s,color .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#tfs2 .tfs2-week__b.is-reg{height:22px}
+#tfs2 .tfs2-week__b.is-on{background:var(--brand-green);color:#fff}
+#tfs2 .tfs2-week__b.is-eve{background:var(--green-50);color:var(--brand-green)}
+#tfs2 .tfs2-week__b.is-eve.is-on{background:var(--brand-green);color:#fff}
+
+/* ---------- Cost calculator ---------- */
+#tfs2 .tfs2-calc{border:1px solid var(--border-hairline);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+#tfs2 .tfs2-calc__in{background:#fff;padding:36px;display:flex;flex-direction:column;gap:26px}
+#tfs2 .tfs2-calc__in .tfs2-h3--serif{margin-bottom:4px}
+#tfs2 .tfs2-range{display:flex;flex-direction:column;gap:12px}
+#tfs2 .tfs2-range__top{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:15px}
+#tfs2 .tfs2-range__val{font:600 32px/1 var(--serif);font-variant-numeric:lining-nums tabular-nums}
+#tfs2 input[type=range]{width:100%;height:24px;margin:0;cursor:pointer;accent-color:var(--brand-green);background:transparent;border:0;padding:0}
+#tfs2 .tfs2-range__ends{display:flex;justify-content:space-between;font-size:12px;color:var(--grey-500)}
+#tfs2 .tfs2-cur{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+#tfs2 .tfs2-cur legend{font-weight:700;font-size:15px;float:left;margin-right:14px}
+#tfs2 .tfs2-cur__pills{display:flex;padding:4px;border:1px solid var(--grey-200);border-radius:999px;gap:2px}
+#tfs2 .tfs2-cur__p{position:relative;cursor:pointer}
+#tfs2 .tfs2-cur__p input{position:absolute;opacity:0;width:1px;height:1px}
+#tfs2 .tfs2-cur__p span{display:block;padding:7px 14px;border-radius:999px;font:700 13px var(--body);color:var(--grey-500);white-space:nowrap}
+#tfs2 .tfs2-cur__p input:checked+span{background:var(--brand-navy);color:#fff}
+#tfs2 .tfs2-cur__p input:focus-visible+span{outline:2px solid var(--brand-green);outline-offset:2px}
+#tfs2 .tfs2-cur__note{font-size:13px;color:var(--grey-500)}
+#tfs2 .tfs2-tiers{border:1px solid var(--grey-200);border-radius:12px;overflow:hidden}
+#tfs2 .tfs2-tiers__row{display:flex;justify-content:space-between;gap:12px;padding:13px 18px;border-top:1px solid var(--grey-100);font-size:15px;background:#fff}
+#tfs2 .tfs2-tiers__row:first-child{border-top:0}
+#tfs2 .tfs2-tiers__row.is-on{background:var(--green-50);font-weight:700}
+#tfs2 .tfs2-calc__out{background:var(--brand-navy);color:#fff;padding:36px;display:flex;flex-direction:column;gap:18px}
+#tfs2 .tfs2-calc__big{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font:600 64px/1 var(--serif);color:#fff;font-variant-numeric:lining-nums}
+#tfs2 .tfs2-calc__unit{font:400 16px var(--body);color:var(--text-inverse-muted)}
+#tfs2 .tfs2-calc__tier{font-size:14.5px;color:var(--text-inverse-muted)}
+#tfs2 .tfs2-calc__rows>div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--border-inverse);font-size:15px}
+#tfs2 .tfs2-calc__rows dt{color:var(--text-inverse-muted);font-weight:400}
+#tfs2 .tfs2-calc__rows dd{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+#tfs2 .tfs2-calc__next{background:rgba(127,175,148,.14);border-radius:12px;padding:14px 16px;font-size:14.5px;line-height:1.5}
+#tfs2 .tfs2-calc__next b{color:var(--green-300)}
+#tfs2 .tfs2-calc__vat{font-size:12.5px;color:var(--text-inverse-muted)}
+#tfs2 .tfs2-calc__out .tfs2-btn{margin-top:auto;min-height:50px}
+
+/* ---------- Planner gate ---------- */
+#tfs2 .tfs2-gate{background:#fff;border:1px solid var(--border-hairline);border-radius:24px;padding:36px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:40px;align-items:center}
+#tfs2 .tfs2-gate>div:first-child{display:flex;flex-direction:column;gap:8px}
+#tfs2 .tfs2-gate>div:first-child p{font-size:15px;line-height:1.55}
+#tfs2 .tfs2-gate__form{display:flex;flex-direction:column;gap:14px}
+#tfs2 .tfs2-gate__fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#tfs2 .tfs2-field{display:flex;flex-direction:column;gap:6px;font-size:13.5px;font-weight:700}
+#tfs2 .tfs2-field input{height:48px;padding:0 14px;border:1px solid var(--grey-300);border-radius:8px;background:#fff;font:400 15px var(--body);width:100%}
+#tfs2 .tfs2-field input:focus{outline:2px solid var(--brand-green);outline-offset:2px;border-color:var(--brand-green)}
+#tfs2 .tfs2-field input[aria-invalid="true"]{border-color:var(--danger)}
+#tfs2 .tfs2-error{font-size:13.5px;color:var(--danger)}
+
+/* ---------- Tools (routes, taster) ---------- */
+#tfs2 .tfs2-tool{background:#fff;border:1px solid var(--border-hairline);border-radius:24px;overflow:hidden}
+#tfs2 .tfs2-tool--ivory{background:var(--ivory-100);border:0}
+#tfs2 .tfs2-tool__head{padding:26px 36px;border-bottom:1px solid var(--border-hairline);display:flex;flex-direction:column;gap:4px}
+#tfs2 .tfs2-tool--ivory .tfs2-tool__head{border-bottom-color:var(--ivory-300)}
+#tfs2 .tfs2-tool__body{padding:32px 36px;display:flex;flex-direction:column;gap:28px}
+
+/* Question groups and chips */
+#tfs2 .tfs2-q{display:flex;flex-direction:column;gap:12px}
+#tfs2 .tfs2-q__label{display:flex;align-items:center;gap:12px;flex-wrap:wrap;width:100%;margin-bottom:12px}
+#tfs2 label.tfs2-q__label,#tfs2 div.tfs2-q__label{margin-bottom:0}
+#tfs2 .tfs2-q__num{font:700 12px var(--brand);color:var(--grey-500);background:#fff;padding:5px 9px;border-radius:999px;letter-spacing:.04em}
+#tfs2 .tfs2-q__num--grey{background:var(--grey-100)}
+#tfs2 .tfs2-q__title{font-weight:700;font-size:16px}
+#tfs2 .tfs2-q__hint{font-size:14px;color:var(--grey-500)}
+#tfs2 .tfs2-chips{display:flex;flex-wrap:wrap;gap:10px}
+#tfs2 .tfs2-chip{position:relative;cursor:pointer}
+#tfs2 .tfs2-chip input{position:absolute;opacity:0;width:1px;height:1px}
+#tfs2 .tfs2-chip span{display:flex;align-items:baseline;gap:8px;padding:12px 20px;border-radius:999px;border:1px solid var(--grey-200);background:#fff;color:var(--navy-600);font:700 15px/1.3 var(--body);transition:background-color .12s linear,border-color .12s linear,color .12s linear}
+#tfs2 .tfs2-chip small{font-weight:400;font-size:13px;opacity:.75}
+#tfs2 .tfs2-chip:hover span{border-color:var(--grey-300);color:var(--brand-navy)}
+#tfs2 .tfs2-chip input:checked+span{background:var(--brand-navy);border-color:var(--brand-navy);color:#fff}
+#tfs2 .tfs2-chip--green input:checked+span{background:var(--brand-green);border-color:var(--brand-green)}
+#tfs2 .tfs2-chip input:focus-visible+span{outline:2px solid var(--brand-green);outline-offset:2px}
+
+/* Route matches */
+#tfs2 .tfs2-matches{display:flex;flex-direction:column;gap:18px;padding-top:24px;border-top:1px dashed var(--grey-300)}
+#tfs2 .tfs2-matches__title{font:600 24px/1.2 var(--serif)}
+#tfs2 .tfs2-matches__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#tfs2 .tfs2-match{background:#fff;border:1px solid var(--border-hairline);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+#tfs2 .tfs2-match__top{padding:18px 20px 14px;background:var(--green-50);border-bottom:1px solid var(--green-100);display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+#tfs2 .tfs2-match__rank{font:700 11px var(--brand);letter-spacing:.16em;color:var(--brand-green)}
+#tfs2 .tfs2-match__name{font:600 21px/1.2 var(--serif)}
+#tfs2 .tfs2-match__tag{font:700 11px var(--body);letter-spacing:.04em;padding:4px 10px;border-radius:999px;background:#fff;color:var(--brand-green)}
+#tfs2 .tfs2-match__tag.is-later{color:var(--grey-600)}
+#tfs2 .tfs2-match__body{padding:16px 20px 20px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;line-height:1.55;color:var(--navy-600)}
+#tfs2 .tfs2-match__line strong{display:block;font:700 11px var(--brand);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);margin-bottom:2px}
+#tfs2 .tfs2-match__body a{border-bottom:1px solid var(--green-200)}
+#tfs2 .tfs2-match__honest{background:var(--ivory-100);border-radius:10px;padding:12px 14px;font-size:14px}
+#tfs2 .tfs2-matches__foot{font-size:14px;color:var(--navy-600)}
+
+/* ---------- Taster ---------- */
+#tfs2 .tfs2-taster{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+#tfs2 .tfs2-taster__intro{display:flex;flex-direction:column;gap:16px;position:sticky;top:calc(var(--subnav-h) + 40px)}
+#tfs2 .tfs2-taster .tfs2-tool__body{padding:28px 32px}
+#tfs2 .tfs2-taster .tfs2-tool__head{padding:24px 32px}
+#tfs2 .tfs2-quiz{display:flex;flex-direction:column;gap:18px;min-height:420px}
+#tfs2 .tfs2-quiz__prog{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+#tfs2 .tfs2-quiz__prog i{height:4px;border-radius:2px;background:var(--grey-100);transition:background-color .3s}
+#tfs2 .tfs2-quiz__prog i.is-done{background:var(--brand-green)}
+#tfs2 .tfs2-quiz__prog i.is-now{background:var(--green-300)}
+#tfs2 .tfs2-quiz__count{font:700 11px var(--brand);letter-spacing:.18em;text-transform:uppercase;color:var(--grey-500)}
+#tfs2 .tfs2-quiz__q{font:600 24px/1.3 var(--serif)}
+#tfs2 .tfs2-quiz__note{font-size:14px;color:var(--navy-600)}
+#tfs2 .tfs2-quiz__opts{display:flex;flex-direction:column;gap:10px}
+#tfs2 .tfs2-opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px 16px;border-radius:12px;border:1px solid var(--grey-200);background:#fff;font:15px/1.45 var(--body);color:var(--brand-navy)}
+#tfs2 .tfs2-opt:hover:not(:disabled){border-color:var(--grey-300);background:var(--off-white)}
+#tfs2 .tfs2-opt:disabled{cursor:default}
+#tfs2 .tfs2-opt__k{width:26px;height:26px;flex:none;border-radius:6px;background:var(--grey-100);display:flex;align-items:center;justify-content:center;font:700 12px var(--body);color:var(--grey-600)}
+#tfs2 .tfs2-opt.is-right{border-color:var(--brand-green);background:var(--green-50)}
+#tfs2 .tfs2-opt.is-wrong{border-color:var(--danger);background:var(--danger-surface)}
+#tfs2 .tfs2-quiz__fb{display:flex;flex-direction:column;gap:14px;padding:16px 18px;border-radius:12px;background:var(--green-50);font-size:14.5px;line-height:1.55}
+#tfs2 .tfs2-quiz__score{font:600 40px/1 var(--serif)}
+#tfs2 .tfs2-quiz__done{display:flex;flex-direction:column;gap:14px;padding:12px 0;align-items:flex-start}
+
+/* ---------- Programme (horizontal modules) ---------- */
+#tfs2 .tfs2-prog{background:var(--brand-navy);color:#fff;position:relative}
+#tfs2 .tfs2-prog .tfs2-h2{color:#fff}
+#tfs2 .tfs2-prog__pin{padding:var(--sec-y) 0;display:flex;flex-direction:column;gap:44px}
+#tfs2 .tfs2-prog__head{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:end;width:100%}
+#tfs2 .tfs2-prog__head>div:first-child{display:flex;flex-direction:column;gap:16px;max-width:44em}
+#tfs2 .tfs2-prog__count{display:flex;flex-direction:column;gap:12px}
+#tfs2 .tfs2-prog__count p{display:flex;align-items:baseline;justify-content:flex-end;gap:8px;font-size:15px;color:var(--text-inverse-muted)}
+#tfs2 .tfs2-prog__num{font:600 44px/1 var(--serif);color:#fff;font-variant-numeric:tabular-nums lining-nums}
+#tfs2 .tfs2-prog__bar{height:4px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden}
+#tfs2 .tfs2-prog__bar span{display:block;width:10%;height:100%;background:var(--green-300);border-radius:999px}
+#tfs2 .tfs2-prog__track{display:flex;gap:20px;padding:0 max(var(--gutter),calc((100vw - var(--wrap)) / 2 + var(--gutter)));overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(var(--gutter),calc((100vw - var(--wrap)) / 2 + var(--gutter)));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+#tfs2 .tfs2-prog__track::-webkit-scrollbar{display:none}
+#tfs2 .tfs2-mod{width:360px;min-height:340px;flex:none;scroll-snap-align:start;border-radius:20px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:#fff;padding:32px;display:flex;flex-direction:column;gap:14px;transition:background-color .3s var(--ease-out),color .3s,border-color .3s}
+#tfs2 .tfs2-mod__n{font:600 64px/1 var(--serif);color:rgba(255,255,255,.3);transition:color .3s}
+#tfs2 .tfs2-mod__t{font:600 24px/1.2 var(--serif)}
+#tfs2 .tfs2-mod__d{font-size:14.5px;line-height:1.55;color:var(--text-inverse-muted)}
+#tfs2 .tfs2-mod__foot{margin-top:auto;display:flex;align-items:center;gap:10px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-size:14px;color:var(--text-inverse-muted);transition:border-color .3s,color .3s}
+#tfs2 .tfs2-mod.is-past .tfs2-mod__n{color:var(--green-300)}
+#tfs2 .tfs2-mod.is-on{background:#fff;color:var(--brand-navy);border-color:var(--grey-100)}
+#tfs2 .tfs2-mod.is-on .tfs2-mod__n{color:var(--brand-green)}
+#tfs2 .tfs2-mod.is-on .tfs2-mod__d,#tfs2 .tfs2-mod.is-on .tfs2-mod__foot{color:var(--grey-500);border-color:var(--grey-100)}
+#tfs2 .tfs2-mod--end{border-style:dashed;border-color:rgba(255,255,255,.28);background:transparent;justify-content:flex-end;gap:12px}
+#tfs2 .tfs2-mod__t--end{font-size:26px;margin-bottom:auto}
+
+/* Pinned horizontal scroll, desktop only (the JS adds .is-pinned) */
+#tfs2 .tfs2-prog.is-pinned .tfs2-prog__pin{position:sticky;top:0;height:100vh;overflow:hidden;justify-content:center;padding:0}
+#tfs2 .tfs2-prog.is-pinned .tfs2-prog__track{overflow:visible;scroll-snap-type:none;width:max-content;will-change:transform}
+
+/* ---------- FAQ ---------- */
+#tfs2 .tfs2-faq{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:56px}
+#tfs2 .tfs2-faq>div:first-child{display:flex;flex-direction:column;gap:18px}
+#tfs2 .tfs2-faq__list{border-bottom:1px solid var(--grey-200)}
+#tfs2 .tfs2-faq__item{border-top:1px solid var(--grey-200)}
+#tfs2 .tfs2-faq__q{font:inherit;text-wrap:wrap}
+#tfs2 .tfs2-faq__btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;text-align:left;font:700 17px/1.4 var(--body);color:var(--brand-navy)}
+#tfs2 .tfs2-faq__btn .tfs2-ic{color:var(--grey-500);transition:transform .2s}
+#tfs2 .tfs2-faq__btn[aria-expanded="true"] .tfs2-ic{transform:rotate(180deg)}
+#tfs2 .tfs2-faq__btn:hover{color:var(--brand-green)}
+#tfs2 .tfs2-faq__a{padding:0 40px 22px 0;font-size:15.5px;line-height:1.65;color:var(--navy-600)}
+
+/* ---------- Testimonials ---------- */
+#tfs2 .tfs2-sec--quotes .tfs2-head{margin-bottom:36px}
+#tfs2 .tfs2-quote{background:#fff;border:1px solid var(--border-hairline);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:22px}
+#tfs2 .tfs2-quote blockquote{padding-left:20px;border-left:3px solid var(--green-200);border-top:0;border-right:0;border-bottom:0;margin:0;background:none;font:italic 400 19px/1.5 var(--serif);color:var(--brand-navy);quotes:none}
+#tfs2 .tfs2-quote blockquote::before,#tfs2 .tfs2-quote blockquote::after{content:none}
+#tfs2 .tfs2-quote figcaption{margin-top:auto;font-size:14px;color:var(--grey-600)}
+
+#tfs2 .tfs2-testis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#tfs2 .tfs2-testi{margin:0;background:#fff;border:1px solid var(--border-hairline);border-radius:20px;padding:28px 32px;display:grid;grid-template-columns:88px minmax(0,1fr);gap:28px;align-items:center;box-shadow:0 6px 20px rgba(20,27,33,.05)}
+#tfs2 .tfs2-testi--nologo{grid-template-columns:minmax(0,1fr)}
+#tfs2 .tfs2-testi__media{width:88px;height:88px;display:flex;align-items:center;justify-content:center}
+#tfs2 .tfs2-testi__logo{max-width:88px;max-height:88px;width:auto;height:auto;object-fit:contain}
+#tfs2 .tfs2-testi__body{display:flex;flex-direction:column;gap:12px}
+#tfs2 .tfs2-testi blockquote{margin:0;padding:0;border:0;background:none;font:italic 400 21px/1.45 var(--serif);color:var(--brand-navy);quotes:none}
+#tfs2 .tfs2-testi blockquote::before,#tfs2 .tfs2-testi blockquote::after{content:none}
+#tfs2 .tfs2-testi figcaption{font:700 15px/1.4 var(--body);color:var(--navy-600)}
+
+/* Testimonial carousel (straight after the hero) */
+#tfs2 .tfs2-voices{background:var(--ivory-100);padding:0 0 64px}
+#tfs2 .tfs2-voices__in{border-top:1px solid var(--grey-200);padding-top:40px;display:flex;flex-direction:column;gap:22px}
+#tfs2 .tfs2-voices__head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}
+#tfs2 .tfs2-voices__head>div:first-child{display:flex;flex-direction:column;gap:10px}
+#tfs2 .tfs2-voices__head .tfs2-car__ctrl{gap:16px}
+#tfs2 .tfs2-voices__track{position:relative;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;padding:4px 2px 18px;margin:-4px -2px -18px}
+#tfs2 .tfs2-voices__track::-webkit-scrollbar{display:none}
+#tfs2 .tfs2-voices__track>.tfs2-testi{flex:0 0 calc((100% - 20px) / 2);scroll-snap-align:start}
+#tfs2 .tfs2-row--after{margin-top:32px}
+
+/* ---------- US schools ---------- */
+#tfs2 .tfs2-sec--us{padding-top:0}
+#tfs2 .tfs2-sec--quotes+.tfs2-sec--us{padding-top:0}
+#tfs2 .tfs2-us{background:#fff;border:1px solid var(--border-hairline);border-radius:20px;padding:30px 34px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center}
+#tfs2 .tfs2-us>div{display:flex;flex-direction:column;gap:8px}
+#tfs2 .tfs2-us p.tfs2-muted{font-size:15px;max-width:44em}
+
+/* ---------- Period Six ---------- */
+#tfs2 .tfs2-p6{background:var(--brand-navy);color:#fff}
+#tfs2 .tfs2-p6 .tfs2-h3{color:#fff}
+#tfs2 .tfs2-p6__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center;padding-top:40px;padding-bottom:40px}
+#tfs2 .tfs2-p6__grid>div:first-child{display:flex;flex-direction:column;gap:8px}
+#tfs2 .tfs2-p6__grid p.tfs2-onink-muted{font-size:14.5px;line-height:1.55}
+#tfs2 .tfs2-p6__form{display:flex;gap:10px;flex-wrap:wrap}
+#tfs2 .tfs2-p6__form input{min-width:0;height:48px;border:0;border-radius:8px;padding:0 14px;font:15px var(--body);background:#fff}
+#tfs2 .tfs2-p6__form input[name=name]{flex:1 1 140px}
+#tfs2 .tfs2-p6__form input[name=email]{flex:2 1 200px}
+#tfs2 .tfs2-p6__form input:focus{outline:2px solid var(--green-300);outline-offset:2px}
+#tfs2 .tfs2-p6__form .tfs2-btn--green:hover{background:var(--green-400)}
+#tfs2 .tfs2-p6__msg{font-size:14.5px;font-weight:700;color:var(--green-300);margin-top:8px}
+#tfs2 .tfs2-p6__msg:empty{display:none}
+#tfs2 .tfs2-p6__msg.is-error{color:#F0B8A0}
+#tfs2 .tfs2-p6__fine{font-size:12.5px;color:var(--text-inverse-muted);margin-top:10px}
+#tfs2 .tfs2-p6__fine a{color:var(--text-inverse-muted);text-decoration:underline}
+
+/* ---------- How it works (scroll story) ---------- */
+#tfs2 .tfs2-story{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;margin-bottom:72px}
+#tfs2 .tfs2-step{min-height:380px;display:flex;gap:22px;padding:40px 0;cursor:pointer;opacity:.35;transition:opacity .3s var(--ease-out)}
+#tfs2 .tfs2-step.is-on{opacity:1}
+#tfs2 .tfs2-step__n{width:48px;height:48px;flex:none;border-radius:50%;border:2px solid var(--grey-300);color:var(--grey-500);display:flex;align-items:center;justify-content:center;font:600 20px var(--serif);transition:background-color .3s,color .3s,border-color .3s}
+#tfs2 .tfs2-step.is-done .tfs2-step__n{background:var(--brand-green);border-color:var(--brand-green);color:#fff}
+#tfs2 .tfs2-step>div{display:flex;flex-direction:column;gap:10px;padding-top:6px}
+#tfs2 .tfs2-step__t{font:600 28px/1.2 var(--serif)}
+#tfs2 .tfs2-step__d{font-size:17px;line-height:1.6;color:var(--navy-600);max-width:26em}
+#tfs2 .tfs2-story__visual{position:relative}
+#tfs2 .tfs2-story__panel{position:sticky;top:120px;height:500px;background:var(--brand-navy);border-radius:24px;overflow:hidden}
+#tfs2 .tfs2-story__top{position:absolute;top:24px;left:28px;right:28px;z-index:2;display:flex;justify-content:space-between;align-items:center}
+#tfs2 .tfs2-story__dots{display:flex;gap:6px}
+#tfs2 .tfs2-story__dots i{display:block;width:6px;height:6px;border-radius:999px;background:rgba(255,255,255,.28);transition:width .3s var(--ease-out),background-color .3s}
+#tfs2 .tfs2-story__dots i.is-on{width:22px;background:#fff}
+#tfs2 .tfs2-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:48px;opacity:0;transform:translateY(16px);transition:opacity .36s var(--ease-out),transform .36s var(--ease-out);pointer-events:none}
+#tfs2 .tfs2-layer.is-before{transform:translateY(-16px)}
+#tfs2 .tfs2-layer.is-on{opacity:1;transform:none}
+#tfs2 .tfs2-mock{width:100%;max-width:440px;background:#fff;color:var(--brand-navy);border-radius:16px;box-shadow:0 12px 32px rgba(0,0,0,.22);overflow:hidden}
+#tfs2 .tfs2-mock--center{text-align:center}
+#tfs2 .tfs2-mock__head{display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--grey-100)}
+#tfs2 .tfs2-mock__head img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+#tfs2 .tfs2-mock__head div{display:flex;flex-direction:column;gap:2px;min-width:0}
+#tfs2 .tfs2-mock__head strong{font-size:14.5px}
+#tfs2 .tfs2-mock__head span{font-size:13px;color:var(--grey-500)}
+#tfs2 .tfs2-mock__head--lg{border-bottom:0;padding:20px 22px;gap:14px}
+#tfs2 .tfs2-mock__head--lg img{width:52px;height:52px}
+#tfs2 .tfs2-mock__head--lg strong{font-size:19px}
+#tfs2 .tfs2-mock__rows{padding:8px 22px 20px}
+#tfs2 .tfs2-mock__rows>div{display:flex;justify-content:space-between;padding:11px 0;border-top:1px solid var(--grey-100);font-size:14.5px}
+#tfs2 .tfs2-mock__rows dt{color:var(--navy-600);font-weight:400}
+#tfs2 .tfs2-mock__rows dd{font-weight:600}
+#tfs2 .tfs2-mock__rows dd.is-strong{font-weight:700}
+#tfs2 .tfs2-mock__ticks{padding:0 22px 16px}
+#tfs2 .tfs2-mock__ticks li{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--grey-100);font-size:15px}
+#tfs2 .tfs2-mock__ticks .tfs2-ic{width:26px;height:26px;padding:6px;border-radius:50%;background:var(--green-50);color:var(--brand-green)}
+#tfs2 .tfs2-mock__code{padding:30px 24px 26px;display:flex;flex-direction:column;align-items:center;gap:14px}
+#tfs2 .tfs2-mock__codebox{font:700 40px/1 var(--brand);letter-spacing:.12em;padding:16px 22px;border:2px dashed var(--green-200);border-radius:12px;background:var(--green-50)}
+#tfs2 .tfs2-mock__code .tfs2-small{max-width:22em}
+#tfs2 .tfs2-mock__foot{display:flex;justify-content:space-between;padding:14px 24px;border-top:1px solid var(--grey-100);font-size:13.5px}
+#tfs2 .tfs2-mock__foot>span{color:var(--grey-500)}
+#tfs2 .tfs2-mock__title{display:flex;justify-content:space-between;align-items:baseline;padding:18px 22px 6px}
+#tfs2 .tfs2-mock__title strong{font-size:19px}
+#tfs2 .tfs2-mock__title>span{font-size:13px;color:var(--grey-500)}
+#tfs2 .tfs2-mock__prog{padding:6px 22px 18px}
+#tfs2 .tfs2-mock__prog>div{display:grid;grid-template-columns:90px minmax(0,1fr) 92px;align-items:center;gap:14px;padding:11px 0;border-top:1px solid var(--grey-100);font-size:14px}
+#tfs2 .tfs2-mock__prog>div>span:last-child{color:var(--navy-600);text-align:right}
+#tfs2 .tfs2-mock__track{height:8px;border-radius:999px;background:var(--grey-100);overflow:hidden}
+#tfs2 .tfs2-mock__track i{display:block;height:100%;border-radius:999px;background:var(--brand-green)}
+
+/* ---------- Closing quote card ---------- */
+#tfs2 .tfs2-quotecta{scroll-margin-top:calc(var(--subnav-h) + 20px);background:#fff;border:1px solid var(--border-hairline);border-radius:24px;padding:48px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px}
+#tfs2 .tfs2-quotecta>div:first-child{display:flex;flex-direction:column;gap:18px}
+#tfs2 .tfs2-quotecta .tfs2-intro{font-size:17px}
+#tfs2 .tfs2-contact{background:var(--brand-navy);color:#fff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px}
+#tfs2 .tfs2-contact__who{display:flex;gap:14px;align-items:center}
+#tfs2 .tfs2-contact__who img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+#tfs2 .tfs2-contact__who div{display:flex;flex-direction:column;gap:2px}
+#tfs2 .tfs2-contact__who span{font-size:13.5px;color:var(--text-inverse-muted)}
+#tfs2 .tfs2-contact>p{font-size:15px;line-height:1.55}
+#tfs2 .tfs2-contact__line{align-self:flex-start;display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:#fff;word-break:break-word}
+#tfs2 .tfs2-contact__line .tfs2-ic{color:var(--green-300)}
+#tfs2 .tfs2-contact__line:hover{color:var(--green-300)}
+#tfs2 .tfs2-contact .tfs2-btn{margin-top:auto;min-height:50px}
+
+/* ---------- Guides ---------- */
+#tfs2 .tfs2-sec--guides{padding:64px 0 80px}
+#tfs2 .tfs2-guides{margin-top:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+#tfs2 .tfs2-guides a{height:100%;display:flex;flex-direction:column;gap:8px;padding:24px 26px;border:1px solid var(--border-hairline);border-radius:16px;color:var(--brand-navy);transition:border-color .15s linear}
+#tfs2 .tfs2-guides a:hover{border-color:var(--brand-green);color:var(--brand-navy)}
+#tfs2 .tfs2-guides strong{font:600 18px/1.3 var(--serif);color:var(--brand-green)}
+#tfs2 .tfs2-guides span{font-size:14.5px;line-height:1.55;color:var(--navy-600)}
+
+/* ---------- Dialogs ---------- */
+#tfs2 .tfs2-modal{position:fixed;inset:0;z-index:100000;background:rgba(20,27,33,.52);display:flex;align-items:center;justify-content:center;padding:40px}
+#tfs2 .tfs2-modal__box{width:760px;max-width:100%;max-height:calc(100vh - 80px);overflow:auto;background:#fff;border-radius:20px;box-shadow:var(--shadow-overlay);display:flex;flex-direction:column;overscroll-behavior:contain}
+#tfs2 .tfs2-modal__box--wide{width:980px}
+#tfs2 .tfs2-modal__head{position:sticky;top:0;z-index:1;background:#fff;padding:22px 28px 22px 36px;border-bottom:1px solid var(--border-hairline);display:flex;align-items:center;gap:16px}
+#tfs2 .tfs2-modal__head>div{display:flex;flex-direction:column;gap:4px}
+#tfs2 .tfs2-modal__x{margin-left:auto;flex:none;width:40px;height:40px;border:1px solid var(--grey-200);border-radius:50%;background:#fff;color:var(--brand-navy);display:flex;align-items:center;justify-content:center}
+#tfs2 .tfs2-modal__x:hover{border-color:var(--brand-green)}
+#tfs2 .tfs2-modal__body{padding:32px 36px;display:flex;flex-direction:column;gap:28px}
+#tfs2 .tfs2-plan{border:1px solid var(--green-200);background:var(--green-50);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px}
+#tfs2 .tfs2-plan__head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px}
+#tfs2 .tfs2-plan__head .tfs2-h3--serif{font-size:24px}
+#tfs2 .tfs2-plan__rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
+#tfs2 .tfs2-plan__rows>div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--green-100);font-size:15px}
+#tfs2 .tfs2-plan__rows dt{color:var(--navy-600);font-weight:400}
+#tfs2 .tfs2-plan__rows dd{font-weight:700;text-align:right}
+html.tfs2-lock,html.tfs2-lock body{overflow:hidden}
+
+/* ---------- Sticky price pill ---------- */
+#tfs2 .tfs2-pill{position:fixed;left:50%;bottom:20px;z-index:50;display:flex;align-items:center;gap:18px;padding:10px 10px 10px 22px;border-radius:999px;background:var(--brand-navy);color:#fff;box-shadow:var(--shadow-overlay);font-size:14.5px;white-space:nowrap;transform:translate(-50%,24px);opacity:0;visibility:hidden;transition:transform .3s var(--ease-out),opacity .3s,visibility 0s .3s}
+#tfs2 .tfs2-pill.is-on{transform:translate(-50%,0);opacity:1;visibility:visible;transition:transform .3s var(--ease-out),opacity .3s}
+#tfs2 .tfs2-pill__sub{color:var(--text-inverse-muted)}
+#tfs2 .tfs2-pill .tfs2-btn--green:hover{background:var(--green-400)}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width:1100px){
+  #tfs2{--sec-y:80px}
+  #tfs2 .tfs2-hero__title{font-size:54px}
+  #tfs2 .tfs2-h2--lg{font-size:38px}
+  #tfs2 .tfs2-h2{font-size:36px}
+  #tfs2 .tfs2-calc__big{font-size:54px}
+  #tfs2 .tfs2-stats__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px}
+  #tfs2 .tfs2-split.has-media{gap:40px}
+}
+
+@media (max-width:900px){
+  #tfs2{--gutter:24px;--sec-y:64px}
+  #tfs2 .tfs2-hero__grid{grid-template-columns:1fr;grid-template-rows:none;grid-template-areas:"copy" "side" "proof";row-gap:36px;padding-top:48px;padding-bottom:48px}
+  #tfs2 .tfs2-hero__grid>.tfs2-proof{margin-top:0}
+  #tfs2 .tfs2-hero__title{font-size:44px}
+  #tfs2 .tfs2-hero__media{height:320px}
+  #tfs2 .tfs2-split.has-media{grid-template-columns:1fr;gap:28px;margin-bottom:32px}
+  #tfs2 .tfs2-slot--head,#tfs2 .tfs2-slot--side,#tfs2 .tfs2-split.has-media>.tfs2-slot--head{aspect-ratio:16/9;min-height:0}
+  #tfs2 .tfs2-split.has-media>.tfs2-slot--head>.tfs2-slot__img{position:static}
+  #tfs2 .tfs2-note-sec{padding-top:64px}
+  #tfs2 .tfs2-note{grid-template-columns:1fr;gap:28px;padding:32px}
+  #tfs2 .tfs2-note__side{flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px}
+  #tfs2 .tfs2-note__pic{width:96px;height:96px}
+  #tfs2 .tfs2-note__who{flex:1 1 180px}
+  #tfs2 .tfs2-outcomes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #tfs2 .tfs2-cards3,#tfs2 .tfs2-guides{grid-template-columns:1fr}
+  #tfs2 .tfs2-calc{grid-template-columns:1fr}
+  #tfs2 .tfs2-gate{grid-template-columns:1fr;gap:24px}
+  #tfs2 .tfs2-matches__grid{grid-template-columns:1fr}
+  #tfs2 .tfs2-taster{grid-template-columns:1fr;gap:32px}
+  #tfs2 .tfs2-taster__intro{position:static}
+  #tfs2 .tfs2-prog__head{grid-template-columns:1fr;gap:24px}
+  #tfs2 .tfs2-prog__count{display:none}
+  #tfs2 .tfs2-mod{width:300px;min-height:300px;padding:26px}
+  #tfs2 .tfs2-faq{grid-template-columns:1fr;gap:24px}
+  #tfs2 .tfs2-testis{grid-template-columns:1fr}
+  #tfs2 .tfs2-voices__track>.tfs2-testi{flex-basis:86%}
+  #tfs2 .tfs2-us{grid-template-columns:1fr;gap:20px}
+  #tfs2 .tfs2-us .tfs2-btn{justify-self:start}
+  #tfs2 .tfs2-p6__grid{grid-template-columns:1fr;gap:24px}
+  #tfs2 .tfs2-story{grid-template-columns:1fr;gap:0;margin-bottom:48px}
+  #tfs2 .tfs2-story__visual{display:none}
+  #tfs2 .tfs2-step{min-height:0;padding:22px 0;opacity:1}
+  #tfs2 .tfs2-step .tfs2-step__n{background:var(--brand-green);border-color:var(--brand-green);color:#fff}
+  #tfs2 .tfs2-step__t{font-size:22px}
+  #tfs2 .tfs2-step__d{font-size:16px}
+  #tfs2 .tfs2-quotecta{grid-template-columns:1fr;gap:28px;padding:32px}
+  #tfs2 .tfs2-subnav__ctas .tfs2-btn--outline{display:none}
+}
+
+@media (max-width:640px){
+  #tfs2{--gutter:20px;--sec-y:56px;--subnav-h:54px}
+  #tfs2 .tfs2-subnav__in{padding:8px 12px;gap:6px}
+  #tfs2 .tfs2-subnav__tab{padding:8px 11px;font-size:14px}
+  #tfs2 .tfs2-subnav__tab:not(.is-current){display:none}
+  #tfs2 .tfs2-subnav__tab.is-current{padding:8px 12px}
+  #tfs2 .tfs2-jump{position:static}
+  #tfs2 .tfs2-jump__btn{padding:8px 11px;font-size:14px}
+  #tfs2 .tfs2-jump__menu{top:100%;left:12px;right:12px;width:auto;margin-top:4px;max-height:calc(100vh - 140px);overflow-y:auto}
+  #tfs2 .tfs2-jump__item--mobile{display:flex}
+  #tfs2 .tfs2-subnav__ctas .tfs2-btn--navy{padding:8px 14px;min-height:38px;font-size:13.5px}
+  #tfs2 .tfs2-hero__title{font-size:38px}
+  #tfs2 .tfs2-hero__lede{font-size:17px}
+  #tfs2 .tfs2-hero__form{padding:24px}
+  #tfs2 .tfs2-proof__slide{aspect-ratio:4/3}
+  #tfs2 .tfs2-slot--proof{aspect-ratio:4/3}
+  #tfs2 .tfs2-proof__cap{padding:48px 18px 16px}
+  #tfs2 .tfs2-proof__q{font-size:17px}
+  #tfs2 .tfs2-h2,#tfs2 .tfs2-h2--lg{font-size:31px}
+  #tfs2 .tfs2-intro{font-size:16.5px}
+  #tfs2 .tfs2-head{margin-bottom:28px}
+  #tfs2 .tfs2-stats{margin-top:36px;padding:20px 18px 18px}
+  #tfs2 .tfs2-stats__grid{gap:18px 16px}
+  #tfs2 .tfs2-stat{gap:10px}
+  #tfs2 .tfs2-stat__ic{width:34px;height:34px}
+  #tfs2 .tfs2-stat__n{font-size:24px}
+  #tfs2 .tfs2-stat__l{font-size:12.5px}
+  #tfs2 .tfs2-stat__l br{display:none}
+  #tfs2 .tfs2-trust{justify-content:flex-start;gap:10px}
+  #tfs2 .tfs2-note{padding:24px}
+  #tfs2 .tfs2-note__body p{font-size:16px}
+  #tfs2 .tfs2-doors{grid-template-columns:1fr}
+  #tfs2 .tfs2-outcomes{grid-template-columns:1fr}
+  #tfs2 .tfs2-card{padding:24px}
+  #tfs2 .tfs2-week{padding:22px 20px}
+  #tfs2 .tfs2-calc__in,#tfs2 .tfs2-calc__out{padding:24px}
+  #tfs2 .tfs2-calc__big{font-size:46px}
+  #tfs2 .tfs2-gate{padding:24px}
+  #tfs2 .tfs2-gate__fields{grid-template-columns:1fr}
+  #tfs2 .tfs2-tool__head{padding:22px 20px}
+  #tfs2 .tfs2-tool__body,#tfs2 .tfs2-taster .tfs2-tool__body{padding:22px 20px}
+  #tfs2 .tfs2-chip span{padding:10px 16px;font-size:14.5px;white-space:normal}
+  #tfs2 .tfs2-quiz__q{font-size:21px}
+  #tfs2 .tfs2-mod{width:82vw;max-width:320px}
+  #tfs2 .tfs2-faq__btn{font-size:16px;padding:18px 0}
+  #tfs2 .tfs2-faq__a{padding-right:0}
+  #tfs2 .tfs2-quote{padding:24px}
+  #tfs2 .tfs2-testi{grid-template-columns:56px minmax(0,1fr);gap:18px;padding:22px}
+  #tfs2 .tfs2-testi--nologo{grid-template-columns:minmax(0,1fr)}
+  #tfs2 .tfs2-testi__media{width:56px;height:56px}
+  #tfs2 .tfs2-testi__logo{max-width:56px;max-height:56px}
+  #tfs2 .tfs2-testi blockquote{font-size:18px}
+  #tfs2 .tfs2-voices{padding-bottom:48px}
+  #tfs2 .tfs2-voices__in{padding-top:32px}
+  #tfs2 .tfs2-voices__head{align-items:flex-start}
+  #tfs2 .tfs2-us{padding:24px}
+  #tfs2 .tfs2-p6__form .tfs2-btn{width:100%}
+  #tfs2 .tfs2-quotecta{padding:24px}
+  #tfs2 .tfs2-contact{padding:24px}
+  #tfs2 .tfs2-contact__line{font-size:16px}
+  #tfs2 .tfs2-modal{padding:0;align-items:flex-end}
+  #tfs2 .tfs2-modal__box{max-height:92vh;border-radius:20px 20px 0 0}
+  #tfs2 .tfs2-modal__head{padding:18px 18px 18px 22px}
+  #tfs2 .tfs2-modal__body{padding:22px}
+  #tfs2 .tfs2-plan{padding:20px}
+  #tfs2 .tfs2-plan__rows{grid-template-columns:1fr}
+  #tfs2 .tfs2-pill{left:12px;right:12px;bottom:12px;padding:8px 8px 8px 18px;justify-content:space-between;transform:translateY(24px)}
+  #tfs2 .tfs2-pill.is-on{transform:none}
+  #tfs2 .tfs2-pill__sub{display:none}
+}
+
+@media (max-width:560px){
+  #tfs2 .tfs2-cf7 .cf7-grid2{grid-template-columns:1fr}
+}
+
+@media (max-width:420px){
+  #tfs2 .tfs2-stats__grid{grid-template-columns:1fr}
+}
+
+@media (max-width:360px){
+  #tfs2 .tfs2-subnav__tab.is-current{display:none}
+}
+
+@media (max-width:782px){
+  body.admin-bar #tfs2 .tfs2-subnav{top:46px}
+}
+@media (max-width:600px){
+  body.admin-bar #tfs2 .tfs2-subnav{top:0}
+}
+
+@media (prefers-reduced-motion:reduce){
+  #tfs2 *,#tfs2 *::before,#tfs2 *::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
+}
+
+/* ---------- Print: only the plan when printing from the planner ---------- */
+@media print{
+  html.tfs2-printing body *{visibility:hidden!important}
+  html.tfs2-printing #tfs2 [data-tfs2-modal="planner"],html.tfs2-printing #tfs2 [data-tfs2-modal="planner"] *{visibility:visible!important}
+  html.tfs2-printing #tfs2 [data-tfs2-modal="planner"]{position:absolute;inset:0;background:#fff;padding:0;display:block}
+  html.tfs2-printing #tfs2 .tfs2-modal__box{box-shadow:none;max-height:none;overflow:visible;width:auto}
+  html.tfs2-printing #tfs2 .tfs2-modal__x,html.tfs2-printing #tfs2 [data-tfs2-print],html.tfs2-printing #tfs2 .tfs2-modal__body>fieldset,html.tfs2-printing #tfs2 .tfs2-modal__body>.tfs2-q,html.tfs2-printing #tfs2 .tfs2-modal__body>.tfs2-row{display:none!important}
+  #tfs2 .tfs2-subnav,#tfs2 .tfs2-pill{display:none!important}
+}

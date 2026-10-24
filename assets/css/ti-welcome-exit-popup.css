@@ -1,0 +1,34 @@
+/* WELCOME exit-intent popup. Scoped under #ti-wx so theme styles can't reach in. */
+#ti-wx{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(20,27,33,.55);opacity:0;transition:opacity .2s ease}
+#ti-wx[hidden]{display:none}
+#ti-wx.is-open{opacity:1}
+#ti-wx *,#ti-wx *::before,#ti-wx *::after{box-sizing:border-box}
+#ti-wx .ti-wx__box{position:relative;width:440px;max-width:100%;background:#fff;color:#1A2229;border-radius:20px;padding:40px 36px 28px;text-align:center;box-shadow:0 28px 70px rgba(20,27,33,.28);transform:translateY(12px) scale(.98);transition:transform .25s cubic-bezier(.16,1,.3,1);font-family:inherit}
+#ti-wx.is-open .ti-wx__box{transform:none}
+#ti-wx .ti-wx__view{display:flex;flex-direction:column;align-items:center;gap:14px}
+#ti-wx .ti-wx__view[hidden]{display:none}
+#ti-wx .ti-wx__eyebrow{margin:0;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#2E7A5A}
+#ti-wx .ti-wx__title{margin:0;font-size:28px;line-height:1.15;font-weight:700;color:#1A2229;text-transform:none;letter-spacing:-.01em}
+#ti-wx .ti-wx__text{margin:0;font-size:16px;line-height:1.55;color:#33434F}
+#ti-wx .ti-wx__code{margin:6px 0 2px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 20px;border:2px dashed #B5D0C1;border-radius:12px;background:#EFF5F1}
+#ti-wx .ti-wx__codeval{font-size:24px;font-weight:800;letter-spacing:.14em;color:#1A2229}
+#ti-wx button{font:inherit;margin:0;box-shadow:none;text-transform:none;letter-spacing:normal;cursor:pointer}
+#ti-wx .ti-wx__copy{min-height:40px;padding:8px 16px;border:1px solid #2E7A5A;border-radius:999px;background:#fff;color:#2E7A5A;font-size:14px;font-weight:700;line-height:1}
+#ti-wx .ti-wx__copy:hover,#ti-wx .ti-wx__copy:focus{background:#2E7A5A;color:#fff}
+#ti-wx .ti-wx__btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;padding:14px 24px;border:0;border-radius:999px;background:#2E7A5A;color:#fff;font-size:16px;font-weight:700;line-height:1.2;text-decoration:none}
+#ti-wx .ti-wx__btn:hover,#ti-wx .ti-wx__btn:focus{background:#226348;color:#fff}
+#ti-wx .ti-wx__btn:disabled{opacity:.6;cursor:default}
+#ti-wx .ti-wx__no{padding:6px 10px;border:0;background:none;color:#5E5951;font-size:14px;text-decoration:underline;text-underline-offset:3px}
+#ti-wx .ti-wx__no:hover,#ti-wx .ti-wx__no:focus{background:none;color:#1A2229}
+#ti-wx .ti-wx__fine{margin:2px 0 0;font-size:12.5px;line-height:1.45;color:#7E766D}
+#ti-wx .ti-wx__x{position:absolute;top:14px;right:14px;width:38px;height:38px;padding:0;display:flex;align-items:center;justify-content:center;border:1px solid #DCD7CF;border-radius:50%;background:#fff;color:#1A2229}
+#ti-wx .ti-wx__x:hover,#ti-wx .ti-wx__x:focus{background:#fff;border-color:#2E7A5A;color:#1A2229}
+#ti-wx :focus-visible{outline:2px solid #2E7A5A;outline-offset:2px}
+html.ti-wx-lock,html.ti-wx-lock body{overflow:hidden}
+@media (max-width:520px){
+  #ti-wx{padding:0;align-items:flex-end}
+  #ti-wx .ti-wx__box{border-radius:20px 20px 0 0;padding:36px 22px calc(22px + env(safe-area-inset-bottom))}
+  #ti-wx .ti-wx__title{font-size:24px}
+  #ti-wx .ti-wx__codeval{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){#ti-wx,#ti-wx .ti-wx__box{transition:none}}

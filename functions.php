@@ -48,6 +48,7 @@ function child_enqueue_styles()
     wp_enqueue_style('ti-color', get_stylesheet_directory_uri() . '/assets/css/ti-color.css', array(), time(), 'all');
     wp_enqueue_style('ti-fonts-css', get_stylesheet_directory_uri() . '/assets/css/ti-font.css', array(), time(), null);
     wp_enqueue_style('ti-global-css', get_stylesheet_directory_uri() . '/assets/css/ti-global.css', array(), time(), null);
+    wp_enqueue_style('ti-header-css', get_stylesheet_directory_uri() . '/assets/css/header.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/header.css'), 'all');
     wp_enqueue_script('ti-global-js', get_stylesheet_directory_uri() . '/assets/js/ti-global.js', array('jquery'), time(), true);
 
     /*Light Slider*/
@@ -75,6 +76,9 @@ function child_enqueue_styles()
         wp_enqueue_style('ti-homepage-2023', get_stylesheet_directory_uri() . '/assets/css/ti-homepage-2023.css', array(), time(), null);
         wp_enqueue_script('ti-webinars', get_stylesheet_directory_uri() . '/assets/js/ti-webinars.js', array('jquery'), time(), true);
         wp_enqueue_script('ti-homepage-2023', get_stylesheet_directory_uri() . '/assets/js/ti-homepage-2023.js', array('jquery'), time(), true);
+        wp_enqueue_script('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), time(),true);
+        wp_enqueue_script('splide-autoscroll', 'https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js', array(), time(),true);
+        wp_enqueue_style('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', array(), time(),'all');
     }
 
     if (is_page('63891')) {
@@ -143,7 +147,7 @@ function child_enqueue_styles()
         wp_enqueue_script('ti-internships-overview', get_stylesheet_directory_uri() . '/assets/js/ti-internships.js', array('jquery'), time(), true);
     }
 
-    if (is_singular('course') || is_singular('course_location')) {
+    if ((is_singular('course') || is_singular('course_location')) && !get_field('is_2024_design')) {
         wp_enqueue_style('ti-deposit-form-css', get_stylesheet_directory_uri() . '/assets/css/ti-deposit-form.css', array(), time(), null);
         wp_enqueue_style('ti-single-course-css', get_stylesheet_directory_uri() . '/assets/css/ti-single-course.css', array(), time(), null);
         wp_enqueue_script('ti-single-course-js', get_stylesheet_directory_uri() . '/assets/js/ti-single-course.js', array('jquery'), time(), true);
@@ -158,6 +162,19 @@ function child_enqueue_styles()
         wp_enqueue_style('ti-single-course-new', get_stylesheet_directory_uri() . '/assets/css/ti-single-course-new.css', array(), time(), 'all');
         // wp_enqueue_script('ti-single-course-js', get_stylesheet_directory_uri() . '/assets/js/ti-single-course.js', array('jquery'), time(), true);
     }
+
+    if (get_field('is_2024_design')) {
+        wp_enqueue_script('ti-deposit-form-js');
+        wp_enqueue_style('ti-deposit-form-css', get_stylesheet_directory_uri() . '/assets/css/ti-deposit-form.css', array(), time(), null);
+        wp_enqueue_style('ti-single-course-2024', get_stylesheet_directory_uri() . '/assets/css/ti-single-course-2024.css', array(), time(), 'all');
+        wp_enqueue_script('ti-single-course-2024', get_stylesheet_directory_uri() . '/assets/js/ti-single-course-2024.js', array('jquery'), time(), true);
+        wp_enqueue_script('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), time(),true);
+        wp_enqueue_script('splide-autoscroll', 'https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js', array(), time(),true);
+        wp_enqueue_style('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', array(), time(),'all');
+        wp_enqueue_style('ti-search-courses-css', get_stylesheet_directory_uri() . '/assets/css/ti-search-courses.css', array(), time(), 'all');
+        wp_enqueue_script('ti-search-courses-js', get_stylesheet_directory_uri() . '/assets/js/ti-search-courses.js', array('jquery'), time(), true);
+    }
+
     if (get_field('is_internship_new_design') && is_singular('internship')) {
         // Magnefic Popup
         wp_enqueue_style('magnefic-popup', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css', array(), time(), null);
@@ -182,8 +199,7 @@ function child_enqueue_styles()
         wp_enqueue_style('trial-style', get_stylesheet_directory_uri() . '/assets/css/trial.css', array(), time());
     }
 
-    if (is_singular('course') || is_page_template('homepage.php') || is_singular('course_location')) {
-
+    if ((is_singular('course') || is_page_template('homepage.php') || is_singular('course_location')) && !(get_field('is_2024_design'))) {
         wp_enqueue_style('ti-review-css', get_stylesheet_directory_uri() . '/assets/css/ti-review.css', array(), time(), null);
     }
 
@@ -206,6 +222,7 @@ function child_enqueue_styles()
     // Blog Page
     if (is_page('122') || is_category() || is_page_template('page-supportcenter.php')) {
         wp_enqueue_style('ti-blog-css', get_stylesheet_directory_uri() . '/assets/css/ti-blog.css', array(), time(), null);
+        wp_enqueue_script('ti-blog', get_stylesheet_directory_uri() . '/assets/js/ti-blog.js', array('jquery'), time(), true);
     }
 
     if (is_singular('post')) {
@@ -368,6 +385,10 @@ function child_enqueue_styles()
         wp_enqueue_script('black-friday-landing-page-js', get_stylesheet_directory_uri() . '/assets/js/black-friday-sale-2023.js', array('jquery'), time(), true);
     }
 
+    if (is_page_template('hope-page.php')) {
+        wp_enqueue_style('hope-page', get_stylesheet_directory_uri() . '/assets/css/hope-page.css', array(), time(), null);
+    }
+
     if (is_singular('course_location')) {
         wp_enqueue_style('ti-single-course-location-css', get_stylesheet_directory_uri() . '/assets/css/ti-single-course-location.css', array(), time(), null);
     }
@@ -428,6 +449,25 @@ function child_enqueue_styles()
     wp_enqueue_script('ti-select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array('jquery'), time(), true);
 
     /**
+     * Black Friday Sale
+     * https://tefl.ie/black-friday-sale
+     * 
+     * @author Przemysław Solan
+     * @date 4th November 2024
+     */
+    if(is_page_template('black-friday-sale-prz.php')) {
+        wp_enqueue_style('black-friday-sale-prz', get_stylesheet_directory_uri() . '/assets/css/black-friday-sale-prz.css', array(), time());
+        wp_enqueue_style('tefl-lity-css', 'https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css', array(), time(), null);
+        wp_enqueue_script('tefl-lity-js', 'https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js', array('jquery'), time(), true);
+    }
+
+    if(is_page_template('tefl-january-sale.php')) {
+        wp_enqueue_style('tefl-january-sale', get_stylesheet_directory_uri() . '/assets/css/tefl-january-sale.css', array(), time());
+        wp_enqueue_script('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), time(),true);
+        wp_enqueue_style('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', array(), time(),'all');
+    }
+    
+    /**
      * Alerts
      * https://teflinstitute.com/alerts/:country
      * 
@@ -484,11 +524,29 @@ function child_enqueue_styles()
         wp_enqueue_script('tefl-plus', get_stylesheet_directory_uri() . '/assets/js/tefl-plus.js', array(), time(),true);
     }
 
+    if(is_page_template('ti-homepage-template-2024.php') ){
+        wp_enqueue_style('ti-search-courses-css', get_stylesheet_directory_uri() . '/assets/css/ti-search-courses.css', array(), time(), 'all');
+        wp_enqueue_script('ti-search-courses-js', get_stylesheet_directory_uri() . '/assets/js/ti-search-courses.js', array('jquery'), time(), true);
+        wp_enqueue_style('tefl-home-2024', get_stylesheet_directory_uri() . '/assets/css/tefl-home-2024.css', array(), time(),'all');
+        wp_enqueue_script('tefl-home-2024', get_stylesheet_directory_uri() . '/assets/js/tefl-home-2024.js', array(), time(),true);
+        
+    }
+
+    if( is_page_template('ti-homepage-template-2024.php') ){
+        wp_enqueue_script('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), time(),true);
+        wp_enqueue_script('splide-autoscroll', 'https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js', array(), time(),true);
+        wp_enqueue_style('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', array(), time(),'all');
+        wp_enqueue_style('klarna', get_stylesheet_directory_uri() . '/assets/css/klarna.css', array(), time());
+        wp_enqueue_script('klarna', get_stylesheet_directory_uri() . '/assets/js/klarna.js', array('jquery'), time(), true);
+    }
+
     // Myanmar Screening Form
     if (is_page(74178)) {
         wp_enqueue_style('ti-eligibility-screening.css', get_stylesheet_directory_uri() . '/assets/css/ti-eligibility-screening.css', array(), time(), 'all');
         wp_enqueue_script('ti-myanmar-screening-form-js', get_stylesheet_directory_uri() . '/assets/js/ti-myanmar-screening-form.js', array('jquery'), time(), true);
     }
+
+    
 
     // Cooupon page
 
@@ -496,6 +554,103 @@ function child_enqueue_styles()
         wp_enqueue_style('discount-tefl-coupon-codes', get_stylesheet_directory_uri() . '/assets/css/discount-tefl-coupon-codes.css', array(), time(), 'all');
         wp_enqueue_script('discount-tefl-coupon-codes', get_stylesheet_directory_uri() . '/assets/js/discount-tefl-coupon-codes.js', array('jquery'), time(), true);
     }
+
+    if(is_page_template('ti-esl-franchise.php')){
+        wp_enqueue_script('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), time(),true);
+        wp_enqueue_script('splide-autoscroll', 'https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js', array(), time(),true);
+        wp_enqueue_style('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', array(), time(),'all');
+        wp_enqueue_style('ti-esl-franchise', get_stylesheet_directory_uri() . '/assets/css/ti-esl-franchise.css', array(), time(), 'all');
+        wp_enqueue_script('ti-esl-franchise', get_stylesheet_directory_uri() . '/assets/js/ti-esl-franchise.js', array('jquery'), time(), true);
+    }
+
+    if(is_page_template('ti-founder-page.php')){
+        wp_enqueue_style('ti-founder-page', get_stylesheet_directory_uri() . '/assets/css/ti-founder-page.css', array(), time(), 'all');
+        wp_enqueue_script('ti-founder-page', get_stylesheet_directory_uri() . '/assets/js/ti-founder-page.js', array('jquery'), time(), true);
+    }
+
+    if(is_page_template('ti-tefl-for-schools.php')){
+        wp_enqueue_script('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), time(),true);
+        wp_enqueue_script('splide-autoscroll', 'https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js', array(), time(),true);
+        wp_enqueue_style('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', array(), time(),'all');
+        wp_enqueue_style('ti-tefl-for-schools', get_stylesheet_directory_uri() . '/assets/css/ti-tefl-for-schools.css', array(), time(), 'all');
+        wp_enqueue_script('ti-tefl-for-schools', get_stylesheet_directory_uri() . '/assets/js/ti-tefl-for-schools.js', array('jquery'), time(), true);
+    }
+
+    if (is_page_template('ti-tefl-for-schools-v3.php')) {
+        wp_enqueue_style('ti-tefl-for-schools-v3', get_stylesheet_directory_uri() . '/assets/css/ti-tefl-for-schools-v3.css', array(), time(), 'all');
+        wp_enqueue_script('ti-tefl-for-schools-v3', get_stylesheet_directory_uri() . '/assets/js/ti-tefl-for-schools-v3.js', array(), time(), true);
+        wp_add_inline_script('ti-tefl-for-schools-v3', tfs2_js_config(), 'before');
+        wp_enqueue_script('dlopo-embed', 'https://dlopo.com/embed.js', array(), null, true);
+        wp_add_inline_script('dlopo-embed', 'window.dlopoEmbed = { mode: "element" };', 'before');
+    }
+
+    // WELCOME exit-intent popup (5% off first order).
+    if (function_exists('ti_wx_should_show') && ti_wx_should_show()) {
+        wp_enqueue_style('ti-welcome-exit-popup', get_stylesheet_directory_uri() . '/assets/css/ti-welcome-exit-popup.css', array(), time(), 'all');
+        wp_enqueue_script('ti-welcome-exit-popup', get_stylesheet_directory_uri() . '/assets/js/ti-welcome-exit-popup.js', array(), time(), true);
+        wp_localize_script('ti-welcome-exit-popup', 'ti_wx', array('ajax' => admin_url('admin-ajax.php')));
+    }
+
+    if(is_page_template('page-job-hunters-pack.php')){
+        wp_enqueue_style('page-job-hunters-pack', get_stylesheet_directory_uri() . '/assets/css/page-job-hunters-pack.css', array(), time(), 'all');
+        wp_enqueue_script('page-job-hunters-pack', get_stylesheet_directory_uri() . '/assets/js/page-job-hunters-pack.js', array('jquery'), time(), true);
+    }
+
+    if(is_page_template('ti-page-country-course-template.php')){
+        wp_enqueue_script('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), time(),true);
+        wp_enqueue_script('splide-autoscroll', 'https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js', array(), time(),true);
+        wp_enqueue_style('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', array(), time(),'all');
+        wp_enqueue_style('ti-page-country-course-template', get_stylesheet_directory_uri() . '/assets/css/ti-page-country-course-template.css', array(), time(), 'all');
+        wp_enqueue_script('ti-page-country-course-template', get_stylesheet_directory_uri() . '/assets/js/ti-page-country-course-template.js', array('jquery'), time(), true);
+    }
+
+
+    if(is_page_template('single-country-page.php')){
+        wp_enqueue_style('single-country-page', get_stylesheet_directory_uri() . '/assets/css/page/single-country-page.css', array(), time(), 'all');
+        // wp_enqueue_style('global-css', get_stylesheet_directory_uri() . '/assets/css/global.css', array(), time(), 'all');
+        wp_enqueue_style('slick-slider',get_stylesheet_directory_uri() . '/assets/css/element/slick-slider.css', array(), time(), 'all');
+        wp_enqueue_script('slick-slider-js', get_stylesheet_directory_uri() . '/assets/js/element/slick-slider.js', array('jquery'), time(), true);
+        wp_enqueue_style('ti-homepage-2023', get_stylesheet_directory_uri() . '/assets/css/ti-homepage-2023.css', array(), time(), null);
+        wp_enqueue_script('ti-homepage-2023', get_stylesheet_directory_uri() . '/assets/js/ti-homepage-2023.js', array('jquery'), time(), true);
+    }
+
+    // Partners Template
+    if ( is_page_template('prz-partners.php') ) {
+        wp_enqueue_style(
+            'partners-css',
+            get_stylesheet_directory_uri() . '/assets/css/prz-partners.css',
+            array(),
+            time(),
+            'all'
+        );
+    }
+
+    // Podcast template
+    if(is_page_template('tefl-podcast.php')){
+        wp_enqueue_style('podcast-css', get_stylesheet_directory_uri() . '/assets/css/page/tefl-podcast.css',
+            array(),
+            time(),
+            'all');
+
+    }
+
+    
+    // Japan Page Template
+    if (is_page_template('page-japan-template.php')) {
+        wp_enqueue_style('page-japan-template-css', get_stylesheet_directory_uri() . '/assets/css/page-japan-template.css', array(), time(), 'all');
+        wp_enqueue_script('page-japan-template-js', get_stylesheet_directory_uri() . '/assets/js/page-japan-template.js', array('jquery'), time(), true);
+    }
+
+    if (is_page_template('page-sale-new.php')) {
+        wp_enqueue_style('page-sale-new-css', get_stylesheet_directory_uri() . '/assets/css/page-sale-new.css', array(), time(), 'all');
+        wp_enqueue_script('page-sale-new-js', get_stylesheet_directory_uri() . '/assets/js/page-sale-new.js', array('jquery'), time(), true);
+        wp_enqueue_style('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css');
+        wp_enqueue_script('splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), null, true);
+        wp_enqueue_style('tefl-lity-css', 'https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css', array(), time(), null);
+        wp_enqueue_script('tefl-lity-js', 'https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js', array('jquery'), time(), true);
+    }
+
+
     $carr = [];
     $geo_logo  = get_field('geo_logos', 'options');
     foreach ($geo_logo as $gl) {
@@ -509,6 +664,7 @@ function child_enqueue_styles()
         'ti_curr_post_id' => get_the_ID(),
         'ti_country_code' => get_user_geo_country_code(),
         'ti_show_country' => $carr,
+        'nonce' => wp_create_nonce('google_reviews_nonce')
     );
 
     wp_localize_script('ti-global-js', 'ti_obj', $ti_local_array);
@@ -545,6 +701,18 @@ if (function_exists('acf_add_options_page')) {
         'capability'    => 'edit_posts',
         'redirect'      => false
     ));
+
+    // Auto-purge caches when an ACF Options page (Menu/Banner/Color/Course Date Settings) is saved,
+    // so client edits appear immediately without a manual cache clear.
+    add_action('acf/save_post', function( $post_id ) {
+        if ( 'options' !== $post_id ) { return; } // ACF options pages save with post_id 'options'
+        if ( function_exists('wpfc_clear_all_cache') ) {
+            wpfc_clear_all_cache( true );           // WP Fastest Cache + the static cache dir nginx serves
+        } else {
+            do_action('wpfc_clear_all_cache', true);
+        }
+        wp_cache_flush();                           // Redis object cache
+    }, 20);
     // acf_add_options_page(array(
     //     'page_title'    => 'Home Hero Banners Settings',
     //     'menu_title'    => 'Home Hero Banners Settings',
@@ -648,6 +816,8 @@ require_once 'includes/ti-subcountry-functions.php';
 // require_once 'includes/ti-subcountry-posts.php';
 require_once 'includes/seo_functions.php';
 require_once 'includes/custom_login_endpoint.php';
+require_once 'includes/ti-blog-redesign.php';
+require_once 'includes/ti-mobile-menu.php';
 require_once 'includes/google-sheets-insert.php';
 require_once 'includes/sso_functions.php';
 require_once 'includes/download-brochure-functions.php';
@@ -656,14 +826,28 @@ require_once 'includes/custom_order_action.php';
 require_once 'includes/order-functions.php';
 require_once 'includes/validate_newsletter_email.php';
 
+require_once 'includes/hope-foundation-donation-integration.php';
+
 
 require_once 'includes/buying-for-someone-else-feature.php';
 require_once 'includes/elt-custom-email.php';
 require_once 'includes/ti-course-extension-functions.php';
 require_once 'includes/awoo-merge-variables.php';
 require_once 'includes/custom_webhooks.php';
+require_once 'includes/widgets.php';
+require_once 'includes/tracking-scripts.php';
 
+require_once 'includes/spin-the-wheel.php';
 
+// Code moved out of the Code Snippets plugin into the child theme.
+require_once 'includes/migrated-code-snippets.php';
+
+// Course Page 2026 (new course design, opt-in per course).
+require_once 'includes/course-2026.php';
+
+require_once 'includes/tefl-for-schools-v3.php';
+require_once 'includes/welcome-exit-popup.php';
+add_filter('ti_wx_should_show', '__return_false'); // WELCOME popup switched off for now
 
 function wpse245372_admin_user_css()
 {
@@ -675,7 +859,7 @@ function wpse245372_admin_user_css()
 
 add_action('admin_head', 'wpse245372_admin_user_css');
 
-add_action('wp_head', 'ti_defining_global_styles');
+// add_action('wp_head', 'ti_defining_global_styles');
 
 function ti_defining_global_styles()
 {
@@ -802,4 +986,57 @@ function get_geo_banner_gifs($country, $post_id)
         }
     }
     return $default_gif;
+}
+
+function enqueue_slick_slider_scripts() {
+    // Ensure jQuery is loaded (WordPress includes it by default, just enqueue it)
+    wp_enqueue_script('jquery');
+
+    // Slick CSS
+    
+    wp_enqueue_style('slick-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
+    wp_enqueue_style('slick-theme-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css');
+    // Slick JS (depends on jQuery)
+    wp_enqueue_script('slick-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), null, true);;
+}
+add_action('wp_enqueue_scripts', 'enqueue_slick_slider_scripts');
+
+/**
+ * Royal MCP — allow the AI (MCP user) to write the homepage "Search Courses"
+ * ACF Options fields. Added 2026-08-17 per Ian's request.
+ * Scoped to three option keys only; does NOT open options generally.
+ */
+add_filter( 'royal_mcp_writable_options', function ( $allowed ) {
+	$allowed[] = 'options_search_page_about_text'; // founder note
+	$allowed[] = 'options_course_search_text';     // first description block
+	$allowed[] = 'options_course_search_title';    // H1 above both
+	return $allowed;
+} );
+
+/**
+ * Hire Wire — "For Careers Services" page (106518).
+ * Styles were moved out of the page body into this stylesheet so editors using the
+ * Visual tab can't strip them. All rules are scoped to .hwcs / .hwcs-* .
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_page( 106518 ) ) {
+		$rel  = '/assets/css/hire-wire-careers.css';
+		$path = get_stylesheet_directory() . $rel;
+		wp_enqueue_style(
+			'ti-hire-wire-careers',
+			get_stylesheet_directory_uri() . $rel,
+			array(),
+			file_exists( $path ) ? filemtime( $path ) : '1.0'
+		);
+	}
+} );
+
+
+// Headless layer for the Next.js front-end (render/routes/CORS endpoints).
+// Fully self-contained in /headless — this is the ONLY line outside that folder.
+// Turn it off with zero side effects: delete the /headless folder, remove this
+// block, or define('TEFL_HEADLESS_DISABLE', true) in wp-config.php.
+if ( ! defined( 'TEFL_HEADLESS_DISABLE' )
+    && file_exists( get_stylesheet_directory() . '/headless/bootstrap.php' ) ) {
+    include_once get_stylesheet_directory() . '/headless/bootstrap.php';
 }

@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); 
-
+$search_page_about_text = get_field('search_page_about_text','options');
 $course_search_title = get_field('course_search_title', 'options');
 $clock_text = get_field('clock_text', 'options'); 
 $video = get_field('video', 'options');
@@ -34,11 +34,23 @@ $course_count = 0; ?>
 
 <div id="primary" <?php astra_primary_class(); ?>>
 
-    <div class="ast-container">
-    <?php echo do_shortcode('[tefl_course_search]'); ?>
-    </div>
-    
-
+    <?php
+        if(!empty($search_page_about_text)):
+    ?>
+    <section class="about-section">
+        <div class="ast-container">
+            <div class="ast-row">
+                <div class="ast-col-md-12">
+                    <div class="about-text">
+                        <?php echo $search_page_about_text?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php
+        endif;
+    ?>
     <div class="section course-result-section" id="course_result_section">
          <div class="ast-container course-result-container"> 
             <div class="ast-row ast-flex course-result-row">
@@ -132,24 +144,30 @@ $course_count = 0; ?>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
-                    <!-- <p class="course-search-text" style="margin: 50px 0 0;">Want more help before enrolling? Speak to an expert TEFL advisor
-                    <br><a href="/callback" class="request-callback-btn">Request a Free Callback</a></p> -->
                   
-                  <div class="forms">
-                      	<div class="callback">
-                          <div class="title">GET PROFESSIONAL & PERSONALISED ADVICE</div>
-                      		<?php echo do_shortcode("[contact-form-7 id='79744' title='Search Courses Advice']"); ?>
-                  		</div>
-                      	<div class="newsletter">
-                          	<div class="promo">
-                          		<div class="title">Sign up to our newsletter and receive a 10% discount</div>
-                          		<img src="https://teflinstitute.com/wp-content/uploads/2021/07/laptop_mobile-1.png">
-                          	</div>
-                          	<?php echo do_shortcode("[contact-form-7 id='72610' title='Newsletter popup']"); ?>
-                  		</div>
-                  	</div>
+                    <div class="forms">
+                        <div class="callback">
+                            <div class="title">GET PROFESSIONAL & PERSONALISED ADVICE</div>
+                            <?php echo do_shortcode("[contact-form-7 id='79744' title='Search Courses Advice']"); ?>
+                        </div>
+                        <div class="callback-form-img ">
+                            <img class="no-lazy" src="/wp-content/uploads/2025/05/meet-the-team.jpg" alt="">
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="newsletter">
+                        <div class="promo">
+                            <img src="https://teflinstitute.com/wp-content/uploads/2021/07/laptop_mobile-1.png">
+                            <div class="title">Sign up to our newsletter and receive a 10% discount</div>
+                        </div>
+                        <div class="newsletter-form-container">
+                            <?php echo do_shortcode("[contact-form-7 id='72610' title='Newsletter popup']"); ?>
+                        </div>
+                    </div>
                   
-                  <div class="video">
+                    <div class="video">
                       	<div class="content">
                       		<div class="title">Watch this video & find out what's the difference between TEFL course and its levels</div>
                           	<a href="<?php echo $video['youtube']; ?>" data-lity class="video_player youtube_icon">Watch Now</a>
@@ -267,25 +285,7 @@ jQuery('document').ready(function ($) {
             </div>
         </div>
     </section>
-    
-    <!-- <section class="course-brochure-details">
-        <div class="ast-container">
-                <div class="ast-row" style="background: #F2F2F2;">
-                    <div class="ast-col-md-12">
-                        <div class="course-brochure-details-block ast-col-md-12">
-                            <h6 class="section-heading">The TEFL Institute Explained: <span class="">TEFL Courses Breakdown</span></h6>
-                            <div class="section-paragraph">Your first steps to becoming a fully accredited, internationally recognised EFL/ESL teacher within 4 weeks!</div>
-                            <img src="https://teflinstitute.com/wp-content/uploads/2021/04/TEFL-Institute-Brochure-Download-Image-1_No-Shadow-1-min.png" class="section-image">
-                            <div class="brochure-detail">
-                                <a class="btn" href="https://teflinstitute.com/wp-content/uploads/2021/04/TEFL-Institute-Study-Prospectus-Interactive.pdf" target="_blank">Download Now
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </section> -->
+  
 
 </div><!-- #primary -->
 

@@ -73,7 +73,7 @@ function elt_block_fn()
                 <img src="/wp-content/uploads/2023/01/christin-hume-hBuwVLcYTnA-unsplash.jpg">
             </div>
             <div class="elt-content-div">
-                <h4>English Level Test</h4>
+                <p class="elt-content-div-title">English Level Test</p>
                 <p>Want to find out which online TEFL course is best for you? Take our test today and we’ll match your abilities and goals to your ideal TEFL course. </p>
             </div>
             <div class="elt-btn-div">
@@ -98,7 +98,7 @@ function salary_calculator_block_fn()
                 <img src="/wp-content/uploads/2021/02/salary-calc-0-min.png">
             </div>
             <div class="elt-content-div">
-                <h4>Salary Calculator</h4>
+                <p class="elt-content-div-title">Salary Calculator</p>
                 <p>Have you been thinking about teaching English online? Is it worth it? Calculate your potential earnings and discover how much money you can make teaching online</p>
             </div>
             <div class="elt-btn-div">

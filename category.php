@@ -5,7 +5,7 @@
     <section class="blogs-section life-story-abroad life-story-sec" style="padding: 0 0 0 0;">
         <div class="ast-container">
             <div class="ast-row">
-                <div class="ast-col-md-12"><h2><?php single_cat_title(''); ?></h2></div>
+                <div class="ast-col-md-12"><h1 style="font-size:32px;font-weight:700;line-height:41.6px;color:#1c1c1b;margin:0;text-align:center;text-transform:uppercase;"><?php single_cat_title(''); ?></h1></div>
                 <?php while ( have_posts() ) : the_post(); ?>
                     <div class="ast-col-md-4">
                         <div class="blog-item" style="background: url('<?php echo get_the_post_thumbnail_url(); ?>'); margin-bottom: 50px;">

@@ -53,7 +53,7 @@ $callback = get_field('callback');
                     <div class="ast-col-md-4">
                         <div class="sidepanel">
 
-                            <div class="title"><?php echo $title; ?></div>
+                            <h1 class="title" style="font-size:24px;font-weight:700;line-height:30px;margin:0 0 13.68px;color:rgb(40,40,40)"><?php echo $title; ?></h1>
 
                             <div class="subtitle"><?php echo $subtitle; ?></div>
                             
@@ -105,7 +105,7 @@ $callback = get_field('callback');
                         
                             $course_id = $course['course'];
                             $course_product_id = get_field('course_product', $course_id);
-                            $course_product = new WC_Product($course_product_id);
+                            $course_product = wc_get_product($course_product_id);
                             $course_price_html = $course_product->get_price_html();
                             $course_regular_price = $course_product->get_regular_price();
                             $course_sale_price = $course_product->get_sale_price();

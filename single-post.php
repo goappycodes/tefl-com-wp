@@ -48,30 +48,7 @@ get_header(); ?>
         ?>
 
         <section class="banner-section" style="background: url('<?php echo $background_image; ?>');">
-            <div class="ast-container">
-        		<div class="ast-row">
-					<div class="banner-date-author">Posted on <?php echo get_the_date(); ?> by <?php the_author_link(); ?></div>
-        		    <div class="ast-col-md-6">
-						<div class="banner-content-block">
-							<div class="content-block">
-								<h1 class="font-700 large-heading section-blog-title"><?php echo get_the_title(); ?></h1>
-								<?php if($banner_title): ?>
-									<h2 class="section-heading"><?php echo $banner_title; ?></h2>
-								<?php endif; ?>
-								<?php if($banner_text): ?>
-									<p><?php echo $banner_text; ?></p>
-								<?php endif; ?>
-								<?php if($banner_logo): ?>
-									<img class="banner-logo" src="<?php echo $banner_logo; ?>">
-								<?php endif; ?>
-								<?php if(!empty($banner_cta_button_link) && !empty($banner_cta_button_text)): ?>
-									<a class="btn btn-primary" href="<?php echo $banner_cta_button_link; ?>"><?php echo $banner_cta_button_text; ?> <i class="fa fa-angle-right"></i></a>
-								<?php endif; ?>
-							</div>
-						</div>    
-        		    </div>
-        		</div>
-        	</div>
+            
         </section>
         
         <!--/Banner Section-->
@@ -116,9 +93,12 @@ get_header(); ?>
 						</div>
 						
 						<div class="ast-col-lg-7">
-							<h2 class="large-heading font-700 content-heading"><?php echo $content_title?$content_title:get_the_title(); ?></h2>
+							
+							<h1 class="large-heading font-700 content-heading"><?php echo $content_title?$content_title:get_the_title(); ?></h1>
     				        
-    				        <div class="content"><?php 
+    				        <div class="content table-container-enhanced">
+								<?php the_post_meta_stamp(); ?>
+								<?php 
 							    if(!empty($content)) {
         			                echo $content;
         			            } else {
@@ -129,9 +109,12 @@ get_header(); ?>
 						</div>
 					<?php else: ?>
 						<div class="ast-col-lg-9">
-							<h2 class="large-heading font-700 content-heading"><?php echo $content_title?$content_title:get_the_title(); ?></h2>
 							
-							<div class="content"><?php 
+							<h1 class="large-heading font-700 content-heading"><?php echo $content_title?$content_title:get_the_title(); ?></h1>
+							
+							<div class="content table-container-enhanced">
+								<?php the_post_meta_stamp(); ?>
+								<?php 
 							    if(!empty($content)) {
         			                echo $content;
         			            } else {
@@ -221,17 +204,59 @@ get_header(); ?>
 
 		<?php $frequently_asked_questions = get_cfvalue_by_country('frequently_asked_questions'); ?>
 
+		<?php
+		/* Country guide cards - shown on every blog post (replaces the FAQ hero banner). Deterministic 5-of-15 by post ID. */
+		$tg_guides = array(
+			array( 'Spain', 'Jobs, pay and visa routes', 'ES', 'teach-english-in-spain' ),
+			array( 'South Korea', 'EPIK, hagwons and pay', 'KR', 'south-korea' ),
+			array( 'Japan', 'JET, ALT and eikaiwa pay', 'JP', 'japan' ),
+			array( 'Vietnam', 'Work permits and requirements', 'VN', 'vietnam' ),
+			array( 'Thailand', 'Visas and teaching licences', 'TH', 'thailand' ),
+			array( 'Italy', 'Jobs, pay and visa routes', 'IT', 'italy' ),
+			array( 'Dubai', 'Pay, requirements and visas', 'AE', 'dubai' ),
+			array( 'Czech Republic', 'Pay, visas and cities', 'CZ', 'czech-republic' ),
+			array( 'Cambodia', 'Pay, requirements and visas', 'KH', 'cambodia' ),
+			array( 'Estonia', 'Jobs, pay and work routes', 'EE', 'estonia' ),
+			array( 'China', 'Z visa, pay and cities', 'CN', 'china' ),
+			array( 'Taiwan', 'Buxibans, pay and visas', 'TW', 'taiwan' ),
+			array( 'Mexico', 'Jobs, pay and cities', 'MX', 'mexico' ),
+			array( 'Germany', 'Freelance work and pay', 'DE', 'germany' ),
+			array( 'Portugal', 'Jobs, pay and visa routes', 'PT', 'portugal' ),
+		);
+		mt_srand( (int) get_the_ID() );
+		shuffle( $tg_guides );
+		mt_srand();
+		$tg_pick = array_slice( $tg_guides, 0, 5 );
+		?>
+		<section class="learn-more-section tg-blog">
+			<div class="ast-container">
+				<span class="tg-intro">We love taking your call.</span>
+				<div class="tg-head">
+					<h2>TEFL Institute <span>guides</span></h2>
+					<a href="https://teflinstitute.com/teach-english-jobs/"><img src="/wp-content/uploads/2023/05/care-arrow.svg" alt=""></a>
+				</div>
+				<div class="tg-guides">
+					<?php foreach ( $tg_pick as $i => $g ) : ?>
+					<a class="tg-cover<?php echo ( 1 === $i ) ? ' is-featured' : ''; ?>" href="<?php echo esc_url( 'https://teflinstitute.com/teach-english-abroad/' . $g[3] . '/' ); ?>">
+						<span class="tg-code" aria-hidden="true"><?php echo esc_html( $g[2] ); ?></span>
+						<div class="tg-top">
+							<div class="tg-label">Plan for 2027</div>
+							<div class="tg-rule"></div>
+							<h3 class="tg-country"><?php echo esc_html( $g[0] ); ?></h3>
+							<p class="tg-sub"><?php echo esc_html( $g[1] ); ?></p>
+						</div>
+						<div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+					</a>
+					<?php endforeach; ?>
+				</div>
+				<div class="tg-all-wrap">
+					<a class="tg-all" href="https://teflinstitute.com/teach-english-jobs/">See all 63 country guides <span aria-hidden="true">&rarr;</span></a>
+				</div>
+			</div>
+		</section>
+
 		<?php if($frequently_asked_questions): ?>
 
-			<section class="faq-hero-section" style="background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)), url('/wp-content/uploads/2020/11/take_the_test_bg.jpg')">
-				<div class="ast-container" >
-					<div class="ast-row banner-text-row">
-						<div class="ast-col-lg-12 ast-col-md-12 ast-col-sm-12 ast-col-xs-12">
-							<h2 class="banner-text">TEFL Institute <br> Frequently Asked Questions</h2>
-						</div>
-					</div>
-				</div>
-			</section>
 
 			<section class="faq-content-section">
 				<div class="ast-container">
@@ -254,7 +279,7 @@ get_header(); ?>
 							<script type="application/ld+json">
 								{
 								"@context": "https://schema.org",
-								"@type": "Blog Post",
+								"@type": "FAQPage",
 								"mainEntity": [
 									<?php 
 									$faqcount = count($frequently_asked_questions);
@@ -264,14 +289,14 @@ get_header(); ?>
 										?>
 										{
 											"@type": "Question",
-											"name": <?php echo json_encode($item['question']); ?>,
+											"name": <?php echo json_encode($item['question'], JSON_UNESCAPED_UNICODE); ?>,
 											"acceptedAnswer": {
 											"@type": "Answer",
-											"text": <?php echo json_encode($item['answer']); ?>
+											"text": <?php echo json_encode($item['answer'], JSON_UNESCAPED_UNICODE); ?>
 											}
 										}	
 										<?php
-										if ($faqcount != $counter) echo "," ;
+										if ($faqcount !== $counter) echo "," ;
 									}
 									?>
 								]

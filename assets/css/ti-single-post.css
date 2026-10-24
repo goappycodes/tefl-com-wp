@@ -48,11 +48,37 @@ body #primary {
 	padding: 0;
 }
 
+h1.large-heading {
+	font-size: 2.5rem !important;
+	color: var(--black-jet);
+}
+
+.post-meta-stamp {
+	margin-bottom: 1em;
+	font-size: 0.9em;
+	/* color: #666; */
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em 1em;
+	align-items: center;
+}
+
+.post-meta-stamp .blog-author {
+	font-weight: 600;
+}
+
+.post-meta-stamp .blog-updated {
+	font-style: italic;
+	margin-left: 0.4em;
+}
+
+
 /*Banner*/
 section.banner-section {
 	background-size: cover !important;
 	padding: 100px 0;
 	background-position: 50% 50% !important;
+	min-height: 450px;
 }
 
 .banner-section>.ast-container>.ast-row {
@@ -446,3 +472,64 @@ section.faq-hero-section {
 		justify-content: center;
 	}
 }
+
+.table-container-enhanced {
+	width: 100%;
+}
+
+.table-container-enhanced .table-wrapper {
+	overflow-x: auto;
+	overflow-y: hidden;
+	/* max-height: 500px; */
+	/* cursor: grab; */
+}
+
+.table-container-enhanced .table-wrapper:active {
+	cursor: grabbing;
+}
+
+.table-container-enhanced .table-wrapper.dragging {
+	cursor: grabbing;
+	user-select: none;
+}
+
+/* Sticky header */
+.table-container-enhanced th {
+	position: sticky;
+	top: 0;
+	background-color: #f8f9fa;
+	z-index: 10;
+	border-bottom: 2px solid #101585;
+}
+
+/* Sticky first column */
+.table-container-enhanced th:first-child,
+.table-container-enhanced td:first-child {
+	position: sticky;
+	left: 0;
+	background-color: #f8f9fa;
+	z-index: 11;
+	border-right: 2px solid #101585;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-container-enhanced td:first-child {
+	background-color: white;
+	font-weight: bold;
+}
+/* Blog-post country guide cards (replaces FAQ hero banner) - added 2026-10-08 */
+.learn-more-section.tg-blog{background:#000;padding:36px 0 !important;color:#fff}
+.learn-more-section.tg-blog .tg-intro{display:block;font-size:22px;color:#fff}
+.learn-more-section.tg-blog .tg-head{display:flex;align-items:center;gap:40px;margin-top:6px}
+.learn-more-section.tg-blog h2{margin:0;color:#fff;font-size:46px;font-weight:600}
+.learn-more-section.tg-blog h2 span{font-weight:300}
+.learn-more-section.tg-blog .tg-cover{text-decoration:none}
+.learn-more-section.tg-blog .tg-guides{margin-top:24px}
+.learn-more-section.tg-blog .tg-all-wrap{margin-top:24px;text-align:center}
+.learn-more-section.tg-blog .tg-all{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border:1px solid #7fe0b5;border-radius:999px;color:#fff;font-size:16px;font-weight:500;text-decoration:none;transition:background .25s,color .25s}
+.learn-more-section.tg-blog .tg-all span{color:#7fe0b5;transition:transform .25s}
+.learn-more-section.tg-blog .tg-all:hover{background:#7fe0b5;color:#0f3042}
+.learn-more-section.tg-blog .tg-all:hover span{color:#0f3042;transform:translateX(5px)}
+@media (max-width:640px){.learn-more-section.tg-blog h2{font-size:32px}.learn-more-section.tg-blog .tg-head{gap:20px}.learn-more-section.tg-blog .tg-head img{max-width:90px}}
+/* tg-blog spacing: separate the guides band from the share bar above and the FAQ below */
+.learn-more-section.tg-blog{margin:36px 0}

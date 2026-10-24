@@ -6,7 +6,8 @@
     --black-jet: #1C1C1B;
     --gray-dark-bg: #303030;
     --white: #fff;
-    --accent: #1e5598;
+    /* --accent: #1e5598; */
+    --accent: #101585;
     --gray-light: #ededed;
     --light-gray-bg: #F6F6F6;
     --very-dark-bg: #222223;
@@ -20,7 +21,8 @@
     --gray-bg-light: #F9FAFB;
     --gold: #DAAB37;
     --red: #A9191D;
-    --blue-light: #1e5598;
+    /* --blue-light: #1e5598; */
+    --blue-light: #101585;
     --blue-turquoise: #30A9BD;
     --blue-turquoise-light: #30A9BD33;
     --blue-turquoise-lighter: #30a9bd1a;

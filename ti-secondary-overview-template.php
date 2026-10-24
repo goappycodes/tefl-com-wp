@@ -211,6 +211,73 @@ get_header(); ?>
 
         <!-- courses section end -->
 
+        <?php
+            $courses_cta_section = get_field('courses_cta_section');
+            if(!is_array_empty($courses_cta_section)):
+                $courses_cta = $courses_cta_section['courses_cta'];
+        ?>
+        <section class="courses-cta-section">
+            <div class="ast-container">
+                <?php
+                    foreach($courses_cta as $key => $ccta):
+                        $cta_image = $ccta['cta_image'];
+                        $cta_icon = $ccta['cta_icon'];
+                        $cta_course = $ccta['cta_course'];
+                        if($cta_course){
+                            $cta_course_product = wc_get_product($cta_course);
+                            if ($cta_course_product) {
+                                $cta_course_price = $cta_course_product->get_price_html();
+                            } else {
+                                $cta_course_price = '';
+                            }
+                        }                    
+                        $cta_course_title = $ccta['cta_course_title'];
+                        $cta_course_summary = $ccta['cta_course_summary'];
+                        $cta_course_icon = $ccta['cta_course_icon'];
+                        $cta_button_text = $ccta['cta_button_text'];
+                        $cta_button_link = $ccta['cta_button_link'];
+                ?>
+                <div class="<?php echo $cta_course?> course-cta-section__row <?php echo ($key+1)%2 === 0 ?'even-row':'odd-row'?>">
+                    <div class="ast-row ast-flex">
+                        <div class="ast-col-md-7">
+                            <div class="cta-image" style="background:url('<?php echo $cta_image?>')">
+                                <img class="cta-icon" src="<?php echo $cta_icon?>" alt="">
+                            </div>
+                        </div>
+                        <div class="ast-col-md-5">
+                            <div class="cta-content">
+                                <div class="cta-content__title">
+                                    <h3><?php echo $cta_course_title?></h3>
+                                    <?php
+                                        if(!empty($cta_course_icon)):
+                                    ?>
+                                    <img src="<?php echo $cta_course_icon?>" alt="">
+                                    <?php
+                                        endif;
+                                    ?>
+                                </div>
+                                <div class="cta-course-price">
+                                    <?php echo $cta_course_price?>
+                                </div>
+                                <div class="cta-content__summary">
+                                    <?php echo $cta_course_summary?>
+                                </div>
+                                <a href="<?php echo $cta_button_link?>" class="course-cta-btn">
+                                    <?php echo $cta_button_text?>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                    endforeach;
+                ?>
+            </div>
+        </section>
+        <?php
+            endif;
+        ?>
+
         <!-- video section start -->
             <?php
             $videos = get_field('videos');    

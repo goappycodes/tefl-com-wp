@@ -1,0 +1,1804 @@
+{
+    "key": "group_ti_course_2026",
+    "title": "Course Page 2026",
+    "fields": [
+        {
+            "key": "field_c26_tab_switch",
+            "label": "2026 Design",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": 0
+        },
+        {
+            "key": "field_c26_enabled",
+            "label": "Use the 2026 course design",
+            "name": "c26_enabled",
+            "type": "true_false",
+            "instructions": "Turn on to render this course with the 2026 template. Turn off to fall back to the existing layout. Product, FAQs and SEO fields elsewhere on this screen are shared.",
+            "required": 0,
+            "ui": 1,
+            "default_value": 0,
+            "conditional_logic": 0
+        },
+        {
+            "key": "field_c26_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_breadcrumb_parent",
+            "label": "Breadcrumb parent",
+            "name": "c26_breadcrumb_parent",
+            "type": "link",
+            "instructions": "Shown as Home / TEFL Courses / [this] / Course title. Leave empty to skip.",
+            "required": 0,
+            "return_format": "array",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_badges",
+            "label": "Badges",
+            "name": "c26_badges",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add badge",
+            "min": 0,
+            "max": 3,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_badges__label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                },
+                {
+                    "key": "field_c26_c26_badges__style",
+                    "label": "Style",
+                    "name": "style",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "choices": {
+                        "solid": "Solid green",
+                        "outline": "Outline"
+                    },
+                    "default_value": "solid",
+                    "ui": 0
+                }
+            ],
+            "collapsed": "field_c26_c26_badges__label",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_hero_title",
+            "label": "Heading",
+            "name": "c26_hero_title",
+            "type": "text",
+            "instructions": "Leave empty to use the course title.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_hero_intro",
+            "label": "Intro paragraph",
+            "name": "c26_hero_intro",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": "",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_hero_points",
+            "label": "Tick points",
+            "name": "c26_hero_points",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add point",
+            "min": 0,
+            "max": 6,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_hero_points__text",
+                    "label": "Point",
+                    "name": "text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                }
+            ],
+            "collapsed": "field_c26_c26_hero_points__text",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_hero_image",
+            "label": "Hero image",
+            "name": "c26_hero_image",
+            "type": "image",
+            "instructions": "Landscape or square, at least 1200px wide.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_hero_secondary_label",
+            "label": "Second button label",
+            "name": "c26_hero_secondary_label",
+            "type": "text",
+            "instructions": "Scrolls to the course outline.",
+            "required": 0,
+            "default_value": "See the modules",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_trust_rating",
+            "label": "Rating",
+            "name": "c26_trust_rating",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "4.9",
+            "wrapper": {
+                "width": "25"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_trust_rating_label",
+            "label": "Rating label",
+            "name": "c26_trust_rating_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Google rating",
+            "wrapper": {
+                "width": "25"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_trust_stat",
+            "label": "Stat",
+            "name": "c26_trust_stat",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "161,000",
+            "wrapper": {
+                "width": "25"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_trust_stat_label",
+            "label": "Stat label",
+            "name": "c26_trust_stat_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "teachers certified since 2017",
+            "wrapper": {
+                "width": "25"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_overview",
+            "label": "Overview",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_overview_heading",
+            "label": "Heading",
+            "name": "c26_overview_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "The course, explained",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_overview_body",
+            "label": "Text",
+            "name": "c26_overview_body",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_stats",
+            "label": "Key numbers",
+            "name": "c26_stats",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add number",
+            "min": 0,
+            "max": 4,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_stats__value",
+                    "label": "Number",
+                    "name": "value",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "30"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_stats__label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                }
+            ],
+            "collapsed": "field_c26_c26_stats__value",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_included",
+            "label": "What you get",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_included_kicker",
+            "label": "Small label",
+            "name": "c26_included_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Included",
+            "wrapper": {
+                "width": "30"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_included_heading",
+            "label": "Heading",
+            "name": "c26_included_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "What you get",
+            "wrapper": {
+                "width": "70"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_included",
+            "label": "Items",
+            "name": "c26_included",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add item",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_included__icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "choices": {
+                        "award": "Award / rosette",
+                        "file-badge": "Document with badge",
+                        "shield-check": "Shield with tick",
+                        "life-buoy": "Life buoy (support)",
+                        "users": "People",
+                        "user": "Person",
+                        "briefcase": "Briefcase",
+                        "laptop": "Laptop",
+                        "clock": "Clock",
+                        "globe": "Globe",
+                        "check": "Tick",
+                        "star": "Star",
+                        "play": "Play",
+                        "download": "Download"
+                    },
+                    "default_value": "award",
+                    "wrapper": {
+                        "width": "25"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_included__title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "35"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_included__text",
+                    "label": "Description",
+                    "name": "text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "40"
+                    }
+                }
+            ],
+            "collapsed": "field_c26_c26_included__icon",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_who",
+            "label": "Who it is for",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_who_heading",
+            "label": "Heading",
+            "name": "c26_who_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Who the course is for",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_who",
+            "label": "Cards",
+            "name": "c26_who",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add card",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_who__title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                },
+                {
+                    "key": "field_c26_c26_who__text",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "rows": 2,
+                    "new_lines": ""
+                }
+            ],
+            "collapsed": "field_c26_c26_who__title",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_promos",
+            "label": "Promo cards",
+            "name": "c26_promos",
+            "type": "repeater",
+            "instructions": "E.g. English level test and Salary calculator.",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add promo card",
+            "min": 0,
+            "max": 2,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_promos__style",
+                    "label": "Style",
+                    "name": "style",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "choices": {
+                        "dark": "Dark navy",
+                        "green": "Light green"
+                    },
+                    "default_value": "dark"
+                },
+                {
+                    "key": "field_c26_c26_promos__kicker",
+                    "label": "Small label",
+                    "name": "kicker",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                },
+                {
+                    "key": "field_c26_c26_promos__title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                },
+                {
+                    "key": "field_c26_c26_promos__text",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                },
+                {
+                    "key": "field_c26_c26_promos__link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "return_format": "array"
+                }
+            ],
+            "collapsed": "field_c26_c26_promos__style",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_modules",
+            "label": "Course outline",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_modules_kicker",
+            "label": "Small label",
+            "name": "c26_modules_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Course outline",
+            "wrapper": {
+                "width": "30"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_modules_heading",
+            "label": "Heading",
+            "name": "c26_modules_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "What you will learn",
+            "wrapper": {
+                "width": "70"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_modules_time_note",
+            "label": "Time note",
+            "name": "c26_modules_time_note",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Completion time varies",
+            "wrapper": {
+                "width": "33"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_modules_access_note",
+            "label": "Access note",
+            "name": "c26_modules_access_note",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "6 months study time",
+            "wrapper": {
+                "width": "33"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_modules_footnote",
+            "label": "Line under each module",
+            "name": "c26_modules_footnote",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Ends in a quiz you can retake",
+            "wrapper": {
+                "width": "34"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_modules",
+            "label": "Modules",
+            "name": "c26_modules",
+            "type": "repeater",
+            "instructions": "Numbered automatically (01, 02 ...).",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add module",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_modules__title",
+                    "label": "Module title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                },
+                {
+                    "key": "field_c26_c26_modules__text",
+                    "label": "Description",
+                    "name": "text",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "rows": 2,
+                    "new_lines": ""
+                }
+            ],
+            "collapsed": "field_c26_c26_modules__title",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_certificate",
+            "label": "Certificate",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cert_heading",
+            "label": "Heading",
+            "name": "c26_cert_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Accreditation and your certificate",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cert_intro",
+            "label": "Intro paragraph",
+            "name": "c26_cert_intro",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": "",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cert_image",
+            "label": "Certificate image",
+            "name": "c26_cert_image",
+            "type": "image",
+            "instructions": "Optional. If empty, a styled sample certificate is drawn using the title below.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cert_title",
+            "label": "Certificate title (sample)",
+            "name": "c26_cert_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "120 Hour TEFL Certificate",
+            "wrapper": {
+                "width": "50"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cert_footer",
+            "label": "Sample footer label",
+            "name": "c26_cert_footer",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "120 CPD",
+            "wrapper": {
+                "width": "50"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cert_card_heading",
+            "label": "Card heading",
+            "name": "c26_cert_card_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "See the certificate you will receive",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cert_card_text",
+            "label": "Card text",
+            "name": "c26_cert_card_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Every certificate has a unique number employers can check online.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cert_sample",
+            "label": "Sample certificate button",
+            "name": "c26_cert_sample",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "return_format": "array",
+            "wrapper": {
+                "width": "50"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cert_verify",
+            "label": "Verify button",
+            "name": "c26_cert_verify",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "return_format": "array",
+            "wrapper": {
+                "width": "50"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_accreditations",
+            "label": "Accreditation badges",
+            "name": "c26_accreditations",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add badge",
+            "min": 0,
+            "max": 4,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_accreditations__logo",
+                    "label": "Logo (optional)",
+                    "name": "logo",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "return_format": "id",
+                    "preview_size": "thumbnail"
+                },
+                {
+                    "key": "field_c26_c26_accreditations__badge",
+                    "label": "Badge text (used if no logo)",
+                    "name": "badge",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                },
+                {
+                    "key": "field_c26_c26_accreditations__name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                },
+                {
+                    "key": "field_c26_c26_accreditations__note",
+                    "label": "Note",
+                    "name": "note",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0
+                }
+            ],
+            "collapsed": "field_c26_c26_accreditations__logo",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_resources",
+            "label": "Resources",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_resources_kicker",
+            "label": "Small label",
+            "name": "c26_resources_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Free downloads",
+            "wrapper": {
+                "width": "30"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_resources_heading",
+            "label": "Heading",
+            "name": "c26_resources_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Resources and guides",
+            "wrapper": {
+                "width": "70"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_guides",
+            "label": "Guides",
+            "name": "c26_guides",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add guide",
+            "min": 0,
+            "max": 6,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_guides__image",
+                    "label": "Cover image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "return_format": "id",
+                    "preview_size": "thumbnail",
+                    "wrapper": {
+                        "width": "25"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_guides__fit",
+                    "label": "Image fit",
+                    "name": "fit",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "choices": {
+                        "cover": "Fill",
+                        "contain": "Fit (cut-outs)"
+                    },
+                    "default_value": "cover",
+                    "wrapper": {
+                        "width": "15"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_guides__title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "30"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_guides__text",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "30"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_guides__file",
+                    "label": "PDF / file",
+                    "name": "file",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "return_format": "url",
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_guides__url",
+                    "label": "...or link (e.g. a guide page)",
+                    "name": "url",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                }
+            ],
+            "collapsed": "field_c26_c26_guides__image",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_students",
+            "label": "Students",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_students_kicker",
+            "label": "Small label",
+            "name": "c26_students_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "In their words",
+            "wrapper": {
+                "width": "30"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_students_heading",
+            "label": "Heading",
+            "name": "c26_students_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Hear from our students",
+            "wrapper": {
+                "width": "70"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_videos",
+            "label": "Student videos",
+            "name": "c26_videos",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add video",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_c26_c26_videos__name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "25"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_videos__image",
+                    "label": "Still image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "return_format": "id",
+                    "preview_size": "thumbnail",
+                    "wrapper": {
+                        "width": "25"
+                    }
+                },
+                {
+                    "key": "field_c26_c26_videos__video",
+                    "label": "Video (YouTube / Vimeo URL)",
+                    "name": "video",
+                    "type": "oembed",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                }
+            ],
+            "collapsed": "field_c26_c26_videos__name",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_faq",
+            "label": "FAQ",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_faq_message",
+            "label": "",
+            "name": "c26_faq_message",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "message": "Questions come from the existing <strong>Frequently Asked Questions</strong> fields further down this screen (with GB / ZA / NL / CA / FR versions). Edit them there.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_faq_heading",
+            "label": "Heading",
+            "name": "c26_faq_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Got questions?",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_faq_intro",
+            "label": "Intro",
+            "name": "c26_faq_intro",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "The questions students and parents ask us most.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_pricing",
+            "label": "Price card",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_price_message",
+            "label": "",
+            "name": "c26_price_message",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "message": "The price comes from the <strong>Course Product</strong> field (WooCommerce), including country pricing and sale prices. Change the price on the product, not here.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_price_kicker",
+            "label": "Small label",
+            "name": "c26_price_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Enrol for just",
+            "wrapper": {
+                "width": "50"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_enrol_label",
+            "label": "Button label",
+            "name": "c26_enrol_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Enrol now",
+            "wrapper": {
+                "width": "50"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_addons_heading",
+            "label": "Add-ons label",
+            "name": "c26_addons_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Optional add-ons",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_addons",
+            "label": "Add-on products",
+            "name": "c26_addons",
+            "type": "relationship",
+            "instructions": "Real WooCommerce products. Name and price are pulled from each product.",
+            "required": 0,
+            "post_type": [
+                "product"
+            ],
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "max": 3,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_price_note",
+            "label": "Small print under button",
+            "name": "c26_price_note",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Buy now, pay later available · 14-day money back guarantee",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_after_enrol",
+            "label": "After clicking Enrol, go to",
+            "name": "c26_after_enrol",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "choices": {
+                "checkout": "Checkout",
+                "cart": "Cart"
+            },
+            "default_value": "checkout",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_countdown_enabled",
+            "label": "Show offer countdown",
+            "name": "c26_countdown_enabled",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "ui": 1,
+            "default_value": 0,
+            "wrapper": {
+                "width": "40"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_countdown_end",
+            "label": "Offer ends",
+            "name": "c26_countdown_end",
+            "type": "date_time_picker",
+            "instructions": "Countdown hides itself automatically after this time (site timezone).",
+            "required": 0,
+            "display_format": "d/m/Y H:i",
+            "return_format": "Y-m-d H:i:s",
+            "first_day": 1,
+            "wrapper": {
+                "width": "60"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_c26_c26_countdown_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_quote_heading",
+            "label": "School quote box heading",
+            "name": "c26_quote_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Enrolling a whole year group?",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_quote_link",
+            "label": "School quote link",
+            "name": "c26_quote_link",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "return_format": "array",
+            "wrapper": {
+                "width": "50"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_quote_avatar",
+            "label": "School quote avatar",
+            "name": "c26_quote_avatar",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "wrapper": {
+                "width": "50"
+            },
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_tab_cta",
+            "label": "Bottom banner",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cta_kicker",
+            "label": "Small label",
+            "name": "c26_cta_kicker",
+            "type": "text",
+            "instructions": "Leave empty to use the course title.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cta_heading",
+            "label": "Heading",
+            "name": "c26_cta_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_c26_c26_cta_secondary",
+            "label": "Second button",
+            "name": "c26_cta_secondary",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "return_format": "array",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_c26_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "course"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "course_location"
+            }
+        ]
+    ],
+    "menu_order": -10,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for the 2026 course page template (course-page-2026.php).",
+    "show_in_rest": 0,
+    "modified": 1791294224
+}

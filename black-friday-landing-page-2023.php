@@ -38,7 +38,29 @@ get_header(); ?>
                 <?php echo $content_title?>
               </h1>
               <div class="banner-content__summary">
-                <?php echo $content_summary?>
+                <?php
+                  $course_gifts_section = get_field('course_gifts_section','option');
+                  $show_gifts_section = $course_gifts_section['show_gifts_section'];
+                  if($show_gifts_section):
+                    $section_title = $course_gifts_section['section_title'];
+                    $gifts = $course_gifts_section['gifts'];
+                ?>
+                <div class="gifts-section-summary">
+                  <h3><?php echo $section_title?></h3>
+                  <?php
+                    foreach($gifts as $index => $gift):
+                      $gift_title = $gift['gift_title'];
+                  ?>
+                    <p><?php echo $gift_title?></p>
+                  <?php
+                    endforeach;
+                  ?>
+                </div>
+                <?php
+                  else:
+                    echo $content_summary;
+                  endif;
+                ?>
               </div>
             </div>
           </div>
@@ -153,7 +175,7 @@ get_header(); ?>
           <?php foreach ($courses as $course) :
             $course_id = $course['course'];
             $course_product_id = get_field('course_product', $course_id);
-            $course_product = new WC_Product($course_product_id);
+            $course_product = wc_get_product($course_product_id);
             $course_price_html = $course_product->get_price_html();
             $course_regular_price = $course_product->get_regular_price();
             $course_sale_price = $course_product->get_sale_price();
@@ -283,7 +305,12 @@ get_header(); ?>
   </section>
   <!-- < Tefl Courses Section />  -->
   <!-- < Free Gift Info Section > -->
-  <section class="dark-theme-section section-padding free-gift-info-section">
+  <?php
+    $course_gifts_section = get_field('course_gifts_section','option');
+    $show_gifts_section = $course_gifts_section['show_gifts_section'];
+    if($show_gifts_section):
+  ?>
+  <section class="dark-theme-section section-padding-bottom free-gift-info-section">
     <div class="ast-container">
 
       <div class="ast-row">
@@ -329,6 +356,9 @@ get_header(); ?>
       </div>
     </div>
   </section>
+  <?php
+    endif;
+  ?>
   <!-- < Free Gift Details Section /> -->
   <!-- < Tefl Internship Section > -->
   <section class="dark-theme-section tefl-courses-section-wrapper">
@@ -346,7 +376,7 @@ get_header(); ?>
           <?php foreach ($courses as $course) :
             $course_id = $course['course'];
             $course_product_id = get_field('internship_product', $course_id);
-            $course_product = new WC_Product($course_product_id);
+            $course_product = wc_get_product($course_product_id);
             $course_price_html = $course_product->get_price_html();
             $course_regular_price = $course_product->get_regular_price();
             $course_sale_price = $course_product->get_sale_price();
@@ -524,7 +554,7 @@ get_header(); ?>
           foreach ($course_card as $card) :
             $course_id =  $card['course'];
             $course_product_id = get_field('course_product', $course_id);
-            $course_product = new WC_Product($course_product_id);
+            $course_product = wc_get_product($course_product_id);
             $course_price_html = $course_product->get_price_html();
             $course_regular_price = $course_product->get_regular_price();
             $course_sale_price = $course_product->get_sale_price();

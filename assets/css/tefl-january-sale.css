@@ -1,0 +1,1410 @@
+#content>.ast-container {
+    max-width: 100%;
+    padding: 0 !important;
+}
+
+#primary {
+    background-color: #030D36;
+    margin: 0 !important;
+    padding: 0;
+}
+
+
+.header-banner {
+    display: none;
+}
+
+.hero {
+    height: 30rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-outer {
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 10%, rgba(0, 0, 0, 0) 104%);
+    padding: 3rem 0;
+}
+
+.content-container {
+    max-width: 1240px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.promo-image {
+    height: 250px !important;
+    width: auto;
+    position: relative;
+    display: block;
+}
+
+.content-section {
+    margin-top: 3rem;
+    /* padding: 0 2rem; */
+}
+
+.top-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.top-heading img {
+    height: 50px;
+    width: max-content;
+}
+
+.top-heading div {
+    font-size: 50px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #DDB239;
+}
+
+.top-save {
+    display: flex;
+    margin-top: 3rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.top-save div {
+    color: #EB2F43;
+    font-size: 30px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.top-save img {
+    height: 50px;
+    width: auto;
+}
+
+.courses-title {
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.courses-title span {
+    color: #d9a937;
+}
+
+.course {
+    background: white;
+    border-radius: 10px;
+    border: 4px solid #013252;
+    outline: 1px solid #DDB239;
+    width: 33%;
+    padding: 20px;
+    position: relative;
+}
+
+/* .cousre .pos-abs {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+} */
+
+.content-section.courses {
+    display: flex;
+    gap: 1rem;
+}
+
+.course .thumbnail {
+    height: 14rem;
+    border-radius: 6px 6px 0 0;
+    background-position: center;
+    background-size: cover;
+    margin: -20px -20px 0;
+}
+
+.course .thumbnail-outer {
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail-outer>div {
+    background-color: #1c1c1b90;
+    border-radius: 100%;
+}
+
+.course .icon {
+    height: 120px;
+    width: 120px;
+    background-position: center;
+    background-size: cover;
+}
+
+.title {
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.price {
+    background: #ECEFF0;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.completion-time {
+    text-align: center;
+    padding: 15px;
+}
+
+.completion-time span {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.enrol {
+    width: 100%;
+    display: inline-block;
+    background: #EB2F43;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.enrol:hover {
+    color: white;
+    opacity: 0.8;
+}
+
+.more-x-space {
+    margin: 0 20px;
+    width: -webkit-fill-available;
+}
+
+.klarna {
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px 20px;
+}
+
+.klarna img {
+    height: 15px;
+    width: auto;
+}
+
+.klarna div {
+    font-size: 14px;
+    line-height: 1.25;
+}
+
+.includes_title {
+    text-align: center;
+    font-weight: 600;
+}
+
+.include,
+.exclude {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2px 20px;
+    font-size: 16px;
+}
+
+.exclude>span {
+    color: #415363;
+    opacity: .3;
+}
+
+.include img,
+.exclude img {
+    width: 16px;
+    height: 16px;
+}
+
+.includes {
+    margin-top: 1rem;
+}
+
+.buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.buttons .default-button {
+    width: 50%;
+    background: #ECEFF0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.buttons .enrol {
+    width: 50%;
+}
+
+.full-price {
+    font-size: 16px;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.sale-price {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.product-pricing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.product-pricing del {
+    color: #A9A9A9;
+    font-size: 14px;
+}
+
+.product-pricing ins {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.product-pricing ins::before,
+.course-price ins::before {
+    content: "Now";
+    margin-right: 4px;
+}
+
+.product-pricing del::before,
+.course-price del::before {
+    content: "Was";
+    margin-right: 4px;
+}
+
+.off-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: -73px;
+}
+
+.off {
+    background: #013252;
+    color: white;
+    border: 4px double #DDB239;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 10px;
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
+    line-height: 1.25;
+    margin: -16px -12px 0px 0;
+    position: relative;
+    z-index: 50;
+    text-transform: uppercase;
+}
+
+.gifts {
+    background: white;
+    border-radius: 20px;
+    border: 4px solid #013252;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    outline: 1px solid #DDB239;
+}
+
+.gifts .left {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.gifts .text {
+    text-align: center;
+    font-size: 16px;
+}
+
+.gifts .title {
+    text-transform: uppercase;
+    line-height: 1.25;
+    font-size: 24px;
+}
+
+.gifts .right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 75%;
+}
+
+.gifts .right .guide {
+    font-weight: 600;
+    text-align: center;
+    font-size: 16px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.gifts .right .guide img {
+    height: 100px;
+    width: min-content;
+    display: block;
+    margin: auto;
+}
+
+.bundle {
+    background: white;
+    border-radius: 20px;
+    border: 3px solid #DDB239;
+    display: flex;
+}
+
+.bundle .left {
+    width: 35%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 18px 0 0 18px;
+}
+
+.bundle .right {
+    width: 65%;
+    padding: 40px;
+}
+
+.bundle .right .title {
+    text-align: left;
+    padding: 0;
+    font-size: 38px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.bundle .right .text {
+    font-size: 18px;
+}
+
+.bundle .right .product-outer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.price-outer {
+    background: #EB2F43;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.price-left {
+    padding: 5px 20px;
+}
+
+.price-right {
+    font-size: 20px;
+    background: #D31024;
+    padding: 9px 20px;
+    border-radius: 0 10px 10px 0;
+}
+
+.whats_included {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.whats_included_outer {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.whats_included_outer .text {
+    width: 100%;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.feather-check {
+    background: #EB2F43;
+    color: white;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+}
+
+.subheading {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 15px 0;
+}
+
+.links {
+    display: flex;
+    gap: 1rem;
+}
+
+.links .default-button {
+    width: 50%;
+    background: #ECEFF0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.links .enrol {
+    width: 50%;
+}
+
+.tools {
+    display: flex;
+    gap: 1rem;
+}
+
+.tool {
+    background: white;
+    width: 33%;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+}
+
+.tool img {
+    width: auto;
+    height: 50px;
+}
+
+.tool .name {
+    margin: 20px 0 10px;
+    font-weight: 600;
+}
+
+.tool .text {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    min-height: 75px;
+}
+
+.ahref {
+    background: #EB2F43;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.bundle-title {
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 3rem;
+}
+
+.bundle-title span {
+    color: var(--gold);
+}
+
+.bundle .badge {
+    background: #000;
+    color: white;
+    border: 1px solid white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px;
+    font-size: 28px;
+    width: min-content;
+    text-align: center;
+    line-height: 1.25;
+    margin: 20px 0 0 20px;
+    position: relative;
+    z-index: 50;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.bundle .badge strong {
+    font-size: 18px;
+}
+
+.tools-title {
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 3rem;
+}
+
+.accreditations .title {
+    color: white;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.accreditations img {
+    height: 100px;
+    width: auto;
+    margin: auto;
+    display: block;
+}
+
+.points {
+    color: white;
+    overflow: auto;
+    margin: 2rem auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 1rem;
+}
+
+.points .point {
+    display: inline-block;
+    margin-right: 0;
+    text-align: center;
+    flex: 0 1 auto;
+}
+
+.accreditations-svg {
+    color: #DDB239;
+    top: 5px;
+    position: relative;
+    margin-right: 5px;
+}
+
+.faq {
+    display: flex;
+    gap: 3rem;
+}
+
+.left-faq {
+    color: white;
+    width: 40%;
+}
+
+.left-faq .title {
+    text-align: left;
+    padding: 0;
+    font-size: 22px;
+}
+
+.left-faq .subtitle {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.left-faq .faq-text {
+    font-size: 16px;
+}
+
+.right-faq {
+    color: white;
+    width: 60%;
+    margin-top: -15px;
+}
+
+.each-question {
+    border-bottom: 1px dashed #888;
+    /* Dashed border for separation */
+    padding: 15px;
+}
+
+.each-question:last-child {
+    border-bottom: none;
+    /* Remove border for the last question */
+}
+
+.heading {
+    font-size: 18px;
+    cursor: pointer;
+    /* Indicate clickable area */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.heading:hover {
+    color: #ddd;
+    /* Slightly lighter on hover */
+}
+
+.toggle-icon {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.faq .text {
+    font-size: 16px;
+    margin-top: 10px;
+    display: none;
+    line-height: 1.5;
+}
+
+.panel {
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    padding: 20px;
+    margin-bottom: 3rem;
+}
+
+.each-panel {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.each-panel .left-panel img {
+    width: 40px;
+    height: max-content;
+}
+
+.panel .right-panel {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.panel .right-panel span {
+    font-weight: 600;
+}
+
+/* reviews section */
+
+.verified-student-reviews-section__slider .rplg-grid {
+    opacity: 0;
+}
+
+.verified-student-reviews-section__review-summary {
+    margin-bottom: 1.5rem;
+}
+
+.verified-student-reviews-section__header {
+    display: flex;
+    align-items: end;
+}
+
+.verified-student-reviews-section__review-summary .review-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.verified-student-reviews-section__review-summary .progress-text,
+.verified-student-reviews-section__review-summary .progress-value {
+    width: 15%;
+}
+
+.verified-student-reviews-section__review-summary .progress {
+    margin: 5px;
+    padding: 0;
+    width: 70%;
+    height: 20px;
+    overflow: hidden;
+    background: white;
+}
+
+.verified-student-reviews-section__review-summary .progress-bar {
+    background: #d9a937;
+    display: block;
+    height: 100%;
+    transition: all 3s linear;
+    position: relative;
+    float: left;
+    width: 0;
+}
+
+.reviews-average {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.rating-div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.rating-div .fa {
+    font-size: 2.5rem;
+    color: #d9a937;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-box .rplg-box-content:before,
+.verified-student-reviews-section__row .rplg-slider-review .rplg-review-badge,
+.verified-student-reviews-section__row .rplg-slider .rplg-box .rplg-box-content::-webkit-scrollbar,
+.verified-student-reviews-section__row .rplg-slider .rplg-box:before,
+.verified-student-reviews-section__row .rplg-row-left,
+.verified-student-reviews-section__row .rplg-biz-name {
+    display: none !important;
+}
+
+.verified-student-reviews-section__slider>div {
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 1rem;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-box .rplg-box-content {
+    margin: 10px 0 0 !important;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-row {
+    padding: 0px !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider-review .rplg-row .rplg-row-right {
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-stars {
+    position: absolute;
+    top: -60px;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-time {
+    margin-top: 30px;
+    color: white !important;
+    text-shadow: none !important;
+    font-size: 16px !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-stars use {
+    fill: var(--gold);
+}
+
+.verified-student-reviews-section__row .rplg-slider .rplg-stars svg {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 2px !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-name {
+    color: white !important;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.verified-student-reviews-section__row .rplg-slider-review {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0 !important;
+}
+
+.verified-student-reviews-section__row .rplg-slider-review .rplg-box {
+    border: none !important;
+    background: none !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-text {
+    font-size: 18px !important;
+}
+
+.verified-student-reviews-section__row .rplg-box {
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-biz-rating .rplg-biz-score {
+    color: var(--text-color) !important;
+}
+
+.verified-student-reviews-section__row .rplg-businesses .rplg-links {
+    display: none;
+}
+
+.verified-student-reviews-section__row .rplg-businesses .rplg-biz-based-text {
+    color: var(--color-primary-new);
+}
+
+.verified-student-reviews-section__row .rplg-grid .rplg-stars svg use {
+    fill: var(--gold);
+}
+
+.verified-student-reviews-section__row .rplg-businesses .rplg-row-right {
+    margin-left: 40px;
+}
+
+.rplg .rplg-social-logo svg,
+.rplg .rplg-social-logo.rplg-facebook-logo svg {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.verified-student-reviews-section__row .rplg .rplg-review-badge {
+    left: 0 !important;
+    display: inline;
+}
+
+.verified-student-reviews-section__row .rplg-box {
+    border: none !important;
+}
+
+.verified-student-reviews-section {
+    color: white;
+    margin: 3rem 0 0;
+    padding: 0 20px;
+}
+
+.verified-student-reviews-section__title.font-600.mb-1.large-heading {
+    font-size: 22px;
+    margin-bottom: 1rem;
+}
+
+.clock {
+    width: 250px;
+    padding: 1rem;
+}
+
+.clock-inner {
+    background: white;
+    border-radius: 5px;
+}
+
+.digit-text {
+    color: white;
+    text-transform: capitalize;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.clock-inner .base {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+.offer-ends {
+    display: none;
+}
+
+.discount {
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.offer {
+    background: #013252;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    border-top: 1px solid red;
+    border-bottom: 2px solid red;
+    margin-top: 20px;
+}
+
+.offer p {
+    margin: 0;
+}
+
+.faq a {
+    color: white !important;
+    text-decoration: underline;
+}
+
+.klarna-payment-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    text-align: center;
+    border: 1px solid var(--color-light-gray);
+    padding: 10px;
+    margin: 1rem auto;
+}
+
+body.page-template-homepage .klarna-payment-info-container {
+    background: #E3E7EA;
+    padding: 1rem 30px;
+    margin-bottom: 1rem;
+    margin-left: -30px;
+    margin-right: -30px;
+    border: none !important
+}
+
+.klarna-payment-info {
+    font-size: 12px;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.klarna-learn-more {
+    color: var(--gold);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* The Modal (background) */
+.klarna-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999999999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    padding: 2rem 3rem;
+    width: 50%;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    z-index: 9999999;
+    margin: 5% auto;
+}
+
+@media screen and (max-width:768px) {
+    body.page-template-homepage .klarna-payment-info-container {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .modal-content h2 {
+        font-size: 1rem !important;
+    }
+
+    .klarna-payment-details {
+        margin: 1rem auto;
+    }
+
+    .klarna-payment-detail:not(:last-child) {
+        margin-bottom: 1rem !important;
+    }
+
+    .klarna-payment-details:before {
+        height: 66% !important;
+    }
+
+    .klarna-payment-detail {
+        display: block !important;
+    }
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: #000;
+}
+
+.close {
+    color: #000;
+    float: right;
+    font-size: 28px;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--gold);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+img.klarna-logo-header {
+    width: 72px;
+    margin: auto;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.klarna-payment-details {
+    margin: 2rem auto;
+    position: relative;
+    padding: 0 32px;
+}
+
+.klarna-payment-details:before {
+    content: "";
+    width: 2px;
+    height: 80%;
+    background: var(--color-light-gray);
+    position: absolute;
+    left: 4px;
+    top: 6px;
+}
+
+.klarna-payment-detail {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.klarna-payment-detail:before {
+    content: "";
+    background: #000;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: -32px;
+    top: 6px;
+}
+
+.klarna-payment-detail:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.klarna-payment-detail img {
+    width: 50px;
+}
+
+.klarna-payment-footnote {
+    color: darkgrey;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+a.close-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    float: none;
+    margin-top: 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.discount div {
+    color: white;
+}
+
+.clock .clock-day {
+    background: transparent !important;
+}
+
+.clock .clock-hour {
+    background: transparent !important;
+}
+
+.clock .clock-min {
+    background: transparent !important;
+}
+
+.clock .clock-sec {
+    background: transparent !important;
+}
+
+.clock-inner {
+    padding: 4px 12px;
+}
+
+.clock>div:not(:last-child) {
+    margin: 0 !important;
+}
+
+.specialist-course-card {
+    overflow: hidden;
+    background: var(--white);
+    border-radius: 1rem;
+    border: 4px solid #013252;
+    outline: 1px solid #DDB239;
+}
+
+img.course-header__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-header {
+    position: relative;
+}
+
+img.course-header__icon {
+    background: #1c1c1b80;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-body {
+    padding: 1rem 2rem;
+}
+
+.course-title {
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
+.course-price {
+    text-align: center;
+    background: #EDEFF0;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.course-price del {
+    font-size: 14px;
+    color: #A9A9A9;
+}
+
+.course-price ins {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.course-completion-time {
+    font-weight: 700;
+}
+
+.course-completion-time>span {
+    display: block;
+}
+
+.course-link {
+    background: #EB2F43;
+    color: var(--white);
+    width: 100%;
+    font-weight: 400;
+    margin-top: 1rem;
+    transition: all .4s ease-in-out;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.course-link:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+.specialist-courses-slider .splide__track {
+    overflow: visible;
+}
+
+.specialist-courses-slider .splide__slide.is-out-of-view {
+    opacity: 0;
+}
+
+.specialist-courses-slider .splide__arrow {
+    background: #EB2F43;
+    height: 3em;
+    width: 3em;
+}
+
+.specialist-courses-slider .splide__arrow--next {
+    right: -2em;
+}
+
+.specialist-courses-slider .splide__arrow--prev {
+    left: -2rem;
+}
+
+.specialist-courses-slider .splide__arrow svg {
+    fill: white;
+    height: 1.75em;
+    width: 1.75em;
+}
+
+@media screen and (max-width: 768px) {
+
+    .promo-image {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .discount {
+        width: 100%;
+    }
+
+    .top-heading {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .content-section.courses {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .course {
+        width: 100%;
+    }
+
+    .content-section {
+        padding: 0;
+    }
+
+    .gifts {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .gifts .left {
+        width: 100%;
+    }
+
+    .gifts .right {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .gifts .right .guide {
+        width: 100%;
+    }
+
+    .verified-student-reviews-section {
+        display: none;
+    }
+
+    .bundle .left {
+        display: none;
+    }
+
+    .bundle .right {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .bundle .right .title {
+        text-align: center;
+    }
+
+    .bundle .right .product-outer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .whats_included_outer {
+        grid-template-columns: auto;
+    }
+
+    .text {
+        text-align: left;
+    }
+
+    .tools {
+        flex-direction: column;
+    }
+
+    .tool {
+        width: 100%;
+    }
+
+    .accreditations img {
+        width: 100% !important;
+        height: auto;
+    }
+
+    .faq {
+        flex-direction: column;
+    }
+
+    .left-faq {
+        width: 100%;
+    }
+
+    .right-faq {
+        width: 100%;
+    }
+
+    .panel {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .each-panel {
+        width: 100%;
+    }
+
+    .top-save {
+        display: none;
+    }
+
+    .include,
+    .exclude {
+        padding: 0;
+    }
+
+    .buttons .default-button,
+    .enrol {
+        font-size: 16px;
+    }
+
+    .specialist-courses-slider .splide__arrow--prev {
+        left: -1rem;
+    }
+
+    .specialist-courses-slider .splide__arrow--next {
+        right: -1em;
+    }
+
+    .course-title {
+        font-size: 18px;
+    }
+}

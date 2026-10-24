@@ -115,8 +115,9 @@ add_action('woocommerce_payment_complete', 'tefl_change_order_date_on_payment_co
 function tefl_change_order_date_on_payment_complete($order_id)
 {
     $order              = wc_get_order($order_id);
+    $user_id = $order->get_user_id();
     $order_created_via  = get_post_meta($order_id, '_created_via', true);
-    if ($order_created_via == "wc_deposits") {
+    if ($order_created_via == "wc_deposits" || $order_created_via == "checkout") {
         tefl_chnage_order_created_date($order_id);
         tefl_reactivate_account_on_failed_payment($user_id);
         // tefl_reactive_course_on_payment($user_id,$order_id);
@@ -138,7 +139,7 @@ function tefl_chnage_order_created_date($order_id)
 function tefl_reactivate_account_on_failed_payment($user_id)
 {
 
-    $url                = "https://courses.teflinstitute.com//api_reactivate_account.php";
+    $url                = "https://courses.teflinstitute.com/api_reactivate_account.php";
     $user               = get_user_by('ID', $user_id);
     if (!$user) {
         return;

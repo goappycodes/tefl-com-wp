@@ -57,7 +57,7 @@ $gocambio_jobs = ti_jobs_feed();
 
                         <img class="lazy loaded" src="/wp-content/uploads/2020/11/Group-57.svg" data-src="/wp-content/uploads/2020/11/Group-57.svg" data-was-processed="true">
                     </div>
-                    <a href="/wp-content/uploads/2021/04/TEFL-Institute-Study-Prospectus-Interactive.pdf">Download Brochure <i class="fa fa-angle-right"></i></a>
+                    <a href="/wp-content/uploads/2025/03/TEFL-Institute-Job-Hunters-Guide.pdf">Download Brochure <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
         </div>

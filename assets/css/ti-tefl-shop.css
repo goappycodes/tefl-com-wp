@@ -306,7 +306,6 @@ td {
 
 .variations_form {
     display: flex;
-    align-items: center;
 }
 
 td.label {

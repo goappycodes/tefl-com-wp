@@ -1,0 +1,305 @@
+#content>.ast-container {
+    max-width: 100%;
+    padding: 0 !important;
+}
+
+body {
+    background: #EEEDEA;
+    color: #000;
+}
+
+/* Hero Section */
+
+.hero-section {
+    position: relative;
+    background-color: #EEEDEA;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    min-height: 500px;
+    overflow: hidden;
+    background-position: 50% 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(238, 237, 234, 1) 0%,
+            rgba(238, 237, 234, 1) 40%,
+            rgba(238, 237, 234, 0) 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-section .ast-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: 0;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.hero-description p {
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.hero-description p:last-of-type {
+    margin: 0;
+}
+
+/* Intro Section */
+
+section.intro-section {
+    padding: 3rem 0;
+}
+
+.section-title {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: #000;
+}
+
+.section-summary {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+}
+
+.section-summary p:not(:last-of-type) {
+    margin-bottom: .75rem;
+}
+
+.section-summary p:last-of-type {
+    margin: 0;
+}
+
+/* Features Section */
+
+section.feature-section {
+    background: #E5E3DD;
+    padding: 4rem 0;
+}
+
+.section-title-large {
+    font-size: 38px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    color: #000;
+}
+
+.feature-col {
+    text-align: center;
+}
+
+.feature-icon {
+    width: max-content;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.feature-icon img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.feature-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: .75rem;
+    color: #000;
+}
+
+.feature-subtitle {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 400;
+}
+
+@media screen and (min-width:769px) {
+    .feature-row .ast-col-md-4:nth-of-type(2) {
+        border-right: 2px solid #00000008;
+        border-left: 2px solid #00000008;
+    }
+
+    .milestones .ast-col-md-3:not(:last-of-type) {
+        border-right: 2px solid #00000008;
+    }
+}
+
+/* Quote Section */
+
+section.quotes-section {
+    padding: 4rem 0;
+}
+
+.quote-area {
+    background: #fff;
+    border-radius: 12px;
+    padding: 3rem 4rem;
+    position: relative;
+}
+
+.quote-text {
+    font-size: 17px;
+    color: #000;
+    line-height: 1.5;
+}
+
+.quote-author {
+    font-size: 24px;
+    color: #000;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+img.quote-open {
+    position: absolute;
+    top: -10px;
+}
+
+img.quote-close {
+    position: absolute;
+    bottom: -10px;
+    right: 4rem;
+}
+
+/* Milestones Section */
+
+section.milestones {
+    padding-bottom: 4rem;
+}
+
+.milestone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+img.milestone-icon {
+    height: 60px;
+    object-fit: contain;
+    width: 60px;
+}
+
+.milestone-title,
+.milestone-subtitle {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.milestone-title {
+    font-weight: 700;
+}
+
+.milestone-subtitle {
+    font-weight: 400;
+}
+
+/* info section */
+
+section.info-section {
+    padding-bottom: 4rem;
+}
+
+.info-section-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+.info-block:first-of-type {
+    margin-bottom: 3rem;
+}
+
+/* social Section */
+
+section.social-section {
+    padding-bottom: 4rem;
+}
+
+section.social-section .section-title {
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+a.social-link {
+    padding: 20px;
+    background: #DEDCD3;
+    border-radius: 50%;
+    /* height: 50px; */
+    /* width: 50px; */
+}
+
+a.social-link img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-section {
+        height: auto;
+        background-position: 75% 50%;
+        padding: 50px 0;
+    }
+
+    .intro-section-left.about-column {
+        margin-bottom: 2rem;
+    }
+
+    .feature-row .ast-col-md-4:nth-of-type(2) {
+        margin: 2rem auto;
+    }
+
+    .quote-area {
+        padding: 2rem;
+    }
+
+    section.milestones .ast-row::after,
+    section.milestones .ast-row::before {
+        display: none;
+    }
+
+    section.milestones .ast-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    section.milestones .ast-row>* {
+        flex: 45%;
+    }
+
+    .info-section-image {
+        margin-bottom: 2rem;
+    }
+}

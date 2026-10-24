@@ -28,7 +28,28 @@ $description = get_field('description');
               	<?php if($image) { ?>
             		<img class="image" src="<?php echo $image; ?>">
               	<?php } ?>
-                <h1 class="section-heading"><?php echo $title; ?></h1>
+               <h1 class="section-heading"><?php echo $title; ?></h1>
+                  <?php if (get_queried_object_id() === 107391) : ?>
+                     <div>
+                        <p style="text-align: center;">
+                           Prefer to chat directly?
+                           <a href="https://dlopo.com/school-elective/intro-call"
+                              data-dlopo-embed="true"
+                              style="text-decoration: underline;">
+                              Book a call
+                           </a>
+                        </p>
+
+                        <script>
+                           window.dlopoEmbed = {
+                              mode: "element",
+                              ownerUsername: "chloe-joomun",
+                              linkSlug: "intro-call"
+                           };
+                        </script>
+                        <script src="https://dlopo.com/embed.js" defer></script>
+                     </div>
+                  <?php endif; ?>
               	<h2 class="subsection-heading"><?php echo $description; ?></h2>
             </div>
          </div>

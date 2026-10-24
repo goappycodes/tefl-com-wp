@@ -8,7 +8,7 @@ if($curr_post_type == 'internship'){
     //$internship_product = wc_get_product($internship_product_id);
     $curr_post_id = $internship_product_id;
 }else if($curr_post_type == 'course'){
-	$course_product_id = get_field('course_product');
+	// $course_product_id = get_field('course_product');
     //$course_product = wc_get_product($course_product_id);
     $curr_post_id = $course_product_id;
 }
@@ -61,7 +61,9 @@ if ( $deposit_enabled == 'optional' || $deposit_enabled == 'required' ){
 		endif;
 		?>
 		<i class="show-schedule-icon fa fa-info"></i>
-		<ul class="wc-deposits-option <?php echo $total_deposits?>">
+		<ul class="wc-deposits-option <?php echo $total_deposits?>"
+			style="--active-bg-color:<?php echo $active_bg_color?>; --active-text-color:<?php echo $active_text_color?>; --inactive-bg-color:<?php echo $inactive_bg_color?>; --inactive-text-color:<?php echo $inactive_text_color?>; "
+		>
 			<li class="active ">
 				<input type="radio" name="wc_deposit_option" value="no" class="radio-custom wc-option-pay-full" id="wc-option-pay-full" <?php checked( $default_selected_type, 'full' ); ?> />
 				<label for="wc-option-pay-full" class="radio-custom-label">

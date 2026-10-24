@@ -15,12 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
+   
 			<?php astra_content_bottom(); ?>
 
 			</div> <!-- ast-container -->
 
 		</div><!-- #content -->
-
+        <?php include('template-parts/offer-banner.php'); ?>
 		<?php astra_content_after(); ?>
 
 		<?php astra_footer_before(); ?>
@@ -35,12 +36,12 @@ if ( ! defined( 'ABSPATH' ) ) {
         <img src="/wp-content/uploads/2023/01/january-sale-floating-2.png" alt="TI Floating banner">
     </a> -->
     <?php endif?>
-     <span class = "show-button"  id = "showButton"><i class ="fa fa-angle-up"></i></span> 
+     <!-- <span class = "show-button"  id = "showButton"><i class ="fa fa-angle-up"></i></span> 
     <div class="mobile-bar">
         <a href="tel:+442033185366" class="callback"></a>
         <p class="passrate"></p>
         <span class = "close-button" id="closeButton"><i class="fa fa-times"></i></span>
-    </div>
+    </div> -->
     
 	<?php astra_body_bottom(); ?>
     <div class="footer-legal-holder" style="display:none">
@@ -63,16 +64,18 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>  
 
 	<?php wp_footer(); ?>
+    <?php do_action('tefl_footer_scripts'); ?> 
+    <?php
+        $sticky_offer_cta = get_field('sticky_offer_cta','option');
+        $show_cta = $sticky_offer_cta['show_cta'] ?? false;
+        $where_to_show = $sticky_offer_cta['where_to_show'] ?? [];
+        if($show_cta && in_array(get_the_ID(),$where_to_show)):
+            get_template_part('template-parts/sticky-offer-cta', null, array(
+                'sticky_offer_data' => $sticky_offer_cta
+            ));
+        endif;
+    ?>
 
-
-    <script id="salesiq" type="text/javascript">
-    var $zoho=$zoho || {};
-    $zoho.salesiq = $zoho.salesiq || 
-    {widgetcode:"74a26abd2f179ee9efd8b1197e292e5a95a723cab12c21d03d540347f90270198167740cc29dc87330a4487db8a55c4d", values:{},ready:function(){}};
-    var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;
-    s.src="https://salesiq.zoho.eu/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);d.write("<div id='zsiqwidget'></div>");
-    </script>
-    
 	</body>
 
 </html>

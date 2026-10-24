@@ -30,7 +30,8 @@ defined( 'ABSPATH' ) || exit;
             $product->get_regular_price();
             $product->get_sale_price();
             $product->get_price();
-            $percentage = round( ( ( $product->regular_price - $product->sale_price ) / $product->regular_price ) * 100 );
+            $percentage = ( (float)$product->regular_price - (float)$product->sale_price ) / $product->regular_price * 100 ;
+            $percentage = round($percentage);
         ?>
         <h4>10 HOUR VIRTUAL TEFL COURSE</h4>
         <p>Add to your enrolment now before our <?php echo $percentage; ?>% off offer ends.</p>
@@ -167,7 +168,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
 
 		<tr class="order-total">
-			<th><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+			<th><?php esc_html_e( 'Order Total', 'woocommerce' ); ?></th>
 			<td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
 		</tr>
 
@@ -183,73 +184,84 @@ defined( 'ABSPATH' ) || exit;
 </div>
 
 
+<img class="no-lazy d-none discount-icon" src="/wp-content/uploads/2025/03/back-of-the-net-ti.png" alt="">
+
 
 <?php
-//Option To add TEFL ressource in cart if it does not exist
-$teaching_resources = get_field('teaching_resources','option');
-$product_id = $teaching_resources['product'];
-$product_name = $teaching_resources['product_name'];
-$product_desc = $teaching_resources['resources_description'];
-$cart_page_info = $teaching_resources['cart_page_info'];
-if(is_array_empty($cart_page_info)){
-	return;
-}
-$icon = $cart_page_info['icon'];
-$title = $cart_page_info['title'];
-$desc = $cart_page_info['description'];
-$product_obj = wc_get_product($product_id);
-if ($product_obj){ 
-		$product_price = $product_obj->get_price_html();
-}
-$product_in_cart = false;
-foreach (WC()->cart->get_cart() as $cart_item) {
-	if ($cart_item['product_id'] == $product_id) {
-		$product_in_cart = true;
-		break;
-	}
+// Option to add TEFL resource in cart if it does not exist
+$teaching_resources = get_field('teaching_resources', 'option'); // Now a repeater field
+
+if (is_array_empty($teaching_resources)) {
+    return; // Exit if no resources are available
 }
 
-if ( !$product_in_cart) {
-	?>
-		<div class="resource-container">
-			<div class="resource-container__top">
-				<div class="resource-icon">
-					<img src="<?php echo $icon?>" alt="">
-				</div>
-				<div class="resource-description">
-					<div class="resource-description-header">
-						<h3><?php echo $title?></h3>
-						<i class="fa fa-info"></i>
-						<div class="resource-info-container">
-							<h6><?php echo $product_name?></h6>
-							<div class="resource-info">
-								<?php echo $product_desc?>
-							</div>
-							<a href="/the-tefl-plus/" target="_blank" class="btn btn-red btn-centered">
-								Learn More
-							</a>
-						</div>
-					</div>
-					<span><?php echo $desc?></span>
-				</div>
-				
-			</div>
-			<div class="resource-container__bottom">
-				<div class="resource-price">
-					<?php echo $product_price?>
-				</div>
-				<div class="resource-add-to-cart">
-					<a href="<?php echo $product_obj->add_to_cart_url() ?>" value="<?php echo esc_attr( $product_obj->get_id() ); ?>" class="add-resource-btn button ajax_add_to_cart add_to_cart_button" data-product_id="<?php echo esc_attr( $product_obj->get_id() ); ?>" data-product_sku="<?php echo esc_attr($product_obj->get_sku()); ?>" aria-label="Add '<?php echo $guide_title; ?>' to your cart">
-						Add To Cart 
-						<i class="fa fa-angle-right"></i>
-					</a>
-				</div>
-			</div>
-		</div>
+foreach ($teaching_resources as $index => $resource) {
+    $product_id = $resource['product'];
+    $product_name = $resource['product_name'];
+    $product_desc = $resource['resources_description'];
+    $cart_page_info = $resource['cart_page_info'];
+    $resource_page_link = $resource['resource_page_link'];
 
-	<?php
+    if (is_array_empty($cart_page_info)) {
+        continue;
+    }
+
+    $icon = $cart_page_info['icon'];
+    $title = $cart_page_info['title'];
+    $desc = $cart_page_info['description'];
+
+    $product_obj = wc_get_product($product_id);
+    if ($product_obj) {
+        $product_price = $product_obj->get_price_html();
+    }
+
+    $product_in_cart = false;
+    foreach (WC()->cart->get_cart() as $cart_item) {
+        if ($cart_item['product_id'] == $product_id) {
+            $product_in_cart = true;
+            break;
+        }
+    }
+
+    if (!$product_in_cart) {
+        ?>
+        <div class="resource-container">
+            <div class="resource-container__top">
+                <div class="resource-icon">
+                    <img src="<?php echo esc_url($icon); ?>" alt="">
+                </div>
+                <div class="resource-description">
+                    <div class="resource-description-header">
+                        <h3><?php echo $title; ?></h3>
+                        <i class="fa fa-info" data-target="info-<?php echo $index; ?>"></i>
+                        <div id="info-<?php echo $index; ?>" class="resource-info-container">
+                            <h6><?php echo esc_html($product_name); ?></h6>
+                            <div class="resource-info">
+                                <?php echo wp_kses_post($product_desc); ?>
+                            </div>
+                            <a href="<?php echo $resource_page_link?>" target="_blank" class="btn btn-red btn-centered">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+                    <span><?php echo esc_html($desc); ?></span>
+                </div>
+            </div>
+            <div class="resource-container__bottom">
+                <div class="resource-price">
+                    <?php echo $product_price; ?>
+                </div>
+                <div class="resource-add-to-cart">
+                    <a href="<?php echo esc_url($product_obj->add_to_cart_url()); ?>" value="<?php echo esc_attr($product_obj->get_id()); ?>" class="add-resource-btn button ajax_add_to_cart add_to_cart_button" data-product_id="<?php echo esc_attr($product_obj->get_id()); ?>" data-product_sku="<?php echo esc_attr($product_obj->get_sku()); ?>" aria-label="Add '<?php echo esc_attr($product_name); ?>' to your cart">
+                        Add To Cart 
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+<?php
+    }
 }
-
 ?>
 
 

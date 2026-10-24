@@ -13,7 +13,7 @@
     <div class="ast-container" style="background: url('https://teflinstitute.com/wp-content/uploads/2020/11/take_the_test_bg.jpg');">
 		<div class="ast-row banner-text-row">
 		    <div class="ast-col-lg-12 ast-col-md-12 ast-col-sm-12 ast-col-xs-12">
-		        <h2 class="banner-text">TEFL Institute <br> Frequently Asked Questions</h2>
+		        <h1 class="banner-text" style="margin:0">TEFL Institute <br> Frequently Asked Questions</h1>
 			</div>
 		</div>
 	</div>

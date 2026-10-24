@@ -385,6 +385,22 @@ function clockdown_function($time)
     return ob_get_clean();
 }
 
+add_action('wp_head', function() { ?>
+  <script>
+  function initApollo(){
+    var n = Math.random().toString(36).substring(7),
+        o = document.createElement("script");
+    o.src = "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=" + n;
+    o.async = true;
+    o.defer = true;
+    o.onload = function(){
+      window.trackingFunctions.onLoad({appId: "6a4652eb02b669001c2c132c"});
+    };
+    document.head.appendChild(o);
+  }
+  initApollo();
+  </script>
+<?php });
 
 /*Custom Banner Content*/
 
@@ -432,6 +448,7 @@ function ti_header_fn()
     $hide_header_banner = get_field('hide_header_banner', 'option');
     $expiry_date = get_field('timer_expiry', 'option');
     $header_banner = get_field('banner', 'option');
+    $current_date = current_time('Y-m-d H:i:s'); 
 
     foreach ($header_banner as $hb) :
 
@@ -457,14 +474,15 @@ function ti_header_fn()
         $btn_bg_color           = $banner_btn_styling['button_background_color'];
         $btn_text_color         = $banner_btn_styling['button_text_color'];
         $btn_text_size          = $banner_btn_styling['button_text_font_size'];
+        $timer_active = $show_clockdown && strtotime($current_date) < strtotime($expiry_date);
 
         if (in_array($current_post_id, $where_to_show) && !$hide_header_banner && !is_front_page() && !is_singular('course') && !is_page('79087')) : ?>
-            <div style="background:<?php echo $banner_bg_color ?>" class="sales-offer-banner-mobile header-offer-banner">
+            <div style="background:<?php echo $banner_bg_color ?>" class="d-none sales-offer-banner-mobile header-offer-banner">
                 <div class="ast-container ast-flex ast-align-items-center">
                     <div class="ast-col-md-3 logo-timer-container">
-                        <?php if ($show_clockdown) : ?>
-                            <div class="banner-clock-text">Offer ends in:</div>
+                        <?php if ($timer_active) : ?>
                             <div class="tefl_countdown_timer">
+                                <span>Offer Ends:</span>
                                 <?php echo clockdown_function($expiry_date); ?>
                             </div>
                         <?php else : ?>
@@ -475,22 +493,24 @@ function ti_header_fn()
                             </div>
                         <?php endif; ?>
                     </div>
-                    <div class="<?php echo ($show_clockdown && $show_button) ? 'ast-col-md-6' : 'ast-col-md-6' ?> banner-content-container">
+                    <div class="<?php echo ($timer_active && $show_button) ? 'ast-col-md-6' : 'ast-col-md-6' ?> banner-content-container">
                         <div style="color:<?php echo $banner_text_color ?>; font-size:<?php echo $banner_text_font_size ?>px" class="mobile-offer-banner-text">
                             <?php echo $banner_text ?>
                         </div>
                     </div>
                     <div class="ast-col-md-3 cta-container">
                         <?php if ($show_button) : ?>
-                            <a style="background:<?php echo $btn_bg_color ?>; color:<?php echo $btn_text_color ?> !important; font-size:<?php echo $btn_text_size ?>px" href="<?php echo $banner_btn_link ?>" class="cta-btn-white"><?php echo  $banner_btn_text ?></a>
+                            <a style="--bg-color:<?php echo $btn_bg_color ?>; --text-color:<?php echo $btn_text_color ?> ; --font-size:<?php echo $btn_text_size ?>px" href="<?php echo $banner_btn_link ?>" class="cta-btn-white"><?php echo  $banner_btn_text ?></a>
                         <?php endif ?>
                     </div>
 
                     <a href="<?php echo $banner_btn_link ?>" class="banner-offer-overlay-link"></a>
                 </div>
-            </div><?php
-                endif;
-            endforeach; ?>
+            </div>
+        <?php
+        endif;
+    endforeach;
+    ?>
 
     <!-- Header Offer Banner -->
     <?php
@@ -648,6 +668,11 @@ function ti_header_fn()
                         </div>
                     </div>
                     <div class="ast-col-md-2">
+                        <div class="d-none bf-menu-link">
+                            <!-- <a href="/black-friday-sale/">
+                                <img src="/wp-content/uploads/2024/11/bf_button_1.gif" alt="">
+                            </a> -->
+                        </div>
                         <div class="header-cta-icons">
                             <div class="search-input-container">
                                 <form action="<?php echo get_home_url(); ?>" method="GET">
@@ -703,28 +728,6 @@ function ti_header_fn()
         </div>
     </div>
 
-    <div class="top-bar-search-mobile" style="display:none;">
-        <div class="search-input">
-            <form action="<?php echo get_home_url(); ?>" method="GET">
-                <button class="search" type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
-                <input name="s" type="text" placeholder="SEARCH">
-            </form>
-        </div>
-    </div>
-
-    <div class="location-contact">
-        <div class="ast-container">
-            <div class="ast-row">
-                <div class="links">
-                    <a href="#">LOCATION</a>
-                    <a href="/contact-us/">CONTACT US</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
 <?php
 }
 
@@ -744,16 +747,16 @@ add_action('astra_main_header_bar_bottom', 'new_mega_menu');
 function new_mega_menu()
 {
 
-    $country = get_current_country();
-    $mega_menu_meta = 'teflcom_mega_menu_' . $country;
+    // $country = get_current_country();
+    // $mega_menu_meta = 'teflcom_mega_menu_' . $country;
 
 
-    $saved_mega_menu = get_transient($mega_menu_meta);
-    if ($saved_mega_menu) {
-        echo '<!-- Mega menu served from Transient ' . $mega_menu_meta . ' -->';
-        echo $saved_mega_menu;
-        return '';
-    }
+    // $saved_mega_menu = get_transient($mega_menu_meta);
+    // if ($saved_mega_menu) {
+    //     echo '<!-- Mega menu served from Transient ' . $mega_menu_meta . ' -->';
+    //     echo $saved_mega_menu;
+    //     return '';
+    // }
 
     $mega_menu_new = get_field('mega_menu_items', 'option');
     ob_start();
@@ -764,11 +767,7 @@ function new_mega_menu()
                 <div class="ast-col ti-mega-menu-container ast-col-md-12">
                     <div class="ti-mega-menu ast-flex">
                         
-                        <div class="d-none ast-col ti-menu-item">
-                            <a class="primary-menu-link bf-link gift-voucher-link" href="/january-tefl-course-sale/">
-                                <img src="/wp-content/uploads/2024/01/Jan_sale_TI_1.gif" alt="">
-                            </a>
-                        </div>
+                        
                         <?php $count = 0;
                         foreach ($mega_menu_new as $index => $mm) {
                             $count++; ?>
@@ -776,6 +775,15 @@ function new_mega_menu()
                             $has_cta_block = $mm['has_cta_block'];
                             $has_sub_menu = $mm['has_sub_menu'];
                             $menu_link = $mm['menu_link'];
+                            if(false):
+                            ?>
+                            <div class="ast-col ti-menu-item">
+                                <a href="/black-friday-sale/">
+                                    <img class="no-lazy bf-gif" src="/wp-content/uploads/2025/12/PT-Cyber-Monday-1-1.gif" alt="">
+                                </a>
+                            </div>
+                            <?php
+                            endif;
                             ?>
                             <div class="ast-col ti-menu-item <?php if ($has_sub_menu || $has_cta_block) echo "has-children"; ?>">
                                 <?php if ($menu_link) : ?>
@@ -878,7 +886,7 @@ function new_mega_menu()
 
                                                             $sub_menu_head = $sm['sub_menu_header'];
                                                             $sub_menu_content = $sm['sub_menu_item']; ?>
-                                                            <div class="ast-col-md-3" <?php echo $count; ?>>
+                                                            <div class="ast-col-md-3" <?php echo $index; ?>>
                                                                 <ul>
                                                                     <div class="sub-menu-head"><?php echo $sub_menu_head; ?></div>
                                                                     <?php foreach ($sub_menu_content as $sbc) {
@@ -888,8 +896,8 @@ function new_mega_menu()
                                                                         $css_classes = $sbc['css_classes'];
                                                                         $title_has_icon = $sbc['title_has_icon'];
                                                                         $menu_title_icon = $sbc['menu_title_icon'];
-                                                                        $link_has_label = $sbc['link_has_label'];
-                                                                        $label_text = $sbc['label_text'];
+                                                                        $link_has_label = $sbc['link_has_label'] ?? false;
+                                                                        $label_text = $sbc['label_text'] ?? '';
                                                                         $add_custom_style = $sbc['add_custom_style'];
                                                                         if($add_custom_style){
                                                                             $custom_style = $sbc['custom_style'];
@@ -914,6 +922,29 @@ function new_mega_menu()
                                                                 </ul>
                                                             </div>
                                                         <?php } ?>
+                                                        <?php
+                                                            if($index === 0):
+                                                        ?>
+                                                        <div class="ast-col-md-3">
+                                                            <div class="prospectus-cta">
+                                                                <div class="prospectus-cta-img">
+                                                                    <img src="/wp-content/uploads/2025/05/prospectus-cover.png" alt="">
+                                                                </div>
+                                                                <div class="prospectus-cta-download" >
+                                                                    <div class="text-center prospectus-cta-text">
+                                                                        <p>TEFL STUDY PROSPECTUS</p>
+                                                                        <p class="font-400">Explore global teaching opportunities with our TEFL study prospectus.</p>
+                                                                    </div>
+                                                                    <a href="/wp-content/uploads/2023/06/TEFL-Institute-Prospectus-2.pdf" class="btn" target = "_blank">
+                                                                        <span>Download</span>
+                                                                        <img src="/wp-content/uploads/2025/03/download-icon.png" alt="">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php
+                                                            endif;
+                                                        ?>
                                                     <?php endif; ?>
 
                                                     <?php include('mega_menu_CTA_buttons.php'); ?>
@@ -934,7 +965,7 @@ function new_mega_menu()
                                     <div class="ast-row ti-sub-menu-item">
                                         <div class="column-wrapper has-cta-block">
                                             <div class="ast-col-md-8 block-left">
-                                                <h3 class="block-title block-title-bold"><?php echo $block_title ?></h3>
+                                                <p class="block-title block-title-bold"><?php echo $block_title ?></p>
                                                 <?php include('country_guides_menu_links.php') ?>
                                             </div>
                                             <div class="ast-col-md-4">
@@ -971,13 +1002,13 @@ function new_mega_menu()
     </div>
 <?php
     $mega_menu = ob_get_clean();
-    set_transient($mega_menu_meta, $mega_menu, WEEK_IN_SECONDS);
+    // set_transient($mega_menu_meta, $mega_menu, WEEK_IN_SECONDS);
     echo $mega_menu;
 }
 
 // Delete transient if Mega menu is updated
 
-add_action('acf/save_post', 'delete_mega_menu_transient', 5);
+// add_action('acf/save_post', 'delete_mega_menu_transient', 5);
 
 function delete_mega_menu_transient($post_id)
 {
@@ -986,16 +1017,19 @@ function delete_mega_menu_transient($post_id)
     }
 
     $values = isset($_POST['acf']) ? $_POST['acf'] : array();
-
     $field_key = 'field_633fdb7aaf8f9';
+
     if (isset($values[$field_key])) {
         global $wpdb;
-        error_log('Mega Menu transient deleted');
-        $wpdb->query($wpdb->prepare("DELETE FROM `wp_options` WHERE `option_name` LIKE %s", '_transient_teflcom_mega_menu_%'));
+        $results = $wpdb->get_col(
+            "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '_transient_teflcom_mega_menu_%'"
+        );
+        foreach ($results as $transient) {
+            delete_transient(str_replace('_transient_', '', $transient));
+        }
+        error_log('Mega Menu transients deleted: ' . count($results));
     }
 }
-
-
 
 
 
@@ -1184,8 +1218,11 @@ function zero_discount_for_excluded_products($discount, $discounting_amount, $ca
     // Check if the product has the 'exception' custom field set
     $exception_coupon = get_field('exception', $product_id);
 
-    if ($exception_coupon && in_array($coupon->get_code(), explode(',', $exception_coupon))) {
-        return $discount;
+    if ($exception_coupon) {
+        $exception_coupons = array_map('trim', explode(',', strtolower($exception_coupon)));
+        if (in_array(strtolower($coupon->get_code()), $exception_coupons)) {
+            return $valid;
+        }
     }
 
     if ($disable_coupon_code) {
@@ -1385,8 +1422,10 @@ function fix_broken_posts_request_ids($query)
 function astra_site_branding_markup()
 {
 
-    $country   = get_user_geo_country_code();
-    $site_logo = get_geo_logo($country); ?>
+    // Always the standard logo here: pages are cached and served to everyone, so a geo logo
+    // would show the city of whoever built the cache. ti-global.js updateLogo() swaps in the
+    // visitor's own city logo after load.
+    $site_logo = '/wp-content/uploads/2023/06/TEFL-Logo_Institute.svg'; ?>
 
     <div class="site-branding">
         <div <?php
@@ -1409,4 +1448,14 @@ function astra_site_branding_markup()
 
     <!-- .site-branding -->
 <?php
+}
+
+
+add_filter( 'woocommerce_email_headers', 'add_trustpilot_bcc', 10, 3 );
+function add_trustpilot_bcc( $headers, $email_id, $order ) {
+    // Send invite after order is completed
+    if ( $email_id === 'customer_completed_order' ) {
+        $headers .= 'Bcc: teflinstitute.com+9a7f8df189@invite.trustpilot.com' . "\r\n";
+    }
+    return $headers;
 }

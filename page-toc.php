@@ -139,9 +139,11 @@ section.faq-hero-section .banner-text-row {
 }
 
 h3 {
-	padding: 15px 35px;
+	padding: 15px 0;
 }
-
+ol {
+    margin: 10px 0 10px 20px;
+}
 .banner-text {
 	color: #fff;
 	font-size: 1.875rem;
@@ -185,9 +187,9 @@ h3 {
     margin-bottom: 2em;
 }
 
-.content-container {
+/* .content-container {
     padding: 0 30px 30px 30px;
-}
+} */
 
 .content-container h1 {
 	margin-bottom: 15px;

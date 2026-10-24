@@ -125,6 +125,10 @@ html {
     margin-top: 50px;
 }
 
+.internships-section .ast-row.ast-flex {
+    row-gap: 2rem;
+}
+
 .internships-section h2 {
     font-size: 1.25rem;
     text-align: center;

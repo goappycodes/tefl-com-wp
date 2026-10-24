@@ -9,6 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_shortcode('tefl_course_search', 'tefl_course_search_fn');
 function tefl_course_search_fn(){
     ob_start();
+    $course_search_bar_search_icon = get_field('course_search_bar_search_icon', 'option');
+    if (isset($course_search_bar_search_icon) && !empty($course_search_bar_search_icon)) {
+        $icon_bg_color = $course_search_bar_search_icon['icon_bg_color'] ?? '#1c1c1b'; 
+        $icon_color = $course_search_bar_search_icon['icon_color'] ?? '#ffffff'; 
+    }
+
     ?>
     <section id="search_section" class="search-section">
         <div class="ast-row search-row">
@@ -51,7 +57,9 @@ function tefl_course_search_fn(){
                         </select>
                     </div>
                     <div class="search-btn-div">
-                        <a class="tefl-search-btn" href=""><img src="/wp-content/uploads/2023/07/search-1.png"></a>
+                        <a style="background:<?php echo $icon_bg_color?>" href="" class="course-search-btn no-lazy">
+                            <i style="color:<?php echo $icon_color?>" class="fa fa-search"></i>
+                        </a>
                     </div>
                 </div>
             </div>

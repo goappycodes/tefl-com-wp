@@ -1,6 +1,4 @@
 <?php
-// $handle = new WC_Product_Variable($course_product_id);
-// $product_variations = $handle->get_children();
 
 
 if(get_field('is_virtual_couse')): 
@@ -191,7 +189,8 @@ if(get_field('is_virtual_couse')):
                                         "priceCurrency": "<?php echo get_woocommerce_currency(); ?>",
                                         "availability": "http://schema.org/InStock",                        
                                         "url": "<?php echo '/?addtimetocart&prid='.$course_product_id.'&date='.$class_course_date['start_date']; ?>",
-                                        "validFrom": "2020-01-01T12:00"
+                                        "validFrom": "2020-01-01T12:00",
+                                        "category": "Course"
                                     },
                                     "organizer": {
                                         "@type": "Organization",

@@ -23,8 +23,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="https://gmpg.org/xfn/11">
 <meta name="yandex-verification" content="f146ee88e794efac" />
-<meta name="baidu-site-verification" content="code-btXkGO693o" />	
 <meta name="google-site-verification" content="aVQFHMlYWc0F2G6T8kBBuZ8qBgoroP3r0oGWguA8wMc" />
+<meta name="baidu-site-verification" content="codeva-UisXe1YmJs" />
+<meta name="msvalidate.01" content="EAB42E5C3356A871BF1943A5B0A030DD" />
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="PjBPyHKU14NMMbrGDWp/aA"
+  async>
+</script>
 <script id="pt_obj" type='text/javascript'>
     var pt_obj = {"pt_ajax":"https:\/\/teflinstitute.com\/wp-admin\/admin-ajax.php"};
     var split_deposit = '<?php echo get_first_payment_amount(); ?>';
@@ -57,37 +61,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 <meta name="theme-color" content="#eeeeee">
 
 <?php astra_head_bottom(); ?>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KKHNP46P');</script>
-<!-- End Google Tag Manager -->
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "gdlzcdgymr");
-</script>
-	
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9E3XFFB9D9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9E3XFFB9D9');
-  gtag('config', 'AW-11116325429');
-</script>
-	
-<!--<script src="https://cdn-eu.pagesense.io/js/stjrymja/b77dafd5bf3545f3833201e886e6ca12.js"></script>-->
-	
-<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"56350453"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
 
 <!-- no CLS CSS -->
 <style>
@@ -136,14 +109,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 
 </head>
-
-<!-- Add data-attrubute for color themes -->
-<?php
-    $theme_colors = get_field('theme_colors', 'options');
-?>
-<!-- Add data-attrubute for color themes -->
-
-<body data-colors=<?php echo json_encode($theme_colors); ?> <?php echo $banner_show ?? ''; ?> <?php astra_schema_body(); ?> <?php body_class(); ?>>
+<body <?php echo $banner_show ?? ''; ?> <?php astra_schema_body(); ?> <?php body_class(); ?>>
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKHNP46P"

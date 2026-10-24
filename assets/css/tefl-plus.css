@@ -185,11 +185,12 @@ section.section-padding.hero-banner-section {
 }
 
 .hero-banner-content__left img {
-    width: 180px;
+    width: 500px;
     aspect-ratio: 1;
 }
 
 .product-price {
+    font-size: 24px;
     display: flex;
     align-items: center;
     gap: 16px;

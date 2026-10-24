@@ -194,6 +194,46 @@
             "maxlength": ""
         },
         {
+            "key": "field_68e667ded76be",
+            "label": "Page title (FR)",
+            "name": "page_title_fr",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_68e667d9d76bd",
+            "label": "Page description (FR)",
+            "name": "page_description_fr",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6644642c8ba04",
             "label": "Text Translations",
             "name": "text_translations",
@@ -234,7 +274,8 @@
                         "ZA": "ZA",
                         "CA": "CA",
                         "NL": "NL",
-                        "IT": "IT"
+                        "IT": "IT",
+                        "FR": "FR"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -281,7 +322,7 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "tabs": "visual",
+                    "tabs": "all",
                     "toolbar": "basic",
                     "media_upload": 0,
                     "delay": 1,
@@ -342,6 +383,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 0,
-    "modified": 1715845066
+    "show_in_rest": 1,
+    "modified": 1784719812
 }

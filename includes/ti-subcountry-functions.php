@@ -83,6 +83,10 @@ function get_country_link_html( $site_url, $request_url ) {
     $link                   = '';
     $current_country        = get_current_country();
     $restrict_seo_folder    = get_field('restrict_seo_folder');
+    // Treat an empty / never-saved field the same as 'none' (show in all folders).
+    if ( empty( $restrict_seo_folder ) ) {
+        $restrict_seo_folder = 'none';
+    }
     
     if($restrict_seo_folder != 'none' ){
         if($restrict_seo_folder === 'all'){
@@ -173,7 +177,7 @@ function request_url_without_cc() {
     $country         = "/".strtolower(get_current_country());
     
     $request_url_cc  = $_SERVER['REQUEST_URI'];
-    $request_url     = str_replace($country, "", $request_url_cc);
+    $request_url     = (strpos($request_url_cc, $country . "/") === 0 ? substr($request_url_cc, strlen($country)) : ($request_url_cc === $country ? "/" : $request_url_cc));
     
     return $request_url;
 }
@@ -238,7 +242,7 @@ function ptefl_change_wpseo_desc( $desc ) {
         $post_id = $post->ID;
         $cc      = strtolower(get_current_country());
         
-        $page_desc = get_field( 'page_desc_'.$cc, $post_id );
+        $page_desc = get_field( 'page_description_'.$cc, $post_id );
       
         if( is_subcountry_folder() && !empty( $page_desc ) ) {
             $desc = __( $page_desc, 'teflinstitute');
@@ -294,7 +298,7 @@ function get_group_cfvalue_by_country($group1, $group2, $key) {
     return $value;
 }
 
-add_filter( 'wpseo_schema_graph', 'change_image_urls_to_cdn', 10, 2 );
+// add_filter( 'wpseo_schema_graph', 'change_image_urls_to_cdn', 10, 2 );
 function change_image_urls_to_cdn( $data, $context ) {
     if ($_GET['asdsad']) {
         print_r($data); die();

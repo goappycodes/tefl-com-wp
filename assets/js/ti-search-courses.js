@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
         }
     }
 
-    $(document).on('click', '.tefl-search-btn', function(e) {
+    $(document).on('click', '.course-search-btn ', function(e) {
         e.preventDefault();
         var user_type = $('#user_type option:selected').text();
         var user_preference = $('#user_preference option:selected').text();

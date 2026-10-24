@@ -350,7 +350,7 @@ get_header();
     
     <?php endif; ?>
     
-    <?php $other_links = get_field('other_links'); 
+    <?php $other_links = get_field('other_links')??[]; 
         if(isset($other_links)):
     ?>
     <div class="section tefl-courses-internship-job-section">

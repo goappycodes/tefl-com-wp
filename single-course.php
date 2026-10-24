@@ -34,11 +34,11 @@ $course_category = wp_get_post_terms($course_id, 'course_category', array('field
     "priceCurrency": "USD"
   },
   "hasCourseInstance": {
-    "courseSchedule": "",
     "@type": "CourseInstance",
-    "repeatCount": "",
-    "repeatFrequency": "",
-    "courseMode": "Online"
+    "courseMode": "Online",
+    "courseWorkload": "PT150H",
+    "startDate": "2025-05-01",
+    "endDate": "2025-10-28"
   },
   "CourseInstance": "",
   "courseMode": [
@@ -84,8 +84,11 @@ $course_category = wp_get_post_terms($course_id, 'course_category', array('field
 
 if (get_field('is_new_design')) {
     include('single-course-template-new2023.php');
-    // wp_enqueue_style('ti-single-course-new', get_stylesheet_directory_uri() . '/assets/css/ti-single-course-new.css', array(), time(), 'all');
-} else {
+} 
+else if(get_field('is_2024_design')){
+  include('single-course-template-2024.php');
+}
+else {
     include('single-course-template.php');
 }
 

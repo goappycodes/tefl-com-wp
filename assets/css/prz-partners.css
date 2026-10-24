@@ -1,0 +1,907 @@
+/* Make main container full width */
+.site-content .ast-container {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.partners-page {
+    --partners-bg: #ffffff;
+    --partners-alt-bg: #f3f4f6;
+    --partners-card: #ffffff;
+    --partners-border: #d9dee5;
+    --partners-text: #111111;
+    --partners-muted: #6f7278;
+    --partners-dark: #171717;
+    --partners-accent: #5a54ff;
+    --partners-line: #dfe3e8;
+    background: var(--partners-bg);
+    color: var(--partners-text);
+}
+
+.partners-page * {
+    box-sizing: border-box;
+}
+
+.partners-container {
+    max-width: 1301px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.partners-page section {
+    width: 100%;
+}
+
+/* Hero */
+
+.partners-page .partners-hero {
+    width: 100%;
+    padding: 42px 0 34px;
+    background-image: url(https://teflinstitute.com/wp-content/uploads/2026/08/wave.svg) !important;
+    background-color: #f7f7ff !important;
+    border-top: 1px solid var(--partners-line);
+}
+
+
+.partners-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 560px;
+    gap: 58px;
+    align-items: center;
+}
+
+.partners-hero__content {
+    max-width: 560px;
+}
+
+.partners-hero__title {
+    margin: 0 0 18px;
+    max-width: 540px;
+    font-size: 52px;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    font-weight: 700;
+    color: #121212;
+}
+
+.partners-hero__text p {
+    max-width: 488px;
+    margin-bottom: 24px !important;
+    font-size: 16px;
+    line-height: 1.52;
+    font-weight: 500;
+}
+
+.partners-hero__buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.partners-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1;
+    width: 48%;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.partners-btn--dark {
+    background: #181818;
+    color: #ffffff;
+}
+
+.partners-btn--dark:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.partners-btn--light {
+    background: #ffffff;
+    color: #8b8e95;
+    border-color: #cdd3da;
+}
+
+.partners-btn--light:hover {
+    color: #222222;
+    border-color: #b8c0c9;
+}
+
+.partners-btn--white {
+    background: #ffffff;
+    color: #111111;
+    min-width: 132px;
+}
+
+.partners-btn--full {
+    width: 100%;
+}
+
+.partners-hero-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.partners-hero-stat {
+    width: 122px;
+}
+
+.partners-hero-stat__value {
+    margin-bottom: 4px;
+    font-size: 31px;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--partners-accent);
+    letter-spacing: -0.03em;
+}
+
+.partners-hero-stat__label {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #90939a;
+    font-weight: 600;
+}
+
+.partners-hero__form-card,
+.partners-support__form-card {
+    background: #f7f8fa;
+    border: 1px solid var(--partners-border);
+    border-radius: 10px;
+    padding: 20px 20px 16px;
+}
+
+.partners-form-card__title {
+    margin: 0 0 14px;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 600;
+    color: #1b1c1f;
+}
+
+.partners-form-card__text,
+.partners-form-card__note {
+    font-size: 14px;
+    line-height: 1.45;
+    color: #8a8d94;
+}
+
+.partners-form-card__text {
+    margin-bottom: 10px;
+}
+
+.partners-form-card__note {
+    margin-top: 10px;
+}
+
+.partners-form-card__form {
+    display: grid;
+    gap: 10px;
+}
+
+.partners-form-card__form input {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid #d6dce3;
+    border-radius: 3px;
+    background: #000;
+    color: #fff;
+}
+
+.partners-form-card__form input::placeholder {
+    color: #a1a4aa;
+}
+
+/* Logo row */
+
+.partners-logos {
+    width: 100%;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--partners-line);
+    border-bottom: 1px solid var(--partners-line);
+}
+
+.partners-logos__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.partners-logo-item {
+    text-align: center;
+}
+
+.partners-logo-item__title {
+    margin-bottom: 6px;
+    font-size: 20px;
+    line-height: 1.15;
+    font-weight: 500;
+    color: #151515;
+}
+
+.partners-logo-item__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.35;
+    color: #91949a;
+}
+
+/* Sections */
+
+.partners-section {
+    width: 100%;
+    padding: 58px 0;
+    background: #ffffff;
+}
+
+.partners-page .partners-section--alt {
+    background-image: url('https://teflinstitute.com/wp-content/uploads/2026/08/wave.svg') !important;
+}
+
+.partners-section__title {
+    margin: 0 0 26px;
+    font-size: clamp(30px, 2.8vw, 44px);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    color: #111111;
+}
+
+.partners-section__title--with-line {
+    padding-top: 24px;
+    border-top: 1px solid var(--partners-line);
+}
+
+/* Cards */
+
+.partners-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.partners-step-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.partners-revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.partners-case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.partners-card,
+.partners-step-card {
+    background: #ffffff;
+    border: 1px solid var(--partners-border);
+    border-radius: 8px;
+    padding: 16px 16px 14px;
+}
+
+.partners-card--compact {
+    min-height: 86px;
+}
+
+.partners-card__title,
+.partners-step-card__title {
+    margin: 0 0 8px;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 600;
+    color: #171717;
+}
+
+.partners-card__text,
+.partners-step-card__text {
+    font-size: 14px;
+    line-height: 1.52;
+    color: #8b8e94;
+}
+
+.partners-card__link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--partners-accent);
+    text-decoration: none;
+}
+
+.partners-card__link:hover {
+    text-decoration: underline;
+}
+
+.partners-step-card__number {
+    margin-bottom: 12px;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--partners-accent);
+    letter-spacing: -0.03em;
+}
+
+/* Support section */
+
+.partners-support-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 520px;
+    gap: 56px;
+    align-items: start;
+}
+
+.partners-support__content {
+    max-width: 630px;
+}
+
+.partners-support__text {
+    margin-bottom: 16px;
+    font-size: 15px;
+    line-height: 1.58;
+    color: #3d4147;
+}
+
+.partners-support__text p:last-child {
+    margin-bottom: 0;
+}
+
+.partners-support__list {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 7px;
+}
+
+.partners-support__list li {
+    font-size: 15px;
+    line-height: 1.45;
+    color: #171717;
+}
+
+/* Bottom CTA */
+
+.partners-bottom-cta {
+    width: 100%;
+    padding: 38px 0 62px;
+    background: #ffffff;
+}
+
+.partners-bottom-cta__box {
+    background: #181818;
+    border-radius: 12px;
+    padding: 52px 24px 48px;
+    text-align: center;
+}
+
+.partners-bottom-cta__title {
+    margin: 0 0 10px;
+    font-size: clamp(34px, 3vw, 48px);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.partners-bottom-cta__text {
+    max-width: 700px;
+    margin: 0 auto 22px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+/* Responsive */
+
+@media (max-width: 1200px) {
+
+    .partners-hero__grid,
+    .partners-support-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .partners-feature-grid,
+    .partners-step-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .partners-revenue-grid,
+    .partners-case-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .partners-logos__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .partners-container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .partners-hero {
+        padding: 28px 0 24px;
+    }
+
+    .partners-section {
+        padding: 36px 0;
+    }
+
+    .partners-feature-grid,
+    .partners-step-grid,
+    .partners-logos__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .partners-hero__buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .partners-btn {
+        width: 100%;
+    }
+
+    .partners-hero-stats {
+        gap: 20px;
+    }
+
+    .partners-bottom-cta__box {
+        padding: 34px 18px;
+    }
+}
+
+/* CF7 inside partner form card */
+.partners-form-card__form-wrap .wpcf7 {
+    margin: 0;
+}
+
+.partners-form-card__form-wrap .wpcf7-form p {
+    margin: 0;
+}
+
+.cf7-row {
+    margin-bottom: 10px;
+}
+
+.cf7-row--three {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.cf7-row input[type="text"],
+.cf7-row input[type="email"],
+.cf7-row input[type="url"],
+.cf7-row textarea {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid #d6dce3;
+    border-radius: 3px;
+    background: #ffffff;
+    font-size: 12px;
+    color: #1a1a1a;
+    font-family: inherit;
+}
+
+.cf7-row textarea {
+    padding: 10px 12px;
+    min-height: 56px;
+    resize: vertical;
+}
+
+.cf7-row input::placeholder,
+.cf7-row textarea::placeholder {
+    color: #a1a4aa;
+}
+
+.cf7-row--expand {
+    display: none !important;
+}
+
+.partners-form-card__form-wrap.is-expanded .cf7-row--expand {
+    display: block !important;
+}
+
+.partners-form-card__form-wrap.is-expanded .cf7-row--expand.cf7-row--three {
+    display: grid !important;
+}
+
+.cf7-row .wpcf7-submit {
+    width: 100%;
+    cursor: pointer;
+    border: none;
+}
+
+.wpcf7-response-output {
+    margin: 12px 0 0 !important;
+    padding: 8px 12px !important;
+    font-size: 12px;
+}
+
+/* Pulse highlight when Book a Call is clicked */
+.partners-hero__form-card {
+    transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+}
+
+.partners-hero__form-card.is-pulsing {
+    animation: partners-form-pulse 1.4s ease-out;
+    border-color: var(--partners-accent);
+}
+
+@keyframes partners-form-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(90, 84, 255, 0.55);
+        transform: scale(1);
+    }
+
+    30% {
+        box-shadow: 0 0 0 14px rgba(90, 84, 255, 0.18);
+        transform: scale(1.012);
+    }
+
+    60% {
+        box-shadow: 0 0 0 22px rgba(90, 84, 255, 0);
+        transform: scale(1.006);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(90, 84, 255, 0);
+        transform: scale(1);
+    }
+}
+
+/* Teams section */
+
+.partners-team {
+    background: var(--partners-alt-bg);
+    text-align: center;
+}
+
+.partners-team__head {
+    max-width: 720px;
+    margin: 0 auto 44px;
+}
+
+.partners-team__title {
+    margin: 0 0 8px;
+    font-size: clamp(28px, 2.6vw, 40px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    color: #111111;
+}
+
+.partners-team__summary {
+    margin: 0;
+    font-size: 15px;
+    color: var(--partners-muted);
+    font-weight: 500;
+}
+
+/* ---- Row 1: flex slider ---- */
+.partners-team-slider {
+    position: relative;
+    padding: 0 56px;
+    /* space for the side arrows */
+}
+
+.partners-team-slider__viewport {
+    overflow: hidden;
+}
+
+.partners-team-slider__track {
+    display: flex;
+    gap: 28px;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    justify-content: flex-start;
+}
+
+.partners-team-slider.is-static .partners-team-slider__track {
+    justify-content: center;
+    /* only centre when there's nothing to scroll */
+}
+
+.partners-team-slide {
+    flex: 0 0 calc((100% - 2 * 28px) / 3);
+    /* 3 visible */
+    max-width: calc((100% - 2 * 28px) / 3);
+}
+
+.partners-feature-image {
+    padding-top: 0;
+    /* tight against features grid above */
+    padding-bottom: 58px !important;
+    background: #ffffff;
+}
+
+.partners-feature-image__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 1100px;
+    /* keep it from stretching absurdly wide */
+    margin: 0 auto;
+    border-radius: 10px;
+    /* optional — remove if you want hard edges */
+}
+
+@media (max-width: 767px) {
+    .partners-feature-image {
+        padding-bottom: 36px;
+    }
+}
+
+.partners-team-slider__nav {
+    position: absolute;
+    top: 50%;
+    /* JS recenters this on the avatar */
+    transform: translateY(-50%);
+    width: 40px !important;
+    /* beat the theme's button width */
+    height: 40px !important;
+    min-width: 40px;
+    padding: 0 !important;
+    /* Astra adds button padding -> ovals */
+    border: none !important;
+    border-radius: 50% !important;
+    background: var(--partners-dark);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 0;
+    z-index: 2;
+    transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.partners-team-slider__nav:hover {
+    background: #000000;
+}
+
+.partners-team-slider__nav:disabled {
+    opacity: 0.28;
+    cursor: default;
+}
+
+.partners-team-slider__nav--prev {
+    left: 0;
+}
+
+.partners-team-slider__nav--next {
+    right: 0;
+}
+
+.partners-team-slider__nav svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ---- Row 2: 4x1 grid ---- */
+.partners-team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    margin: 40px auto 0;
+    max-width: 840px;
+}
+
+/* ---- Shared card ---- */
+.partners-team-card {
+    text-align: center;
+}
+
+.partners-team-card__avatar {
+    width: 100%;
+    /* max-width: 210px; */
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #e3e5ea;
+    margin: 0 auto 16px;
+    /* center within the wider slide */
+}
+
+.partners-team-card__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.partners-team-card__name {
+    margin: 0 0 8px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #171717;
+    letter-spacing: -0.01em;
+}
+
+.partners-team-card__summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6px;
+    max-width: 260px;
+    margin: 0 auto;
+}
+
+.partners-team-card__summary p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--partners-muted);
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.partners-team-card.is-open .partners-team-card__summary p {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.partners-team-card__toggle {
+    flex: 0 0 auto;
+    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--partners-muted);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease;
+}
+
+.partners-team-card.is-open .partners-team-card__toggle {
+    transform: rotate(180deg);
+}
+
+.partners-team-card__toggle svg {
+    width: 12px;
+    height: 12px;
+}
+
+.partners-team-grid .partners-team-card__name {
+    font-size: 15px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+    .partners-team-slide {
+        flex-basis: calc((100% - 28px) / 2);
+        /* 2 visible */
+        max-width: calc((100% - 28px) / 2);
+    }
+
+    .partners-team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 460px;
+    }
+
+    .partners-team-grid .partners-team-card__avatar {
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 640px) {
+    .partners-team-slider {
+        padding: 0 44px;
+    }
+
+    .partners-team-slide {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    /* 1 visible */
+    .partners-team-grid {
+        grid-template-columns: 1fr;
+        max-width: 260px;
+    }
+}
+
+/* Logos section heading */
+.partners-logos__head {
+    max-width: 720px;
+    margin: 0 auto 28px;
+    text-align: center;
+}
+
+.partners-logos__text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    font-weight: 500;
+    color: var(--partners-muted);
+}
+
+/* Image inside Global Support text column */
+.partners-support__media {
+    margin-top: 26px;
+}
+
+.partners-support__media img {
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Optional: if placed inside the grey form card instead */
+.partners-form-card__media {
+    margin-bottom: 12px;
+}
+
+.partners-form-card__media img {
+    width: 100%;
+    max-height: 90px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+/* Handshake strip under revenue streams — short banner */
+.partners-revenue-image {
+    padding-top: 0;
+    padding-bottom: 58px;
+    background: #ffffff;
+}
+
+.partners-revenue-image__img {
+    display: block;
+    width: 100%;
+    max-width: 1100px;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+    .partners-logos__head {
+        margin-bottom: 22px;
+    }
+
+    .partners-revenue-image {
+        padding-bottom: 36px;
+    }
+
+    .partners-revenue-image__img {
+        height: 120px;
+    }
+
+    .partners-support__media img {
+        max-width: 100%;
+    }
+}

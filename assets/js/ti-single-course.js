@@ -2,20 +2,23 @@
 
 //Timer Expiry Countdown
 const displayCountdown = () => {
-	//get data-expiry from .countdown-timer
-	const expiryDate = document.querySelector('.countdown-timer').dataset.expiry;
-	const countDownDate = new Date(expiryDate).getTime();
-	let countdownTimer = document.getElementsByClassName('countdown-timer');
+	const timerElement = document.querySelector('.countdown-timer');
+	if (!timerElement) {
+		console.error('Countdown timer element not found');
+		return;
+	}
 
-	//update time each second
+	const expiryDate = timerElement.dataset.expiry;
+	if (!expiryDate) {
+		console.error('Expiry date not found in dataset');
+		return;
+	}
+
+	const countDownDate = new Date(expiryDate).getTime();
 
 	const update = setInterval(() => {
-		//get time now and find differnce from countdown time
-
-		var now = new Date().getTime();
+		const now = new Date().getTime();
 		const diff = countDownDate - now;
-
-		//calculate time as days, hours months and second
 
 		if (diff > 0) {
 			const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -23,136 +26,415 @@ const displayCountdown = () => {
 			const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 			const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-			//display timer
 			document.querySelector('#dayCount').innerHTML = days;
 			document.querySelector('#hourCount').innerHTML = hours;
 			document.querySelector('#minuteCount').innerHTML = minutes;
 			document.querySelector('#secondCount').innerHTML = seconds;
 		} else {
-
-			document.querySelector('.countdown-timer').style.display = 'none';
-
+			timerElement.style.display = 'none';
+			clearInterval(update);
 		}
 	}, 1000);
-}
+};
+
+
 jQuery(document).ready(function ($) {
 
-	 // TEFL PLUS AJAX loaded price
+	// TEFL PLUS AJAX loaded price
+	updateEnrollButtonState();
 
-	 $('.resources-select .option').each(function() {
-        var productId = $(this).data('pid'); 
+	$('.resources-select .option').each(function () {
+		var $option = $(this);
+		var productId = $option.data('pid');
 
+		$.ajax({
+			url: ti_obj.ti_ajax,
+			type: 'POST',
+			data: {
+				action: 'get_product_price',
+				product_id: productId
+			},
+			success: function (response) {
+				if (response.success) {
+					var salePrice = response.data.sale_price;
+					var savePercentage = response.data.save_percentage;
 
-        $.ajax({
-            url: ti_obj.ti_ajax,
-            type: 'POST',
-            data: {
-                action: 'get_product_price', 
-                product_id: productId
-            },
-            success: function(response) {
-                if (response.success) {
-                    var salePrice = response.data.sale_price;
-                    var savePercentage = response.data.save_percentage;
-                    
-                    $('.ajax-loaded-price').html('(+' + salePrice + ', Save ' + savePercentage + '%)');
-                } else {
-                    console.log('Error: ' + response.data);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.log('AJAX error:', error);
-            }
-        });
-    });
+					$option.find('.ajax-loaded-price').html(
+						'(+' + salePrice + ', Save ' + savePercentage + '%)'
+					);
+				} else {
+					console.log('Error: ' + response.data);
+				}
+			},
+			error: function (xhr, status, error) {
+				console.log('AJAX error:', error);
+			}
+		});
+	});
 
 	// Custom Dropdown
 
 	function updateEnrollBtnHref(selectedPid, shouldAdd) {
-        $(".enroll-now-btn, .enroll-now-btn a,.enroll_btn a").each(function () {
-            let enrollBtn = $(this);
-            let currentHref = enrollBtn.attr("href");
-            let url = new URL(currentHref, window.location.origin);
-            let pridParam = url.searchParams.get("prid");
-            if (!pridParam) {
-                return;
-            }
-            let pridArray = pridParam ? pridParam.split(",") : [];
-            let pidIndex = pridArray.indexOf(String(selectedPid));
-    
-            if (shouldAdd && pidIndex === -1) {
-                pridArray.push(String(selectedPid));
-            } else if (!shouldAdd && pidIndex !== -1) {
-                pridArray.splice(pidIndex, 1);
-            }
-    
-            if (pridArray.length > 0) {
-                url.searchParams.set("prid", pridArray.join(","));
-            } else {
-                url.searchParams.delete("prid");
-            }
-    
-            enrollBtn.attr("href", url.toString());
-        });
-    }
+		$(".enroll-now-btn, .enroll-now-btn a,.enroll_btn a").each(function () {
+			let enrollBtn = $(this);
+			let currentHref = enrollBtn.attr("href");
+			let url = new URL(currentHref, window.location.origin);
+			let pridParam = url.searchParams.get("prid");
 
+			let pridArray = pridParam ? pridParam.split(",") : [];
+			let originalPrid = pridArray[0];
+
+			url.searchParams.delete("prid");
+
+			if (shouldAdd) {
+				if (selectedPid && !pridArray.includes(String(selectedPid))) {
+					pridArray.push(String(selectedPid));
+				}
+			} else {
+				pridArray = pridArray.filter(pid => pid !== String(selectedPid));
+			}
+
+			if (!pridArray.includes(originalPrid)) {
+				pridArray.unshift(originalPrid);
+			}
+
+			if (pridArray.length > 0) {
+				url.searchParams.set("prid", pridArray.join(","));
+			}
+
+			enrollBtn.attr("href", url.toString());
+		});
+	}
+
+	function updateEnrollButtonState() {
+		const selectMenu = $(".select-two-required");
+		if (selectMenu.length) {
+			let selectedCount = selectMenu.find(".option.selected").length;
+			const enrollBtns = $(".enroll-now-btn, .enroll-now-btn a, .enroll_btn a,.flexible-booking-btn a");
+
+			if (selectedCount !== 2) {
+				enrollBtns.each(function () {
+					const btn = $(this);
+
+					btn.addClass('disabled')
+						.attr('disabled', true)
+						.attr('title', `Please select exactly 2 courses to enroll. Currently selected: ${selectedCount}`)
+						.css({
+							'opacity': '0.5',
+							'cursor': 'not-allowed'
+						});
+
+					btn.off('click.disabled').on('click.disabled', function (e) {
+						e.preventDefault();
+						e.stopPropagation();
+						showSelectionMessage(selectedCount);
+						return false;
+					});
+
+					btn.off('mouseenter.disabled mouseleave.disabled')
+						.on('mouseenter.disabled', function () {
+							showTooltipMessage(this, selectedCount);
+						})
+						.on('mouseleave.disabled', function () {
+							hideTooltipMessage();
+						});
+				});
+			} else {
+				enrollBtns.each(function () {
+					const btn = $(this);
+
+					btn.removeClass('disabled')
+						.removeAttr('disabled')
+						.removeAttr('title')
+						.css({
+							'pointer-events': 'auto',
+							'opacity': '1',
+							'cursor': 'pointer'
+						});
+					btn.off('click.disabled mouseenter.disabled mouseleave.disabled');
+				});
+			}
+		}
+	}
+
+	function showSelectionMessage(selectedCount) {
+		const message = selectedCount === 0
+			? "Please select 2 courses before enrolling."
+			: selectedCount === 1
+				? "Please select 1 more course to enroll."
+				: `Please select exactly 2 courses. You have ${selectedCount} selected.`;
+
+		$('.selection-message').remove();
+
+		const messageEl = $(`
+            <div class="selection-message" style="
+                position: fixed;
+                top: 100px;
+                left: 20px;
+                background: #f44336;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 4px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                z-index: 9999;
+                font-size: 14px;
+                max-width: 300px;
+            ">
+                <i class="fa fa-exclamation-triangle" style="margin-right: 8px;"></i>
+                ${message}
+            </div>
+        `);
+
+		$('body').append(messageEl);
+
+		setTimeout(() => {
+			messageEl.fadeOut(300, function () {
+				$(this).remove();
+			});
+		}, 3000);
+	}
+
+	function showTooltipMessage(element, selectedCount) {
+		const message = selectedCount === 0
+			? "Select 2 courses to enable enrollment"
+			: selectedCount === 1
+				? "Select 1 more course"
+				: `Select exactly 2 courses (${selectedCount} selected)`;
+
+		$('.hover-tooltip').remove();
+
+		const tooltip = $(`
+            <div class="hover-tooltip" style="
+                position: absolute;
+                background: #333;
+                color: white;
+                padding: 8px 12px;
+                border-radius: 4px;
+                font-size: 12px;
+                white-space: nowrap;
+                z-index: 10000;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            ">
+                ${message}
+            </div>
+        `);
+
+		$('body').append(tooltip);
+
+		const btn = $(element);
+		const btnOffset = btn.offset();
+		const btnHeight = btn.outerHeight();
+
+		tooltip.css({
+			top: btnOffset.top - tooltip.outerHeight() - 8,
+			left: btnOffset.left + (btn.outerWidth() / 2) - (tooltip.outerWidth() / 2)
+		});
+	}
+
+	function hideTooltipMessage() {
+		$('.hover-tooltip').remove();
+	}
+
+	function updateSelectedCoursesField() {
+		const selectMenu = $(".select-two-required");
+		if (selectMenu.length) {
+			let selectedPids = [];
+			let defaultPids = selectMenu.data("defaults").toString().split(",");
+
+			selectMenu.find(".option.selected").each(function () {
+				selectedPids.push($(this).data("pid").toString());
+			});
+
+			if (selectedPids.length < 2) {
+				for (let i = 0; i < defaultPids.length && selectedPids.length < 2; i++) {
+					if (!selectedPids.includes(defaultPids[i])) {
+						selectedPids.push(defaultPids[i]);
+					}
+				}
+			}
+
+			$("#selected_courses_field").val(selectedPids.join(','));
+
+			const enrollBtns = $(".enroll-now-btn, .enroll-now-btn a,.enroll_btn a,.flexible-booking-btn a");
+			if (enrollBtns.length) {
+				enrollBtns.each(function () {
+					let btn = $(this);
+					let url = new URL(btn.attr("href"), window.location.origin);
+					url.searchParams.set("selected_courses", selectedPids.join(','));
+					btn.attr("href", url.toString());
+				});
+			}
+
+			updateEnrollButtonState();
+		}
+	}
+
+	function updateSelectedCoursesTooltip() {
+		const selectMenu = $(".select-two-required");
+
+		if (selectMenu.length) {
+			let selectedCourses = [];
+
+			selectMenu.find(".option.selected").each(function () {
+				selectedCourses.push($(this).find(".option-text b").text());
+			});
+
+			const tooltipContent = selectedCourses.length > 0 ?
+				`<b>Selected Courses:</b></br> ${selectedCourses.join(' & ')}` :
+				`No courses selected`;
+
+			selectMenu.attr('data-tooltip', tooltipContent);
+		}
+	}
 
 	function initializeSelectMenu(optionMenu) {
-        const selectBtn = optionMenu.find(".select-btn"),
-            options = optionMenu.find(".option"),
-            sBtnText = optionMenu.find(".sBtn-text"),
-            originalText = sBtnText.text();
+		const selectBtn = optionMenu.find(".select-btn"),
+			options = optionMenu.find(".option"),
+			sBtnText = optionMenu.find(".sBtn-text"),
+			originalText = sBtnText.text(),
+			isResourcesSelect = optionMenu.hasClass("resources-select"),
+			isSelectTwo = optionMenu.hasClass("select-two-required"),
+			infoIcon = $(".resources-select-wrapper__header .fa");
 
-        const menuWidth = optionMenu.outerWidth();
-        optionMenu.find('.options').outerWidth(menuWidth);
+		const menuWidth = optionMenu.outerWidth();
+		optionMenu.find(".options").outerWidth(menuWidth);
 
-        selectBtn.on("click", () => {
-            optionMenu.toggleClass("active");
-        });
+		let selectedNames = [];
+		let lastSelectedOption = null;
 
-        options.each(function () {
-            $(this).on("click", function () {
-                let selectedOption = $(this).find(".option-text").text();
-                let selectedPid = $(this).data('pid');
+		selectBtn.on("click", () => {
+			optionMenu.toggleClass("active");
+		});
 
-                if (sBtnText.text() === selectedOption && !$(this).data('target')) {
-                    sBtnText.text(originalText);  
-                    updateEnrollBtnHref(selectedPid, false);
-                } else {
-                    sBtnText.text(selectedOption); 
-                    updateEnrollBtnHref(selectedPid, true);
-                }
+		options.each(function () {
+			$(this).on("click", function () {
+				if (isResourcesSelect) {
+					let selectedOption = $(this).find(".option-text b").text();
+					let selectedPid = $(this).data("pid");
+					let productDesc = $(this).data("desc");
+					let productPageLink = $(this).data("pagelink");
 
-                optionMenu.removeClass("active");
-                var targetId = $(this).data('target');
-                var targetElement = $(`#${targetId}`);
+					if ($(this).hasClass("selected")) {
+						$(this).removeClass("selected");
+						selectedNames = selectedNames.filter(name => name !== selectedOption);
+						updateEnrollBtnHref(selectedPid, false);
+					} else {
+						$(this).addClass("selected");
+						selectedNames.push(selectedOption);
+						updateEnrollBtnHref(selectedPid, true);
+						lastSelectedOption = { name: selectedOption, desc: productDesc, pLink: productPageLink };
+					}
 
-                if (targetElement.length) {
-                    $('html, body').animate({
-                        scrollTop: targetElement.offset().top - 150
-                    }, {
-                        duration: 500,
-                        specialEasing: {
-                            width: "linear",
-                            height: "easeOutBounce"
-                        }
-                    });
-                }
-            });
-        });
+					sBtnText.text(selectedNames.length > 0 ? selectedNames.join(", ") : originalText);
 
-        $(document).on("click", function (e) {
-            if (!optionMenu.is(e.target) && optionMenu.has(e.target).length === 0) {
-                optionMenu.removeClass("active");
-            }
-        });
-    }
+					if (lastSelectedOption) {
+						var content = `
+                            <h6>${lastSelectedOption.name}</h6>
+                            <div class="resource-info">${lastSelectedOption.desc}</div>
+                            ${lastSelectedOption.pLink
+								? `<a href="${lastSelectedOption.pLink}" target="_blank" class="btn btn-red btn-centered">Learn More</a>`
+								: ''
+							}
+                        `;
+						$(".resource-info-container").html(content);
+					}
 
-    $(".select-menu").each(function () {
-        initializeSelectMenu($(this));
-    });
+					// infoIcon.fadeIn();
+				}
+				else if (isSelectTwo) {
+					let selectedOption = $(this).find(".option-text b").text();
+					let selectedPid = $(this).data("pid");
 
-	
+					if ($(this).hasClass("selected")) {
+						$(this).removeClass("selected");
+						selectedNames = selectedNames.filter(name => name !== selectedOption);
+					} else {
+						if (selectedNames.length >= 2) {
+							const firstSelectedOption = options.filter(".selected").first();
+							const firstSelectedName = firstSelectedOption.find(".option-text b").text();
+
+							firstSelectedOption.removeClass("selected");
+							selectedNames = selectedNames.filter(name => name !== firstSelectedName);
+						}
+
+						$(this).addClass("selected");
+						selectedNames.push(selectedOption);
+					}
+
+					sBtnText.text(selectedNames.length > 0 ? selectedNames.join(", ") : originalText);
+
+					updateSelectedCoursesField();
+					updateSelectedCoursesTooltip();
+
+					if (selectedNames.length === 2) {
+						optionMenu.removeClass("active");
+					} else {
+						optionMenu.addClass("active");
+					}
+
+					return false;
+				}
+				else {
+					let selectedOption = $(this).find(".option-text").text();
+					let targetId = $(this).data("target");
+					let targetElement = $(`#${targetId}`);
+
+					sBtnText.text(selectedOption);
+
+					if (targetElement.length) {
+						$("html, body").animate(
+							{
+								scrollTop: targetElement.offset().top - 150,
+							},
+							{
+								duration: 500,
+								specialEasing: {
+									width: "linear",
+									height: "easeOutBounce",
+								},
+							}
+						);
+					}
+				}
+
+				optionMenu.removeClass("active");
+			});
+		});
+
+		$(document).on("click", function (e) {
+			if (!optionMenu.is(e.target) && optionMenu.has(e.target).length === 0) {
+				optionMenu.removeClass("active");
+			}
+		});
+
+		if (optionMenu.hasClass("select-two-required")) {
+			updateSelectedCoursesField();
+			updateSelectedCoursesTooltip();
+
+			selectBtn.hover(
+				function () {
+					const tooltipContent = optionMenu.attr('data-tooltip');
+					if (tooltipContent) {
+						let tooltip = optionMenu.find('.custom-tooltip');
+						if (tooltip.length === 0) {
+							tooltip = $('<div class="custom-tooltip"></div>');
+							optionMenu.append(tooltip);
+						}
+						tooltip.html(tooltipContent).addClass('active');
+					}
+				},
+				function () {
+					optionMenu.find('.custom-tooltip').removeClass('active');
+				}
+			);
+		}
+	}
+
+	$(".select-menu").each(function () {
+		initializeSelectMenu($(this));
+	});
+
+
 
 	// Gifts Section
 
@@ -340,7 +622,7 @@ jQuery(document).ready(function ($) {
 		let glideSlider = new Glide('.instructors-glide', {
 			type: "carousel",
 			startAt: 0,
-			perView: 4,
+			perView: 3,
 			autoplay: 8000,
 			gap: 24,
 			animationTimingFunc: 'ease-in-out',

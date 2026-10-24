@@ -10,9 +10,9 @@
     text-decoration: line-through;
 }
 
-.deposit-full-price del {
+/* .deposit-full-price del {
     display: none;
-}
+} */
 
 .internship-price ins strike {
     color: #808080;
@@ -31,10 +31,9 @@
 .wc-deposits-payment-plan-description {
     font-size: 1rem !important;
     /* text-transform: capitalize !important; */
-    font-weight: 400 !important;
+    font-weight: 600 !important;
     display: inline-block;
     padding-top: .5rem;
-    border-top: 1px solid var(--blue-turquoise);
 }
 
 .show-breakdown .fa::after {
@@ -64,8 +63,34 @@
     margin: 0;
 }
 
+.wc-deposits-wrapper {
+    margin-top: 1rem;
+}
+
+.wc-deposits-wrapper .wc-deposits-option li {
+    background-color: var(--inactive-bg-color);
+    color: var(--inactive-text-color);
+    border-color: var(--inactive-bg-color);
+}
+
 .wc-deposits-wrapper .wc-deposits-option li.active {
     pointer-events: initial;
+    background: var(--active-bg-color);
+    color: var(--active-text-color);
+    border-color: var(--active-bg-color);
+}
+
+.wc-deposits-wrapper .wc-deposits-option li .radio-custom+.radio-custom-label:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    font-size: 1rem;
+    border-color: var(--inactive-bg-color);
+    margin-bottom: 4px;
+}
+
+.wc-deposits-wrapper .wc-deposits-option li.active .radio-custom+.radio-custom-label:before {
+    border-color: var(--active-bg-color);
+    color: var(--active-bg-color);
 }
 
 .show-schedule {
@@ -182,4 +207,6 @@ i.show-schedule-icon {
     position: absolute;
     top: -1.5rem;
     right: 0;
+    background: var(--black-jet);
+    color: var(--white);
 }

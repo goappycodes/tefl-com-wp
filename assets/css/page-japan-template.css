@@ -1,0 +1,2904 @@
+/* ==========================================================================
+   Japan Page Template
+   ========================================================================== */
+
+#content>.ast-container {
+    padding: 0;
+    max-width: 100%;
+}
+
+.site-content .ast-container {
+    max-width: 1080px;
+}
+
+:root {
+    --white: #fff;
+    --blue-teal: #134559;
+    --yellow: #F59E0B;
+    --bg-color: #EEEDEA;
+    --bg-color2: #E7E6E2;
+    --gray-text: #40403E;
+}
+
+/* Hero Banner
+   ========================================================================== */
+.japan-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    padding: 90px 0 100px;
+    overflow: hidden;
+}
+
+/* Overlay image (exported from the design) sits above the hero photo so the
+   copy stays legible. The URL is supplied inline from the template via the
+   --japan-hero-overlay custom property. */
+.japan-hero.has-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--japan-hero-overlay);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* Decorative inset border frame (Figma: "Rectangle 2") */
+.japan-hero::after {
+    content: "";
+    position: absolute;
+    inset: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.japan-hero .ast-container {
+    position: relative;
+    z-index: 3;
+}
+
+.japan-hero__inner {
+    max-width: 640px;
+    color: var(--white);
+}
+
+/* Eyebrow */
+.japan-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 20px;
+}
+
+.japan-hero__eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* Heading */
+.japan-hero__heading {
+    font-size: 48px;
+    line-height: 1.15;
+    font-weight: 900;
+    color: var(--white);
+    margin: 0 0 22px;
+}
+
+/* Description */
+.japan-hero__desc {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 0 32px;
+}
+
+/* CTA buttons */
+.japan-hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 48px;
+}
+
+.japan-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 26px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1.5px solid transparent;
+}
+
+.japan-btn--primary {
+    background: var(--white);
+    color: var(--blue-teal);
+}
+
+.japan-btn--primary:hover {
+    background: var(--blue-teal);
+    color: var(--white);
+}
+
+.japan-btn--outline {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.55);
+}
+
+.japan-btn--outline:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--white);
+    color: var(--white);
+}
+
+/* Highlight cards */
+.japan-hero__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    max-width: 640px;
+}
+
+.japan-hero__card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 8px;
+    padding: 22px 18px;
+    text-align: center;
+}
+
+.japan-hero__card-title {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--white);
+    margin: 0 0 6px;
+}
+
+.japan-hero__card-subtitle {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* Responsive
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .japan-hero {
+        padding: 70px 0 80px;
+    }
+
+    .japan-hero::after {
+        inset: 14px;
+    }
+
+    .japan-hero__heading {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-hero {
+        padding: 60px 0 70px;
+    }
+
+    .japan-hero::after {
+        inset: 16px;
+    }
+
+    .japan-hero__heading {
+        font-size: 28px;
+    }
+
+    .japan-hero__desc {
+        font-size: 15px;
+    }
+
+    .japan-hero__cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .japan-btn {
+        width: 100%;
+    }
+
+    .japan-hero__cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 400px) {
+    .japan-hero {
+        padding: 48px 0 56px;
+    }
+
+    .japan-hero__heading {
+        font-size: 24px;
+    }
+}
+
+/* Corner bracket accents (Figma: "Vector" layers)
+   ========================================================================== */
+.japan-hero__corners {
+    position: absolute;
+    inset: 30px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.japan-hero__corner {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+}
+
+.japan-hero__corner--tl {
+    top: 0;
+    left: 0;
+    border-top: 2px solid var(--white);
+    border-left: 2px solid var(--white);
+}
+
+.japan-hero__corner--tr {
+    top: 0;
+    right: 0;
+    border-top: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+}
+
+.japan-hero__corner--bl {
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid var(--white);
+    border-left: 2px solid var(--white);
+}
+
+.japan-hero__corner--br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+}
+
+@media (max-width: 1024px) {
+    .japan-hero__corners {
+        inset: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-hero__corners {
+        inset: 16px;
+    }
+
+    .japan-hero__corner {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* ==========================================================================
+   Japan — At a Glance
+   ========================================================================== */
+.japan-glance {
+    background: var(--bg-color2);
+    padding: 70px 0;
+}
+
+.japan-glance__eyebrow {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue-teal);
+    margin-bottom: 14px;
+}
+
+.japan-glance__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 18px;
+}
+
+.japan-glance__desc {
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin: 0;
+}
+
+/* Stats bar */
+.japan-glance__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+    padding: 34px 40px;
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.japan-glance__stat {
+    text-align: center;
+    padding: 0 12px;
+    position: relative;
+}
+
+/* Vertical dividers between stats */
+.japan-glance__stat:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 54px;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.japan-glance__stat-value {
+    display: block;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--yellow);
+    margin-bottom: 8px;
+}
+
+.japan-glance__stat-label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--blue-teal);
+}
+
+@media (max-width: 1024px) {
+    .japan-glance {
+        padding: 56px 0;
+    }
+
+    .japan-glance__heading {
+        font-size: 32px;
+    }
+
+    .japan-glance__stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 24px;
+        padding: 30px 28px;
+    }
+
+    /* Only draw a divider after the first item in each row of two */
+    .japan-glance__stat:not(:last-child)::after {
+        display: none;
+    }
+
+    .japan-glance__stat:nth-child(odd)::after {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-glance {
+        padding: 44px 0;
+    }
+
+    .japan-glance__heading {
+        font-size: 26px;
+    }
+
+    .japan-glance__desc {
+        font-size: 15px;
+    }
+
+    .japan-glance__stats {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 8px 22px;
+    }
+
+    .japan-glance__stat {
+        padding: 22px 0;
+    }
+
+    /* Horizontal dividers between stacked stats */
+    .japan-glance__stat:not(:last-child)::after,
+    .japan-glance__stat:nth-child(odd)::after {
+        display: block;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        height: 1px;
+    }
+}
+
+/* ==========================================================================
+   Japan Facts
+   ========================================================================== */
+.japan-facts {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-facts__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 36px;
+}
+
+.japan-facts__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.japan-facts__card {
+    background: var(--white);
+    border: 1px solid #DAD9D2;
+    border-radius: 10px;
+    padding: 28px 26px;
+}
+
+.japan-facts__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 9px;
+    background: var(--bg-color);
+    margin-bottom: 20px;
+}
+
+.japan-facts__icon img {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+    display: block;
+}
+
+.japan-facts__text {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin: 0;
+}
+
+.editor-note {
+    margin-top: 30px;
+    background: var(--bg-color2);
+    border-radius: 10px;
+    padding: 14px 22px;
+}
+
+.japan-facts__note {
+    font-size: 15px;
+    line-height: 1.6;
+    font-style: normal;
+    color: var(--blue-teal);
+    margin: 0;
+    font-weight: 500;
+}
+
+.japan-facts__note strong {
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .japan-facts {
+        padding: 56px 0 0;
+    }
+
+    .japan-facts__heading {
+        font-size: 32px;
+        margin-bottom: 28px;
+    }
+
+    .japan-facts__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-facts {
+        padding: 44px 0 0;
+    }
+
+    .japan-facts__heading {
+        font-size: 26px;
+        margin-bottom: 24px;
+    }
+
+    .japan-facts__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .japan-facts__card {
+        padding: 24px 22px;
+    }
+
+    .japan-facts__icon {
+        width: 46px;
+        height: 46px;
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .japan-facts__icon img {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+/* ==========================================================================
+   Why Japan is popular
+   ========================================================================== */
+.japan-why {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-why__media {
+    border-radius: 28px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    line-height: 0;
+}
+
+.japan-why__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.japan-why__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 20px;
+}
+
+.japan-why__content {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+.japan-why__content p {
+    margin: 0 0 18px;
+}
+
+.japan-why__content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 1024px) {
+    .japan-why {
+        padding: 56px 0 0;
+    }
+
+    .japan-why__media {
+        border-radius: 14px;
+        margin-bottom: 32px;
+    }
+
+    .japan-why__heading {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-why {
+        padding: 44px 0 0;
+    }
+
+    .japan-why__media {
+        border-radius: 12px;
+        margin-bottom: 24px;
+    }
+
+    .japan-why__heading {
+        font-size: 26px;
+    }
+
+    .japan-why__content {
+        font-size: 15px;
+    }
+}
+
+/* ==========================================================================
+   Degree / TEFL / Japanese language content blocks
+   (image optional + heading + rich text, stacked after the comparison table)
+   ========================================================================== */
+.japan-block {
+    background: var(--bg-color);
+    padding: 50px 0 0;
+}
+
+.japan-block__media {
+    border-radius: 28px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    line-height: 0;
+}
+
+.japan-block__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.japan-block__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 20px;
+}
+
+.japan-block__content {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+.japan-block__content p {
+    margin: 0 0 18px;
+}
+
+.japan-block__content p:last-child {
+    margin-bottom: 0;
+}
+
+.japan-block__content h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 800;
+    color: var(--blue-teal);
+    margin: 30px 0 12px;
+}
+
+.japan-block__content ul {
+    margin: 0 0 18px;
+    padding-left: 22px;
+}
+
+.japan-block__content li {
+    margin: 0 0 8px;
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .japan-block {
+        padding: 40px 0 0;
+    }
+
+    .japan-block__media {
+        border-radius: 14px;
+        margin-bottom: 32px;
+    }
+
+    .japan-block__heading {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-block {
+        padding: 40px 0 0;
+    }
+
+    .japan-block__media {
+        border-radius: 12px;
+        margin-bottom: 24px;
+    }
+
+    .japan-block__heading {
+        font-size: 26px;
+    }
+}
+
+/* ==========================================================================
+   Interested in partnering with us? (Partner CTA)
+   ========================================================================== */
+.japan-partner {
+    background: var(--bg-color);
+    padding: 30px 0 0;
+}
+
+.japan-partner__card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 340px;
+    border-radius: 22px;
+    overflow: hidden;
+    background-color: var(--blue-teal);
+    background-image: url(https://teflinstitute.com/wp-content/uploads/2026/08/Group-11.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: auto;
+}
+
+.japan-partner__content {
+    position: relative;
+    z-index: 2;
+    flex: 0 1 60%;
+    max-width: 600px;
+    padding: 50px 40px 50px 52px;
+}
+
+.japan-partner__heading {
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--white);
+    margin: 0 0 18px;
+}
+
+.japan-partner__text {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 400;
+    color: var(--white);
+}
+
+.japan-partner__text p {
+    margin: 0 0 16px;
+}
+
+.japan-partner__text p:last-child {
+    margin-bottom: 0;
+}
+
+.japan-partner__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+    padding: 15px 28px;
+    background: var(--white);
+    color: #0C2C3F;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.japan-partner__btn:hover {
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--blue-teal);
+    transform: translateX(2px);
+}
+
+.japan-partner__arrow {
+    flex-shrink: 0;
+}
+
+.japan-partner__figure {
+    position: absolute;
+    right: 6%;
+    bottom: 0;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.japan-partner__figure img {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-height: 360px;
+    object-fit: contain;
+    object-position: bottom;
+}
+
+@media (max-width: 1024px) {
+    .japan-partner {
+        padding: 20px 0 0;
+    }
+
+    .japan-partner__content {
+        flex-basis: 64%;
+        padding: 42px 32px 42px 40px;
+    }
+
+    .japan-partner__heading {
+        font-size: 28px;
+    }
+
+    .japan-partner__figure {
+        right: 2%;
+    }
+
+    .japan-partner__figure img {
+        max-height: 320px;
+    }
+}
+
+@media (max-width: 767px) {
+    .japan-partner__card {
+        min-height: 0;
+    }
+
+    .japan-partner__content {
+        flex-basis: 100%;
+        max-width: 100%;
+        padding: 36px 26px;
+    }
+
+    .japan-partner__heading {
+        font-size: 24px;
+    }
+
+    /* Cut-out figure is hidden on small screens so the copy stays readable. */
+    .japan-partner__figure {
+        display: none;
+    }
+
+    .japan-partner__btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   Job types overview
+   ========================================================================== */
+.japan-jobs {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-jobs__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 28px;
+}
+
+.japan-jobs__subheading {
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 12px;
+}
+
+.japan-jobs__intro {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin: 0 0 10px;
+}
+
+.japan-jobs__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.japan-jobs__item {
+    display: flex;
+    gap: 20px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(19, 69, 89, 0.12);
+}
+
+.japan-jobs__item:last-child {
+    border-bottom: 1px solid rgba(19, 69, 89, 0.12);
+}
+
+.japan-jobs__num {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.japan-jobs__body {
+    flex: 1 1 auto;
+}
+
+.japan-jobs__item-title {
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 4px 0 10px;
+}
+
+.japan-jobs__item-content {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+.japan-jobs__item-content p {
+    margin: 0 0 12px;
+}
+
+.japan-jobs__item-content p:last-child {
+    margin-bottom: 0;
+}
+
+.japan-jobs__item-content strong {
+    color: var(--blue-teal);
+    font-weight: 700;
+}
+
+.japan-jobs__item-content a {
+    color: var(--blue-teal);
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .japan-jobs {
+        padding: 56px 0 0;
+    }
+
+    .japan-jobs__heading {
+        font-size: 32px;
+    }
+
+    .japan-jobs__subheading {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-jobs {
+        padding: 44px 0 0;
+    }
+
+    .japan-jobs__heading {
+        font-size: 26px;
+    }
+
+    .japan-jobs__subheading {
+        font-size: 18px;
+    }
+
+    .japan-jobs__intro {
+        font-size: 15px;
+    }
+
+    .japan-jobs__item {
+        gap: 14px;
+        padding: 24px 0;
+    }
+
+    .japan-jobs__num {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+}
+
+/* ==========================================================================
+   Featured jobs in Japan
+   ========================================================================== */
+.japan-featured {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-featured__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 28px;
+}
+
+.japan-featured__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.japan-featured__card {
+    position: relative;
+    background: var(--white);
+    border: 1px solid #DAD9D2;
+    border-radius: 12px;
+    padding: 26px 24px;
+    overflow: hidden;
+}
+
+/* Coloured top accent — alternates teal / purple / orange. */
+.japan-featured__card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent, #15D3C9);
+}
+
+.japan-featured__card:nth-child(3n+1) {
+    --accent: #15D3C9;
+}
+
+.japan-featured__card:nth-child(3n+2) {
+    --accent: #A78BFA;
+}
+
+.japan-featured__card:nth-child(3n+3) {
+    --accent: #F59E0B;
+}
+
+.japan-featured__card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.japan-featured__card-title {
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 800;
+    color: var(--blue-teal);
+    margin: 6px 0 12px;
+}
+
+.japan-featured__card-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin: 0;
+}
+
+.japan-featured__note {
+    font-size: 15px;
+    line-height: 1.6;
+    font-style: normal;
+    color: var(--blue-teal);
+    margin: 0;
+    font-weight: 500;
+}
+
+.japan-featured__note strong {
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .japan-featured {
+        padding: 56px 0 0;
+    }
+
+    .japan-featured__heading {
+        font-size: 32px;
+    }
+
+    .japan-featured__grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-featured {
+        padding: 44px 0 0;
+    }
+
+    .japan-featured__heading {
+        font-size: 26px;
+    }
+
+    .japan-featured__grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+}
+
+/* ==========================================================================
+   What do you need to teach English in Japan? (Requirements)
+   ========================================================================== */
+.japan-req {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-req__media {
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    line-height: 0;
+}
+
+.japan-req__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.japan-req__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 20px;
+}
+
+.japan-req__content {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+.japan-req__content p {
+    margin: 0 0 18px;
+}
+
+.japan-req__checklist-heading {
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: var(--blue-teal);
+    margin: 10px 0 18px;
+}
+
+.japan-req__checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.japan-req__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 8px 0;
+}
+
+.japan-req__icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.japan-req__icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.japan-req__text {
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+@media (max-width: 1024px) {
+    .japan-req {
+        padding: 56px 0 0;
+    }
+
+    .japan-req__media {
+        border-radius: 14px;
+        margin-bottom: 32px;
+    }
+
+    .japan-req__heading {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-req {
+        padding: 44px 0 0;
+    }
+
+    .japan-req__media {
+        border-radius: 12px;
+        margin-bottom: 24px;
+    }
+
+    .japan-req__heading {
+        font-size: 26px;
+    }
+
+    .japan-req__content {
+        font-size: 15px;
+    }
+}
+
+/* ==========================================================================
+   How much do English teachers make in Japan? (Salary)
+   ========================================================================== */
+.japan-salary {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-salary__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 20px;
+}
+
+.japan-salary__content {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin-bottom: 34px;
+}
+
+.japan-salary__content p {
+    margin: 0 0 18px;
+}
+
+.japan-salary__content p:last-child {
+    margin-bottom: 0;
+}
+
+.japan-salary__table-wrap {
+    overflow-x: auto;
+    background: var(--white);
+    border: 1px solid #DAD9D2;
+    border-radius: 25px;
+}
+
+.japan-salary__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.japan-salary__table th {
+    text-align: left;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--blue-teal);
+    padding: 20px 40px;
+    border-bottom: 1px solid #DAD9D2;
+    border-left: none;
+    border-right: none;
+}
+
+.japan-salary__table td {
+    padding: 20px 26px 20px 40px;
+    vertical-align: top;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--blue-teal);
+    border-bottom: 1px solid #EDECE9;
+    border-left: none;
+    border-right: none;
+}
+
+.japan-salary__table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.japan-salary__route {
+    width: 38%;
+    font-weight: 700;
+    color: var(--blue-teal);
+}
+
+.japan-salary__framing {
+    font-weight: 500;
+    color: var(--gray-text);
+}
+
+@media (max-width: 1024px) {
+    .japan-salary {
+        padding: 56px 0 0;
+    }
+
+    .japan-salary__heading {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-salary {
+        padding: 44px 0 0;
+    }
+
+    .japan-salary__heading {
+        font-size: 26px;
+    }
+
+    .japan-salary__content {
+        font-size: 15px;
+    }
+
+    /* Stack the table into blocks so long text stays readable. */
+    .japan-salary__table thead {
+        display: none;
+    }
+
+    .japan-salary__table,
+    .japan-salary__table tbody,
+    .japan-salary__table tr,
+    .japan-salary__table td {
+        display: block;
+        width: 100%;
+    }
+
+    .japan-salary__table tr {
+        padding: 18px 20px;
+        border-bottom: 1px solid #EDECE9;
+    }
+
+    .japan-salary__table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .japan-salary__table td {
+        padding: 0;
+        border: none;
+    }
+
+    .japan-salary__route {
+        width: auto;
+        margin-bottom: 6px;
+    }
+}
+
+/* ==========================================================================
+   Japan visa process for English teachers (Visa)
+   ========================================================================== */
+.japan-visa {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-visa__media {
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    line-height: 0;
+}
+
+.japan-visa__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.japan-visa__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 20px;
+}
+
+.japan-visa__content {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+.japan-visa__content p {
+    margin: 0 0 18px;
+}
+
+.japan-visa__list-heading {
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: var(--blue-teal);
+    margin: 10px 0 16px;
+}
+
+.japan-visa__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.japan-visa__item {
+    position: relative;
+    padding: 6px 0 6px 22px;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+.japan-visa__item::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue-teal);
+}
+
+@media (max-width: 1024px) {
+    .japan-visa {
+        padding: 56px 0 0;
+    }
+
+    .japan-visa__media {
+        border-radius: 14px;
+        margin-bottom: 32px;
+    }
+
+    .japan-visa__heading {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-visa {
+        padding: 44px 0 0;
+    }
+
+    .japan-visa__media {
+        border-radius: 12px;
+        margin-bottom: 24px;
+    }
+
+    .japan-visa__heading {
+        font-size: 26px;
+    }
+
+    .japan-visa__content {
+        font-size: 15px;
+    }
+}
+
+/* ==========================================================================
+   Best route for you
+   ========================================================================== */
+.japan-route {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-route__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 26px;
+}
+
+.japan-route__subheading {
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 8px;
+}
+
+.japan-route__intro {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin: 0 0 30px;
+}
+
+.japan-route__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.japan-route__card {
+    background: var(--white);
+    border: 1.15px solid #DAD9D2;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.japan-route__card-head {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 100px;
+    background: var(--bg-color);
+}
+
+.japan-route__card-title {
+    align-self: center;
+    padding: 16px 24px;
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0;
+}
+
+.japan-route__card-img {
+    position: relative;
+    flex: 0 0 50%;
+    max-width: 50%;
+    overflow: hidden;
+}
+
+.japan-route__card-img img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* Left-to-right overlay: the photo fades softly into the beige header on its
+   left edge (no hard cut) and stays lightly muted across the rest — matches Figma. */
+.japan-route__card-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        var(--bg-color) 0%,
+        var(--bg-color) 10%,
+        rgba(231, 230, 226, 0.42) 55%,
+        rgba(231, 230, 226, 0.42) 100%
+    );
+    pointer-events: none;
+}
+
+.japan-route__card-body {
+    padding: 22px 24px 24px;
+}
+
+.japan-route__card-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .japan-route {
+        padding: 56px 0 0;
+    }
+
+    .japan-route__heading {
+        font-size: 32px;
+    }
+
+    .japan-route__subheading {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-route {
+        padding: 44px 0 0;
+    }
+
+    .japan-route__heading {
+        font-size: 26px;
+    }
+
+    .japan-route__subheading {
+        font-size: 18px;
+    }
+
+    .japan-route__grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .japan-route__card-head {
+        height: 112px;
+    }
+}
+
+/* ==========================================================================
+   Best TEFL courses for teaching in Japan (same style as Featured jobs)
+   ========================================================================== */
+.japan-courses {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-courses__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 28px;
+}
+
+.japan-courses__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.japan-courses__card {
+    position: relative;
+    background: var(--white);
+    border: 1px solid #DAD9D2;
+    border-radius: 12px;
+    padding: 26px 24px;
+    overflow: hidden;
+}
+
+/* Coloured top accent — alternates teal / purple / orange. */
+.japan-courses__card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent, #34D399);
+}
+
+.japan-courses__card:nth-child(3n+1) {
+    --accent: #34D399;
+}
+
+.japan-courses__card:nth-child(3n+2) {
+    --accent: #A78BFA;
+}
+
+.japan-courses__card:nth-child(3n+3) {
+    --accent: #F59E0B;
+}
+
+.japan-courses__card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.japan-courses__card-title {
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 800;
+    color: var(--blue-teal);
+    margin: 6px 0 12px;
+    min-height: 2.7em;
+}
+
+.japan-courses__card-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin: 0;
+}
+
+.japan-courses__note {
+    font-size: 15px;
+    line-height: 1.6;
+    font-style: normal;
+    color: var(--blue-teal);
+    margin: 0;
+    font-weight: 500;
+}
+
+.japan-courses__note strong {
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .japan-courses {
+        padding: 56px 0 0;
+    }
+
+    .japan-courses__heading {
+        font-size: 32px;
+    }
+
+    .japan-courses__grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-courses {
+        padding: 44px 0 0;
+    }
+
+    .japan-courses__heading {
+        font-size: 26px;
+    }
+
+    .japan-courses__grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+}
+
+/* ==========================================================================
+   FAQs about teaching in Japan (accordion)
+   ========================================================================== */
+.japan-faq {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-faq__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 28px;
+}
+
+.japan-faq__item {
+    border-bottom: 1px solid rgba(19, 69, 89, 0.14);
+}
+
+.japan-faq__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 4px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 900;
+    color: var(--blue-teal);
+}
+
+/* Hide the native disclosure marker. */
+.japan-faq__q::-webkit-details-marker {
+    display: none;
+}
+
+.japan-faq__q::marker {
+    content: "";
+}
+
+/* Chevron on the right, rotates when open. */
+.japan-faq__q::after {
+    content: "";
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    border-right: 2px solid var(--blue-teal);
+    border-bottom: 2px solid var(--blue-teal);
+    transform: rotate(45deg);
+    transition: transform 0.25s ease;
+}
+
+.japan-faq__item[open] .japan-faq__q::after {
+    transform: rotate(-135deg);
+}
+
+.japan-faq__a {
+    padding: 0 4px 22px;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+.japan-faq__a p {
+    margin: 0 0 12px;
+}
+
+.japan-faq__a p:last-child {
+    margin-bottom: 0;
+}
+
+.japan-faq__a a {
+    color: var(--blue-teal);
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .japan-faq {
+        padding: 56px 0 0;
+    }
+
+    .japan-faq__heading {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-faq {
+        padding: 44px 0 0;
+    }
+
+    .japan-faq__heading {
+        font-size: 26px;
+    }
+
+    .japan-faq__q {
+        font-size: 16px;
+        padding: 16px 2px;
+    }
+}
+
+/* ==========================================================================
+   Sources and methodology
+   ========================================================================== */
+.japan-sources {
+    background: var(--bg-color);
+    padding: 70px 0;
+}
+
+.japan-sources__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 20px;
+}
+
+.japan-sources__content {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin-bottom: 26px;
+}
+
+.japan-sources__content p {
+    margin: 0 0 14px;
+}
+
+.japan-sources__content p:last-child {
+    margin-bottom: 0;
+}
+
+.japan-sources__box {
+    background: var(--bg-color2);
+    border-radius: 12px;
+    padding: 26px 30px;
+}
+
+.japan-sources__box-heading {
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: 800;
+    color: var(--blue-teal);
+    margin: 0 0 14px;
+}
+
+.japan-sources__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.japan-sources__item {
+    position: relative;
+    padding: 5px 0 5px 22px;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+.japan-sources__item::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 13px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--blue-teal);
+}
+
+.japan-sources__item a {
+    color: var(--blue-teal);
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .japan-sources {
+        padding: 56px 0;
+    }
+
+    .japan-sources__heading {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-sources {
+        padding: 44px 0;
+    }
+
+    .japan-sources__heading {
+        font-size: 26px;
+    }
+
+    .japan-sources__box {
+        padding: 22px 22px;
+    }
+}
+
+/* ==========================================================================
+   Become a Partner Today (Contact Form 7)
+   ========================================================================== */
+.japan-pform {
+    background: var(--bg-color2);
+    padding: 70px 0 90px;
+}
+
+.japan-pform__heading {
+    font-size: 40px;
+    line-height: 1.15;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 12px;
+}
+
+.japan-pform__sub {
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin: 0 0 32px;
+    max-width: 760px;
+}
+
+.japan-pform__card {
+    background: var(--white);
+    border-radius: 25px;
+    box-shadow: 0px 6px 10px 3px #00000026;
+    padding: 40px 44px;
+}
+
+/* --- Contact Form 7 form inside the card ---
+   The form markup is: .tefl-contry-form > .ast-row > .ast-col-md-6 / .ast-col-md-4,
+   with .form-control inputs and a .form-submit button wrapper. WordPress wpautop
+   wraps the fields in stray <p>/<br>, which is what creates the big label/input
+   gap, so those are reset and the rows are laid out here for a Figma-accurate look. */
+.japan-pform__card .tefl-contry-form p {
+    margin: 0;
+}
+
+.japan-pform__card .tefl-contry-form br {
+    display: none;
+}
+
+.japan-pform__card .tefl-contry-form .wpcf7-form-control-wrap {
+    display: block;
+}
+
+.japan-pform__card .tefl-contry-form .ast-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 26px;
+    margin: 0 0 18px;
+}
+
+.japan-pform__card .tefl-contry-form .ast-row::before,
+.japan-pform__card .tefl-contry-form .ast-row::after {
+    display: none;
+    content: none;
+}
+
+.japan-pform__card .tefl-contry-form .ast-col-md-6,
+.japan-pform__card .tefl-contry-form .ast-col-md-4 {
+    padding: 0;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.japan-pform__card .tefl-contry-form .ast-col-md-6 {
+    flex: 0 0 calc(50% - 13px);
+    max-width: calc(50% - 13px);
+}
+
+.japan-pform__card .tefl-contry-form .ast-col-md-4 {
+    flex: 0 0 calc(33.333% - 17.334px);
+    max-width: calc(33.333% - 17.334px);
+}
+
+/* Field label */
+.japan-pform__card .tefl-contry-form label {
+    display: block;
+    margin: 0 0 7px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--blue-teal);
+}
+
+/* Inputs */
+.japan-pform__card .tefl-contry-form .form-control,
+.japan-pform__card .tefl-contry-form input[type="text"],
+.japan-pform__card .tefl-contry-form input[type="email"],
+.japan-pform__card .tefl-contry-form input[type="tel"],
+.japan-pform__card .tefl-contry-form input[type="url"],
+.japan-pform__card .tefl-contry-form textarea {
+    width: 100%;
+    margin: 0;
+    padding: 8px 16px;
+    background: #F9FBFB;
+    border: 1px solid #D1D1D6;
+    border-radius: 7px;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--gray-text);
+    box-sizing: border-box;
+}
+
+.japan-pform__card .tefl-contry-form textarea {
+    height: auto;
+    min-height: 100px;
+}
+
+.japan-pform__card .tefl-contry-form .form-control::placeholder,
+.japan-pform__card .tefl-contry-form input::placeholder,
+.japan-pform__card .tefl-contry-form textarea::placeholder {
+    color: #757575;
+}
+
+.japan-pform__card .tefl-contry-form .form-control:focus,
+.japan-pform__card .tefl-contry-form input:focus,
+.japan-pform__card .tefl-contry-form textarea:focus {
+    outline: none;
+    border-color: var(--blue-teal);
+    box-shadow: 0 0 0 2px rgba(19, 69, 89, 0.12);
+}
+
+.japan-pform__card .tefl-contry-form .iti {
+    display: block;
+    width: 100%;
+}
+
+.japan-pform__card .tefl-contry-form .form-submit {
+    margin-top: 40px;
+}
+
+.japan-pform__card .tefl-contry-form input.wpcf7-submit {
+    width: 100%;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    background-color: var(--blue-teal) !important;
+    background-image: none !important;
+    color: var(--white) !important;
+    border: 0 !important;
+    border-radius: 88px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    transition: background-color 0.2s ease;
+}
+
+.japan-pform__card .tefl-contry-form input.wpcf7-submit:hover,
+.japan-pform__card .tefl-contry-form input.wpcf7-submit:focus,
+.japan-pform__card .tefl-contry-form input.wpcf7-submit:active {
+    background-color: #0e3646 !important;
+    color: var(--white) !important;
+}
+
+/* CF7 validation / response messages */
+.japan-pform__card .wpcf7-not-valid-tip {
+    color: #d63638;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.japan-pform__card .wpcf7-form input.wpcf7-not-valid,
+.japan-pform__card .wpcf7-form textarea.wpcf7-not-valid {
+    border-color: #d63638;
+}
+
+.japan-pform__card .wpcf7-response-output {
+    margin: 18px 0 0;
+    padding: 12px 16px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+/* The CF7 AJAX spinner sits inline next to the submit */
+.japan-pform__card .wpcf7-spinner {
+    margin: 12px auto 0;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .japan-pform {
+        padding: 56px 0 70px;
+    }
+
+    .japan-pform__heading {
+        font-size: 34px;
+    }
+
+    .japan-pform__card {
+        padding: 34px 32px;
+    }
+
+    .japan-pform__card .tefl-contry-form .ast-row {
+        flex-wrap: wrap;
+    }
+
+    /* Tablet: both 2-col and 3-col rows collapse to two per row. */
+    .japan-pform__card .tefl-contry-form .ast-col-md-6,
+    .japan-pform__card .tefl-contry-form .ast-col-md-4 {
+        flex: 0 0 calc(50% - 13px);
+        max-width: calc(50% - 13px);
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-pform {
+        padding: 44px 0 56px;
+    }
+
+    .japan-pform__heading {
+        font-size: 26px;
+    }
+
+    .japan-pform__card {
+        padding: 26px 20px;
+        border-radius: 18px;
+    }
+
+    /* Mobile: every field is full width, stacked. */
+    .japan-pform__card .tefl-contry-form .ast-row {
+        gap: 16px;
+        margin-bottom: 0;
+        flex-wrap: wrap;
+    }
+
+    .japan-pform__card .tefl-contry-form .ast-col-md-6,
+    .japan-pform__card .tefl-contry-form .ast-col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Japan Placements (interactive-style map + city panel — static Tokyo)
+   ========================================================================== */
+.japan-place {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-place__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 32px;
+}
+
+.japan-place__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    align-items: start;
+    gap: 24px;
+}
+
+.japan-place__map {
+    position: relative;
+    min-height: 420px;
+}
+
+.japan-place__map-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.japan-place__card {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 265px;
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
+    overflow: visible;
+    z-index: 2;
+}
+
+.japan-place__card-photo {
+    position: relative;
+}
+
+.japan-place__card-photo img {
+    display: block;
+    width: 100%;
+    height: 124px;
+    object-fit: cover;
+    border-radius: 14px 14px 0 0;
+}
+
+.japan-place__nav {
+    position: absolute;
+    bottom: 14px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--blue-teal);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+    z-index: 3;
+}
+
+.japan-place__nav:hover {
+    background: var(--white);
+    transform: scale(1.1);
+    color: var(--blue-teal);
+}
+
+.japan-place__nav--prev {
+    left: -14px;
+}
+
+.japan-place__nav--next {
+    right: -14px;
+}
+
+/* Cross-fade between cities when switching */
+.japan-place__map-img,
+.japan-place__card-photo img,
+.japan-place__card-body,
+.japan-place__panel-title,
+.japan-place__panel-content {
+    transition: opacity 0.2s ease;
+}
+
+.japan-place.is-switching .japan-place__map-img,
+.japan-place.is-switching .japan-place__card-photo img,
+.japan-place.is-switching .japan-place__card-body,
+.japan-place.is-switching .japan-place__panel-title,
+.japan-place.is-switching .japan-place__panel-content {
+    opacity: 0;
+}
+
+.japan-place__card-body {
+    padding: 12px 20px 20px;
+}
+
+.japan-place__card-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--blue-teal);
+    margin: 0 0 4px;
+}
+
+.japan-place__card-text {
+    font-size: 13px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--blue-teal);
+    margin: 0;
+}
+
+/* Right description panel */
+.japan-place__panel {
+    background: var(--bg-color2);
+    border-radius: 13px;
+    padding: 30px 32px;
+}
+
+.japan-place__panel-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(19, 69, 89, 0.15);
+}
+
+.japan-place__panel-content {
+    font-size: 15px;
+    line-height: 1.75;
+    font-weight: 500;
+    color: var(--blue-teal);
+}
+
+.japan-place__panel-content p {
+    margin: 0 0 16px;
+}
+
+.japan-place__panel-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .japan-place {
+        padding: 56px 0 0;
+    }
+
+    .japan-place__heading {
+        font-size: 32px;
+    }
+
+    .japan-place__inner {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .japan-place__map {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-place {
+        padding: 44px 0 0;
+    }
+
+    .japan-place__heading {
+        font-size: 26px;
+    }
+
+    .japan-place__card {
+        position: static;
+        width: 100%;
+        margin: 16px 0 0;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .japan-place__card-photo img {
+        height: 160px;
+    }
+
+    .japan-place__nav--prev {
+        left: 8px;
+    }
+
+    .japan-place__nav--next {
+        right: 8px;
+    }
+
+    .japan-place__panel {
+        padding: 24px 22px;
+    }
+}
+
+/* ==========================================================================
+   Read more about Japan teaching (curated blog bento grid)
+   ========================================================================== */
+.japan-blogs {
+    background: var(--bg-color);
+    padding: 70px 0;
+}
+
+.japan-blogs__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 32px;
+}
+
+.japan-blogs__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.japan-blogs__top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 18px;
+}
+
+.japan-blogs__stack {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 18px;
+    min-height: 0;
+}
+
+.japan-blogs__bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* Card */
+.japan-blogs__card {
+    position: relative;
+    display: block;
+    min-height: 210px;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    isolation: isolate;
+}
+
+.japan-blogs__card--big {
+    min-height: 438px;
+}
+
+.japan-blogs__bottom .japan-blogs__card {
+    min-height: 300px;
+}
+
+.japan-blogs__card-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transition: transform 0.45s ease;
+}
+
+.japan-blogs__card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0.82) 100%);
+}
+
+.japan-blogs__card:hover .japan-blogs__card-img {
+    transform: scale(1.05);
+}
+
+.japan-blogs__card-body {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.japan-blogs__card-cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.japan-blogs__card-cat::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--yellow);
+}
+
+.japan-blogs__card-title {
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.japan-blogs__card--big .japan-blogs__card-title {
+    font-size: 30px;
+}
+
+.japan-blogs__bottom .japan-blogs__card-title {
+    font-size: 24px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .japan-blogs {
+        padding: 56px 0;
+    }
+
+    .japan-blogs__heading {
+        font-size: 32px;
+    }
+
+    .japan-blogs__top {
+        grid-template-columns: 1fr;
+    }
+
+    .japan-blogs__stack {
+        grid-template-rows: none;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .japan-blogs__card--big {
+        min-height: 320px;
+    }
+
+    .japan-blogs__card--big .japan-blogs__card-title {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-blogs {
+        padding: 44px 0;
+    }
+
+    .japan-blogs__heading {
+        font-size: 26px;
+    }
+
+    .japan-blogs__stack,
+    .japan-blogs__bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .japan-blogs__card,
+    .japan-blogs__card--big,
+    .japan-blogs__bottom .japan-blogs__card {
+        min-height: 220px;
+    }
+
+    .japan-blogs__card--big .japan-blogs__card-title {
+        font-size: 24px;
+    }
+
+    .japan-blogs__bottom .japan-blogs__card-title {
+        font-size: 22px;
+    }
+}
+
+/* ==========================================================================
+   Sticky Table of Contents
+   Desktop: fixed floating box on the left, shown after the banner, hidden at
+   the footer (toggled via .is-active from JS). Small screens: sticky horizontal
+   scrollable bar pinned to the top after the banner.
+   ========================================================================== */
+.japan-toc {
+    position: fixed;
+    left: calc((100vw - 1094px) / 2 - 220px);
+    top: 50%;
+    z-index: 40;
+    width: 210px;
+    transform: translateY(-50%) translateX(-16px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.japan-toc.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+}
+
+.japan-toc__inner {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+}
+
+.japan-toc__title {
+    display: block;
+    padding: 14px 18px;
+    background: var(--yellow);
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.japan-toc__list {
+    list-style: none;
+    margin: 0;
+    padding: 6px 18px;
+}
+
+.japan-toc__item {
+    border-bottom: 0;
+}
+
+/* Sub-items (everything after the lead "TEFL Requirements") sit under a light
+   grey left rail, each with a grey divider beneath, indented from the plane
+   so their text aligns with the lead item — matching the Figma. */
+.japan-toc__item:not(:first-child) {
+    margin-left: 8px;
+    padding-left: 17px;
+    border-left: 1px dashed #C9C7C2;
+}
+
+.japan-toc__link {
+    display: block;
+    position: relative;
+    padding: 11px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--blue-teal);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+/* Dashed divider under every item except the last one. Sits under the text
+   (inset from the left rail), so there is a gap at the corner — matching the
+   Figma. The lead ("TEFL Requirements") is inset past the plane to align. */
+.japan-toc__item:not(:last-child) .japan-toc__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px dashed #C9C7C2;
+}
+
+.japan-toc__item:first-child .japan-toc__link::after {
+    left: 26px;
+}
+
+.japan-toc__link:hover {
+    color: var(--yellow);
+}
+
+.japan-toc__link--lead {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-weight: 800;
+}
+
+.japan-toc__plane {
+    flex: 0 0 auto;
+    width: 17px;
+    height: auto;
+    display: block;
+}
+
+.japan-toc__btn {
+    display: block;
+    margin: 10px 18px 18px;
+    padding: 12px 14px;
+    background: var(--blue-teal);
+    color: var(--white);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.japan-toc__btn:hover {
+    background: #0e3646;
+    color: var(--white);
+}
+
+/* Where the left gutter is too narrow for the floating box, switch to a sticky
+   horizontal scrollable top bar (tablets, small laptops and phones). */
+@media (max-width: 1549px) {
+    .japan-toc {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        background: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .japan-toc__inner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 0;
+        box-shadow: none;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .japan-toc__inner::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* "Table of Contents" is the first pill and scrolls with the rest of the
+       bar (so it never covers the links). */
+    .japan-toc__title {
+        display: inline-flex;
+        align-items: center;
+        flex: 0 0 auto;
+        padding: 8px 14px;
+        border-radius: 20px;
+        background: var(--yellow);
+        color: var(--white);
+        font-size: 13px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .japan-toc__list {
+        display: flex;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        flex: 0 0 auto;
+    }
+
+    .japan-toc__item,
+    .japan-toc__item:not(:first-child) {
+        border: 0;
+        margin-left: 0;
+        padding-left: 0;
+        flex: 0 0 auto;
+    }
+
+    .japan-toc__link {
+        padding: 8px 15px;
+        background: var(--bg-color2);
+        border-radius: 20px;
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    /* No dashed dividers on the mobile pill bar. */
+    .japan-toc__link::after {
+        display: none;
+    }
+
+    .japan-toc__link--lead {
+        gap: 7px;
+    }
+
+    .japan-toc__btn {
+        flex: 0 0 auto;
+        margin: 0;
+        padding: 8px 16px;
+        border-radius: 20px;
+        white-space: nowrap;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================================================
+   Minimum legal requirements vs employer preferences (comparison table)
+   ========================================================================== */
+.japan-reqtable {
+    background: var(--bg-color);
+    padding: 70px 0 0;
+}
+
+.japan-reqtable__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--blue-teal);
+    margin: 0 0 28px;
+}
+
+.japan-reqtable__wrap {
+    overflow-x: auto;
+}
+
+.japan-reqtable__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--blue-teal);
+}
+
+.japan-reqtable__table th,
+.japan-reqtable__table td {
+    padding: 16px 18px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #E3E1DC;
+}
+
+.japan-reqtable__table th {
+    font-weight: 800;
+    text-align: center;
+}
+
+.japan-reqtable__pathway {
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .japan-reqtable {
+        padding: 56px 0 0;
+    }
+
+    .japan-reqtable__heading {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .japan-reqtable {
+        padding: 44px 0 0;
+    }
+
+    .japan-reqtable__heading {
+        font-size: 26px;
+    }
+
+    .japan-reqtable__table {
+        font-size: 13px;
+        min-width: 560px;
+    }
+
+    .japan-reqtable__table th,
+    .japan-reqtable__table td {
+        padding: 12px 12px;
+    }
+}

@@ -149,7 +149,7 @@ get_header(); ?>
                                 $simple_regular_price = $internship_product->get_variation_regular_price();
                                 $simple_sale_price = $internship_product->get_variation_sale_price();
                             endif;
-                            $percentage = round((($simple_regular_price - $simple_sale_price) / $simple_regular_price) * 100);
+                            $percentage = $simple_regular_price ? round((($simple_regular_price - $simple_sale_price) / $simple_regular_price) * 100) : 0;
                         endif;
                     endif;
                     if($guide):

@@ -29,6 +29,20 @@
 //     echo 'Last visited ' . trim($time_elapsed_str) . 'ago';
 // }
 
+$single_course_page_styling = get_field('single_course_page_styling','option');
+
+if(isset($single_course_page_styling) && !is_array_empty($single_course_page_styling)){
+    $course_title_underline_color = !empty($single_course_page_styling['course_title_underline_color'])?$single_course_page_styling['course_title_underline_color']:'#1c1c1b';
+    $interactive_course_label_border_color = !empty($single_course_page_styling['interactive_course_label_border_color'])?$single_course_page_styling['interactive_course_label_border_color']:'#1c1c1b';
+    $savings_label_color = !empty($single_course_page_styling['savings_label_color']) ? $single_course_page_styling['savings_label_color'] : '#1c1c1b';
+    $pay_in_deposit_switcher_button_styling = $single_course_page_styling['pay_in_deposit_switcher_button_styling'];
+    $active_bg_color = !empty($pay_in_deposit_switcher_button_styling['active_bg_color']) ? $pay_in_deposit_switcher_button_styling['active_bg_color'] : '#1c1c1b';
+    $active_text_color = !empty($pay_in_deposit_switcher_button_styling['active_text_color']) ? $pay_in_deposit_switcher_button_styling['active_text_color'] : '#fff';
+    $inactive_bg_color = !empty($pay_in_deposit_switcher_button_styling['inactive_bg_color']) ? $pay_in_deposit_switcher_button_styling['inactive_bg_color'] : '#cccccc';
+    $inactive_text_color = !empty($pay_in_deposit_switcher_button_styling['inactive_text_color']) ? $pay_in_deposit_switcher_button_styling['inactive_text_color'] : '#fff';
+    $view_all_reviews_button_styling = $single_course_page_styling['view_all_reviews_button_styling'];
+}
+
 ?>
 
 
@@ -39,7 +53,7 @@
 
     <?php
     $course_product_id = get_field('course_product');
-    $course_product = new WC_Product($course_product_id);
+    $course_product = wc_get_product($course_product_id);
     $course_price = $course_product->get_price_html();
     $course_price_value = $course_product->get_price();
     $full_price = $course_price_value;
@@ -115,11 +129,11 @@
 {
     "@context": "http://schema.org",
     "hasCourseInstance": {
-        "courseSchedule": "",
         "@type": "CourseInstance",
-        "repeatCount": "",
-        "repeatFrequency": "",
-        "courseMode": "Online"
+        "courseMode": "Online",
+        "courseWorkload": "PT150H",
+        "startDate": "2025-05-01",
+        "endDate": "2025-10-28"
     },
     "CourseInstance": "",
     "courseMode": [
@@ -205,7 +219,9 @@
                                 $level_5_tefl_courses_IDs = array(743, 2704, 838, 825); 
                                 if (in_array($current_post_id, $level_5_tefl_courses_IDs)):
                             ?>
-                                <div class="is-interactive">
+                                <div class="is-interactive"
+                                     style="--border-color:<?php echo $interactive_course_label_border_color?>"
+                                >
                                     <div class="wrapper-class">
                                         <img src="/wp-content/uploads/2023/07/interactive_icon.svg" alt="" class="interactive-icon">
                                         <span class="interactive-text">Interactive course</span>
@@ -217,8 +233,18 @@
                             <span class="page-title__sub">
                                 <?php echo $CTA_stitle?>
                             </span>
-                            <h1 class="page-title__main large-heading">
-                                <?php echo $CTA_title; ?>
+                            <h1 class="page-title__main large-heading <?php echo (($current_post_id === 812) || ($current_post_id === 62237)) ? 'flex-title' : ''; ?>"
+                                style="--underline-color:<?php echo $course_title_underline_color?>"
+                            >
+                                <?php if($current_post_id === 812): ?>
+                                    <img src="/wp-content/uploads/2025/04/IELTS-Educator-logo.png" alt="">
+                                <?php endif; ?>
+
+                                <span><?php echo $CTA_title; ?></span>
+
+                                <?php if($current_post_id === 62237): ?>
+                                    <img src="/wp-content/uploads/2025/04/IELTS-Educator-logo.png" alt="">
+                                <?php endif; ?>
                             </h1>
                         </div>
                         <div class="tution-fee">
@@ -232,7 +258,13 @@
                             <div id="priceWrapper" class="tution-fee-txt <?php echo $show_klarna === 1?'has-klarna':'no-klarna'?>">
                                 <span data-isfixed3995="<?php echo $fixed_3995?>" data-isfixed99 = "<?php echo $fixed_99; ?>" data-depositpercent = "<?php echo $deposit_percent?>" class="full-price <?php echo $deposit_class; ?>">
                                     <?php echo $course_price; ?>
-                                    <div class="savings"><?php echo 'Save '.$save_percentage.'%'?></div>
+                                    <?php if($save_percentage && $save_percentage>0):?>
+                                    <div class="savings"
+                                         style="--text-color:<?php echo $savings_label_color?>"
+                                    >
+                                        <?php echo 'Save '.$save_percentage.'%'?>
+                                    </div>
+                                    <?php endif?>
                                 </span>
                                 <?php 
                                     if($show_klarna){
@@ -242,10 +274,10 @@
                                 ?>
                             </div>
                             <?php 
-                                $free_offer_text = get_field('free_offer_text');
-                                if(!empty($free_offer_text)):?>
-                                <div class="free-offer-text">
-                                    <?php echo $free_offer_text?>
+                                $course_extra_info = get_field('course_extra_info');
+                                if(!empty($course_extra_info)):?>
+                                <div class="course-extra-info">
+                                    <?php echo $course_extra_info?>
                                 </div>
                             <?php endif?>
                             <div class="deposit-breakdown">
@@ -253,37 +285,134 @@
                                     <?php include('includes/ti-deposit-form.php'); ?>
                                     <?php wp_enqueue_script('ti-deposit-form-js'); ?>
                                 <?php endif; ?>
-                                <?php 
-                                if( $deposit_enabled == 'forced' || $deposit_enabled == 'optional' ):
-                                ?>
-                                    <!-- <div class="installments-breakdown">
-                                        <div
-                                            class="ajax-snippet" 
-                                            data-snippet="installment_breakdown"
-                                            data-objectid="<?php echo $course_product_id; ?>"
-                                        >
-                                        </div>
-                                        <div id="loader" class="loader">
-                                        Fetching installment breakdown details <img src="/wp-content/uploads/2022/11/loading-yellow.gif" alt="fetching deposit details">
-                                        </div>
-                                    </div> -->
-                                <?php
-                                endif;
-                                ?>
                             </div>
                         </div>
                         <div class="hero-banner__summary">
                         <?php echo $CTA_txt ?>
                         </div>
                         <div class="banner-cta-buttons">
+                            <?php
+                                    if ($current_post_id === 9689 || $current_post_id === 743 || $current_post_id === 2704 ) {
+                                    $default_course_ids = [62238, 70828]; 
+                                    
+                                    $select_two_product_ids = [62238, 70828, 71500, 70829];
+                                    $select_two_products = [];
+
+                                    foreach ($select_two_product_ids as $product_id) {
+                                        $product = wc_get_product($product_id);
+                                        if ($product) {
+                                            $raw_name = $product->get_name();
+                                            $cutoff = mb_strpos($raw_name, '– Regulatory ref');
+                                            $clean_name = $cutoff !== false ? trim(mb_substr($raw_name, 0, $cutoff)) : $raw_name;
+
+                                            $select_two_products[] = [
+                                                'product' => $product_id,
+                                                'product_name' => $clean_name
+                                            ];
+                                        }
+                                    }
+
+                                    if (!empty($select_two_products)) :
+                                        ?>
+                                        <input type="hidden" name="selected_courses" id="selected_courses_field" value="<?php echo implode(',', $default_course_ids); ?>">
+                                        
+                                        <div class="select-menu select-two-required" data-defaults="<?php echo implode(',', $default_course_ids); ?>">
+                                            <span>Select Two Courses</span>
+                                            <div class="select-btn">
+                                                <span class="sBtn-text">Choose your 60 Hour Courses</span>
+                                                <img class="no-lazy" src="/wp-content/uploads/2024/09/Vector-107.svg" alt="">
+                                            </div>
+                                            <ul class="options">
+                                                <?php foreach ($select_two_products as $product): ?>
+                                                    <li class="option" 
+                                                        data-pid="<?php echo $product['product']; ?>" 
+                                                        data-name="<?php echo htmlspecialchars($product['product_name']); ?>">
+                                                        
+                                                        <span class="option-text" style="display: flex; gap: 8px;">
+                                                            <span class="custom-checkbox" aria-hidden="true"></span>
+                                                            <b><?php echo $product['product_name']; ?></b>
+                                                        </span>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                        <?php
+                                    endif;
+
+                                    } else {
+                                        ?>
+                                        <a class="callback-btn banner-btn" href="/callback"><?php echo  $btn1_txt ?></a>
+                                        <?php
+                                    }
+                                ?>
                             <?php if ($is_virtual_couse) : ?>
                                 <a class="ti-enroll-btn banner-btn text-center" href="#timetable"><?php echo  $btn2_txt ?></a>
                             <?php else : ?>
                                 <a class="ti-enroll-btn enroll-now-btn banner-btn" rel="nofollow" href="<?php echo get_home_url(); ?>/?addtimetocart&prid=<?php echo $course_product_id; ?>"><?php echo  $btn2_txt ?>
                                 </a>
                             <?php endif; ?>
-                            <a class="callback-btn banner-btn" href="/callback"><?php echo  $btn1_txt ?></a>
                         </div>
+                        <div class="d-none" style="margin-top:2rem;">
+                            <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+                            <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5418052cfbfb950d88702476" data-businessunit-id="61c0c19118c53fc28bcc355d" data-style-height="30px" data-style-width="100%" data-tags="<?php echo get_field('trustpilot_tag') ?: 'content'; ?>" data-stars="1,2,3,4,5" data-review-languages="en">
+                                <a href="https://uk.trustpilot.com/review/teflinstitute.com" target="_blank" rel="noopener">Trustpilot</a>
+                            </div>
+                        </div>
+
+                        <?php
+                        $trustpilot_tag = '';
+                        $course_title = get_the_title();
+
+                        if (strpos($course_title, '120') !== false) {
+                            $trustpilot_tag = '120';
+
+                        } elseif (strpos($course_title, '180') !== false) {
+                            $trustpilot_tag = '180';
+
+                        } elseif (strpos($course_title, '240') !== false) {
+                            $trustpilot_tag = '240';
+
+                        } elseif (
+                            strpos($course_title, '300') !== false ||
+                            strpos($course_title, '310') !== false
+                        ) {
+                            $trustpilot_tag = 'L5';
+                        }
+                        ?>
+
+                        <?php if ($trustpilot_tag) : ?>
+                        <div style="margin-top:2rem;">
+
+                            <!-- TrustBox script -->
+                            <script type="text/javascript"
+                                src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+                                async>
+                            </script>
+                            <!-- End TrustBox script -->
+
+                            <!-- TrustBox widget - Drop-Down -->
+                            <div class="trustpilot-widget"
+                                data-locale="en-US"
+                                data-template-id="5418052cfbfb950d88702476"
+                                data-businessunit-id="61c0c19118c53fc28bcc355d"
+                                data-style-height="50px"
+                                data-style-width="100%"
+                                data-token="ff8bfbc9-6191-40f5-9ffb-021d1cc6f484"
+                                data-tags="<?php echo esc_attr($trustpilot_tag); ?>"
+                                data-stars="4,5"
+                                data-review-languages="en">
+
+                                <a href="https://www.trustpilot.com/review/teflinstitute.com"
+                                target="_blank"
+                                rel="noopener">
+                                    Trustpilot
+                                </a>
+
+                            </div>
+                            <!-- End TrustBox widget -->
+
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div  class="ast-col-md-6 hero-banner__logo-container">
@@ -350,6 +479,7 @@
     
     <?php
     $course_gifts_section = get_field('course_gifts_section','option');
+    $show_gifts_section = $course_gifts_section['show_gifts_section'];
     $section_title        = $course_gifts_section['section_title'];
     $gifts                = $course_gifts_section['gifts'];
     $selected_courses     = $course_gifts_section['selected_courses'];
@@ -357,7 +487,9 @@
     $courses_gift_expires = get_field('timer_expiry', 'option');
     $current_time         = current_time('timestamp');
     $expiration_time      = strtotime($courses_gift_expires);
-    if (in_array($course_id, $selected_courses) && ($current_time < $expiration_time)) :
+    // && ($current_time < $expiration_time)
+    // if ($show_gifts_section && (in_array($course_id, $selected_courses))) :
+    if(false):
     ?>
     
     <section class="section-padding-top gifts-section">
@@ -366,7 +498,7 @@
                 <div class="course-gifts-wrapper">
                     <div class="ast-col-md-12">
                         <div class="course-gifts">
-                            <h3 class="gifts-title"><?php echo $section_title?></h3>
+                            <h3 class="gifts-title"><?php echo geo_replace_currency($section_title); ?></h3>
                             <div class="gift-images">
                                 <?php foreach ($gifts as $g) : ?>
                                     
@@ -386,6 +518,70 @@
     <?php
     endif;
     ?>
+
+    <?php
+    $free_bundle_section  = get_field('free_bundle_section', 'option');
+    
+    $selected_courses   = !empty($free_bundle_section['selected_courses']) ? $free_bundle_section['selected_courses'] : [];
+
+    $section_label   = !empty($free_bundle_section['section_label'])   ? $free_bundle_section['section_label']   : '';
+    $section_title   = !empty($free_bundle_section['section_title'])   ? $free_bundle_section['section_title']   : '';
+    $section_summary = !empty($free_bundle_section['section_summary']) ? $free_bundle_section['section_summary'] : '';
+    $section_image   = !empty($free_bundle_section['section_image'])   ? $free_bundle_section['section_image']   : '';
+
+    $section_image_caption = !empty($free_bundle_section['image_caption']) ? $free_bundle_section['image_caption'] : 'Add 4 high value TEFL skills to your CV:';
+
+    if ($show_gifts_section && in_array($course_id, $selected_courses)) :
+    ?>
+
+    <section class="section-padding-top free-bundle-section">
+        <div class="ast-container">
+            <div class="ast-row">
+                <div class="ast-col-md-12">
+                    <div class="free-bundle-card">
+
+                        <div class="free-bundle-content">
+                            <?php if ($section_label) : ?>
+                                <div class="free-bundle-label-row">
+                                    <span class="free-bundle-label">
+                                        <?php echo esc_html($section_label); ?>
+                                        <svg class="outline-svg" preserveAspectRatio="none">
+                                            <rect x="0" y="0" width="100%" height="100%" rx="6" ry="6" pathLength="100"/>
+                                        </svg>
+                                    </span>
+                                    <span class="free-bundle-flame" aria-hidden="true">
+                                        <img class="no-lazy" src="/wp-content/uploads/2026/04/source.gif" alt="">
+                                    </span>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ($section_title) : ?>
+                                <h3 class="free-bundle-title"><?php echo esc_html(geo_replace_currency($section_title)); ?></h3>
+                            <?php endif; ?>
+
+                            <?php if ($section_summary) : ?>
+                                <p class="free-bundle-summary">
+                                    <?php echo wp_kses_post(geo_replace_currency_default(nl2br($section_summary))); ?>
+                                </p>
+                            <?php endif; ?>
+                        </div>
+
+                        <?php if ($section_image) : ?>
+                            <div class="free-bundle-visual">
+                                <span class="bundle-caption"><?php echo esc_html($section_image_caption); ?></span>
+                                <img class="no-lazy"
+                                    src="<?php echo esc_url($section_image); ?>"
+                                    alt="<?php echo esc_attr($section_title); ?>">
+                            </div>
+                        <?php endif; ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php endif; ?>
     
     <!-- Gifts Section End -->
 
@@ -587,24 +783,38 @@
     <?php endif; ?>
 
     <?php
-        $fast_track_info_block = get_field('fast_track_info_block','option');
-        $fast_track_info_block_content = $fast_track_info_block['info_block'];
-        $where_to_show = $fast_track_info_block['where_to_show']?$fast_track_info_block['where_to_show']:[];
-        if(!is_array_empty($fast_track_info_block) && in_array($current_post_id,$where_to_show)):
+        // $fast_track_info_block = get_field('fast_track_info_block','option');
+        // $fast_track_info_block_content = $fast_track_info_block['info_block']?:[];
+        // $where_to_show = $fast_track_info_block['where_to_show']?$fast_track_info_block['where_to_show']:[];
+        // if(!is_array_empty($fast_track_info_block) && in_array($current_post_id,$where_to_show)):
+            if(false):
             
     ?>
 
-        <section class="fast-track-info-section mt-2">
+        <section class="fast-track-info-section- mt-2">
             <div class="ast-container">
                 <div class="ast-row">
                     <div class="ast-col-md-12">
-                        <div class="fast-track-info-section-content text-center">
-                            <?php echo $fast_track_info_block_content?>
+                        <div class="fast-track-info-section-content-wrapper mt-5">
+                            <div class="image-wrapper">
+                                <a href="https://jobs.teflinstitute.com/all-jobs/" target="_blank">
+                                    <img class="iec-logo" src="/wp-content/uploads/2025/02/institute-of-higher-education-icon.png" alt="">
+                                </a>
+                            </div>
+                            <div class="fast-track-info-section-content">
+                                <?php echo $fast_track_info_block_content?>
+                            </div>
+                            <div class="image-wrapper">
+                                <a target="_blank" href="https://jobs.teflinstitute.com/all-jobs/" >
+                                    <img class="tif-logo" src="/wp-content/uploads/2025/01/founded-icon.png" alt="">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
 
     <?php 
         endif;
@@ -649,9 +859,9 @@
                             </div>
                         </div>
                     <?php endif?>
-                    <?php if(!empty($salary_calculator_cta_)):?>
+                    <?php if(!empty($salary_calculator_cta)):?>
                         <div class="ast-col-md-6">
-                            <div class="elt-cta-col">
+                            <div class="elt-cta-col salary-cta-col">
                                 <h3 class="elt-cta__title">
                                     <?php echo $salary_calculator_cta_title?>
                                 </h3>
@@ -664,7 +874,7 @@
                             </div>
                         </div>
                     <?php endif?>
-                    <?php foreach($features as $feature):
+                    <?php foreach($features as $key=>$feature):
                         $feature_heading = $feature['feature_heading'];
                         $feature_content = $feature['feature_content'];    
                     ?>
@@ -676,23 +886,45 @@
                             <div class="feature__content">
                                 <?php echo $feature_content?>
                             </div>
+                            <?php if (strcasecmp(trim($feature_heading), 'Easy employer verification') === 0) : ?>
+                                <div class="feature__verification-form">
+                                    <h3 class="feature__heading">Academic Credentials Verification</h3>
+                                    <?php echo do_shortcode('[custom_cert_identifier]'); ?>
+                                </div>
+                            <?php endif; ?>
+
                         </div>
                     </div> 
                     <?php endforeach?>
                     <?php if(!empty($higlighted_features)):?>
                         <div class="ast-col-md-6">
                             <div class="feature-col feature-col--highlight">
-                               <?php foreach($higlighted_features as $higlighted_feature):
-                                    $higlighted_feature_text = $higlighted_feature['feature_text'];
-                                ?>
-                                <div class="highlight-feature">
-                                    <!-- <img src="/wp-content/uploads/2022/11/checkmark.png" alt=""> -->
-                                    <i class="fa fa-check-circle"></i>
-                                    <span>
-                                        <?php echo $higlighted_feature_text?>
-                                    </span>
+                                <div class="feature-col-flex-wrapper">
+                                    <div>
+                                        <?php foreach($higlighted_features as $higlighted_feature):
+                                            $higlighted_feature_text = $higlighted_feature['feature_text'];
+                                        ?>
+                                            <div class="highlight-feature">
+                                                <i class="fa fa-check-circle"></i>
+                                                <span>
+                                                    <?php echo $higlighted_feature_text?>
+                                                </span>
+                                            </div>
+                                        <?php endforeach?>
+                                    </div>
+                                    <?php
+                                        $europass_courses = [743,838,825,2704,70837,62237,71925,70830];
+                                        if(in_array($current_post_id,$europass_courses)):
+                                    ?>
+                                    <div class="europass-logo">
+                                        <a href="https://europass.europa.eu/en/europass-digital-tools/european-qualifications-framework" target="_blank">
+                                            <img src="/wp-content/uploads/2024/12/image_2024_12_06T13_41_38_015Z-e1733560354534.png" alt="">
+                                        </a>
+                                    </div>
+                                    <?php
+                                        endif;
+                                    ?>
                                 </div>
-                               <?php endforeach?>
                               	<?php if($guide['value']) { ?>
                                   <a href="<?php echo $guide['link']; ?>" class="guide_link"><?php echo $guide['value']; ?></a>
                               <?php } ?>
@@ -700,13 +932,92 @@
                           	
                         </div>
                     <?php endif?>
+                    <div class="ast-col-md-6">
+                        <div class="prospectus-cta-box prospectus-cta">
+                            <img src="/wp-content/uploads/2025/05/prospectus-cover-2.png" alt="">
+                            <h4 class="prospectus-cta-box__title">TEFL STUDY PROSPECTUS</h4>
+                            <div class="prospectus-cta-box__summary">
+                                Explore global teaching opportunities with our TEFL study prospectus
+                            </div>
+                            <a href="/wp-content/uploads/2023/06/TEFL-Institute-Prospectus-2.pdf" class="btn" target = "_blank">
+                                <span>Download</span>
+                                <img src="/wp-content/uploads/2025/03/download-icon.png" alt="">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     <?php endif?>
     <!-- Course Features End -->
 
-  	
+    <?php 
+        // if(in_array($current_post_id,$europass_courses)):
+        if(false):
+    ?>
+
+        <section class="section-padding-bottom europass-iec-section">
+            <div class="ast-container">
+                <div class="ast-row">
+                    <div class="ast-col-md-12">
+                        <div class="fast-track-info-section-content-wrapper">
+                            <div class="image-wrapper">
+                                <a href="https://jobs.teflinstitute.com/all-jobs/" target="_blank">
+                                    <img class="iec-logo" src="/wp-content/uploads/2025/02/institute-of-higher-education-icon.png" alt="">
+                                </a>
+                            </div>
+                            <div class="fast-track-info-section-content">
+                                <h2 class="large-heading common-section-heading text-center">
+                                    Who can take the TEFL course?                               
+                                </h2>
+                                <div class="text-center">
+                                    Ideal for anybody between the ages of 17-70<br>
+                                    Non-native speakers and native speakers<br>
+                                    Degree and non-degree holders 
+                                </div>
+                            </div>
+                            <div class="image-wrapper">
+                                <a target="_blank" href="https://jobs.teflinstitute.com/all-jobs/" >
+                                    <img class="tif-logo" src="/wp-content/uploads/2025/01/founded-icon.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ast-container d-none">
+                <div class="ast-row">
+                    <div class="ast-col-md-12">
+                        <div class=" mt-5">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+
+    <?php endif;?>
+
+
+    <!-- Search Courses Section -->
+
+    <section class="search-courses-section section-padding-bottom">
+        <div class="ast-container">
+            <div class="ast-row">
+                <h2 class="search-courses-section__heading text-center common-heading">
+                    Find The Perfect TEFL Course
+                </h2>
+                <div class="search-courses-section__body ast-col-md-12">
+                <?php echo do_shortcode('[tefl_course_search]'); ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Courses Section End -->
   
     <!-- Student Reviews Function -->
     <?php
@@ -738,17 +1049,28 @@
                         <h2 class="students-review__content-heading">
                             <?php echo $section_heading?>
                         </h2>
-                        <div class="rating-div">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-empty"></i>
-                            <span class="course-review-count">(<?php echo $reviews_average; ?>)</span>
-                        </div>
-                        <div class="total-count-text">Out of <?php echo $total_reviews_count ?> global reviews</div>
-                        <div class="students-review__content-slider">
-                            <?php echo do_shortcode('[brb_collection id="76302"]'); ?>
+                        <div class="rating-div-wrapper">
+                            <div>
+                                <div class="rating-div">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-empty"></i>
+                                    <span class="course-review-count">(<?php echo $reviews_average; ?>)</span>
+                                </div>
+                                <div class="total-count-text">Out of <?php echo $total_reviews_count ?> global reviews</div>
+                            </div>
+                            <?php
+                                $button_text_color = !empty($view_all_reviews_button_styling['button_text_color']) ? $view_all_reviews_button_styling['button_text_color'] : '#ffffff';
+                                $button_bg_color = !empty($view_all_reviews_button_styling['button_bg_color']) ? $view_all_reviews_button_styling['button_bg_color'] : '#1c1c1b';
+                            ?>
+                            <a href="https://www.google.com/search?sca_esv=8d785069c21da656&sca_upv=1&hl=en-IE&gl=ie&q=The+TEFL+Institute+Ireland+%7C+TEFL+Courses+%26+Certification,+13+Adelaide+Rd,+Saint+Kevin%27s,+Dublin,+D02+P950&uds=ADvngMhDJElofzFqOx8yLCqxrZBfORdohN-zZWd2DtE2wkfY_Hz8LxAbxWyTqbQXp_hpoUOW2uxhpWyrB1IL2IpdWcWiPs5S-vGBywcJzrO9PJe_HdF91Ppndo2Knjst1hsy0DuQ_1Yy71pyrotGeYeqK9tgwKhS1Dz3nAO5HG6XIft-vP8sUXZPMIt75-GkZH8kdUstEDG07k_uQg6GZSA3HkqfKbTCnzBS1_wxYJkYsxPWWzYHd35xJVCoLbwXmLTFBoT-lFXh&si=ACC90nwjPmqJHrCEt6ewASzksVFQDX8zco_7MgBaIawvaF4-7mSRR1kRGE4hCmZtLOUumbi46V_tOIxRTOEjel4eIAxPbsZAzQfZDyayafoOPMus5kIWjD0%3D&sa=X&ved=2ahUKEwixoZaa4Z6HAxUHYEEAHXfKDf8Q3PALegQIGxAE&biw=1536&bih=745&dpr=2" 
+                               class="btn-centered btn reviews-btn"
+                               style="--btn-text-color:<?php echo $button_text_color?>;--btn-bg-color:<?php echo $button_bg_color?>"
+                            >
+                                Read all reviews
+                            </a>
                         </div>
                         <div class="reviews-summary">
                             <?php for($i=5; $i>=1; $i--) :
@@ -766,7 +1088,9 @@
                                 </div>
                             <?php endfor; ?>
                         </div>
-                    
+                        <div class="students-review__content-slider">
+                            <?php echo do_shortcode('[brb_collection id="76302"]'); ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -804,7 +1128,7 @@
 
     <!-- Course Offer Section  -->
     <?php 
-    if(have_rows('sale_courses')):
+    if (have_rows('sale_courses') && get_the_ID() != 90318 && get_the_ID() != 93278):
     $sale_courses = get_field('sale_courses');
     ?>
 
@@ -890,7 +1214,7 @@
                             </div>
                         <?php endif; ?>
                         <?php
-                        if($timer_expiry):?>
+                        if($timer_expiry && !is_global_timer_expired()):?>
                             <div class="countdown-timer" data-expiry ="<?php echo $timer_expiry?>">
                                 <ul class="timer">
                                     <li>
@@ -914,26 +1238,27 @@
                         <?php 
                         endif;
                         ?>
+                        <div class="hunter-kit-cta">
+                            <div class="hunter-kit-img">
+                                <img src="/wp-content/uploads/2025/03/job-hunters-kit.png" alt="">
+                            </div>
+                            <div class="hunter-kit-download" >
+                                <div class="text-center hunter-kit-text font-600">
+                                    Tefl Institute</br>Job Hunter's Kit
+                                </div>
+                                <a href="/free-resources/" class="btn" target = "_blank">
+                                    <span>Learn More</span>
+                                    <img src="/wp-content/uploads/2025/03/download-icon.png" alt="">
+                                </a>
+                            </div>
+                        </div>
                         <?php if ($course_price) : ?>
                             <div class="course-price"><?php echo $course_price; ?></div>
                         <?php endif; ?>
                         
                         <?php
                             $teaching_resources = get_field('teaching_resources','option');
-                            if(!is_array_empty($teaching_resources)):
-                                $product_id = $teaching_resources['product'];
-                                $product_name = $teaching_resources['product_name'];
-                                $product_desc = $teaching_resources['resources_description'];
-                                $product_obj = wc_get_product($product_id);
-                                if ($product_obj){ 
-                                    $product_price = $product_obj->get_price_html();
-                                    $full_price = $product_obj->get_price();
-                                    $simple_regular_price = $product_obj->get_regular_price();
-                                    $simple_sale_price = $product_obj->get_sale_price();
-                                    if (is_numeric($simple_regular_price) && is_numeric($simple_sale_price) && $simple_regular_price != 0) {
-                                        $save_percentage = round((($simple_regular_price - $simple_sale_price) / $simple_regular_price) * 100);
-                                    }
-                                }
+                            if($teaching_resources):
                         ?>
                         <div class="resources-select-wrapper">
                             <div class="resources-select-wrapper__header">
@@ -942,13 +1267,7 @@
                                 </h6>
                                 <i class="fa fa-info"></i>
                                 <div class="resource-info-container">
-                                    <h6><?php echo $product_name?></h6>
-                                    <div class="resource-info">
-                                        <?php echo $product_desc?>
-                                    </div>
-                                    <a href="/the-tefl-plus/" target="_blank" class="btn btn-red btn-centered">
-                                        Learn More
-                                    </a>
+                                    Please Select a resource
                                 </div>
                             </div>
                             
@@ -959,17 +1278,32 @@
                                 </div>
 
                                 <ul class="options">
-                                    <li class="option" data-pid = "<?php echo $product_id?>">
-                                        <span class="option-text">
-                                            <b><?php echo $product_name?></b>
-                                            <span class="ajax-loaded-price"></span>
-                                        </span>
-                                    </li>
+                                    <?php
+                                        foreach($teaching_resources as $key => $tc):
+                                            $product_id = $tc['product'];
+                                            $product_name = $tc['product_name'];
+                                            $product_desc = $tc['resources_description'];
+                                            $resource_page_link = $tc['resource_page_link'];
+                                    ?>
+                                        <li class="option" 
+                                            data-pid = "<?php echo $product_id?>"
+                                            data-name="<?php echo htmlspecialchars($product_name); ?>" 
+                                            data-desc="<?php echo htmlspecialchars($product_desc); ?>"
+                                            data-pagelink = "<?php echo htmlspecialchars($resource_page_link); ?>"
+                                        >
+                                            <span class="option-text">
+                                                <b><?php echo $product_name?></b>
+                                                <span class="ajax-loaded-price"></span>
+                                            </span>
+                                        </li>
+                                    <?php
+                                        endforeach
+                                    ?>
                                 </ul>
                             </div>
                         </div>
                         <?php
-                            endif
+                            endif;
                         ?>
                     </div>
                 </div>
@@ -1140,6 +1474,57 @@
 
     <!-- Salary Calculator CTA Section End -->
 
+    <?php
+        $ielts_cta_block = get_field('ielts_cta_block', 'option');
+        $where_to_show = !empty($ielts_cta_block['where_to_show']) ? $ielts_cta_block['where_to_show'] : []; 
+        $cta_block = $ielts_cta_block['cta_block'];    
+        if(in_array($current_post_id,$where_to_show) && !is_array_empty($cta_block)):
+            $block_title = $cta_block['block_title'];
+            $block_summary = $cta_block['block_summary'];
+            $block_image = $cta_block['block_image'];
+            $block_bg_color = !empty($cta_block['block_bg_color']) ? $cta_block['block_bg_color']:'#ffffff';
+            $block_text_color = !empty($cta_block['block_text_color']) ? $cta_block['block_text_color']:'#1c1c1b' ;
+            $block_cta_button = $cta_block['block_cta_button'];
+            $cta_text = $block_cta_button['cta_text'];
+            $cta_link = $block_cta_button['cta_link'];
+            $button_bg_color = !empty($block_cta_button['button_bg_color']) ? $block_cta_button['button_bg_color']:'#1c1c1b';
+            $button_text_color = !empty($block_cta_button['button_text_color']) ? $block_cta_button['button_text_color']:'#ffffff';
+    ?>
+
+    <!-- IELTS Guide Section -->
+
+    <section class="ielts-guide-section section-padding-top">
+        <div class="ast-container">
+            <div class="ielts-guide-section-row"
+                 style="--bg-color:<?php echo $block_bg_color?>; --text-color:<?php echo $block_text_color?>"
+            >
+                <div class="ast-row">
+                    <div class="ast-col-md-8">
+                        <h2 class="common-heading ielts-guide-section-heading">
+                            <?php echo $block_title?>
+                        </h2>
+                        <div class="ielts-guide-section-summary">
+                            <?php echo $block_summary?>
+                        </div>
+                        <a href="<?php echo $cta_link?>" class="ielts-guide-btn"
+                           style="--bg-color:<?php echo $button_bg_color?>; --text-color:<?php echo $button_text_color?>"
+                        >
+                            <?php echo $cta_text?>
+                        </a>
+                    </div>
+                    <div class="ast-col-md-4">
+                        <img src="<?php echo $block_image?>" alt="" class="ielts-guide-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IELTS Guide Section End-->
+    <?php
+        endif;
+    ?>
+
     <!-- Certificate Review Section -->
 
     <?php $certificate_review = get_field('certificate_review');
@@ -1155,6 +1540,7 @@
 
         $teaching_video_masterclass = get_field('teaching_video_masterclass');
     ?>
+    <?php if (get_the_ID() != 101642) : ?>
         <section class="certificate-preview-section section-padding" >
             <div class="ast-container">
                 <div class="ast-row">
@@ -1227,6 +1613,7 @@
                 </div>
             </div>
         </section>
+        <?php endif; ?>
     <?php endif?>
 
     <!-- Certificate Review Section End  -->
@@ -1282,7 +1669,9 @@
                             <?php
                             if ($accred_img && $accred_title) : ?>
                                 <div class="item">
-                                    <div class="image-box"><img src="<?php echo $accred_img; ?>"></div>
+                                    <div class="image-box">
+                                        <img src="<?php echo $accred_img; ?>">
+                                    </div>
                                     <div>
                                         <h5><?php echo $accred_title; ?></h5>
                                         <h6><?php echo $accred_subtitle; ?></h6>
@@ -1295,10 +1684,13 @@
                                         $accred_img = $comm_acc['logo'];
                                         $accred_title = $comm_acc['title'];
                                         $accred_subtitle = $comm_acc['subtitle'];
+                                        $accred_link = $comm_acc['link'];
                             ?>
                                 <div class="item">
                                     <div class="image-box">
-                                        <img src="<?php echo $accred_img; ?>">
+                                        <a href="<?php echo $accred_link?>" target="_blank">
+                                            <img src="<?php echo $accred_img; ?>">
+                                        </a>
                                     </div>
                                     <div class="image-text">
                                         <h5><?php echo $accred_title; ?></h5>
@@ -1456,26 +1848,6 @@
     <?php endif?>
     <!-- Free Resources Section End-->
 
-
-    <!-- Search Courses Section -->
-
-    <section class="search-courses-section section-padding-bottom">
-        <div class="ast-container">
-            <div class="ast-row">
-                <h2 class="search-courses-section__heading text-center common-heading">
-                    Find The Perfect TEFL Course
-                </h2>
-                <div class="search-courses-section__body ast-col-md-12">
-                <?php echo do_shortcode('[tefl_course_search]'); ?>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Search Courses Section End -->
-
-    
-
     <?php if (false && !$is_virtual_couse) :
         /* Temporarily HIDE GUIDES - Request from IAN */
     ?>
@@ -1608,11 +1980,7 @@
         </section>
 
     <?php endif; ?>
-    <!-- Offer Banner -->
-
-    <?php include('template-parts/offer-banner.php'); ?>
-
-    <!-- Offer Banner End -->       
+          
     <!-- Learn More Section -->
 
     <?php
@@ -1642,12 +2010,104 @@
                         
                     </div>
                 </div>
+
+                <!-- 5 country guide covers (client brief 2026-10) -->
+                <div class="ast-row">
+                  <div class="ast-col-md-12">
+                    <div class="tg-guides">
+                      <a class="tg-cover" href="https://teflinstitute.com/teach-english-abroad/teach-english-in-spain/">
+                        <span class="tg-code" aria-hidden="true">ES</span>
+                        <div class="tg-top"><div class="tg-label">Plan for 2027</div><div class="tg-rule"></div>
+                        <h3 class="tg-country">Spain</h3><p class="tg-sub">Jobs, pay and visa routes</p></div>
+                        <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                      </a>
+                      <a class="tg-cover is-featured" href="https://teflinstitute.com/teach-english-abroad/south-korea/">
+                        <span class="tg-code" aria-hidden="true">KR</span>
+                        <div class="tg-top"><div class="tg-label">Plan for 2027</div><div class="tg-rule"></div>
+                        <h3 class="tg-country">South Korea</h3><p class="tg-sub">EPIK, hagwons and pay</p></div>
+                        <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                      </a>
+                      <a class="tg-cover" href="https://teflinstitute.com/teach-english-abroad/japan/">
+                        <span class="tg-code" aria-hidden="true">JP</span>
+                        <div class="tg-top"><div class="tg-label">Plan for 2027</div><div class="tg-rule"></div>
+                        <h3 class="tg-country">Japan</h3><p class="tg-sub">JET, ALT and eikaiwa pay</p></div>
+                        <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                      </a>
+                      <a class="tg-cover" href="https://teflinstitute.com/teach-english-abroad/vietnam/">
+                        <span class="tg-code" aria-hidden="true">VN</span>
+                        <div class="tg-top"><div class="tg-label">Plan for 2027</div><div class="tg-rule"></div>
+                        <h3 class="tg-country">Vietnam</h3><p class="tg-sub">Work permits and requirements</p></div>
+                        <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                      </a>
+                      <a class="tg-cover" href="https://teflinstitute.com/teach-english-abroad/thailand/">
+                        <span class="tg-code" aria-hidden="true">TH</span>
+                        <div class="tg-top"><div class="tg-label">Plan for 2027</div><div class="tg-rule"></div>
+                        <h3 class="tg-country">Thailand</h3><p class="tg-sub">Visas and teaching licences</p></div>
+                        <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                      </a>
+                      
+                      <a class="tg-cover" href="https://teflinstitute.com/teach-english-abroad/italy/">
+                    <span class="tg-code" aria-hidden="true">IT</span>
+                    <div class="tg-top">
+                        <div class="tg-label">Plan for 2027</div>
+                        <div class="tg-rule"></div>
+                        <h3 class="tg-country">Italy</h3>
+                        <p class="tg-sub">Jobs, pay and visa routes</p>
+                    </div>
+                    <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                    </a>
+                    <a class="tg-cover" href="https://teflinstitute.com/teach-english-abroad/dubai/">
+                    <span class="tg-code" aria-hidden="true">AE</span>
+                    <div class="tg-top">
+                        <div class="tg-label">Plan for 2027</div>
+                        <div class="tg-rule"></div>
+                        <h3 class="tg-country">Dubai</h3>
+                        <p class="tg-sub">Pay, requirements and visas</p>
+                    </div>
+                    <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                    </a>
+                    <a class="tg-cover" href="https://teflinstitute.com/teach-english-abroad/czech-republic/">
+                    <span class="tg-code" aria-hidden="true">CZ</span>
+                    <div class="tg-top">
+                        <div class="tg-label">Plan for 2027</div>
+                        <div class="tg-rule"></div>
+                        <h3 class="tg-country">Czech Republic</h3>
+                        <p class="tg-sub">Pay, visas and cities</p>
+                    </div>
+                    <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                    </a>
+                    <a class="tg-cover" href="https://teflinstitute.com/teach-english-abroad/cambodia/">
+                    <span class="tg-code" aria-hidden="true">KH</span>
+                    <div class="tg-top">
+                        <div class="tg-label">Plan for 2027</div>
+                        <div class="tg-rule"></div>
+                        <h3 class="tg-country">Cambodia</h3>
+                        <p class="tg-sub">Pay, requirements and visas</p>
+                    </div>
+                    <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                    </a>
+                    <a class="tg-cover" href="https://teflinstitute.com/teach-english-abroad/estonia/">
+                    <span class="tg-code" aria-hidden="true">EE</span>
+                    <div class="tg-top">
+                        <div class="tg-label">Plan for 2027</div>
+                        <div class="tg-rule"></div>
+                        <h3 class="tg-country">Estonia</h3>
+                        <p class="tg-sub">Jobs, pay and work routes</p>
+                    </div>
+                    <div class="tg-foot"><span>Read the guide</span><span class="tg-arrow" aria-hidden="true">&rarr;</span></div>
+                    </a>
+
+                    </div>
+                  </div>
+                </div>
             </div>
         </section>
     <?php
         endif;
-    ?>                 
-                   
+    ?>           
+    <?php
+        // include('includes/save-your-search-modal.php');
+    ?>     
 
     <!-- Learn More Section End -->
 </div>

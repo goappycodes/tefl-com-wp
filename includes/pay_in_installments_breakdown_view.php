@@ -42,7 +42,7 @@ function display_split_payment_breakdown_html($cart_item)
 
     ob_start();
 
-    if ($is_deposit) {
+    if ($is_deposit && $deposit_payment_plan) {
         ?>
         <div class="payment-breakdown-container <?php echo is_cart() ? 'mr-2' : '' ?><?php echo is_checkout() ? 'checkout-page' : '' ?>">
             <?php

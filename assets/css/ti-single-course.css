@@ -690,6 +690,10 @@ section.banner-section .ast-container {
 	position: relative
 }
 
+.banner-content-block .content-block>p:last-of-type {
+	margin-bottom: 0;
+}
+
 .banner-content-block .content-block a {
 	text-decoration: underline
 }
@@ -1863,14 +1867,25 @@ section.download-guide {
 }
 
 .flexible-booking-btn a {
-	display: block;
 	text-align: center;
-	text-transform: uppercase;
+	text-transform: capitalize;
 	background-color: #000;
 	color: #fff;
-	padding: 15px 0;
-	letter-spacing: .3rem;
-	font-size: .688rem
+	padding: 8px 10px !important;
+	font-size: 16px;
+	flex-direction: row-reverse;
+	gap: 10px;
+	font-weight: 600;
+}
+
+.flexible-booking-btn a:hover {
+	background: var(--white);
+	border-color: var(--white);
+	color: var(--black-jet);
+}
+
+.flexible-booking-btn .btn img {
+	width: 34px;
 }
 
 .timetable-section td.price del:before {
@@ -2315,7 +2330,10 @@ ul.nav.nav-tabs li a span {
 .flexible-booking-btn {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 50px
+	margin-bottom: 50px;
+	align-items: center;
+	gap: 20px;
+	font-weight: 600;
 }
 
 .flexible-booking-btn a {
@@ -3958,4 +3976,108 @@ a.btn-signup {
 	font-size: 1rem;
 	text-transform: initial;
 	font-weight: 700;
+}
+
+/* Temp changes */
+
+.offer-sale-countdown .card__top {
+	background: #e5e5e5c2 !important;
+}
+
+.offer-sale-countdown {
+	margin-top: 1rem;
+}
+
+.banner-logo-container img {
+	border-radius: 10px;
+}
+
+.offer-sale-information-outer {
+	padding: 2px;
+	border: 1px solid #DA1A35;
+	border-radius: 10px;
+	margin: 1rem auto;
+}
+
+.offer-sale-information {
+	display: flex;
+	border-radius: 8px;
+	overflow: hidden;
+	border: 1px solid #DA1A35;
+}
+
+.offer-sale-counter {
+	background: #DA1A35;
+	color: #fff;
+	font-size: 16px;
+	flex: 25%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.offer-sale-counter>span:first-of-type {
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 2px;
+}
+
+.offer-sale-information__details {
+	flex: 75%;
+	display: flex;
+	flex-direction: column;
+	padding: 14px;
+	background: #f8f9f9;
+	font-size: 18px;
+	line-height: 1;
+	gap: 10px;
+}
+
+.offer-sale-information__details>span:last-of-type {
+	font-size: 14px;
+	color: #000;
+}
+
+@media screen and (max-width:768px) {
+	.offer-sale-information {
+		flex-direction: column;
+	}
+
+	.offer-sale-counter {
+		padding: 20px;
+	}
+
+	.offer-sale-counter>span:first-of-type {
+		font-size: 25px;
+	}
+
+	.offer-sale-information__details {
+		font-size: 14px;
+	}
+
+	.flexible-booking-btn {
+		gap: 16px;
+		flex-direction: column;
+	}
+}
+
+.banner-logo-container img {
+	top: 50px;
+}
+
+.banner-logo-container .offer-sale-counter {
+	position: absolute;
+	right: calc(250px/2);
+	z-index: 2;
+	bottom: calc(-50px - 10px);
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 12px;
+	transform: translate(50%, 0);
+}
+
+.banner-logo-container .offer-sale-counter>span:first-of-type {
+	font-size: 30px;
+	text-align: center;
 }

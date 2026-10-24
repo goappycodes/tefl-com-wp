@@ -52,8 +52,8 @@ $classes   = implode( ' ', $classes );
 				<div class="ast-col-md-3">
 					<div class="site-social-logo-container">
 						<a href="/"><?php
-							$country = get_user_geo_country_code();
-							$site_logo = get_geo_logo($country); ?>
+							// Standard logo (cache-safe); ti-global.js updateLogo() swaps in the visitor's city logo.
+							$site_logo = '/wp-content/uploads/2023/06/TEFL-Logo_Institute.svg'; ?>
 							<img src="<?php echo !empty($site_logo)? $site_logo: '/wp-content/uploads/2023/06/TEFL-Logo_Institute.svg'?>" alt="TEFL Institute" class="site-logo">
 						</a>
 						<div class="social-icons-container">
@@ -75,7 +75,7 @@ $classes   = implode( ' ', $classes );
 				<div class="mobile-two-column ast-col-md-12">
                   <div class="ast-col-md-4 first-col">
 					<div class="accreditation-council-logo-container"> 
-						<a target="_blank" href="https://www.highfieldqualifications.com/products/qualifications/teaching/teaching-english-foreign-language" rel="noopener">
+						<a target="_blank" href="https://find-a-qualification.services.ofqual.gov.uk/qualifications/61015714" rel="noopener">
 							<img src="/wp-content/uploads/2021/10/Highfield-logo-white.svg" class="accreditation-council-logo" alt="Training Qualification">
 						</a> 
 						<p>Highfield<br>Approved Center Number<br>21335</p></div>
@@ -83,16 +83,13 @@ $classes   = implode( ' ', $classes );
 
 					<div class="ast-col-md-3 second-col">
 						<div class="accreditation-council-logo-container">
-							<a target="_blank" href="https://www.odlqc.org.uk/accredited-providers">
-								<img src="/wp-content/uploads/2023/03/ODLQC-Logo-160x75-1.png" class="accreditation-council-logo" alt="Accreditation Council">
-							</a> 
-							<p>ODLQC<br>Open & Distance Learning Quality Council</p>
+							<img src="/wp-content/uploads/2026/05/OTCAC-logo-white.png" class="accreditation-council-logo" alt="">
 						</div>
 					</div>
 					
                    <div class="ast-col-md-5 third-col">
 						<div class="accreditation-council-logo-container">
-							<a target="_blank" href="#">
+							<a target="_blank" href="https://www.aqcreview.org/providers/the-tefl-institute/">
 								<img src="/wp-content/uploads/2024/03/footer-tefl-institute.png" class="accreditation-council-logo" alt="Accreditation Council">
 							</a> 
 							<p>DEAC/ACQ<br>Curriculum Approved Centre</p>

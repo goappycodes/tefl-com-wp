@@ -281,7 +281,7 @@ body {
 
 .features-div {
     text-align: right;
-    margin-top: 2.5rem;
+    margin-top: 20.5rem;
     font-weight: 600;
     font-size: 15px;
 }
@@ -293,6 +293,7 @@ body {
 .specialist-courses-inner .course-heading {
     font-weight: 600;
     font-size: 14px;
+    line-height: 1.25;
 }
 
 .specialist-courses-inner .course-price {
@@ -303,12 +304,13 @@ body {
 
 .specialist-courses-inner .course-icon img {
     position: relative;
-    left: -15px;
-    top: -29px;
-    margin-bottom: 5px;
+    left: 50%;
+    top: -35px;
+    margin: auto;
+    transform: translateX(-50%);
 }
 
-.specialist-courses-inner .course-icon::after {
+/* .specialist-courses-inner .course-icon::after {
     content: "hour";
     transform: rotate(-90deg);
     position: absolute;
@@ -316,7 +318,7 @@ body {
     font-size: 22px;
     font-weight: 400;
     margin: -21px 0 0 -14px;
-}
+} */
 
 .specialist-courses-inner .course-duration {
     font-weight: 600;
@@ -671,12 +673,121 @@ body {
 
 /* faq section end */
 
+/* New CTA Section */
+
+.courses-cta-section .course-cta-section__row {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background-color: var(--color-gray);
+    margin-bottom: 3rem;
+}
+
+.course-cta-section__row .ast-row::before,
+.course-cta-section__row .ast-row::after {
+    display: none;
+}
+
+.courses-cta-section .cta-image {
+    background-size: cover !important;
+    height: 100%;
+    background-position: center !important;
+}
+
+.courses-cta-section img.cta-icon {
+    --dim: 200px;
+    width: var(--dim);
+    position: absolute;
+    right: -16px;
+    top: 100px;
+}
+
+.courses-cta-section .even-row img.cta-icon {
+    left: -16px;
+    top: 100px;
+}
+
+.course-cta-section__row.even-row .ast-row {
+    flex-direction: row-reverse;
+}
+
+.courses-cta-section .cta-content {
+    padding: 40px 20px 40px 0;
+}
+
+.courses-cta-section .even-row .cta-content {
+    padding: 40px 0 40px 40px;
+}
+
+.courses-cta-section .cta-content__title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    text-transform: uppercase;
+    justify-content: center;
+    text-align: center;
+}
+
+.courses-cta-section .cta-course-price {
+    text-align: center;
+    margin: 1rem auto;
+}
+
+.courses-cta-section .cta-course-price del {
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 2px;
+}
+
+.courses-cta-section .cta-course-price del::before {
+    content: "WAS: ";
+}
+
+.courses-cta-section .cta-course-price ins {
+    background: var(--red);
+    color: var(--white);
+    padding: 2px 10px;
+    border-radius: 4px;
+}
+
+.courses-cta-section .cta-course-price ins::before {
+    content: 'NOW: ';
+}
+
+.courses-cta-section a.course-cta-btn {
+    display: block;
+    text-align: center;
+    background: var(--black-jet);
+    color: var(--white);
+    width: 90%;
+    margin: auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all .4s ease-in-out;
+}
+
+.courses-cta-section a.course-cta-btn:hover {
+    background: var(--red);
+}
+
+.courses-cta-section .cta-content__title h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black-jet);
+}
+
+.courses-cta-section .cta-content__title img {
+    width: 100px;
+}
+
+.courses-cta-section .cta-content__summary {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
 @media screen and (min-width:769px) {
     .features-div-icons>div>span {
         display: none;
     }
-
-
 }
 
 @media (max-width:768px) {
@@ -807,5 +918,28 @@ body {
 
     .specialist-courses {
         padding: 0;
+    }
+
+    .courses-cta-section .cta-content {
+        padding: 20px !important;
+    }
+
+    .courses-cta-section .cta-image {
+        height: 200px !important;
+    }
+
+    .course-cta-section__row .ast-row {
+        flex-direction: column !important;
+    }
+
+    .courses-cta-section img.cta-icon {
+        --dim: 100px !important;
+        right: 25px !important;
+        top: 16px !important;
+        left: inherit !important
+    }
+
+    .courses-cta-section .cta-content__title {
+        justify-content: center !important;
     }
 }

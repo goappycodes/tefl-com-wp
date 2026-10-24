@@ -4,10 +4,13 @@
 
     <?php
     $course_product_id = get_field('course_product');
-    $course_product = new WC_Product($course_product_id);
-    $course_price = $course_product->get_price_html();
-    $course_price_value = $course_product->get_price();
-    $full_price = $course_price_value;
+    $course_product = wc_get_product($course_product_id);
+    if($course_product){
+        $course_price = $course_product->get_price_html();
+        $course_price_value = $course_product->get_price();
+        $full_price = $course_price_value;
+    }
+    
 
     $add_to_cart_url = site_url() . '/?add-to-cart=' . $course_product_id;
 
@@ -62,9 +65,12 @@
              {
 		  "@context": "http://schema.org",
 		  "hasCourseInstance": {
-    		"@type": "CourseInstance",
-    		"courseMode": "Online"
-  			},
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "courseWorkload": "PT150H",
+                "startDate": "2025-05-01",
+                "endDate": "2025-10-28"
+            },
 		  "@type": "Course",
 		  "name": "<?php echo get_the_title(); ?>",
 		  "description": <?php echo json_encode($CTA_txt); ?>,
@@ -74,7 +80,8 @@
 			"@type": "Offer",
 			"price": "<?php echo $course_price_value; ?>",
 			"priceCurrency": "<?php echo get_woocommerce_currency(); ?>",
-			"validFrom": "<?php echo date('y-m-d');?>"
+			"validFrom": "<?php echo date('y-m-d');?>",
+             "category": "Course"
 		  },
 		  "typicalAgeRange": "16+",
 		  "inLanguage": "en-US",
@@ -146,7 +153,31 @@
                                     </div>
                                 </div>
                             </h1>
-                            
+                            <?php
+                            // Sales countdown
+                            $number_of_sale_courses_offered = empty(get_field('number_of_sale_courses_offered')) ? 0 : get_field('number_of_sale_courses_offered');
+                            $number_of_sale_courses_sold = count_orders_with_product_since_date($course_product_id,'2024-10-21');
+                            $number_of_sale_courses_sold_count = $number_of_sale_courses_sold['count'] ?? 0;
+                            $number_of_sale_courses_remaining = (int)$number_of_sale_courses_offered - (int)$number_of_sale_courses_sold_count;
+
+                            if ($number_of_sale_courses_remaining > 0 ) :
+                            ?>
+                                <div class="offer-sale-information-outer">
+                                    <div class="text-center offer-sale-information">
+                                        <div class="offer-sale-counter <?php echo $number_of_sale_courses_sold_count?> ">
+                                            <span><?php echo $number_of_sale_courses_remaining; ?></span>
+                                            <span>courses left</span>
+                                        </div>
+                                        <div class="offer-sale-information__details">
+                                            <span class="font-800">Looking for extra income?</span>
+                                            <span class="font-600">Start teaching English online</span>
+                                            <span class="font-400">Applies to first 100 courses - <b>Act fast!</b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                            endif;
+                            ?>
                             <?php echo $CTA_txt ?>
 
                             <?php if (is_single(array('836', '838', '743', '825', '2704'))) { ?>
@@ -160,7 +191,7 @@
                                     <div class="yoga-course-section">
                                         <span class="bonus-course">Bonus Course!</span>
                                         <div class="yoga-course-text">
-                                            <img src="/wp-content/uploads/2022/03/yoga_icon.png">
+                                            <img src="/wp-content/uploads/2025/04/yoga-course.png">
                                             <?php echo $yoga_course_text; ?>
                                         </div>
                                     </div>
@@ -190,7 +221,10 @@
                                         $product = $zoom_classes['product'];
                                         $product_id = wc_get_product($product);
                                         //$regular_product = $product_id->get_regular_price();
-                                        $regular_product = $product_id->get_price_html();
+                                        if($product_id){
+                                            $regular_product = $product_id->get_price_html();
+                                        }
+                                        
                                         ?>
                                         <!-- <div class="price">Worth <span><?php //echo get_woocommerce_currency_symbol().$regular_product; 
                                                                             ?></span></div> -->
@@ -207,7 +241,10 @@
                                         $product = $course['product'];
                                         $product_id = wc_get_product($product);
                                         //$regular_product = $product_id->get_regular_price();
-                                        $regular_product = $product_id->get_price_html();
+                                        if($product_id){
+                                            $regular_product = $product_id->get_price_html();
+                                        }
+                                        
                                         ?>
                                         <!-- <div class="price">Worth <span><?php //echo get_woocommerce_currency_symbol().$regular_product; 
                                                                             ?></span></div> -->
@@ -224,7 +261,9 @@
                                         $product = $guide['product'];
                                         $product_id = wc_get_product($product);
                                         //$regular_product = $product_id->get_regular_price();
-                                        $regular_product = $product_id->get_price_html();
+                                        if($product_id){
+                                            $regular_product = $product_id->get_price_html();
+                                        }
                                         ?>
                                         <!-- <div class="price">Worth <span><?php //echo get_woocommerce_currency_symbol().$regular_product; 
                                                                             ?></span></div> -->
@@ -280,7 +319,7 @@
     <?php $below_black_bar_guarantee = get_field('below_black_bar_guarantee', 'options');  ?>
 
     <?php if ($below_black_bar_guarantee) : ?>
-        <div class="below-black-bar-guarantee">
+        <div class="below-black-bar-guarantee d-none">
             <div class="img-container">
                 <img src="/wp-content/uploads/2022/03/our-pledge.png">
             </div>
@@ -755,7 +794,6 @@
             $course_product = wc_get_product($course_product_id);
             if ($course_product) {
                 $course_price = $course_product->get_price_html();
-                
             }
             $add_to_cart_link = site_url() . '/cart/?add-to-cart=' . $course_product_id;
         }
@@ -1055,16 +1093,16 @@
                                 Approved centre number: C000854
                             </div>
                         </div> -->
-                        <div class="item">
+                        <!-- <div class="item">
                             <div class="image-box">
-                                <!-- <img src="/wp-content/uploads/2021/03/Screenshot-2021-03-16-at-15.52.39.png"> -->
+                                <img src="/wp-content/uploads/2021/03/Screenshot-2021-03-16-at-15.52.39.png">
                                 <img src="/wp-content/uploads/2022/01/odlqc-logo-cropped.png">
                             </div>
                             <div>
                                 <div>ODLQC</div>
                                 (Open & Distance Learning Quality Council)
                             </div>
-                        </div>
+                        </div> -->
                         <div class="item">
                             <div class="image-box"><img src="/wp-content/uploads/2020/12/ACDL-Logo.png"></div>
                             <div>
@@ -1077,28 +1115,6 @@
             </div>
         </div>
     </section>
-
-    <?php //if (!$is_virtual_couse) : 
-    ?>
-    <!--distance learning information-->
-    <section class="distance-learning-info ast-container">
-        <div class="ast-row ast-flex">
-            <div class="ast-col-md-6 logo-container">
-                <img src="<?php the_field('accreditation_image_1', 'option'); ?>">
-                <img src="<?php the_field('accreditation_image_2', 'option'); ?>">
-                <?php if (in_array(19, $course_category)) : ?>
-                    <img src="<?php the_field('accreditation_image_3', 'option'); ?>">
-                <?php endif; ?>
-                <img src="<?php the_field('accreditation_image_4', 'option'); ?>">
-            </div>
-            <div class="ast-col-md-6 info-container">
-                <h6 class="section-heading"><?php the_field('accreditation_heading', 'option'); ?></h6>
-                <?php the_field('accreditation_body', 'option'); ?>
-            </div>
-        </div>
-    </section>
-    <?php //endif; 
-    ?>
 
     <?php $course_benefits = get_field('course_benefits');
     if ($course_benefits) : ?>
@@ -1286,24 +1302,6 @@
                             <p class="salary-text"><?php echo $salary_text; ?></p>
                             <a href="<?php echo $salary_button_url; ?>"><span><?php echo $salary_button_text; ?></span><i class="fa fa-angle-right"></i></a>
                         </div>
-                        <!-- <div class="typeform-widget" style="width: 100%; height: 550px; margin: 0;" data-url="https://form.typeform.com/to/YoukGCVa" data-transparency="0" data-hide-footer="true"></div> -->
-                        <!-- <script>
-                            (function() {
-                                var qs, js, q, s, d = document,
-                                    gi = d.getElementById,
-                                    ce = d.createElement,
-                                    gt = d.getElementsByTagName,
-                                    id = "typef_orm",
-                                    b = "https://embed.typeform.com/";
-                                if (!gi.call(d, id)) {
-                                    js = ce.call(d, "script");
-                                    js.id = id;
-                                    js.src = b + "embed.js";
-                                    q = gt.call(d, "script")[0];
-                                    q.parentNode.insertBefore(js, q)
-                                }
-                            })()
-                        </script> -->
                     </div>
                     <div class="mid-col__header hascountdown">
                         <h6 class="section-heading"><?php echo $mid_col_text . " " . $course_price; ?></h6>

@@ -219,10 +219,11 @@
 }
 
 .mid-content p {
-    font-size: 14px;
+    /* font-size: 14px; */
     color: #fff;
-    line-height: 17px;
+    /* line-height: 17px; */
     padding: 0px 0px;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width:500px) {
@@ -258,8 +259,17 @@
 
 .step-icons {
     display: flex;
-    align-items: self-start;
+    align-items: center;
     justify-content: space-between;
+}
+
+.step-icons img {
+    height: 50px;
+    object-fit: contain;
+}
+
+.step-content {
+    margin-top: 1rem;
 }
 
 .step-icons h3 {
@@ -279,10 +289,10 @@
     word-spacing: 0.2em;
 }
 
-.step-content p {
+/* .step-content p {
     font-size: 14px;
     line-height: 17px;
-}
+} */
 
 @media screen and (max-width:990px) {
     .steps-column {
@@ -316,8 +326,6 @@
 
 .calculate-salary-details p {
     color: #fff;
-    font-size: 16px;
-    line-height: 18px;
 }
 
 .calculate-button {
@@ -770,8 +778,6 @@ span.arrow {
 
 .tips-teaching-english-online p {
     padding: 0 50px;
-    font-size: 14px;
-    line-height: 16px;
 }
 
 .tteo-content {
@@ -789,8 +795,6 @@ span.arrow {
 
 
 .tips-content p {
-    font-size: 14px;
-    line-height: 17px;
     padding: 0 0;
 }
 
@@ -813,7 +817,7 @@ span.arrow {
     font-size: 1.5rem;
     letter-spacing: 0.2rem;
     background-color: #1d1d1b;
-    color: var(--global-theme-accent-color);
+    color: #fff;
     text-align: center;
     padding: 8px 0;
     font-size: 1.3rem;
@@ -1169,8 +1173,6 @@ ul.timer li span:nth-of-type(2) {
 }
 
 .blog-content p {
-    font-size: 14px;
-    line-height: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: left;
@@ -1341,5 +1343,40 @@ ul.timer li span:nth-of-type(2) {
 @media screen and (max-width:650px) {
     .banner-section {
         min-height: 300px;
+    }
+}
+/* "Find online English teaching jobs" CTA link (added 2026-10-02) */
+.find-online-teaching-jobs {
+    margin: 22px 0 10px;
+    text-align: center;
+}
+.find-online-teaching-jobs a {
+    display: inline-block;
+    background: #1c1c1b;
+    color: #fff;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 36px;
+    border: 1px solid #1c1c1b;
+    border-radius: 4px;
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
+}
+.find-online-teaching-jobs a:hover,
+.find-online-teaching-jobs a:focus {
+    background: #dfb428;
+    border-color: #dfb428;
+    color: #1c1c1b;
+}
+@media (max-width: 575px) {
+    .find-online-teaching-jobs a {
+        display: block;
+        text-align: center;
+        padding: 13px 18px;
+        font-size: 13px;
+        letter-spacing: 1px;
     }
 }

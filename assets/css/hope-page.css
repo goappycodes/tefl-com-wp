@@ -1,0 +1,534 @@
+/* Banner Section */
+
+div#content>.ast-container {
+    max-width: 100%;
+    padding: 0 !important;
+}
+
+div#primary {
+    margin-top: 0 !important;
+    background: #f7f2ee;
+}
+
+.section-title {
+  color: #000000 !important;
+}
+
+.double-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.double-underline:after,
+.double-underline:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  background-color: #000000;
+  display: block;
+}
+
+.double-underline:after {
+  bottom: -10px;
+  height: 2px;
+}
+
+.double-underline:before {
+  bottom: -5px;
+  height: 1px;
+}
+
+.hope-banner {
+  position: relative;
+  width: 100%;
+  height: 430px;
+  background-size: cover;
+  background-position: center;
+  border-top: 1px solid #d63030;
+  border-bottom: 3px solid #030D36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #FFFFFFBF;
+}
+
+.banner-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1050px;
+  padding: 0 80px;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+.banner-text h2 {
+    font-size: 40px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.banner-text h2 span {
+    font-weight: 600;
+}
+
+.banner-logo img {
+  max-width: 460px;
+  height: auto;
+}
+
+/* Hope Partnership Section */
+
+.hope-partnership {
+  padding: 80px 20px;
+}
+
+.hope-partnership .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.left-content {
+  flex: 1;
+}
+
+.left-content h2 {
+  font-size: 29px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 100%;
+}
+
+.right-content {
+  flex: 1.2;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+.right-content p {
+  margin-bottom: 20px;
+  font-weight: 400;
+  line-height: 130%;
+}
+
+.read-more {
+  position: relative !important;
+  display: inline-block;
+  font-weight: 600;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.read-more span {
+  font-size: 12px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.read-more:hover {
+  color: #353535;
+}
+
+/* Logo Section */
+
+.logo-section .ast-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.logos-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 50px 0 30px;
+  gap: 200px;
+  position: relative;
+}
+
+.logo.cross-logo {
+  top: 30px;
+  left: 550px;
+  position: absolute;
+}
+
+/* Mission Section */
+
+.mission-section {
+  padding: 80px 20px;
+}
+
+.mission-section .ast-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.mission-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 140px;
+}
+
+.card {
+  flex: 1;
+}
+
+.card h3 {
+  font-size: 29px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.card p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 120%;
+  color: #000000;
+}
+
+.card img {
+    height: auto;
+    width: 370px;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+
+/* Vision Section */
+
+.vision-section {
+  padding: 0 20px;
+}
+
+.vision-section .ast-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: #E3E7E9;
+}
+
+.vision-section .content-container {
+  padding: 50px;
+  text-align: center;
+  margin:0 auto;
+  width: 780px;
+  color: #000000;
+}
+
+.vision-section .content-container h3 {
+  font-size: 29px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color:#000000;
+}
+
+.vision-section .content-container p {
+  font-size: 26px;
+  font-weight: 300;
+  margin-bottom: 0;
+  line-height: 100%;
+}
+
+/* Education Section */
+
+.education-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.education-section .ast-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 !important;
+}
+
+.education-section .section-title {
+  font-size: 29px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.education-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  text-align: left;
+  margin-top: 50px;
+}
+
+.education-content img {
+  border-radius: 7px;
+  width: 445px;
+  height: auto;
+}
+
+.education-content p {
+  font-size: 18px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 120%;
+}
+
+/* Help Section */
+
+.help-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.help-section .ast-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 !important;
+}
+
+.help-section .section-title {
+  font-size: 29px;
+  font-weight: 600;
+}
+
+.help-section p {
+  font-size: 18px;
+  font-weight: 300;
+  width: 800px;
+  margin: 30px auto;
+  color:#000000;
+}
+
+.help-section .image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 20px 0;
+}
+
+.help-section .image-box img {
+  border-radius: 7px;
+  width: 445px;
+  height: auto;
+}
+
+/* Donate Section */
+
+.donate-section {
+  padding: 0 20px 60px;
+}
+
+.donate-section .ast-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: #E3E7E9;
+}
+
+.donate-section .content-container {
+    padding: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.donate-section .content-container p {
+  margin-bottom: 0;
+  font-size: 25px;
+  font-weight: 300;
+  color: #000000;
+}
+
+.donate-section .content-container .donate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 26px;
+  background-color: #EF8334;
+  color: white;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: 700;
+  border-radius: 6px;
+  box-shadow: 0 4px 0 #CC6417;
+}
+
+.heart-icon {
+  width: 22px;
+  height: 22px;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .banner-inner {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hope-banner {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .banner-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .banner-text h2 {
+    font-size: 30px;
+  }
+
+  .banner-logo img {
+    max-width: 360px;
+  }
+
+  .hope-partnership .container {
+    flex-direction: column;
+    text-align: left;
+    gap: 30px;
+  }
+
+  .left-content h2 {
+    font-size: 24px;
+  }
+
+  .hope-partnership {
+    padding: 40px 20px;
+  }
+
+  section.logo-section {
+    padding: 0px 20px 30px;
+  }
+
+  .logos-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    margin: 50px 0;
+  }
+
+  .logo.cross-logo {
+    top: 130px;
+    left: 130px;
+  }
+
+  .logo.hope-logo {
+    width: 160px;
+  }
+
+  .logo.tefl-logo {
+    width: 220px;
+  }
+
+  .mission-section {
+    padding: 10px 20px 30px;
+  }
+
+  .mission-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .card h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .card p{
+    font-size: 16px;
+  }
+
+  .vision-section {
+    padding: 40px 20px;
+  }
+
+  .vision-section .content-container {
+    width: auto;
+    padding: 40px 20px;
+  }
+
+  .vision-section .content-container h3 {
+    font-size: 24px;
+  }
+
+  .vision-section .content-container p {
+    font-size: 20px;
+  }
+
+  .education-section {
+    padding: 20px;
+  }
+
+  .education-content {
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 30px;
+  }
+
+  .education-section .section-title {
+    font-size: 24px;
+  }
+
+  .help-section .section-title {
+    font-size: 24px;
+  }
+
+  .help-section p {
+    width: auto;
+    margin: 20px auto;
+    font-size: 16px;
+  }
+
+  .help-section .image-box {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .donate-section .content-container {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  .donate-section .content-container p {
+    text-align: center;
+  }
+
+  section.donate-section {
+    padding-bottom: 40px;
+  }
+
+  .donate-section .content-container .donate-btn {
+    font-size: 22px;
+  }
+
+  .heart-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+}

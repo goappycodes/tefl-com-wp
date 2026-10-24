@@ -35,9 +35,8 @@ get_header();
   
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
-	jQuery(document).ready(function() {
+	jQuery(document).ready(function($) {
       
       	$('#country_heading').text('<?php echo $country; ?>');
         $('#country_subheading').text('<?php echo $country; ?>');
