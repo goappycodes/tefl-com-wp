@@ -57,6 +57,21 @@ function tefl_native_page_tefl_shop($pid, $ctx) {
         } finally {
             $GLOBALS['product'] = $prev;
         }
+        // The variations' price_html as the page prints it (WCPBC's "loading" wrapper),
+        // re-encoded the way variable.php encodes data-product_variations.
+        $html = preg_replace_callback('#data-product_variations="([^"]*)"#', function ($m) {
+            $vars = json_decode(html_entity_decode($m[1], ENT_QUOTES | ENT_HTML5, 'UTF-8'), true);
+            if (!is_array($vars)) {
+                return $m[0];
+            }
+            foreach ($vars as &$v) {
+                if (is_array($v) && isset($v['price_html']) && preg_match('#^<span class="price">(.*)</span>$#s', $v['price_html'], $pm)) {
+                    $v['price_html'] = '<span class="price">' . tefl_native_overviews_wcpbc_page($pm[1]) . '</span>';
+                }
+            }
+            unset($v);
+            return 'data-product_variations="' . wc_esc_json(wp_json_encode($vars)) . '"';
+        }, $html);
         return tefl_native_overviews_html($html, $ctx);
     };
     $symbol = $h(get_woocommerce_currency_symbol());

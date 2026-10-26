@@ -313,3 +313,166 @@ function tefl_native_promos_star_percentages($widget, $ctx) {
 function tefl_native_promos_echo_number($n) {
     return (string) $n;
 }
+
+/*
+ * Top of the January sale landing pages (january-courses-sale.php,
+ * january-internships-sale.php, internship-black-friday-landing-page.php):
+ * hero banner, countdown section, free gifts.
+ */
+function tefl_native_promos_jan_top($ctx) {
+    $raw = function ($v) use ($ctx) {
+        return tefl_native_promos_raw($v, $ctx);
+    };
+    $hero        = null;
+    $hero_banner = get_field('hero_banner');
+    if (!empty($hero_banner)) {
+        $content = $hero_banner['banner_content'];
+        $header  = $content['header'];
+        $hero    = array(
+            'bg'          => tefl_native_promos_src($hero_banner['banner_background_image']),
+            'image'       => tefl_native_promos_src($content['image']),
+            'highlighted' => $raw($header['highlighted_text']),
+            'main'        => $raw($header['main_text']),
+            'subheader'   => $raw($content['sub_header']),
+        );
+    }
+    $timer         = null;
+    $timer_section = get_field('clockdown_section');
+    if (!empty($timer_section)) {
+        $timer = array(
+            'title'   => $raw($timer_section['section_title']),
+            'content' => $raw($timer_section['section_content']),
+            'timer'   => tefl_native_promos_timer('black-friday-sales'),
+        );
+    }
+    $gifts         = null;
+    $gifts_section = get_field('free_gifts_section');
+    if (!empty($gifts_section)) {
+        $items = array();
+        foreach ((array) $gifts_section['free_gift'] as $fg) {
+            $items[] = array(
+                'icon'     => tefl_native_promos_src($fg['icon']),
+                'title'    => $raw($fg['title']),
+                'subtitle' => $raw($fg['subtitle']),
+            );
+        }
+        $gifts = array('title' => $raw($gifts_section['section_title']), 'items' => $items);
+    }
+    return array('hero' => $hero, 'timer' => $timer, 'gifts' => $gifts);
+}
+
+/**
+ * Everything below the gifts on the internship sale pages
+ * (january-internships-sale.php, internship-black-friday-landing-page.php —
+ * identical apart from the gift columns): internship cards, video
+ * testimonials, [brb_collection id="1150"], CTA cards. The card loop is the
+ * template's code, so values it leaks into the next card (price, discount,
+ * stock, guide link) do so here too.
+ */
+function tefl_native_promos_internship_sale($ctx) {
+    $raw  = function ($v) use ($ctx) {
+        return tefl_native_promos_raw($v, $ctx);
+    };
+    $src  = 'tefl_native_promos_src';
+    $href = 'tefl_native_promos_href';
+
+    $cards             = null;
+    $sales_internships = get_field('sale_internships');
+    if (!empty($sales_internships)) {
+        $cards            = array();
+        $internship_price = null;
+        $percentage       = null;
+        $stock_quantity   = null;
+        $guide_link       = null;
+        foreach ($sales_internships as $si) {
+            $internship            = $si['internship'];
+            $internship_product_id = get_field('internship_product', $internship);
+            if ($internship_product_id) {
+                $internship_product = wc_get_product($internship_product_id);
+                if ($internship_product) {
+                    $internship_price = tefl_native_promos_price_html($internship_product);
+                    $regular          = $internship_product->get_regular_price();
+                    $sale             = $internship_product->get_sale_price();
+                    $stock_quantity   = get_total_combined_stock_quantity($internship_product);
+                    if ($internship_product->is_type('variable')) {
+                        $regular = $internship_product->get_variation_regular_price();
+                        $sale    = $internship_product->get_variation_sale_price();
+                    }
+                    $percentage = $regular ? round((($regular - $sale) / $regular) * 100) : 0;
+                }
+            }
+            if ($si['select_guide']) {
+                $guide_link = get_post_permalink($si['select_guide']);
+            }
+            $features = array();
+            foreach ((array) $si['internship_features'] as $feature) {
+                $features[] = $raw($feature['feature']);
+            }
+            $cards[] = array(
+                'title'      => $raw($si['internship_title']),
+                'subheader'  => $raw($si['internship_duration_text'] . ' | ' . $si['internship_start_date_text']),
+                'percentage' => $percentage > 0 ? $raw($percentage) : null,
+                'image'      => $src($si['internship_image']),
+                'price'      => $ctx['html']((string) $internship_price),
+                'logo'       => $src($si['internship_logo']),
+                'features'   => $features,
+                'stock'      => $stock_quantity > 0 ? $raw($stock_quantity) : null,
+                'link'       => $href(get_post_permalink($internship)),
+                'buy_now'    => $raw($si['buy_now_button_text']),
+                'learn_more' => $raw($si['learn_more_button_text']),
+                'guide_link' => $href((string) $guide_link),
+            );
+        }
+    }
+
+    $videos  = null;
+    $section = get_field('video_testimonials_section');
+    if (!empty($section)) {
+        $items = array();
+        foreach ((array) $section['testimonial_videos'] as $t) {
+            $items[] = array(
+                'link'      => $href($t['video_link']),
+                'thumbnail' => $src($t['video_thumnail']),
+                'title'     => $raw($t['video_title']),
+                'subtitle'  => $raw($t['video_subtitle']),
+            );
+        }
+        $videos = array(
+            'title'    => $raw($section['section_title']),
+            'subtitle' => $raw($section['section_subtitle']),
+            'play'     => $src($section['play_button_icon']),
+            'items'    => $items,
+        );
+    }
+
+    $cta     = null;
+    $section = get_field('cta_section');
+    if (!empty($section)) {
+        $one = function ($c) use ($raw, $src, $href) {
+            return array(
+                'image'    => $src($c['cta_image']),
+                'title'    => $raw($c['cta_title']),
+                'subtitle' => $raw($c['cta_subtitle']),
+                'text'     => $raw($c['cta_button_text']),
+                'link'     => $href($c['cta_button_link']),
+            );
+        };
+        $cta = array(
+            'salary' => $one($section['salary_calculator_cta']),
+            'elt'    => $one($section['english_level_test_cta']),
+        );
+    }
+
+    $top = tefl_native_promos_jan_top($ctx);
+    return array(
+        'primary_class' => tefl_native_promos_primary_class(),
+        'hero'          => $top['hero'],
+        'timer'         => $top['timer'],
+        'gifts'         => $top['gifts'],
+        'internships'   => $cards,
+        'videos'        => $videos,
+        'reviews'       => tefl_native_promos_shortcode('[brb_collection id="1150"]', $ctx),
+        'cta'           => $cta,
+        'origin'        => tefl_headless_wp_origin(),
+    );
+}

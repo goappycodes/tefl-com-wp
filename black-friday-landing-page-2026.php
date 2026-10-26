@@ -187,6 +187,106 @@ $bf26_img = bf26_hero_image();
     </section>
     <!-- ============ END ACCREDITED & REGULATED ============ -->
 
+    <!-- ================== SALE COUNTDOWN ================== -->
+    <?php if ( bf26_sale_show() ) : ?>
+    <section class="bf26-countdown bf26-fullbleed">
+      <div class="bf26-countdown__inner" data-sale-end="<?php echo esc_attr( bf26_sale_end_iso() ); ?>">
+        <div class="bf26-countdown__head">
+          <span class="bf26-countdown__label"><?php bf26_e('sale_label'); ?></span>
+          <span class="bf26-countdown__note"><?php bf26_e('sale_end_note'); ?></span>
+        </div>
+        <div class="bf26-countdown__clock">
+          <div class="bf26-ct"><div class="bf26-ct__num" data-ct="days">00</div><div class="bf26-ct__lbl">DAYS</div></div>
+          <div class="bf26-ct"><div class="bf26-ct__num" data-ct="hrs">00</div><div class="bf26-ct__lbl">HRS</div></div>
+          <div class="bf26-ct"><div class="bf26-ct__num" data-ct="mins">00</div><div class="bf26-ct__lbl">MIN</div></div>
+          <div class="bf26-ct bf26-ct--sec"><div class="bf26-ct__num" data-ct="secs">00</div><div class="bf26-ct__lbl">SEC</div></div>
+        </div>
+        <span class="bf26-countdown__places"><strong><?php bf26_e('sale_places_strong'); ?></strong> <?php bf26_e('sale_places_text'); ?></span>
+      </div>
+    </section>
+    <?php endif; ?>
+    <!-- ================ END SALE COUNTDOWN ================ -->
+
+    <!-- ===================== COURSE CARDS ===================== -->
+    <?php $bf26_worldmap = get_stylesheet_directory_uri() . '/assets/img/black-friday-2026/world-map-dotted-plane.png'; ?>
+    <section class="bf26-courses bf26-fullbleed">
+      <img class="bf26-courses__bg" src="<?php echo esc_url( $bf26_worldmap ); ?>" alt="" aria-hidden="true">
+      <div class="bf26-courses__inner">
+        <div class="bf26-courses__head">
+          <div>
+            <div class="bf26-courses__eyebrow"><?php bf26_e('course_eyebrow'); ?></div>
+            <h2 class="bf26-courses__title"><?php bf26_e('course_title_pre'); ?><strong><?php bf26_e('course_title_em'); ?></strong><?php bf26_e('course_title_post'); ?></h2>
+          </div>
+          <span class="bf26-courses__note"><?php bf26_e('course_note'); ?></span>
+        </div>
+
+        <div class="bf26-courses__grid">
+          <?php
+          $bf26_ci = 0;
+          foreach ( bf26_rows('course_cards') as $c ) :
+            $variant = ( isset($c['variant']) && 'bundle' === $c['variant'] ) ? 'bundle' : 'standard';
+            $pr      = bf26_card_pricing( $c );
+            $img     = bf26_card_image( $c );
+            $strike_delay = 0.8 + $bf26_ci * 0.1;
+          ?>
+          <div class="bf26-card bf26-card--<?php echo esc_attr($variant); ?>" style="--d:<?php echo ($bf26_ci * 0.1); ?>s">
+            <?php if ( ! empty($pr['save']) ) : ?>
+              <div class="bf26-card__save"><span>SAVE</span><strong><?php echo esc_html($pr['save']); ?></strong></div>
+            <?php endif; ?>
+            <div class="bf26-card__media">
+              <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr( isset($c['title']) ? $c['title'] : '' ); ?>">
+            </div>
+            <?php if ( ! empty($c['category']) ) : ?>
+              <div class="bf26-card__cat">
+                <span class="bf26-card__cat-ic"><?php echo bf26_icon( isset($c['cat_icon']) ? $c['cat_icon'] : 'book-open', 14 ); ?></span>
+                <?php echo esc_html($c['category']); ?>
+              </div>
+            <?php endif; ?>
+            <div class="bf26-card__body">
+              <div class="bf26-card__title"><?php echo esc_html( isset($c['title']) ? $c['title'] : '' ); ?></div>
+              <div class="bf26-card__price">
+                <span class="bf26-card__price-now"><?php echo wp_kses_post($pr['price']); ?></span>
+                <?php if ( ! empty($pr['was']) ) : ?>
+                  <span class="bf26-card__price-was"><?php echo wp_kses_post($pr['was']); ?><span class="bf26-card__strike" style="animation-delay:<?php echo $strike_delay; ?>s"></span></span>
+                <?php endif; ?>
+              </div>
+              <?php if ( ! empty($c['klarna']) ) : ?>
+                <div class="bf26-card__klarna"><span class="bf26-card__klarna-badge">Klarna</span>Pay in 2 interest-free</div>
+              <?php endif; ?>
+              <div class="bf26-card__divider"></div>
+              <ul class="bf26-card__features">
+                <?php foreach ( ( isset($c['features']) && is_array($c['features']) ? $c['features'] : array() ) as $f ) : ?>
+                  <li>
+                    <span class="bf26-card__feat-ic"><?php echo bf26_icon( isset($f['icon']) ? $f['icon'] : 'book-open', 13 ); ?></span>
+                    <span><?php echo esc_html( isset($f['text']) ? $f['text'] : '' ); ?></span>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+              <div class="bf26-card__cta">
+                <?php $cta = bf26_card_cta( $c ); ?>
+                <a href="<?php echo esc_url( $cta['url'] ); ?>" class="bf26-btn <?php echo 'bundle' === $variant ? 'bf26-btn--dark' : 'bf26-btn--primary'; ?> bf26-btn--block"><?php echo esc_html( $cta['label'] ); ?></a>
+              </div>
+            </div>
+          </div>
+          <?php $bf26_ci++; endforeach; ?>
+        </div>
+
+        <div class="bf26-courses__free">
+          <span class="bf26-courses__free-title"><?php bf26_e('course_free_title_pre'); ?><strong><?php bf26_e('course_free_title_em'); ?></strong></span>
+          <div class="bf26-courses__free-grid">
+            <?php foreach ( bf26_rows('course_free_tiles') as $t ) : ?>
+              <a href="<?php echo esc_url( isset($t['url']) ? $t['url'] : '#' ); ?>" class="bf26-freetile">
+                <span class="bf26-freetile__ic"><?php echo bf26_icon( isset($t['icon']) ? $t['icon'] : 'book-open', 22, '#E3B341' ); ?></span>
+                <span class="bf26-freetile__label"><?php echo esc_html( isset($t['label']) ? $t['label'] : '' ); ?></span>
+                <span class="bf26-freetile__arrow">→</span>
+              </a>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- =================== END COURSE CARDS =================== -->
+
   </div>
 
 </div>
