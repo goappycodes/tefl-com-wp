@@ -1,0 +1,31 @@
+.noojs .main-header-menu > .menu-item > .menu-link {
+    padding: 8px 1em;
+}
+.wc-deposits-option .li.active{
+	pointer-events:none !important;
+}
+
+#boxzilla-87703 {
+    background: transparent !important;
+}
+
+#post-88865 {
+    padding: 3rem  0 2rem;
+}
+
+
+
+
+/* Fix: prevent top-row mega menu labels from wrapping to two lines (Teach, Partner Network, Blog, Callback, Student Login, The Hire Wire) */
+.top-bar-links a.primary-menu-link {
+	white-space: nowrap;
+}
+
+.top-bar-links a.primary-menu-link[href*="the-hire-wire"] {
+	color: #3E9A7B !important;
+	font-weight: 700;
+}
+.top-bar-links a.primary-menu-link[href*="the-hire-wire"]:hover {
+	color: #0F3042 !important;
+}
+

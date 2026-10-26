@@ -1,0 +1,197 @@
+/* ==========================================================================
+   PARTNERS PAGE -> TEFL FOR SCHOOLS PALETTE  (added 20 Aug 2026)
+   --------------------------------------------------------------------------
+   Recolours https://teflinstitute.com/partners-network/ (page 102741) from the
+   Atlas indigo scheme to the exact palette used on /tefl-for-schools/.
+
+   SOURCE OF TRUTH, copied from the .tfs token block on the TEFL for Schools
+   pages. Do not invent new values, take them from here:
+     ink        #0F3042     paper      #F6F2EA
+     ink-70     rgba(15,48,66,.70)     paper-2    #EFEAE0
+     ink-55     rgba(15,48,66,.55)     white      #FFFFFF
+     ink-14     rgba(15,48,66,.14)     green      #1F7A5C
+     green-lt   #64BE9F                green-wash #E8F3EE
+     shadow     0 14px 38px rgba(15,48,66,.10)
+
+   WHY IT IS ALL OVERRIDES RATHER THAN EDITS. The page has two styling
+   sources, neither of which is editable from the CSS panel:
+     1. the theme file /themes/teflinstitute/assets/css/prz-partners.css,
+        which is well tokenised on .partners-page (--partners-accent etc.)
+     2. an inline style block, id tpm-partners-css, printed in the BODY, which
+        carries the map, tiles, Atlas band, index cards and report band with
+        hardcoded hex values and several !important declarations.
+   Because block 2 is printed after this stylesheet, every rule here is
+   scoped with body.page-id-102741 to win on specificity, and carries
+   !important only where it is fighting an !important declaration.
+
+   TO ROLL BACK: delete this whole block. Nothing else was changed and the
+   page returns to indigo exactly as it was.
+
+   NOT CHANGED ON PURPOSE: fonts, and The Atlas monthly partner email, which
+   still uses electric indigo #5B54F0. The page and that email no longer
+   match. See the project log for 20 Aug 2026.
+   ========================================================================== */
+
+/* ---------- 1. Theme tokens on .partners-page ---------- */
+body.page-id-102741 .partners-page{
+  --partners-bg:#F6F2EA;
+  --partners-alt-bg:#EFEAE0;
+  --partners-card:#FFFFFF;
+  --partners-border:rgba(15,48,66,.14);
+  --partners-text:#0F3042;
+  --partners-muted:rgba(15,48,66,.55);
+  --partners-dark:#0F3042;
+  --partners-accent:#1F7A5C;
+  --partners-line:rgba(15,48,66,.14);
+  background-color:#F6F2EA !important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 720 720'%3E%3Cg fill='none' stroke='%230F3042' stroke-opacity='.04'%3E%3Cpath d='M80 120c60-40 160-50 220 0s150 60 230 10 130-10 170 20'/%3E%3Cpath d='M60 180c70-50 180-60 250 -5s160 70 250 15'/%3E%3Cpath d='M100 480c50-30 130-35 180 5s120 45 190 5 110-5 150 20'/%3E%3Cpath d='M90 540c60-40 150-45 210 5s130 50 210 5'/%3E%3Cellipse cx='180' cy='320' rx='90' ry='60'/%3E%3Cellipse cx='180' cy='320' rx='60' ry='38'/%3E%3Cellipse cx='180' cy='320' rx='32' ry='19'/%3E%3Cellipse cx='560' cy='600' rx='80' ry='50'/%3E%3Cellipse cx='560' cy='600' rx='52' ry='30'/%3E%3Cellipse cx='560' cy='600' rx='26' ry='14'/%3E%3Cpath d='M520 80c40 30 60 80 40 130' stroke-dasharray='3 6'/%3E%3Cpath d='M140 620c50-20 120-15 170 15' stroke-dasharray='3 6'/%3E%3C/g%3E%3Cg stroke='%230F3042' stroke-opacity='.05'%3E%3Cpath d='M354 60h12M360 54v12M100 400h10M105 395v10M620 300h10M625 295v10'/%3E%3C/g%3E%3Cg fill='%231F7A5C' fill-opacity='.06'%3E%3Ccircle cx='300' cy='250' r='2'/%3E%3Ccircle cx='500' cy='420' r='2'/%3E%3Ccircle cx='650' cy='150' r='2'/%3E%3Ccircle cx='90' cy='90' r='2'/%3E%3C/g%3E%3C/svg%3E") !important;
+}
+
+/* ---------- 2. Hero and alternating sections ---------- */
+body.page-id-102741 .partners-hero{
+  background:
+   radial-gradient(1100px 500px at 85% -10%,rgba(31,122,92,.10),rgba(31,122,92,0) 60%),
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='none' stroke='%231F7A5C' stroke-opacity='.08'%3E%3Cpath d='M-20 90c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 150c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 210c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 270c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 330c70-40 150-40 220 0s150 40 240 0'/%3E%3C/g%3E%3Cg fill='%230F3042' fill-opacity='.06'%3E%3Ccircle cx='40' cy='40' r='1.4'/%3E%3Ccircle cx='120' cy='60' r='1.4'/%3E%3Ccircle cx='210' cy='30' r='1.4'/%3E%3Ccircle cx='300' cy='70' r='1.4'/%3E%3Ccircle cx='380' cy='40' r='1.4'/%3E%3C/g%3E%3C/svg%3E"),
+   linear-gradient(180deg,#EFEAE0 0%,#F6F2EA 92%) !important;
+  border-top-color:rgba(15,48,66,.14) !important;
+}
+body.page-id-102741 .partners-hero__title{color:#0F3042;}
+body.page-id-102741 .partners-hero-stat__label{color:rgba(15,48,66,.55);}
+body.page-id-102741 .partners-hero-stat__value,
+body.page-id-102741 .partners-hero .partners-hero-stats strong,
+body.page-id-102741 .partners-stats strong{color:#1F7A5C;}
+body.page-id-102741 .partners-section--alt{
+  background:
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='none' stroke='%231F7A5C' stroke-opacity='.06'%3E%3Cpath d='M-20 90c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 170c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 250c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 330c70-40 150-40 220 0s150 40 240 0'/%3E%3C/g%3E%3C/svg%3E"),
+   #EFEAE0 !important;
+}
+
+/* ---------- 3. Eyebrows, cards, buttons, forms ---------- */
+body.page-id-102741 .tp-eyebrow{color:#1F7A5C;}
+body.page-id-102741 .partners-logo-item__title{color:#0F3042;}
+body.page-id-102741 .partners-logo-link:hover .partners-logo-item__title{color:#1F7A5C;}
+body.page-id-102741 .partners-support__text{color:rgba(15,48,66,.70);}
+body.page-id-102741 .partners-section .partners-grid > div:hover,
+body.page-id-102741 .partners-section--alt .partners-grid > div:hover{
+  box-shadow:0 14px 34px rgba(15,48,66,.10);
+  border-top-color:#1F7A5C;
+}
+body.page-id-102741 .partners-btn--dark{background:#0F3042;}
+body.page-id-102741 .partners-btn--dark:hover{background:#0A2231;}
+body.page-id-102741 .partners-bottom-cta__box{background:#0F3042;}
+body.page-id-102741 .partners-bottom-cta > div,
+body.page-id-102741 .partners-bottom-cta .partners-container{
+  background:
+   radial-gradient(700px 320px at 50% 0%,rgba(31,122,92,.34),rgba(31,122,92,0) 65%),
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.06'%3E%3Cpath d='M-20 90c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 170c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 250c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 330c70-40 150-40 220 0s150 40 240 0'/%3E%3C/g%3E%3C/svg%3E"),
+   #0F3042 !important;
+}
+body.page-id-102741 .partners-hero__form-card,
+body.page-id-102741 .partners-support__form-card{background:#FFFFFF;border-color:rgba(15,48,66,.14);}
+body.page-id-102741 .partners-form-card__title{color:#0F3042;}
+body.page-id-102741 .partners-form-card__text,
+body.page-id-102741 .partners-form-card__note{color:rgba(15,48,66,.55);}
+body.page-id-102741 .partners-form-card__form input,
+body.page-id-102741 .cf7-row input,
+body.page-id-102741 .cf7-row textarea{border-color:rgba(15,48,66,.20);color:#0F3042;}
+body.page-id-102741 .partners-hero .wpcf7-submit,
+body.page-id-102741 .partners-page .wpcf7-submit{background:#1F7A5C !important;border-color:#1F7A5C !important;}
+body.page-id-102741 .partners-hero .wpcf7-submit:hover,
+body.page-id-102741 .partners-page .wpcf7-submit:hover{background:#17614A !important;}
+
+/* The theme's pulse keyframes are indigo. They are not redefined here because
+   load order between this stylesheet and the theme file would decide which
+   @keyframes wins. A new animation name sidesteps that entirely. */
+@keyframes tfs-form-pulse{
+  0%{box-shadow:0 0 0 0 rgba(31,122,92,.55);transform:scale(1)}
+  30%{box-shadow:0 0 0 14px rgba(31,122,92,.18);transform:scale(1.012)}
+  60%{box-shadow:0 0 0 22px rgba(31,122,92,0);transform:scale(1.006)}
+  100%{box-shadow:0 0 0 0 rgba(31,122,92,0);transform:scale(1)}
+}
+body.page-id-102741 .partners-hero__form-card.is-pulsing{
+  animation:tfs-form-pulse 1.4s ease-out !important;
+  border-color:#1F7A5C !important;
+}
+
+/* ---------- 4. Partner map band ---------- */
+body.page-id-102741 .tpm{background:#0F3042;}
+body.page-id-102741 .tpm:before{background:radial-gradient(closest-side,rgba(100,190,159,.16),rgba(100,190,159,0));}
+body.page-id-102741 .tpm-eyebrow{color:#64BE9F;}
+body.page-id-102741 .tpm-sub{color:rgba(255,255,255,.72);}
+body.page-id-102741 .tpm-chip span{color:rgba(255,255,255,.62);}
+body.page-id-102741 .tpm-dot{fill:#24485C;}
+body.page-id-102741 .tpm-cg circle{fill:#64BE9F;}
+body.page-id-102741 .tpm-cg.hl circle{fill:#9FE0C8;}
+body.page-id-102741 .tpm-glow{fill:#1F7A5C;}
+body.page-id-102741 .tpm-core{fill:#E8F3EE;}
+body.page-id-102741 .tpm-ringc{stroke:#64BE9F;}
+body.page-id-102741 .tpm-tip{background:#123A4E;border-color:rgba(100,190,159,.45);}
+body.page-id-102741 .tpm-tip strong{color:#9FE0C8;}
+body.page-id-102741 .tpm-legend{color:rgba(255,255,255,.62);}
+body.page-id-102741 .tpm-legend i{background:#64BE9F;box-shadow:0 0 0 4px rgba(100,190,159,.25);}
+
+/* ---------- 5. Tiles band ---------- */
+body.page-id-102741 .tpt{background:#EFEAE0;}
+body.page-id-102741 .tpt-eyebrow{color:#1F7A5C;}
+body.page-id-102741 .tpt h2{color:#0F3042;}
+body.page-id-102741 .tpt-sub{color:rgba(15,48,66,.70);}
+body.page-id-102741 .tpt-card{border-color:rgba(15,48,66,.14);}
+body.page-id-102741 .tpt-ic{background:#E8F3EE;color:#1F7A5C;}
+body.page-id-102741 .tpt-card h3{color:#0F3042;}
+body.page-id-102741 .tpt-card p{color:rgba(15,48,66,.70);}
+body.page-id-102741 .tpt-card a{color:#1F7A5C;}
+
+/* ---------- 6. Atlas signup band ---------- */
+body.page-id-102741 .tpa{
+  background:
+   radial-gradient(900px 460px at 12% 30%,rgba(31,122,92,.26),rgba(31,122,92,0) 62%),
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.12'%3E%3Cpath d='M-20 70c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 140c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 210c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 280c70-40 150-40 220 0s150 40 240 0'/%3E%3Cpath d='M-20 350c70-40 150-40 220 0s150 40 240 0'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='.11'%3E%3Ccircle cx='60' cy='50' r='1.4'/%3E%3Ccircle cx='160' cy='90' r='1.4'/%3E%3Ccircle cx='260' cy='40' r='1.4'/%3E%3Ccircle cx='350' cy='100' r='1.4'/%3E%3C/g%3E%3C/svg%3E"),
+   #0F3042;
+}
+body.page-id-102741 .tpa-eyebrow{color:#64BE9F;}
+body.page-id-102741 .tpa-sub{color:rgba(255,255,255,.72);}
+body.page-id-102741 .tpa-points li{color:rgba(255,255,255,.80);}
+body.page-id-102741 .tpa-points li:before{
+  background:radial-gradient(circle at 35% 35%,#9FE0C8,#1F7A5C);
+  box-shadow:0 0 10px rgba(100,190,159,.8);
+}
+body.page-id-102741 .tpa-card{border-color:rgba(100,190,159,.30);}
+body.page-id-102741 .tpa-form input{background:#0B2433;border-color:#24485C;}
+body.page-id-102741 .tpa-form input::placeholder{color:rgba(255,255,255,.45);}
+body.page-id-102741 .tpa-form button{background:#1F7A5C;}
+body.page-id-102741 .tpa-form button:hover{background:#17614A;}
+body.page-id-102741 .tpa-note{color:rgba(255,255,255,.58);}
+body.page-id-102741 .tpa-msg--ok{color:#9FE0C8;}
+
+/* ---------- 7. Index cards ---------- */
+body.page-id-102741 .tpi{background:#FFFFFF;border-top-color:rgba(15,48,66,.12);border-bottom-color:rgba(15,48,66,.12);}
+body.page-id-102741 .tpi-eyebrow{color:#1F7A5C;}
+body.page-id-102741 .tpi h2{color:#0F3042;}
+body.page-id-102741 .tpi-sub{color:rgba(15,48,66,.70);}
+body.page-id-102741 .tpi-card{background:#F6F2EA;border-color:rgba(15,48,66,.12);}
+body.page-id-102741 .tpi-card:hover{border-color:#1F7A5C;box-shadow:0 12px 28px rgba(15,48,66,.10);}
+body.page-id-102741 .tpi-num{color:#1F7A5C;}
+body.page-id-102741 .tpi-name{color:#0F3042;}
+body.page-id-102741 .tpi-text{color:rgba(15,48,66,.70);}
+body.page-id-102741 .tpi-more{color:#1F7A5C;}
+
+/* ---------- 8. State of TEFL report band ---------- */
+body.page-id-102741 .tpr{background:#FFFFFF;border-top-color:rgba(15,48,66,.12);}
+body.page-id-102741 .tpr-cover{background:#0F3042;box-shadow:0 18px 40px rgba(15,48,66,.22);}
+body.page-id-102741 .tpr-cover-eyebrow{color:rgba(255,255,255,.62);}
+body.page-id-102741 .tpr-cover-year{color:#64BE9F;}
+body.page-id-102741 .tpr-cover-rule{background:#64BE9F;}
+body.page-id-102741 .tpr-cover-sub{color:rgba(255,255,255,.75);}
+body.page-id-102741 .tpr-eyebrow{color:#1F7A5C;}
+body.page-id-102741 .tpr-title{color:#0F3042;}
+body.page-id-102741 .tpr-sub{color:rgba(15,48,66,.70);}
+body.page-id-102741 .tpr-btn{background:#0F3042;}
+body.page-id-102741 .tpr-btn:hover{background:#1F7A5C;}
+
+/* ---------- 9. Atlas opt-in on the country form ---------- */
+body.page-id-102741 .tpx-label{color:rgba(15,48,66,.70);}
+body.page-id-102741 .tpx-label input{accent-color:#1F7A5C;}
+body.page-id-102741 .tpx-namerow input{border-color:rgba(15,48,66,.20);}
+body.page-id-102741 .tpx-msg--ok{color:#1F7A5C;}
+
+/* ================= END PARTNERS PAGE TFS PALETTE ================= */

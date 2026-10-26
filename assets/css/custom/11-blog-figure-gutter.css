@@ -1,0 +1,11 @@
+/* TEFL-FIG GUTTER FIX, 7 Oct 2026
+   The blog rhythm rule ".content > figure {margin:0 0 26px}" was overriding the
+   text-wrap gutters on floated .tefl-fig images, so text ran flush against the image.
+   This restores a 24px gutter on the text side. Delete to roll back. */
+body.single-post .blog-content-section .content > figure.tefl-fig{margin:6px 0 18px 24px;}
+body.single-post .blog-content-section .content > figure.tefl-fig--left{margin:6px 24px 18px 0;}
+@media (max-width:600px){
+  body.single-post .blog-content-section .content > figure.tefl-fig,
+  body.single-post .blog-content-section .content > figure.tefl-fig--left{margin:18px 0;}
+}
+

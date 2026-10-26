@@ -1,0 +1,64 @@
+/* ==========================================================================
+   HOMEPAGE FOUNDER NOTE — added 17 Aug 2026
+   --------------------------------------------------------------------------
+   Styles the "A note from Ian, our founder" block, the LAST description in
+   the Search Courses section on the homepage (page 77005, ACF group
+   search_section_description > last_paragraph).
+
+   DELIBERATELY MINIMAL. The block inherits the section's own width, font
+   family, size, line height and colour so it matches the block above the
+   search bar. Do NOT reintroduce max-width, font-family or font-size.
+
+   THE FLOAT NEEDS THE WRAPPER, NOT THE IMAGE. wpautop wraps the photo in its
+   own paragraph, so floating the image alone leaves the text sitting underneath.
+   ========================================================================== */
+
+.search-course-section__description-last .description-short > p:has(> img.founder-note-photo),
+.search-course-section__description-last .description-full > p:has(> img.founder-note-photo){
+  float:left;
+  width:96px;
+  margin:4px 26px 6px 0;
+}
+.search-course-section__description-last .founder-note-photo{
+  display:block;
+  width:96px !important;
+  height:96px !important;
+  min-width:96px;
+  max-width:96px;
+  aspect-ratio:1 / 1;
+  border-radius:50% !important;
+  object-fit:cover;
+  object-position:center top;
+  margin:0;
+  padding:0;
+  border:3px solid #fff;
+  box-shadow:0 8px 22px rgba(15,48,66,.20);
+}
+.search-course-section__description-last h4{ clear:none; margin-top:0; }
+.search-course-section__description-last .description-content::after{
+  content:""; display:block; clear:both;
+}
+.search-course-section__description-last .founder-note-email{ font-weight:700; }
+.search-course-section__description-last .description-full > p:nth-of-type(n+3){ clear:left; }
+
+/* Hides the theme's stray ellipsis paragraph in the collapsed preview. The
+   template truncates by splitting the RAW HTML on spaces, keeps the first 50
+   tokens, then appends the ellipsis as its own trailing paragraph. The first
+   paragraph is written to finish exactly on token 50, so that final paragraph
+   holds nothing but the ellipsis. IF YOU REWRITE THE FIRST PARAGRAPH, re-check
+   this or real copy will be hidden. */
+.search-course-section__description-last .description-short > p:last-of-type{ display:none; }
+
+@media (max-width:600px){
+  .search-course-section__description-last .description-short > p:has(> img.founder-note-photo),
+  .search-course-section__description-last .description-full > p:has(> img.founder-note-photo),
+  .search-course-section__description-last .description-short > p:first-child,
+  .search-course-section__description-last .description-full > p:first-child{
+    float:none; width:auto; margin:0 0 14px 0;
+  }
+  .search-course-section__description-last .founder-note-photo{
+    width:80px !important; height:80px !important; min-width:80px; max-width:80px;
+  }
+}
+
+

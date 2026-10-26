@@ -1,0 +1,470 @@
+/* ==========================================================================
+   BLOG COMPONENT CLASSES — added 16 Aug 2026, extended 16 Sep 2026
+   --------------------------------------------------------------------------
+   Blog posts currently carry these components as blocks of inline HTML
+   styling pasted in by writers, so the design lives inside the posts and
+   cannot be changed centrally. These classes reproduce those inline styles
+   exactly, so writers can emit a class name instead.
+
+   SAFE BY DESIGN: existing posts carry BOTH the class and the inline styles.
+   Inline styling always beats a class in CSS specificity, so nothing already
+   published changes appearance. Only new posts that emit the bare class name
+   pick these up. No flag day, no breakage, no retrofit needed first.
+
+   Values copied from Writer Rulebook MASTER sections 4, 5, 6, 8 and 11, and
+   for the video frame and trust cards read off live posts 107428 and 107832
+   on 16 Sep 2026.
+   To restyle the blog later, change them here once.
+   ========================================================================== */
+
+:root{
+  --tefl-ink:#123137;
+  --tefl-ink-soft:#15272F;
+  --tefl-body:#4B5D66;
+  --tefl-muted:#6B7B85;
+  --tefl-accent:#35A9BD;
+  --tefl-accent-deep:#217381;
+  --tefl-accent-pale:#A9DEE7;
+  --tefl-accent-wash:#D6E6E9;
+  --tefl-wash:#F0F7F8;
+  --tefl-line:#DDE9EB;
+  --tefl-line-soft:#ECE7EF;
+  --tefl-green:#00B67A;
+  --tefl-green-deep:#00794F;
+  --tefl-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;
+  --tefl-card-w:840px;
+
+  /* Shared card grain. A tiled fractal-noise SVG at very low opacity, so it
+     reads as paper rather than as a pattern. To make it stronger or weaker,
+     change the opacity value near the end of the data URI (currently .038). */
+  --tefl-card-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='.038'/%3E%3C/svg%3E");
+}
+
+/* ---------- Verified review card (rulebook 8) ---------- */
+.tp-review-card{
+  max-width:var(--tefl-card-w);margin:32px auto;background:#fff;
+  border:1px solid var(--tefl-line-soft);border-left:4px solid var(--tefl-green);
+  border-radius:12px;padding:24px 26px;
+  box-shadow:0 10px 28px rgba(15,48,66,.08);
+  font-family:var(--tefl-sans);
+}
+.tp-review-card .tp-eyebrow{
+  display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:.14em;
+  font-size:11px;color:var(--tefl-muted);font-weight:700;
+}
+.tp-review-card .tp-title{margin:0 0 8px;color:var(--tefl-ink-soft);font-size:17px;font-weight:700;}
+.tp-review-card .tp-quote{margin:0 0 12px;color:var(--tefl-body);font-size:15.5px;line-height:1.7;}
+.tp-review-card .tp-meta{margin:0;color:var(--tefl-ink-soft);font-size:14px;}
+.tp-review-card .tp-meta a{color:var(--tefl-green-deep);}
+.tp-review-card .tp-meta a.tp-primary{font-weight:700;}
+
+/* ---------- Author byline card (rulebook 5) ---------- */
+.author-byline{
+  max-width:var(--tefl-card-w);margin:28px auto;display:flex;gap:16px;align-items:center;
+  background:var(--tefl-wash);border:1px solid var(--tefl-line);border-radius:12px;
+  padding:18px 20px;font-family:var(--tefl-sans);
+}
+.author-byline img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none;}
+.author-byline .ab-name{margin:0;font-weight:800;color:var(--tefl-ink);font-size:15px;}
+.author-byline .ab-bio{margin:2px 0 0;color:var(--tefl-body);font-size:13.5px;line-height:1.6;}
+
+/* ---------- Dark cards: Hire Wire, Country Matcher (rulebook 11), plus the
+   Editorial Charter and Meet the Founder trust cards (rulebook 10).
+   CHARTER AND FOUNDER ADDED 16 SEP 2026. Their inline blocks on live posts
+   107832 and 107428 were compared declaration by declaration against the
+   promo cards and are identical: same #123137 fill, 14px radius, 26px 28px
+   padding, 0 20px 48px rgba(0,0,0,.18) shadow, same kicker, head, body and
+   button. So they share this rule rather than getting duplicates of it.
+   The only difference between the four is copy and link. ---------- */
+.hirewire-card,.matcher-card,.charter-card,.founder-card{
+  max-width:var(--tefl-card-w);margin:32px auto;background:var(--tefl-ink);
+  border-radius:14px;padding:26px 28px;
+  box-shadow:0 20px 48px rgba(0,0,0,.18);font-family:var(--tefl-sans);
+}
+.hirewire-card .promo-kicker,.matcher-card .promo-kicker,
+.charter-card .promo-kicker,.founder-card .promo-kicker{
+  text-transform:uppercase;letter-spacing:.18em;font-size:11px;
+  color:var(--tefl-accent-pale);font-weight:800;margin-bottom:8px;
+}
+.hirewire-card .promo-head,.matcher-card .promo-head,
+.charter-card .promo-head,.founder-card .promo-head{
+  margin:0 0 12px;color:#fff;font-size:18px;font-weight:700;line-height:1.4;
+}
+.hirewire-card .promo-body,.matcher-card .promo-body,
+.charter-card .promo-body,.founder-card .promo-body{
+  margin:0 0 16px;color:var(--tefl-accent-wash);font-size:15.5px;line-height:1.7;
+}
+.hirewire-card .promo-btn,.matcher-card .promo-btn,
+.charter-card .promo-btn,.founder-card .promo-btn{
+  display:inline-block;background:var(--tefl-accent);color:var(--tefl-ink);
+  border-radius:8px;padding:10px 18px;font-weight:700;text-decoration:none;font-size:14px;
+}
+
+/* ---------- Accreditation trust card (rulebook 10) — added 16 Sep 2026
+   Read off live post 107428. This is the one light card in the set: white
+   surface with a teal left rule, not a dark block like the other three. ---- */
+.accreditation-card{
+  max-width:var(--tefl-card-w);margin:32px auto;background:#fff;
+  border:1px solid var(--tefl-line);border-left:4px solid var(--tefl-accent-deep);
+  border-radius:12px;padding:24px 26px;
+  box-shadow:0 10px 28px rgba(18,49,55,.08);font-family:var(--tefl-sans);
+}
+.accreditation-card .ac-eyebrow{
+  text-transform:uppercase;letter-spacing:.16em;font-size:11px;
+  color:#17565F;font-weight:800;margin-bottom:6px;
+}
+.accreditation-card .ac-head{
+  margin:0 0 10px;color:var(--tefl-ink);font-size:19px;font-weight:800;line-height:1.35;
+}
+.accreditation-card .ac-body{
+  margin:0 0 16px;color:var(--tefl-body);font-size:15.5px;line-height:1.7;
+}
+.accreditation-card .ac-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+.accreditation-card .ac-logos a{
+  display:inline-flex;align-items:center;background:var(--tefl-wash);
+  border:1px solid var(--tefl-line);border-radius:8px;padding:10px 14px;
+  color:var(--tefl-ink);font-weight:700;text-decoration:none;font-size:13px;
+}
+
+/* ---------- Branded video frame (rulebook 7) — added 16 Sep 2026
+   Read off live posts 107428 and 107832. The frame is the last component that
+   was still pasted in as a wall of inline styling, roughly 700 characters per
+   post on every post the site publishes.
+
+   THE H3 INSIDE THE FRAME IS SAFE. The article heading rules use the child
+   combinator (.content > h3), so they never reach inside this card. Do not
+   loosen those selectors or the frame's title will pick up the teal left rule
+   meant for section headings. ---------- */
+.brand-video-frame{
+  position:relative;background-color:var(--tefl-ink);color:#fff;
+  border-radius:14px;padding:28px 28px 24px;
+  box-shadow:0 20px 48px rgba(0,0,0,.20);
+  margin:32px auto;max-width:var(--tefl-card-w);font-family:var(--tefl-sans);
+}
+.brand-video-frame .vf-badge{
+  position:absolute;top:16px;right:28px;
+  background:var(--tefl-accent);color:var(--tefl-ink);
+  font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;border-radius:999px;
+}
+.brand-video-frame .vf-kicker{
+  margin-top:6px;text-transform:uppercase;letter-spacing:.20em;
+  font-size:11px;color:var(--tefl-accent-pale);font-weight:700;
+}
+.brand-video-frame .vf-title{
+  margin:6px 0 18px;font-size:22px;line-height:1.25;font-weight:700;color:#fff;
+}
+.brand-video-frame .vf-embed{
+  position:relative;padding-bottom:56.25%;height:0;overflow:hidden;
+  border-radius:8px;border:2px solid var(--tefl-accent);background:#0C262B;
+}
+.brand-video-frame .vf-embed iframe{
+  position:absolute;top:0;left:0;width:100%;height:100%;border:0;
+}
+.brand-video-frame .vf-foot{
+  border-top:1px solid rgba(169,222,231,.35);margin-top:16px;padding-top:12px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;flex-wrap:wrap;gap:6px;
+}
+.brand-video-frame .vf-foot .vf-site{color:#fff;font-weight:700;}
+.brand-video-frame .vf-foot .vf-watch{color:var(--tefl-accent-pale);}
+
+/* ---------- In-body floated figures (rulebook 4) ---------- */
+.tefl-fig{float:right;width:42%;max-width:360px;margin:6px 0 18px 24px;}
+.tefl-fig--left{float:left;margin:6px 24px 18px 0;}
+.tefl-fig img{width:100%;height:auto;border-radius:8px;display:block;}
+.tefl-fig--crop img{height:260px;object-fit:cover;object-position:center;}
+.tefl-clear{clear:both;}
+
+/* MOBILE FIX — only possible now the styling is in CSS.
+   Inline styles cannot carry media queries, so on phones the 42% float has
+   always squeezed body text into a narrow ribbon beside the image. */
+@media (max-width:600px){
+  .tefl-fig,.tefl-fig--left{float:none;width:100%;max-width:none;margin:18px 0;}
+  .tefl-fig--crop img{height:220px;}
+  .tp-review-card,.hirewire-card,.matcher-card,
+  .charter-card,.founder-card,.accreditation-card{padding:20px 18px;}
+  .brand-video-frame{padding:22px 18px 18px;}
+  .brand-video-frame .vf-badge{top:12px;right:18px;}
+  .brand-video-frame .vf-title{font-size:19px;}
+  .author-byline{padding:16px;gap:12px;}
+  .author-byline img{width:52px;height:52px;}
+}
+
+/* ---------- Reviewed / published date line (rulebook 6) ---------- */
+.tefl-datestamp{color:#6b7280;font-size:14px;margin:14px 0 0;font-style:italic;}
+
+/* ==========================================================================
+   BLOG ARTICLE RHYTHM AND HEADINGS — added 16 Sep 2026
+   --------------------------------------------------------------------------
+   PROBLEM reported from /blog/what-is-eal/ on 16 Sep 2026: vertical spacing
+   inside posts was uneven. Measured on the live page, an H2 computed to
+   margin 0px top AND 0px bottom, while paragraphs carried 31.5px bottom and
+   H3s carried 40px both sides. So an H2 sat jammed against the list above it
+   and against the paragraph below it, while consecutive paragraphs drifted
+   far apart. Headings also read as plain body text at a larger size.
+
+   FIX: one spacing scale plus a heading treatment, applied to the DIRECT
+   CHILDREN of the post body. Every post on the site, past and future, picks
+   this up. No post HTML had to change and no retrofit is needed.
+
+   THE WRAPPER IS .blog-content-section .content, NOT .entry-content.
+   This theme does not output .entry-content on single posts at all — the post
+   body is div.content.table-container-enhanced inside section.blog-content-
+   section. A first attempt scoped to .entry-content shipped cleanly, loaded
+   on the page, and matched nothing. Verify any new blog-body rule against the
+   live DOM before assuming the Astra default class names apply.
+
+   THE CHILD COMBINATOR (>) IS LOAD-BEARING, NOT TIDINESS. Card components
+   carry their own inline styling, so a descendant selector would reach inside
+   them and put a teal rule under the video frame's H3. Keep the > or those
+   cards will break.
+
+   ALL SPACING VALUES ARE IN px ON PURPOSE. Two separate traps here:
+   1. rem — root font-size on this theme is 15px, so 1.7rem silently shrank
+      the H2 from 32px to 25.5px.
+   2. em on a heading — em resolves against the ELEMENT'S OWN font-size, so
+      2.5em on a 30px H2 is 75px, not the ~37px intended. That produced a
+      section gap roughly double what it looked like on paper, reported 16 Sep.
+   Set these in px and the number means what it says.
+
+   THE SECTION GAP IS THE 33px ON h2 margin-top. That is the single value to
+   change to open or tighten the space between sections. Ian settled on 33px
+   on 16 Sep 2026, down from 44px. Keep the card margin further down EQUAL to
+   it, or the gap above and below a card stops matching.
+   ========================================================================== */
+
+body.single-post .blog-content-section .content > p,
+body.single-post .blog-content-section .content > ul,
+body.single-post .blog-content-section .content > ol,
+body.single-post .blog-content-section .content > blockquote{
+  margin:0 0 22px;
+}
+body.single-post .blog-content-section .content > ul,
+body.single-post .blog-content-section .content > ol{ padding-left:1.4em; }
+body.single-post .blog-content-section .content > ul > li,
+body.single-post .blog-content-section .content > ol > li{ margin-bottom:8px; }
+body.single-post .blog-content-section .content > table,
+body.single-post .blog-content-section .content > figure{ margin:0 0 26px; }
+body.single-post .blog-content-section .content > div[style*="clear"]{ margin:0; }
+body.single-post .blog-content-section .content > *:first-child{ margin-top:0; }
+
+/* Headings: space above, tight space below, so a heading reads as the opening
+   of its own section rather than floating between two blocks. */
+body.single-post .blog-content-section .content > h2{
+  position:relative;
+  margin:33px 0 14px;
+  padding-bottom:6px;
+  font-size:30px;
+  line-height:1.3;
+  font-weight:700;
+  letter-spacing:-.01em;
+  color:var(--tefl-ink,#123137);
+  border-bottom:1px solid var(--tefl-line,#DDE9EB);
+  clear:both;
+}
+body.single-post .blog-content-section .content > h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:58px;
+  height:3px;
+  border-radius:2px;
+  background:var(--tefl-accent,#35A9BD);
+}
+body.single-post .blog-content-section .content > h3{
+  margin:28px 0 10px;
+  padding-left:14px;
+  border-left:3px solid var(--tefl-accent-pale,#A9DEE7);
+  font-size:21px;
+  line-height:1.35;
+  font-weight:700;
+  color:var(--tefl-ink,#123137);
+}
+body.single-post .blog-content-section .content > h4{
+  margin:24px 0 8px;
+  font-size:17px;
+  font-weight:700;
+  color:var(--tefl-ink,#123137);
+}
+/* A heading straight after another heading should not open a second gap. */
+body.single-post .blog-content-section .content > h2 + h3,
+body.single-post .blog-content-section .content > h3 + h4{ margin-top:16px; }
+
+@media (max-width:600px){
+  body.single-post .blog-content-section .content > h2{ font-size:24px; margin:28px 0 12px; }
+  body.single-post .blog-content-section .content > h3{ font-size:19px; margin:24px 0 9px; }
+}
+
+/* ==========================================================================
+   BLOG DATA TABLES — added 16 Sep 2026
+   --------------------------------------------------------------------------
+   Reported by Ian 16 Sep 2026 from /blog/what-is-an-awarding-body/: comparison
+   tables rendered as plain unstyled grids. This gives every table in every
+   post a dark teal header row, zebra rows, rounded corners and a hover row.
+   Modelled on the tefl.ai table treatment, recoloured to Institute brand.
+
+   NO POST HTML CHANGED, AND NONE NEEDS TO BE. Institute blog tables are
+   authored as a bare table with a bare thead and no inline styling at all
+   (checked on post 107660), so every past and future post picks this up here.
+
+   THE WRAPPER IS .blog-content-section .content, NOT .entry-content. Same
+   trap documented in the heading block above.
+
+   DESCENDANT SELECTOR, NOT >. The theme wraps tables in a scroll div at
+   runtime, so after load the table is no longer a direct child of .content.
+   The > rule above still sets the pre-script margin, which is why the margin
+   is repeated on the scroll wrapper further down.
+
+   !important IS ON THE HEADER FILL ONLY, so the few older posts that carry an
+   inline header colour fall into line with the rest.
+
+   NO min-width ON MOBILE ON PURPOSE. A min-width reads better in a narrow
+   table but overflows the page body on any post where the theme's scroll
+   wrapper is absent. Columns go narrow instead; nothing breaks out sideways.
+
+   TO RECOLOUR: header fill #123137 and rule #35A9BD, the same two values the
+   post H2s use, so the table reads as part of the same system.
+   ========================================================================== */
+
+body.single-post .blog-content-section .content table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  font-size:15px;
+  line-height:1.6;
+  background:#fff;
+  border:1px solid var(--tefl-line,#DDE9EB);
+  border-radius:10px;
+  margin:0 0 26px;
+}
+body.single-post .blog-content-section .content table th{
+  background:var(--tefl-ink,#123137) !important;
+  color:#fff !important;
+  font-weight:700;
+  text-align:left;
+  white-space:normal;
+  vertical-align:bottom;
+  padding:12px 14px;
+  border-bottom:3px solid var(--tefl-accent,#35A9BD);
+}
+body.single-post .blog-content-section .content table td{
+  padding:11px 14px;
+  vertical-align:top;
+  color:var(--tefl-body,#4B5D66);
+  border-bottom:1px solid #EDF3F4;
+}
+
+/* The first column is the row label, so it reads in ink rather than body grey. */
+body.single-post .blog-content-section .content table td:first-child{
+  font-weight:700;
+  color:var(--tefl-ink,#123137);
+}
+
+body.single-post .blog-content-section .content table tbody tr:nth-child(even) td{
+  background:#F7FAFB;
+}
+body.single-post .blog-content-section .content table tbody tr:hover td{
+  background:var(--tefl-wash,#F0F7F8);
+}
+body.single-post .blog-content-section .content table tbody tr:last-child td{
+  border-bottom:0;
+}
+
+/* border-radius does not clip a table element reliably, so the four corner
+   cells are rounded individually. This depends on border-collapse:separate
+   above: with collapse, cell radii are ignored. */
+body.single-post .blog-content-section .content table thead tr:first-child th:first-child{ border-top-left-radius:10px; }
+body.single-post .blog-content-section .content table thead tr:first-child th:last-child{ border-top-right-radius:10px; }
+body.single-post .blog-content-section .content table tbody tr:last-child td:first-child{ border-bottom-left-radius:10px; }
+body.single-post .blog-content-section .content table tbody tr:last-child td:last-child{ border-bottom-right-radius:10px; }
+
+/* A table caption is used for source lines under data tables. Keep it reading
+   as a footnote rather than a heading. */
+body.single-post .blog-content-section .content table caption{
+  caption-side:bottom;
+  text-align:left;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--tefl-body,#4B5D66);
+  padding-top:10px;
+}
+
+body.single-post .blog-content-section .content .tefl-blog-content__table-scroll{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  margin:0 0 26px;
+}
+
+@media (max-width:600px){
+  body.single-post .blog-content-section .content table{ font-size:14px; }
+  body.single-post .blog-content-section .content table th,
+  body.single-post .blog-content-section .content table td{ padding:10px 11px; }
+}
+
+/* ===================== END BLOG DATA TABLES ===================== */
+
+/* --------------------------------------------------------------------------
+   CARD WIDTH AND CARD SPACING — added 16 Sep 2026
+   --------------------------------------------------------------------------
+   Reported 16 Sep 2026: the founder, charter, video and review cards sat
+   narrower than the body text, and the gap above a card did not match the
+   gap below it.
+
+   THREE SEPARATE CAUSES, all fixed here. Measured on the live page: card
+   840px against a 935px text column, card margin 32px against an H2 top
+   margin larger than that, and a 50px bottom margin on the last paragraph
+   inside the card against 26px of card padding at the top.
+
+   1. WIDTH. Every card carries max-width:840px inline, pasted in by the
+      writer rulebook. !important is REQUIRED — an inline style cannot be
+      beaten by specificity alone, only by !important.
+
+   2. OUTER SPACING. Adjacent block margins collapse to the larger of the two,
+      so a card margin smaller than the heading margin meant the gap below a
+      card always won. Keeping the card margin EQUAL to the h2 margin-top
+      above makes both sides collapse to the same value whatever sits either
+      side. If you change one, change the other.
+
+   3. INNER SPACING. The last element inside a card is the button's paragraph,
+      which inherits a 50px bottom margin from the theme. Zeroed below, so the
+      card's own padding sets the spacing top and bottom.
+
+   .accreditation-card ADDED 16 SEP 2026. It was missing from this list, so it
+   was the one card still rendering at 840px against the wider text column.
+   -------------------------------------------------------------------------- */
+
+body.single-post .blog-content-section .content > .brand-video-frame,
+body.single-post .blog-content-section .content > .charter-card,
+body.single-post .blog-content-section .content > .founder-card,
+body.single-post .blog-content-section .content > .accreditation-card,
+body.single-post .blog-content-section .content > .tp-review-card,
+body.single-post .blog-content-section .content > .hirewire-card,
+body.single-post .blog-content-section .content > .matcher-card,
+body.single-post .blog-content-section .content > .author-byline{
+  max-width:none !important;
+  width:auto !important;
+  margin:33px 0 !important;
+  clear:both;
+}
+
+/* Kill any stray bottom margin on whatever the last element inside a card
+   turns out to be, plus an empty paragraph if wpautop ever produces one. */
+body.single-post .blog-content-section .content .brand-video-frame > p:empty,
+body.single-post .blog-content-section .content .charter-card > p:empty,
+body.single-post .blog-content-section .content .founder-card > p:empty,
+body.single-post .blog-content-section .content .accreditation-card > p:empty,
+body.single-post .blog-content-section .content .hirewire-card > p:empty,
+body.single-post .blog-content-section .content .matcher-card > p:empty{
+  display:none !important;
+}
+body.single-post .blog-content-section .content .brand-video-frame > *:last-child,
+body.single-post .blog-content-section .content .charter-card > *:last-child,
+body.single-post .blog-content-section .content .founder-card > *:last-child,
+body.single-post .blog-content-section .content .accreditation-card > *:last-child,
+body.single-post .blog-content-section .content .hirewire-card > *:last-child,
+body.single-post .blog-content-section .content .matcher-card > *:last-child{
+  margin-bottom:0 !important;
+}
+

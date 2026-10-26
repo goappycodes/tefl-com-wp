@@ -1,0 +1,21 @@
+/* ==========================================================================
+   TEACH ENGLISH ONLINE (page 68184) BLUE TO #194A63 — added 12 Oct 2026, Ian
+   Swaps the template accent #101585 for rgb(25,74,99) on this page only,
+   including its /gb/, /za/, /ca/, /nl/ and /fr/ versions.
+   The :root rule lets ti-teo-new.js read the new colour when it shades the
+   four requirement cards. The .mid-content rules are a fallback in case the
+   script runs first. TO ROLL BACK: delete this whole block.
+   ========================================================================== */
+:root:has(body.page-id-68184),
+body.page-id-68184{--accent:#194A63;}
+body.page-id-68184 .mid-content[style*="16, 21, 133"]{background-color:#194A63 !important;}
+body.page-id-68184 .mid-content[style*="28, 33, 139"]{background-color:#25536B !important;}
+body.page-id-68184 .mid-content[style*="40, 44, 145"]{background-color:#305C73 !important;}
+body.page-id-68184 .mid-content[style*="52, 56, 151"]{background-color:#3C657B !important;}
+/* Links inside the dark requirement cards: white so they read on #194A63. */
+body.page-id-68184 .mid-content a{color:#fff !important;text-decoration:underline;font-weight:600;}
+
+.post-110940 {
+    margin: 3rem 0 1rem;
+}
+

@@ -1,0 +1,239 @@
+/* ==========================================================================
+   ACCREDITATION LOGO STRIP — added 17 Aug 2026
+   --------------------------------------------------------------------------
+   Restyles the existing .accreditation-section on course pages into a card
+   strip: jurisdiction flag, logo, name, one line of plain English, and a
+   verification link at the foot.
+
+   NO MARKUP CHANGE NEEDED. The theme already outputs, per accreditor:
+     .item > .image-box > a > img
+     .item > .image-text > h5 (name) + h6 (description)
+
+   The card rows live in ACF Options at
+   /wp-admin/admin.php?page=single_course_page_common_content
+   Two repeaters: "Common Accreditation" (standard courses) and "Level 5
+   Common Accreditation". Which one a course uses is set per course by the
+   tefl_accreditation_is_ofqual flag on the course itself.
+
+   LABELS AND FLAGS ARE DRIVEN BY THE LINK, not by card order. Every rule
+   below matches on the href, so the right label and flag appear whatever
+   order the ACF rows are in. A new row inherits the generic "Verify this
+   accreditation" and no flag until a matching rule is added here.
+
+   The whole card is clickable: a::before is a stretched overlay covering the
+   .item, which is why .item is position:relative.
+   ========================================================================== */
+
+/* POSITION: move the strip directly under the hero, which carries the price
+   and the buy CTA, instead of leaving it near the foot of the page.
+   ---------------------------------------------------------------------
+   This is a CSS reorder, not a template change: the content area is switched
+   to a flex column and the first few sections are given an explicit order.
+   Verified: identical page height, no horizontal overflow, no width change.
+
+   Scoped to body.single-course so no other template is affected.
+
+   THE DURABLE FIX is to move the accreditation section include above the
+   free-bundle include in the course template. Once that happens, delete this
+   whole block. Until then, note that any NEW section added to the course
+   template will land after the accreditation strip unless it is given an
+   order value here. */
+body.single-course .content-area.primary{
+  display:flex !important;
+  flex-direction:column;
+}
+body.single-course .content-area.primary > *{ order:4; min-width:0; }
+body.single-course .content-area.primary > script,
+body.single-course .content-area.primary > .product-schema-output-custom{ order:0; }
+body.single-course .content-area.primary > .top-bar-section{ order:1; }
+body.single-course .content-area.primary > .hero-banner-section{ order:2; }
+body.single-course .content-area.primary > .accreditation-section{ order:3; }
+
+.accreditation-section__logos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  align-items:stretch;
+  margin-top:26px;
+}
+
+/* Card surface. The grain sits above a near-white vertical wash, so the card
+   reads as paper stock rather than flat screen white. Both layers are on the
+   element background because ::before and ::after are already spoken for by
+   the stretched link and the flag. */
+.accreditation-section__logos .item{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  background-color:#fff;
+  background-image:var(--tefl-card-grain), linear-gradient(180deg,#ffffff 0%,#FAFCFC 100%);
+  background-size:140px 140px, 100% 100%;
+  background-repeat:repeat, no-repeat;
+  border:1px solid var(--tefl-line,#DDE9EB);
+  border-radius:14px;
+  padding:32px 22px 46px;
+  box-shadow:0 4px 16px rgba(15,48,66,.06), 0 1px 2px rgba(15,48,66,.04);
+  transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.accreditation-section__logos .item:hover{
+  border-color:var(--tefl-accent,#35A9BD);
+  box-shadow:0 16px 38px rgba(15,48,66,.13), 0 2px 6px rgba(15,48,66,.06);
+  transform:translateY(-3px);
+}
+
+/* Jurisdiction flag, top right. Inline SVG rather than emoji, because
+   regional indicator flag emoji do not render on Windows. */
+.accreditation-section__logos .item::after{
+  content:"";
+  position:absolute;
+  top:13px;
+  right:14px;
+  width:21px;
+  height:14px;
+  border-radius:2px;
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 0 0 1px rgba(15,48,66,.12);
+  z-index:3;
+}
+.accreditation-section__logos .item:has(a[href*="ofqual.gov.uk"])::after,
+.accreditation-section__logos .item:has(a[href*="highfield"])::after,
+.accreditation-section__logos .item:has(a[href*="otcac.com"])::after,
+.accreditation-section__logos .item:has(a[href*="thecpdregister.com"])::after{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3Crect width='60' height='30' fill='%23012169'/%3E%3Cpath d='M0 0L60 30M60 0L0 30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/svg%3E");
+}
+.accreditation-section__logos .item:has(a[href*="deac.org"])::after,
+.accreditation-section__logos .item:has(a[href*="aqcreview.org"])::after{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 32'%3E%3Crect width='60' height='32' fill='%23fff'/%3E%3Cg fill='%23B22234'%3E%3Crect width='60' height='2.5'/%3E%3Crect y='5' width='60' height='2.5'/%3E%3Crect y='10' width='60' height='2.5'/%3E%3Crect y='15' width='60' height='2.5'/%3E%3Crect y='20' width='60' height='2.5'/%3E%3Crect y='25' width='60' height='2.5'/%3E%3Crect y='29.5' width='60' height='2.5'/%3E%3C/g%3E%3Crect width='25' height='17.5' fill='%233C3B6E'/%3E%3C/svg%3E");
+}
+
+/* Logo well: fixed height so wildly different logo shapes still line up */
+.accreditation-section__logos .item .image-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:62px;
+  width:100%;
+  margin:0 0 14px;
+}
+.accreditation-section__logos .item .image-box img{
+  max-height:50px;
+  max-width:160px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+.accreditation-section__logos .item .image-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+/* THE OFQUAL ASSET IS A WHITE LOGO ON A TRANSPARENT BACKGROUND, drawn for use
+   on a dark section, so on a white card it was invisible. brightness(0)
+   repaints it solid black while preserving the shape. The explicit width is
+   required because the SVG carries a viewBox but no intrinsic dimensions, so
+   width:auto collapses it to zero. 108px against the 1080x507 viewBox lands
+   at roughly 50px tall, matching the other logos.
+
+   If a dark-on-transparent Ofqual asset is ever uploaded, delete this rule
+   and the logo will size itself with the others. */
+.accreditation-section__logos .item .image-box img[src*="Ofqual-regulated-qualifications"],
+.accreditation-section__logos .item .image-box img[src*="ofqual-logo"]{
+  width:108px;
+  height:auto;
+  max-width:none;
+  max-height:none;
+  filter:brightness(0) saturate(100%) opacity(.88);
+}
+
+/* Stretched link: makes the entire card clickable */
+.accreditation-section__logos .item .image-box a::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  z-index:2;
+}
+
+/* Verification label, pinned to the foot of the card */
+.accreditation-section__logos .item .image-box a::after{
+  content:"Verify this accreditation \2192";
+  position:absolute;
+  left:20px;
+  right:20px;
+  bottom:18px;
+  text-align:center;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.4;
+  color:var(--tefl-accent,#35A9BD);
+}
+.accreditation-section__logos .item:hover .image-box a::after{
+  color:var(--tefl-ink,#123137);
+}
+.accreditation-section__logos .item .image-box a[href*="ofqual.gov.uk"]::after{
+  content:"Check the Ofqual register \2192";
+}
+.accreditation-section__logos .item .image-box a[href*="highfield"]::after{
+  content:"View the awarding body \2192";
+}
+.accreditation-section__logos .item .image-box a[href*="deac.org"]::after,
+.accreditation-section__logos .item .image-box a[href*="aqcreview.org"]::after{
+  content:"See our AQC listing \2192";
+}
+.accreditation-section__logos .item .image-box a[href*="otcac.com"]::after{
+  content:"See the accredited list \2192";
+}
+.accreditation-section__logos .item .image-box a[href*="thecpdregister.com"]::after{
+  content:"Check the CPD register \2192";
+}
+
+/* Card text */
+.accreditation-section__logos .item .image-text{ width:100%; }
+.accreditation-section__logos .item .image-text h5{
+  margin:0 0 6px;
+  font-size:15.5px;
+  font-weight:800;
+  line-height:1.3;
+  color:var(--tefl-ink,#123137);
+}
+.accreditation-section__logos .item .image-text h6{
+  margin:0;
+  font-size:13px;
+  font-weight:400;
+  line-height:1.55;
+  color:var(--tefl-body,#4B5D66);
+}
+
+@media (max-width:600px){
+  .accreditation-section__logos{
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .accreditation-section__logos .item{ padding:26px 14px 42px; }
+  .accreditation-section__logos .item::after{ top:10px; right:11px; width:18px; height:12px; }
+  .accreditation-section__logos .item .image-box{ height:52px; margin-bottom:12px; }
+  .accreditation-section__logos .item .image-box img{ max-height:42px; max-width:124px; }
+  .accreditation-section__logos .item .image-box img[src*="Ofqual-regulated-qualifications"],
+  .accreditation-section__logos .item .image-box img[src*="ofqual-logo"]{
+    width:90px;
+  }
+  .accreditation-section__logos .item .image-box a::after{
+    left:11px; right:11px; bottom:15px; font-size:12px;
+  }
+  .accreditation-section__logos .item .image-text h5{ font-size:14.5px; }
+  .accreditation-section__logos .item .image-text h6{ font-size:12.5px; }
+}
+
+/* Respect reduced-motion preferences: drop the hover lift for anyone who has
+   asked for less movement. */
+@media (prefers-reduced-motion:reduce){
+  .accreditation-section__logos .item{ transition:none; }
+  .accreditation-section__logos .item:hover{ transform:none; }
+}
+

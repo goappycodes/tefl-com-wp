@@ -1,0 +1,23 @@
+
+
+.tefl-contact-form {
+    width: 50%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.tefl-contact-form .ast-row > .ast-col {
+    margin-bottom: 20px;
+}
+
+.tefl-contact-form textarea {
+    width: 100% !important;
+    resize: vertical;
+}
+
+@media (max-width: 768px) {
+    .tefl-contact-form {
+        width: 100%;
+    }
+}
+

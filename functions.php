@@ -1038,6 +1038,27 @@ add_action( 'wp_enqueue_scripts', function () {
 } );
 
 
+// Former Customizer "Additional CSS", moved into /assets/css/custom/ on 26 Oct 2026.
+// Printed at the same point WordPress prints Additional CSS (wp_head, priority 101,
+// after every other stylesheet), so it still overrides theme and plugin styles exactly
+// as before. Files load in filename order: the number prefixes keep the original order
+// of the rules, so keep them when adding or splitting files. Add new CSS to these
+// files (or a new numbered file), not to Appearance > Customize > Additional CSS.
+add_action( 'wp_head', function () {
+	$dir = get_stylesheet_directory() . '/assets/css/custom/';
+	$uri = get_stylesheet_directory_uri() . '/assets/css/custom/';
+	foreach ( (array) glob( $dir . '*.css' ) as $file ) {
+		$name = basename( $file );
+		printf(
+			"<link rel='stylesheet' id='ti-custom-%s-css' href='%s?ver=%d' media='all' />\n",
+			esc_attr( basename( $name, '.css' ) ),
+			esc_url( $uri . $name ),
+			filemtime( $file )
+		);
+	}
+}, 101 );
+
+
 // Headless layer for the Next.js front-end (render/routes/CORS endpoints).
 // Fully self-contained in /headless — this is the ONLY line outside that folder.
 // Turn it off with zero side effects: delete the /headless folder, remove this

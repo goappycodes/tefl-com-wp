@@ -1,0 +1,116 @@
+/* ==========================================================================
+   HOMEPAGE TEMPLATE: ONE BRAND COLOUR - added 6 Oct 2026
+   Ian asked for the four different greens on the homepage design (homepage
+   77005 and the 17 geo pages on ti-homepage-template-2023) to become one shade:
+   rgb(41,85,104) = #0F3042. Hover is a darker step, #1A4A63.
+   Replaces: #344734 (CTA + course card buttons), #3E9A7B (Hire Wire menu link
+   and AI promo bar), #64BE9F (Get on the Wire footer button).
+   NOT CHANGED: Trustpilot stars (#00B67A) are inside Trustpilot's own widget.
+   Scoped to this template only, so the rest of the site is untouched.
+   TO ROLL BACK: delete this block.
+   ========================================================================== */
+body.page-template-ti-homepage-template-2023 a.btn.btn-primary,
+body.page-template-ti-homepage-template-2023 a.cta-buttons.btn,
+body.page-template-ti-homepage-template-2023 .course-card-foter a.btn,
+body.page-template-ti-homepage-template-2023 .hire-wire-footer-signup input.wpcf7-submit,
+body.page-template-ti-homepage-template-2023 #tai-promo-bar{
+  background-color:#0F3042 !important;
+  border-color:#0F3042 !important;
+}
+body.page-template-ti-homepage-template-2023 a.btn.btn-primary:hover,
+body.page-template-ti-homepage-template-2023 a.cta-buttons.btn:hover,
+body.page-template-ti-homepage-template-2023 .course-card-foter a.btn:hover,
+body.page-template-ti-homepage-template-2023 .hire-wire-footer-signup input.wpcf7-submit:hover{
+  background-color:#1A4A63 !important;
+  border-color:#1A4A63 !important;
+}
+body.page-template-ti-homepage-template-2023 .top-bar-links a.primary-menu-link[href*="the-hire-wire"],
+body.page-template-ti-homepage-template-2023 .top-bar-links a.primary-menu-link[href*="the-hire-wire"] .hw-menu-arrow,
+body.page-template-ti-homepage-template-2023 .top-bar-links a.primary-menu-link[href*="the-hire-wire"] svg path{
+  color:#0F3042 !important;
+}
+
+
+/* HOMEPAGE TEMPLATE: ONE BRAND COLOUR, PART 2 - added 6 Oct 2026
+   Ian asked for the near-match teal #134559 to become #0F3042 as well.
+   Covers: course card labels and outlines (120 and 300 hour cards; the 180
+   hour card keeps its red), Read All Reviews button, app download badge and
+   the mega menu quick-link buttons. Same scope as part 1. Delete to roll back. */
+body.page-template-ti-homepage-template-2023 .course-card.course-id-430 .course-card-label,
+body.page-template-ti-homepage-template-2023 .course-card.course-id-1099 .course-card-label,
+body.page-template-ti-homepage-template-2023 .reviews-average a.reviews-btn,
+body.page-template-ti-homepage-template-2023 .app-download-cta-box .app-download-image,
+body.page-template-ti-homepage-template-2023 .button-wrapper a.btn-outline{
+  background-color:#0F3042 !important;
+}
+body.page-template-ti-homepage-template-2023 .course-card.course-id-430,
+body.page-template-ti-homepage-template-2023 .course-card.course-id-1099{
+  box-shadow:#0F3042 0 0 0 2px inset !important;
+}
+
+
+/* HOMEPAGE TEMPLATE: BUTTON HOVER TEXT - added 6 Oct 2026
+   Ian asked for the button text to turn a contrasting colour on hover instead
+   of black. Mint #7FE0B5 on the #1A4A63 hover background (about 6:1 contrast).
+   Same scope as the brand colour blocks above. Delete to roll back. */
+body.page-template-ti-homepage-template-2023 a.btn.btn-primary:hover,
+body.page-template-ti-homepage-template-2023 a.btn.btn-primary:hover *,
+body.page-template-ti-homepage-template-2023 a.cta-buttons.btn:hover,
+body.page-template-ti-homepage-template-2023 a.cta-buttons.btn:hover *,
+body.page-template-ti-homepage-template-2023 .course-card-foter a.btn:hover,
+body.page-template-ti-homepage-template-2023 .course-card-foter a.btn:hover *,
+body.page-template-ti-homepage-template-2023 .reviews-average a.reviews-btn:hover,
+body.page-template-ti-homepage-template-2023 .button-wrapper a.btn-outline:hover,
+body.page-template-ti-homepage-template-2023 .hire-wire-footer-signup input.wpcf7-submit:hover{
+  color:#7FE0B5 !important;
+  fill:#7FE0B5 !important;
+}
+body.page-template-ti-homepage-template-2023 .reviews-average a.reviews-btn:hover,
+body.page-template-ti-homepage-template-2023 .button-wrapper a.btn-outline:hover{
+  background-color:#1A4A63 !important;
+}
+
+
+/* HOMEPAGE TEMPLATE: FOOTER BUTTON TEXT - added 6 Oct 2026
+   "Get on the Wire" text was the same navy as its background. White text,
+   mint on hover (hover rule is in the BUTTON HOVER TEXT block). Delete to roll back. */
+body.page-template-ti-homepage-template-2023 .hire-wire-footer-signup input.wpcf7-submit{
+  color:#FFFFFF !important;
+}
+
+
+/* HOMEPAGE TEMPLATE: 180-HOUR CARD RED - added 6 Oct 2026
+   Ian asked for the "Smart Choice" (180-hour, course 1097) red to be slightly
+   brighter: #F91800 to #C8102E. White label text stays readable (about 3.8:1);
+   avoid going brighter. Same scope as the colour blocks above. Delete to roll back. */
+body.page-template-ti-homepage-template-2023 .course-card.course-id-1097 .course-card-label{
+  background-color:#C8102E !important;
+}
+body.page-template-ti-homepage-template-2023 .course-card.course-id-1097{
+  box-shadow:#C8102E 0 0 0 2px inset !important;
+}
+
+
+/* HOMEPAGE TEMPLATE: HIRE WIRE STRIP ACCENT - added 6 Oct 2026
+   The Hire Wire signup strip (navy background) used light green #64BE9F for its
+   kicker, badge and button. Switched to the mint #7FE0B5 used on button hovers so
+   the homepage design uses one palette: navy #0F3042, mint #7FE0B5, crimson #C8102E.
+   Button text stays navy. Same scope as the colour blocks above. Delete to roll back. */
+body.page-template-ti-homepage-template-2023 .hw-strip-inner .hw-strip-kicker,
+body.page-template-ti-homepage-template-2023 .hw-strip-inner .hw-strip-badge{
+  color:#7FE0B5 !important;
+}
+body.page-template-ti-homepage-template-2023 .hw-strip-form input[type="submit"],
+body.page-template-ti-homepage-template-2023 .hw-strip-form input.wpcf7-submit{
+  background-color:#7FE0B5 !important;
+  border-color:#7FE0B5 !important;
+  color:#0F3042 !important;
+}
+body.page-template-ti-homepage-template-2023 .hw-strip-form input[type="submit"]:hover,
+body.page-template-ti-homepage-template-2023 .hw-strip-form input.wpcf7-submit:hover{
+  background-color:#FFFFFF !important;
+  border-color:#FFFFFF !important;
+  color:#0F3042 !important;
+}
+
+

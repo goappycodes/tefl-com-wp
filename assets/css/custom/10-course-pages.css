@@ -1,0 +1,109 @@
+/* COURSE PAGES: ACCREDITATION SECTION SPACING - added 6 Oct 2026
+   Ian asked to reduce the gap above and below the accreditation cards.
+   Above: empty .ofqual-section (45px margins) + 26px logos margin, about 70px.
+   Below: 72px section bottom padding stacked with 72px free-bundle top padding.
+   Now about 44px above and 64px below. Delete to roll back. */
+body.single-course .accreditation-section .ofqual-section{
+  margin:0 !important;
+}
+body.single-course .accreditation-section .accreditation-section__logos{
+  margin-top:24px !important;
+}
+body.single-course section.accreditation-section{
+  padding-bottom:32px !important;
+}
+body.single-course section.accreditation-section + section.free-bundle-section,
+body.single-course section.free-bundle-section{
+  padding-top:32px !important;
+}
+
+
+/* COURSE PAGES: INTERACTIVE ACCREDITATION CARDS - added 6 Oct 2026
+   Ian asked for the accreditation cards to feel a little interactive.
+   Hover / keyboard focus: card lifts with soft shadow, navy top accent line,
+   navy border, logo scales slightly, "View ... ->" link (a::after) slides right.
+   Link label moved from old cyan #35A9BD to navy as part of the palette.
+   Motion is switched off for visitors who prefer reduced motion. Delete to roll back. */
+body.single-course .accreditation-section__logos .item{
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease !important;
+}
+body.single-course .accreditation-section__logos .item:hover,
+body.single-course .accreditation-section__logos .item:focus-within{
+  transform:translateY(-6px) !important;
+  border-color:#0F3042 !important;
+  box-shadow:inset 0 3px 0 #0F3042, 0 14px 32px rgba(15,48,66,.16) !important;
+}
+body.single-course .accreditation-section__logos .item .image-box img{
+  transition:transform .25s ease !important;
+}
+body.single-course .accreditation-section__logos .item:hover .image-box img,
+body.single-course .accreditation-section__logos .item:focus-within .image-box img{
+  transform:scale(1.06) !important;
+}
+body.single-course .accreditation-section__logos .item a::after{
+  color:#0F3042 !important;
+  display:inline-block !important;
+  transition:transform .25s ease !important;
+}
+body.single-course .accreditation-section__logos .item:hover a::after,
+body.single-course .accreditation-section__logos .item:focus-within a::after{
+  transform:translateX(5px) !important;
+}
+@media (prefers-reduced-motion: reduce){
+  body.single-course .accreditation-section__logos .item, body.single-course .accreditation-section__logos .item .image-box img, body.single-course .accreditation-section__logos .item a::after{ transition:none !important; }
+  body.single-course .accreditation-section__logos .item:hover, body.single-course .accreditation-section__logos .item:focus-within, body.single-course .accreditation-section__logos .item:hover .image-box img, body.single-course .accreditation-section__logos .item:focus-within .image-box img, body.single-course .accreditation-section__logos .item:hover a::after, body.single-course .accreditation-section__logos .item:focus-within a::after{ transform:none !important; }
+}
+
+
+/* COURSE PAGES: COUNTRY GUIDE COVERS IN "TEFL INSTITUTE GUIDES" BAR - added 6 Oct 2026
+   Styles for the 5 guide covers Bikram is adding to the course template
+   (.tg-guides row inside .learn-more-section). Navy covers, mint accents,
+   crimson "featured" (South Korea). Hover lifts the cover and slides the arrow.
+   Swipeable row under 1100px. Does nothing until the HTML is added. Delete to roll back. */
+.learn-more-section .tg-guides{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;margin-top:32px;}
+.learn-more-section .tg-cover{position:relative;display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:3/4;padding:22px 20px 20px;border-radius:14px;background:#0F3042;border:1px solid rgba(127,224,181,.22);color:#fff;text-decoration:none;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;}
+.learn-more-section .tg-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,0) 45%);pointer-events:none;}
+.learn-more-section .tg-code{position:absolute;right:-6px;bottom:-22px;font-size:120px;font-weight:700;line-height:1;letter-spacing:-4px;color:rgba(255,255,255,.06);pointer-events:none;}
+.learn-more-section .tg-top{position:relative;z-index:1;}
+.learn-more-section .tg-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7FE0B5;}
+.learn-more-section .tg-rule{width:30px;height:2px;background:#7FE0B5;margin:14px 0 18px;border-radius:2px;}
+.learn-more-section .tg-country{font-size:28px;font-weight:600;line-height:1.05;margin:0;color:#fff;}
+.learn-more-section .tg-sub{font-size:14px;font-weight:400;line-height:1.45;color:rgba(255,255,255,.72);margin:10px 0 0;}
+.learn-more-section .tg-foot{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);font-size:14px;font-weight:500;color:#fff;}
+.learn-more-section .tg-arrow{display:inline-block;color:#7FE0B5;transition:transform .25s ease;}
+.learn-more-section .tg-cover:hover,.learn-more-section .tg-cover:focus-visible{transform:translateY(-6px);border-color:#7FE0B5;box-shadow:0 18px 40px rgba(127,224,181,.12);outline:none;color:#fff;}
+.learn-more-section .tg-cover:hover .tg-arrow,.learn-more-section .tg-cover:focus-visible .tg-arrow{transform:translateX(5px);}
+.learn-more-section .tg-cover.is-featured{border-color:rgba(200,16,46,.55);}
+.learn-more-section .tg-cover.is-featured .tg-label{color:#fff;}
+.learn-more-section .tg-cover.is-featured .tg-rule{background:#C8102E;}
+@media (max-width:1100px){.learn-more-section .tg-guides{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(200px,1fr);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px;}.learn-more-section .tg-cover{scroll-snap-align:start;}}
+@media (max-width:640px){.learn-more-section .tg-guides{grid-auto-columns:74%;}}
+@media (prefers-reduced-motion:reduce){.learn-more-section .tg-cover,.learn-more-section .tg-arrow{transition:none;}.learn-more-section .tg-cover:hover,.learn-more-section .tg-cover:focus-visible,.learn-more-section .tg-cover:hover .tg-arrow{transform:none;}}
+
+
+/* COURSE PAGES: GUIDES BAR RUNS INTO OFFER BANNER + HIDE MOBILE SCROLLBAR - added 6 Oct 2026
+   The sticky offer banner leaves a ~107px empty slot (page background) under the black
+   "TEFL Institute guides" bar. The bar now extends down behind that slot so it meets the
+   banner with no pale strip. The guide-cover swipe row hides its scrollbar; the peeking
+   next card already signals swiping. Cover row updated for 10 guides: 2 rows of 5 on
+   desktop, one swipe row under 1100px. Delete to roll back. */
+body.single-course section.learn-more-section{
+  padding-bottom:calc(45px + 110px) !important;
+  margin-bottom:-110px !important;
+}
+body.single-course .learn-more-section .tg-guides{
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+body.single-course .learn-more-section .tg-guides::-webkit-scrollbar{
+  display:none;
+}
+
+
+/* COURSE PAGES: GUIDE COVERS - ONE ROW OF 5 ON DESKTOP - added 6 Oct 2026
+   Ian asked for a single row of 5 on desktop. Covers 6-10 are hidden above 1100px;
+   phones and tablets still swipe through all 10. Delete to roll back. */
+@media (min-width:1101px){
+  body.single-course .learn-more-section .tg-guides .tg-cover:nth-child(n+6){display:none !important;}
+}
+

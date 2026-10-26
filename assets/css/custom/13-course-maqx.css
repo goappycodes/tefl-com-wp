@@ -1,0 +1,34 @@
+/* MAQx course (post 111094): no enrolment, full-width Get in touch. Added 21 Oct 2026. Delete to roll back. */
+body.postid-111094 .ti-enroll-btn,
+body.postid-111094 .enroll-now-btn,
+body.postid-111094 #priceWrapper,
+body.postid-111094 .klarna-payment-info-container,
+body.postid-111094 .tution-fee,
+body.postid-111094 .sales-offer-banner-mobile{
+  display:none !important;
+}
+body.postid-111094 .banner-cta-buttons > *{
+  flex:1 1 100% !important;
+  width:100% !important;
+}
+
+
+/* MAQx course (post 111094): hide salary bar, course finder, limited-time offer,
+   and the English test / salary calculator boxes. Added 23 Oct 2026. Delete to roll back.
+   The theme gives these blocks no unique class, so each rule finds a block by a link or
+   image only it contains, and skips any wrapper that also holds other content. */
+
+/* 1. "Start teaching in as little as four weeks" salary bar, and the Salary Calculator box */
+body.postid-111094 .content-area.primary *:has(a[href*="teaching-english-online-salary-calculator"]):not(:has(ul, ol, h1, h2, img, a[href*="tefl-test-tefl-institute/"], a[href*="employer-verification"])){display:none !important;}
+
+/* 2. English Level Test box */
+body.postid-111094 .content-area.primary *:has(a[href*="tefl-test-tefl-institute/"]):not(:has(ul, ol, h1, h2, img, a[href*="teaching-english-online-salary-calculator"], a[href*="employer-verification"])){display:none !important;}
+
+/* 2b. The row holding both boxes, so no empty gap is left */
+body.postid-111094 .content-area.primary *:has(a[href*="tefl-test-tefl-institute/"]):has(a[href*="teaching-english-online-salary-calculator"]):not(:has(ul, ol, h1, h2, a[href*="employer-verification"])){display:none !important;}
+
+/* 3. "Find The Perfect TEFL Course" search */
+body.postid-111094 .content-area.primary *:has(select):not(:has(h1, h3, a[href*="google.com"], a[href*="Prospectus"], img[src*="prospectus"], img[src*="job-hunters-kit"])){display:none !important;}
+
+/* 4. "Limited Time TEFL Offer" (countdown, Job Hunter's Kit, price, add-ons) */
+body.postid-111094 .content-area.primary *:has(img[src*="job-hunters-kit"]):not(:has(h1, img[src*="Rachel_1"], a[href*="google.com"], img[src*="Certificate-Sample"])){display:none !important;}

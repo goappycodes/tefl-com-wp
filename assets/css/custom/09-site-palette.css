@@ -1,0 +1,191 @@
+/* ==========================================================================
+   SITE PALETTE ROLL-OUT: COURSE PAGES, BLOG POSTS, COUNTRY GUIDES - 6 Oct 2026
+   Ian approved rolling the homepage palette out to these three page types:
+   navy #0F3042, mint #7FE0B5 (hover / accents), crimson #C8102E.
+   Most old teals (#134559, #217381, #35A9BD) are written inline in post
+   content, so they are overridden here by attribute selectors instead of
+   editing hundreds of posts. Covers future posts too.
+   NOT CHANGED: TEFL.ai blue #046BD2 (sister brand), Hire Wire pages, plain links.
+   TO ROLL BACK: delete this block.
+   ========================================================================== */
+body.single-course [style*="background:#134559"],
+body.single-course [style*="background-color:#134559"],
+body.single-course [style*="background: #134559"],
+body.single-course [style*="background-color: #134559"],
+body.single-course [style*="background:#217381"],
+body.single-course [style*="background-color:#217381"],
+body.single-course [style*="background: #217381"],
+body.single-course [style*="background-color: #217381"],
+body.single-course [style*="background:#35a9bd"],
+body.single-course [style*="background-color:#35a9bd"],
+body.single-course [style*="background: #35a9bd"],
+body.single-course [style*="background-color: #35a9bd"],
+body.single-course [style*="background:#35A9BD"],
+body.single-course [style*="background-color:#35A9BD"],
+body.single-course [style*="background: #35A9BD"],
+body.single-course [style*="background-color: #35A9BD"],
+body.single-post [style*="background:#134559"],
+body.single-post [style*="background-color:#134559"],
+body.single-post [style*="background: #134559"],
+body.single-post [style*="background-color: #134559"],
+body.single-post [style*="background:#217381"],
+body.single-post [style*="background-color:#217381"],
+body.single-post [style*="background: #217381"],
+body.single-post [style*="background-color: #217381"],
+body.single-post [style*="background:#35a9bd"],
+body.single-post [style*="background-color:#35a9bd"],
+body.single-post [style*="background: #35a9bd"],
+body.single-post [style*="background-color: #35a9bd"],
+body.single-post [style*="background:#35A9BD"],
+body.single-post [style*="background-color:#35A9BD"],
+body.single-post [style*="background: #35A9BD"],
+body.single-post [style*="background-color: #35A9BD"],
+body.single-teach_english_abroad [style*="background:#134559"],
+body.single-teach_english_abroad [style*="background-color:#134559"],
+body.single-teach_english_abroad [style*="background: #134559"],
+body.single-teach_english_abroad [style*="background-color: #134559"],
+body.single-teach_english_abroad [style*="background:#217381"],
+body.single-teach_english_abroad [style*="background-color:#217381"],
+body.single-teach_english_abroad [style*="background: #217381"],
+body.single-teach_english_abroad [style*="background-color: #217381"],
+body.single-teach_english_abroad [style*="background:#35a9bd"],
+body.single-teach_english_abroad [style*="background-color:#35a9bd"],
+body.single-teach_english_abroad [style*="background: #35a9bd"],
+body.single-teach_english_abroad [style*="background-color: #35a9bd"],
+body.single-teach_english_abroad [style*="background:#35A9BD"],
+body.single-teach_english_abroad [style*="background-color:#35A9BD"],
+body.single-teach_english_abroad [style*="background: #35A9BD"],
+body.single-teach_english_abroad [style*="background-color: #35A9BD"]{
+  background-color:#0F3042 !important;
+}
+body.single-course [style^="color:#134559"],
+body.single-course [style*=";color:#134559"],
+body.single-course [style*="; color:#134559"],
+body.single-course [style^="color: #134559"],
+body.single-course [style*=";color: #134559"],
+body.single-course [style*="; color: #134559"],
+body.single-course [style^="color:#217381"],
+body.single-course [style*=";color:#217381"],
+body.single-course [style*="; color:#217381"],
+body.single-course [style^="color: #217381"],
+body.single-course [style*=";color: #217381"],
+body.single-course [style*="; color: #217381"],
+body.single-course [style^="color:#35a9bd"],
+body.single-course [style*=";color:#35a9bd"],
+body.single-course [style*="; color:#35a9bd"],
+body.single-course [style^="color: #35a9bd"],
+body.single-course [style*=";color: #35a9bd"],
+body.single-course [style*="; color: #35a9bd"],
+body.single-course [style^="color:#35A9BD"],
+body.single-course [style*=";color:#35A9BD"],
+body.single-course [style*="; color:#35A9BD"],
+body.single-course [style^="color: #35A9BD"],
+body.single-course [style*=";color: #35A9BD"],
+body.single-course [style*="; color: #35A9BD"],
+body.single-post [style^="color:#134559"],
+body.single-post [style*=";color:#134559"],
+body.single-post [style*="; color:#134559"],
+body.single-post [style^="color: #134559"],
+body.single-post [style*=";color: #134559"],
+body.single-post [style*="; color: #134559"],
+body.single-post [style^="color:#217381"],
+body.single-post [style*=";color:#217381"],
+body.single-post [style*="; color:#217381"],
+body.single-post [style^="color: #217381"],
+body.single-post [style*=";color: #217381"],
+body.single-post [style*="; color: #217381"],
+body.single-post [style^="color:#35a9bd"],
+body.single-post [style*=";color:#35a9bd"],
+body.single-post [style*="; color:#35a9bd"],
+body.single-post [style^="color: #35a9bd"],
+body.single-post [style*=";color: #35a9bd"],
+body.single-post [style*="; color: #35a9bd"],
+body.single-post [style^="color:#35A9BD"],
+body.single-post [style*=";color:#35A9BD"],
+body.single-post [style*="; color:#35A9BD"],
+body.single-post [style^="color: #35A9BD"],
+body.single-post [style*=";color: #35A9BD"],
+body.single-post [style*="; color: #35A9BD"],
+body.single-teach_english_abroad [style^="color:#134559"],
+body.single-teach_english_abroad [style*=";color:#134559"],
+body.single-teach_english_abroad [style*="; color:#134559"],
+body.single-teach_english_abroad [style^="color: #134559"],
+body.single-teach_english_abroad [style*=";color: #134559"],
+body.single-teach_english_abroad [style*="; color: #134559"],
+body.single-teach_english_abroad [style^="color:#217381"],
+body.single-teach_english_abroad [style*=";color:#217381"],
+body.single-teach_english_abroad [style*="; color:#217381"],
+body.single-teach_english_abroad [style^="color: #217381"],
+body.single-teach_english_abroad [style*=";color: #217381"],
+body.single-teach_english_abroad [style*="; color: #217381"],
+body.single-teach_english_abroad [style^="color:#35a9bd"],
+body.single-teach_english_abroad [style*=";color:#35a9bd"],
+body.single-teach_english_abroad [style*="; color:#35a9bd"],
+body.single-teach_english_abroad [style^="color: #35a9bd"],
+body.single-teach_english_abroad [style*=";color: #35a9bd"],
+body.single-teach_english_abroad [style*="; color: #35a9bd"],
+body.single-teach_english_abroad [style^="color:#35A9BD"],
+body.single-teach_english_abroad [style*=";color:#35A9BD"],
+body.single-teach_english_abroad [style*="; color:#35A9BD"],
+body.single-teach_english_abroad [style^="color: #35A9BD"],
+body.single-teach_english_abroad [style*=";color: #35A9BD"],
+body.single-teach_english_abroad [style*="; color: #35A9BD"]{
+  color:#0F3042 !important;
+}
+body.single-course [style*="border"][style*="#134559"],
+body.single-course [style*="border"][style*="#217381"],
+body.single-course [style*="border"][style*="#35a9bd"],
+body.single-course [style*="border"][style*="#35A9BD"],
+body.single-post [style*="border"][style*="#134559"],
+body.single-post [style*="border"][style*="#217381"],
+body.single-post [style*="border"][style*="#35a9bd"],
+body.single-post [style*="border"][style*="#35A9BD"],
+body.single-teach_english_abroad [style*="border"][style*="#134559"],
+body.single-teach_english_abroad [style*="border"][style*="#217381"],
+body.single-teach_english_abroad [style*="border"][style*="#35a9bd"],
+body.single-teach_english_abroad [style*="border"][style*="#35A9BD"]{
+  border-color:#0F3042 !important;
+}
+/* Hire Wire menu link and footer signup button */
+body.single-course .top-bar-links a.primary-menu-link[href*="the-hire-wire"],
+body.single-course .top-bar-links a.primary-menu-link[href*="the-hire-wire"] .hw-menu-arrow,
+body.single-post .top-bar-links a.primary-menu-link[href*="the-hire-wire"],
+body.single-post .top-bar-links a.primary-menu-link[href*="the-hire-wire"] .hw-menu-arrow,
+body.single-teach_english_abroad .top-bar-links a.primary-menu-link[href*="the-hire-wire"],
+body.single-teach_english_abroad .top-bar-links a.primary-menu-link[href*="the-hire-wire"] .hw-menu-arrow{
+  color:#0F3042 !important;
+}
+body.single-course .hire-wire-footer-signup input.wpcf7-submit,
+body.single-post .hire-wire-footer-signup input.wpcf7-submit,
+body.single-teach_english_abroad .hire-wire-footer-signup input.wpcf7-submit{
+  background-color:#0F3042 !important;
+  border-color:#0F3042 !important;
+  color:#FFFFFF !important;
+}
+body.single-course .hire-wire-footer-signup input.wpcf7-submit:hover,
+body.single-post .hire-wire-footer-signup input.wpcf7-submit:hover,
+body.single-teach_english_abroad .hire-wire-footer-signup input.wpcf7-submit:hover{
+  background-color:#1A4A63 !important;
+  border-color:#1A4A63 !important;
+  color:#7FE0B5 !important;
+}
+/* Course page bonus label (old teal) */
+body.single-course .free-bundle-label,
+body.single-post .free-bundle-label,
+body.single-teach_english_abroad .free-bundle-label{
+  background-color:#0F3042 !important;
+}
+
+/* SITE PALETTE ROLL-OUT, part 2 - 6 Oct 2026: stylesheet-based teal on these page types */
+body.single-course .key-points-content,
+body.single-post .key-points-content,
+body.single-teach_english_abroad .key-points-content{
+  color:#0F3042 !important;
+}
+body.single-course .button-wrapper a.btn-outline,
+body.single-post .button-wrapper a.btn-outline,
+body.single-teach_english_abroad .button-wrapper a.btn-outline{
+  background-color:#0F3042 !important;
+}
+
+

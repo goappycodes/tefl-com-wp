@@ -1,0 +1,200 @@
+/* ==========================================================================
+   COUNTRY GUIDE HEADINGS - added 2 Oct 2026
+   Mirrors the blog H2/H3 treatment so guides match blog posts.
+   Guide body wrapper is .main-content-section .section-content.
+   ========================================================================== */
+body.single-teach_english_abroad .main-content-section .section-content > h2{
+  position:relative;
+  margin:33px 0 14px;
+  padding-bottom:6px;
+  font-size:30px;
+  line-height:1.3;
+  font-weight:700;
+  letter-spacing:-.01em;
+  color:var(--tefl-ink,#123137);
+  border-bottom:1px solid var(--tefl-line,#DDE9EB);
+  clear:both;
+}
+body.single-teach_english_abroad .main-content-section .section-content > h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:58px;
+  height:3px;
+  border-radius:2px;
+  background:var(--tefl-accent,#35A9BD);
+}
+body.single-teach_english_abroad .main-content-section .section-content > h3{
+  margin:28px 0 10px;
+  padding-left:14px;
+  border-left:3px solid var(--tefl-accent-pale,#A9DEE7);
+  font-size:21px;
+  line-height:1.35;
+  font-weight:700;
+  color:var(--tefl-ink,#123137);
+}
+body.single-teach_english_abroad .main-content-section .section-content > *:first-child{ margin-top:0; }
+@media (max-width:600px){
+  body.single-teach_english_abroad .main-content-section .section-content > h2{ font-size:24px; margin:28px 0 12px; }
+  body.single-teach_english_abroad .main-content-section .section-content > h3{ font-size:19px; margin:24px 0 9px; }
+}
+
+/* ==========================================================================
+   COUNTRY GUIDE IMAGE COLUMN - added 2 Oct 2026
+   Makes the right-hand gallery fill exactly the height of the text column,
+   so photos always finish level with the text (no white space, no overshoot).
+   Photos share the column height evenly and crop with object-fit: cover.
+   Desktop only; on mobile the columns stack and photos keep their own height.
+   ========================================================================== */
+@media (min-width:769px){
+  body.single-teach_english_abroad .main-content-row > .main-content-img-col{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+  }
+  body.single-teach_english_abroad .main-content-img-col > .country-image-div{
+    flex:1 1 0;
+    min-height:220px;
+    margin:0 !important;
+    overflow:hidden;
+  }
+  body.single-teach_english_abroad .main-content-img-col > .country-image-div img{
+    display:block;
+    width:100%;
+    height:100% !important;
+    object-fit:cover;
+  }
+}
+
+/* ==========================================================================
+   COUNTRY GUIDE FACTS STRIP - added 2 Oct 2026
+   Brand styling for the "Facts about" icons: soft teal circle behind each
+   icon, brand ink labels, brand teal values, light teal dividers.
+   ========================================================================== */
+body.single-teach_english_abroad .facts-inner-col{
+  border-right:1px solid #DDE9EB !important;
+}
+body.single-teach_english_abroad .facts-inner-col:last-child{
+  border-right:0 !important;
+}
+body.single-teach_english_abroad .facts-icon{
+  width:92px;
+  height:92px !important;
+  margin:0 auto 14px !important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#F0F7F8;
+  box-shadow:inset 0 0 0 2px #A9DEE7;
+}
+body.single-teach_english_abroad .facts-icon img{
+  width:50px !important;
+  height:auto !important;
+  max-height:46px;
+  object-fit:contain;
+}
+body.single-teach_english_abroad .facts-title{
+  color:#123137 !important;
+  font-weight:700 !important;
+  letter-spacing:.06em;
+  margin-bottom:4px !important;
+}
+body.single-teach_english_abroad .facts-content{
+  color:#134559 !important;
+  font-weight:600 !important;
+  font-size:14px !important;
+}
+
+/* ==========================================================================
+   COUNTRY GUIDE FAQ IMAGE - added 2 Oct 2026
+   FAQ photo fills exactly the height of the FAQ list beside it, so it ends
+   level with the last question. Desktop only.
+   ========================================================================== */
+@media (min-width:769px){
+  body.single-teach_english_abroad .faqs-row > .faqs-img-col{
+    position:relative;
+    min-height:360px;
+  }
+  body.single-teach_english_abroad .faqs-row > .faqs-img-col > img{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:20px;
+    width:calc((100% - 40px) * .8);
+    height:100% !important;
+    max-width:none;
+    object-fit:cover;
+  }
+}
+
+/* ==========================================================================
+   COUNTRY GUIDE KEY POINTS - added 2 Oct 2026, revised same day
+   Shows brand teal versions of the four key point icons (media 109157-109160)
+   in place of the black originals, keeping their white detail lines, at 80px.
+   Uses the icon file name to pick the matching teal version.
+   ========================================================================== */
+body.single-teach_english_abroad .key-points-icon{
+  width:80px;
+  height:80px;
+  margin:0 auto 14px !important;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+}
+body.single-teach_english_abroad .key-points-icon img{
+  width:80px !important;
+  height:80px !important;
+  object-fit:contain;
+}
+body.single-teach_english_abroad .key-points-icon:has(img[src*="Artboard-4.png"]){background-image:url("https://teflinstitute.com/wp-content/uploads/2026/10/tefl-guide-key-point-icon-artboard-4-brand-teal.png");}
+body.single-teach_english_abroad .key-points-icon:has(img[src*="Artboard-5.png"]){background-image:url("https://teflinstitute.com/wp-content/uploads/2026/10/tefl-guide-key-point-icon-artboard-5-brand-teal.png");}
+body.single-teach_english_abroad .key-points-icon:has(img[src*="Artboard-7-2.png"]){background-image:url("https://teflinstitute.com/wp-content/uploads/2026/10/tefl-guide-key-point-icon-artboard-7-2-brand-teal.png");}
+body.single-teach_english_abroad .key-points-icon:has(img[src*="Artboard-6.png"]){background-image:url("https://teflinstitute.com/wp-content/uploads/2026/10/tefl-guide-key-point-icon-artboard-6-brand-teal.png");}
+body.single-teach_english_abroad .key-points-icon:has(img[src*="Artboard-4.png"]) img,
+body.single-teach_english_abroad .key-points-icon:has(img[src*="Artboard-5.png"]) img,
+body.single-teach_english_abroad .key-points-icon:has(img[src*="Artboard-7-2.png"]) img,
+body.single-teach_english_abroad .key-points-icon:has(img[src*="Artboard-6.png"]) img{
+  opacity:0;
+}
+body.single-teach_english_abroad .key-points-title{
+  color:#123137 !important;
+  font-weight:700 !important;
+}
+body.single-teach_english_abroad .key-points-content{
+  color:#134559 !important;
+  font-weight:600 !important;
+}
+
+/* ==========================================================================
+   COUNTRY GUIDE KEY FACTS FALLBACK - added 2 Oct 2026
+   When a guide has no "When to go" card (key_facts_content empty), the theme
+   outputs only the left half column. This spreads the list across the full
+   width in two columns so no guide shows a blank right half. Desktop only.
+   ========================================================================== */
+@media (min-width:769px){
+  body.single-teach_english_abroad .key-facts-row:not(:has(.key-facts-content-col)) > .key-facts-feature-col{
+    flex:0 0 100%;
+    max-width:100%;
+    width:100%;
+  }
+  body.single-teach_english_abroad .key-facts-row:not(:has(.key-facts-content-col)) > .key-facts-feature-col > ul{
+    column-count:2;
+    column-gap:48px;
+  }
+  body.single-teach_english_abroad .key-facts-row:not(:has(.key-facts-content-col)) > .key-facts-feature-col > ul > li{
+    break-inside:avoid;
+  }
+}
+
+/* Country guides hub: left-aligned card grid (3 Oct 2026, scoped to .jobs-section) */body.page-template-page-teach-english-jobs .jobs-section > .ast-container > .ast-row{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:stretch}body.page-template-page-teach-english-jobs .jobs-section > .ast-container > .ast-row::before,body.page-template-page-teach-english-jobs .jobs-section > .ast-container > .ast-row::after{display:none}body.page-template-page-teach-english-jobs .jobs-section > .ast-container > .ast-row > .ast-col-md-12{flex:0 0 100%;max-width:100%;float:none}body.page-template-page-teach-english-jobs .jobs-section > .ast-container > .ast-row > .ast-col-md-4{flex:0 0 33.3333%;max-width:33.3333%;float:none}@media (max-width:767px){body.page-template-page-teach-english-jobs .jobs-section > .ast-container > .ast-row > .ast-col-md-4{flex:0 0 100%;max-width:100%}}
+
+/* Guide FAQ answer links visible (4 Oct 2026) */body.single-teach_english_abroad .panel-body a{color:#134559;text-decoration:underline;font-weight:600}body.single-teach_english_abroad .panel-body a:hover{color:#35A9BD}
+
+/* Hub card buttons brand teal (4 Oct 2026) */body.page-template-page-teach-english-jobs .job-inner .info a.link{background:#134559 !important;border-color:#134559 !important;color:#ffffff !important}body.page-template-page-teach-english-jobs .job-inner .info a.link:hover,body.page-template-page-teach-english-jobs .job-inner .info a.link:focus{background:#1d6480 !important;border-color:#1d6480 !important;color:#ffffff !important}
+
+/* Hub card buttons rounded (4 Oct 2026) */body.page-template-page-teach-english-jobs .job-inner .info a.link{border-radius:8px !important}
+
+/* Guide paragraphs keep bold inline (5 Oct 2026) - theme set strong to display:block, stacking bold words on their own lines */body.single-teach_english_abroad .main-content-section .section-content p strong,body.single-teach_english_abroad .main-content-section .section-content li strong{display:inline !important}
+
