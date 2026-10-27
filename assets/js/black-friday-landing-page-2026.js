@@ -12,8 +12,12 @@
  *   tile design and the expiry comes from data-sale-end on the clock wrapper.
  *
  * To come with later sections:
- *   - Course-card strike-through on scroll into view
- *   - Free-gift suitcases (tap to unzip, "Open all" / "Re-wrap", confetti)
+ * Section: FREE GIFTS — tap a suitcase to unzip and reveal the gift, with a
+ *   progress counter, "Open all" / "Re-wrap" controls, a success banner and
+ *   a little confetti burst. State is a single .is-open class per suitcase;
+ *   the unzip choreography lives in CSS.
+ *
+ * To come with later sections:
  *   - FAQ accordion (one open at a time)
  * ========================================================================== */
 (function () {
@@ -67,8 +71,138 @@
     }, 1000);
   }
 
+  function initGifts() {
+    var grid = document.querySelector('[data-gift-grid]');
+    if (!grid) {
+      return;
+    }
+    var gifts    = Array.prototype.slice.call(grid.querySelectorAll('[data-gift]'));
+    var total    = gifts.length;
+    var countEl  = document.querySelector('[data-gift-count]');
+    var barEl    = document.querySelector('[data-gift-bar]');
+    var banner   = document.querySelector('[data-gift-banner]');
+    var openAll  = document.querySelector('[data-gift-openall]');
+    var rewrap   = document.querySelector('[data-gift-rewrap]');
+    var COLORS   = ['#D7263D', '#E3B341', '#F6F0EB', '#FF5C6C'];
+
+    function update() {
+      var n = grid.querySelectorAll('[data-gift].is-open').length;
+      if (countEl) { countEl.textContent = n; }
+      if (barEl)   { barEl.style.width = (total ? (n / total) * 100 : 0) + '%'; }
+      if (banner)  { banner.hidden = n < total || total === 0; }
+    }
+
+    function burst(gift) {
+      var bits = gift.querySelector('.bf26-gift__bits');
+      if (!bits) { return; }
+      for (var i = 0; i < 14; i++) {
+        var a = (i / 14) * Math.PI * 2;
+        var r = 70 + (i % 3) * 28;
+        var s = document.createElement('span');
+        s.className = 'bf26-bit';
+        s.style.width  = (i % 2 ? 8 : 12) + 'px';
+        s.style.height = (i % 2 ? 12 : 6) + 'px';
+        s.style.background = COLORS[i % 4];
+        s.style.setProperty('--dx', Math.round(Math.cos(a) * r) + 'px');
+        s.style.setProperty('--dy', Math.round(Math.sin(a) * r - 20) + 'px');
+        s.style.setProperty('--rot', ((i * 47) % 360) + 'deg');
+        s.style.animationDelay = (0.9 + (i % 4) * 0.05) + 's';
+        bits.appendChild(s);
+        (function (node) { setTimeout(function () { node.remove(); }, 2600); })(s);
+      }
+    }
+
+    function openGift(gift) {
+      if (gift.classList.contains('is-open')) { return; }
+      gift.classList.add('is-open');
+      burst(gift);
+      update();
+    }
+
+    function closeGift(gift) {
+      gift.classList.remove('is-open');
+      update();
+    }
+
+    gifts.forEach(function (gift) {
+      gift.addEventListener('click', function () {
+        if (gift.classList.contains('is-open')) {
+          closeGift(gift);
+        } else {
+          openGift(gift);
+        }
+      });
+    });
+
+    if (openAll) {
+      openAll.addEventListener('click', function () {
+        gifts.forEach(openGift);
+      });
+    }
+    if (rewrap) {
+      rewrap.addEventListener('click', function () {
+        gifts.forEach(closeGift);
+      });
+    }
+
+    update();
+  }
+
+  /* Reviews: one card at a time, auto-advancing, swipeable. */
+  function initReviews() {
+    var scroll = document.querySelector('.bf26-review__scroll');
+    if (!scroll) { return; }
+    var cards = scroll.querySelectorAll('.bf26-review__card');
+    if (cards.length < 2) { return; }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+
+    var idx = 0;
+    var timer = null;
+    var paused = false;
+    var DELAY = 4500;
+
+    function base() { return cards[0].offsetLeft; }
+
+    function go(i) {
+      idx = (i + cards.length) % cards.length;
+      scroll.scrollTo({ left: cards[idx].offsetLeft - base(), behavior: 'smooth' });
+    }
+
+    function tick() { if (!paused) { go(idx + 1); } }
+
+    function start() { stop(); timer = window.setInterval(tick, DELAY); }
+    function stop() { if (timer) { window.clearInterval(timer); timer = null; } }
+
+    // Keep idx in sync when the user swipes/scrolls manually.
+    var settle;
+    scroll.addEventListener('scroll', function () {
+      window.clearTimeout(settle);
+      settle = window.setTimeout(function () {
+        var pos = scroll.scrollLeft + base();
+        var best = 0, bestDist = Infinity;
+        for (var i = 0; i < cards.length; i++) {
+          var d = Math.abs(cards[i].offsetLeft - pos);
+          if (d < bestDist) { bestDist = d; best = i; }
+        }
+        idx = best;
+      }, 120);
+    }, { passive: true });
+
+    // Pause while the visitor is interacting.
+    scroll.addEventListener('pointerenter', function () { paused = true; });
+    scroll.addEventListener('pointerleave', function () { paused = false; });
+    scroll.addEventListener('touchstart', function () { paused = true; }, { passive: true });
+    scroll.addEventListener('touchend', function () {
+      window.setTimeout(function () { paused = false; }, 2500);
+    }, { passive: true });
+
+    start();
+  }
+
   function init() {
     initCountdown();
+    initGifts();
+    initReviews();
   }
 
   if (document.readyState === 'loading') {

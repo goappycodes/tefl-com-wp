@@ -389,7 +389,7 @@ $courses_cta_section = get_field('courses_cta_section');
             </div>
 
             <div class="cta-container">
-                <a href="/tefl-courses-ireland/" class="view-all-courses-btn teflie-btn btn-primary">
+                <a href="/tefl-courses-overview/" class="view-all-courses-btn teflie-btn btn-primary">
                     Compare All Courses
                 </a>
             </div>
@@ -793,7 +793,7 @@ if ($student_stories_section):
                 <button type="button" class="nav-arrow nav-prev" aria-label="Previous story">
                     <img class="splide__arrow-icon" src="/wp-content/uploads/2026/09/slider-arrow-right.svg" alt="">
                 </button>
-                <a class="view-all-stories" href="/tefl-case-studies/">
+                <a class="view-all-stories" href="/blog/">
                     <span>View All Stories</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>

@@ -61,6 +61,13 @@ function tefl_lang_translation_meta() {
 
 
 function get_country_link_attribute() {
+    // Do not emit hreflang on non-canonical (query-string) requests
+    // (?pg=, ?_gl=, etc.). get_current_canonical() already strips the query,
+    // so these are not indexable variants and must not carry hreflang -
+    // fixes Semrush "conflicting hreflang/canonical" + "no self-referencing".
+    if ( ! empty( $_SERVER['QUERY_STRING'] ) ) {
+        return '';
+    }
     $site_url        = site_url_without_cc();
     
     $request_url_cc  = $_SERVER['REQUEST_URI'];

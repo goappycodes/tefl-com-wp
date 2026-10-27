@@ -39,8 +39,8 @@ function tefl_native_page_sale_new($pid, $ctx) {
         'journey'       => tefl_native_page_sale_new_journey($ctx),
         'origin'        => tefl_headless_wp_origin(),
         'links'         => array(
-            'compare'     => tefl_native_promos_href('/tefl-courses-ireland/'),
-            'all_stories' => tefl_native_promos_href('/tefl-case-studies/'),
+            'compare'     => tefl_native_promos_href('/tefl-courses-overview/'),
+            'all_stories' => tefl_native_promos_href('/blog/'),
         ),
     );
 }

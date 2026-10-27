@@ -26,7 +26,7 @@ define( 'BF26_GROUP_KEY', 'group_6adc86c0a1f16' );   // the "Black Friday 2026" 
 
 /** The section "group" fields whose sub-values are merged for the template. */
 function bf26_section_groups() {
-	return array( 'banner_section', 'accred_strip', 'sale_countdown', 'course_section' );
+	return array( 'banner_section', 'accred_strip', 'sale_countdown', 'course_section', 'gift_section', 'review_section', 'whyus_section' );
 }
 
 /* =========================================================================
@@ -187,6 +187,62 @@ function bf26_defaults() {
 			array( 'icon' => 'book-open', 'label' => 'Free English Level Test', 'url' => '#' ),
 			array( 'icon' => 'file-badge', 'label' => 'Download Brochure', 'url' => '#' ),
 		),
+
+		/* ---------- Free gifts ---------- */
+		'gifts_board_status' => 'ARRIVALS',
+		'gifts_board_gate'   => 'WITH ANY COURSE',
+		'gifts_board_text'   => '6 FREE GIFTS',
+		'gifts_title_pre'    => 'Open your ',
+		'gifts_title_em'     => 'free gifts.',
+		'gifts_intro'        => 'Tap each suitcase to unzip it and see what\'s inside. Enrol in any primary course (120–310 hours) and all six are yours.',
+		'gifts_opened_label' => 'OPENED',
+		'gifts_open_all'     => 'Open all',
+		'gifts_rewrap'       => 'Re-wrap',
+		'gifts'              => array(
+			array( 'name' => 'AI Module', 'image' => 'https://teflinstitute.com/wp-content/uploads/2024/01/AI.png', 'c1' => '#D7263D', 'c2' => '#8E1626' ),
+			array( 'name' => 'Travel Influencer Launchpad Course', 'image' => 'https://teflinstitute.com/wp-content/uploads/2026/04/travel-influencer-tefl-insitute-300x300.jpg', 'c1' => '#E3B341', 'c2' => '#C99A2E' ),
+			array( 'name' => 'Grammar Guide', 'image' => 'https://teflinstitute.com/wp-content/uploads/2025/01/TI_grammar_guide.png', 'c1' => '#2A2A2A', 'c2' => '#3A3A3A' ),
+			array( 'name' => 'Lesson Planning Guide', 'image' => 'https://teflinstitute.com/wp-content/uploads/2025/01/TI_lesson_planning_guide.png', 'c1' => '#D7263D', 'c2' => '#8E1626' ),
+			array( 'name' => 'Teaching Young Learners Lesson Pack', 'image' => 'https://teflinstitute.com/wp-content/uploads/2022/11/young-learners.png', 'c1' => '#E3B341', 'c2' => '#C99A2E' ),
+			array( 'name' => 'Teaching Business English Lesson Pack', 'image' => 'https://teflinstitute.com/wp-content/uploads/2022/11/business-english.png', 'c1' => '#2A2A2A', 'c2' => '#3A3A3A' ),
+		),
+		'gifts_banner_strong' => 'All 6 cases unpacked.',
+		'gifts_banner_text'   => 'They\'re yours free with any course.',
+		'gifts_banner_cta'    => 'Claim my gifts',
+		'gifts_banner_url'    => '#',
+
+		/* ---- Reviews & stats ----
+		 * The Trustpilot stat's rating + count are pulled live (bf26_live_trustpilot).
+		 * The three stats below are the editable repeater defaults. */
+		'stats'               => array(
+			array( 'num' => '90+',     'label' => 'countries where our graduates teach' ),
+			array( 'num' => 'Level 5', 'label' => 'Ofqual-regulated, awarded by Highfield' ),
+			array( 'num' => 'Lifetime','label' => 'tutor support and jobs board access' ),
+		),
+		'tp_rating'           => '4.9',
+		'tp_count'            => '1,900',
+		'review_quote'        => 'An amazing TEFL course! The lessons were clear, practical, and very comprehensive. I learned so much and now feel confident and excited to begin my journey as an English teacher.',
+		'review_author'       => 'Miriam Danso-Kumi',
+		'review_role'         => 'TEFL graduate',
+		'review_title_pre'    => 'Your first ',
+		'review_title_em'     => 'classroom',
+		'review_title_post'   => ' is closer than you think.',
+		'review_cta_label'    => 'Claim up to 82% off',
+		'review_cta_url'      => '#',
+
+		/* ---- Why choose us ---- */
+		'whyus_eyebrow'       => 'WHY US?',
+		'whyus_title_pre'     => 'Why choose ',
+		'whyus_title_em'      => 'our',
+		'whyus_title_post'    => ' training.',
+		'whyus_intro'         => 'With 10+ years of experience and thousands of graduates teaching in 90+ countries, TEFL Institute gives you everything from your first lesson plan to your first TEFL job.',
+		'whyus_cards'         => array(
+			array( 'icon' => 'shield-check',  'title' => 'Accredited',             'text' => 'Ofqual-regulated Level 5 qualifications, awarded by Highfield and recognised worldwide.' ),
+			array( 'icon' => 'life-buoy',     'title' => 'Lifetime Support',        'text' => 'Tutors and our student team stay with you long after you finish the course.' ),
+			array( 'icon' => 'laptop',        'title' => 'Learn on Any Device',     'text' => 'Study at your own pace on laptop, tablet or phone through our app.' ),
+			array( 'icon' => 'calendar-days', 'title' => 'Flexible Payment Plans',  'text' => 'Spread the cost of your course with interest-free instalments.' ),
+			array( 'icon' => 'briefcase',     'title' => 'Jobs Board Access',       'text' => 'Find teaching roles online and abroad with schools that know our graduates.' ),
+		),
 	);
 
 	return $d;
@@ -194,9 +250,10 @@ function bf26_defaults() {
 
 /**
  * Resolve a course card's price / was-price / save-% .
- * Follows the site convention (see black-friday-landing-page-2023.php): when a
- * WooCommerce product is linked, pull the live regular/sale price and compute
- * the discount; otherwise fall back to the manually-entered card values.
+ * The manually-entered price wins when set (so campaign prices stay fixed and a
+ * product can still be linked just to drive the Enrol button). Only when no
+ * manual price is entered do we pull the live regular/sale price from the
+ * linked WooCommerce product (the site convention, see the 2023 BF page).
  * Returns [ 'price' => html, 'was' => html, 'save' => '63%' ].
  */
 function bf26_card_pricing( $card ) {
@@ -209,7 +266,7 @@ function bf26_card_pricing( $card ) {
 		$product_id = is_array( $card['product'] ) ? ( $card['product']['ID'] ?? 0 ) : $card['product'];
 	}
 
-	if ( $product_id && function_exists( 'wc_get_product' ) ) {
+	if ( '' === $price && $product_id && function_exists( 'wc_get_product' ) ) {
 		$product = wc_get_product( $product_id );
 		if ( $product ) {
 			$reg  = (float) $product->get_regular_price();
@@ -378,6 +435,140 @@ function bf26_rows( $name, $post_id = null ) {
 /** Echo escaped text from a field. */
 function bf26_e( $name ) {
 	echo esc_html( bf26_get( $name ) );
+}
+
+/**
+ * Live Trustpilot rating + review count for the stats strip.
+ * Reads the site's own review options (kept current outside this page) and
+ * falls back to the design defaults when they are empty.
+ */
+function bf26_live_trustpilot() {
+	$d      = bf26_defaults();
+	$rating = '';
+	$count  = '';
+
+	if ( function_exists( 'get_field' ) ) {
+		$tp = get_field( 'trustpilot_reviews', 'option' );
+		if ( is_array( $tp ) ) {
+			$rating = isset( $tp['reviews_rating'] ) ? trim( (string) $tp['reviews_rating'] ) : '';
+			$count  = isset( $tp['reviews_count'] ) ? trim( (string) $tp['reviews_count'] ) : '';
+		}
+		if ( '' === $rating || '' === $count ) {
+			$g = get_field( 'google_reviews', 'option' );
+			if ( is_array( $g ) ) {
+				if ( '' === $rating && ! empty( $g['reviews_rating'] ) ) { $rating = trim( (string) $g['reviews_rating'] ); }
+				if ( '' === $count && ! empty( $g['reviews_count'] ) )   { $count  = trim( (string) $g['reviews_count'] ); }
+			}
+		}
+	}
+
+	if ( '' === $rating ) { $rating = $d['tp_rating']; }
+	if ( '' === $count )  { $count  = $d['tp_count']; }
+
+	$digits = preg_replace( '/[^0-9]/', '', $count );
+	if ( '' !== $digits ) { $count = number_format( (int) $digits ); }
+
+	return array( 'rating' => $rating, 'count' => $count );
+}
+
+/**
+ * Read + normalise the Business Reviews Bundle cache (the same reviews the site
+ * shows via [brb_collection]). Returns up to a handful of strong 5-star reviews,
+ * English course-related ones first. Does NOT fetch — it only reads whatever
+ * BRB has already cached. Returns [] when every collection cache is cold.
+ *
+ * @return array[] each item: [ 'text' => string, 'author' => string, 'role' => string ]
+ */
+function bf26_read_brb_reviews() {
+	if ( ! function_exists( 'get_transient' ) ) {
+		return array();
+	}
+	$ver     = defined( 'BRB_VERSION' ) ? BRB_VERSION : '1.9.5';
+	$reviews = array();
+	foreach ( array( 1150, 77247, 108607 ) as $cid ) {
+		$data = get_transient( 'brb_collection_' . $ver . '_' . $cid . '_reviews' );
+		if ( is_array( $data ) && ! empty( $data['reviews'] ) ) {
+			$reviews = $data['reviews'];
+			break;
+		}
+	}
+	if ( empty( $reviews ) ) {
+		return array();
+	}
+
+	$keywords  = array( 'course', 'tefl', 'english', 'great', 'recommend', 'helpful', 'support', 'learn', 'excellent', 'amazing', 'enjoy', 'experience', 'teach' );
+	$primary   = array(); // English / course-related 5-star reviews.
+	$secondary = array(); // other 5-star reviews with text.
+
+	foreach ( $reviews as $r ) {
+		$r = (array) $r;
+		if ( 5 !== (int) ( $r['rating'] ?? 0 ) ) { continue; }
+		$txt = isset( $r['text'] ) ? trim( preg_replace( '/\s+/', ' ', $r['text'] ) ) : '';
+		$len = function_exists( 'mb_strlen' ) ? mb_strlen( $txt ) : strlen( $txt );
+		if ( $len < 40 ) { continue; }
+
+		$author   = isset( $r['author_name'] ) ? trim( $r['author_name'] ) : '';
+		$provider = isset( $r['provider'] ) ? trim( (string) $r['provider'] ) : '';
+		$item     = array(
+			'text'   => $txt,
+			'author' => '' !== $author ? $author : 'Verified student',
+			'role'   => $provider ? ucfirst( $provider ) . ' review' : 'Verified review',
+		);
+
+		$low = function_exists( 'mb_strtolower' ) ? mb_strtolower( $txt ) : strtolower( $txt );
+		$hit = false;
+		foreach ( $keywords as $k ) { if ( false !== strpos( $low, $k ) ) { $hit = true; break; } }
+		if ( $hit ) { $primary[] = $item; } else { $secondary[] = $item; }
+	}
+
+	return array_merge( $primary, $secondary );
+}
+
+/**
+ * Live reviews for the testimonial scroller.
+ *
+ * The BRB cache is only (re)populated when a page containing a [brb_collection]
+ * shortcode is viewed; the Black Friday page has none, so those transients can
+ * all be cold at render time. To never fall back to the placeholder review:
+ *   1. read whatever BRB has cached;
+ *   2. if that's empty, serve a durable backup saved from a previous success;
+ *   3. only if there is no backup either, warm the cache the way BRB's own
+ *      shortcode does (one synchronous fetch) and read it.
+ * The durable backup is refreshed from fresh data at most once every 6 hours.
+ *
+ * @return array[] each item: [ 'text' => string, 'author' => string, 'role' => string ]
+ */
+function bf26_live_reviews( $limit = 10 ) {
+	$d        = bf26_defaults();
+	$fallback = array( array( 'text' => $d['review_quote'], 'author' => $d['review_author'], 'role' => $d['review_role'] ) );
+
+	$fresh = bf26_read_brb_reviews();
+	$out   = $fresh;
+
+	if ( empty( $out ) ) {
+		$backup = get_option( 'bf26_reviews_backup' );
+		if ( is_array( $backup ) && ! empty( $backup ) ) {
+			$out = $backup; // fast path — never show the placeholder once warmed once.
+		} elseif ( function_exists( 'do_shortcode' ) ) {
+			do_shortcode( '[brb_collection id="1150"]' ); // populates the BRB transient.
+			$fresh = bf26_read_brb_reviews();
+			$out   = $fresh;
+		}
+	}
+
+	// Keep a durable backup from fresh data, throttled to ~once every 6 hours.
+	if ( ! empty( $fresh ) && function_exists( 'update_option' ) ) {
+		$last = (int) get_option( 'bf26_reviews_backup_time' );
+		if ( ( time() - $last ) > 6 * HOUR_IN_SECONDS ) {
+			update_option( 'bf26_reviews_backup', $fresh, false );
+			update_option( 'bf26_reviews_backup_time', time(), false );
+		}
+	}
+
+	if ( empty( $out ) ) {
+		return $fallback;
+	}
+	return array_slice( $out, 0, max( 1, (int) $limit ) );
 }
 
 /** Resolve the hero image to a usable [url, alt] pair, with a theme fallback. */
@@ -608,4 +799,131 @@ function bf26_make_cta_bundle_only() {
 	$f['conditional_logic'] = array( array( array( 'field' => 'field_bf26_card_variant', 'operator' => '==', 'value' => 'bundle' ) ) );
 	acf_update_field( $f );
 	return 'cta_url is now bundle-only';
+}
+
+/** The free-gifts sub-fields (source of truth for the append). */
+function bf26_gift_subfields() {
+	$d = bf26_defaults();
+	return array(
+		array( 'key' => 'field_bf26_gifts_board_status', 'name' => 'gifts_board_status', 'label' => 'Board status', 'type' => 'text', 'default_value' => $d['gifts_board_status'], 'wrapper' => array( 'width' => 34 ) ),
+		array( 'key' => 'field_bf26_gifts_board_gate', 'name' => 'gifts_board_gate', 'label' => 'Board gate line', 'type' => 'text', 'default_value' => $d['gifts_board_gate'], 'wrapper' => array( 'width' => 33 ) ),
+		array( 'key' => 'field_bf26_gifts_board_text', 'name' => 'gifts_board_text', 'label' => 'Split-flap text', 'type' => 'text', 'default_value' => $d['gifts_board_text'], 'wrapper' => array( 'width' => 33 ) ),
+		array( 'key' => 'field_bf26_gifts_title_pre', 'name' => 'gifts_title_pre', 'label' => 'Title — before highlight', 'type' => 'text', 'default_value' => $d['gifts_title_pre'], 'wrapper' => array( 'width' => 50 ) ),
+		array( 'key' => 'field_bf26_gifts_title_em', 'name' => 'gifts_title_em', 'label' => 'Title — highlight', 'type' => 'text', 'default_value' => $d['gifts_title_em'], 'wrapper' => array( 'width' => 50 ) ),
+		array( 'key' => 'field_bf26_gifts_intro', 'name' => 'gifts_intro', 'label' => 'Intro paragraph', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '', 'default_value' => $d['gifts_intro'] ),
+		array( 'key' => 'field_bf26_gifts_opened_label', 'name' => 'gifts_opened_label', 'label' => 'Progress label', 'type' => 'text', 'default_value' => $d['gifts_opened_label'], 'wrapper' => array( 'width' => 34 ) ),
+		array( 'key' => 'field_bf26_gifts_open_all', 'name' => 'gifts_open_all', 'label' => '"Open all" label', 'type' => 'text', 'default_value' => $d['gifts_open_all'], 'wrapper' => array( 'width' => 33 ) ),
+		array( 'key' => 'field_bf26_gifts_rewrap', 'name' => 'gifts_rewrap', 'label' => '"Re-wrap" label', 'type' => 'text', 'default_value' => $d['gifts_rewrap'], 'wrapper' => array( 'width' => 33 ) ),
+		array(
+			'key' => 'field_bf26_gifts', 'name' => 'gifts', 'label' => 'Gifts', 'type' => 'repeater',
+			'instructions' => 'Leave empty to show the built-in six gifts.',
+			'min' => 0, 'layout' => 'block', 'button_label' => 'Add gift',
+			'sub_fields' => array(
+				array( 'key' => 'field_bf26_gift_name', 'name' => 'name', 'label' => 'Gift name', 'type' => 'text' ),
+				array( 'key' => 'field_bf26_gift_image', 'name' => 'image', 'label' => 'Image', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium', 'wrapper' => array( 'width' => 50 ) ),
+				array( 'key' => 'field_bf26_gift_c1', 'name' => 'c1', 'label' => 'Case body colour', 'type' => 'color_picker', 'default_value' => '#D7263D', 'wrapper' => array( 'width' => 25 ) ),
+				array( 'key' => 'field_bf26_gift_c2', 'name' => 'c2', 'label' => 'Case lid colour', 'type' => 'color_picker', 'default_value' => '#8E1626', 'wrapper' => array( 'width' => 25 ) ),
+			),
+		),
+		array( 'key' => 'field_bf26_gifts_banner_strong', 'name' => 'gifts_banner_strong', 'label' => 'Banner — bold lead', 'type' => 'text', 'default_value' => $d['gifts_banner_strong'], 'wrapper' => array( 'width' => 50 ) ),
+		array( 'key' => 'field_bf26_gifts_banner_text', 'name' => 'gifts_banner_text', 'label' => 'Banner — rest', 'type' => 'text', 'default_value' => $d['gifts_banner_text'], 'wrapper' => array( 'width' => 50 ) ),
+		array( 'key' => 'field_bf26_gifts_banner_cta', 'name' => 'gifts_banner_cta', 'label' => 'Banner button label', 'type' => 'text', 'default_value' => $d['gifts_banner_cta'], 'wrapper' => array( 'width' => 50 ) ),
+		array( 'key' => 'field_bf26_gifts_banner_url', 'name' => 'gifts_banner_url', 'label' => 'Banner button link', 'type' => 'text', 'default_value' => $d['gifts_banner_url'], 'wrapper' => array( 'width' => 50 ) ),
+	);
+}
+
+/** One-shot: add the "Free gifts" tab + group to the DB field group. */
+function bf26_add_gift_fields() {
+	return bf26_append_group_section(
+		'field_bf26_tab_gifts',
+		'Free gifts',
+		'field_bf26_gift_section',
+		'gift_section',
+		'Free gifts',
+		bf26_gift_subfields()
+	);
+}
+
+/** The reviews & stats sub-fields (source of truth for the append). */
+function bf26_review_subfields() {
+	$d = bf26_defaults();
+	return array(
+		array(
+			'key' => 'field_bf26_stats', 'name' => 'stats', 'label' => 'Stats strip', 'type' => 'repeater',
+			'instructions' => 'Leave empty to show the built-in stats. (The Trustpilot rating and reviews come from the live Trustpilot widget, not here.)',
+			'min' => 0, 'layout' => 'table', 'button_label' => 'Add stat',
+			'sub_fields' => array(
+				array( 'key' => 'field_bf26_stat_num', 'name' => 'num', 'label' => 'Number / headline', 'type' => 'text', 'wrapper' => array( 'width' => 30 ) ),
+				array( 'key' => 'field_bf26_stat_label', 'name' => 'label', 'label' => 'Label', 'type' => 'text', 'wrapper' => array( 'width' => 70 ) ),
+			),
+		),
+		array( 'key' => 'field_bf26_review_title_pre', 'name' => 'review_title_pre', 'label' => 'Heading — before highlight', 'type' => 'text', 'default_value' => $d['review_title_pre'], 'wrapper' => array( 'width' => 34 ) ),
+		array( 'key' => 'field_bf26_review_title_em', 'name' => 'review_title_em', 'label' => 'Heading — highlight', 'type' => 'text', 'default_value' => $d['review_title_em'], 'wrapper' => array( 'width' => 33 ) ),
+		array( 'key' => 'field_bf26_review_title_post', 'name' => 'review_title_post', 'label' => 'Heading — after highlight', 'type' => 'text', 'default_value' => $d['review_title_post'], 'wrapper' => array( 'width' => 33 ) ),
+		array( 'key' => 'field_bf26_review_cta_label', 'name' => 'review_cta_label', 'label' => 'Button label', 'type' => 'text', 'default_value' => $d['review_cta_label'], 'wrapper' => array( 'width' => 50 ) ),
+		array( 'key' => 'field_bf26_review_cta_url', 'name' => 'review_cta_url', 'label' => 'Button link', 'type' => 'text', 'default_value' => $d['review_cta_url'], 'wrapper' => array( 'width' => 50 ) ),
+	);
+}
+
+/** One-shot: add the "Reviews & stats" tab + group to the DB field group. */
+function bf26_add_review_fields() {
+	return bf26_append_group_section(
+		'field_bf26_tab_review',
+		'Reviews & stats',
+		'field_bf26_review_section',
+		'review_section',
+		'Reviews & stats',
+		bf26_review_subfields()
+	);
+}
+
+/** One-shot: remove the manual testimonial fields — these now come from the
+ *  live Trustpilot widget, so the quote/name/role fields are no longer needed. */
+function bf26_remove_review_live_fields() {
+	if ( ! function_exists( 'acf_delete_field' ) || ! function_exists( 'acf_get_field' ) ) {
+		return 'ACF not available';
+	}
+	$removed = array();
+	foreach ( array( 'field_bf26_review_quote', 'field_bf26_review_author', 'field_bf26_review_role' ) as $key ) {
+		$f = acf_get_field( $key );
+		if ( $f && ! empty( $f['ID'] ) ) {
+			acf_delete_field( $f['ID'] );
+			$removed[] = $key;
+		}
+	}
+	return $removed ? 'removed: ' . implode( ', ', $removed ) : 'nothing to remove';
+}
+
+/** The "Why choose us" sub-fields (source of truth for the append). */
+function bf26_whyus_subfields() {
+	$d = bf26_defaults();
+	return array(
+		array( 'key' => 'field_bf26_whyus_eyebrow', 'name' => 'whyus_eyebrow', 'label' => 'Eyebrow', 'type' => 'text', 'default_value' => $d['whyus_eyebrow'], 'wrapper' => array( 'width' => 100 ) ),
+		array( 'key' => 'field_bf26_whyus_title_pre', 'name' => 'whyus_title_pre', 'label' => 'Heading — before highlight', 'type' => 'text', 'default_value' => $d['whyus_title_pre'], 'wrapper' => array( 'width' => 34 ) ),
+		array( 'key' => 'field_bf26_whyus_title_em', 'name' => 'whyus_title_em', 'label' => 'Heading — highlight', 'type' => 'text', 'default_value' => $d['whyus_title_em'], 'wrapper' => array( 'width' => 33 ) ),
+		array( 'key' => 'field_bf26_whyus_title_post', 'name' => 'whyus_title_post', 'label' => 'Heading — after highlight', 'type' => 'text', 'default_value' => $d['whyus_title_post'], 'wrapper' => array( 'width' => 33 ) ),
+		array( 'key' => 'field_bf26_whyus_intro', 'name' => 'whyus_intro', 'label' => 'Intro paragraph', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '', 'default_value' => $d['whyus_intro'] ),
+		array(
+			'key' => 'field_bf26_whyus_cards', 'name' => 'whyus_cards', 'label' => 'Feature cards', 'type' => 'repeater',
+			'instructions' => 'Leave empty to show the built-in five cards.',
+			'min' => 0, 'layout' => 'block', 'button_label' => 'Add card',
+			'sub_fields' => array(
+				array( 'key' => 'field_bf26_whyus_card_icon', 'name' => 'icon', 'label' => 'Icon', 'type' => 'select', 'choices' => bf26_course_icon_choices(), 'default_value' => 'shield-check', 'ui' => 1, 'wrapper' => array( 'width' => 34 ) ),
+				array( 'key' => 'field_bf26_whyus_card_title', 'name' => 'title', 'label' => 'Title', 'type' => 'text', 'wrapper' => array( 'width' => 66 ) ),
+				array( 'key' => 'field_bf26_whyus_card_text', 'name' => 'text', 'label' => 'Description', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '' ),
+			),
+		),
+	);
+}
+
+/** One-shot: add the "Why choose us" tab + group to the DB field group. */
+function bf26_add_whyus_fields() {
+	return bf26_append_group_section(
+		'field_bf26_tab_whyus',
+		'Why choose us',
+		'field_bf26_whyus_section',
+		'whyus_section',
+		'Why choose us',
+		bf26_whyus_subfields()
+	);
 }

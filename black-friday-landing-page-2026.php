@@ -278,7 +278,7 @@ $bf26_img = bf26_hero_image();
               <a href="<?php echo esc_url( isset($t['url']) ? $t['url'] : '#' ); ?>" class="bf26-freetile">
                 <span class="bf26-freetile__ic"><?php echo bf26_icon( isset($t['icon']) ? $t['icon'] : 'book-open', 22, '#E3B341' ); ?></span>
                 <span class="bf26-freetile__label"><?php echo esc_html( isset($t['label']) ? $t['label'] : '' ); ?></span>
-                <span class="bf26-freetile__arrow">→</span>
+                <span class="bf26-freetile__arrow">&rarr;</span>
               </a>
             <?php endforeach; ?>
           </div>
@@ -286,6 +286,180 @@ $bf26_img = bf26_hero_image();
       </div>
     </section>
     <!-- =================== END COURSE CARDS =================== -->
+
+    <!-- ===================== FREE GIFTS ===================== -->
+    <section id="free-gifts" class="bf26-gifts bf26-fullbleed">
+      <img class="bf26-gifts__bg" src="<?php echo esc_url( $bf26_worldmap ); ?>" alt="" aria-hidden="true">
+      <div class="bf26-gifts__inner">
+        <div class="bf26-gifts__head">
+          <div class="bf26-gifts__intro">
+            <div class="bf26-board">
+              <div class="bf26-board__top">
+                <span class="bf26-board__status"><span class="bf26-dot"></span><?php bf26_e('gifts_board_status'); ?></span>
+                <span class="bf26-board__gate"><?php bf26_e('gifts_board_gate'); ?></span>
+              </div>
+              <div class="bf26-board__flaps">
+                <?php
+                $gwords = preg_split('/\s+/', trim( bf26_get('gifts_board_text') ));
+                foreach ( $gwords as $gw ) {
+                  if ( '' === $gw ) { continue; }
+                  echo '<span class="bf26-flapword">';
+                  foreach ( preg_split('//u', $gw, -1, PREG_SPLIT_NO_EMPTY) as $gc ) {
+                    echo '<span class="bf26-flap">' . esc_html($gc) . '<i></i></span>';
+                  }
+                  echo '</span>';
+                }
+                ?>
+              </div>
+            </div>
+            <h2 class="bf26-gifts__title"><?php bf26_e('gifts_title_pre'); ?><strong><?php bf26_e('gifts_title_em'); ?></strong></h2>
+            <p class="bf26-gifts__lead"><?php bf26_e('gifts_intro'); ?></p>
+          </div>
+          <div class="bf26-gifts__progress">
+            <div class="bf26-gifts__progress-top">
+              <span><?php bf26_e('gifts_opened_label'); ?></span>
+              <span class="bf26-gifts__count"><span data-gift-count>0</span> / <?php echo count( bf26_rows('gifts') ); ?></span>
+            </div>
+            <div class="bf26-gifts__bar"><div class="bf26-gifts__bar-fill" data-gift-bar></div></div>
+            <div class="bf26-gifts__actions">
+              <button type="button" class="bf26-gifts__btn bf26-gifts__btn--all" data-gift-openall><?php bf26_e('gifts_open_all'); ?></button>
+              <button type="button" class="bf26-gifts__btn bf26-gifts__btn--rewrap" data-gift-rewrap><?php bf26_e('gifts_rewrap'); ?></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bf26-gifts__grid" data-gift-grid>
+          <?php
+          $bf26_gi = 0;
+          foreach ( bf26_rows('gifts') as $g ) :
+            $gnum  = str_pad( $bf26_gi + 1, 2, '0', STR_PAD_LEFT );
+            $gimg  = isset($g['image']) ? $g['image'] : '';
+            if ( is_array($gimg) ) { $gimg = isset($gimg['url']) ? $gimg['url'] : ''; }
+            $gc1   = isset($g['c1']) ? $g['c1'] : '#D7263D';
+            $gc2   = isset($g['c2']) ? $g['c2'] : '#8E1626';
+            $gname = isset($g['name']) ? $g['name'] : '';
+          ?>
+          <button type="button" class="bf26-gift" data-gift aria-label="Open gift <?php echo $bf26_gi + 1; ?>" style="--c1:<?php echo esc_attr($gc1); ?>;--c2:<?php echo esc_attr($gc2); ?>;--wd:<?php echo ($bf26_gi * 1.4); ?>s">
+            <span class="bf26-gift__card">
+              <span class="bf26-gift__badge">GIFT <?php echo $bf26_gi + 1; ?> · FREE</span>
+              <?php if ( $gimg ) : ?><img class="bf26-gift__img" src="<?php echo esc_url($gimg); ?>" alt="<?php echo esc_attr($gname); ?>" loading="lazy"><?php endif; ?>
+              <span class="bf26-gift__name"><?php echo esc_html($gname); ?></span>
+            </span>
+            <span class="bf26-gift__case">
+              <span class="bf26-gift__body">
+                <span class="bf26-gift__seam bf26-gift__seam--l"></span>
+                <span class="bf26-gift__seam bf26-gift__seam--r"></span>
+                <span class="bf26-gift__num"><?php echo esc_html($gnum); ?></span>
+                <span class="bf26-gift__tag">&#9992; TEFL</span>
+              </span>
+              <span class="bf26-gift__lid">
+                <span class="bf26-gift__handle"></span>
+                <span class="bf26-gift__seam bf26-gift__seam--l"></span>
+                <span class="bf26-gift__seam bf26-gift__seam--r"></span>
+                <span class="bf26-gift__globe"><?php echo bf26_icon('globe', 22, '#0A0A0A'); ?></span>
+                <span class="bf26-gift__sticker">GIFT <?php echo $bf26_gi + 1; ?></span>
+              </span>
+              <span class="bf26-gift__zip"><span class="bf26-gift__zip-pull"></span></span>
+            </span>
+            <span class="bf26-gift__tap">TAP TO UNZIP</span>
+            <span class="bf26-gift__bits" aria-hidden="true"></span>
+          </button>
+          <?php $bf26_gi++; endforeach; ?>
+        </div>
+
+        <div class="bf26-gifts__banner" data-gift-banner hidden>
+          <span class="bf26-gifts__banner-text"><strong><?php bf26_e('gifts_banner_strong'); ?></strong> <?php bf26_e('gifts_banner_text'); ?></span>
+          <a href="<?php echo esc_url( bf26_get('gifts_banner_url') ); ?>" class="bf26-gifts__banner-cta"><span class="bf26-shine" aria-hidden="true"></span><span class="bf26-gifts__banner-cta-txt"><?php bf26_e('gifts_banner_cta'); ?> &rarr;</span></a>
+        </div>
+      </div>
+    </section>
+    <!-- =================== END FREE GIFTS =================== -->
+
+    <!-- ===================== REVIEWS & STATS ===================== -->
+    <section class="bf26-social bf26-fullbleed">
+
+      <!-- Stats strip -->
+      <div class="bf26-stats">
+        <div class="bf26-stats__inner">
+          <?php $bf26_tp = bf26_live_trustpilot(); ?>
+          <div class="bf26-stat">
+            <span class="bf26-stat__num"><?php echo esc_html($bf26_tp['rating']); ?></span>
+            <span class="bf26-stat__label">Trustpilot, from <?php echo esc_html($bf26_tp['count']); ?> reviews</span>
+          </div>
+          <?php foreach ( bf26_rows('stats') as $st ) :
+            $snum = isset($st['num']) ? $st['num'] : '';
+            $slab = isset($st['label']) ? $st['label'] : '';
+            if ( '' === $snum && '' === $slab ) { continue; }
+          ?>
+          <div class="bf26-stat">
+            <span class="bf26-stat__num"><?php echo esc_html($snum); ?></span>
+            <span class="bf26-stat__label"><?php echo esc_html($slab); ?></span>
+          </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+
+      <!-- Featured review + CTA -->
+      <div class="bf26-review">
+        <div class="bf26-review__inner">
+
+          <?php $bf26_reviews = bf26_live_reviews( 10 ); ?>
+          <div class="bf26-review__scroll" tabindex="0" role="group" aria-label="Student reviews">
+            <?php foreach ( $bf26_reviews as $rv ) : ?>
+            <figure class="bf26-review__card">
+              <span class="bf26-review__mark" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 512 512" fill="#D7263D" aria-hidden="true"><path d="M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"/></svg>
+              </span>
+              <blockquote class="bf26-review__text"><?php echo esc_html( $rv['text'] ); ?></blockquote>
+              <figcaption class="bf26-review__cite"><strong><?php echo esc_html( $rv['author'] ); ?></strong> &middot; <?php echo esc_html( $rv['role'] ); ?></figcaption>
+            </figure>
+            <?php endforeach; ?>
+          </div>
+
+          <div class="bf26-review__cta-col">
+            <h2 class="bf26-review__title"><?php bf26_e('review_title_pre'); ?><strong><?php bf26_e('review_title_em'); ?></strong><?php bf26_e('review_title_post'); ?></h2>
+            <a href="<?php echo esc_url( bf26_get('review_cta_url') ); ?>" class="bf26-review__cta">
+              <span class="bf26-shine" aria-hidden="true"></span>
+              <span class="bf26-review__cta-txt"><?php bf26_e('review_cta_label'); ?> &rarr;</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- =================== END REVIEWS & STATS =================== -->
+
+    <!-- ===================== WHY CHOOSE US ===================== -->
+    <section class="bf26-whyus bf26-fullbleed">
+      <div class="bf26-whyus__inner">
+
+        <div class="bf26-whyus__head">
+          <div class="bf26-whyus__head-left">
+            <div class="bf26-whyus__eyebrow"><?php bf26_e('whyus_eyebrow'); ?></div>
+            <h2 class="bf26-whyus__title"><?php bf26_e('whyus_title_pre'); ?><strong><?php bf26_e('whyus_title_em'); ?></strong><?php bf26_e('whyus_title_post'); ?></h2>
+            <div class="bf26-whyus__rule" aria-hidden="true"></div>
+          </div>
+          <p class="bf26-whyus__intro"><?php bf26_e('whyus_intro'); ?></p>
+        </div>
+
+        <div class="bf26-whyus__grid">
+          <?php foreach ( bf26_rows('whyus_cards') as $wc ) :
+            $wicon  = isset($wc['icon']) ? $wc['icon'] : 'shield-check';
+            $wtitle = isset($wc['title']) ? $wc['title'] : '';
+            $wtext  = isset($wc['text']) ? $wc['text'] : '';
+            if ( '' === $wtitle && '' === $wtext ) { continue; }
+          ?>
+          <div class="bf26-whyus__card">
+            <span class="bf26-whyus__icon"><?php echo bf26_icon($wicon, 24, '#fff'); ?></span>
+            <span class="bf26-whyus__card-title"><?php echo esc_html($wtitle); ?></span>
+            <p class="bf26-whyus__card-text"><?php echo esc_html($wtext); ?></p>
+          </div>
+          <?php endforeach; ?>
+        </div>
+
+      </div>
+    </section>
+    <!-- =================== END WHY CHOOSE US =================== -->
 
   </div>
 
