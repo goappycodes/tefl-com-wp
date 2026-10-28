@@ -26,7 +26,7 @@ define( 'BF26_GROUP_KEY', 'group_6adc86c0a1f16' );   // the "Black Friday 2026" 
 
 /** The section "group" fields whose sub-values are merged for the template. */
 function bf26_section_groups() {
-	return array( 'banner_section', 'accred_strip', 'sale_countdown', 'course_section', 'gift_section', 'review_section', 'whyus_section' );
+	return array( 'banner_section', 'accred_strip', 'sale_countdown', 'course_section', 'gift_section', 'review_section', 'whyus_section', 'faq_section', 'bf26_follow' );
 }
 
 /* =========================================================================
@@ -242,6 +242,32 @@ function bf26_defaults() {
 			array( 'icon' => 'laptop',        'title' => 'Learn on Any Device',     'text' => 'Study at your own pace on laptop, tablet or phone through our app.' ),
 			array( 'icon' => 'calendar-days', 'title' => 'Flexible Payment Plans',  'text' => 'Spread the cost of your course with interest-free instalments.' ),
 			array( 'icon' => 'briefcase',     'title' => 'Jobs Board Access',       'text' => 'Find teaching roles online and abroad with schools that know our graduates.' ),
+		),
+
+		/* ---- FAQ ---- */
+		'faq_eyebrow'         => 'FAQS',
+		'faq_title_pre'       => 'Frequently asked ',
+		'faq_title_em'        => 'questions',
+		'faq_title_post'      => '',
+		'faqs'                => array(
+			array( 'q' => 'Are your TEFL courses accredited?', 'a' => 'Yes — our courses are Ofqual-regulated Level 5 qualifications awarded by Highfield and recognised by employers and schools worldwide.' ),
+			array( 'q' => 'Do I need a degree or teaching experience?', 'a' => 'No. Our courses are designed for complete beginners as well as experienced teachers looking to formalise their skills with a recognised qualification.' ),
+			array( 'q' => 'How long do I have to complete my course?', 'a' => 'You study at your own pace with lifetime access, so there is no deadline. Most learners finish a 120-hour course in around 2–4 weeks.' ),
+			array( 'q' => 'Will this help me get a teaching job?', 'a' => 'Yes — you get access to our jobs board plus guidance from our student team to help you find teaching roles online and abroad.' ),
+			array( 'q' => 'Can I pay in instalments?', 'a' => 'Yes. You can spread the cost with interest-free payment plans at checkout through Klarna.' ),
+			array( 'q' => 'When does the Black Friday offer end?', 'a' => 'The sale runs until 30 November at midnight. Enrol before then to lock in up to 82% off plus your 6 free gifts.' ),
+		),
+
+		/* ---- Follow the journey (social) ----
+		 * Namespaced "follow_*" because the site already has a social_section /
+		 * social_links field group that would otherwise win ACF name resolution. */
+		'follow_eyebrow'      => 'FOLLOW THE JOURNEY',
+		'follow_links'        => array(
+			array( 'icon' => 'facebook',  'url' => 'https://www.facebook.com/theteflinstitute/' ),
+			array( 'icon' => 'instagram', 'url' => 'https://www.instagram.com/theteflinstitute' ),
+			array( 'icon' => 'tiktok',    'url' => '#' ),
+			array( 'icon' => 'youtube',   'url' => '#' ),
+			array( 'icon' => 'linkedin',  'url' => 'https://www.linkedin.com/company/tefl-institute-ireland/' ),
 		),
 	);
 
@@ -621,6 +647,32 @@ if ( ! function_exists( 'bf26_icon' ) ) {
 	}
 }
 
+/** Brand/social icons (inline SVG, stroke = currentColor), used by the social strip. */
+if ( ! function_exists( 'bf26_social_icon' ) ) {
+	function bf26_social_icon( $name, $size = 22 ) {
+		static $paths = array(
+			'facebook'  => '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+			'instagram' => '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/>',
+			'tiktok'    => '<path d="M16 3c.4 2.6 2 4.2 4.5 4.5V11c-1.7 0-3.2-.5-4.5-1.4V15a6 6 0 1 1-6-6v3.5a2.5 2.5 0 1 0 2.5 2.5V3z"/>',
+			'youtube'   => '<path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49 49 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49 49 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/>',
+			'linkedin'  => '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+		);
+		$d = isset( $paths[ $name ] ) ? $paths[ $name ] : '';
+		return '<svg width="' . intval( $size ) . '" height="' . intval( $size ) . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $d . '</svg>';
+	}
+}
+
+/** Social platform labels (for aria-label / the ACF select). */
+function bf26_social_choices() {
+	return array(
+		'facebook'  => 'Facebook',
+		'instagram' => 'Instagram',
+		'tiktok'    => 'TikTok',
+		'youtube'   => 'YouTube',
+		'linkedin'  => 'LinkedIn',
+	);
+}
+
 /* =========================================================================
  * ACF: add a section's fields to the existing DB field group by APPENDING
  * them with acf_update_field(). This never replaces the group, so — unlike
@@ -926,4 +978,83 @@ function bf26_add_whyus_fields() {
 		'Why choose us',
 		bf26_whyus_subfields()
 	);
+}
+
+/** The FAQ sub-fields (source of truth for the append). */
+function bf26_faq_subfields() {
+	$d = bf26_defaults();
+	return array(
+		array( 'key' => 'field_bf26_faq_eyebrow', 'name' => 'faq_eyebrow', 'label' => 'Eyebrow', 'type' => 'text', 'default_value' => $d['faq_eyebrow'], 'wrapper' => array( 'width' => 100 ) ),
+		array( 'key' => 'field_bf26_faq_title_pre', 'name' => 'faq_title_pre', 'label' => 'Heading — before highlight', 'type' => 'text', 'default_value' => $d['faq_title_pre'], 'wrapper' => array( 'width' => 34 ) ),
+		array( 'key' => 'field_bf26_faq_title_em', 'name' => 'faq_title_em', 'label' => 'Heading — highlight', 'type' => 'text', 'default_value' => $d['faq_title_em'], 'wrapper' => array( 'width' => 33 ) ),
+		array( 'key' => 'field_bf26_faq_title_post', 'name' => 'faq_title_post', 'label' => 'Heading — after highlight', 'type' => 'text', 'default_value' => $d['faq_title_post'], 'wrapper' => array( 'width' => 33 ) ),
+		array(
+			'key' => 'field_bf26_faqs', 'name' => 'faqs', 'label' => 'Questions', 'type' => 'repeater',
+			'instructions' => 'Leave empty to show the built-in questions. The first one opens by default.',
+			'min' => 0, 'layout' => 'block', 'button_label' => 'Add question',
+			'sub_fields' => array(
+				array( 'key' => 'field_bf26_faq_q', 'name' => 'q', 'label' => 'Question', 'type' => 'text' ),
+				array( 'key' => 'field_bf26_faq_a', 'name' => 'a', 'label' => 'Answer', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ),
+			),
+		),
+	);
+}
+
+/** One-shot: add the "FAQ" tab + group to the DB field group. */
+function bf26_add_faq_fields() {
+	return bf26_append_group_section(
+		'field_bf26_tab_faq',
+		'FAQ',
+		'field_bf26_faq_section',
+		'faq_section',
+		'FAQ',
+		bf26_faq_subfields()
+	);
+}
+
+/** The "Follow the journey" (social) sub-fields (source of truth for the append).
+ *  Names are "follow_*" to avoid the site's existing social_section/social_links. */
+function bf26_social_subfields() {
+	$d = bf26_defaults();
+	return array(
+		array( 'key' => 'field_bf26_follow_eyebrow', 'name' => 'follow_eyebrow', 'label' => 'Eyebrow', 'type' => 'text', 'default_value' => $d['follow_eyebrow'] ),
+		array(
+			'key' => 'field_bf26_follow_links', 'name' => 'follow_links', 'label' => 'Social links', 'type' => 'repeater',
+			'instructions' => 'Leave empty to show the built-in links. Set each link\'s URL; remove a row to hide that network.',
+			'min' => 0, 'layout' => 'table', 'button_label' => 'Add link',
+			'sub_fields' => array(
+				array( 'key' => 'field_bf26_follow_icon', 'name' => 'icon', 'label' => 'Network', 'type' => 'select', 'choices' => bf26_social_choices(), 'default_value' => 'facebook', 'ui' => 1, 'wrapper' => array( 'width' => 34 ) ),
+				array( 'key' => 'field_bf26_follow_url', 'name' => 'url', 'label' => 'URL', 'type' => 'text', 'wrapper' => array( 'width' => 66 ) ),
+			),
+		),
+	);
+}
+
+/** One-shot: add the "Follow the journey" tab + group to the DB field group. */
+function bf26_add_social_fields() {
+	return bf26_append_group_section(
+		'field_bf26_tab_follow',
+		'Follow the journey',
+		'field_bf26_follow_section',
+		'bf26_follow',
+		'Follow the journey',
+		bf26_social_subfields()
+	);
+}
+
+/** One-shot: remove the first (colliding) social fields that used the generic
+ *  social_section / social_links names. Safe to run once after the rename. */
+function bf26_remove_old_social_fields() {
+	if ( ! function_exists( 'acf_delete_field' ) || ! function_exists( 'acf_get_field' ) ) {
+		return 'ACF not available';
+	}
+	$removed = array();
+	foreach ( array( 'field_bf26_tab_social', 'field_bf26_social_section', 'field_bf26_social_eyebrow', 'field_bf26_social_links', 'field_bf26_social_icon', 'field_bf26_social_url' ) as $key ) {
+		$f = acf_get_field( $key );
+		if ( $f && ! empty( $f['ID'] ) ) {
+			acf_delete_field( $f['ID'] );
+			$removed[] = $key;
+		}
+	}
+	return $removed ? 'removed: ' . implode( ', ', $removed ) : 'nothing to remove';
 }

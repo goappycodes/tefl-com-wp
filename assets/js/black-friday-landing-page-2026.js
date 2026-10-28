@@ -199,10 +199,36 @@
     start();
   }
 
+  /* FAQ accordion — one open at a time. */
+  function initFaq() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.bf26-faq__item'));
+    if (!items.length) { return; }
+
+    items.forEach(function (item) {
+      var btn = item.querySelector('.bf26-faq__q');
+      if (!btn) { return; }
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+        // Close every item first (one open at a time).
+        items.forEach(function (other) {
+          other.classList.remove('is-open');
+          var b = other.querySelector('.bf26-faq__q');
+          if (b) { b.setAttribute('aria-expanded', 'false'); }
+        });
+        // Toggle the clicked one.
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
   function init() {
     initCountdown();
     initGifts();
     initReviews();
+    initFaq();
   }
 
   if (document.readyState === 'loading') {

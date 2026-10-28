@@ -461,6 +461,63 @@ $bf26_img = bf26_hero_image();
     </section>
     <!-- =================== END WHY CHOOSE US =================== -->
 
+    <!-- ===================== FAQ ===================== -->
+    <section class="bf26-faq bf26-fullbleed">
+      <div class="bf26-faq__inner">
+
+        <div class="bf26-faq__head">
+          <div class="bf26-faq__eyebrow"><?php bf26_e('faq_eyebrow'); ?></div>
+          <h2 class="bf26-faq__title"><?php bf26_e('faq_title_pre'); ?><strong><?php bf26_e('faq_title_em'); ?></strong><?php bf26_e('faq_title_post'); ?></h2>
+        </div>
+
+        <div class="bf26-faq__list">
+          <?php $bf26_fi = 0; foreach ( bf26_rows('faqs') as $fq ) :
+            $fqq = isset($fq['q']) ? $fq['q'] : '';
+            $fqa = isset($fq['a']) ? $fq['a'] : '';
+            if ( '' === $fqq ) { continue; }
+            $fopen = ( 0 === $bf26_fi );
+          ?>
+          <div class="bf26-faq__item<?php echo $fopen ? ' is-open' : ''; ?>">
+            <button type="button" class="bf26-faq__q" aria-expanded="<?php echo $fopen ? 'true' : 'false'; ?>">
+              <span class="bf26-faq__q-text"><?php echo esc_html($fqq); ?></span>
+              <span class="bf26-faq__toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="bf26-faq__a-wrap">
+              <div class="bf26-faq__a-inner">
+                <p class="bf26-faq__a"><?php echo esc_html($fqa); ?></p>
+              </div>
+            </div>
+          </div>
+          <?php $bf26_fi++; endforeach; ?>
+        </div>
+
+      </div>
+    </section>
+    <!-- =================== END FAQ =================== -->
+
+    <!-- ===================== FOLLOW THE JOURNEY ===================== -->
+    <section class="bf26-follow bf26-fullbleed">
+      <div class="bf26-follow__inner">
+        <span class="bf26-follow__eyebrow"><?php bf26_e('follow_eyebrow'); ?></span>
+        <div class="bf26-follow__links">
+          <?php
+          $bf26_sc = function_exists('bf26_social_choices') ? bf26_social_choices() : array();
+          foreach ( bf26_rows('follow_links') as $sl ) :
+            $sicon = isset($sl['icon']) ? $sl['icon'] : '';
+            $surl  = isset($sl['url']) ? $sl['url'] : '';
+            if ( '' === $sicon ) { continue; }
+            $slabel = isset($bf26_sc[$sicon]) ? $bf26_sc[$sicon] : ucfirst($sicon);
+            $ext    = ( '' !== $surl && '#' !== $surl );
+          ?>
+          <a href="<?php echo esc_url($surl ? $surl : '#'); ?>" class="bf26-follow__link" aria-label="<?php echo esc_attr($slabel); ?>"<?php echo $ext ? ' target="_blank" rel="noopener"' : ''; ?>>
+            <?php echo bf26_social_icon($sicon, 22); ?>
+          </a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </section>
+    <!-- =================== END FOLLOW THE JOURNEY =================== -->
+
   </div>
 
 </div>
