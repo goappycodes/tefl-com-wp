@@ -49,7 +49,10 @@ function dequeue_unused_scripts() {
     
     
     wp_dequeue_style( 'wc-price-based-country-frontend' );
-    wp_dequeue_style( 'affwp-forms' );
+    // AffiliateWP's dashboard (cards, tooltip icons, copy link) needs its stylesheet on the Affiliate Area page.
+    if (!is_page('1081')){
+        wp_dequeue_style( 'affwp-forms' );
+    }
 
     if (is_front_page()){
         wp_dequeue_style( 'astra-contact-form-7' );        
