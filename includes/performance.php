@@ -49,8 +49,8 @@ function dequeue_unused_scripts() {
     
     
     wp_dequeue_style( 'wc-price-based-country-frontend' );
-    // AffiliateWP's dashboard (cards, tooltip icons, copy link) needs its stylesheet on the Affiliate Area page.
-    if (!is_page('1081')){
+    // AffiliateWP's dashboard, login and block registration forms need its stylesheet on the affiliate pages.
+    if (!is_page(array(1081, 4279)) && !is_page_template('page-affiliate.php')){
         wp_dequeue_style( 'affwp-forms' );
     }
 

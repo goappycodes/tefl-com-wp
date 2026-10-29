@@ -366,7 +366,7 @@ function child_enqueue_styles()
     }
 
     // Become an Affiliate Page
-    if (is_page('4274')) {
+    if (is_page_template('page-affiliate.php')) {
         wp_enqueue_style('ti-affiliate-css', get_stylesheet_directory_uri() . '/assets/css/ti-affiliate.css', array(), time(), null);
     }
     if (is_page('1081')) {
@@ -853,6 +853,7 @@ require_once 'includes/course-2026.php';
 
 require_once 'includes/tefl-for-schools-v3.php';
 require_once 'includes/welcome-exit-popup.php';
+require_once 'includes/ti-affiliate-signup.php';
 add_filter('ti_wx_should_show', '__return_false'); // WELCOME popup switched off for now
 
 function wpse245372_admin_user_css()

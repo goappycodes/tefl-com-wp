@@ -68,7 +68,7 @@
                     <iframe width="100%" height="415" src="https://www.youtube.com/embed/7j6B4xyoy2A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     
                     <hr>
-                    <h3>Become a Brand Ambassador for one of the fastest growing ESL companies</h3>
+                    <h3>Become an affiliate for one of the fastest growing ESL companies</h3>
 
                     <div class="accordion"  id="accordionExample">
 
@@ -92,7 +92,7 @@
 
                     </div>
 
-                    <p class="question">Become an ambassador today! Earn 13% each time you refer someone to the TEFL Institute.</p>
+                    <p class="question">Become an affiliate today! Earn 11% each time you refer someone to The TEFL Institute.</p>
                 
 				</div>
 
@@ -142,9 +142,16 @@
     <div class="ast-container">
         <div class="ast-row">
             <div class="ast-col">
-                <div class="alert">Already an Ambassador? <a target="_blank" href="/affiliate-area/">Log in</a> or access your <a href="https://teflinstitute.com/affiliate-area/">dashboard</a>.</div>
+                <div class="alert">Already an affiliate? <a href="/affiliate-area/">Log in to your Affiliate Area</a></div>
                 <div class="pt-5 form-container">
-                    <?php echo do_shortcode( '[affiliate_registration]' ); ?>
+                    <?php
+                    // The form is the Affiliate Registration block in the page editor; the old shortcode form is the fallback.
+                    if ( has_block( 'affiliatewp/registration', $current_page_id ) ) {
+                        echo apply_filters( 'the_content', get_post_field( 'post_content', $current_page_id ) );
+                    } else {
+                        echo do_shortcode( '[affiliate_registration]' );
+                    }
+                    ?>
                 </div>
             </div>
         </div>
