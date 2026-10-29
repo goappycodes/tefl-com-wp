@@ -808,7 +808,8 @@ jQuery(document).ready(function ($) {
 		makeTopBannerSticky();
 	});
 
-	$("input[name='affwp_redirect']").val("/affiliate-area/");
+	// Login forms land on the Affiliate Area; the sign-up block form keeps its own redirect (the thank-you page).
+	$("form:not(.affwp-register-form) input[name='affwp_redirect']").val("/affiliate-area/");
 
 	// Boxzilla.on('box.show', function(box) {
 	// 	console.log("Showing box " + box.id);

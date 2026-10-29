@@ -1,0 +1,809 @@
+/* Affiliate pages: Become an Affiliate v2 (page-affiliate-v2.php) and the simple affiliate pages
+   (page-affiliate-simple.php: login, Affiliate Area, thank-you, terms). Everything is scoped under .tiav2. */
+
+/* Full-bleed sections: lift Astra's container width limit on these templates only. */
+body.page-template-page-affiliate-v2 #content > .ast-container,
+body.ti-affiliate-simple #content > .ast-container {
+    max-width: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.tiav2 {
+    --tiav2-navy: #0f3042;
+    --tiav2-navy-2: #164a63;
+    --tiav2-mint: #7fe0b5;
+    --tiav2-ink: #111;
+    --tiav2-muted: #55606a;
+    --tiav2-tint: #f4f7f8;
+    --tiav2-line: #e2e8ec;
+    --tiav2-radius: 16px;
+    color: var(--tiav2-ink);
+    overflow-x: clip;
+}
+.tiav2 *,
+.tiav2 *::before,
+.tiav2 *::after {
+    box-sizing: border-box;
+}
+.tiav2 h1,
+.tiav2 h2,
+.tiav2 h3 {
+    color: inherit !important;
+    font-family: inherit;
+    margin: 0;
+}
+.tiav2 p {
+    margin: 0 0 1em;
+}
+.tiav2 a {
+    color: var(--tiav2-navy-2);
+}
+
+.tiav2-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.tiav2-section {
+    padding: 72px 0;
+}
+.tiav2-section--tint {
+    background: var(--tiav2-tint);
+}
+.tiav2-h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 32px !important;
+}
+.tiav2-h2--small {
+    font-size: 22px;
+    margin-bottom: 16px !important;
+}
+
+/* Buttons */
+.tiav2-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+    text-decoration: none !important;
+    transition: transform .15s ease, background-color .15s ease;
+}
+.tiav2-btn:hover {
+    transform: translateY(-1px);
+}
+.tiav2 .tiav2-btn--accent {
+    background: var(--tiav2-mint);
+    color: var(--tiav2-ink) !important;
+}
+.tiav2 .tiav2-btn--accent:hover {
+    background: #a3ecca;
+}
+.tiav2 .tiav2-btn--ghost {
+    border: 2px solid rgba(255, 255, 255, .7);
+    color: #fff !important;
+}
+.tiav2 .tiav2-btn--ghost:hover {
+    border-color: #fff;
+}
+
+/* Hero */
+.tiav2-hero {
+    background: radial-gradient(1200px 500px at 85% 20%, var(--tiav2-navy-2) 0%, transparent 60%), var(--tiav2-navy);
+    color: #fff;
+    padding: 80px 0;
+}
+.tiav2-hero__inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: center;
+}
+.tiav2-eyebrow {
+    color: var(--tiav2-mint);
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 16px !important;
+}
+.tiav2 .tiav2-hero__title {
+    color: #fff !important;
+    font-size: clamp(30px, 4vw, 50px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: .01em;
+    margin-bottom: 20px;
+}
+.tiav2-hero__lead {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .85);
+    max-width: 560px;
+}
+.tiav2-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 28px 0 24px;
+}
+.tiav2-hero__points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    color: rgba(255, 255, 255, .85);
+}
+.tiav2-hero__points li::before {
+    content: "\2713";
+    color: var(--tiav2-mint);
+    font-weight: 700;
+    margin-right: 8px;
+}
+.tiav2-hero__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--tiav2-radius);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+}
+
+/* Facts strip */
+.tiav2-facts {
+    margin-top: -36px;
+    position: relative;
+}
+.tiav2-facts__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+.tiav2-fact {
+    background: #fff;
+    border: 1px solid var(--tiav2-line);
+    border-radius: var(--tiav2-radius);
+    padding: 22px 24px;
+    box-shadow: 0 10px 30px rgba(15, 48, 66, .08);
+}
+.tiav2-fact__value {
+    display: block;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--tiav2-navy);
+    line-height: 1.1;
+}
+.tiav2-fact__label {
+    display: block;
+    margin-top: 4px;
+    color: var(--tiav2-muted);
+    font-size: 15px;
+}
+
+/* How it works */
+.tiav2-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.tiav2-step {
+    border: 1px solid var(--tiav2-line);
+    border-radius: var(--tiav2-radius);
+    padding: 28px;
+}
+.tiav2-step__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--tiav2-navy);
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+.tiav2 .tiav2-step__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.tiav2-step p {
+    color: var(--tiav2-muted);
+    margin: 0;
+}
+
+/* Why choose us */
+.tiav2-why {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.tiav2-why__card {
+    background: #fff;
+    border-radius: var(--tiav2-radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.tiav2-why__pre {
+    font-size: 14px;
+    color: var(--tiav2-muted);
+}
+.tiav2-why__title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--tiav2-navy);
+    line-height: 1.15;
+}
+.tiav2-why__sub {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 13px;
+}
+.tiav2-why__small {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--tiav2-muted);
+    overflow-wrap: anywhere;
+}
+
+/* Video + FAQ */
+.tiav2-faq {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+}
+.tiav2-video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--tiav2-radius);
+    overflow: hidden;
+    background: #000;
+}
+.tiav2-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.tiav2-qa {
+    border-bottom: 1px solid var(--tiav2-line);
+}
+.tiav2-qa summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 36px 16px 0;
+    font-weight: 700;
+    font-size: 17px;
+    position: relative;
+}
+.tiav2-qa summary::-webkit-details-marker {
+    display: none;
+}
+.tiav2-qa summary::after {
+    content: "+";
+    position: absolute;
+    right: 4px;
+    top: 12px;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--tiav2-navy);
+}
+.tiav2-qa[open] summary::after {
+    content: "\2212";
+}
+.tiav2-qa__answer {
+    padding: 0 0 16px;
+    color: var(--tiav2-muted);
+    line-height: 1.6;
+}
+.tiav2-qa__answer p:last-child {
+    margin-bottom: 0;
+}
+
+/* Join: aside + form card */
+.tiav2-join {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 48px;
+    align-items: start;
+}
+.tiav2-join__aside {
+    position: sticky;
+    top: 24px;
+}
+.tiav2-checklist {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+}
+.tiav2-checklist li {
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.tiav2-checklist li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--tiav2-mint);
+    color: var(--tiav2-ink);
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 20px;
+}
+.tiav2-team {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.tiav2-team img {
+    width: calc(50% - 6px);
+    max-width: 200px;
+    height: auto;
+    border-radius: 12px;
+}
+.tiav2-join__contact {
+    font-size: 15px;
+    color: var(--tiav2-muted);
+}
+.tiav2-join__form {
+    background: #fff;
+    border-radius: var(--tiav2-radius);
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(15, 48, 66, .08);
+}
+.tiav2-login-note {
+    background: var(--tiav2-tint);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 15px;
+}
+
+/* Registration form (AffiliateWP block or shortcode) */
+.tiav2 .affwp-register-form fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+.tiav2 .affwp-register-form legend {
+    font-size: 22px;
+    font-weight: 700;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.tiav2 .affwp-register-form fieldset p {
+    display: block;
+    margin: 0 0 18px;
+}
+.tiav2 .affwp-register-form .affwp-field-label,
+.tiav2 .affwp-register-form label {
+    display: block;
+    width: 100%;
+    margin: 0 0 6px;
+    font-weight: 600;
+    color: var(--tiav2-ink);
+}
+.tiav2 .affwp-register-form .affwp-field-label .required {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--tiav2-muted);
+}
+.tiav2 .affwp-register-form input[type="text"],
+.tiav2 .affwp-register-form input[type="email"],
+.tiav2 .affwp-register-form input[type="url"],
+.tiav2 .affwp-register-form input[type="password"],
+.tiav2 .affwp-register-form select,
+.tiav2 .affwp-register-form textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid #cfd8de;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--tiav2-ink);
+    font-size: 16px;
+}
+.tiav2 .affwp-register-form input:focus,
+.tiav2 .affwp-register-form select:focus,
+.tiav2 .affwp-register-form textarea:focus {
+    outline: 2px solid var(--tiav2-mint);
+    outline-offset: 1px;
+    border-color: var(--tiav2-navy-2);
+}
+.tiav2 .affwp-register-form p.affwp-field-help {
+    margin: -10px 0 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--tiav2-muted);
+}
+.tiav2 .affwp-register-form p:has(> .affwp-field-terms-of-use) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 10px;
+}
+.tiav2 .affwp-register-form .affwp-field-terms-of-use {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+}
+.tiav2 .affwp-register-form p:has(> .affwp-field-terms-of-use) .affwp-field-label {
+    flex: 1 1 auto;
+    width: auto;
+    margin: 0;
+    font-weight: 400;
+}
+.tiav2 .affwp-register-form .affwp-field-label a {
+    text-decoration: underline;
+}
+.tiav2 .affwp-register-form input[type="submit"] {
+    width: 100%;
+    padding: 16px 20px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--tiav2-navy);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.tiav2 .affwp-register-form input[type="submit"]:hover {
+    background: var(--tiav2-navy-2);
+}
+.tiav2 .affwp-errors {
+    margin: 0 0 16px;
+}
+.tiav2 .affwp-error {
+    background: #fdecea;
+    color: #8a1f11;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 0 0 6px;
+}
+
+/* Closing CTA */
+.tiav2-cta {
+    background: var(--tiav2-navy);
+    color: #fff;
+    padding: 56px 0;
+}
+.tiav2-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+.tiav2-cta .tiav2-h2 {
+    margin-bottom: 8px !important;
+    color: #fff !important;
+}
+.tiav2-cta p {
+    margin: 0;
+    color: rgba(255, 255, 255, .85);
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .tiav2-hero__inner,
+    .tiav2-faq,
+    .tiav2-join {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .tiav2-hero__media {
+        max-width: 560px;
+    }
+    .tiav2-facts__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .tiav2-why {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .tiav2-join__aside {
+        position: static;
+    }
+}
+
+/* Astra's mobile header (up to 921px) is fixed and 64px tall, so leave room for it above the hero. */
+@media (max-width: 921px) {
+    .tiav2-hero {
+        padding-top: 144px;
+    }
+    #join {
+        scroll-margin-top: 64px;
+    }
+}
+
+/* Phone */
+@media (max-width: 640px) {
+    .tiav2-wrap {
+        padding: 0 16px;
+    }
+    .tiav2-hero {
+        padding: 104px 0 64px;
+    }
+    .tiav2-hero__media img {
+        height: 200px;
+        object-fit: cover;
+        object-position: center 30%;
+    }
+    .tiav2-section {
+        padding: 48px 0;
+    }
+    .tiav2-hero__actions .tiav2-btn {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+    .tiav2-steps,
+    .tiav2-why {
+        grid-template-columns: 1fr;
+    }
+    .tiav2-fact {
+        padding: 16px;
+    }
+    .tiav2-fact__value {
+        font-size: 24px;
+    }
+    .tiav2-join__form {
+        padding: 20px 16px;
+    }
+    .tiav2-cta__inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ---------- Simple affiliate pages (page-affiliate-simple.php) ---------- */
+
+.tiav2-band {
+    background: radial-gradient(900px 400px at 85% 0%, var(--tiav2-navy-2) 0%, transparent 60%), var(--tiav2-navy);
+    color: #fff;
+    padding: 56px 0 96px;
+}
+.tiav2 .tiav2-band__title {
+    color: #fff !important;
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.1;
+    font-weight: 800;
+}
+.tiav2-band__lead {
+    margin: 14px 0 0 !important;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .85);
+    max-width: 640px;
+}
+.tiav2-simple__body {
+    display: flow-root; /* keeps the card's negative top margin from collapsing through */
+    background: var(--tiav2-tint);
+    padding: 0 0 72px;
+}
+.tiav2-card {
+    background: #fff;
+    border-radius: var(--tiav2-radius);
+    box-shadow: 0 10px 30px rgba(15, 48, 66, .08);
+    padding: 40px;
+    margin: -56px auto 0;
+    position: relative;
+}
+.tiav2-simple--narrow .tiav2-card {
+    max-width: 520px;
+}
+.tiav2-simple--prose .tiav2-card {
+    max-width: 820px;
+}
+.tiav2-simple--narrow .tiav2-band .tiav2-wrap,
+.tiav2-simple--prose .tiav2-band .tiav2-wrap {
+    text-align: center;
+}
+.tiav2-simple--narrow .tiav2-band__lead,
+.tiav2-simple--prose .tiav2-band__lead {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Long-form content (thank-you, terms) */
+.tiav2-prose {
+    font-size: 17px;
+    line-height: 1.7;
+}
+.tiav2-prose h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 36px 0 12px !important;
+}
+.tiav2-prose h2:first-child {
+    margin-top: 0 !important;
+}
+.tiav2-prose ul,
+.tiav2-prose ol {
+    margin: 0 0 1.2em 1.4em;
+    padding: 0;
+}
+.tiav2-prose li {
+    margin-bottom: 8px;
+}
+.tiav2-prose li::marker {
+    color: var(--tiav2-navy);
+    font-weight: 700;
+}
+.tiav2-prose a {
+    color: var(--tiav2-navy-2);
+    text-decoration: underline;
+}
+.tiav2 a.ti-affwp-button {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: var(--tiav2-navy);
+    color: #fff !important;
+    font-weight: 700;
+    text-decoration: none;
+}
+.tiav2 a.ti-affwp-button:hover {
+    background: var(--tiav2-navy-2);
+}
+
+/* Login form (AffiliateWP) */
+.tiav2 .affwp-login-form fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+.tiav2 .affwp-login-form legend {
+    font-size: 22px;
+    font-weight: 700;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.tiav2 .affwp-login-form p {
+    margin: 0 0 18px;
+}
+.tiav2 .affwp-login-form label {
+    display: block;
+    margin: 0 0 6px;
+    font-weight: 600;
+    color: var(--tiav2-ink);
+}
+.tiav2 .affwp-login-form input[type="text"],
+.tiav2 .affwp-login-form input[type="password"] {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid #cfd8de;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--tiav2-ink);
+    font-size: 16px;
+}
+.tiav2 .affwp-login-form label.affwp-user-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+}
+.tiav2 .affwp-login-form input[type="submit"] {
+    width: 100%;
+    padding: 15px 20px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--tiav2-navy);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.tiav2 .affwp-login-form input[type="submit"]:hover {
+    background: var(--tiav2-navy-2);
+}
+.tiav2 .affwp-lost-password a {
+    color: var(--tiav2-navy-2);
+}
+.tiav2 .ti-affwp-apply {
+    margin: 20px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--tiav2-line);
+    text-align: center;
+}
+.tiav2 .ti-affwp-apply a {
+    font-weight: 700;
+    color: var(--tiav2-navy-2);
+}
+
+/* Affiliate Area dashboard */
+.tiav2 ul#affwp-affiliate-dashboard-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+    margin: 0 0 28px;
+    padding: 0 0 20px;
+    list-style: none;
+    border-bottom: 1px solid var(--tiav2-line);
+}
+.tiav2 li.affwp-affiliate-dashboard-tab a {
+    display: block;
+    margin: 0;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: var(--tiav2-tint);
+    color: var(--tiav2-ink);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+}
+.tiav2 li.affwp-affiliate-dashboard-tab a:hover {
+    background: #e6edf0;
+}
+.tiav2 li.affwp-affiliate-dashboard-tab.active a {
+    background: var(--tiav2-navy);
+    color: #fff;
+}
+.tiav2 li.affwp-affiliate-dashboard-tab:last-child a {
+    background: transparent;
+    color: var(--tiav2-muted);
+}
+.tiav2-simple--wide .tiav2-card {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Mobile header is fixed (up to 921px). */
+@media (max-width: 921px) {
+    .tiav2-band {
+        padding-top: 112px;
+    }
+}
+@media (max-width: 640px) {
+    .tiav2-band {
+        padding: 96px 0 80px;
+    }
+    .tiav2-card {
+        padding: 24px 18px;
+        margin-top: -48px;
+    }
+    .tiav2-prose {
+        font-size: 16px;
+    }
+    .tiav2 ul#affwp-affiliate-dashboard-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-left: -18px;
+        margin-right: -18px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .tiav2 li.affwp-affiliate-dashboard-tab {
+        flex: 0 0 auto;
+    }
+}

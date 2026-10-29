@@ -369,6 +369,9 @@ function child_enqueue_styles()
     if (is_page_template('page-affiliate.php')) {
         wp_enqueue_style('ti-affiliate-css', get_stylesheet_directory_uri() . '/assets/css/ti-affiliate.css', array(), time(), null);
     }
+    if (is_page_template('page-affiliate-v2.php')) {
+        wp_enqueue_style('ti-affiliate-v2-css', get_stylesheet_directory_uri() . '/assets/css/ti-affiliate-v2.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/ti-affiliate-v2.css'), null);
+    }
     if (is_page('1081')) {
         wp_enqueue_style('ti-affiliate-area-css', get_stylesheet_directory_uri() . '/assets/css/ti-affiliate-area.css', array(), time(), null);
     }
