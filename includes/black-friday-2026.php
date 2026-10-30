@@ -59,8 +59,8 @@ function bf26_defaults() {
 		'hero_gift_link'     => '#free-gifts',
 
 		/* ---------- Hero: CTAs ---------- */
+		/* Primary CTA ("Shop the sale") links to the #courses section automatically. */
 		'hero_cta_primary_label'   => 'Shop the sale',
-		'hero_cta_primary_url'     => '#',
 		'hero_cta_secondary_label' => 'Take the English test',
 		'hero_cta_secondary_url'   => '#',
 
@@ -274,25 +274,47 @@ function bf26_defaults() {
 	return $d;
 }
 
+/** The course (course CPT) selected on a card. */
+function bf26_card_course_id( $card ) {
+	if ( empty( $card['course'] ) ) {
+		return 0;
+	}
+	$c = $card['course'];
+	if ( is_array( $c ) ) {
+		return (int) ( $c['ID'] ?? 0 );
+	}
+	if ( is_object( $c ) ) {
+		return (int) ( isset( $c->ID ) ? $c->ID : 0 );
+	}
+	return (int) $c;
+}
+
 /**
- * Resolve a course card's price / was-price / save-% .
- * The manually-entered price wins when set (so campaign prices stay fixed and a
- * product can still be linked just to drive the Enrol button). Only when no
- * manual price is entered do we pull the live regular/sale price from the
- * linked WooCommerce product (the site convention, see the 2023 BF page).
+ * The WooCommerce product behind a card's course — read from the course's own
+ * "course_product" meta (the site convention; see ti-homepage-template-2024).
+ */
+function bf26_card_product_id( $card ) {
+	$course_id = bf26_card_course_id( $card );
+	if ( ! $course_id ) {
+		return 0;
+	}
+	return (int) get_post_meta( $course_id, 'course_product', true );
+}
+
+/**
+ * Resolve a card's price / was-price / save-% from the chosen course's linked
+ * product. Everything is live from WooCommerce (regular/sale price); a course
+ * with no linked product simply shows no price.
  * Returns [ 'price' => html, 'was' => html, 'save' => '63%' ].
  */
 function bf26_card_pricing( $card ) {
-	$price = isset( $card['price'] ) ? $card['price'] : '';
-	$was   = isset( $card['was'] ) ? $card['was'] : '';
-	$save  = isset( $card['save'] ) ? $card['save'] : '';
+	$price = '';
+	$was   = '';
+	$save  = '';
 
-	$product_id = 0;
-	if ( ! empty( $card['product'] ) ) {
-		$product_id = is_array( $card['product'] ) ? ( $card['product']['ID'] ?? 0 ) : $card['product'];
-	}
+	$product_id = bf26_card_product_id( $card );
 
-	if ( '' === $price && $product_id && function_exists( 'wc_get_product' ) ) {
+	if ( $product_id && function_exists( 'wc_get_product' ) ) {
 		$product = wc_get_product( $product_id );
 		if ( $product ) {
 			$reg  = (float) $product->get_regular_price();
@@ -344,10 +366,10 @@ function bf26_course_hours( $text ) {
 }
 
 /**
- * Work out a course card's button link + label. No manual link is used for the
- * standard "Enrol now" cards — the link is derived from the linked product:
- *   - 180-hour and 300-hour courses  -> the course (product) page
- *   - every other course             -> add the product to the WooCommerce cart
+ * Work out a card's button link + label from the chosen course:
+ *   - 180-hour and 300-hour courses  -> the course page
+ *   - every other course             -> add the course's product to the cart
+ *     (falling back to the course page when it isn't directly purchasable)
  * The bundle card keeps a manually-entered link (cta_url).
  * Returns [ 'url' => ..., 'label' => ... ].
  */
@@ -360,46 +382,67 @@ function bf26_card_cta( $card ) {
 		return array( 'url' => ! empty( $card['cta_url'] ) ? $card['cta_url'] : '#', 'label' => $label );
 	}
 
-	// Standard: derive from the linked WooCommerce product.
-	$product_id = 0;
-	if ( ! empty( $card['product'] ) ) {
-		$product_id = is_array( $card['product'] ) ? ( $card['product']['ID'] ?? 0 ) : $card['product'];
-	}
-	if ( $product_id && function_exists( 'wc_get_product' ) ) {
-		$product = wc_get_product( $product_id );
-		if ( $product ) {
-			$hours = bf26_course_hours( $product->get_title() . ' ' . ( isset( $card['title'] ) ? $card['title'] : '' ) );
-			// 180-hour and 300-hour courses go to their course page.
-			if ( in_array( $hours, array( 180, 300 ), true ) ) {
-				return array( 'url' => get_permalink( $product_id ), 'label' => $label );
-			}
-			// Variable / external / non-purchasable products can't be direct-added,
-			// so send them to the course page too.
-			if ( $product->is_type( 'variable' ) || $product->is_type( 'external' ) || ! $product->is_purchasable() ) {
-				return array( 'url' => get_permalink( $product_id ), 'label' => $label );
-			}
-			// Everything else: add to the cart via the site's own cart handler
-			// (see includes/tefl-course-variation-date.php), e.g. /?addtimetocart&prid=430
-			return array( 'url' => '/?addtimetocart&prid=' . (int) $product_id, 'label' => $label );
+	$course_id  = bf26_card_course_id( $card );
+	$product_id = bf26_card_product_id( $card );
+
+	if ( $course_id ) {
+		$hours = bf26_course_hours( get_the_title( $course_id ) . ' ' . ( isset( $card['title'] ) ? $card['title'] : '' ) );
+		// 180-hour and 300-hour courses go straight to their course page.
+		if ( in_array( $hours, array( 180, 300 ), true ) ) {
+			return array( 'url' => get_permalink( $course_id ), 'label' => $label );
 		}
+		// Otherwise add the course's product to the cart when it can be.
+		if ( $product_id && function_exists( 'wc_get_product' ) ) {
+			$product = wc_get_product( $product_id );
+			if ( $product && $product->is_purchasable() && ! $product->is_type( 'variable' ) && ! $product->is_type( 'external' ) ) {
+				// Site's own cart handler (see includes/tefl-course-variation-date.php).
+				return array( 'url' => '/?addtimetocart&prid=' . (int) $product_id, 'label' => $label );
+			}
+		}
+		// No purchasable product: send them to the course page.
+		return array( 'url' => get_permalink( $course_id ), 'label' => $label );
 	}
 
-	// No product linked yet: fall back to the manual link (defaults to '#').
+	// No course chosen yet: fall back to the manual link (defaults to '#').
 	return array( 'url' => ! empty( $card['cta_url'] ) ? $card['cta_url'] : '#', 'label' => $label );
 }
 
 /**
+ * The "Learn more" URL for a card — the chosen course's page.
+ * Returns '' when there's nothing to link to (so the button is hidden).
+ */
+function bf26_card_learn_url( $card ) {
+	$course_id = bf26_card_course_id( $card );
+	if ( $course_id ) {
+		$url = get_permalink( $course_id );
+		if ( $url ) {
+			return $url;
+		}
+	}
+	// No course (e.g. a bundle linked only by URL): use the manual link if real.
+	if ( ! empty( $card['cta_url'] ) && '#' !== $card['cta_url'] ) {
+		return $card['cta_url'];
+	}
+	return '';
+}
+
+/**
  * Sale end as an ISO-8601 string the browser's Date() can parse reliably.
- * Mirrors the site timer convention (ti-timer.js reads an expiry string),
- * but keyed to this page's own sale_end field.
+ * Linked to the site-wide Global Timer ("Timer Expiry", option: timer_expiry),
+ * so the countdown stays in sync with the rest of the site. Falls back to the
+ * built-in default only when the global timer is empty.
  */
 function bf26_sale_end_iso() {
-	$raw = bf26_get( 'sale_end' );
-	$ts  = strtotime( $raw );
-	if ( ! $ts ) {
-		$ts = strtotime( '2026-11-30 23:59:59' );
+	$raw = '';
+	if ( function_exists( 'get_field' ) ) {
+		$raw = (string) get_field( 'timer_expiry', 'option' ); // Global Timer, site-wide.
 	}
-	return date( 'c', $ts ); // e.g. 2026-11-30T23:59:59+00:00
+	$ts = $raw ? strtotime( $raw ) : false;
+	if ( ! $ts ) {
+		$d  = bf26_defaults();
+		$ts = strtotime( isset( $d['sale_end'] ) ? $d['sale_end'] : '2026-11-30 23:59:59' );
+	}
+	return date( 'c', $ts ); // e.g. 2026-10-31T23:59:59+00:00
 }
 
 /** Whether to render the countdown (unset defaults to on). */
@@ -745,8 +788,7 @@ function bf26_countdown_subfields() {
 	return array(
 		array( 'key' => 'field_bf26_sale_show', 'label' => 'Show countdown', 'name' => 'sale_show', 'type' => 'true_false', 'ui' => 1, 'default_value' => 1, 'message' => 'Show the sale countdown band' ),
 		array( 'key' => 'field_bf26_sale_label', 'label' => 'Label', 'name' => 'sale_label', 'type' => 'text', 'default_value' => $d['sale_label'], 'wrapper' => array( 'width' => 50 ) ),
-		array( 'key' => 'field_bf26_sale_end_note', 'label' => 'End note', 'name' => 'sale_end_note', 'type' => 'text', 'default_value' => $d['sale_end_note'], 'wrapper' => array( 'width' => 50 ) ),
-		array( 'key' => 'field_bf26_sale_end', 'label' => 'Sale end date & time', 'name' => 'sale_end', 'type' => 'date_time_picker', 'display_format' => 'd/m/Y g:i a', 'return_format' => 'Y-m-d H:i:s', 'first_day' => 1, 'instructions' => 'Leave empty to use the default (' . $d['sale_end'] . ').' ),
+		array( 'key' => 'field_bf26_sale_end_note', 'label' => 'End note', 'name' => 'sale_end_note', 'type' => 'text', 'default_value' => $d['sale_end_note'], 'wrapper' => array( 'width' => 50 ), 'instructions' => 'The countdown ends at the site-wide Global Timer → Timer Expiry; this is just the label shown under the clock.' ),
 		array( 'key' => 'field_bf26_sale_places_strong', 'label' => 'Places left — bold text', 'name' => 'sale_places_strong', 'type' => 'text', 'default_value' => $d['sale_places_strong'], 'wrapper' => array( 'width' => 50 ) ),
 		array( 'key' => 'field_bf26_sale_places_text', 'label' => 'Places left — rest', 'name' => 'sale_places_text', 'type' => 'text', 'default_value' => $d['sale_places_text'], 'wrapper' => array( 'width' => 50 ) ),
 	);
@@ -786,15 +828,12 @@ function bf26_course_subfields() {
 		array( 'key' => 'field_bf26_course_note', 'name' => 'course_note', 'label' => 'Note (right of heading)', 'type' => 'text', 'default_value' => $d['course_note'] ),
 		array(
 			'key' => 'field_bf26_course_cards', 'name' => 'course_cards', 'label' => 'Course cards', 'type' => 'repeater',
-			'instructions' => 'Leave empty to show the built-in four cards. Link a product for live price & discount; otherwise set them manually.',
+			'instructions' => 'Leave empty to show the built-in four cards. Price, "was" price and the % off all come from the linked product.',
 			'min' => 0, 'layout' => 'block', 'button_label' => 'Add card',
 			'sub_fields' => array(
-				array( 'key' => 'field_bf26_card_variant', 'name' => 'variant', 'label' => 'Style', 'type' => 'select', 'choices' => array( 'standard' => 'Standard (cream)', 'bundle' => 'Bundle (red)' ), 'default_value' => 'standard', 'wrapper' => array( 'width' => 34 ) ),
-				array( 'key' => 'field_bf26_card_save', 'name' => 'save', 'label' => 'Save % (manual)', 'type' => 'text', 'instructions' => 'e.g. 63% — ignored when a product is linked.', 'wrapper' => array( 'width' => 33 ) ),
-				array( 'key' => 'field_bf26_card_klarna', 'name' => 'klarna', 'label' => 'Show Klarna', 'type' => 'true_false', 'ui' => 1, 'default_value' => 1, 'wrapper' => array( 'width' => 33 ) ),
-				array( 'key' => 'field_bf26_card_product', 'name' => 'product', 'label' => 'WooCommerce product (live price)', 'type' => 'post_object', 'post_type' => array( 'product' ), 'return_format' => 'id', 'ui' => 1, 'allow_null' => 1, 'instructions' => 'Optional. Pulls regular/sale price and computes the % off.' ),
-				array( 'key' => 'field_bf26_card_price', 'name' => 'price', 'label' => 'Price (manual)', 'type' => 'text', 'wrapper' => array( 'width' => 50 ) ),
-				array( 'key' => 'field_bf26_card_was', 'name' => 'was', 'label' => 'Was price (manual)', 'type' => 'text', 'wrapper' => array( 'width' => 50 ) ),
+				array( 'key' => 'field_bf26_card_variant', 'name' => 'variant', 'label' => 'Style', 'type' => 'select', 'choices' => array( 'standard' => 'Standard (cream)', 'bundle' => 'Bundle (red)' ), 'default_value' => 'standard', 'wrapper' => array( 'width' => 50 ) ),
+				array( 'key' => 'field_bf26_card_klarna', 'name' => 'klarna', 'label' => 'Show Klarna', 'type' => 'true_false', 'ui' => 1, 'default_value' => 1, 'wrapper' => array( 'width' => 50 ) ),
+				array( 'key' => 'field_bf26_card_course', 'name' => 'course', 'label' => 'Course', 'type' => 'post_object', 'post_type' => array( 'course' ), 'return_format' => 'id', 'ui' => 1, 'allow_null' => 1, 'instructions' => 'Pick the course. The card shows its price, "was" price and % off (from the course\'s linked product) and links to the course page.' ),
 				array( 'key' => 'field_bf26_card_category', 'name' => 'category', 'label' => 'Category pill', 'type' => 'text', 'wrapper' => array( 'width' => 60 ) ),
 				array( 'key' => 'field_bf26_card_cat_icon', 'name' => 'cat_icon', 'label' => 'Pill icon', 'type' => 'select', 'choices' => $icons, 'default_value' => 'book-open', 'wrapper' => array( 'width' => 40 ) ),
 				array( 'key' => 'field_bf26_card_image', 'name' => 'image', 'label' => 'Image', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ),
@@ -1057,4 +1096,92 @@ function bf26_remove_old_social_fields() {
 		}
 	}
 	return $removed ? 'removed: ' . implode( ', ', $removed ) : 'nothing to remove';
+}
+
+/** One-shot: remove the hero primary-CTA link field — "Shop the sale" now links
+ *  automatically to the #courses section, so the manual URL field is not needed. */
+function bf26_remove_hero_primary_url_field() {
+	if ( ! function_exists( 'acf_delete_field' ) || ! function_exists( 'acf_get_field' ) ) {
+		return 'ACF not available';
+	}
+	$f = acf_get_field( 'field_bf26_hero_cta_primary_url' );
+	if ( $f && ! empty( $f['ID'] ) ) {
+		acf_delete_field( $f['ID'] );
+		return 'removed field_bf26_hero_cta_primary_url';
+	}
+	return 'nothing to remove';
+}
+
+/** One-shot: remove the manual course-card price fields — price, "was" price and
+ *  the % off now always come from the linked WooCommerce product. */
+function bf26_remove_card_manual_price_fields() {
+	if ( ! function_exists( 'acf_delete_field' ) || ! function_exists( 'acf_get_field' ) ) {
+		return 'ACF not available';
+	}
+	$removed = array();
+	foreach ( array( 'field_bf26_card_save', 'field_bf26_card_price', 'field_bf26_card_was' ) as $key ) {
+		$f = acf_get_field( $key );
+		if ( $f && ! empty( $f['ID'] ) ) {
+			acf_delete_field( $f['ID'] );
+			$removed[] = $key;
+		}
+	}
+	return $removed ? 'removed: ' . implode( ', ', $removed ) : 'nothing to remove';
+}
+
+/** One-shot: remove the page-level "Sale end date & time" field — the countdown
+ *  now reads the site-wide Global Timer (option: timer_expiry). */
+function bf26_remove_sale_end_field() {
+	if ( ! function_exists( 'acf_delete_field' ) || ! function_exists( 'acf_get_field' ) ) {
+		return 'ACF not available';
+	}
+	$f = acf_get_field( 'field_bf26_sale_end' );
+	if ( $f && ! empty( $f['ID'] ) ) {
+		acf_delete_field( $f['ID'] );
+		return 'removed field_bf26_sale_end';
+	}
+	return 'nothing to remove';
+}
+
+/** One-shot: switch the course-card selector from a product to a course.
+ *  Adds field_bf26_card_course into the existing cards repeater (taking the old
+ *  product field's slot), then removes field_bf26_card_product. */
+function bf26_switch_card_to_course() {
+	if ( ! function_exists( 'acf_get_field' ) || ! function_exists( 'acf_update_field' ) || ! function_exists( 'acf_delete_field' ) ) {
+		return 'ACF not available';
+	}
+	$out = array();
+
+	if ( ! acf_get_field( 'field_bf26_card_course' ) ) {
+		$prod   = acf_get_field( 'field_bf26_card_product' );
+		$parent = $prod ? (int) $prod['parent'] : 0;
+		$order  = $prod ? (int) $prod['menu_order'] : 2;
+		if ( ! $parent ) {
+			return 'course_cards repeater not found (product field missing)';
+		}
+		acf_update_field( array(
+			'key'           => 'field_bf26_card_course',
+			'name'          => 'course',
+			'label'         => 'Course',
+			'type'          => 'post_object',
+			'post_type'     => array( 'course' ),
+			'return_format' => 'id',
+			'ui'            => 1,
+			'allow_null'    => 1,
+			'instructions'  => 'Pick the course. The card shows its price, "was" price and % off (from the course\'s linked product) and links to the course page.',
+			'parent'        => $parent,
+			'menu_order'    => $order,
+		) );
+		$out[] = 'added field_bf26_card_course';
+	} else {
+		$out[] = 'course field already present';
+	}
+
+	$prod = acf_get_field( 'field_bf26_card_product' );
+	if ( $prod && ! empty( $prod['ID'] ) ) {
+		acf_delete_field( $prod['ID'] );
+		$out[] = 'removed field_bf26_card_product';
+	}
+
+	return implode( '; ', $out );
 }

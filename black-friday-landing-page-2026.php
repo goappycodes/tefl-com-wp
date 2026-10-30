@@ -86,7 +86,7 @@ $bf26_img = bf26_hero_image();
 
           <!-- CTAs -->
           <div class="bf26-hero__cta">
-            <a class="bf26-btn bf26-btn--primary" href="<?php echo esc_url(bf26_get('hero_cta_primary_url')); ?>"><?php bf26_e('hero_cta_primary_label'); ?> &rarr;</a>
+            <a class="bf26-btn bf26-btn--primary" href="#courses"><?php bf26_e('hero_cta_primary_label'); ?> &rarr;</a>
             <a class="bf26-btn bf26-btn--ghost" href="<?php echo esc_url(bf26_get('hero_cta_secondary_url')); ?>"><?php bf26_e('hero_cta_secondary_label'); ?></a>
           </div>
 
@@ -94,7 +94,7 @@ $bf26_img = bf26_hero_image();
 
         <!-- Art column -->
         <div class="bf26-hero__art">
-          <svg class="bf26-hero__pin" viewBox="0 0 680 640" aria-hidden="true">
+          <svg class="bf26-hero__pin" viewBox="-20 -19 720 678" aria-hidden="true">
             <path d="M450 610 C 370 500, 260 420, 260 270 A 190 190 0 1 1 640 270 C 640 420, 530 500, 450 610 Z" fill="#D7263D"></path>
             <circle cx="450" cy="270" r="88" fill="#0A0A0A"></circle>
 
@@ -209,7 +209,7 @@ $bf26_img = bf26_hero_image();
 
     <!-- ===================== COURSE CARDS ===================== -->
     <?php $bf26_worldmap = get_stylesheet_directory_uri() . '/assets/img/black-friday-2026/world-map-dotted-plane.png'; ?>
-    <section class="bf26-courses bf26-fullbleed">
+    <section id="courses" class="bf26-courses bf26-fullbleed" style="scroll-margin-top:90px">
       <img class="bf26-courses__bg" src="<?php echo esc_url( $bf26_worldmap ); ?>" alt="" aria-hidden="true">
       <div class="bf26-courses__inner">
         <div class="bf26-courses__head">
@@ -265,6 +265,9 @@ $bf26_img = bf26_hero_image();
               <div class="bf26-card__cta">
                 <?php $cta = bf26_card_cta( $c ); ?>
                 <a href="<?php echo esc_url( $cta['url'] ); ?>" class="bf26-btn <?php echo 'bundle' === $variant ? 'bf26-btn--dark' : 'bf26-btn--primary'; ?> bf26-btn--block"><?php echo esc_html( $cta['label'] ); ?></a>
+                <?php $bf26_learn = bf26_card_learn_url( $c ); if ( $bf26_learn ) : ?>
+                  <a href="<?php echo esc_url( $bf26_learn ); ?>" class="bf26-btn bf26-btn--block bf26-card__learn">Learn more</a>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -276,9 +279,12 @@ $bf26_img = bf26_hero_image();
           <div class="bf26-courses__free-grid">
             <?php foreach ( bf26_rows('course_free_tiles') as $t ) : ?>
               <a href="<?php echo esc_url( isset($t['url']) ? $t['url'] : '#' ); ?>" class="bf26-freetile">
-                <span class="bf26-freetile__ic"><?php echo bf26_icon( isset($t['icon']) ? $t['icon'] : 'book-open', 22, '#E3B341' ); ?></span>
-                <span class="bf26-freetile__label"><?php echo esc_html( isset($t['label']) ? $t['label'] : '' ); ?></span>
-                <span class="bf26-freetile__arrow">&rarr;</span>
+                <span class="bf26-freetile__ring" aria-hidden="true"></span>
+                <span class="bf26-freetile__inner">
+                  <span class="bf26-freetile__ic"><?php echo bf26_icon( isset($t['icon']) ? $t['icon'] : 'book-open', 22, '#E3B341' ); ?></span>
+                  <span class="bf26-freetile__label"><?php echo esc_html( isset($t['label']) ? $t['label'] : '' ); ?></span>
+                  <span class="bf26-freetile__arrow">&rarr;</span>
+                </span>
               </a>
             <?php endforeach; ?>
           </div>
