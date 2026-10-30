@@ -105,7 +105,7 @@ $facts = array(
 			<div class="tiav2-faq__media">
 				<h2 class="tiav2-h2">Become an affiliate for one of the fastest growing ESL companies</h2>
 				<div class="tiav2-video">
-					<iframe src="https://www.youtube-nocookie.com/embed/7j6B4xyoy2A" title="The TEFL Institute affiliate programme" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe src="https://www.youtube.com/embed/blmSLhDnZIs?si=OZvvVRpAIXpGwWB0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div class="tiav2-faq__list">
