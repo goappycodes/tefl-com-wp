@@ -857,6 +857,7 @@ require_once 'includes/course-2026.php';
 require_once 'includes/tefl-for-schools-v3.php';
 require_once 'includes/welcome-exit-popup.php';
 require_once 'includes/ti-affiliate-signup.php';
+require_once 'includes/ti-sidecart-guard.php';
 add_filter('ti_wx_should_show', '__return_false'); // WELCOME popup switched off for now
 
 function wpse245372_admin_user_css()
