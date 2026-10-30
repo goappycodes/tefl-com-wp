@@ -807,3 +807,273 @@ body.ti-affiliate-simple #content > .ast-container {
         flex: 0 0 auto;
     }
 }
+
+/* Affiliate Area > Creatives (AffiliateWP grid view): image-only cards, details open in the plugin's modal. */
+.tiav2 .affwp-creatives-view--as-grid .affwp-creative-name,
+.tiav2 .affwp-creatives-view--as-grid [data-content="type"] {
+    display: none;
+}
+.tiav2 .affwp-creatives-view--as-grid .affwp-creative {
+    border: 1px solid var(--tiav2-line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--tiav2-tint);
+    transition: box-shadow .15s ease, transform .15s ease;
+}
+.tiav2 .affwp-creatives-view--as-grid .affwp-creative:hover {
+    box-shadow: 0 10px 24px rgba(15, 48, 66, .12);
+    transform: translateY(-2px);
+}
+.tiav2 .affwp-creatives-view--as-grid .affwp-creative [data-modal] {
+    cursor: zoom-in;
+}
+
+/* ---------- Affiliate Area dashboard tabs (AffiliateWP templates) ---------- */
+
+.tiav2 .affwp-tab-content h4 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--tiav2-ink);
+    margin: 0 0 20px;
+}
+.tiav2 .affwp-tab-content h4:not(:first-child) {
+    margin-top: 36px;
+}
+.tiav2 .affwp-tab-content p,
+.tiav2 .affwp-tab-content .description {
+    color: var(--tiav2-muted);
+}
+
+/* Cards (Affiliate URLs) */
+.tiav2 .affwp-card {
+    border: 1px solid var(--tiav2-line);
+    border-radius: 14px;
+    box-shadow: none;
+    background: #fff;
+    padding: 0;
+    margin: 0 0 20px;
+    overflow: hidden;
+}
+.tiav2 .affwp-card__header h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 4px;
+}
+.tiav2 .affwp-card__header p {
+    margin: 0;
+}
+.tiav2 .affwp-card__footer {
+    border-top: 1px solid var(--tiav2-line);
+}
+.tiav2 .affwp-affiliate-link__display {
+    display: flex;
+    gap: 12px;
+}
+.tiav2 .affwp-affiliate-link__display input {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* Fields and buttons inside the tabs */
+.tiav2 .affwp-tab-content input[type="text"],
+.tiav2 .affwp-tab-content input[type="url"],
+.tiav2 .affwp-tab-content input[type="email"],
+.tiav2 .affwp-tab-content select {
+    padding: 11px 14px;
+    border: 1px solid #cfd8de;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--tiav2-ink);
+    font-size: 15px;
+    max-width: 100%;
+}
+.tiav2 .affwp-tab-content input[readonly] {
+    background: var(--tiav2-tint);
+}
+.tiav2 .affwp-tab-content label {
+    display: block;
+    font-weight: 600;
+    color: var(--tiav2-ink);
+    margin: 0 0 6px;
+}
+.tiav2 .affwp-tab-content .button,
+.tiav2 .affwp-tab-content input[type="submit"],
+.tiav2 .affwp-tab-content button.button {
+    display: inline-block;
+    padding: 11px 22px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--tiav2-navy);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.tiav2 .affwp-tab-content .button:hover,
+.tiav2 .affwp-tab-content input[type="submit"]:hover {
+    background: var(--tiav2-navy-2);
+}
+.tiav2 #affwp-generator-toggle-campaign {
+    color: var(--tiav2-navy-2);
+    font-weight: 600;
+}
+
+/* Tables (Statistics, Referrals, Payouts, Visits, Coupons) */
+.tiav2 .affwp-tab-content table.affwp-table {
+    width: 100%;
+    margin: 0 0 24px;
+    border: 1px solid var(--tiav2-line);
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 15px;
+}
+.tiav2 .affwp-tab-content table.affwp-table th {
+    background: var(--tiav2-tint);
+    color: var(--tiav2-muted);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    text-align: left;
+    padding: 12px 16px;
+    border: 0;
+    border-bottom: 1px solid var(--tiav2-line);
+}
+.tiav2 .affwp-tab-content table.affwp-table td {
+    padding: 14px 16px;
+    border: 0;
+    border-bottom: 1px solid var(--tiav2-line);
+    vertical-align: middle;
+}
+.tiav2 .affwp-tab-content table.affwp-table tr:last-child td {
+    border-bottom: 0;
+}
+.tiav2 .affwp-tab-content .affwp-table-wrap {
+    overflow-x: auto;
+}
+.tiav2 .affwp-tab-content .affwp-pagination {
+    margin-top: 8px;
+}
+
+/* Payouts summary */
+.tiav2 .affwp-payout-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 0 0 24px;
+}
+.tiav2 .affwp-payout-summary__stat {
+    background: var(--tiav2-tint);
+    border-radius: 12px;
+    padding: 16px 18px;
+}
+.tiav2 .affwp-payout-summary__label {
+    display: block;
+    font-size: 13px;
+    color: var(--tiav2-muted);
+}
+.tiav2 .affwp-payout-summary__value {
+    display: block;
+    margin-top: 4px;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--tiav2-navy);
+}
+
+/* Graphs filter */
+.tiav2 #affwp-graphs-filter .tablenav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px;
+}
+.tiav2 #affwp-date-range-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Coupons: make the code stand out */
+.tiav2 #affwp-affiliate-dashboard-coupons table.affwp-table td:first-child {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-weight: 700;
+    color: var(--tiav2-navy);
+    letter-spacing: .03em;
+}
+.tiav2 .affwp-vcc-edit-link-wrap a {
+    color: var(--tiav2-navy-2);
+    font-weight: 600;
+}
+.tiav2 .affwp-vcc-pending-code {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--tiav2-muted);
+}
+
+/* Settings form */
+.tiav2 #affwp-affiliate-dashboard-profile-form .affwp-wrap {
+    display: block;
+    margin: 0 0 20px;
+}
+.tiav2 #affwp-affiliate-dashboard-profile-form input[type="email"],
+.tiav2 #affwp-affiliate-dashboard-profile-form input[type="text"] {
+    width: 100%;
+    max-width: 480px;
+}
+.tiav2 .affwp-send-notifications-wrap {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}
+.tiav2 .affwp-send-notifications-wrap label {
+    margin: 0;
+    font-weight: 400;
+}
+
+@media (max-width: 640px) {
+    .tiav2 .affwp-affiliate-link__display {
+        flex-direction: column;
+    }
+    .tiav2 .affwp-tab-content table.affwp-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Creatives grid: cards follow each banner's own shape (no fixed square). With the masonry script
+   (.ti-masonry, added by ti-affiliate-signup.php) cards pack into columns; without it they sit in a normal grid. */
+.tiav2 .affwp-creatives-view--as-grid {
+    --gap: 16px;
+    align-items: start;
+}
+.tiav2 .affwp-creatives-view--as-grid .affwp-creative-preview {
+    aspect-ratio: auto;
+    height: auto;
+    margin: 0;
+    padding: 14px;
+    border: 0;
+    align-items: center;
+}
+.tiav2 .affwp-creatives-view--as-grid .affwp-creative-preview img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 420px;
+}
+.tiav2 .affwp-creatives-view--as-grid .affwp-creative[data-type="text_link"] .affwp-creative-preview {
+    padding: 18px;
+    justify-content: flex-start;
+    font-weight: 600;
+}
+.tiav2 .affwp-creatives-view--as-grid.ti-masonry {
+    grid-auto-rows: 4px;
+    row-gap: 0;
+}

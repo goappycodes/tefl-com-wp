@@ -8,6 +8,8 @@
  * - Logged-in visitors on the affiliate login page go straight to the Affiliate Area.
  * - "Not an affiliate yet? Apply here" under the affiliate login forms.
  * - Sign-up tracking (GTM affiliate_signup + Meta CompleteRegistration) on the thank-you page.
+ * - Creatives tab: grid view by default, newest-added first.
+ * - Email to marketing@ when an affiliate requests a new coupon code name (Vanity Coupon Codes add-on).
  */
 
 if (!defined('ABSPATH')) {
@@ -52,6 +54,154 @@ add_action('template_redirect', function () {
         wp_safe_redirect(get_permalink(TI_AFFILIATE_AREA_PAGE));
         exit;
     }
+
+    // AffiliateWP opens the Creatives tab as a list unless ?view_type= or its cookie says otherwise.
+    // Default to the image grid; the plugin then remembers the choice in its cookie.
+    if (
+        is_page(TI_AFFILIATE_AREA_PAGE)
+        && isset($_GET['tab']) && 'creatives' === $_GET['tab']
+        && !isset($_GET['view_type'])
+        && empty($_COOKIE['affiliatewp_creatives_view_type'])
+    ) {
+        wp_safe_redirect(add_query_arg('view_type', 'grid'));
+        exit;
+    }
+});
+
+// Creatives tab: newest-added first unless the affiliate picks another sort order.
+add_filter('affwp_affiliate_dashboard_creatives_args', function ($args) {
+    if (!isset($_GET['orderby'])) {
+        $args['orderby'] = 'date';
+        $args['order']   = 'DESC';
+    }
+    return $args;
+});
+
+// Creatives grid as masonry: each card spans as many 4px grid rows as its banner needs, so mixed sizes
+// (728x90 strips, 160x600 skyscrapers) pack tightly while keeping the newest-first, left-to-right order.
+add_action('wp_footer', function () {
+    if (!is_page(TI_AFFILIATE_AREA_PAGE)) {
+        return;
+    }
+    ?>
+    <script>
+    (function () {
+        var ROW = 4, GAP = 16;
+
+        function layout(grid) {
+            grid.querySelectorAll('.affwp-creative').forEach(function (card) {
+                card.style.gridRowEnd = 'auto';
+                card.style.gridRowEnd = 'span ' + Math.ceil((card.getBoundingClientRect().height + GAP) / ROW);
+            });
+        }
+
+        function init() {
+            var grid = document.querySelector('.affwp-creatives-view--as-grid');
+            if (!grid) {
+                return;
+            }
+            grid.classList.add('ti-masonry');
+
+            var queued = false;
+            function schedule() {
+                if (queued) {
+                    return;
+                }
+                queued = true;
+                requestAnimationFrame(function () {
+                    queued = false;
+                    layout(grid);
+                });
+            }
+            function watchImages() {
+                grid.querySelectorAll('img').forEach(function (img) {
+                    if (!img.complete) {
+                        img.addEventListener('load', schedule, { once: true });
+                    }
+                });
+            }
+
+            watchImages();
+            schedule();
+            window.addEventListener('resize', schedule);
+            // Infinite scroll appends more creatives.
+            new MutationObserver(function () {
+                watchImages();
+                schedule();
+            }).observe(grid, { childList: true });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+    <?php
+}, 100);
+
+// Sign-up form "Preferred coupon code": file it as a normal code request on the affiliate's new dynamic coupon,
+// so it waits in AffiliateWP > Vanity Coupon Codes for approval (and emails marketing@, below). The coupon is
+// created just before affwp_register_user fires. The POST name comes from the field label "Preferred coupon code";
+// if the label changes in the editor, update it here. Codes that are invalid or taken stay on the affiliate's record only.
+add_action('affwp_register_user', function ($affiliate_id) {
+    if (empty($_POST['affwp_preferred_coupon_code_text']) || !function_exists('affiliatewp_vanity_coupon_codes')) {
+        return;
+    }
+    $db   = affiliatewp_vanity_coupon_codes()->db;
+    $code = $db->sanitize_vanity_code(sanitize_text_field(wp_unslash($_POST['affwp_preferred_coupon_code_text'])));
+    if ('' === $code || strlen($code) > 191 || !$db->is_unique($code, 'woocommerce')) {
+        return;
+    }
+    $coupons = affwp_get_dynamic_affiliate_coupons($affiliate_id, false, false);
+    $coupon  = $coupons ? reset($coupons) : null;
+    if (!$coupon || $coupon->coupon_code === $code) {
+        return;
+    }
+    $db->add(array(
+        'affiliate_id' => $affiliate_id,
+        'coupon_id'    => $coupon->coupon_id,
+        'current_code' => $coupon->coupon_code,
+        'vanity_code'  => $code,
+        'integration'  => 'woocommerce',
+        'type'         => 'dynamic',
+    ));
+}, 20);
+
+// The Vanity Coupon Codes add-on emails affiliates when a request is approved or rejected, but tells nobody
+// when one comes in. Email marketing@ once the request has been saved (the add-on has no after-insert hook).
+add_action('affwp_pre_insert_vanity_coupon', function ($data) {
+    add_action('shutdown', function () use ($data) {
+        static $sent = false;
+        if ($sent) {
+            return;
+        }
+        $sent = true;
+
+        global $wpdb;
+        $saved = $wpdb->get_var($wpdb->prepare(
+            "SELECT vanity_code_id FROM {$wpdb->prefix}affiliate_wp_vanity_coupon_codes WHERE affiliate_id = %d AND coupon_id = %d AND vanity_code = %s",
+            $data['affiliate_id'],
+            $data['coupon_id'],
+            $data['vanity_code']
+        ));
+        if (!$saved) {
+            return;
+        }
+
+        $affiliate_id = (int) $data['affiliate_id'];
+        $email        = new Affiliate_WP_Emails();
+        $email->__set('affiliate_id', $affiliate_id);
+
+        $message  = "A new coupon code name has been requested.\n\n";
+        $message .= 'Affiliate: ' . affwp_get_affiliate_name($affiliate_id) . ' (#' . $affiliate_id . ', ' . affwp_get_affiliate_email($affiliate_id) . ")\n";
+        $message .= 'Current code: ' . $data['current_code'] . "\n";
+        $message .= 'Requested code: ' . $data['vanity_code'] . "\n\n";
+        $message .= 'Approve or reject it here: ' . set_url_scheme(admin_url('admin.php?page=affiliate-wp-vanity-coupon-codes'), 'https');
+
+        $email->send('marketing@teflinstitute.com', 'Coupon code request: ' . $data['vanity_code'], $message);
+    });
 });
 
 add_action('affwp_affiliate_login_form_bottom', function () {
